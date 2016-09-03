@@ -1,0 +1,19 @@
+Hi! I'm Pranjal, student and full stack web developer. I'll be streaming all my open source projects here so stay tuned.
+**Currently my tools are:**
+-HTML / CSS
+-Wordpress Theme Development
+-Angular JS and Vue JS
+-Php and MVC Frameworks( Laravel, Slim 3)
+-Python ( Flask )
+-Photoshop and Illustrator for UI design
+
+**Editor / IDE:** 
+- Sublime Text 3
+- Webstorm
+- PHPStorm
+- Py Charm
+
+**Things I'm Learning :**
+-Advanced Vanilla JS
+-React JS
+-Node JS
