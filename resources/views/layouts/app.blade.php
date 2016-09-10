@@ -12,6 +12,16 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <!-- Will refactor while working on frontend -->
+    <style>
+
+        @import 'https://fonts.googleapis.com/css?family=Satisfy';
+        .navbar-brand {
+            font-family: 'Satisfy', cursive;
+            font-size: 30px;
+        }
+
+    </style>
 
     <!-- Scripts -->
     <script>
@@ -35,7 +45,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    LaraGram
                 </a>
             </div>
 

@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $photos = Photo::all();
+        $photos = Photo::orderBy('created_at', 'desc')->get();
         // return view('main.index')->with('photos', $photos);
 
         return view('home', ['photos' => $photos]);

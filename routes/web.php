@@ -27,3 +27,5 @@ Route::get('/user/{username}', 'UserController@profile'); // Not using id becaus
 Route::post('/upload', 'PhotoController@store');
 
 Route::post('photo/like/{id}', 'LikesController@like')->name('like');
+
+Route::post('photo/comment/{photo_id}', 'CommentController@store')->name('add_comment');

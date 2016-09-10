@@ -32,6 +32,6 @@ class LikesController extends Controller
         $like->delete(); // No need to query again
         return redirect('home');
 
-        // Will refactor to make ajax request
+        // Will refactor to make ajax requestw
     }
 }
