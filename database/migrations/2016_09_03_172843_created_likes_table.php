@@ -13,7 +13,9 @@ class CreatedLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table){
+        Schema::create('likes', function (Blueprint $table)
+        {
+            $table->increments('id'); // Deletion dont work without id i guess in laravel :/
             $table->integer('photo_id');
             $table->integer('user_id'); // Id of the user who liked the photo
             $table->timestamps(); // Updated_at and Created_at

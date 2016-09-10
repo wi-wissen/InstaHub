@@ -17,10 +17,14 @@
 				</div>
 				<hr>
 				<div class="panel panel-defaut">
-					@foreach ($photos as $photo)
-						{{$photo->description}}
-						
-					@endforeach
+					<div class="row">
+						@foreach ($photos as $photo)
+						<div class="col-md-4">
+							<img src="{{  '../photos/' . $photo->url }}" class="img-responsive"/><br>
+						</div>
+						@endforeach
+					</div>
+
 				</div>
 			</div>
 		</div>

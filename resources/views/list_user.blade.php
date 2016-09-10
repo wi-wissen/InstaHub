@@ -11,7 +11,6 @@
 						<p class="lead">{{ $user->bio }}</p>
 						<a href="{{ 'users/follow/' . $user->id }}" class="btn btn-primary">Follow</a>
 					</div>
-					
 				@endforeach
 			</div>
 		</div>
