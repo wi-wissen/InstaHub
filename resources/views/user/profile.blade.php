@@ -12,7 +12,10 @@
 						<h2>{{ $user->name }}</h2>
 						<h5>{{ '@' . $user->username }}</h5>
 						<p>{{ $user->bio }}</p>
-						<a href='#' class="btn btn-primary">Follow</a>
+						<form action="{{ route('follow', $user->id) }}" method="post">
+							{{ csrf_field() }}
+							<input type="submit" class="btn btn-success" value="Follow" />
+						</form>
 					</div>
 				</div>
 				<hr>

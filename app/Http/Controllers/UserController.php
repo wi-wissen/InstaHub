@@ -21,4 +21,10 @@ class UserController extends Controller
    	}
    	return view('user.404');
    }
+
+   public function all()
+   {
+       $users = User::get();
+       return view('user.list', ['users' => $users]);
+   }
 }

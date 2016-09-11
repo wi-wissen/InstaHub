@@ -16,10 +16,11 @@ class FollowController extends Controller
 	}
    public function follow($id, Request $request) // id of the person to be followed
    {
-   	echo 'Working?';
-   	$follow = new Follow;
-   	$follow->following_id = $id;
-   	$follow->follower_id = $request->user()->id;
-   	$follow->save();
+        $follow = new Follow;
+        $follow->following_id = $id;
+        $follow->follower_id = $request->user()->id;
+        $follow->save();
+
+       return redirect('home');
    }
 }

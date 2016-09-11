@@ -24,10 +24,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $photos = Photo::orderBy('created_at', 'desc')->get();
-        // return view('main.index')->with('photos', $photos);
+        $user = $request->user();
+
+        $photos = Photo::where('user_id', $user->following);
 
         return view('home', ['photos' => $photos]);
     }
