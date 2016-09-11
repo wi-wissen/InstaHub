@@ -28,8 +28,16 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
-        $photos = Photo::where('user_id', $user->following);
+        $following_ids = []; // hmm i dont feel this is good practice refactor later
 
+        foreach ($user->following as $following) {
+            array_push($following_ids, $following->following_id);
+        }
+
+        print_r($following_ids);
+
+        $photos = Photo::where('user_id',$following_ids)->get();
+        dd($photos);
         return view('home', ['photos' => $photos]);
     }
 
