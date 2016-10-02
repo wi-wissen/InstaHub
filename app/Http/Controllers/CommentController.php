@@ -23,7 +23,10 @@ class CommentController extends Controller
             'photo_id' =>  $photo_id,
             'body' => $request->comment,
         ]);
-        return redirect('home');
+        
+        return response()->json([
+            'success' => 'true',
+        ]);
     }
 
 

@@ -13,24 +13,28 @@
                         </div>
                         <h3>{{ $photo->description }}</h3>
                         <div class="meta">
-                            <form class="like_form" class="{{ rand() }}" method="post">
+                            <form class="like_form" method="post">
                                 <input type="hidden" value="{{ $photo->id }}" name="photo_id" >
                                 {{ csrf_field() }}
-                                <button class="btn btn-primary btn-small like-btn"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Like <span class="{{rand()}} no">{{ count($photo->likes) }}</span></button>
+                                <button class="btn btn-primary btn-small like-btn"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Like <span>{{ count($photo->likes) }}</span></button>
                             </form>
                             {{-- <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->likes) }} Likes --}}
-                            <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->comments) }} Comments
+                            <span class="glyphicon glyphicon-comment"></span>&nbsp; {{ count($photo->comments) }} Comments    
                         </div>
                         <br>
-                        <form action="{{ route('add_comment', $photo->id) }}" method="post">
+                        <form method="post" class="comment_form">
+
                             <div class="form-group">
                                 <textarea name="comment" class="form-control" id="comment" placeholder="Add a Comment"></textarea>
                             </div>
+                            
+                            <input type="hidden" value="{{ $photo->id }}" name="photo_id" >
 
                             <div class="form-group">
                                 {{ csrf_field()  }}
                                 <input type="submit" class="btn btn-primary" value="Comment">
                             </div>
+
                         </form>
 
                         <div class="comments">

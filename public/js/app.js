@@ -28,7 +28,29 @@ $(document).ready(function(){
 	      	}
 	      	
 	      }
-		})
+		});
+		e.preventDefault();
+	});
+
+	$('.comment_form').submit(function(e) {
+		console.log('Submiting');
+		var comment = $("input[name=comment]").val();
+		$data = {
+			comment: comment
+		}
+		
+		$.ajax({
+			url: '../comment/' + $photo_id,
+			headers: {'X-CSRF-TOKEN': $token},
+	      data: $data,
+	      type: 'POST',
+	      datatype: 'JSON',
+	      success: function(resp) {
+	      	console.log(resp);
+	      	
+	      }
+		});
+
 		e.preventDefault();
 	});
 	// $('.like-btn').click(function(e){

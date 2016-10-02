@@ -29,4 +29,4 @@ Route::post('/upload', 'PhotoController@store');
 
 Route::post('/like/{id}', 'LikesController@like')->name('like');
 
-Route::post('photo/comment/{photo_id}', 'CommentController@store')->name('add_comment');
+Route::post('/comment/{photo_id}', 'CommentController@store')->name('add_comment');
