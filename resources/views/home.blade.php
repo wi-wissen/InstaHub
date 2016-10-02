@@ -13,11 +13,12 @@
                         </div>
                         <h3>{{ $photo->description }}</h3>
                         <div class="meta">
-                            <form action="{{ route('like', $photo->id) }}" method="post">
+                            <form class="like_form" class="{{ rand() }}" method="post">
+                                <input type="hidden" value="{{ $photo->id }}" name="photo_id" >
                                 {{ csrf_field() }}
-                                <button type="submit" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Like</button>
+                                <button class="btn btn-primary btn-small like-btn"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Like <span class="{{rand()}} no">{{ count($photo->likes) }}</span></button>
                             </form>
-                            <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->likes) }} Likes
+                            {{-- <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->likes) }} Likes --}}
                             <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->comments) }} Comments
                         </div>
                         <br>
@@ -43,7 +44,8 @@
                         </div>
                     </div>
             	@endforeach
-
+                
+                {{ $photos->links() }}
 
                 </div>
             </div>

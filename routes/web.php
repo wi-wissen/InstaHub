@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/{photo_id}', 'HomeController@single');
 Route::get('/upload', 'PhotoController@index')->name('upload');
 
 Route::get('/users', 'UserController@all');
@@ -26,6 +27,6 @@ Route::get('/user/{username}', 'UserController@profile'); // Not using id becaus
 
 Route::post('/upload', 'PhotoController@store');
 
-Route::post('photo/like/{id}', 'LikesController@like')->name('like');
+Route::post('/like/{id}', 'LikesController@like')->name('like');
 
 Route::post('photo/comment/{photo_id}', 'CommentController@store')->name('add_comment');

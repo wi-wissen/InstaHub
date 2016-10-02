@@ -26,12 +26,19 @@ class LikesController extends Controller
                 'photo_id' => $id,
                 'user_id' => $request->user()->id,
             ]);
-            return redirect('home');
+            // return redirect('home');
+            return response()->json([
+                'liked' => 'true',
+                'disliked' => 'false'
+            ]);
         }
 
         $like->delete(); // No need to query again
-        return redirect('home');
-
+        // return redirect('home');
+        return response()->json([
+            'liked' => 'false',
+            'disliked' => 'true'
+        ]);
         // Will refactor to make ajax requestw
     }
 }

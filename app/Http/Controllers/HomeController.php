@@ -36,8 +36,8 @@ class HomeController extends Controller
 
         print_r($following_ids);
 
-        $photos = Photo::where('user_id',$following_ids)->get();
-        dd($photos);
+        $photos = Photo::where('user_id',$following_ids)->orderBy('created_at', 'desc')->paginate(5);
+//        dd($photos);
         return view('home', ['photos' => $photos]);
     }
 
@@ -45,5 +45,10 @@ class HomeController extends Controller
     {
         $users = User::all();
         return view('list_user', ['users' => $users]);
+    }
+
+    public function single(Photo $photo_id)
+    {
+        return view('single', ['photo' => $photo_id]);
     }
 }
