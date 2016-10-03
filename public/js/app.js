@@ -2,10 +2,10 @@ $(document).ready(function(){
 
 	$('.like_form').submit(function(e){
 		// $.post("http://localhost/like/");
-		$photo_id = $("input[name=photo_id]").val();
-		$token = $("input[name=_token]").val();
+		var $photo_id = $("input[name=photo_id]").val();
+		var $token = $("input[name=_token]").val();
 
-		$data = {
+		var $data = {
 			"id": $photo_id,
 			"_token": $token
 		};
@@ -33,25 +33,38 @@ $(document).ready(function(){
 	});
 
 	$('.comment_form').submit(function(e) {
-		console.log('Submiting');
-		var comment = $("input[name=comment]").val();
-		$data = {
-			comment: comment
-		}
-		
+		e.preventDefault();
+		console.log($(this));
+		var $username = $('#username').contents()[0];
+		console.log($username);
+		var $comment = $("textarea[name=comment]").val();
+		var $photo_id = $("input[name=photo_id]").val();
+		var $token = $("input[name=_token]").val();
+		var $comment_data = {
+			"_token": $token,
+			"comment": $comment
+		};
+
+		// console.log($comment_data);
+		// console.log($(this));
+		// console.log($(this)[0].lastElementChild.children);
+		var comment_list_group = $(this)[0].lastElementChild.children;
+		console.log($comment);
+		// console.log($(comment_list_group));
+		$(comment_list_group).append('<div class="list-group-item">' + $comment +'</div>');
+
+		return false;
 		$.ajax({
 			url: '../comment/' + $photo_id,
 			headers: {'X-CSRF-TOKEN': $token},
-	      data: $data,
+	      data: $comment_data,
 	      type: 'POST',
 	      datatype: 'JSON',
 	      success: function(resp) {
 	      	console.log(resp);
-	      	
 	      }
 		});
-
-		e.preventDefault();
+		
 	});
 	// $('.like-btn').click(function(e){
 	// 	console.log(this.innerHTML);

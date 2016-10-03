@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="username" style="display: none;">{{ Auth::user()->username }}</div>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -34,18 +35,21 @@
                                 {{ csrf_field()  }}
                                 <input type="submit" class="btn btn-primary" value="Comment">
                             </div>
+                            
+                            <div class="comments" class="{{ rand() }}">
+                                <div class="list-group">
+                                    @foreach ($photo->comments as $comment)
+                                        <div class="list-group-item">
+                                            <b><a href="user/{{ $comment->user->username }}">{{ $comment->user->username }}</a></b>: {{ $comment->body }}
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
 
                         </form>
 
-                        <div class="comments">
-                            <div class="list-group">
-                                @foreach ($photo->comments as $comment)
-                                    <div class="list-group-item">
-                                        <b><a href="user/{{ $comment->user->username }}">{{ $comment->user->username }}</a></b>: {{ $comment->body }}
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
+                        
+
                     </div>
             	@endforeach
                 
