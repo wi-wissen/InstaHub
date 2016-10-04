@@ -41,11 +41,6 @@ class HomeController extends Controller
         return view('home', ['photos' => $photos]);
     }
 
-    public function users()
-    {
-        $users = User::all();
-        return view('list_user', ['users' => $users]);
-    }
 
     public function single(Photo $photo_id)
     {
