@@ -12,10 +12,16 @@
 						<h2>{{ $user->name }}</h2>
 						<h5>{{ '@' . $user->username }}</h5>
 						<p>{{ $user->bio }}</p>
-						<form action="{{ route('follow', $user->id) }}" method="post">
-							{{ csrf_field() }}
-							<input type="submit" class="btn btn-success" value="Follow" />
-						</form>
+
+						@if ($following)
+							<button class="btn btn-success disabled">Following</button>
+						@else
+							<form action="{{ route('follow', $user->id) }}" method="post">
+								{{ csrf_field() }}
+								<input type="submit" class="btn btn-success" value="Follow" />
+							</form>
+						@endif
+
 					</div>
 				</div>
 				<hr>

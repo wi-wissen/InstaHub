@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -21,6 +19,7 @@
                             <br>
                             <p>{{ $user->bio }}</p>
                             {{--Maybe some photos here--}}
+                            {{-- {% if() %} --}}
                             <form action="{{ route('follow', $user->id ) }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="submit" class="btn btn-success" value="Follow" />

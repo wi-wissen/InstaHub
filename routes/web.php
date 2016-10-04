@@ -15,15 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/discover', 'ProfileController@all');
+Route::get('/{username}', 'ProfileController@single_user');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/{photo_id}', 'HomeController@single');
 Route::get('/upload', 'PhotoController@index')->name('upload');
 
-Route::get('/users', 'UserController@all');
 Route::post('/user/follow/{id}', 'FollowController@follow')->name('follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
-Route::get('/user/{username}', 'UserController@profile'); // Not using id because its not seo friendly
+ // Not using id because its not seo friendly
 
 Route::post('/upload', 'PhotoController@store');
 
