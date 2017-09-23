@@ -19,6 +19,7 @@ Route::get('/', function () {
 //Route::group(['domain' => '{db?}.myapp.com'], function () {
 
     Route::get('/home', 'HomeController@index');
+    Route::get('/tag/{name}', 'HomeController@photosbytag');
 
     Route::get('/user', 'ProfileController@index');
     Route::get('/user/{user_id}/followers', 'ProfileController@followers');
@@ -50,4 +51,5 @@ Route::get('/', function () {
 
     Route::get('/sql', 'SqlController@getQuery');
     Route::post('/sql', 'SqlController@getQuery');
+    Route::get('/updateTags', 'DbadminController@updateTags');
 //});

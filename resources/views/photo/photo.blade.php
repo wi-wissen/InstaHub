@@ -6,7 +6,7 @@
     @if($single)
         <img src="{{ '../' . $photo->url }}" class="img-responsive" style="display: block;margin: 0 auto;"/><br>
     @else
-        <a href="/photo/{{ $photo->id }}"><img src="{{ '' . $photo->url }}" class="img-responsive" style="display: block;margin: 0 auto; width:100%"/></a><br>
+        <a href="../photo/{{ $photo->id }}"><img src="../{{ '' . $photo->url }}" class="img-responsive" style="display: block;margin: 0 auto; width:100%"/></a><br>
     @endif
 
     <div class="meta" style='padding-bottom:20px;'>
@@ -24,7 +24,7 @@
     <div class="comments" class="{{ rand() }}">
             <div class="list-group" id="list-group{{ $photo->id }}">
                 <div class="list-group-item">
-                        <b><a href="/user/{{ $photo->user->username }}">{{ $photo->user->username }}</a></b>: <b>{{ $photo->description }}</b>
+                        <b><a href="/user/{{ $photo->user->username }}">{{ $photo->user->username }}</a></b>: <b>{!! $photo->htmldescription() !!}</b>
                 </div>
                 @foreach ($photo->comments as $comment)
                     <div class="list-group-item">

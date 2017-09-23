@@ -51,6 +51,13 @@ class HomeController extends Controller
         return view('home', ['photos' => $photos]);
     }
 
+    public function photosbytag ($name) {
+       $photos = Photo::whereHas('tags', function ($query) use($name) {
+            $query->where('name', '=', strtolower($name));
+        })->paginate(5);
+       return view('home', ['photos' => $photos]); 
+    }
+
 
     public function single(Photo $photo_id)
     {

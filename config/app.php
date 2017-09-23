@@ -165,6 +165,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         'Gbrock\Table\Providers\TableServiceProvider',
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Table'      => 'Gbrock\Table\Facades\Table',
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
