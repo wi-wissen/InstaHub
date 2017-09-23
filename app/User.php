@@ -20,7 +20,7 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $dates = ['birthday'];
     protected $fillable = [
-        'username','name', 'email', 'password','bio', 'avatar', 'birthday', 'city', 'country', 'gender', 'centimeters'
+        'username','name', 'email', 'password','bio', 'avatar', 'birthday', 'city', 'country', 'gender', 'centimeters', 'is_active'
     ];
 
     /**
@@ -66,6 +66,7 @@ class User extends Authenticatable
         }
 
     }
+
     public static function boot() {
         parent::boot();
         
@@ -76,5 +77,19 @@ class User extends Authenticatable
                 Storage::disk('local')->delete($value->avatar);
             }  
         });
+    }
+
+    public function allowed($role) {
+        if ($this->is_active) {
+            if ($role == "dba" && ($this->role == "dba" || $this->role == "teacher" || $this->role == "admin")) return true;
+            else if ($role == "teacher" && ($this->role == "teacher" || $this->role == "admin")) return true;
+            else if ($role == "admin" && ($this->role == "admin")) return true;
+            else if ($role == "user") return true;
+            else return false;
+        } else {
+            flash('Your account is not activated!')->warning()->important();
+            return false;
+        }
+
     }
 }

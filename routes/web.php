@@ -11,45 +11,59 @@
 |
 */
 
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 //Route::group(['domain' => '{db?}.myapp.com'], function () {
-
-    Route::get('/home', 'HomeController@index');
-    Route::get('/tag/{name}', 'HomeController@photosbytag');
-
-    Route::get('/user', 'ProfileController@index');
-    Route::get('/user/{user_id}/followers', 'ProfileController@followers');
-    Route::get('/user/{user_id}/following', 'ProfileController@following');
+    //guest
+    Route::get('/', function () {
+        return view('welcome');
+    });
     Auth::routes();
 
-    Route::get('/photos/{photo_id}', 'PhotoController@show');
-    Route::get('/avatars/{photo_id}', 'PhotoController@showavatar');
+    Route::group(['middleware' => 'auth', 'middleware' => 'role:user'], function () {
+        //feed
+        Route::get('/home', 'HomeController@index');
+        Route::get('/tag/{name}', 'HomeController@photosbytag');
 
-    Route::get('/photo/{photo_id}', 'HomeController@single');
-    Route::get('/photo/{photo_id}/destroy', 'PhotoController@destroy');
-    Route::get('/upload', 'PhotoController@create')->name('upload');
+        //user
+        Route::get('/user', 'ProfileController@index');
+        Route::get('/user/{user_id}/followers', 'ProfileController@followers');
+        Route::get('/user/{user_id}/following', 'ProfileController@following');
 
-    Route::delete('/user/follow/{id}', 'ProfileController@unfollow')->name('unfollow');
-    Route::post('/user/follow/{id}', 'ProfileController@follow')->name('follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
-    // Not using id because its not seo friendly
+        Route::get('/user/{username}', 'ProfileController@show');
 
-    Route::post('/upload', 'PhotoController@store');
+        Route::get('/user/{username}/edit', 'ProfileController@edit');
+        Route::put('/user/{username}/update', 'ProfileController@update');
+        Route::get('/user/{username}/destroy', 'UserController@destroy');
 
-    Route::post('/like/{id}', 'LikesController@like')->name('like');
+        //resources
+        Route::get('/photos/{photo_id}', 'PhotoController@show');
+        Route::get('/avatars/{photo_id}', 'PhotoController@showavatar');
 
-    Route::post('/comment/{photo_id}', 'CommentController@store')->name('add_comment');
-    Route::get('/comment/{id}/destroy', 'CommentController@destroy')->name('add_comment');
+        //photo
+        Route::get('/photo/{photo_id}', 'HomeController@single');
+        Route::get('/photo/{photo_id}/destroy', 'PhotoController@destroy');
+        Route::get('/upload', 'PhotoController@create')->name('upload');
 
-    Route::get('/user/{username}', 'ProfileController@show');
-    Route::get('/user/{username}/edit', 'ProfileController@edit');
-    Route::put('/user/{username}/update', 'ProfileController@update');
-    Route::get('/user/{username}/destroy', 'UserController@destroy');
+        Route::delete('/user/follow/{id}', 'ProfileController@unfollow')->name('unfollow');
+        Route::post('/user/follow/{id}', 'ProfileController@follow')->name('follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
 
-    Route::get('/sql', 'SqlController@getQuery');
-    Route::post('/sql', 'SqlController@getQuery');
-    Route::get('/updateTags', 'DbadminController@updateTags');
+        Route::post('/upload', 'PhotoController@store');
+
+        //like
+        Route::post('/like/{id}', 'LikesController@like')->name('like');
+
+        //comment
+        Route::post('/comment/{photo_id}', 'CommentController@store')->name('add_comment');
+        Route::get('/comment/{id}/destroy', 'CommentController@destroy')->name('add_comment');
+    });
+
+    Route::group(['middleware' => 'auth', 'middleware' => 'role:dba'], function () {
+        //admin
+        Route::get('/sql', 'SqlController@getQuery');
+        Route::post('/sql', 'SqlController@getQuery');
+        Route::get('/updateTags', 'DbadminController@updateTags');
+    });
+
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');;
 //});

@@ -62,7 +62,7 @@
 							@endif
 						@endif
 
-						@if (Auth::user()->id == $user->id)
+						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
 							<a href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-default" role="button">Edit</a>
 							<a href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-danger" role="button">Delete</a>
 						@endif

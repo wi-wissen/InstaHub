@@ -18,6 +18,10 @@ use Table;
 
 class SqlController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function getQuery(Request $request)
     {

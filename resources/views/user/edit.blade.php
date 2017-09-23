@@ -144,6 +144,29 @@
                                 @endif
                             </div>
                         </div>
+                    @if (Auth::user()->allowed('dba'))
+                        <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
+                        <label for="is_active" class="col-md-4 control-label">Active</label>
+
+                        <div class="col-md-6">
+                            @if (old('is_active', $user->is_active) == true)
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="is_active" id="is_active" value="1" checked></label>
+                            </div>
+                            @else
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="is_active" id="is_active" value="1"></label>
+                            </div>
+                            @endif
+
+                            @if ($errors->has('is_active'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('is_active') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                @endif
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

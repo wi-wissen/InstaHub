@@ -12,6 +12,11 @@ use Storage;
 
 class ProfileController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+	}
+	
 	public function index(Request $request) 
 	{
 		return view('user.index', ['users' => User::orderBy('username', 'asc')->paginate(10)]);
@@ -54,6 +59,7 @@ class ProfileController extends Controller
 			'city' => 'string',
 			'country' => 'string',
 			'centimeters' => 'numeric',
+			'is_active' => 'boolean'
 		]);
 
 		$user->name = $request->input('name');
@@ -64,6 +70,8 @@ class ProfileController extends Controller
 		$user->city = $request->input('city');
 		$user->country = $request->input('country');
 		$user->centimeters = $request->input('centimeters');
+		if (Auth::user()->allowed('dba')) $user->is_active = ($request->has('is_active')) ? true : false ;
+		
 		if ($request->hasFile('avatar')) {
 			if ($request->file('avatar')->isValid()) {
 				$user->avatar = Storage::putFile('avatars', $request->file('avatar'));

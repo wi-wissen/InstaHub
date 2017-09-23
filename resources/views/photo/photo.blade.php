@@ -16,7 +16,7 @@
             <button class="btn btn-primary btn-small like-btn"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Like <span id="likes{{ $photo->id }}">{{ count($photo->likes) }}</span></button>
         </form>
         {{-- <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->likes) }} Likes --}}  
-        @if (Auth::user()->id == $photo->user->id)
+        @if (Auth::user()->id == $photo->user->id || Auth::user()->allowed('dba'))
             <a href="{{'../photo/' . $photo->id . '/destroy'}}" class="btn btn-danger pull-right" role="button"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
         @endif
     </div>
@@ -29,7 +29,7 @@
                 @foreach ($photo->comments as $comment)
                     <div class="list-group-item">
                         <b><a href="/user/{{ $comment->user->username }}">{{ $comment->user->username }}</a></b>: {{ $comment->body }}
-                        @if (Auth::user()->id == $photo->user->id || Auth::user()->id == $comment->user->id)
+                        @if (Auth::user()->id == $photo->user->id || Auth::user()->id == $comment->user->id || Auth::user()->allowed('dba'))
                             <a href="{{'../comment/' . $comment->id . '/destroy'}}" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                         @endif
                     </div>
