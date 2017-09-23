@@ -1,12 +1,11 @@
 $(document).ready(function(){
 
 	$('.like_form').submit(function(e){
-		// $.post("http://localhost/like/");
-		var $photo_id = $("input[name=photo_id]").val();
+		//var $photo_id = $("input[name=photo_id]").val();
 		var $token = $("input[name=_token]").val();
 
 		var $data = {
-			"id": $photo_id,
+			"id": $(this).data("id"),
 			"_token": $token
 		};
 
@@ -14,7 +13,7 @@ $(document).ready(function(){
 		// console.log(likesCount);
 
 		$.ajax({
-			url: '../like/' + $photo_id,
+			url: '../like/' + $(this).data("id"),
 			headers: {'X-CSRF-TOKEN': $token},
 	      data: $data,
 	      type: 'POST',
@@ -37,9 +36,10 @@ $(document).ready(function(){
 		console.log($(this));
 		var $username = $('#username').contents()[0];
 		console.log($username);
-		var $comment = $("textarea[name=comment]").val();
-		var $photo_id = $("input[name=photo_id]").val();
+		var $photo_id = $(this).data("id");
+		var $comment = $("textarea[name=comment" + $photo_id + "]").val();
 		var $token = $("input[name=_token]").val();
+		var comment_list_group = $("#list-group" + $photo_id);
 		var $comment_data = {
 			"_token": $token,
 			"comment": $comment
@@ -48,12 +48,12 @@ $(document).ready(function(){
 		// console.log($comment_data);
 		// console.log($(this));
 		// console.log($(this)[0].lastElementChild.children);
-		var comment_list_group = $(this)[0].lastElementChild.children;
+		//var comment_list_group = $(this)[0].lastElementChild.children;
 		console.log($comment);
-		// console.log($(comment_list_group));
-		$(comment_list_group).append('<div class="list-group-item">' + $comment +'</div>');
+		console.log("#list-group" + $photo_id);
+		$(comment_list_group).append('<div class="list-group-item"><b><a href="/user/' + $username + '">' + $username.textContent + '</a></b>: ' + $comment +'</div>');
 
-		return false;
+		//return false;
 		$.ajax({
 			url: '../comment/' + $photo_id,
 			headers: {'X-CSRF-TOKEN': $token},

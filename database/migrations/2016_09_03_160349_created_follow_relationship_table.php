@@ -15,8 +15,14 @@ class CreatedFollowRelationshipTable extends Migration
     {
         Schema::create('follows' , function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->integer('following_id');
-            $table->integer('follower_id');
+            $table->integer('following_id')->unsigned();;
+            $table->integer('follower_id')->unsigned();;
+            $table->foreign('following_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
+            $table->foreign('follower_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
             $table->timestamps(); // Updated_at and Created_at
         });
     }
@@ -28,6 +34,6 @@ class CreatedFollowRelationshipTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('follows');
     }
 }

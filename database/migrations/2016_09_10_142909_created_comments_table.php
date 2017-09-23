@@ -15,8 +15,14 @@ class CreatedCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('photo_id');
+            $table->integer('user_id')->unsigned();;
+            $table->integer('photo_id')->unsigned();;
+            $table->foreign('photo_id')
+                ->references('id')->on('photos')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
             $table->string('body');
             $table->timestamps();
         });
@@ -29,6 +35,6 @@ class CreatedCommentsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('comments');
     }
 }

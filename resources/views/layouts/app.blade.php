@@ -8,10 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel</title>
+    <title>{{env('APP_NAME')}}</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
+    <link rel="stylesheet" href="/css/homepage.css">
+    @yield('css')
     <!-- Will refactor while working on frontend -->
     <style>
 
@@ -31,7 +33,7 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -44,15 +46,23 @@
                 </button>
 
                 <!-- Branding Image -->
+                @if (Auth::guest())
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    LaraGram
+                    {{env('APP_NAME')}}
                 </a>
+                @else
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    {{env('APP_NAME')}}
+                </a>
+                @endif
+
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
+                    <li><a href="{{ url('/user') }}">Member</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -62,12 +72,16 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
+                    <li><a href="{{ url('/sql') }}">Database</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="/user/{{ Auth::user()->username }}">Profile</a>
+                                </li>
                                 <li>
                                     <a href="{{ route('upload') }}">Upload</a>
                                 </li>
@@ -92,9 +106,26 @@
 
     @yield('content')
 
+    <footer class="footer">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-6">
+                <p class="text-muted">(c) {{env('APP_COPYRIGHT')}}</p>
+            </div>
+            <div class="col-md-6 text-right">
+                <p class="text-muted"><a href="/about">About</a> - <a href="https://wi-wissen.de/contact.php">Contact</a> - <a href="https://wi-wissen.de/impress.html">Impress</a></p>
+            </div>
+        </div>  
+       </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="/js/app.js"></script>
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
+    @yield('script')
 </body>
 </html>

@@ -94,6 +94,79 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="gender" class="col-md-4 control-label">gender</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" id="gender" name="gender">
+                                    <option value="male">male</option>
+                                    <option value="female">female</option>
+                                </select>
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+                        <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }}">
+                            <label for="birthday" class="col-md-4 control-label">birthday</label>
+
+                            <div class="col-md-6">
+                                <div id="birthday"></div>
+
+                                @if ($errors->has('birthday'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birthday') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label for="city" class="col-md-4 control-label">city</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" autofocus>
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                            <label for="country" class="col-md-4 control-label">country</label>
+
+                            <div class="col-md-6">
+                                <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}" autofocus>
+
+                                @if ($errors->has('country'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('country') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+                        <div class="form-group{{ $errors->has('centimeters') ? ' has-error' : '' }}">
+                            <label for="centimeters" class="col-md-4 control-label">centimeters</label>
+
+                            <div class="col-md-6">
+                                <input id="centimeters" type="text" class="form-control" name="centimeters" value="{{ old('centimeters') }}" autofocus>
+
+                                @if ($errors->has('centimeters'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('centimeters') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
                             <label for="avatar" class="col-md-4 control-label">Avatar</label>
 
@@ -121,4 +194,22 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script src="/js/jquery-birthday-picker.min.js"></script>
+
+<!--http://www.jqueryscript.net/time-clock/Customizable-Dropdown-Birthday-Picker-Plugin-with-jQuery.html -->
+<script>
+    $("#birthday").birthdayPicker({
+	maxAge: 100,
+	minAge: 14,
+	maxYear: 'todayYear',
+	dateFormat: "littleEndian",
+	monthFormat: "number",
+	placeholder: true,
+	defaultDate: false,
+	sizeClass: "span2"
+	});
+</script>
 @endsection

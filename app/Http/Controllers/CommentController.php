@@ -29,5 +29,22 @@ class CommentController extends Controller
         ]);
     }
 
+    /**
+     * Delete the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+	 public function destroy($id)
+	 {
+        $entry = Comment::find($id);
+		
+		//$this->authorize('view', $entry);
+
+		$entry->delete();
+		flash('Comment deleted')->success();
+        return redirect('home');
+	 }
+
 
 }

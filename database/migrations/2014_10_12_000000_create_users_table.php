@@ -19,9 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
-            $table->string('bio');
+            $table->string('bio')->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->dateTime('birthday')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->integer('centimeters')->nullable();
             $table->string('avatar')->default('avatar.png');
-            $table->integer('is_private')->default(0);
+            $table->boolean('confirmed')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Storage;
+
 class Photo extends Model
 {
     protected $table = 'photos';
@@ -22,5 +24,17 @@ class Photo extends Model
     public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+
+    public static function boot() {
+        parent::boot();
+        
+        self::deleting(function ($value) {
+            if (Photo::where('url', '=', $value->url)->count == 1)
+            {
+                //prevent deleting a file who is in use in an other photo
+                Storage::disk('local')->delete($value->url);
+            }
+        });
     }
 }

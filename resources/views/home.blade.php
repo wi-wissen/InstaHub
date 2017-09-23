@@ -3,16 +3,20 @@
 @section('content')
 <div id="username" style="display: none;">{{ Auth::user()->username }}</div>
 <div class="container">
+    @include('flash::message')
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default" style="padding: 40px;"> <!--Will remove all inline stylin glater-->
+        <div class="col-md-8 col-md-offset-2">
             	@foreach ($photos as $photo)
-                    @include('photo', ['photo' => $photo, 'single' => false])
+                    @include('photo.photo', ['photo' => $photo, 'single' => false])
             	@endforeach
                 
-                {{ $photos->links() }}
-
+                @if(!empty($photos))
+                    {{ $photos->links() }}
+                @else
+                <div class="alert alert-info alert-important" role="alert">
+                    Nothing to show. <strong>Follow some great <a href="/user">Members</a>!</strong>
                 </div>
+                @endif
             </div>
         </div>
     </div>

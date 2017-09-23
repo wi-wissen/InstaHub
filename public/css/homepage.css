@@ -1,106 +1,58 @@
-.homepage-hero-module {
-    border-right: none;
-    border-left: none;
+html { /*http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css */
+    padding-top: 80px;
     position: relative;
-}
-.no-video .video-container video,
-.touch .video-container video {
-    display: none;
-}
-.no-video .video-container .poster,
-.touch .video-container .poster {
-    display: block !important;
-}
-.video-container {
-    position: relative;
-    bottom: 0%;
-    left: 0%;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: #000;
-}
-.video-container .poster img {
-    width: 100%;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 40px;
+  }
+  
+  .footer {
+    position: absolute;
     bottom: 0;
-    position: absolute;
-}
-.video-container .filter {
-    z-index: 100;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.4);
-    width: 100% !important;
-    height: 100%;
-}
-.video-container video {
-    position: absolute;
-    z-index: 0;
-    bottom: 0;
-}
-.video-container video.fillWidth {
     width: 100%;
-}
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    background-color: #f5f5f5;
+  }
+  
+  .footer > .container .text-muted {
+    margin: 8px 0;
+    font-size:100%;
+  }
+  
+  .footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .jumbotron {
+    background-color:rgba(238, 238, 238, 0.5);
+  } 
 
-.main {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    color: #fff;
-    z-index: 10000;
-    align-items: center;
-}
+  .home { 
+    text-align:center;
+  }
 
-.main h1 {
+  .home h1 {
     font-size: 700%;
     font-family: 'Shadows Into Light', cursive;
     font-weight: 500;
     margin-top: 0px;
     margin-bottom: 0px;
-}
+  }
 
-p {
+  .home p {
     font-size: 200%;
-    margin-bottom: 60px;
-}
-.btns {
-    display: flex;
-    flex-direction: row;
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: 100;
     margin-top: 20px;
-}
+  }
 
-.cta {
-    color: #fff;
-    font-size: 30px;
-    text-decoration: none;
-    background: #30A9DE;
-    padding: 1rem 3rem;
-    font-family: montserrat;
-    letter-spacing: 1px;
-    border-radius: 4px;
-    transition: all .3s ease-out;
-    border: 2px solid #30A9DE;
-}
-
-.cta:hover {
-    background: #011638;
-    border-color: #011638;
-}
-
-.cta-sec {
-    color: #30A9DE;
-    border: 2px solid #30A9DE;
-    background: transparent;
-    transition: all .3s ease-out;
-}
-
-.cta-sec:hover {
-    border-color: #fff;
-    color: #fff;
-    background: transparent;
+  .btn-xl {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:30%;
 }

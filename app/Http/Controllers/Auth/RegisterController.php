@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Photo;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Storage;
 
 class RegisterController extends Controller
 {
@@ -53,7 +55,12 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'bio' => 'required|max:500'
+            'bio' => 'max:500',
+            'gender' => 'required',
+			'birthday' => 'date',
+			'city' => 'string',
+			'country' => 'string',
+			'centimeters' => 'numeric',
         ]);
     }
 
@@ -65,12 +72,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        //$url = $data['avatar']->file('avatar')->store('avatars');
+        if (array_key_exists('avatar', $data)) {
+            $url = Storage::putFile('avatars', $data['avatar']);
+        } else {
+            $url = "avatar.png";
+        }
+
+        $user = User::create([
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'bio' => $data['bio']
+            'bio' => $data['bio'],
+            'gender' => $data['gender'],
+            'birthday' => $data['birthday_birthDay'],
+            'city' => $data['city'],
+            'country' => $data['country'],
+            'centimeters' => $data['centimeters'],
+            'avatar' => $url
         ]);
+        
+        return $user;
     }
 }

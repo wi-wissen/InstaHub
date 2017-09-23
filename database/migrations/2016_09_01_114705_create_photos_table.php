@@ -15,7 +15,10 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->integer('user_id'); // Id of the user who uploaded this photo
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
             $table->string('description');
             $table->string('url'); // Path to the photo
             $table->timestamps(); // Updated_at and Created_at
@@ -29,6 +32,6 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('photos');
     }
 }
