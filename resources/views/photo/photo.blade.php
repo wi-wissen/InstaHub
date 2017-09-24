@@ -9,6 +9,7 @@
         <a href="../photo/{{ $photo->id }}"><img src="../{{ '' . $photo->url }}" class="img-responsive" style="display: block;margin: 0 auto; width:100%"/></a><br>
     @endif
 
+    @if (Schema::hasTable('likes'))
     <div class="meta" style='padding-bottom:20px;'>
         <form class="like_form" data-id="{{ $photo->id }}" method="post" style='display:inline;'>
             <input type="hidden" value="{{ $photo->id }}" name="photo_id" >
@@ -20,12 +21,21 @@
             <a href="{{'../photo/' . $photo->id . '/destroy'}}" class="btn btn-danger pull-right" role="button"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
         @endif
     </div>
+    @else
+    <div class="meta text-right" style='padding-bottom:20px;'>    
+        {{-- <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->likes) }} Likes --}}  
+        @if (Auth::user()->id == $photo->user->id || Auth::user()->allowed('dba'))
+            <a href="{{'../photo/' . $photo->id . '/destroy'}}" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
+        @endif
+    </div>
+    @endif
 
     <div class="comments" class="{{ rand() }}">
             <div class="list-group" id="list-group{{ $photo->id }}">
                 <div class="list-group-item">
                         <b><a href="/user/{{ $photo->user->username }}">{{ $photo->user->username }}</a></b>: <b>{!! $photo->htmldescription() !!}</b>
                 </div>
+                @if (Schema::hasTable('comments'))
                 @foreach ($photo->comments as $comment)
                     <div class="list-group-item">
                         <b><a href="/user/{{ $comment->user->username }}">{{ $comment->user->username }}</a></b>: {{ $comment->body }}
@@ -34,9 +44,10 @@
                         @endif
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
-
+    @if (Schema::hasTable('comments'))
     <form method="post" class="comment_form" data-id="{{ $photo->id }}">
 
         <div class="form-group">
@@ -51,7 +62,5 @@
         </div>
         
     </form>
-
-    
-
+    @endif
 </div>

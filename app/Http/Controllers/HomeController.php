@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 use App\Photo;
 use App\User;
@@ -27,24 +28,29 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $user = Auth::user();
-
-        $following_ids = []; // hmm i dont feel this is good practice refactor later
-
-        foreach ($user->following as $following) {
-            array_push($following_ids, $following->id);
-        }
-        array_push($following_ids, Auth::user()->id); //always show own posts
-        //dd($following_ids);
-
-        //print_r($following_ids);
-
         $photos = [];
-        if (!empty($following_ids)) {
-            if (Photo::where('user_id', $following_ids)->exists())
-            {
-               $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at', 'desc')->paginate(5);
+
+        if (Schema::hasTable('follows') && Schema::hasTable('photos')) {
+            $user = Auth::user();
+
+            $following_ids = []; // hmm i dont feel this is good practice refactor later
+
+            foreach ($user->following as $following) {
+                array_push($following_ids, $following->id);
             }
+            array_push($following_ids, Auth::user()->id); //always show own posts
+            //dd($following_ids);
+
+            //print_r($following_ids);
+
+            
+            if (!empty($following_ids)) {
+                if (Photo::where('user_id', $following_ids)->exists())
+                {
+                $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at', 'desc')->paginate(5);
+                }
+            }
+
         }
 
        //dd($photos);
@@ -52,10 +58,15 @@ class HomeController extends Controller
     }
 
     public function photosbytag ($name) {
-       $photos = Photo::whereHas('tags', function ($query) use($name) {
-            $query->where('name', '=', strtolower($name));
-        })->paginate(5);
-       return view('home', ['photos' => $photos]); 
+        if (Schema::hasTable('tags')) {
+            $photos = Photo::whereHas('tags', function ($query) use($name) {
+                    $query->where('name', '=', strtolower($name));
+                })->paginate(5);
+            return view('home', ['photos' => $photos]); 
+        } elseif (Schema::hasTable('photos')) {
+            $photos = Photo::where('description', 'like', "%#$name%" )->paginate(5);
+            return view('home', ['photos' => $photos]); 
+        }
     }
 
 

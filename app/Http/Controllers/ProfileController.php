@@ -26,18 +26,7 @@ class ProfileController extends Controller
 	public function show($username, Request $request) 
 	{
 		$user = User::where('username', $username)->first();
-		// dd($user);
-		$photos = Photo::where('user_id', $user->id)->get();
-
-		$user_follows = $request->user()->following;
-		$following_id = [];
-		foreach($user_follows as $following) {
-			array_push($following_id, $following->following_id);
-		}
-
-		$following = in_array($user->id, $following_id);
-
-		return view('user.show', ['user' => $user, 'photos' => $photos, 'following' => $following]);
+		return view('user.show', ['user' => $user]);
 	}
 
 	public function edit($username)

@@ -13,9 +13,15 @@
                 @if(!empty($photos))
                     {{ $photos->links() }}
                 @else
-                <div class="alert alert-info alert-important" role="alert">
-                    Nothing to show. <strong>Follow some great <a href="/user">Members</a>!</strong>
-                </div>
+                    @if (Schema::hasTable('follows') && Schema::hasTable('follows')) 
+                    <div class="alert alert-info alert-important" role="alert">
+                        Nothing to show. <strong>Follow some great <a href="/user">Members</a>!</strong>
+                    </div>
+                    @else 
+                    <div class="alert alert-success alert-important" role="alert">
+                        You are logged in.</strong>
+                    </div>
+                    @endif
                 @endif
             </div>
         </div>

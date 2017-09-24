@@ -84,9 +84,11 @@
                                 <li>
                                     <a href="/user/{{ Auth::user()->username }}">Profile</a>
                                 </li>
+                                @if (Schema::hasTable('photos'))
                                 <li>
                                     <a href="{{ route('upload') }}">Upload</a>
                                 </li>
+                                @endif
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();

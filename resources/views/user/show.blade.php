@@ -13,11 +13,16 @@
 						<h2>{{ $user->name }}</h2>
 						<h5>{{ '@' . $user->username }}</h5>
 						<p>
-							<b>{{$photos->count()}}</b> Photos. 
+							@if (Schema::hasTable('photos'))
+							<b>{{$user->photos()->count()}}</b> Photos.
+							@endif
+							@if (Schema::hasTable('follows')) 
 							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> Follower</a>.
 							<a href ="{{'../user/' . $user->username . '/following'}}">Follows <b>{{$user->following->count()}}</b></a>.
+							@endif
 						</p>
 						<p><i>{{ $user->bio }}</i></p>
+						@if (isset($user->country) || isset($user->gender) || 'unknown' != $user->age())
 						<p>{{ $user->name }} 
 							@if (isset($user->city) && isset($user->country))
 								is from {{$user->city}} ({{$user->country}})
@@ -46,8 +51,10 @@
 							@endif
 
 							</p>
+						@endif
 						
 						@if (Auth::user()->id != $user->id)
+							@if (Schema::hasTable('follows'))
 							@if (Auth::user()->isfollowing($user))
 							<form action="{{ route('follow', $user->id) }}" method="post" style="display: inline;">
 									{{ csrf_field() }}
@@ -60,6 +67,7 @@
 									<input type="submit" class="btn btn-success" value="Follow" />
 								</form>
 							@endif
+							@endif
 						@endif
 
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
@@ -70,9 +78,10 @@
 					</div>
 				</div>
 				<hr>
+				@if (Schema::hasTable('photos'))
 				<div class="panel panel-defaut">
 					<div class="row">
-						@foreach ($photos as $photo)
+						@foreach ($user->photos() as $photo)
 						<div class="col-xs-6 col-md-3">
 							<a href="{{  '../photo/' . $photo->id }}" class="thumbnail">
 							<img src="{{  '../' . $photo->url }}" alt="{{$photo->description}}">
@@ -83,6 +92,7 @@
 					</div>
 
 				</div>
+				@endif
 			</div>
 		</div>
 	</div>

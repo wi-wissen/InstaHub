@@ -55,15 +55,16 @@ class Photo extends Model
     }
 
     public function updateTags() {
-        $this->tags()->delete();
-        preg_match_all('/#([a-zA-Z0-9]*)/', $this->description, $treffer);
-        foreach ($treffer[1] as $tag) {
-            $db_tag = new Tags;
-            $db_tag->name = strtolower($tag);
+        if (Schema::hasTable('tags')) {
+            $this->tags()->delete();
+            preg_match_all('/#([a-zA-Z0-9]*)/', $this->description, $treffer);
+            foreach ($treffer[1] as $tag) {
+                $db_tag = new Tags;
+                $db_tag->name = strtolower($tag);
 
-            $this->tags()->save($db_tag);
+                $this->tags()->save($db_tag);
+            }
         }
-        dd($treffer);
     }
 
     public function htmldescription() {
