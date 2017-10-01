@@ -35,6 +35,8 @@
         Route::get('/user/{username}/edit', 'ProfileController@edit');
         Route::put('/user/{username}/update', 'ProfileController@update');
         Route::get('/user/{username}/destroy', 'UserController@destroy');
+        Route::get('user/{username}/password', 'UserController@getPassword');
+        Route::post('user/{username}/password', 'UserController@postPassword');
 
         //resources
         Route::get('/photos/{photo_id}', 'PhotoController@show');
@@ -60,6 +62,8 @@
 
     Route::group(['middleware' => 'auth', 'middleware' => 'role:dba'], function () {
         //admin
+        Route::get('user/password/{id}', 'UserController@getNewPassword');
+
         Route::get('/sql', 'SqlController@getQuery');
         Route::post('/sql', 'SqlController@getQuery');
 
@@ -77,5 +81,5 @@
     });
 
 
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');;
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
 //});

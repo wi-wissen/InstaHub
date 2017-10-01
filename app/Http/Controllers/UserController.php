@@ -36,19 +36,24 @@ class UserController extends Controller
 
     public function getPassword()
     {
-        return view('auth.set');
+        return view('auth.passwords.set');
     }
 
-    public function postPassword()
+    public function postPassword(\Illuminate\Http\Request $request)
     {
-        if (Hash::check(Input::get('old_password'), Auth::user()->getAuthPassword())) {
-            if (!strcmp(Input::get('password'), Input::get('password_confirmation'))) {
-                if (strlen(Input::get('password'))>5) {
-                    Auth::user()->password = bcrypt(Input::get('password'));
+        $this->validate(request(), [
+            'password' => 'required|min:5',
+            'password_confirmation' => 'same:password',
+        ]);
+
+        if (Hash::check($request->input('old_password'), Auth::user()->getAuthPassword())) {
+            if (!strcmp($request->input('password'), $request->input('password_confirmation'))) {
+                if (strlen($request->input('password'))>4) {
+                    Auth::user()->password = bcrypt($request->input('password'));
                     Auth::user()->save();
                     flash('Password changed', 'success');
                 } else {
-                    flash('password minlength is 6 characters', 'warning');
+                    flash('Password minlength is 5 characters', 'warning');
                 }
                 
             } else {
@@ -60,9 +65,31 @@ class UserController extends Controller
             flash('Wrong password', 'danger');
         }
         
+        return redirect('/home');
+    }
 
-        
-        return view('auth.set');
+    public function getNewPassword($id)
+    {
+        $this->middleware('role:dba');
+
+        //generate id
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $count = mb_strlen($chars);
+
+        for ($i = 0, $pw = ''; $i < 6; $i++) {
+            $index = rand(0, $count - 1);
+            $pw .= mb_substr($chars, $index, 1);
+        }
+
+        $user = User::find($id);
+
+        $user->password = bcrypt($pw);
+        $user->save();
+
+        return response()->json([
+            'password' => $pw
+        ]);
+
     }
 
 }

@@ -72,6 +72,11 @@
 
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
 							<a href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-default" role="button">Edit</a>
+							@if (Auth::user()->id == $user->id)
+								<a href="{{'../user/' . $user->username . '/password'}}" class="btn btn-default" role="button">Change Password</a>
+							@else
+								<button id="pw{{ $user->id }}" class="newPassword btn btn-default" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}" >Reset Password</button>
+							@endif
 							<a href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-danger" role="button">Delete</a>
 						@endif
 						

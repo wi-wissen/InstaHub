@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+	$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+	});
+	
 	$('.like_form').submit(function(e){
 		//var $photo_id = $("input[name=photo_id]").val();
 		var $token = $("input[name=_token]").val();
@@ -71,4 +77,30 @@ $(document).ready(function(){
 	// 	console.log($(this)[0].lastChild.innerHTML);
 	// 	$(this)[0].lastChild.innerHTML = Number($(this)[0].lastChild.innerHTML) + 1;
 	// })
+
+	$(".newPassword").click(function(){
+        var id = $(this).data("id");
+        var token = $(this).data("token");
+        $.ajax(
+        {
+			url: "/user/password/"+id,
+			headers: {'X-CSRF-TOKEN': token},
+            type: 'GET',
+            dataType: "JSON",
+            data: {
+                "id": id,
+                "_method": 'GET',
+                "_token": token,
+            },
+            success: function ( result )
+            {
+               
+                $.each(result, function(key, value){
+                    $('#pw' + id).text(value);
+                    $('#pw' + id).css("font-family", "Monospace");
+                });                
+            },
+
+        });
+    });
 });
