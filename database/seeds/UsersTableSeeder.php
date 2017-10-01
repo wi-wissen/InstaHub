@@ -20,9 +20,9 @@ class UsersTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'username' => 'wi-wissen',
+                'username' => 'niclas143',
                 'email' => 'NiclasSchweizer@instahub.app',
-                'password' => '$2y$10$u.WjihKtfHMbqGX5/oyY5uf267uivIGt0yEMmYG4SHkJHoSn0PfbC',
+                'password' => '$2y$10$u.WjihKtfHMbqGX5/oyY5uf287uivIGt0yEMmYG4SHkJHoSn0PfbC',
                 'name' => 'Niclas Schweizer',
                 'bio' => '',
                 'gender' => 'male',
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
                 'country' => 'Germany',
                 'centimeters' => 182,
                 'avatar' => 'avatars/1.jpg',
-                'role' => 'dba',
+                'role' => 'user',
                 'is_active' => 1,
                 'remember_token' => 'BPWVkSQloNChxfgH44OphhzF1zjHTo5uQEJvteaGn6OLHu5hoaKzcygUGVfV',
                 'created_at' => '2017-09-13 00:00:03',
