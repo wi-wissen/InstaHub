@@ -56,3 +56,24 @@ html { /*http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-nav
     border-radius: 10px;
     width:30%;
 }
+
+.thumb {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.thumb img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%) !important;
+      -ms-transform: translate(-50%,-50%) !important;
+          transform: translate(-50%,-50%) !important;
+}
+.thumb img.portrait {
+  width: 100%;
+  height: auto;
+}

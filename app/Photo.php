@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\Schema;
+
 use Storage;
 use App\Tags;
 
@@ -29,7 +31,7 @@ class Photo extends Model
 
     public function tags()
     {
-        return $this->hasMany('App\Tags');
+        return $this->hasMany('App\Tag');
     }
 
     public static function boot() {
@@ -57,17 +59,16 @@ class Photo extends Model
     public function updateTags() {
         if (Schema::hasTable('tags')) {
             $this->tags()->delete();
-            preg_match_all('/#([a-zA-Z0-9]*)/', $this->description, $treffer);
+            preg_match_all('/#([a-zA-Z0-9äöüÄÖÜß]*)/', $this->description, $treffer);
             foreach ($treffer[1] as $tag) {
-                $db_tag = new Tags;
-                $db_tag->name = strtolower($tag);
-
+                $db_tag = new Tag;
+                $db_tag->name = mb_strtolower($tag);
                 $this->tags()->save($db_tag);
             }
         }
     }
 
     public function htmldescription() {
-        return preg_replace('/#([a-zA-Z0-9]*)/', "<a href='/tag/$1'>$0</a>", htmlspecialchars($this->description));
+        return preg_replace('/#([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/tag/$1'>$0</a>", htmlspecialchars($this->description));
     }
 }

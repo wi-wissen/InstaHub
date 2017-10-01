@@ -40,6 +40,7 @@
 
                         </li>
                     @endforeach
+                    {{ $users->links() }}
                 </ul>
             </div>
         </div>

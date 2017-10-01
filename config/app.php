@@ -166,6 +166,7 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         'Gbrock\Table\Providers\TableServiceProvider',
         Barryvdh\Debugbar\ServiceProvider::class,
+        Orangehill\Iseed\IseedServiceProvider::class,
 
         /*
          * Package Service Providers...

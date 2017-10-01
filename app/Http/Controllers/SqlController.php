@@ -57,7 +57,7 @@ class SqlController extends Controller
                 foreach ($columns as &$column) {
                     $dbclass = $dbclass . $column . ", ";
                 }
-                $dbclass = $dbclass . "<br />";
+                $dbclass = rtrim($dbclass, ", ") . "<br />";
             }
         }
 

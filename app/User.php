@@ -92,4 +92,12 @@ class User extends Authenticatable
         }
 
     }
+
+    //for unencrypted passwords after csv import
+    public function cryptpw() {
+        if (!(substr( $this->password, 0, 7 ) === "$2y$10$")) {
+            $this->password = bcrypt($this->password);
+            $this->save();
+        }
+    }
 }

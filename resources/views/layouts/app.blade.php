@@ -72,6 +72,9 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
+                    @if (Auth::user()->allowed('teacher'))
+                    <li><a href="{{ url('/dba/admin') }}">DB Admin</a></li>
+                    @endif
                     @if (Auth::user()->allowed('dba'))
                     <li><a href="{{ url('/sql') }}">Database</a></li>
                     @endif

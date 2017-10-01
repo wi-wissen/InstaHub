@@ -62,8 +62,20 @@
         //admin
         Route::get('/sql', 'SqlController@getQuery');
         Route::post('/sql', 'SqlController@getQuery');
-        Route::get('/updateTags', 'DbadminController@updateTags');
+
+        Route::get('/dba/updateTags', 'DbadminController@updateTags');
+        Route::get('/dba/cryptPWs', 'DbadminController@cryptPWs');
     });
+
+    Route::group(['middleware' => 'auth', 'middleware' => 'role:teacher'], function () {
+        //teacher
+        Route::get('/dba/admin', 'DbadminController@index');
+
+        Route::get('/dba/table/create/{tablename}', 'DbadminController@migrateTable');
+        Route::get('/dba/table/fill/{tablename}', 'DbadminController@fillTable');
+        Route::get('/dba/table/drop/{tablename}', 'DbadminController@dropTable');
+    });
+
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');;
 //});
