@@ -10,6 +10,9 @@ use App\Photo;
 use Auth;
 use Storage;
 
+use Debugbar;
+use Config;
+
 class ProfileController extends Controller
 {
 	public function __construct()
@@ -25,7 +28,11 @@ class ProfileController extends Controller
 	
 	public function show($username, Request $request) 
 	{
+		Debugbar::info(Config::get('database.default'));
+
 		$user = User::where('username', $username)->first();
+
+		Debugbar::info($user);
 		return view('user.show', ['user' => $user]);
 	}
 

@@ -55,6 +55,11 @@ class User extends Authenticatable
         return ($this->following()->get()->where('id', $user->id)->count());
     }
 
+    public function hubs()
+    {
+        return $this->hasMany('App\Hub', 'teacher_id', 'id');
+    }
+
     public function age()
     {
         $now = new DateTime();

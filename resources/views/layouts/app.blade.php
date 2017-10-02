@@ -48,11 +48,11 @@
                 <!-- Branding Image -->
                 @if (Auth::guest())
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{env('APP_NAME')}}
+                    {{env('APP_NAME') . " " . Session::get('hub')}}
                 </a>
                 @else
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{env('APP_NAME')}}
+                    {{env('APP_NAME') . " " . Session::get('hub')}}
                 </a>
                 @endif
 
@@ -89,7 +89,7 @@
                                 </li>
                                 @if (Schema::hasTable('photos'))
                                 <li>
-                                    <a href="{{ route('upload') }}">Upload</a>
+                                    <a href="{{ url('/upload') }}">Upload</a>
                                 </li>
                                 @endif
                                 <li>

@@ -15,69 +15,77 @@
 
 //Route::group(['domain' => '{db?}.myapp.com'], function () {
     //guest
-    Route::get('/', function () {
-        return view('welcome');
-    });
     Auth::routes();
 
-    Route::group(['middleware' => 'auth', 'middleware' => 'role:user'], function () {
-        //feed
-        Route::get('/home', 'HomeController@index');
-        Route::get('/tag/{name}', 'HomeController@photosbytag');
+    Route::group(['domain' => '{subdomain}.instahub.app'], function () {
+        //guest
+        Route::get('/', function () {
+            return view('welcome');
+        });
+        
+        Auth::routes();
 
-        //user
-        Route::get('/user', 'ProfileController@index');
-        Route::get('/user/{user_id}/followers', 'ProfileController@followers');
-        Route::get('/user/{user_id}/following', 'ProfileController@following');
+        Route::group(['middleware' => ['silo', 'auth', 'role:user']], function () {
 
-        Route::get('/user/{username}', 'ProfileController@show');
+            //feed
+            Route::get('/home', 'HomeController@index');
+            Route::get('/tag/{name}', 'HomeController@photosbytag');
 
-        Route::get('/user/{username}/edit', 'ProfileController@edit');
-        Route::put('/user/{username}/update', 'ProfileController@update');
-        Route::get('/user/{username}/destroy', 'UserController@destroy');
-        Route::get('user/{username}/password', 'UserController@getPassword');
-        Route::post('user/{username}/password', 'UserController@postPassword');
+            //user
+            Route::get('/user', 'ProfileController@index');
+            Route::get('/user/{user_id}/followers', 'ProfileController@followers');
+            Route::get('/user/{user_id}/following', 'ProfileController@following');
 
-        //resources
-        Route::get('/photos/{photo_id}', 'PhotoController@show');
-        Route::get('/avatars/{photo_id}', 'PhotoController@showavatar');
+            Route::get('/user/{username}', 'ProfileController@show');
 
-        //photo
-        Route::get('/photo/{photo_id}', 'HomeController@single');
-        Route::get('/photo/{photo_id}/destroy', 'PhotoController@destroy');
-        Route::get('/upload', 'PhotoController@create')->name('upload');
+            Route::get('/user/{username}/edit', 'ProfileController@edit');
+            Route::put('/user/{username}/update', 'ProfileController@update');
+            Route::get('/user/{username}/destroy', 'UserController@destroy');
+            Route::get('user/{username}/password', 'UserController@getPassword');
+            Route::post('user/{username}/password', 'UserController@postPassword');
 
-        Route::delete('/user/follow/{id}', 'ProfileController@unfollow')->name('unfollow');
-        Route::post('/user/follow/{id}', 'ProfileController@follow')->name('follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
+            //resources
+            Route::get('/photos/{photo_id}', 'PhotoController@show');
+            Route::get('/avatars/{photo_id}', 'PhotoController@showavatar');
 
-        Route::post('/upload', 'PhotoController@store');
+            //photo
+            Route::get('/photo/{photo_id}', 'HomeController@single');
+            Route::get('/photo/{photo_id}/destroy', 'PhotoController@destroy');
+            Route::get('/upload', 'PhotoController@create');
 
-        //like
-        Route::post('/like/{id}', 'LikesController@like')->name('like');
+            Route::delete('/user/follow/{id}', 'ProfileController@unfollow');
+            Route::post('/user/follow/{id}', 'ProfileController@follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
 
-        //comment
-        Route::post('/comment/{photo_id}', 'CommentController@store')->name('add_comment');
-        Route::get('/comment/{id}/destroy', 'CommentController@destroy')->name('add_comment');
-    });
+            Route::post('/upload', 'PhotoController@store');
 
-    Route::group(['middleware' => 'auth', 'middleware' => 'role:dba'], function () {
-        //admin
-        Route::get('user/password/{id}', 'UserController@getNewPassword');
+            //like
+            Route::post('/like/{id}', 'LikesController@like')->name('like');
 
-        Route::get('/sql', 'SqlController@getQuery');
-        Route::post('/sql', 'SqlController@getQuery');
+            //comment
+            Route::post('/comment/{photo_id}', 'CommentController@store');
+            Route::get('/comment/{id}/destroy', 'CommentController@destroy');
+        });
 
-        Route::get('/dba/updateTags', 'DbadminController@updateTags');
-        Route::get('/dba/cryptPWs', 'DbadminController@cryptPWs');
-    });
+        Route::group(['middleware' => ['silo', 'auth', 'role:dba']], function () {
+            //admin
+            Route::get('user/password/{id}', 'UserController@getNewPassword');
 
-    Route::group(['middleware' => 'auth', 'middleware' => 'role:teacher'], function () {
-        //teacher
-        Route::get('/dba/admin', 'DbadminController@index');
+            Route::get('/sql', 'SqlController@getQuery');
+            Route::post('/sql', 'SqlController@getQuery');
 
-        Route::get('/dba/table/create/{tablename}', 'DbadminController@migrateTable');
-        Route::get('/dba/table/fill/{tablename}', 'DbadminController@fillTable');
-        Route::get('/dba/table/drop/{tablename}', 'DbadminController@dropTable');
+            Route::get('/dba/updateTags', 'DbadminController@updateTags');
+            Route::get('/dba/cryptPWs', 'DbadminController@cryptPWs');
+        });
+
+        Route::group(['middleware' => ['silo', 'auth', 'role:teacher']], function () {
+            //teacher
+            Route::get('/dba/admin', 'DbadminController@index');
+
+            Route::get('/dba/table/create/{tablename}', 'DbadminController@migrateTable');
+            Route::get('/dba/table/fill/{tablename}', 'DbadminController@fillTable');
+            Route::get('/dba/table/drop/{tablename}', 'DbadminController@dropTable');
+        });
+
     });
 
 

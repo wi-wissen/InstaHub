@@ -10,13 +10,13 @@
                         <li class="list-group-item">
                             @if (Schema::hasTable('follows'))
                             @if (Auth::user()->isfollowing($user))
-                                <form style="float: right;" action="{{ route('follow', $user->id) }}" method="post">
+                                <form style="float: right;" action="{{ url('../follow/' .$user->id) }}" method="post">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" class="btn btn-danger" value="Unfollow" />
                                 </form>
                             @elseif (Auth::user()->id != $user->id)
-                                <form style="float: right;"action="{{ route('follow', $user->id) }}" method="post">
+                                <form style="float: right;"action="{{ url('../follow/' .$user->id) }}" method="post">
                                     {{ csrf_field() }}
                                     <input type="submit" class="btn btn-success" value="Follow" />
                                 </form>

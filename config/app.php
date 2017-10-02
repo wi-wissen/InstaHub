@@ -167,6 +167,7 @@ return [
         'Gbrock\Table\Providers\TableServiceProvider',
         Barryvdh\Debugbar\ServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
+        'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
 
         /*
          * Package Service Providers...

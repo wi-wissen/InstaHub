@@ -8,7 +8,14 @@ use Illuminate\Http\RedirectResponse;
 
 use App\Http\Requests;
 
+use DB;
+use Schema;
+
 use Storage;
+use Config;
+use Session;
+use Debugbar;
+
 use Illuminate\Http\Response;
 
 use App\Photo;

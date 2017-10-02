@@ -56,13 +56,13 @@
 						@if (Auth::user()->id != $user->id)
 							@if (Schema::hasTable('follows'))
 							@if (Auth::user()->isfollowing($user))
-							<form action="{{ route('follow', $user->id) }}" method="post" style="display: inline;">
+							<form action="{{ url('../follow/' .$user->id) }}" method="post" style="display: inline;">
 									{{ csrf_field() }}
 									<input type="hidden" name="_method" value="DELETE">
 									<input type="submit" class="btn btn-danger" value="Unfollow" />
 							</form>
 							@else
-								<form action="{{ route('follow', $user->id) }}" method="post" style="display: inline;">
+								<form action="{{ url('../follow/' .$user->id) }}" method="post" style="display: inline;">
 									{{ csrf_field() }}
 									<input type="submit" class="btn btn-success" value="Follow" />
 								</form>

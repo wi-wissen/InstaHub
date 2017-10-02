@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Schema;
 use App\Photo;
 use App\User;
 use Auth;
+use Debugbar;
+use Config;
 
 class HomeController extends Controller
 {
@@ -69,9 +71,11 @@ class HomeController extends Controller
         }
     }
 
+    public function single($photo_id, Request $request) 
+	{
+		$photo = Photo::find($photo_id);
 
-    public function single(Photo $photo_id)
-    {
-        return view('photo.show', ['photo' => $photo_id]);
-    }
+		Debugbar::info($photo);
+		return view('photo.show', ['photo' => $photo]);
+	}
 }
