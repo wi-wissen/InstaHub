@@ -68,11 +68,11 @@ Many thanks and respect to:
 Thank you for considering contributing to the InstaHub! Create a pull request or contact [me](https://wi-wissen.de/contact.php).
 
 ### Contributers
-InstaHub used parts of [Laragram](https://github.com/itsshady101/Laragram) from [itsshady101] (https://github.com/itsshady101) 
+InstaHub used parts of [Laragram](https://github.com/itsshady101/Laragram) from [itsshady101](https://github.com/itsshady101) 
 
 ### License
 [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-Commits up to 9c21886 are licenced under MIT License. 
+Commits up to [9c21886](https://github.com/wi-wissen/InstaHub/commit/9c21886f1a578bd991fa4ad5d02c2d7033413a34) are licenced under MIT License. 
 
 Contact [me](https://wi-wissen.de/contact.php) if you need an other licence. 
