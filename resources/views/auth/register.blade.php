@@ -7,6 +7,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
+
+                    @if (Session::get('hub', 'root') == 'root')
+                    <div class="alert alert-warning  alert-important" role="alert">Your Account must activated by Admin! Please Send an <a href="https://wi-wissen.de/contact.php">message</a>.</div>
+                    @else
+                    <div class="alert alert-warning  alert-important" role="alert">Your Account must activated manually.</div>
+                    @endif
+
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 

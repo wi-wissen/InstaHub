@@ -1,0 +1,55 @@
+html { 
+    padding-top: 0px;
+    position: relative;
+    min-height: 100%;
+  }
+
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 40px !important;
+  }
+
+/*!
+ * from Start Bootstrap - One Page Wonder (http://startbootstrap.com/template-overviews/one-page-wonder)
+ */
+  header.masthead {
+    background: url('/img/landing.jpg') no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header.masthead > .overlay {
+    padding: 5rem 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 992px) {
+    header.masthead > .overlay {
+        padding: 12rem 0;
+    }
+}
+
+
+h1 {
+	font-size: 700%;
+	font-family: 'Shadows Into Light', cursive;
+	font-weight: 500;
+	margin-top: 0px;
+    margin-bottom: 0px;
+    color:black;
+}
+
+.overlay p {
+	font-size: 200%;
+	font-family: 'Shadows Into Light', cursive;
+	font-weight: 100;
+    margin-top: 20px;
+    color:black;
+}
+
+.media {
+    padding-top: 20px;
+}

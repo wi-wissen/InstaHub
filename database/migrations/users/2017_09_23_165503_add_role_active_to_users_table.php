@@ -14,7 +14,6 @@ class AddRoleActiveToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_private');
             $table->enum('role', ['user', 'dba', 'teacher', 'admin'])->default('user')->after('avatar');
             $table->boolean('is_active')->default(false)->after('role');
         });
@@ -30,7 +29,6 @@ class AddRoleActiveToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
             $table->dropColumn('is_active');
-            $table->boolean('is_private')->default(false);
         });
     }
 }

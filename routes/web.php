@@ -15,8 +15,6 @@
 
 //Route::group(['domain' => '{db?}.myapp.com'], function () {
     //guest
-    Auth::routes();
-
     Route::group(['domain' => '{subdomain}.instahub.app'], function () {
         //guest
         Route::get('/', function () {
@@ -88,6 +86,11 @@
 
     });
 
+    Auth::routes();
+    Route::get('/', 'HubController@welcome');
+    Route::get('/home', 'HubController@index');
+    Route::resource('hubs', 'HubController');
+    Route::resource('hubs/{id}/activate', 'HubController@activate');
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
 //});

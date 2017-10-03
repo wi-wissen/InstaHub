@@ -83,13 +83,13 @@ class ProfileController extends Controller
 	public function followers($username) 
 	{
 		$user = User::where('username', $username)->first();
-		return view('user.index', ['users' => $user->followers()->get()]);
+		return view('user.index', ['users' => $user->followers()->paginate(10)]);
 	}
 
 	public function following($username) 
 	{
 		$user = User::where('username', $username)->first();
-		return view('user.index', ['users' => $user->following()->get()]);
+		return view('user.index', ['users' => $user->following()->paginate(10)]);
 	}
 
 	public function follow($id, Request $request) // id of the person to be followed

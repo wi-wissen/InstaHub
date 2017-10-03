@@ -26,7 +26,7 @@
 <body>
     <div class="container">
     <div class="jumbotron home">
-        <h1>Laragram</h1>
+        <h1>{{env('APP_NAME')}}</h1>
         <p>Share the best moments with your friends!</p>
 
         <div id="btns">

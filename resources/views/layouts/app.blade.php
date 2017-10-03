@@ -62,7 +62,9 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
+                    @if (!Auth::guest())
                     <li><a href="{{ url('/user') }}">Member</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
