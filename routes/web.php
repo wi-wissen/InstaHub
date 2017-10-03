@@ -92,5 +92,21 @@
     Route::resource('hubs', 'HubController');
     Route::resource('hubs/{id}/activate', 'HubController@activate');
 
+    Route::group(['middleware' => ['auth', 'role:dba']], function () {
+        Route::get('/user/{username}', 'ProfileController@show');
+
+        Route::get('/user/{username}/edit', 'ProfileController@edit');
+        Route::put('/user/{username}/update', 'ProfileController@update');
+        Route::get('/user/{username}/destroy', 'UserController@destroy');
+        Route::get('user/{username}/password', 'UserController@getPassword');
+        Route::post('user/{username}/password', 'UserController@postPassword');
+
+        Route::get('user/password/{id}', 'UserController@getNewPassword');
+    });
+
+    Route::group(['middleware' => ['auth', 'role:admin']], function () {
+        Route::get('/user', 'ProfileController@index');
+    });
+
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
 //});

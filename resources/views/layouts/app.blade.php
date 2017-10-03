@@ -62,7 +62,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
-                    @if (!Auth::guest())
+                    @if (!Auth::guest() && (Session::get('hub', 'root') != 'root' || Auth::user()->allowed('admin')))
                     <li><a href="{{ url('/user') }}">Member</a></li>
                     @endif
                 </ul>
@@ -74,10 +74,10 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                    @if (Auth::user()->allowed('teacher'))
+                    @if (Auth::user()->allowed('teacher') && Session::get('hub', 'root') != 'root')
                     <li><a href="{{ url('/dba/admin') }}">DB Admin</a></li>
                     @endif
-                    @if (Auth::user()->allowed('dba'))
+                    @if (Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root')
                     <li><a href="{{ url('/sql') }}">Database</a></li>
                     @endif
                         <li class="dropdown">
@@ -89,7 +89,7 @@
                                 <li>
                                     <a href="/user/{{ Auth::user()->username }}">Profile</a>
                                 </li>
-                                @if (Schema::hasTable('photos'))
+                                @if (Schema::hasTable('photos') && Session::get('hub', 'root') != 'root')
                                 <li>
                                     <a href="{{ url('/upload') }}">Upload</a>
                                 </li>

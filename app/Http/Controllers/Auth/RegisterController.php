@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Storage;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -78,6 +79,9 @@ class RegisterController extends Controller
         } else {
             $url = "avatar.png";
         }
+        
+        $role = "user";
+        if (Session::get('hub', 'root') == 'root') $role="teacher";
 
         $user = User::create([
             'username' => $data['username'],
@@ -90,7 +94,8 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'country' => $data['country'],
             'centimeters' => $data['centimeters'],
-            'avatar' => $url
+            'avatar' => $url,
+            'role' => $role
         ]);
         
         return $user;

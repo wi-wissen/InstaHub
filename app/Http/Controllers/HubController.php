@@ -140,7 +140,8 @@ class HubController extends Controller
             'city' => $request->city,
             'country' => $request->country,
             'centimeters' => $request->centimeters,
-            'avatar' => $url
+            'avatar' => $url,
+            'role' => 'dba'
         ]);
 
         flash('Your hub must be activated by your teacher!')->warning();
