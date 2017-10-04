@@ -10,7 +10,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 Route::group(['domain' => env('APP_DOMAIN'), 'middleware' => 'silo'], function () {
     //guest
     Route::get('/', function () {

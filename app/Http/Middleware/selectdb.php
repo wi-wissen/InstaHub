@@ -1,10 +1,14 @@
 <?php
-
+/*
+* force to aknowladge changes: php artisan clear-compiled
+* source: http://laravel-recipes.com/recipes/59/clearing-the-compiled-class
+*/
 namespace App\Http\Middleware;
 
 use Closure;
 
 use Config;
+use Session;
 
 use Debugbar;
 use App\Hub;
@@ -22,6 +26,7 @@ class selectdb
     {
         //run only on subdomains
         if (substr_count($request->server('HTTP_HOST'), '.') == 2) {
+            Debugbar::info('+++');
             $hub = Hub::where('name', '=', str_replace(env('SESSION_DOMAIN'), '',$request->server('HTTP_HOST')))->first();
 
             if (!$hub) {
@@ -43,9 +48,11 @@ class selectdb
                 Config::set('database.default', env('DB_DATABASE') . "_" . $hub->name);
  
             }
+        } else {
+            $request->session()->forget('hub');
         }
 
-        Debugbar::info(Config::get('database.default'));
+        Debugbar::info('db:' .Config::get('database.default'));
 
         return $next($request);
         
