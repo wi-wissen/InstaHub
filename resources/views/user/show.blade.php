@@ -22,11 +22,11 @@
 							@endif
 						</p>
 						<p><i>{{ $user->bio }}</i></p>
-						@if (isset($user->country) || isset($user->gender) || 'unknown' != $user->age())
+						@if ($user->country != "" || isset($user->gender) || 'unknown' != $user->age())
 						<p>{{ $user->name }} 
-							@if (isset($user->city) && isset($user->country))
+							@if ($user->city != "" && $user->country != "")
 								is from {{$user->city}} ({{$user->country}})
-							@elseif (isset($user->country))
+							@elseif ($user->country != "")
 								is from $user->country
 							@endif
 
@@ -40,7 +40,7 @@
 								is {{$user->gender}} 
 							@endif
 
-							@if ((isset($user->country) || isset($user->gender)) && 'unknown' != $user->age())
+							@if (($user->country != "" || isset($user->gender)) && 'unknown' != $user->age())
 								and
 							@else 
 								.
@@ -72,7 +72,7 @@
 
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
 							<a href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-default" role="button">Edit</a>
-							@if (Auth::user()->id == $user->id)
+							@if (Auth::user()->id == $user->id && Session::get('hub') == Session::get('hub_orig'))
 								<a href="{{'../user/' . $user->username . '/password'}}" class="btn btn-default" role="button">Change Password</a>
 							@else
 								<button id="pw{{ $user->id }}" class="newPassword btn btn-default" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}" >Reset Password</button>

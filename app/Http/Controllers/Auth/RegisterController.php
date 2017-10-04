@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -73,6 +73,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        dd('lol');
         //$url = $data['avatar']->file('avatar')->store('avatars');
         if (array_key_exists('avatar', $data)) {
             $url = Storage::putFile('avatars', $data['avatar']);
@@ -103,5 +104,10 @@ class RegisterController extends Controller
         $user->save();
         
         return $user;
+    }
+
+    protected function redirectTo()
+    {
+        return '/home';
     }
 }

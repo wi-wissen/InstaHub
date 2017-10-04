@@ -65,7 +65,11 @@ class User extends Authenticatable
         $now = new DateTime();
         if ($this->birthday != null) {
             $interval = $this->birthday->diff($now);
-            return $interval->y;
+            if ($interval->y > 2000) { //age set to 0
+                return 'unknown';
+            } else {
+                return $interval->y;
+            }
         } else {
             return 'unknown';   
         }

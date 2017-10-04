@@ -126,7 +126,7 @@
 
                                 @if ($errors->has('birthday'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('birthday') }}</strong>
+                                        <strong>{{ $errors->first('birthday_birthDay') }}</strong>
                                     </span>
                                 @endif
                             </div>

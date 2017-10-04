@@ -124,13 +124,11 @@ class HubController extends Controller
         Artisan::call('db:seed', array('--class' => "UsersTableSeeder", '--force' => true));
 
         //insert admin
-        $url = "";
+        $url = "avatar.png";
         if ($request->hasFile('avatar')) {
 			if ($request->file('avatar')->isValid()) {
-				$url = Storage::putFile('avatars', $request->avatar);
-			} else {
-				$url = "avatar.png";
-			}	
+                $url = Storage::putFile('avatars', $request->avatar);
+            }
 		}
 
         $user = User::create([
@@ -230,7 +228,7 @@ class HubController extends Controller
 
         Config::set('database.default', env('DB_DATABASE') . "_" . $hub->name);
         
-        $user = User::where('username', 'admin')->first();
+        $user = User::where('username', '=', 'admin')->first();
         $user->is_active = true;
         $user->save();
 
