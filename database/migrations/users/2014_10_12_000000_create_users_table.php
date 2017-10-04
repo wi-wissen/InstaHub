@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->integer('centimeters')->nullable();
             $table->string('avatar')->default('avatar.png');
-            $table->boolean('confirmed')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

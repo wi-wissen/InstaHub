@@ -49,12 +49,12 @@ class ProfileController extends Controller
 		$this->validate($request, [
 			'name' => 'required|max:255|unique:users,id,'.$user->id,
 			'email' => 'required|email|unique:users,id,'.$user->id,
-			'bio' => 'string',
+			'bio' => 'max:500',
 			'gender' => 'required',
-			'birthday' => 'date',
-			'city' => 'string',
-			'country' => 'string',
-			'centimeters' => 'numeric',
+			'birthday_birthDay' => 'nullable|date',
+			'city' => 'nullable|string',
+			'country' => 'nullable|string',
+			'centimeters' => 'nullable|numeric',
 			'is_active' => 'boolean'
 		]);
 
@@ -62,10 +62,10 @@ class ProfileController extends Controller
 		$user->email = $request->input('email');
 		$user->bio = $request->input('bio');
 		$user->gender = $request->input('gender');
-		$user->birthday = $request->input('birthday_birthDay');
-		$user->city = $request->input('city');
-		$user->country = $request->input('country');
-		$user->centimeters = $request->input('centimeters');
+		$user->birthday = $request->input('birthday_birthDay') ?: null;
+		$user->city = $request->input('city') ?: null;
+		$user->country = $request->input('country') ?: null;
+		$user->centimeters = $request->input('centimeters') ?: null;
 		if (Auth::user()->allowed('dba')) $user->is_active = ($request->has('is_active')) ? true : false ;
 		
 		if ($request->hasFile('avatar')) {

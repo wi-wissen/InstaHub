@@ -58,10 +58,10 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'bio' => 'max:500',
             'gender' => 'required',
-			'birthday' => 'date',
-			'city' => 'string',
-			'country' => 'string',
-			'centimeters' => 'numeric',
+			'birthday_birthDay' => 'nullable|date',
+			'city' => 'nullable|string',
+			'country' => 'nullable|string',
+			'centimeters' => 'nullable|numeric',
         ]);
     }
 
@@ -80,8 +80,8 @@ class RegisterController extends Controller
             $url = "avatar.png";
         }
         
-        $role = "user";
-        if (Session::get('hub', 'root') == 'root') $role="teacher";
+        $role = 1;
+        if (Session::get('hub', 'root') == 'root') $role = 3;
 
         $user = User::create([
             'username' => $data['username'],
@@ -90,13 +90,17 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'bio' => $data['bio'],
             'gender' => $data['gender'],
-            'birthday' => $data['birthday_birthDay'],
-            'city' => $data['city'],
-            'country' => $data['country'],
-            'centimeters' => $data['centimeters'],
+            'birthday' => $data['birthday_birthDay'] ?: null,
+            'city' => $data['city'] ?: null,
+            'country' => $data['country'] ?: null,
+            'centimeters' => $data['centimeters'] ?: null,
             'avatar' => $url,
             'role' => $role
         ]);
+
+        //don't work above. I have no clue...
+        $user->role = $role;
+        $user->save();
         
         return $user;
     }

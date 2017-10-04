@@ -80,10 +80,10 @@ class UsersTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 4,
-                'username' => 'jungennamen489',
-                'email' => 'JungennamenMeister@instahub.app',
+                'username' => 'gustav489',
+                'email' => 'GustavMeister@instahub.app',
                 'password' => '$2y$10$CeuLhhLBGHuoR/WmgUzGUuGhKhGryfISh20Jo10C7JGvDeKnXNYoS',
-                'name' => 'Jungennamen Meister',
+                'name' => 'Gustav Meister',
                 'bio' => '',
                 'gender' => 'male',
                 'birthday' => '2001-07-12 00:00:00',
@@ -2920,10 +2920,10 @@ class UsersTableSeeder extends Seeder
             145 => 
             array (
                 'id' => 146,
-                'username' => 'mädchennamen447',
-                'email' => 'MädchennamenMeyer@instahub.app',
+                'username' => 'lulu447',
+                'email' => 'LuluMeyer@instahub.app',
                 'password' => '$2y$10$lqsdPSyO6fc7wRbE45/5kOe2jAm8ZIzYu6aPHGZ9Tuy5MFK3MnN3a',
-                'name' => 'Mädchennamen Meyer',
+                'name' => 'Lulu Meyer',
                 'bio' => '',
                 'gender' => 'female',
                 'birthday' => '2000-03-10 00:00:00',

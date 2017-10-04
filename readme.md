@@ -57,10 +57,10 @@ Many thanks and respect to:
     - `DB_PASSWORD` - passwort for database
     - `MAIL_*` - mail provider for resetting passworts (admin accounts may reset passworts without sending a mail)
 6. Open the console and cd to your project root directory
-7. Run `composer install` or ```php composer.phar install```
+7. Run `composer install` or ```php composer.phar install``` ([Howto install composer](https://getcomposer.org/download/))
 8. Run `php artisan key:generate` 
 9. Run `php artisan migrate`
-10. Run `php artisan migrate --path=/app/database/migrations/users`
+10. Run `php artisan migrate --path=/database/migrations/users`
 11. Visit website and create first teacher.
 12. In the `user` table of your database, manually set the attribute  `is_active` to `1` and `role` to `admin`. Now your user is admin and may manage other accounts.
 

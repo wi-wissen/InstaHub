@@ -38,6 +38,7 @@ class HubController extends Controller
 
     public function welcome()
     {
+        \Debugbar::info(\Session::get('hub', 'root'));
         return view('landing');
     }
 
@@ -119,6 +120,9 @@ class HubController extends Controller
         Artisan::call('migrate', array('--path' => "database/migrations/users", '--force' => true));
         Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
 
+        //seed usertable
+        Artisan::call('db:seed', array('--class' => "UsersTableSeeder", '--force' => true));
+
         //insert admin
         $url = "";
         if ($request->hasFile('avatar')) {
@@ -141,8 +145,11 @@ class HubController extends Controller
             'country' => $request->country,
             'centimeters' => $request->centimeters,
             'avatar' => $url,
-            'role' => 'dba'
+            'role' => 2
         ]);
+
+        $user->role = 2;
+        $user->save();
 
         flash('Your hub must be activated by your teacher!')->warning();
         return redirect("https://" . $hub->name . env('SESSION_DOMAIN')  . "/home");

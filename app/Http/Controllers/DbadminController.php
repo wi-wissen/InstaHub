@@ -53,10 +53,6 @@ class DbadminController extends Controller
 
     public function fillTable($tablename)
     {
-        $class = "database\\seeeds\\" . ucfirst($tablename) . "TableSeeder";
-        //$seeder = new $class;
-        //$seeder->run();
-
         Artisan::call('db:seed', array('--class' => ucfirst($tablename) . "TableSeeder", '--force' => true));
 
         flash("Table $tablename filled with dummy data.")->success();
