@@ -29,5 +29,6 @@ class LogLockout
     public function handle(Lockout $event)
     {
         Session::forget('hub');
+        Session::forget('user_hub');
     }
 }

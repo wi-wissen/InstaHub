@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use Session;
+use App\User;
 
 class role
 {
@@ -16,19 +18,20 @@ class role
      */
     public function handle($request, Closure $next, $role)
     {
+        //help controllers to ignore subdomain
+        $request->route()->forgetParameter('subdomain');
 
-        if (!Auth::guest()) {
-            if (Auth::user()->is_active) {
-                if ($request->session()->get('orig_hub') != $request->session()->get('hub') && !$request->user()->allowed('teacher')) {
-                    //user is in wrong hub -> redirect to his hub
-                    flash('You are not allowed to visit this hub!')->error();
-                    return redirect($request->session()->get('orig_hub') . env('APP_URL'));
-                }
-            }
+        //check subdomain
+        \Debugbar::info('user_hub:' . \Session::get('user_hub', 'not logged in'));
+        if (Session::get('hub', 'root') != Session::get('user_hub', 'root')) {
+            flash('Thats was not your hub! You have to first logout from in this hub.')->warning();
+            return redirect('https://' . $request->session()->get('user_hub') . env('SESSION_DOMAIN') . '/home');
         }
 
+        //is user activated?
         if ($request->user()->is_active) {
-            if (!$request->user()->allowed($role)) {
+            //is user allowed to do so?
+            if (!($request->user()->allowed($role) || $this->sessionRole($role))) {
                 flash('You are not allowed to do this!')->error();
                 return redirect('/home');
             } else {

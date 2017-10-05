@@ -9,9 +9,9 @@ use Session;
 use Auth;
 
 use Debugbar;
-use App\Hub;
+use App\User;
 
-class silo
+class subdomain
 {
     /**
      * Handle an incoming request.
@@ -22,12 +22,13 @@ class silo
      */
     public function handle($request, Closure $next)
     {
-        $request->session()->put('hub', $request->route()->parameter('subdomain'));
+        if ($request->route()->parameter('subdomain') != null) {
+            $request->session()->put('hub', $request->route()->parameter('subdomain'));
+        } else {
+            $request->session()->forget('hub');
+        }
 
-        Debugbar::info("orig: " . Session::get('orig_hub'));
-        Debugbar::info("hub: " . Session::get('hub'));
-
-        $request->route()->forgetParameter('subdomain');
+        //dd($next($request));
 
         return $next($request);
     }

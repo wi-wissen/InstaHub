@@ -16,11 +16,12 @@
                     <tbody>
                     @foreach ($hubs as $hub)
                         <tr id="{{ $hub->id }}">
-                                    <td><a href="https://{{ $hub->name . env('SESSION_DOMAIN')  . '/home'}}">{{ $hub->name }}</a></td>
+                                    <td><a href="https://{{ $hub->name . env('SESSION_DOMAIN')  . '/'}}">{{ $hub->name }}</a></td>
                                     <td>{{ $hub->created_at }}</td>
                                     <td>
                                     <a href="{{ url('/hubs/' . $hub->id . '/activate') }}" class="btn btn-default">Activate</a>
-                                    <a href="https://{{ $hub->name . env('SESSION_DOMAIN') . '/dba/admin' }}" class="btn btn-primary">DB Admin</a>
+                                    <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
+                                    <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as a DBA</a>
                                         <form action="{{ url('../hubs/' .$hub->id) }}" method="post" style="display: inline;">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">

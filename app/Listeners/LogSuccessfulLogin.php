@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 use Session;
+use Auth;
 
 class LogSuccessfulLogin
 {
@@ -28,6 +29,6 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        Session::set('orig_hub', Session::get('hub', 'root'));
+        Session::set('user_hub', Session::get('hub', 'root'));
     }
 }

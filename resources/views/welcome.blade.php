@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to laragram.</title>
+    <title>{{env('APP_NAME')}}</title>
     <style>
         body {
             margin: 0 !important;

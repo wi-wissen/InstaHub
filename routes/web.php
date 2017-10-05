@@ -10,17 +10,13 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::group(['domain' => env('APP_DOMAIN'), 'middleware' => 'silo'], function () {
-    //guest
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    
+Route::group(['domain' => env('APP_DOMAIN')], function () {   
     Auth::routes();
 
     Route::group(['middleware' => ['auth', 'role:user']], function () {
 
         //feed
+        Route::get('/', 'HomeController@index');
         Route::get('/home', 'HomeController@index');
         Route::get('/tag/{name}', 'HomeController@photosbytag');
 
@@ -70,18 +66,23 @@ Route::group(['domain' => env('APP_DOMAIN'), 'middleware' => 'silo'], function (
         Route::get('/dba/cryptPWs', 'DbadminController@cryptPWs');
     });
 
-    Route::group(['middleware' => ['auth', 'role:teacher']], function () {
-        //teacher
-        Route::get('/dba/admin', 'DbadminController@index');
-
-        Route::get('/dba/table/create/{tablename}', 'DbadminController@migrateTable');
-        Route::get('/dba/table/fill/{tablename}', 'DbadminController@fillTable');
-        Route::get('/dba/table/drop/{tablename}', 'DbadminController@dropTable');
+    //guest
+    Route::get('/', function () {
+        if(Auth::check()){
+            return redirect('/home');
+        }else{
+            return view('welcome');
+        }   
     });
-
 });
 
-Route::get('/', 'HubController@welcome');
+Route::get('/', function () {
+    if(Auth::check()){
+        return redirect('/home');
+    }else{
+        return view('landing');
+    }   
+});
 
 Auth::routes();
 
@@ -99,6 +100,15 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
     Route::post('user/{username}/password', 'UserController@postPassword');
 
     Route::get('user/password/{id}', 'UserController@getNewPassword');
+
+    Route::group(['middleware' => ['auth', 'role:teacher']], function () {
+        //dbadmin
+        Route::get('hubs/{id}/dba/admin', 'DbadminController@index');
+
+        Route::get('hubs/{id}/dba/table/create/{tablename}', 'DbadminController@migrateTable');
+        Route::get('hubs/{id}/dba/table/fill/{tablename}', 'DbadminController@fillTable');
+        Route::get('hubs/{id}/dba/table/drop/{tablename}', 'DbadminController@dropTable');
+    });
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {

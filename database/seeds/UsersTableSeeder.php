@@ -8,13 +8,16 @@ class UsersTableSeeder extends Seeder
     /**
      * Auto generated seed file
      *
+     * set 'chunk_size' => 10 // Maximum number of rows per insert statement
+     * in config.php inside vendor package. Otherwise there will be an loop when execute inside controller
+     *
      * @return void
      */
     public function run()
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');    
+        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        \DB::table('users')->where('id','!=', 197)->delete();
+        \DB::table('users')->delete();
         
         \DB::table('users')->insert(array (
             0 => 
@@ -22,7 +25,7 @@ class UsersTableSeeder extends Seeder
                 'id' => 1,
                 'username' => 'niclas143',
                 'email' => 'NiclasSchweizer@instahub.app',
-                'password' => '$2y$10$u.WjihKtfHMbqGX5/oyY5uf287uivIGt0yEMmYG4SHkJHoSn0PfbC',
+                'password' => '$2y$10$u.WjihKtfHMbqG95/oyY5uf293uivIGt0yEMmYG4SHkJHoSnnZfbC',
                 'name' => 'Niclas Schweizer',
                 'bio' => '',
                 'gender' => 'male',
@@ -32,10 +35,10 @@ class UsersTableSeeder extends Seeder
                 'centimeters' => 182,
                 'avatar' => 'avatars/1.jpg',
                 'role' => 'user',
-                'is_active' => 1,
-                'remember_token' => 'BPWVkSQloNChxfgH44OphhzF1zjHTo5uQEJvteaGn6OLHu5hoaKzcygUGVfV',
-                'created_at' => '2017-09-13 00:00:03',
-                'updated_at' => '2017-09-24 15:03:49',
+                'is_active' => 0,
+                'remember_token' => '',
+                'created_at' => '2017-09-12 22:00:03',
+                'updated_at' => '2017-09-24 13:03:49',
             ),
             1 => 
             array (
@@ -54,8 +57,8 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-22 08:32:28',
-                'updated_at' => '2017-09-24 15:14:10',
+                'created_at' => '2017-09-22 06:32:28',
+                'updated_at' => '2017-09-24 13:14:10',
             ),
             2 => 
             array (
@@ -74,16 +77,16 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-26 15:00:06',
-                'updated_at' => '2017-09-24 15:14:10',
+                'created_at' => '2017-08-26 13:00:06',
+                'updated_at' => '2017-09-24 13:14:10',
             ),
             3 => 
             array (
                 'id' => 4,
-                'username' => 'gustav489',
-                'email' => 'GustavMeister@instahub.app',
+                'username' => 'jungennamen489',
+                'email' => 'JungennamenMeister@instahub.app',
                 'password' => '$2y$10$CeuLhhLBGHuoR/WmgUzGUuGhKhGryfISh20Jo10C7JGvDeKnXNYoS',
-                'name' => 'Gustav Meister',
+                'name' => 'Jungennamen Meister',
                 'bio' => '',
                 'gender' => 'male',
                 'birthday' => '2001-07-12 00:00:00',
@@ -94,8 +97,8 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 20:28:29',
-                'updated_at' => '2017-09-24 15:14:10',
+                'created_at' => '2017-09-20 18:28:29',
+                'updated_at' => '2017-09-24 13:14:10',
             ),
             4 => 
             array (
@@ -114,8 +117,8 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-16 21:05:20',
-                'updated_at' => '2017-09-24 15:14:10',
+                'created_at' => '2017-09-16 19:05:20',
+                'updated_at' => '2017-09-24 13:14:10',
             ),
             5 => 
             array (
@@ -134,8 +137,8 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-05 00:25:15',
-                'updated_at' => '2017-09-24 15:14:10',
+                'created_at' => '2017-09-04 22:25:15',
+                'updated_at' => '2017-09-24 13:14:10',
             ),
             6 => 
             array (
@@ -154,8 +157,8 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-06 13:16:04',
-                'updated_at' => '2017-09-24 15:14:10',
+                'created_at' => '2017-09-06 11:16:04',
+                'updated_at' => '2017-09-24 13:14:10',
             ),
             7 => 
             array (
@@ -174,8 +177,8 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 02:07:00',
-                'updated_at' => '2017-09-24 15:14:10',
+                'created_at' => '2017-09-01 00:07:00',
+                'updated_at' => '2017-09-24 13:14:10',
             ),
             8 => 
             array (
@@ -194,8 +197,8 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 16:11:49',
-                'updated_at' => '2017-09-24 15:14:10',
+                'created_at' => '2017-09-17 14:11:49',
+                'updated_at' => '2017-09-24 13:14:10',
             ),
             9 => 
             array (
@@ -214,10 +217,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-10 21:43:38',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-10 19:43:38',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            10 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 11,
                 'username' => 'mika247',
@@ -234,10 +239,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 11:57:05',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-20 09:57:05',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            11 => 
+            1 => 
             array (
                 'id' => 12,
                 'username' => 'gulian236',
@@ -254,10 +259,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-09 02:57:00',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-09 00:57:00',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            12 => 
+            2 => 
             array (
                 'id' => 13,
                 'username' => 'benjamin272',
@@ -274,10 +279,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 12:51:44',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-01 10:51:44',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            13 => 
+            3 => 
             array (
                 'id' => 14,
                 'username' => 'fabian141',
@@ -294,10 +299,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 08:41:12',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-23 06:41:12',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            14 => 
+            4 => 
             array (
                 'id' => 15,
                 'username' => 'noah238',
@@ -314,10 +319,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-08 11:33:12',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-08 09:33:12',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            15 => 
+            5 => 
             array (
                 'id' => 16,
                 'username' => 'joshua468',
@@ -334,10 +339,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-10 16:57:21',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-10 14:57:21',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            16 => 
+            6 => 
             array (
                 'id' => 17,
                 'username' => 'marc256',
@@ -354,10 +359,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-09 22:04:47',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-09 20:04:47',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            17 => 
+            7 => 
             array (
                 'id' => 18,
                 'username' => 'kilian388',
@@ -374,10 +379,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 02:45:29',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-01 00:45:29',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            18 => 
+            8 => 
             array (
                 'id' => 19,
                 'username' => 'aaron183',
@@ -394,10 +399,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 20:35:32',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-17 18:35:32',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            19 => 
+            9 => 
             array (
                 'id' => 20,
                 'username' => 'yves18',
@@ -414,10 +419,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 12:34:07',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-01 10:34:07',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            20 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 21,
                 'username' => 'josia137',
@@ -434,10 +441,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-30 14:14:41',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-08-30 12:14:41',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            21 => 
+            1 => 
             array (
                 'id' => 22,
                 'username' => 'david470',
@@ -454,10 +461,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-18 10:00:11',
-                'updated_at' => '2017-09-24 15:14:11',
+                'created_at' => '2017-09-18 08:00:11',
+                'updated_at' => '2017-09-24 13:14:11',
             ),
-            22 => 
+            2 => 
             array (
                 'id' => 23,
                 'username' => 'jen84',
@@ -474,10 +481,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 06:09:23',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-01 04:09:23',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            23 => 
+            3 => 
             array (
                 'id' => 24,
                 'username' => 'maximilian267',
@@ -494,10 +501,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-05 00:05:29',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-04 22:05:29',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            24 => 
+            4 => 
             array (
                 'id' => 25,
                 'username' => 'pascal353',
@@ -514,10 +521,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-19 23:00:00',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-19 21:00:00',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            25 => 
+            5 => 
             array (
                 'id' => 26,
                 'username' => 'jonas27',
@@ -534,10 +541,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-10 08:55:52',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-10 06:55:52',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            26 => 
+            6 => 
             array (
                 'id' => 27,
                 'username' => 'henri184',
@@ -554,10 +561,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-31 04:46:55',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-08-31 02:46:55',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            27 => 
+            7 => 
             array (
                 'id' => 28,
                 'username' => 'luis215',
@@ -574,10 +581,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-08 00:13:31',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-07 22:13:31',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            28 => 
+            8 => 
             array (
                 'id' => 29,
                 'username' => 'fabian191',
@@ -594,10 +601,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-16 18:47:54',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-16 16:47:54',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            29 => 
+            9 => 
             array (
                 'id' => 30,
                 'username' => 'simon384',
@@ -614,10 +621,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-28 13:24:44',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-08-28 11:24:44',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            30 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 31,
                 'username' => 'nicolas209',
@@ -634,10 +643,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 00:53:10',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-19 22:53:10',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            31 => 
+            1 => 
             array (
                 'id' => 32,
                 'username' => 'justus142',
@@ -654,10 +663,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 08:16:06',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-11 06:16:06',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            32 => 
+            2 => 
             array (
                 'id' => 33,
                 'username' => 'oliver313',
@@ -674,10 +683,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-06 15:18:00',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-06 13:18:00',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            33 => 
+            3 => 
             array (
                 'id' => 34,
                 'username' => 'gulian213',
@@ -694,10 +703,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 00:52:13',
-                'updated_at' => '2017-09-24 15:14:12',
+                'created_at' => '2017-09-22 22:52:13',
+                'updated_at' => '2017-09-24 13:14:12',
             ),
-            34 => 
+            4 => 
             array (
                 'id' => 35,
                 'username' => 'liam395',
@@ -714,10 +723,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 01:25:26',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-09-19 23:25:26',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            35 => 
+            5 => 
             array (
                 'id' => 36,
                 'username' => 'tom491',
@@ -734,10 +743,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-26 19:08:27',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-08-26 17:08:27',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            36 => 
+            6 => 
             array (
                 'id' => 37,
                 'username' => 'timon261',
@@ -754,10 +763,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-29 11:31:52',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-08-29 09:31:52',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            37 => 
+            7 => 
             array (
                 'id' => 38,
                 'username' => 'lennes499',
@@ -774,10 +783,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-08 10:22:42',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-09-08 08:22:42',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            38 => 
+            8 => 
             array (
                 'id' => 39,
                 'username' => 'malte174',
@@ -794,10 +803,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 20:04:16',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-09-20 18:04:16',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            39 => 
+            9 => 
             array (
                 'id' => 40,
                 'username' => 'timon222',
@@ -814,10 +823,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 06:18:51',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-09-20 04:18:51',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            40 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 41,
                 'username' => 'malte231',
@@ -834,10 +845,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 12:13:35',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-09-01 10:13:35',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            41 => 
+            1 => 
             array (
                 'id' => 42,
                 'username' => 'max39',
@@ -854,10 +865,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-13 00:11:35',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-09-12 22:11:35',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            42 => 
+            2 => 
             array (
                 'id' => 43,
                 'username' => 'max143',
@@ -874,10 +885,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-29 00:16:18',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-08-28 22:16:18',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            43 => 
+            3 => 
             array (
                 'id' => 44,
                 'username' => 'julian58',
@@ -894,10 +905,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 00:53:58',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-08-31 22:53:58',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            44 => 
+            4 => 
             array (
                 'id' => 45,
                 'username' => 'levin53',
@@ -914,10 +925,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-18 00:40:10',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-09-17 22:40:10',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            45 => 
+            5 => 
             array (
                 'id' => 46,
                 'username' => 'max440',
@@ -934,10 +945,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-09 04:30:02',
-                'updated_at' => '2017-09-24 15:14:13',
+                'created_at' => '2017-09-09 02:30:02',
+                'updated_at' => '2017-09-24 13:14:13',
             ),
-            46 => 
+            6 => 
             array (
                 'id' => 47,
                 'username' => 'florian398',
@@ -954,10 +965,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 23:39:57',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-11 21:39:57',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            47 => 
+            7 => 
             array (
                 'id' => 48,
                 'username' => 'oliver97',
@@ -974,10 +985,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 04:43:35',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-17 02:43:35',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            48 => 
+            8 => 
             array (
                 'id' => 49,
                 'username' => 'julian408',
@@ -994,10 +1005,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-09 19:43:07',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-09 17:43:07',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            49 => 
+            9 => 
             array (
                 'id' => 50,
                 'username' => 'daniel334',
@@ -1014,10 +1025,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 03:21:22',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-20 01:21:22',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            50 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 51,
                 'username' => 'justin336',
@@ -1034,10 +1047,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-12 08:50:33',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-12 06:50:33',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            51 => 
+            1 => 
             array (
                 'id' => 52,
                 'username' => 'jerome437',
@@ -1054,10 +1067,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-12 06:41:13',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-12 04:41:13',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            52 => 
+            2 => 
             array (
                 'id' => 53,
                 'username' => 'lennox87',
@@ -1074,10 +1087,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-08 00:18:10',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-07 22:18:10',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            53 => 
+            3 => 
             array (
                 'id' => 54,
                 'username' => 'henri376',
@@ -1094,10 +1107,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-10 21:52:01',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-10 19:52:01',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            54 => 
+            4 => 
             array (
                 'id' => 55,
                 'username' => 'jonas136',
@@ -1114,10 +1127,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-04 03:09:54',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-04 01:09:54',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            55 => 
+            5 => 
             array (
                 'id' => 56,
                 'username' => 'moses255',
@@ -1134,10 +1147,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 03:32:51',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-20 01:32:51',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            56 => 
+            6 => 
             array (
                 'id' => 57,
                 'username' => 'colin173',
@@ -1154,10 +1167,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-25 02:34:25',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-08-25 00:34:25',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            57 => 
+            7 => 
             array (
                 'id' => 58,
                 'username' => 'pascal130',
@@ -1174,10 +1187,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-18 12:36:21',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-18 10:36:21',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            58 => 
+            8 => 
             array (
                 'id' => 59,
                 'username' => 'pascal288',
@@ -1194,10 +1207,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-07 03:06:55',
-                'updated_at' => '2017-09-24 15:14:14',
+                'created_at' => '2017-09-07 01:06:55',
+                'updated_at' => '2017-09-24 13:14:14',
             ),
-            59 => 
+            9 => 
             array (
                 'id' => 60,
                 'username' => 'kaspar382',
@@ -1214,10 +1227,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-15 06:53:24',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-15 04:53:24',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            60 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 61,
                 'username' => 'marc430',
@@ -1234,10 +1249,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-15 14:14:37',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-15 12:14:37',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            61 => 
+            1 => 
             array (
                 'id' => 62,
                 'username' => 'adrian211',
@@ -1254,10 +1269,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-22 04:52:55',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-22 02:52:55',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            62 => 
+            2 => 
             array (
                 'id' => 63,
                 'username' => 'jungennamen212',
@@ -1274,10 +1289,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-27 09:46:12',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-08-27 07:46:12',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            63 => 
+            3 => 
             array (
                 'id' => 64,
                 'username' => 'fabian419',
@@ -1294,10 +1309,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-03 16:46:11',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-03 14:46:11',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            64 => 
+            4 => 
             array (
                 'id' => 65,
                 'username' => 'lennes90',
@@ -1314,10 +1329,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-26 09:21:25',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-08-26 07:21:25',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            65 => 
+            5 => 
             array (
                 'id' => 66,
                 'username' => 'vincent331',
@@ -1334,10 +1349,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 07:46:01',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-14 05:46:01',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            66 => 
+            6 => 
             array (
                 'id' => 67,
                 'username' => 'oliver39',
@@ -1354,10 +1369,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 02:52:26',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-01 00:52:26',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            67 => 
+            7 => 
             array (
                 'id' => 68,
                 'username' => 'moses475',
@@ -1374,10 +1389,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-05 11:11:18',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-05 09:11:18',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            68 => 
+            8 => 
             array (
                 'id' => 69,
                 'username' => 'lukas493',
@@ -1394,10 +1409,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-18 07:57:14',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-18 05:57:14',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            69 => 
+            9 => 
             array (
                 'id' => 70,
                 'username' => 'daniel405',
@@ -1414,10 +1429,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-09 16:21:26',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-09 14:21:26',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            70 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 71,
                 'username' => 'karl134',
@@ -1434,10 +1451,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-15 17:12:20',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-15 15:12:20',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            71 => 
+            1 => 
             array (
                 'id' => 72,
                 'username' => 'lukas251',
@@ -1454,10 +1471,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 10:30:37',
-                'updated_at' => '2017-09-24 15:14:15',
+                'created_at' => '2017-09-11 08:30:37',
+                'updated_at' => '2017-09-24 13:14:15',
             ),
-            72 => 
+            2 => 
             array (
                 'id' => 73,
                 'username' => 'karl261',
@@ -1474,10 +1491,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 15:51:12',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-11 13:51:12',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            73 => 
+            3 => 
             array (
                 'id' => 74,
                 'username' => 'henri73',
@@ -1494,10 +1511,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-13 10:42:47',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-13 08:42:47',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            74 => 
+            4 => 
             array (
                 'id' => 75,
                 'username' => 'marco446',
@@ -1514,10 +1531,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 04:06:01',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-21 02:06:01',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            75 => 
+            5 => 
             array (
                 'id' => 76,
                 'username' => 'meiko399',
@@ -1534,10 +1551,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-19 18:01:12',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-19 16:01:12',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            76 => 
+            6 => 
             array (
                 'id' => 77,
                 'username' => 'leonard146',
@@ -1554,10 +1571,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-26 00:21:19',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-08-25 22:21:19',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            77 => 
+            7 => 
             array (
                 'id' => 78,
                 'username' => 'ole23',
@@ -1574,10 +1591,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 04:08:43',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-23 02:08:43',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            78 => 
+            8 => 
             array (
                 'id' => 79,
                 'username' => 'jerome176',
@@ -1594,10 +1611,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-15 00:30:31',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-14 22:30:31',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            79 => 
+            9 => 
             array (
                 'id' => 80,
                 'username' => 'dominik427',
@@ -1614,10 +1631,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-09 23:18:04',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-09 21:18:04',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            80 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 81,
                 'username' => 'jano130',
@@ -1634,10 +1653,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-12 22:31:34',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-12 20:31:34',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            81 => 
+            1 => 
             array (
                 'id' => 82,
                 'username' => 'jonas252',
@@ -1654,10 +1673,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 09:27:46',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-11 07:27:46',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            82 => 
+            2 => 
             array (
                 'id' => 83,
                 'username' => 'marlo387',
@@ -1674,10 +1693,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 09:33:09',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-23 07:33:09',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            83 => 
+            3 => 
             array (
                 'id' => 84,
                 'username' => 'marlo246',
@@ -1694,10 +1713,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-03 03:03:14',
-                'updated_at' => '2017-09-24 15:14:16',
+                'created_at' => '2017-09-03 01:03:14',
+                'updated_at' => '2017-09-24 13:14:16',
             ),
-            84 => 
+            4 => 
             array (
                 'id' => 85,
                 'username' => 'linus438',
@@ -1714,10 +1733,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-07 10:25:09',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-07 08:25:09',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            85 => 
+            5 => 
             array (
                 'id' => 86,
                 'username' => 'karl2',
@@ -1734,10 +1753,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 07:34:35',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-17 05:34:35',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            86 => 
+            6 => 
             array (
                 'id' => 87,
                 'username' => 'cedric351',
@@ -1754,10 +1773,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-16 16:38:32',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-16 14:38:32',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            87 => 
+            7 => 
             array (
                 'id' => 88,
                 'username' => 'felix17',
@@ -1774,10 +1793,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 19:47:44',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-21 17:47:44',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            88 => 
+            8 => 
             array (
                 'id' => 89,
                 'username' => 'moses385',
@@ -1794,10 +1813,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-04 02:52:00',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-04 00:52:00',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            89 => 
+            9 => 
             array (
                 'id' => 90,
                 'username' => 'lennes160',
@@ -1814,10 +1833,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-15 11:50:39',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-15 09:50:39',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            90 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 91,
                 'username' => 'benjamin257',
@@ -1834,10 +1855,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 08:27:15',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-20 06:27:15',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            91 => 
+            1 => 
             array (
                 'id' => 92,
                 'username' => 'piet343',
@@ -1854,10 +1875,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-29 12:45:33',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-08-29 10:45:33',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            92 => 
+            2 => 
             array (
                 'id' => 93,
                 'username' => 'jannis257',
@@ -1874,10 +1895,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-13 12:13:50',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-13 10:13:50',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            93 => 
+            3 => 
             array (
                 'id' => 94,
                 'username' => 'felix186',
@@ -1894,10 +1915,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-13 11:59:09',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-13 09:59:09',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            94 => 
+            4 => 
             array (
                 'id' => 95,
                 'username' => 'malte260',
@@ -1914,10 +1935,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-18 00:35:57',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-17 22:35:57',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            95 => 
+            5 => 
             array (
                 'id' => 96,
                 'username' => 'tom140',
@@ -1934,10 +1955,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-05 17:32:35',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-05 15:32:35',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            96 => 
+            6 => 
             array (
                 'id' => 97,
                 'username' => 'philipp101',
@@ -1954,10 +1975,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-22 18:02:49',
-                'updated_at' => '2017-09-24 15:14:17',
+                'created_at' => '2017-09-22 16:02:49',
+                'updated_at' => '2017-09-24 13:14:17',
             ),
-            97 => 
+            7 => 
             array (
                 'id' => 98,
                 'username' => 'jano147',
@@ -1974,10 +1995,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-07 00:21:22',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-06 22:21:22',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            98 => 
+            8 => 
             array (
                 'id' => 99,
                 'username' => 'marlo468',
@@ -1994,10 +2015,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 10:29:34',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-01 08:29:34',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            99 => 
+            9 => 
             array (
                 'id' => 100,
                 'username' => 'marlo152',
@@ -2014,10 +2035,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-15 06:02:38',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-15 04:02:38',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            100 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 101,
                 'username' => 'celine96',
@@ -2034,10 +2057,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 07:57:19',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-21 05:57:19',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            101 => 
+            1 => 
             array (
                 'id' => 102,
                 'username' => 'laura451',
@@ -2054,10 +2077,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 10:06:49',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-01 08:06:49',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            102 => 
+            2 => 
             array (
                 'id' => 103,
                 'username' => 'emily8',
@@ -2074,10 +2097,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-26 03:21:42',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-08-26 01:21:42',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            103 => 
+            3 => 
             array (
                 'id' => 104,
                 'username' => 'susanne378',
@@ -2094,10 +2117,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-13 04:32:31',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-13 02:32:31',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            104 => 
+            4 => 
             array (
                 'id' => 105,
                 'username' => 'aurelie141',
@@ -2114,10 +2137,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-24 22:26:35',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-24 20:26:35',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            105 => 
+            5 => 
             array (
                 'id' => 106,
                 'username' => 'julia405',
@@ -2134,10 +2157,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-30 16:20:59',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-08-30 14:20:59',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            106 => 
+            6 => 
             array (
                 'id' => 107,
                 'username' => 'greta104',
@@ -2154,10 +2177,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-18 11:13:14',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-18 09:13:14',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            107 => 
+            7 => 
             array (
                 'id' => 108,
                 'username' => 'laila78',
@@ -2174,10 +2197,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 13:00:28',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-21 11:00:28',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            108 => 
+            8 => 
             array (
                 'id' => 109,
                 'username' => 'julia295',
@@ -2194,10 +2217,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-06 20:29:19',
-                'updated_at' => '2017-09-24 15:14:18',
+                'created_at' => '2017-09-06 18:29:19',
+                'updated_at' => '2017-09-24 13:14:18',
             ),
-            109 => 
+            9 => 
             array (
                 'id' => 110,
                 'username' => 'eliana67',
@@ -2214,10 +2237,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-07 21:31:15',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-07 19:31:15',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            110 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 111,
                 'username' => 'jamila238',
@@ -2234,10 +2259,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-08 14:21:03',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-08 12:21:03',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            111 => 
+            1 => 
             array (
                 'id' => 112,
                 'username' => 'laura365',
@@ -2254,10 +2279,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-27 06:07:16',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-08-27 04:07:16',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            112 => 
+            2 => 
             array (
                 'id' => 113,
                 'username' => 'sophia54',
@@ -2274,10 +2299,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-16 04:37:49',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-16 02:37:49',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            113 => 
+            3 => 
             array (
                 'id' => 114,
                 'username' => 'melina303',
@@ -2294,10 +2319,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 01:28:12',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-19 23:28:12',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            114 => 
+            4 => 
             array (
                 'id' => 115,
                 'username' => 'johanna23',
@@ -2314,10 +2339,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 02:49:26',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-21 00:49:26',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            115 => 
+            5 => 
             array (
                 'id' => 116,
                 'username' => 'naomi17',
@@ -2334,10 +2359,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 17:05:40',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-17 15:05:40',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            116 => 
+            6 => 
             array (
                 'id' => 117,
                 'username' => 'julia309',
@@ -2354,10 +2379,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 22:58:57',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-23 20:58:57',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            117 => 
+            7 => 
             array (
                 'id' => 118,
                 'username' => 'lana450',
@@ -2374,10 +2399,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 03:35:46',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-23 01:35:46',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            118 => 
+            8 => 
             array (
                 'id' => 119,
                 'username' => 'eve15',
@@ -2394,10 +2419,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-19 08:00:44',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-19 06:00:44',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            119 => 
+            9 => 
             array (
                 'id' => 120,
                 'username' => 'ameli68',
@@ -2414,10 +2439,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 00:08:20',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-20 22:08:20',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            120 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 121,
                 'username' => 'livia60',
@@ -2434,10 +2461,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 01:52:16',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-13 23:52:16',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            121 => 
+            1 => 
             array (
                 'id' => 122,
                 'username' => 'aileen2',
@@ -2454,10 +2481,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-24 07:04:28',
-                'updated_at' => '2017-09-24 15:14:19',
+                'created_at' => '2017-09-24 05:04:28',
+                'updated_at' => '2017-09-24 13:14:19',
             ),
-            122 => 
+            2 => 
             array (
                 'id' => 123,
                 'username' => 'marie292',
@@ -2474,10 +2501,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-08 03:22:56',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-09-08 01:22:56',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            123 => 
+            3 => 
             array (
                 'id' => 124,
                 'username' => 'magdalena394',
@@ -2494,10 +2521,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-29 20:39:25',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-08-29 18:39:25',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            124 => 
+            4 => 
             array (
                 'id' => 125,
                 'username' => 'bea160',
@@ -2514,10 +2541,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-30 04:33:41',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-08-30 02:33:41',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            125 => 
+            5 => 
             array (
                 'id' => 126,
                 'username' => 'johanna462',
@@ -2534,10 +2561,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-15 14:07:24',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-09-15 12:07:24',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            126 => 
+            6 => 
             array (
                 'id' => 127,
                 'username' => 'zoey291',
@@ -2554,10 +2581,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-26 20:39:47',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-08-26 18:39:47',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            127 => 
+            7 => 
             array (
                 'id' => 128,
                 'username' => 'xenia437',
@@ -2574,10 +2601,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 17:35:47',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-09-14 15:35:47',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            128 => 
+            8 => 
             array (
                 'id' => 129,
                 'username' => 'julia40',
@@ -2594,10 +2621,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 12:10:08',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-09-21 10:10:08',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            129 => 
+            9 => 
             array (
                 'id' => 130,
                 'username' => 'samantha139',
@@ -2614,10 +2641,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-31 09:30:12',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-08-31 07:30:12',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            130 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 131,
                 'username' => 'juliette175',
@@ -2634,10 +2663,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 08:35:54',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-09-14 06:35:54',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            131 => 
+            1 => 
             array (
                 'id' => 132,
                 'username' => 'nele239',
@@ -2654,10 +2683,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-26 22:14:11',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-08-26 20:14:11',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            132 => 
+            2 => 
             array (
                 'id' => 133,
                 'username' => 'bea414',
@@ -2674,10 +2703,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 08:30:21',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-09-14 06:30:21',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            133 => 
+            3 => 
             array (
                 'id' => 134,
                 'username' => 'emma302',
@@ -2694,10 +2723,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-30 21:31:34',
-                'updated_at' => '2017-09-24 15:14:20',
+                'created_at' => '2017-08-30 19:31:34',
+                'updated_at' => '2017-09-24 13:14:20',
             ),
-            134 => 
+            4 => 
             array (
                 'id' => 135,
                 'username' => 'maret13',
@@ -2714,10 +2743,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 18:45:29',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-01 16:45:29',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            135 => 
+            5 => 
             array (
                 'id' => 136,
                 'username' => 'jette388',
@@ -2734,10 +2763,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-06 19:33:44',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-06 17:33:44',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            136 => 
+            6 => 
             array (
                 'id' => 137,
                 'username' => 'marlene442',
@@ -2754,10 +2783,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-22 21:44:42',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-22 19:44:42',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            137 => 
+            7 => 
             array (
                 'id' => 138,
                 'username' => 'mala219',
@@ -2774,10 +2803,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 21:26:58',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-11 19:26:58',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            138 => 
+            8 => 
             array (
                 'id' => 139,
                 'username' => 'juliette13',
@@ -2794,10 +2823,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 15:10:53',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-14 13:10:53',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            139 => 
+            9 => 
             array (
                 'id' => 140,
                 'username' => 'rahel414',
@@ -2814,10 +2843,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 23:42:30',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-21 21:42:30',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            140 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 141,
                 'username' => 'juliette284',
@@ -2834,10 +2865,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-27 20:39:03',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-08-27 18:39:03',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            141 => 
+            1 => 
             array (
                 'id' => 142,
                 'username' => 'grete239',
@@ -2854,10 +2885,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 18:24:33',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-11 16:24:33',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            142 => 
+            2 => 
             array (
                 'id' => 143,
                 'username' => 'magdalena34',
@@ -2874,10 +2905,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-31 06:06:10',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-08-31 04:06:10',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            143 => 
+            3 => 
             array (
                 'id' => 144,
                 'username' => 'anna247',
@@ -2894,10 +2925,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 14:57:38',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-23 12:57:38',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            144 => 
+            4 => 
             array (
                 'id' => 145,
                 'username' => 'johanna150',
@@ -2914,16 +2945,16 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-06 10:57:57',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-06 08:57:57',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            145 => 
+            5 => 
             array (
                 'id' => 146,
-                'username' => 'lulu447',
-                'email' => 'LuluMeyer@instahub.app',
+                'username' => 'mädchennamen447',
+                'email' => 'MädchennamenMeyer@instahub.app',
                 'password' => '$2y$10$lqsdPSyO6fc7wRbE45/5kOe2jAm8ZIzYu6aPHGZ9Tuy5MFK3MnN3a',
-                'name' => 'Lulu Meyer',
+                'name' => 'Mädchennamen Meyer',
                 'bio' => '',
                 'gender' => 'female',
                 'birthday' => '2000-03-10 00:00:00',
@@ -2934,10 +2965,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-04 23:10:49',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-09-04 21:10:49',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            146 => 
+            6 => 
             array (
                 'id' => 147,
                 'username' => 'eva125',
@@ -2954,10 +2985,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-27 14:07:15',
-                'updated_at' => '2017-09-24 15:14:21',
+                'created_at' => '2017-08-27 12:07:15',
+                'updated_at' => '2017-09-24 13:14:21',
             ),
-            147 => 
+            7 => 
             array (
                 'id' => 148,
                 'username' => 'lena469',
@@ -2974,10 +3005,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 06:54:57',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-17 04:54:57',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            148 => 
+            8 => 
             array (
                 'id' => 149,
                 'username' => 'sophia151',
@@ -2994,10 +3025,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-15 11:51:22',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-15 09:51:22',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            149 => 
+            9 => 
             array (
                 'id' => 150,
                 'username' => 'maria422',
@@ -3014,10 +3045,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-12 13:31:31',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-12 11:31:31',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            150 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 151,
                 'username' => 'greta110',
@@ -3034,10 +3067,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-09 19:29:36',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-09 17:29:36',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            151 => 
+            1 => 
             array (
                 'id' => 152,
                 'username' => 'maja217',
@@ -3054,10 +3087,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-13 16:06:26',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-13 14:06:26',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            152 => 
+            2 => 
             array (
                 'id' => 153,
                 'username' => 'sophia130',
@@ -3074,10 +3107,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-07 04:09:00',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-07 02:09:00',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            153 => 
+            3 => 
             array (
                 'id' => 154,
                 'username' => 'juliette372',
@@ -3094,10 +3127,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-16 06:50:03',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-16 04:50:03',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            154 => 
+            4 => 
             array (
                 'id' => 155,
                 'username' => 'thea308',
@@ -3114,10 +3147,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 22:48:03',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-11 20:48:03',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            155 => 
+            5 => 
             array (
                 'id' => 156,
                 'username' => 'nele51',
@@ -3134,10 +3167,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-12 21:18:37',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-12 19:18:37',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            156 => 
+            6 => 
             array (
                 'id' => 157,
                 'username' => 'janine289',
@@ -3154,10 +3187,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 18:47:37',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-17 16:47:37',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            157 => 
+            7 => 
             array (
                 'id' => 158,
                 'username' => 'lilli90',
@@ -3174,10 +3207,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-06 01:40:39',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-05 23:40:39',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            158 => 
+            8 => 
             array (
                 'id' => 159,
                 'username' => 'lisa356',
@@ -3194,10 +3227,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-04 00:11:34',
-                'updated_at' => '2017-09-24 15:14:22',
+                'created_at' => '2017-09-03 22:11:34',
+                'updated_at' => '2017-09-24 13:14:22',
             ),
-            159 => 
+            9 => 
             array (
                 'id' => 160,
                 'username' => 'paula193',
@@ -3214,10 +3247,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 17:49:23',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-23 15:49:23',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            160 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 161,
                 'username' => 'heidi270',
@@ -3234,10 +3269,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-31 21:36:54',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-08-31 19:36:54',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            161 => 
+            1 => 
             array (
                 'id' => 162,
                 'username' => 'mariella397',
@@ -3254,10 +3289,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 14:00:38',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-11 12:00:38',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            162 => 
+            2 => 
             array (
                 'id' => 163,
                 'username' => 'tialda93',
@@ -3274,10 +3309,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-23 14:07:07',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-23 12:07:07',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            163 => 
+            3 => 
             array (
                 'id' => 164,
                 'username' => 'henriette28',
@@ -3294,10 +3329,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-29 02:30:25',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-08-29 00:30:25',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            164 => 
+            4 => 
             array (
                 'id' => 165,
                 'username' => 'pauline128',
@@ -3314,10 +3349,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 12:45:24',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-01 10:45:24',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            165 => 
+            5 => 
             array (
                 'id' => 166,
                 'username' => 'ivette355',
@@ -3334,10 +3369,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-16 03:50:35',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-16 01:50:35',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            166 => 
+            6 => 
             array (
                 'id' => 167,
                 'username' => 'sophia392',
@@ -3354,10 +3389,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-30 23:15:21',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-08-30 21:15:21',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            167 => 
+            7 => 
             array (
                 'id' => 168,
                 'username' => 'may475',
@@ -3374,10 +3409,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-06 01:03:32',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-05 23:03:32',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            168 => 
+            8 => 
             array (
                 'id' => 169,
                 'username' => 'leonore116',
@@ -3394,10 +3429,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 03:22:08',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-17 01:22:08',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            169 => 
+            9 => 
             array (
                 'id' => 170,
                 'username' => 'tialda361',
@@ -3414,10 +3449,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-16 21:55:43',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-16 19:55:43',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            170 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 171,
                 'username' => 'mara381',
@@ -3434,10 +3471,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 19:47:19',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-14 17:47:19',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            171 => 
+            1 => 
             array (
                 'id' => 172,
                 'username' => 'livia344',
@@ -3454,10 +3491,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-01 16:37:35',
-                'updated_at' => '2017-09-24 15:14:23',
+                'created_at' => '2017-09-01 14:37:35',
+                'updated_at' => '2017-09-24 13:14:23',
             ),
-            172 => 
+            2 => 
             array (
                 'id' => 173,
                 'username' => 'lina170',
@@ -3474,10 +3511,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-19 10:15:59',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-19 08:15:59',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            173 => 
+            3 => 
             array (
                 'id' => 174,
                 'username' => 'ann145',
@@ -3494,10 +3531,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-25 23:18:53',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-08-25 21:18:53',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            174 => 
+            4 => 
             array (
                 'id' => 175,
                 'username' => 'mala452',
@@ -3514,10 +3551,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-22 20:06:40',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-22 18:06:40',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            175 => 
+            5 => 
             array (
                 'id' => 176,
                 'username' => 'celine142',
@@ -3534,10 +3571,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-31 14:03:15',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-08-31 12:03:15',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            176 => 
+            6 => 
             array (
                 'id' => 177,
                 'username' => 'eliana157',
@@ -3554,10 +3591,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-21 08:31:39',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-21 06:31:39',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            177 => 
+            7 => 
             array (
                 'id' => 178,
                 'username' => 'mariella164',
@@ -3574,10 +3611,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-22 13:19:55',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-22 11:19:55',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            178 => 
+            8 => 
             array (
                 'id' => 179,
                 'username' => 'leni223',
@@ -3594,10 +3631,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-19 13:04:57',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-19 11:04:57',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            179 => 
+            9 => 
             array (
                 'id' => 180,
                 'username' => 'maja260',
@@ -3614,10 +3651,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-10 14:01:07',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-10 12:01:07',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            180 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 181,
                 'username' => 'sabina52',
@@ -3634,10 +3673,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-19 18:39:33',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-19 16:39:33',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            181 => 
+            1 => 
             array (
                 'id' => 182,
                 'username' => 'ameli490',
@@ -3654,10 +3693,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-11 21:51:43',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-11 19:51:43',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            182 => 
+            2 => 
             array (
                 'id' => 183,
                 'username' => 'talida159',
@@ -3674,10 +3713,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-04 01:31:16',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-03 23:31:16',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            183 => 
+            3 => 
             array (
                 'id' => 184,
                 'username' => 'henriette136',
@@ -3694,10 +3733,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-16 22:35:14',
-                'updated_at' => '2017-09-24 15:14:24',
+                'created_at' => '2017-09-16 20:35:14',
+                'updated_at' => '2017-09-24 13:14:24',
             ),
-            184 => 
+            4 => 
             array (
                 'id' => 185,
                 'username' => 'naomi103',
@@ -3714,10 +3753,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-25 08:18:09',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-08-25 06:18:09',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            185 => 
+            5 => 
             array (
                 'id' => 186,
                 'username' => 'lina149',
@@ -3734,10 +3773,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 23:09:32',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-14 21:09:32',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            186 => 
+            6 => 
             array (
                 'id' => 187,
                 'username' => 'ameli80',
@@ -3754,10 +3793,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-09 12:52:02',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-09 10:52:02',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            187 => 
+            7 => 
             array (
                 'id' => 188,
                 'username' => 'stella439',
@@ -3774,10 +3813,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-17 19:50:54',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-17 17:50:54',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            188 => 
+            8 => 
             array (
                 'id' => 189,
                 'username' => 'emilie210',
@@ -3794,10 +3833,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-04 04:50:51',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-04 02:50:51',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            189 => 
+            9 => 
             array (
                 'id' => 190,
                 'username' => 'marie35',
@@ -3814,10 +3853,12 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-12 13:57:41',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-12 11:57:41',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            190 => 
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
             array (
                 'id' => 191,
                 'username' => 'viktoria121',
@@ -3834,10 +3875,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-24 11:22:47',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-24 09:22:47',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            191 => 
+            1 => 
             array (
                 'id' => 192,
                 'username' => 'emily366',
@@ -3854,10 +3895,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-20 06:53:28',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-20 04:53:28',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            192 => 
+            2 => 
             array (
                 'id' => 193,
                 'username' => 'ivette327',
@@ -3874,10 +3915,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-08-27 20:33:54',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-08-27 18:33:54',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            193 => 
+            3 => 
             array (
                 'id' => 194,
                 'username' => 'samina369',
@@ -3894,10 +3935,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-14 13:01:06',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-14 11:01:06',
+                'updated_at' => '2017-09-24 13:14:25',
             ),
-            194 => 
+            4 => 
             array (
                 'id' => 195,
                 'username' => 'samira455',
@@ -3914,10 +3955,10 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-02 11:19:23',
-                'updated_at' => '2017-09-30 09:13:31',
+                'created_at' => '2017-09-02 09:19:23',
+                'updated_at' => '2017-09-30 07:13:31',
             ),
-            195 => 
+            5 => 
             array (
                 'id' => 196,
                 'username' => 'lorena249',
@@ -3934,8 +3975,28 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => 0,
                 'remember_token' => '',
-                'created_at' => '2017-09-08 05:31:03',
-                'updated_at' => '2017-09-24 15:14:25',
+                'created_at' => '2017-09-08 03:31:03',
+                'updated_at' => '2017-09-24 13:14:25',
+            ),
+            6 => 
+            array (
+                'id' => 197,
+                'username' => 'we',
+                'email' => 'we@home.app',
+                'password' => '$2y$10$Ub4WV8R6UgnVK/VFlcRtBOJdpaWFRiW4jG0/atjgMMWo9cQj/bKeu',
+                'name' => 'Werner',
+                'bio' => '',
+                'gender' => 'male',
+                'birthday' => NULL,
+                'city' => NULL,
+                'country' => NULL,
+                'centimeters' => NULL,
+                'avatar' => 'avatar.png',
+                'role' => 'admin',
+                'is_active' => 1,
+                'remember_token' => 'yBIiINsdlWxQlnfItwaRc96BobudWAOIPaWlrzJGpWDENmGj2U0pwU7faanb',
+                'created_at' => '2017-10-05 10:06:16',
+                'updated_at' => '2017-10-05 10:06:18',
             ),
         ));
         

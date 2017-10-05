@@ -29,5 +29,6 @@ class LogSuccessfulLogout
     public function handle(Logout $event)
     {
         Session::forget('hub');
+        Session::forget('user_hub');
     }
 }

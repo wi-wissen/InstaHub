@@ -26,7 +26,7 @@ class selectdb
     {
         //run only on subdomains
         if (substr_count($request->server('HTTP_HOST'), '.') == 2) {
-            Debugbar::info('+++');
+            
             $hub = Hub::where('name', '=', str_replace(env('SESSION_DOMAIN'), '',$request->server('HTTP_HOST')))->first();
 
             if (!$hub) {
@@ -48,8 +48,6 @@ class selectdb
                 Config::set('database.default', env('DB_DATABASE') . "_" . $hub->name);
  
             }
-        } else {
-            $request->session()->forget('hub');
         }
 
         Debugbar::info('db:' .Config::get('database.default'));

@@ -10,6 +10,7 @@ use Auth;
 use Config;
 use Artisan;
 use Schema;
+use Session;
 
 use App\Like;
 use App\Hub;
@@ -34,12 +35,6 @@ class HubController extends Controller
                 }),
             ],
         ]);
-    }
-
-    public function welcome()
-    {
-        \Debugbar::info(\Session::get('hub', 'root'));
-        return view('landing');
     }
 
     /**
@@ -161,7 +156,29 @@ class HubController extends Controller
      */
     public function show($id)
     {
-        //
+        $hub = Hub::find($id);
+
+        //set db
+        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->name, array(
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => env('DB_DATABASE') . "_" . $hub->name,
+            'username'  => env('DB_DATABASE') . "_" . $hub->name,
+            'password'  => $hub->password,
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ));
+
+        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->name);
+
+        $user = User::where('role', '=', 'dba')->first();
+        Auth::login($user);
+        Session::set('user_hub', $hub->name);
+        \Debugbar::info('logged in as' . $user->username);
+
+
+        return redirect('https://' . $hub->name . env('SESSION_DOMAIN')  . '/home');
     }
 
     /**
