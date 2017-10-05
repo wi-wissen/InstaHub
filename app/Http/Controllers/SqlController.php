@@ -24,14 +24,13 @@ class SqlController extends Controller
 
     public function getQuery(Request $request)
     {
-        $table =false;
+        $t = "";
         if ($request->has('editor')) {
              //Ergebnis vorbereiten
             try {
                 $r = DB::select($request->editor);
                 if (!$r) {
                         flash("Anfrage ausgeführt.", 'success')->important();
-                        $t = "";
                 } else {
                     flash("Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden.", 'success')->important();
 
