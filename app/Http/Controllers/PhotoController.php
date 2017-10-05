@@ -118,15 +118,6 @@ class PhotoController extends Controller
 	 public function destroy($id)
 	 {
 		$entry = Photo::find($id);
-	
-		//$this->authorize('view', $entry);
-		
-		if (Photo::where('url', '=', $entry->url)->count == 1)
-		{
-			//prevent deleting a file who is in use in an other photo
-			Storage::disk('local')->delete($entry->url);
-		}
-		
 		$entry->delete();
 		flash('Photo deleted')->success();
 

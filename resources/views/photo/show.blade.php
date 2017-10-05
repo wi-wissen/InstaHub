@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="username" style="display: none;">{{ Auth::user()->username }}</div>
 <div class="container">
 	@include('flash::message')
 	<div class="row">

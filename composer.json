@@ -9,7 +9,6 @@
         "laravel/framework": "5.3.*",
         "laracasts/flash": "^3.0",
         "rap2hpoutre/laravel-log-viewer": "^0.10.4",
-        "gbrock/laravel-table": "^0.3.4",
         "barryvdh/laravel-debugbar": "~2.4",
         "orangehill/iseed": "2.2",
         "graham-campbell/exceptions": "^9.4"

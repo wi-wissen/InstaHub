@@ -10,6 +10,7 @@ use App\Photo;
 use App\User;
 use App\Hub;
 use Auth;
+use DB;
 use Config;
 
 class DbadminController extends Controller
@@ -27,19 +28,29 @@ class DbadminController extends Controller
     public function updateTags(Request $request)
     {
         $photos = Photo::all();
+
+        DB::beginTransaction(); //better performance
+
         foreach ($photos as $photo) {
             $photo->updateTags();
             echo "updated $photo->id <br />";
         }
+
+        DB::commit();
     }
 
     public function cryptPWs(Request $request)
     {
         $users = User::all();
+
+        DB::beginTransaction(); //better performance
+
         foreach ($users as $user) {
             $user->cryptpw();
             echo "updated $user->id <br />";
         }
+
+        DB::commit();
     }
 
     public function migrateTable($id, $tablename)

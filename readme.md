@@ -19,14 +19,13 @@ Many thanks and respect to:
 - [Laravel](https://laravel.com/)
 	- [laracasts/flash](https://github.com/laracasts/flash)
     - [orangehill/iseed](https://github.com/orangehill/iseed)
-    - [graham-campbell/exceptions](https://github.com/graham-campbell/exceptions
+    - [graham-campbell/exceptions](https://github.com/graham-campbell/exceptions)
 	- [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer)
 	- [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
-	- [gbrock/laravel-table ](https://github.com/gbrock/laravel-table)
 - [Bootstrap](http://bootstrap.com/)
 - [jQuery](https://jquery.com/) with [Backstretch](https://github.com/jquery-backstretch/jquery-backstretch)
 - Photos by [pixabay](https://pixabay.com/) (CC0)
-- Splash images by [unsplash.com](https://unsplash.com/) (CCO)
+- Splash images by [unsplash.com](https://unsplash.com/) (CC0)
 - Face images by [Greg Peverill-Conti](https://www.flickr.com/photos/gregpc/) (CC BY-NC-SA 2.0)
 
 ### Install

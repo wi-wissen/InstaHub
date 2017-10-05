@@ -22,8 +22,8 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 
         //user
         Route::get('/user', 'ProfileController@index');
-        Route::get('/user/{user_id}/followers', 'ProfileController@followers');
-        Route::get('/user/{user_id}/following', 'ProfileController@following');
+        Route::get('/user/{user_id}/followers', 'FollowController@followers');
+        Route::get('/user/{user_id}/following', 'FollowController@following');
 
         Route::get('/user/{username}', 'ProfileController@show');
 
@@ -42,8 +42,9 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         Route::get('/photo/{photo_id}/destroy', 'PhotoController@destroy');
         Route::get('/upload', 'PhotoController@create');
 
-        Route::delete('/user/follow/{id}', 'ProfileController@unfollow');
-        Route::post('/user/follow/{id}', 'ProfileController@follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
+        //follow
+        Route::delete('/user/follow/{id}', 'FollowController@unfollow');
+        Route::post('/user/follow/{id}', 'FollowController@follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
 
         Route::post('/upload', 'PhotoController@store');
 

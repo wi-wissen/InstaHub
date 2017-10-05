@@ -25,7 +25,12 @@ class role
         \Debugbar::info('user_hub:' . \Session::get('user_hub', 'not logged in'));
         if (Session::get('hub', 'root') != Session::get('user_hub', 'root')) {
             flash('Thats was not your hub! You have to first logout from in this hub.')->warning();
-            return redirect('https://' . $request->session()->get('user_hub') . env('SESSION_DOMAIN') . '/home');
+            if (Session::get('user_hub', 'root') == 'root') {
+                return redirect(env('APP_URL') . '/home');
+            } else {
+                return redirect('https://' . $request->session()->get('user_hub') . env('SESSION_DOMAIN') . '/home');
+            }
+            
         }
 
         //is user activated?

@@ -14,7 +14,6 @@ use Auth;
 use Schema;
 use Illuminate\Support\Facades\Hash;
 use Debugbar;
-use Table;
 
 class SqlController extends Controller
 {
@@ -31,11 +30,30 @@ class SqlController extends Controller
             try {
                 $r = DB::select($request->editor);
                 if (!$r) {
-                        flash("Anfrage ausgeführt.", 'success');
+                        flash("Anfrage ausgeführt.", 'success')->important();
+                        $t = "";
                 } else {
-                    flash("Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden.", 'success');
-                    $table = Table::create($r); 
-                    $table->setView('admin.table');
+                    flash("Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden.", 'success')->important();
+
+                    $cols = array_keys((array) $r[0]);
+                    $t = "<table class='table'>";
+                    foreach ($cols as &$col) {
+                        $t = $t . '<th>' . $col . '</th>';
+                    }
+                    foreach ($r as $row) {
+                        $row = (array) $row;
+                        $t = $t . "<tr>";
+                        foreach ($cols as &$col) {
+                            $wert = $row[$col];
+                            //Ausgabe ggf. anpassen - Links
+                            if (filter_var($wert, FILTER_VALIDATE_URL)) $wert = "<a href='$wert'>$wert</a>"; //Links
+                            //if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<img src='$wert'>"; //Bilder
+                            if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<a href='$wert'>$wert</a>"; //Bilder for cleaner table
+                            $t = $t . '<td>' . $wert . '</td>';
+                        }
+                        $t = $t . "</tr>";
+                    }
+                    $t = $t . "</table>";
                 }
                               
             } catch(\Illuminate\Database\QueryException $ex){ 
@@ -63,6 +81,6 @@ class SqlController extends Controller
 
 
 
-        return view('admin.sql', ['result' => $table, 'tables' => $dbclass]);
+        return view('admin.sql', ['result' => $t, 'tables' => $dbclass]);
     }
 }

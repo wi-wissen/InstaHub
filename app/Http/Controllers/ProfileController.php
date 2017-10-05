@@ -80,27 +80,4 @@ class ProfileController extends Controller
 		return redirect('user/' . $user->username);
 	 }
 
-	public function followers($username) 
-	{
-		$user = User::where('username', $username)->first();
-		return view('user.index', ['users' => $user->followers()->paginate(10)]);
-	}
-
-	public function following($username) 
-	{
-		$user = User::where('username', $username)->first();
-		return view('user.index', ['users' => $user->following()->paginate(10)]);
-	}
-
-	public function follow($id, Request $request) // id of the person to be followed
-	{
-		Auth::user()->following()->attach($id); 
-		return redirect('/user/' . User::find($id)->username);
-	}
- 
-	public function unfollow($id, Request $request) // id of the person to be unfollowed
-	{
-	 Auth::user()->following()->detach($request->user()->id);        
-	 return redirect('/user/' . $request->user()->username);
-	}
 }

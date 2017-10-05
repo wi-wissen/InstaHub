@@ -164,7 +164,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        'Gbrock\Table\Providers\TableServiceProvider',
         Barryvdh\Debugbar\ServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
         'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
@@ -230,7 +229,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Table'      => 'Gbrock\Table\Facades\Table',
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],

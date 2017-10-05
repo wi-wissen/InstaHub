@@ -20,7 +20,7 @@
                 @include('flash::message')
                 @if ($result)
                 <div style="overflow: auto;">
-                    {!! $result->render() !!}
+                    {!! $result !!}
                 </div>
                 @endif
                 <div class="panel panel-default">

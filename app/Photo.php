@@ -38,11 +38,9 @@ class Photo extends Model
         parent::boot();
         
         self::deleting(function ($value) {
-            if (Photo::where('url', '=', $value->url)->count == 1)
-            {
-                //prevent deleting a file who is in use in an other photo
-                Storage::disk('local')->delete($value->url);
-            }
+            //can't delete file couse stock images my be in use in other hubs. 
+            //Storage::disk('local')->delete($entry->url);
+            //TODO: Cronjob for deleting unneccesary images which leaves stockphots untuched.
         });
 
         self::created(function($model){
