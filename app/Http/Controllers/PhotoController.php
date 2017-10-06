@@ -40,19 +40,20 @@ class PhotoController extends Controller
 	public function store(Request $request)
 	{
 		$this->validate($request, [
-			'photo' => 'required|size:'. $this->max_filesize()
+			'photo' => 'required|max:'. $this->max_filesize()
 		]);
 
 		$url = $request->file('photo')->store('photos');
 		$user = $request->user();
 
-		Photo::create([
+		$photo = Photo::create([
 			'user_id' => $user->id,
 			'description' => $request->description,
 			'url' => $url
 		]);
-
-		return redirect('home');
+		
+		flash('Photo uploaded')->success();
+		return redirect('photo/' . $photo->id);
 	}
 
 	/**

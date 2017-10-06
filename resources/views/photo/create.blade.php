@@ -16,6 +16,13 @@
 						<div class="form-group">
 							<label for="image" >Image:</label>
 							<input type="file" name="photo" id="photo">
+
+							@if ($errors->has('photo'))
+								<span class="help-block">
+									<strong>{{ $errors->first('photo') }}</strong>
+								</span>
+							@endif
+
 						</div>
 						<div class="form-group">
 							<label for="desc" >Description</label>
