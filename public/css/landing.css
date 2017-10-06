@@ -23,7 +23,7 @@ html {
 header.masthead > .overlay {
     padding: 5rem 0;
     text-align: center;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 @media (min-width: 992px) {
@@ -39,7 +39,7 @@ h1 {
 	font-weight: 500;
 	margin-top: 0px;
     margin-bottom: 0px;
-    color:black;
+    color:white;
 }
 
 .overlay p {
@@ -47,7 +47,7 @@ h1 {
 	font-family: 'Shadows Into Light', cursive;
 	font-weight: 100;
     margin-top: 20px;
-    color:black;
+    color:white;
 }
 
 .media {

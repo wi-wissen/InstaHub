@@ -19,20 +19,20 @@ class FollowController extends Controller
     public function followers($username) 
 	{
 		$user = User::where('username', $username)->first();
-		return view('user.index', ['users' => $user->followers()->paginate(10)]);
+		return view('user.index', ['users' => $user->followers()->paginate(10), 'heading' => 'Followers of ' . $user->username]);
 	}
 
 	public function following($username) 
 	{
 		$user = User::where('username', $username)->first();
-		return view('user.index', ['users' => $user->following()->paginate(10)]);
+		return view('user.index', ['users' => $user->following()->paginate(10), 'heading' => 'User that ' . $user->username . ' follows']);
     }
     
     public function follow($id, Request $request) // id of the person to be followed
    {
         Auth::user()->following()->attach($id); 
-        flash('Following now ' . User::find($id)->name . '.')->success();
-        return redirect('/user/' . $request->user()->username);
+        flash('No following ' . User::find($id)->name . '.')->success();
+        return redirect('/user/' . User::find($id)->username);
    }
 
    public function unfollow($id, Request $request) // id of the person to be followed

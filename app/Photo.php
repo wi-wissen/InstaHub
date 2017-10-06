@@ -45,12 +45,12 @@ class Photo extends Model
 
         self::created(function($model){
             // ... code here
-           $this->updateTags();
+           $model->updateTags();
         });
 
         self::updated(function($model){
             // ... code here
-            $this->updateTags();
+            $model->updateTags();
         });
     }
 

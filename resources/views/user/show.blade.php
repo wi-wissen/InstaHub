@@ -17,8 +17,13 @@
 							<b>{{$user->photos()->count()}}</b> Photos.
 							@endif
 							@if (Schema::hasTable('follows')) 
+							@if ($user->followers->count() < 2)
 							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> Follower</a>.
-							<a href ="{{'../user/' . $user->username . '/following'}}">Follows <b>{{$user->following->count()}}</b></a>.
+							@else
+							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> Followers</a>.
+							@endif
+							
+							<a href ="{{'../user/' . $user->username . '/following'}}">Following <b>{{$user->following->count()}}</b></a>.
 							@endif
 						</p>
 						<p><i>{{ $user->bio }}</i></p>

@@ -3978,26 +3978,6 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2017-09-08 03:31:03',
                 'updated_at' => '2017-09-24 13:14:25',
             ),
-            6 => 
-            array (
-                'id' => 197,
-                'username' => 'we',
-                'email' => 'we@home.app',
-                'password' => '$2y$10$Ub4WV8R6UgnVK/VFlcRtBOJdpaWFRiW4jG0/atjgMMWo9cQj/bKeu',
-                'name' => 'Werner',
-                'bio' => '',
-                'gender' => 'male',
-                'birthday' => NULL,
-                'city' => NULL,
-                'country' => NULL,
-                'centimeters' => NULL,
-                'avatar' => 'avatar.png',
-                'role' => 'admin',
-                'is_active' => 1,
-                'remember_token' => 'yBIiINsdlWxQlnfItwaRc96BobudWAOIPaWlrzJGpWDENmGj2U0pwU7faanb',
-                'created_at' => '2017-10-05 10:06:16',
-                'updated_at' => '2017-10-05 10:06:18',
-            ),
         ));
         
         \DB::statement('SET FOREIGN_KEY_CHECKS = 1');

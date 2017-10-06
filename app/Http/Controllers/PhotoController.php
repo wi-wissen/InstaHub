@@ -33,17 +33,18 @@ class PhotoController extends Controller
 
 	public function create()
 	{
+		\Debugbar::info('max filesize in kilobyte: ' . $this->max_filesize());
 		return view('photo.create');
 	}
 
 	public function store(Request $request)
 	{
-		// echo "Worked";
-		// var_dump($request->all());
-		// die();
+		$this->validate($request, [
+			'photo' => 'required|size:'. $this->max_filesize()
+		]);
+
 		$url = $request->file('photo')->store('photos');
 		$user = $request->user();
-		// var_dump($user->id);
 
 		Photo::create([
 			'user_id' => $user->id,
@@ -122,6 +123,27 @@ class PhotoController extends Controller
 		flash('Photo deleted')->success();
 
         return redirect('home');
+	 }
+
+	 //in kilobytes
+	 public function max_filesize()
+	 {
+		$val = ini_get('post_max_size');
+		$val = trim($val);
+		$last = strtolower($val[strlen($val)-1]);
+		switch($last) {
+			// The 'G' modifier is available since PHP 5.1.0
+			case 'g':
+				$val *= 1024;
+			case 'm':
+				$val *= 1024;
+			case 'k':
+				$val *= 1024;
+		}
+
+		$val = $val / 1024;
+	
+		return $val;
 	 }
 
 	

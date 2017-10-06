@@ -21,7 +21,7 @@
                                     <td>
                                     <a href="{{ url('/hubs/' . $hub->id . '/activate') }}" class="btn btn-default">Activate</a>
                                     <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
-                                    <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as a DBA</a>
+                                    <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as DBA</a>
                                         <form action="{{ url('../hubs/' .$hub->id) }}" method="post" style="display: inline;">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">

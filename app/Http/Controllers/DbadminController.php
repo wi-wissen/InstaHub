@@ -57,10 +57,16 @@ class DbadminController extends Controller
     {
         $this->setdb($id);
 
+        DB::beginTransaction(); //better performance and safer
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists($tablename);
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
         Artisan::call('migrate', array('--path' => "database/migrations/$tablename", '--force' => true));
         Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
+
+        DB::commit();
 
         flash("Table $tablename exists (now).")->success();
         return redirect("/hubs/$id/dba/admin");
@@ -69,6 +75,8 @@ class DbadminController extends Controller
     public function fillTable($id, $tablename)
     {
         $this->setdb($id);
+
+        DB::beginTransaction(); //better performance and safer
 
         if (!Schema::hasTable($tablename)) {
             Artisan::call('migrate', array('--path' => "database/migrations/$tablename", '--force' => true));
@@ -97,6 +105,8 @@ class DbadminController extends Controller
             flash("All DBAs are lost. New one is generated. Please create new one or reset password.")->warning();
         }
 
+        DB::commit();
+
         return redirect("/hubs/$id/dba/admin");
     }
 
@@ -104,7 +114,13 @@ class DbadminController extends Controller
     {
         $this->setdb($id);
 
+        DB::beginTransaction(); //better performance and safer
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists($tablename);
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
+        DB::commit();
 
         flash("Table $tablename does not (longer) exist.")->success();
         return redirect("/hubs/$id/dba/admin");
@@ -112,7 +128,22 @@ class DbadminController extends Controller
 
     public function index($id) 
     {
-        return view('admin.dbadmin', ['hub' => Hub::find($id)]);
+        $hub = Hub::find($id);
+
+        $this->setdb($id);
+
+        //check actual status
+        $dbclass ="";
+        $r = DB::table('information_schema.tables')->where('TABLE_TYPE','=','BASE TABLE')->get();
+        if (!$r) {
+                echo "<div class='alert alert-danger'>Keine Tabellen gefunden.</div>";
+        }
+        \Debugbar::info($r);
+        foreach ($r as $v) {
+            $dbclass = $dbclass . "<b>" . $v->TABLE_NAME . ':</b> ' . DB::table($v->TABLE_NAME)->count() . ' rows <br />';
+        }
+
+        return view('admin.dbadmin', ['hub' => $hub, 'state' => $dbclass]);
     }
 
     private function setdb($id) 

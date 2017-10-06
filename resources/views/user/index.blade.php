@@ -5,6 +5,9 @@
         @include('flash::message')
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
+                @if (isset($heading))
+                <h1>{{$heading}}</h1>
+                @endif
                 <ul class="list-group">
                     @foreach($users as $user)
                         <li class="list-group-item">

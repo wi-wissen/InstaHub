@@ -63,7 +63,7 @@
                 <ul class="nav navbar-nav">
                     &nbsp;
                     @if (!Auth::guest() && (Session::get('hub', 'root') != 'root' || Auth::user()->allowed('admin')))
-                    <li><a href="{{ url('/user') }}">Member</a></li>
+                    <li><a href="{{ url('/user') }}">Members</a></li>
                     @endif
                 </ul>
 

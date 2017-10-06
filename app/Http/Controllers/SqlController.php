@@ -56,7 +56,7 @@ class SqlController extends Controller
                 }
                               
             } catch(\Illuminate\Database\QueryException $ex){ 
-                flash($ex->getMessage(), 'danger'); 
+                flash($ex->getMessage(), 'danger')->important(); 
             }
         }
 

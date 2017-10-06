@@ -24,7 +24,7 @@ class role
         //check subdomain
         \Debugbar::info('user_hub:' . \Session::get('user_hub', 'not logged in'));
         if (Session::get('hub', 'root') != Session::get('user_hub', 'root')) {
-            flash('Thats was not your hub! You have to first logout from in this hub.')->warning();
+            flash('This was not your hub! You have to first logout from from this hub.')->warning();
             if (Session::get('user_hub', 'root') == 'root') {
                 return redirect(env('APP_URL') . '/home');
             } else {

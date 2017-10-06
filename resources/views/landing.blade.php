@@ -29,7 +29,7 @@
       <div class="overlay">
         <div class="container">
           <h1>{{env('APP_NAME')}}</h1>
-          <p>Create your own social network and learn computer science!</p>
+          <p>Create your own social network and master computer science!</p>
         </div>
       </div>
     </header>
@@ -47,7 +47,7 @@
                     <div class="media-body">
                         <h4 class="media-heading">{{env('APP_NAME')}}</h4>
                         <p>{{env('APP_NAME')}} ist ein soziales Netzwerk, welches im Informatikunterricht eingesetzt wird. 
-                        Es dient ausschließlich zu lehrzwecken. Auch wenn es voll funktionsfähig ist ist es nicht für den regulären Einsatz gedacht. </p>
+                        Es dient ausschließlich zu Lehrzwecken. Auch wenn es voll funktionsfähig ist, ist es nicht für den regulären Einsatz gedacht. </p>
                         <p>Schüler sind in {{env('APP_NAME')}} nicht Nutzer, sondern selbst Datenbankadministratoren. So erstellt jeder Schüler nach und nach die Datenbank für sein eigenes soziales Netzwerk. Mit jeder neuen Tabelle wachsen auch die Möglichkeiten im Webbrowser um etwa Photos zu posten oder anderen Mitgliedern zu folgen. </p>
                         <p>Der Vorgänger von {{env('APP_NAME')}} ist die <a href="https://blog.wi-wissen.de/post/friendzone">friendzone</a>. Diese wurde 2017 mit dem <a href="https://www.gi.de/aktuelles/meldungen/detailansicht/article/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone.html">Unterrichtspreis der Gesellschaft für Informatik</a> ausgezeichnet.</p> 
                     </div>

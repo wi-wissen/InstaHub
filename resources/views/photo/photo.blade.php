@@ -14,7 +14,7 @@
         <form class="like_form" data-id="{{ $photo->id }}" method="post" style='display:inline;'>
             <input type="hidden" value="{{ $photo->id }}" name="photo_id" >
             {{ csrf_field() }}
-            <button class="btn btn-primary btn-small like-btn"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Like <span id="likes{{ $photo->id }}">{{ count($photo->likes) }}</span></button>
+            <button class="btn btn-primary btn-small like-btn"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<span id="likes{{ $photo->id }}">{{ count($photo->likes) }}</span> likes</button>
         </form>
         {{-- <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->likes) }} Likes --}}  
         @if (Auth::user()->id == $photo->user->id || Auth::user()->allowed('dba'))
