@@ -65,6 +65,9 @@
                     @if (!Auth::guest() && (Session::get('hub', 'root') != 'root' || Auth::user()->allowed('admin')))
                     <li><a href="{{ url('/user') }}">Members</a></li>
                     @endif
+                    @if (!Auth::guest() && Session::get('hub', 'root') == 'root' && Auth::user()->allowed('teacher'))
+                    <li><a href="{{ url('/hubs') }}">Hubs</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -76,6 +79,9 @@
                     @else
                     @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
                     <li><a href="{{ url('/sql') }}">Database</a></li>
+                    @endif
+                    @if (!Auth::guest() && Session::get('hub', 'root') == 'root' && Auth::user()->allowed('teacher'))
+                    <li><a href="{{ env('DOC_URL') }}">Documentation</a></li>
                     @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
