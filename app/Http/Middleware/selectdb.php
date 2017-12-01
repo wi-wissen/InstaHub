@@ -34,18 +34,18 @@ class selectdb
                 flash('Hub does not exist!')->warning();
                 return redirect(env('APP_URL'));
             } else {
-                Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->name, array(
+                Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
                     'driver'    => 'mysql',
                     'host'      => 'localhost',
-                    'database'  => env('DB_DATABASE') . "_" . $hub->name,
-                    'username'  => env('DB_DATABASE') . "_" . $hub->name,
+                    'database'  => env('DB_DATABASE') . "_" . $hub->id,
+                    'username'  => env('DB_DATABASE') . "_" . $hub->id,
                     'password'  => $hub->password,
                     'charset'   => 'utf8',
                     'collation' => 'utf8_unicode_ci',
                     'prefix'    => '',
                 ));
 
-                Config::set('database.default', env('DB_DATABASE') . "_" . $hub->name);
+                Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
  
             }
         }

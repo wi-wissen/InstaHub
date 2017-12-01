@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <div class="alert alert-warning  alert-important" role="alert">Your Hub must activated by yout Teacher! </div>
+                    <div class="alert alert-warning  alert-important" role="alert">Your Hub must activated by your Teacher! </div>
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/hubs') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}

@@ -11,6 +11,7 @@ use Config;
 use Artisan;
 use Schema;
 use Session;
+use DB;
 
 use App\Like;
 use App\Hub;
@@ -77,6 +78,19 @@ class HubController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'hub' => 'required|max:255|alpha_num|unique:hubs,name',
+            'password' => 'required|min:5|confirmed',
+            'teacher' => [
+                'required',
+                Rule::exists('users', 'username')->where(function ($query) {
+                    $query->where('is_active', 1);
+                }),
+            ]
+        ]);
+
+
+
         //generate db password
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!§$%&/()=?{[]}+-#';
         $count = mb_strlen($chars);
@@ -94,29 +108,33 @@ class HubController extends Controller
         ]);
         
         //Added create database and databaseuser
-        \DB::statement("CREATE DATABASE IF NOT EXISTS ". env('DB_DATABASE') ."_" . $hub->name . ";");
-        \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->name . ".* TO '". env('DB_DATABASE') ."_" . $hub->name . "'@'localhost'IDENTIFIED BY '" . $hub->password . "';");
+        \DB::statement("CREATE DATABASE IF NOT EXISTS ". env('DB_DATABASE') ."_" . $hub->id . ";");
+        \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost'IDENTIFIED BY '" . $hub->password . "';");
  
         //set db
-        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->name, array(
+        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => env('DB_DATABASE') . "_" . $hub->name,
-            'username'  => env('DB_DATABASE') . "_" . $hub->name,
+            'database'  => env('DB_DATABASE') . "_" . $hub->id,
+            'username'  => env('DB_DATABASE') . "_" . $hub->id,
             'password'  => $hub->password,
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
         ));
 
-        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->name);
+        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
 
-        //migrate usertable
+
+        DB::beginTransaction(); //better performance and safer
+    
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('users'); //not necesary but sometimes happend strage bug while registering..
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
         Artisan::call('migrate', array('--path' => "database/migrations/users", '--force' => true));
-        Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
-
-        //seed usertable
         Artisan::call('db:seed', array('--class' => "UsersTableSeeder", '--force' => true));
+        Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
 
         //insert admin
         $url = "avatar.png";
@@ -144,6 +162,8 @@ class HubController extends Controller
         $user->role = 2;
         $user->save();
 
+        DB::commit();
+
         flash('Your hub must be activated by your teacher!')->warning();
         return redirect("https://" . $hub->name . env('SESSION_DOMAIN')  . "/home");
     }
@@ -159,18 +179,18 @@ class HubController extends Controller
         $hub = Hub::find($id);
 
         //set db
-        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->name, array(
+        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => env('DB_DATABASE') . "_" . $hub->name,
-            'username'  => env('DB_DATABASE') . "_" . $hub->name,
+            'database'  => env('DB_DATABASE') . "_" . $hub->id,
+            'username'  => env('DB_DATABASE') . "_" . $hub->id,
             'password'  => $hub->password,
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
         ));
 
-        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->name);
+        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
 
         $user = User::where('role', '=', 'dba')->first();
         Auth::login($user);
@@ -232,24 +252,49 @@ class HubController extends Controller
      {
         //set db
         $hub = Hub::find($id);
-        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->name, array(
+        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => env('DB_DATABASE') . "_" . $hub->name,
-            'username'  => env('DB_DATABASE') . "_" . $hub->name,
+            'database'  => env('DB_DATABASE') . "_" . $hub->id,
+            'username'  => env('DB_DATABASE') . "_" . $hub->id,
             'password'  => $hub->password,
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
         ));
 
-        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->name);
+        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
         
         $user = User::where('username', '=', 'admin')->first();
         $user->is_active = true;
         $user->save();
 
         flash('Hub activated')->success();
+        return redirect("/hubs");
+     }
+
+     public function deactivate($id)
+     {
+        //set db
+        $hub = Hub::find($id);
+        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => env('DB_DATABASE') . "_" . $hub->id,
+            'username'  => env('DB_DATABASE') . "_" . $hub->id,
+            'password'  => $hub->password,
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ));
+
+        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
+        
+        $user = User::where('username', '=', 'admin')->first();
+        $user->is_active = false;
+        $user->save();
+
+        flash('Hub deactivated')->success();
         return redirect("/hubs");
      }
 

@@ -90,6 +90,7 @@ Auth::routes();
 Route::get('/home', 'HubController@index');
 Route::resource('hubs', 'HubController');
 Route::resource('hubs/{id}/activate', 'HubController@activate');
+Route::resource('hubs/{id}/deactivate', 'HubController@deactivate');
 
 Route::group(['middleware' => ['auth', 'role:teacher']], function () {
     Route::get('/user/{username}', 'ProfileController@show');
@@ -117,3 +118,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 });
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
+Route::get('/about', function () {
+    return view('about');   
+});

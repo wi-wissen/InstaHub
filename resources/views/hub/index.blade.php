@@ -9,6 +9,7 @@
                     <thead>
                         <tr>
                             <td>Hub</td>
+                            <td>Admin</td>
                             <td>Created at</td>
                             <td>Action</td>
                         </tr>
@@ -17,16 +18,22 @@
                     @foreach ($hubs as $hub)
                         <tr id="{{ $hub->id }}">
                                     <td><a href="https://{{ $hub->name . env('SESSION_DOMAIN')  . '/'}}">{{ $hub->name }}</a></td>
+                                    <td>{{ $hub->adminname() }}</td>
                                     <td>{{ $hub->created_at }}</td>
                                     <td>
+                                    @if ($hub->activated() == 0)
                                     <a href="{{ url('/hubs/' . $hub->id . '/activate') }}" class="btn btn-default">Activate</a>
+                                    @endif
                                     <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
                                     <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as DBA</a>
-                                        <form action="{{ url('../hubs/' .$hub->id) }}" method="post" style="display: inline;">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="submit" class="btn btn-danger" value="Delete" />
-                                        </form>
+                                    @if ($hub->activated() == 1)
+                                        <a href="{{ url('/hubs/' . $hub->id . '/deactivate') }}" class="btn btn-danger">Deactivate</a>
+                                    @endif
+                                    <form action="{{ url('../hubs/' .$hub->id) }}" method="post" style="display: inline;">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="submit" class="btn btn-danger" value="Delete" />
+                                    </form>
                                     </td>
                         </tr>
                     @endforeach
