@@ -29,9 +29,13 @@ class SqlController extends Controller
              //Ergebnis vorbereiten
             try {
                 $r = DB::select($request->editor);
-                if (!$r) {
-                        flash("Anfrage ausgeführt.", 'success')->important();
-                } else {
+                if (!$r && strpos(strtolower($request->editor), "select") !== false) {
+                    //nothing found
+                    flash("Anfrage ausgeführt. 0 Ergebnisse gefunden.", 'warning')->important();
+                } else if (!$r){
+                    //nothing to show, cause no select-statement
+                    flash("Anfrage ausgeführt.", 'success')->important();
+                } else{
                     flash("Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden.", 'success')->important();
 
                     $cols = array_keys((array) $r[0]);

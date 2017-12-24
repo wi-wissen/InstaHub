@@ -83,10 +83,10 @@ class UsersTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 4,
-                'username' => 'jungennamen489',
-                'email' => 'JungennamenMeister@instahub.app',
+                'username' => 'rowan489',
+                'email' => 'RowanMeister@instahub.app',
                 'password' => '$2y$10$CeuLhhLBGHuoR/WmgUzGUuGhKhGryfISh20Jo10C7JGvDeKnXNYoS',
-                'name' => 'Jungennamen Meister',
+                'name' => 'Rowan Meister',
                 'bio' => '',
                 'gender' => 'male',
                 'birthday' => '2001-07-12 00:00:00',
@@ -1275,10 +1275,10 @@ class UsersTableSeeder extends Seeder
             2 => 
             array (
                 'id' => 63,
-                'username' => 'jungennamen212',
-                'email' => 'JungennamenFassbinder@instahub.app',
+                'username' => 'dean212',
+                'email' => 'DeanFassbinder@instahub.app',
                 'password' => '$2y$10$5Y1yfb6EsIhp9JGcKBTwT.s6Uy/F/X6xo4WzfGwaOf4qjraly9aYW',
-                'name' => 'Jungennamen Fassbinder',
+                'name' => 'Dean Fassbinder',
                 'bio' => '',
                 'gender' => 'male',
                 'birthday' => '2001-10-10 00:00:00',
@@ -2951,10 +2951,10 @@ class UsersTableSeeder extends Seeder
             5 => 
             array (
                 'id' => 146,
-                'username' => 'mädchennamen447',
-                'email' => 'MädchennamenMeyer@instahub.app',
+                'username' => 'patti447',
+                'email' => 'PattiMeyer@instahub.app',
                 'password' => '$2y$10$lqsdPSyO6fc7wRbE45/5kOe2jAm8ZIzYu6aPHGZ9Tuy5MFK3MnN3a',
-                'name' => 'Mädchennamen Meyer',
+                'name' => 'Patti Meyer',
                 'bio' => '',
                 'gender' => 'female',
                 'birthday' => '2000-03-10 00:00:00',

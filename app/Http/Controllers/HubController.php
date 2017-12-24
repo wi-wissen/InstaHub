@@ -234,7 +234,7 @@ class HubController extends Controller
         $hub = Hub::find($id);
 
         \DB::statement("DROP DATABASE IF EXISTS ". env('DB_DATABASE') ."_" . $hub->name . ";");
-        \DB::statement("DROP USER '". env('DB_DATABASE') ."_" . $hub->name . "'@'localhost';");
+        \DB::statement("DROP USER IF EXISTS '". env('DB_DATABASE') ."_" . $hub->name . "'@'localhost';");
         
         $hub->delete();
 

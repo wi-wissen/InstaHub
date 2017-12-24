@@ -12,7 +12,8 @@
             <p>Read more (only in German): <a href='https://blog.wi-wissen.de/' target='_blank' >https://blog.wi-wissen.de/</a></p>
             
             <h3>Hosting</h3>
-            <p>InstaHub ist hosted by <a href="https://www3.sachsen.schule/sbs/startseite/">Sächsischer Bildungsserver</a></p>
+            <p>InstaHub ist hosted by <a href="https://wi-wissen.de/">wi-wissen.de</a></p>
+            <!--<p>InstaHub ist hosted by <a href="https://www3.sachsen.schule/sbs/startseite/">Sächsischer Bildungsserver</a></p>-->
 
             <h3>Standing on the shoulders of giants</h3>
             <p>Many thanks and respect to:</p>

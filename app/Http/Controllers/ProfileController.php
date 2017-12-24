@@ -48,7 +48,7 @@ class ProfileController extends Controller
 
 		$this->validate($request, [
 			'name' => 'required|max:255|unique:users,id,'.$user->id,
-			'email' => 'required|email|unique:users,id,'.$user->id,
+			'email' => 'required|email|unique:users,email,'.$user->email,
 			'bio' => 'max:500',
 			'gender' => 'required',
 			'birthday_birthDay' => 'nullable|date',
