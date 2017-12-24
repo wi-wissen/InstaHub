@@ -47,8 +47,8 @@ class ProfileController extends Controller
 		$user = User::where('username', $username)->first();
 
 		$this->validate($request, [
-			'name' => 'required|max:255|unique:users,id,'.$user->id,
-			'email' => 'required|email|unique:users,email,'.$user->email,
+			'name' => 'required|max:255',
+			'email' => 'required|email|unique:users,email,'.$user->id,
 			'bio' => 'max:500',
 			'gender' => 'required',
 			'birthday_birthDay' => 'nullable|date',
