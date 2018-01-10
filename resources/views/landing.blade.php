@@ -83,7 +83,7 @@
                         <p>{{env('APP_NAME')}} bietet einen motivierenden Rahmen, um den SchülerInnen das Themengebiet Datenbanken mit der Sprache SQL zu erläutern. Daneben bietet es Motivation für Grundlagen von Drei-Schichten-Architektur im Internet, Datenbanken, Datensicherheit und Big Data.</p>
                         <p>Die SchülerInnen erschaffen dabei ihr eigenes soziales Netzwerk. Selbstverständlich können Sie jederzeit steuernd korrigeren und helfen.</p>
                         <p>Sie erhalten von mir eine vollständige Umgebung zum direkten Durchstarten. Aufgabenblätter und Präsentationen sind ebenfalls verfügbar. Sie möchten {{env('APP_NAME')}} besser auf Ihren Untericht anpassen oder für alle weiterentwickeln?
-                        <p>Ich freue mich auf Ihre Ideen! Den Quelltext finden Sie bei <a href="#">GitHub</a>. Unterrichtsmaterial erhalten Sie in bearbeitbarer Form.</p>
+                        <p>Ich freue mich auf Ihre Ideen! Den Quelltext finden Sie bei <a href="https://github.com/wi-wissen/instahub">GitHub</a>. Unterrichtsmaterial erhalten Sie in bearbeitbarer Form.</p>
                         <p>Der Vorgänger von {{env('APP_NAME')}} ist die <a href="https://blog.wi-wissen.de/post/friendzone">friendzone</a>. Diese wurde 2017 mit dem <a href="https://www.gi.de/aktuelles/meldungen/detailansicht/article/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone.html">Unterrichtspreis der Gesellschaft für Informatik</a> ausgezeichnet.</p>  
                         <br />
                         <a href="{{ url('/register') }}" class="btn btn-primary">Registrieren</a>
