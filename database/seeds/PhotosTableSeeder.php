@@ -13748,15 +13748,6 @@ class PhotosTableSeeder extends Seeder
                 'created_at' => '2018-01-18 20:18:49',
                 'updated_at' => '2018-01-18 20:18:49',
             ),
-            22 => 
-            array (
-                'id' => 1574,
-                'user_id' => 0,
-                'description' => 'description',
-                'url' => 'url',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
-            ),
         ));
         
         \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
