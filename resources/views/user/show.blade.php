@@ -93,7 +93,7 @@
 				<div class="panel panel-defaut">
 					<div class="row">
 						@foreach ($user->photos as $photo)
-						<div class="col-xs-6 col-md-3">
+						<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
 							<a href="{{  '../photo/' . $photo->id }}" class="thumbnail thumb-square">
 							<div class="thumb"><img src="{{  '../' . $photo->url }}" alt="{{$photo->description}}"></div>
 							</a>
