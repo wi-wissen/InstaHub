@@ -21,6 +21,21 @@ class Hub extends Model
         return $this->belongsTo('App\User', 'teacher_id');
     }
 
+    public function hasWorkingUser()
+    {
+        if (Schema::hasTable('users'))
+        {
+            if(Schema::hasColumn('users', 'id') && Schema::hasColumn('users', 'password') && 
+               Schema::hasColumn('users', 'username') && Schema::hasColumn('users', 'role'))
+            {
+                if (User::where('role', '=', 'dba')->count() > 0)
+                {
+                    return true;
+                }
+            } 
+        }
+        return false; 
+    }
     public function activated()
     {
         //set db
@@ -36,7 +51,7 @@ class Hub extends Model
         ));
 
         Config::set('database.default', env('DB_DATABASE') . "_" . $this->id);
-
+        
         return User::where('role', '=', 'dba')->first()->is_active;
     }
 

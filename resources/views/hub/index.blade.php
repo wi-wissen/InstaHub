@@ -21,6 +21,7 @@
                                     <td>{{ $hub->adminname() }}</td>
                                     <td>{{ $hub->created_at }}</td>
                                     <td>
+                                    @if ($hub->hasWorkingUser())
                                     @if ($hub->activated() == 0)
                                     <a href="{{ url('/hubs/' . $hub->id . '/activate') }}" class="btn btn-default">Activate</a>
                                     @endif
@@ -28,6 +29,10 @@
                                     <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as DBA</a>
                                     @if ($hub->activated() == 1)
                                         <a href="{{ url('/hubs/' . $hub->id . '/deactivate') }}" class="btn btn-danger">Deactivate</a>
+                                    @endif
+                                    @else
+                                    <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
+                                    <a href="#" class="btn btn-danger disabled">Login as DBA</a>
                                     @endif
                                     <form action="{{ url('../hubs/' .$hub->id) }}" method="post" style="display: inline;">
                                         {{ csrf_field() }}
