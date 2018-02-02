@@ -23,10 +23,25 @@ class Hub extends Model
 
     public function hasWorkingUser()
     {
+        //set db
+        Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => env('DB_DATABASE') . "_" . $this->id,
+            'username'  => env('DB_DATABASE') . "_" . $this->id,
+            'password'  => $this->password,
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ));
+
+        Config::set('database.default', env('DB_DATABASE') . "_" . $this->id);
+
         if (Schema::hasTable('users'))
         {
-            if(Schema::hasColumn('users', 'id') && Schema::hasColumn('users', 'password') && 
-               Schema::hasColumn('users', 'username') && Schema::hasColumn('users', 'role'))
+            if (Schema::hasColumn('users', 'id') && Schema::hasColumn('users', 'password') && 
+               Schema::hasColumn('users', 'username') && Schema::hasColumn('users', 'role')&& 
+               Schema::hasColumn('users', 'created_at'))
             {
                 if (User::where('role', '=', 'dba')->count() > 0)
                 {
