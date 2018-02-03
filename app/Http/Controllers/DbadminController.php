@@ -27,13 +27,14 @@ class DbadminController extends Controller
 
     public function updateTags(Request $request)
     {
+        //if this ends to early your php memory limit is reached - turn off debug-mode or increase
         $photos = Photo::all();
 
         DB::beginTransaction(); //better performance
 
         foreach ($photos as $photo) {
             $photo->updateTags();
-            echo "updated $photo->id <br />";
+            echo "($photo->id) updated $photo->url <br />";
         }
 
         DB::commit();
@@ -47,7 +48,7 @@ class DbadminController extends Controller
 
         foreach ($users as $user) {
             $user->cryptpw();
-            echo "updated $user->id <br />";
+            echo "updated $user->username <br />";
         }
 
         DB::commit();

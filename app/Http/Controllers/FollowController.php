@@ -31,7 +31,7 @@ class FollowController extends Controller
     public function follow($id, Request $request) // id of the person to be followed
    {
         Auth::user()->following()->attach($id); 
-        flash('No following ' . User::find($id)->name . '.')->success();
+        flash('Now following ' . User::find($id)->name . '.')->success();
         return redirect('/user/' . User::find($id)->username);
    }
 
