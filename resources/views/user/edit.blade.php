@@ -81,9 +81,9 @@
                             <div class="col-md-6">
                                 <div id="birthday"></div>
 
-                                @if ($errors->has('birthday'))
+                                @if ($errors->has('birthday_birthDay'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('birthday') }}</strong>
+                                        <strong>{{ $errors->first('birthday_birthDay') }}</strong>
                                     </span>
                                 @endif
                             </div>

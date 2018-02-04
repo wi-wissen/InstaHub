@@ -12,6 +12,7 @@ use Input;
 use Config;
 use Auth;
 use Schema;
+
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -24,11 +25,6 @@ class UserController extends Controller
     public function destroy($username)
     {
         $user = User::where('username', $username)->first();
-        if (User::where('avatar', '=', $user->avatar)->count == 1)
-		{
-			//prevent deleting a file who is in use in an other avatar
-			Storage::disk('local')->delete($user->avatar);
-		}  
         $user->delete();
         flash('User deleted')->success();
         return redirect('home');

@@ -78,9 +78,11 @@ class User extends Authenticatable
 
     public static function boot() {
         parent::boot();
-        
+
         self::deleting(function ($value) {
-            if (User::where('avatar', '=', $value->avatar)->count == 1)
+            if (User::where('avatar', '=', $value->avatar)->count() == 1 &&
+                (!preg_match('/avatars\/[0-9]*\.jpg/', $value->avatar) ||
+                $value->avatar == "avatar.jpg"))
             {
                 //prevent deleting a file who is in use in an other avatar
                 Storage::disk('local')->delete($value->avatar);
