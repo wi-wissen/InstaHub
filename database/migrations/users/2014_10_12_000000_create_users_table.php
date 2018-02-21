@@ -26,8 +26,8 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->integer('centimeters')->nullable();
             $table->string('avatar')->default('avatar.png');
-            $table->enum('role', ['user', 'dba', 'teacher', 'admin'])->default('user')->after('avatar');
-            $table->boolean('is_active')->default(false)->after('role');
+            $table->enum('role', ['user', 'dba', 'teacher', 'admin'])->default('user');
+            $table->boolean('is_active')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
