@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 use App\Http\Requests;
+use Storage;
 use Auth;
 use Config;
 use Artisan;
