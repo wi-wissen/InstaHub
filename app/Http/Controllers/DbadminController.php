@@ -62,6 +62,7 @@ class DbadminController extends Controller
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists($tablename);
+        if ($tablename == "users") Schema::dropIfExists("password_resets"); //users migrates this table too.
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
         Artisan::call('migrate', array('--path' => "database/migrations/$tablename", '--force' => true));
