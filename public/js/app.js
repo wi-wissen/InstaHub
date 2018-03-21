@@ -58,6 +58,7 @@ $(document).ready(function(){
 		console.log($comment);
 		console.log("#list-group" + $photo_id);
 		$(comment_list_group).append('<div class="list-group-item"><b><a href="/user/' + $username + '">' + $username.textContent + '</a></b>: ' + $comment +'</div>');
+		$("textarea[name=comment" + $photo_id + "]").val("");
 
 		//return false;
 		$.ajax({
