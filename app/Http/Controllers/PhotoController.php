@@ -103,12 +103,13 @@ class PhotoController extends Controller
      */
 	 public function destroyavatar($filename)
 	 {
-		//dd($filename);
 		 $user = User::where('avatar', '=', 'avatars/' . $filename)->firstOrFail();
 		 
 		 //$this->authorize('view', $entry);
 		 
-		 return Storage::disk('local')->delete($user->avatar);
+		 //known bug in laravel 5.3: https://github.com/laravel/framework/issues/18118
+		//TODO: Check if Avater is unique before delete. OR change putFile and set real unique uuid
+		 //return Storage::disk('local')->delete($user->avatar);
 	 }
 
 	/**

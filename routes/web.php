@@ -115,6 +115,7 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/user', 'ProfileController@index');
+    Route::get('/avatars/{photo_id}', 'PhotoController@showavatar');
 });
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
