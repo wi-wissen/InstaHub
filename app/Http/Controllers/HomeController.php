@@ -73,7 +73,7 @@ class HomeController extends Controller
 
     public function single($photo_id, Request $request) 
 	{
-		$photo = Photo::find($photo_id);
+		$photo = Photo::findOrFail($photo_id);
 
 		Debugbar::info($photo);
 		return view('photo.show', ['photo' => $photo]);

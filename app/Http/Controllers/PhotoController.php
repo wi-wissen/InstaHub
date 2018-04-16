@@ -120,8 +120,14 @@ class PhotoController extends Controller
 	 public function destroy($id)
 	 {
 		$entry = Photo::find($id);
-		$entry->delete();
-		flash('Photo deleted')->success();
+
+		if ($entry) {
+			$entry->delete();
+			flash('Photo deleted')->success();
+		} else {
+			flash('Photo ' . $id . ' does not exist')->error();
+		}
+		
 
         return redirect('home');
 	 }
