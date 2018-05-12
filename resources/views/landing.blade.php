@@ -85,6 +85,7 @@
                         <p>Sie erhalten von mir eine vollständige Umgebung zum direkten Durchstarten. Aufgabenblätter und Präsentationen sind ebenfalls verfügbar. Sie möchten {{env('APP_NAME')}} besser auf Ihren Untericht anpassen oder für alle weiterentwickeln?
                         <p>Ich freue mich auf Ihre Ideen! Den Quelltext finden Sie bei <a href="https://github.com/wi-wissen/instahub">GitHub</a>. Unterrichtsmaterial erhalten Sie in bearbeitbarer Form.</p>
                         <p>Der Vorgänger von {{env('APP_NAME')}} ist die <a href="https://blog.wi-wissen.de/post/friendzone">friendzone</a>. Diese wurde 2017 mit dem <a href="https://www.gi.de/aktuelles/meldungen/detailansicht/article/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone.html">Unterrichtspreis der Gesellschaft für Informatik</a> ausgezeichnet.</p>  
+                        <p>Die ersten Schritte zeige ich in diesem <a href="https://youtu.be/wCj3keNW-74">Video</a>.</p>
                         <br />
                         <a href="{{ url('/register') }}" class="btn btn-primary">Registrieren</a>
                         <a href="{{ url('/login') }}" class="btn btn-default">Anmelden</a>
@@ -97,11 +98,11 @@
     <footer class="footer">
       <div class="container">
          <div class="row">
-            <div class="col-md-6">
-            <p class="text-muted">(c) {{env('APP_COPYRIGHT')}}</p>
+            <div class="col-md-6 hidden-xs">
+                <p class="text-muted">(c) {{env('APP_COPYRIGHT')}}</p>
             </div>
             <div class="col-md-6 text-right">
-                <p class="text-muted"><a href="/about">About</a> - <a href="https://wi-wissen.de/contact.php">Contact</a> - <a href="https://wi-wissen.de/impress.html">Impress</a></p>
+                <p class="text-muted"><a href="/about">About</a> - <a href="https://wi-wissen.de/contact.php">Contact</a> - <a href="https://wi-wissen.de/agb.html">AGB</a> - <a href="https://wi-wissen.de/datenschutz.html">Privacy</a> - <a href="https://wi-wissen.de/impressum.html">Impress</a></p>
             </div>
         </div>  
        </div>
