@@ -1945,8 +1945,8 @@ class PhotosTableSeeder extends Seeder
             array (
                 'id' => 214,
                 'user_id' => 64,
-                'description' => '#damen #seil #nackt',
-                'url' => 'photos/womens-eb36b20c2b_960.jpg',
+                'description' => '#frau #haare #nachdenklich',
+                'url' => 'photos/woman-837156_960.jpg',
                 'created_at' => '2017-09-18 12:59:45',
                 'updated_at' => '2017-09-18 12:59:45',
             ),
