@@ -34,6 +34,7 @@ Many thanks and respect to:
 
 - Download composer https://getcomposer.org/download/
 - Download git https://git-scm.com/downloads
+- Have a top-level domain for InstaHub
 
 #### Prerequisits for Windows users
 
@@ -57,11 +58,13 @@ Many thanks and respect to:
     - `MAIL_*` - mail provider for resetting passworts (admin accounts may reset passworts without sending a mail)
 6. Open the console and cd to your project root directory
 7. Run `composer install` or ```php composer.phar install``` ([Howto install composer](https://getcomposer.org/download/))
-8. Run `php artisan key:generate` 
-9. Run `php artisan migrate`
-10. Run `php artisan migrate --path=/database/migrations/users`
-11. Visit website and create first teacher.
-12. In the `user` table of your database, manually set the attribute  `is_active` to `1` and `role` to `admin`. Now your user is admin and may manage other accounts.
+8.  You may need to configure some permissions. Directories within the `storage` and the `bootstrap/cache` directories should be writable by your web server 
+9. Run `php artisan key:generate` 
+10. Run `php artisan migrate`
+11. Run `php artisan migrate --path=/database/migrations/users`
+12. Configure your top-level domain and all subdomains (wildcard) to point to the `public` directory 
+13. Visit website and create first teacher.
+14. In the `user` table of your database, manually set the attribute  `is_active` to `1` and `role` to `admin`. Now your user is admin and may manage other accounts.
 
 ### Contributing
 Thank you for considering contributing to the InstaHub! Create a pull request or contact [me](https://wi-wissen.de/contact.php).
