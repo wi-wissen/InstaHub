@@ -26,7 +26,7 @@ Many thanks and respect to:
 - [jQuery](https://jquery.com/) with [Backstretch](https://github.com/jquery-backstretch/jquery-backstretch)
 - Photos by [pixabay](https://pixabay.com/) (CC0)
 - Splash images by [unsplash.com](https://unsplash.com/) (CC0)
-- Face images by [Greg Peverill-Conti](https://www.flickr.com/photos/gregpc/) (CC BY-NC-SA 2.0)
+- [male](https://unsplash.com/collections/2452740/faces_male) and [female](https://unsplash.com/collections/2453183/faces_female) avatar images by [unsplash.com](https://unsplash.com/) (CC0) 
 
 ### Install
 
