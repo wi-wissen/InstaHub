@@ -22,6 +22,7 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 
         //user
         Route::get('/user', 'ProfileController@index');
+        Route::get('/user/letter/{char}', 'ProfileController@filter');
         Route::get('/user/{user_id}/followers', 'FollowController@followers');
         Route::get('/user/{user_id}/following', 'FollowController@following');
 
@@ -32,6 +33,8 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         Route::get('/user/{username}/destroy', 'UserController@destroy');
         Route::get('user/{username}/password', 'UserController@getPassword');
         Route::post('user/{username}/password', 'UserController@postPassword');
+        Route::get('/user/{username}/activate', 'ProfileController@activate');
+        Route::get('/user/{username}/deactivate', 'ProfileController@deactivate');
 
         //resources
         Route::get('/photos/{photo_id}', 'PhotoController@show');
@@ -95,17 +98,25 @@ Route::resource('hubs/{id}/deactivate', 'HubController@deactivate');
 Route::group(['middleware' => ['auth', 'role:teacher']], function () {
     Route::get('/user/{username}', 'ProfileController@show');
 
+    Route::get('/user/letter/{char}', 'ProfileController@filter');
+
     Route::get('/user/{username}/edit', 'ProfileController@edit');
     Route::put('/user/{username}/update', 'ProfileController@update');
     Route::get('/user/{username}/destroy', 'UserController@destroy');
     Route::get('user/{username}/password', 'UserController@getPassword');
     Route::post('user/{username}/password', 'UserController@postPassword');
+    Route::get('/user/{username}/activate', 'ProfileController@activate');
+    Route::get('/user/{username}/deactivate', 'ProfileController@deactivate');
 
     Route::get('user/password/{id}', 'UserController@getNewPassword');
 
     Route::group(['middleware' => ['auth', 'role:teacher']], function () {
         //dbadmin
         Route::get('hubs/{id}/dba/admin', 'DbadminController@index');
+
+        Route::get('hubs/{id}/dba/resetpw', 'DbadminController@setAdminPW');
+
+        Route::get('hubs/{id}/dba/tables/fill/{list}', 'DbadminController@fillTables');
 
         Route::get('hubs/{id}/dba/table/create/{tablename}', 'DbadminController@migrateTable');
         Route::get('hubs/{id}/dba/table/fill/{tablename}', 'DbadminController@fillTable');

@@ -13,6 +13,16 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Route notifications for the mail channel.
+     *
+     * @return string
+     */
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

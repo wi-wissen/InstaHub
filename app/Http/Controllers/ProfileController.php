@@ -13,6 +13,10 @@ use Storage;
 use Debugbar;
 use Config;
 
+use Session;
+
+use App\Notifications\UserActivated;
+
 class ProfileController extends Controller
 {
 	public function __construct()
@@ -22,7 +26,12 @@ class ProfileController extends Controller
 	
 	public function index(Request $request) 
 	{
-		return view('user.index', ['users' => User::orderBy('username', 'asc')->paginate(10)]);
+		return view('user.index', ['users' => User::orderBy('username', 'asc')->paginate(10), 'char' => 'All']);
+	}
+
+	public function filter($filter, Request $request) 
+	{
+		return view('user.index', ['users' => User::where('username', 'LIKE', $filter . '%')->orderBy('username', 'asc')->paginate(10), 'char' => $filter]);
 	}
 
 	
@@ -85,5 +94,49 @@ class ProfileController extends Controller
 		flash('All Changes saved')->success();
 		return redirect('user/' . $user->username);
 	 }
+
+	public function activate($username, Request $request) 
+	{
+		Debugbar::info(Config::get('database.default'));
+
+		$user = User::where('username', $username)->first();
+
+		if (Auth::user()->allowed('dba')) {
+			$user->save();
+			$user->is_active = true;
+			$user->save();
+			flash('User activated')->success();
+
+			if (Session::get('hub', 'root') == 'root') {
+				$user->notify(new UserActivated());
+			}
+		}
+		else {
+			flash('You are not allowed to do this.')->error();
+		}
+
+		return redirect('user/' . $user->username);
+	}
+
+	public function deactivate($username, Request $request) 
+	{
+		Debugbar::info(Config::get('database.default'));
+
+		$user = User::where('username', $username)->first();
+
+		if (Auth::user()->allowed('dba')) {
+			$user->save();
+			$user->is_active = false;
+			$user->save();
+			flash('User deactivated')->success();
+		}
+		else {
+			flash('You are not allowed to do this.')->error();
+		}
+
+		return redirect('user/' . $user->username);
+	}
+
+
 
 }

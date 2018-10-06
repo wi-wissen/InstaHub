@@ -11,6 +11,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Storage;
 use Session;
 
+use App\Notifications\NewUser;
+
 class RegisterController extends Controller
 {
     /*
@@ -56,8 +58,8 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'bio' => 'max:500',
-            'gender' => 'required',
+            'bio' => 'nullable|max:500',
+            'gender' => 'nullable',
 			'birthday_birthDay' => 'nullable|date',
 			'city' => 'nullable|string',
 			'country' => 'nullable|string',
@@ -73,7 +75,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //$url = $data['avatar']->file('avatar')->store('avatars');
+        //$url = $data['avatar']->file('avatar')->store('avatars'); 
         if (array_key_exists('avatar', $data)) {
             $url = Storage::putFile('avatars', $data['avatar']);
         } else {
@@ -88,12 +90,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'bio' => $data['bio'],
-            'gender' => $data['gender'],
-            'birthday' => $data['birthday_birthDay'] ?: null,
-            'city' => $data['city'] ?: null,
-            'country' => $data['country'] ?: null,
-            'centimeters' => $data['centimeters'] ?: null,
+            'bio' => array_has($data, 'bio') ? $data['bio'] : null,
+            'gender' => array_has($data, 'gender') ? $data['gender'] : null,
+            'birthday' => array_has($data, 'birthday_birthDay') ? $data['birthday_birthDay'] : null,
+            'city' => array_has($data, 'city') ? $data['city'] : null,
+            'country' => array_has($data, 'country') ? $data['country'] : null,
+            'centimeters' => array_has($data, 'centimeters') ? $data['centimeters'] : null,
             'avatar' => $url,
             'role' => $role
         ]);
@@ -101,6 +103,12 @@ class RegisterController extends Controller
         //don't work above. I have no clue...
         $user->role = $role;
         $user->save();
+
+        //send message to admin if teacher apply for account in root
+        if (Session::get('hub', 'root') == 'root') {
+            //Mail::to(User::where('role','=', 'admin')->first())->send(new NewUser($user, $data['messageToAdmin']));
+            User::where('role','=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
+        }
         
         return $user;
     }

@@ -27,6 +27,7 @@
                                     @endif
                                     <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
                                     <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as DBA</a>
+                                    <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments" class="btn btn-default">Fill all Tables</a>
                                     @if ($hub->activated() == 1)
                                         <a href="{{ url('/hubs/' . $hub->id . '/deactivate') }}" class="btn btn-danger">Deactivate</a>
                                     @endif

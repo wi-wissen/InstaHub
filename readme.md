@@ -26,7 +26,7 @@ Many thanks and respect to:
 - [jQuery](https://jquery.com/) with [Backstretch](https://github.com/jquery-backstretch/jquery-backstretch)
 - Photos by [pixabay](https://pixabay.com/) (CC0)
 - Splash images by [unsplash.com](https://unsplash.com/) (CC0)
-- Face images by [Greg Peverill-Conti](https://www.flickr.com/photos/gregpc/) (CC BY-NC-SA 2.0)
+- Face images by [unsplash.com](https://unsplash.com/) (CC0)
 
 ### Install
 
@@ -63,7 +63,7 @@ Many thanks and respect to:
 10. Run `php artisan migrate`
 11. Run `php artisan migrate --path=/database/migrations/users`
 12. Configure your top-level domain and all subdomains (wildcard) to point to the `public` directory 
-13. Visit website and create first teacher.
+13. Visit website and create first teacher (ignore error after creating, thats okay cause you are the first).
 14. In the `user` table of your database, manually set the attribute  `is_active` to `1` and `role` to `admin`. Now your user is admin and may manage other accounts.
 
 ### Contributing
@@ -73,7 +73,7 @@ Thank you for considering contributing to the InstaHub! Create a pull request or
 InstaHub used parts of [Laragram](https://github.com/itsshady101/Laragram) from [itsshady101](https://github.com/itsshady101) 
 
 ### License
-[Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[Mozilla Public License (MPL)](https://www.mozilla.org/en-US/MPL/1.1/)
 
 Commits up to [9c21886](https://github.com/wi-wissen/InstaHub/commit/9c21886f1a578bd991fa4ad5d02c2d7033413a34) are licenced under MIT License. 
 

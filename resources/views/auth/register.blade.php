@@ -8,11 +8,7 @@
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
 
-                    @if (Session::get('hub', 'root') == 'root')
-                    <div class="alert alert-warning  alert-important" role="alert">Your Account must activated by Admin! Please Send an <a href="https://wi-wissen.de/contact.php">message</a>.</div>
-                    @else
                     <div class="alert alert-warning  alert-important" role="alert">Your Account must activated manually.</div>
-                    @endif
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -86,6 +82,8 @@
                                 @endif
                             </div>
                         </div>
+
+                        @if (Session::get('hub', 'root') != 'root')
 
                         <div class="form-group{{ $errors->has('bio') ? ' has-error' : '' }}">
                             <label for="bio" class="col-md-4 control-label">Bio</label>
@@ -187,6 +185,22 @@
                                 @endif
                             </div>
                         </div>
+
+                        @else
+                        <div class="form-group{{ $errors->has('messageToAdmin') ? ' has-error' : '' }}">
+                            <label for="messageToAdmin" class="col-md-4 control-label">Message</label>
+
+                            <div class="col-md-6">
+                                <textarea name="messageToAdmin" id="messageToAdmin" class="form-control" placeholder="Please use your work email adress or provide other prove that you are a teacher."></textarea>
+
+                                @if ($errors->has('messageToAdmin'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('messageToAdmin') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

@@ -74,9 +74,21 @@ class DbadminController extends Controller
         return redirect("/hubs/$id/dba/admin");
     }
 
-    public function fillTable($id, $tablename)
+    public function fillTables($id, $list)
     {
         $this->setdb($id);
+
+        $a=explode(',',$list);
+        foreach ($a as $t) {
+            $this->fillTable($id, $t, true);
+        }
+
+        return redirect("/hubs/$id/dba/admin");
+    }
+    
+    public function fillTable($id, $tablename, $batch=false)
+    {
+        if (!$batch) $this->setdb($id);
 
         DB::beginTransaction(); //better performance and safer
 
@@ -91,11 +103,12 @@ class DbadminController extends Controller
 
         if ($tablename == 'users') {
             //create dummy dba for managing this hub
+            $pw = substr(uniqid(),8);
             $user = User::create([
                 'username' => 'admin',
                 'name' => 'admin',
                 'email' => 'admin@instahub.app',
-                'password' => bcrypt(uniqid()),
+                'password' => bcrypt($pw),
                 'avatar' => 'avatar.png',
                 'role' => 2
             ]);
@@ -104,12 +117,12 @@ class DbadminController extends Controller
             $user->is_active = true;
             $user->save();
 
-            flash("All DBAs are lost. New one is generated. Please create new one or reset password.")->warning();
+            flash("All DBAs are lost. New Passwort for 'admin' was generated: " . $pw)->warning()->important();
         }
 
         DB::commit();
 
-        return redirect("/hubs/$id/dba/admin");
+        if (!$batch) return redirect("/hubs/$id/dba/admin");
     }
 
     public function dropTable($id, $tablename)
@@ -126,6 +139,20 @@ class DbadminController extends Controller
         DB::commit();
 
         flash("Table $tablename does not (longer) exist.")->success();
+        return redirect("/hubs/$id/dba/admin");
+    }
+
+    public function setAdminPW($id) {
+
+        $this->setdb($id);
+
+        $pw = substr(uniqid(),8);
+        $user = User::where('username', '=', 'admin')->first();
+        $user->password = bcrypt($pw);
+        $user->save();
+
+        flash("New Passwort for 'admin' was generated: " . $pw)->success()->important();
+
         return redirect("/hubs/$id/dba/admin");
     }
 
