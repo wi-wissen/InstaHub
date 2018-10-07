@@ -103,5 +103,12 @@ $(document).ready(function(){
             },
 
         });
-    });
+	});
+	
+	//adblock detection
+	//it seems that antiadblock kiler set canRunAds=true so I changed to different variable. nice try. :D
+	document.getElementById('adblockerwarning').style.display = 'block';
+	if (aes7EU2p7XzhcQ6B) {
+		document.getElementById('adblockerwarning').style.display = 'none';
+	}
 });

@@ -8,6 +8,18 @@
         <div class="col-md-8 col-md-offset-2">
             	@foreach ($photos as $photo)
                     @include('photo.photo', ['photo' => $photo, 'single' => false])
+ 
+                    @if (Schema::hasTable('ads') && $loop->iteration == 2)
+                    @if ($ad != null)
+                    <div class="well">
+                        <div class="user-data">
+                            <h4><img class="img-circle" src="/000.jpg" alt="000.jpg" width="30" height="30"> <span style="color: #333">Special Offer</span></h4>
+                        </div>
+
+                        <a href="{{$ad->url}}"><img src="{{$ad->img}}" class="img-responsive" style="display: block;margin: 0 auto; width:100%"></a><br>
+                    </div>
+                    @endif
+                    @endif
             	@endforeach
                 
                 @if(!empty($photos))

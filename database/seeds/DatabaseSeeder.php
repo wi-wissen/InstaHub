@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call('LikesTableSeeder');
         $this->call('PhotosTableSeeder');
         $this->call('TagsTableSeeder');
+        $this->call('AdsTableSeeder');
     }
 }

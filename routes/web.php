@@ -57,6 +57,9 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         //comment
         Route::post('/comment/{photo_id}', 'CommentController@store');
         Route::get('/comment/{id}/destroy', 'CommentController@destroy');
+
+        //Business (Analytic)
+        Route::get('/business', 'BusinessController@index');
     });
 
     Route::group(['middleware' => ['auth', 'role:dba']], function () {
@@ -86,6 +89,10 @@ Route::get('/', function () {
     }else{
         return view('landing');
     }   
+});
+
+Route::get('/noad', function () {
+    return view('noad');   
 });
 
 Auth::routes();
@@ -127,6 +134,9 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/user', 'ProfileController@index');
     Route::get('/avatars/{photo_id}', 'PhotoController@showavatar');
+
+    Route::get('/trimanalytics', 'DbadminController@trimAnalytics');
+    
 });
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');

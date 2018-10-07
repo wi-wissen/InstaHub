@@ -34,6 +34,12 @@ class Photo extends Model
         return $this->hasMany('App\Tag');
     }
 
+    
+    public function viewers()
+    {
+        return $this->hasMany('App\Analytic');
+    }
+
     public static function boot() {
         parent::boot();
         

@@ -30,6 +30,12 @@
     </div>
     @endif
 
+    @if (Schema::hasTable('ads') && $single)
+    @if ($ad != null)
+	<a href="{{$ad->url}}"><img style="width:100%;margin-top: -5px;margin-bottom: 20px;" src="{{$ad->img}}" alt="{{$ad->name}}" /></a>
+	@endif
+    @endif
+
     <div class="comments" class="{{ rand() }}">
             <div class="list-group" id="list-group{{ $photo->id }}">
                 <div class="list-group-item">

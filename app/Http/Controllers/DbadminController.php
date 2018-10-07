@@ -9,6 +9,7 @@ use Schema;
 use App\Photo;
 use App\User;
 use App\Hub;
+use App\Analytic;
 use Auth;
 use DB;
 use Config;
@@ -174,6 +175,21 @@ class DbadminController extends Controller
         }
 
         return view('admin.dbadmin', ['hub' => $hub, 'state' => $dbclass]);
+    }
+
+    public function trimAnalytics() 
+    {
+        $hubs = Hub::all();
+
+        foreach ($hubs as $hub) {
+            $this->setdb($hub->id);
+            
+            if (Schema::hasTable('analytics')) {
+                //trim analytics to max 10.000 entries (not exact methode)
+                $latest = DB::table('analytics')->latest()->first()->id;
+                Analytic::latest()->where('id', '<', $latest-10000)->delete();
+            }
+        }
     }
 
     private function setdb($id) 

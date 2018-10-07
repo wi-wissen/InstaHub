@@ -16,3 +16,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 });
+
+Artisan::command('trimAnalytics', function () {
+    $controller = new DbadminController;
+    $controller->trimAnalytics();
+})->describe('Trim Analystics Tables');

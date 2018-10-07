@@ -9,12 +9,14 @@
                 <h1>{{$heading}}</h1>
                 @endif
 
+                @if(isset($char))
                 <ul class="pagination" style="margin-top:0!important">
                     <li {{ $char == "All" ? 'class=active' : "" }}><a href="/user">All</a></li>
                     @foreach(range('A','Z') as $v)
                     <li {{ $char == $v ? 'class=active' : "" }}><a href="/user/letter/{{$v}}">{{$v}}</a></li>
                     @endforeach
                 </ul>
+                @endif
 
                 <ul class="list-group">
                     @foreach($users as $user)

@@ -32,10 +32,20 @@
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/likes" type="button" class="btn btn-primary btn-block">(Re)Fill Likes</a></div>
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/likes" type="button" class="btn btn-danger btn-block">Drop Likes</a></div>
 					</div>
-					<div class="row">
+					<div class="row" style="padding-bottom:10px;">
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/tags" type="button" class="btn btn-success btn-block">(Re)Create Tags</a></div>
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/tags" type="button" class="btn btn-primary btn-block">(Re)Fill Tags</a></div>
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/tags" type="button" class="btn btn-danger btn-block">Drop Tags</a></div>
+					</div>
+					<div class="row" style="padding-bottom:10px;">
+						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/ads" type="button" class="btn btn-success btn-block">(Re)Create Ads</a></div>
+						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/ads" type="button" class="btn btn-primary btn-block">(Re)Fill Ads</a></div>
+						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/ads" type="button" class="btn btn-danger btn-block">Drop Ads</a></div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/analytics" type="button" class="btn btn-success btn-block">(Re)Create Analytics</a></div>
+						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/analytics" type="button" class="btn btn-primary btn-block">(Re)Fill Analytics</a></div>
+						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/analytics" type="button" class="btn btn-danger btn-block">Drop Analytics</a></div>
 					</div>
 				</div>
 			</div>

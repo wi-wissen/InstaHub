@@ -66,6 +66,9 @@ Many thanks and respect to:
 13. Visit website and create first teacher (ignore error after creating, thats okay cause you are the first).
 14. In the `user` table of your database, manually set the attribute  `is_active` to `1` and `role` to `admin`. Now your user is admin and may manage other accounts.
 
+I recomend to add a cronjob to your system: `* * * * * php /path/to/artisan schedule:run >> /dev/null 2>&1`
+Then InstaHub will delete old analytic database files each night.
+
 ### Contributing
 Thank you for considering contributing to the InstaHub! Create a pull request or contact [me](https://wi-wissen.de/contact.php).
 

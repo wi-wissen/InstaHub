@@ -77,6 +77,10 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
+
+                    @if (Schema::hasTable('analytics'))
+                    <li><a href="{{ url('/business') }}">Business</a></li>
+                    @endif
                     @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
                     <li><a href="{{ url('/sql') }}">Database</a></li>
                     @endif
@@ -116,6 +120,16 @@
         </div>
     </nav>
 
+    @if (Schema::hasTable('analytics') && Session::get('hub', 'root') != 'root')
+    <div class="container">
+        <div class="row"  style="margin-top: -10px;">
+            <div class="col-md-8 col-md-offset-2">
+                <div id="adblockerwarning" class="alert alert-warning alert-important" role="alert" style="display:none;text-align:center;">Adblocker detected! Please deactivate your Adblocker!</div>
+            </div>
+        </div>
+    </div>
+    @endif
+
     @yield('content')
 
     <footer class="footer">
@@ -134,6 +148,7 @@
     <!-- Scripts -->
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/js/ads.js"></script>
     <script src="/js/app.js"></script>
     <script>
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);

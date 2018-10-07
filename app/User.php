@@ -59,6 +59,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Photo');
     }
 
+    public function visits()
+    {
+        return $this->hasMany('App\Analytic');
+    }
+
     public function isfollowing($user)
     {
         //dd($this->following()->get()->where('id', $user->id)->count());

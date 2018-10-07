@@ -168,6 +168,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
         'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
+        \hisorange\BrowserDetect\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -231,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Browser' => \hisorange\BrowserDetect\Facade::class,
 
     ],
 

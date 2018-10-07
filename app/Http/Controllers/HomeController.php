@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Schema;
 
 use App\Photo;
 use App\User;
+use App\Analytic;
+use App\Ad;
+
 use Auth;
 use Debugbar;
 use Config;
@@ -41,10 +44,6 @@ class HomeController extends Controller
                 array_push($following_ids, $following->id);
             }
             array_push($following_ids, Auth::user()->id); //always show own posts
-            //dd($following_ids);
-
-            //print_r($following_ids);
-
             
             if (!empty($following_ids)) {
                 if (Photo::where('user_id', $following_ids)->exists())
@@ -55,8 +54,13 @@ class HomeController extends Controller
 
         }
 
-       //dd($photos);
-        return view('home', ['photos' => $photos]);
+        if (Schema::hasTable('ads')) {
+            $ad = Ad::getAd();
+            return view('home', ['photos' => $photos, 'ad' => $ad]);
+        }
+        else {
+            return view('home', ['photos' => $photos]);
+        }
     }
 
     public function photosbytag ($name) {
@@ -64,10 +68,22 @@ class HomeController extends Controller
             $photos = Photo::whereHas('tags', function ($query) use($name) {
                     $query->where('name', '=', strtolower($name));
                 })->paginate(5);
-            return view('home', ['photos' => $photos]); 
+            if (Schema::hasTable('ads')) {
+                $ad = Ad::getAd();
+                return view('home', ['photos' => $photos, 'ad' => $ad]);
+            }
+            else {
+                return view('home', ['photos' => $photos]);
+            } 
         } elseif (Schema::hasTable('photos')) {
             $photos = Photo::where('description', 'like', "%#$name%" )->paginate(5);
-            return view('home', ['photos' => $photos]); 
+            if (Schema::hasTable('ads')) {
+                $ad = Ad::getAd();
+                return view('home', ['photos' => $photos, 'ad' => $ad]);
+            }
+            else {
+                return view('home', ['photos' => $photos]);
+            } 
         }
     }
 
@@ -75,7 +91,17 @@ class HomeController extends Controller
 	{
 		$photo = Photo::findOrFail($photo_id);
 
-		Debugbar::info($photo);
-		return view('photo.show', ['photo' => $photo]);
+        //analytic
+        if (Schema::hasTable('analytics')) {
+            Analytic::create(['user_id' => Auth::id(), 'photo_id' => $photo->id]);
+        }
+
+        if (Schema::hasTable('ads')) {
+            $ad = Ad::getAd($photo_id);
+            return view('photo.show', ['photo' => $photo, 'ad' => $ad]);
+        }
+        else {
+            return view('photo.show', ['photo' => $photo]);
+        }
 	}
 }
