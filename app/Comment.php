@@ -12,4 +12,11 @@ class Comment extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function getHtmlAttribute() {
+        $html = htmlspecialchars($this->body); //secure user input
+        $html = preg_replace('/#([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/tag/$1'>$0</a>", $html);
+        $html = preg_replace('/@([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/user/$1'>$0</a>", $html);
+        return $html;
+    }
 }

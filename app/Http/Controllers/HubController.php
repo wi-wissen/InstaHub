@@ -110,7 +110,11 @@ class HubController extends Controller
         
         //Added create database and databaseuser
         \DB::statement("CREATE DATABASE IF NOT EXISTS ". env('DB_DATABASE') ."_" . $hub->id . ";");
-        \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost'IDENTIFIED BY '" . $hub->password . "';");
+        
+        $host = "localhost";
+        if(env('ALLOW_PUBLIC_DB_ACCESS')) $host = "%";
+
+        \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'" . $host . "'IDENTIFIED BY '" . $hub->password . "';");
  
         //set db
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
@@ -119,8 +123,8 @@ class HubController extends Controller
             'database'  => env('DB_DATABASE') . "_" . $hub->id,
             'username'  => env('DB_DATABASE') . "_" . $hub->id,
             'password'  => $hub->password,
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
         ));
 
@@ -186,8 +190,8 @@ class HubController extends Controller
             'database'  => env('DB_DATABASE') . "_" . $hub->id,
             'username'  => env('DB_DATABASE') . "_" . $hub->id,
             'password'  => $hub->password,
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
         ));
 
@@ -259,8 +263,8 @@ class HubController extends Controller
             'database'  => env('DB_DATABASE') . "_" . $hub->id,
             'username'  => env('DB_DATABASE') . "_" . $hub->id,
             'password'  => $hub->password,
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
         ));
 
@@ -284,8 +288,8 @@ class HubController extends Controller
             'database'  => env('DB_DATABASE') . "_" . $hub->id,
             'username'  => env('DB_DATABASE') . "_" . $hub->id,
             'password'  => $hub->password,
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
         ));
 

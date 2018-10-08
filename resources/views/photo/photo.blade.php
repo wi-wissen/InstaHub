@@ -39,12 +39,12 @@
     <div class="comments" class="{{ rand() }}">
             <div class="list-group" id="list-group{{ $photo->id }}">
                 <div class="list-group-item">
-                        <b><a href="/user/{{ $photo->user->username }}">{{ $photo->user->username }}</a></b>: <b>{!! $photo->htmldescription() !!}</b>
+                        <b><a href="/user/{{ $photo->user->username }}">{{ $photo->user->username }}</a></b>: <b>{!! $photo->html !!}</b>
                 </div>
                 @if (Schema::hasTable('comments'))
                 @foreach ($photo->comments as $comment)
                     <div class="list-group-item">
-                        <b><a href="/user/{{ $comment->user->username }}">{{ $comment->user->username }}</a></b>: {{ $comment->body }}
+                        <b><a href="/user/{{ $comment->user->username }}">{{ $comment->user->username }}</a></b>: {!! $comment->html !!}
                         @if (Auth::user()->id == $photo->user->id || Auth::user()->id == $comment->user->id || Auth::user()->allowed('dba'))
                             <a href="{{'../comment/' . $comment->id . '/destroy'}}" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                         @endif

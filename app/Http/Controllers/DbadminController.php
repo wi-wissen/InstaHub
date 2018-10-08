@@ -202,8 +202,8 @@ class DbadminController extends Controller
             'database'  => env('DB_DATABASE') . "_" . $hub->id,
             'username'  => env('DB_DATABASE') . "_" . $hub->id,
             'password'  => $hub->password,
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
         ));
 

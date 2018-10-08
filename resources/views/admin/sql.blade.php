@@ -29,6 +29,30 @@
                         {!! $tables !!}
                     </div>
                 </div>
+
+                @if(env('ALLOW_PUBLIC_DB_ACCESS'))
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                    @php
+                        $connection = config('database.connections');
+                        $connection = end($connection);
+                    @endphp
+                    <b>Database Server:</b>
+                    @if (env('DB_HOST') == '127.0.0.1' || env('DB_HOST') == 'localhost')
+                        {{ env('APP_URL') . ':' . env('DB_PORT') }}
+                    @else
+                        {{ $connection['host'] . ':' . env('DB_PORT') }}
+                    @endif
+                    <br />
+                    <b>Database: </b>{{ $connection['database'] }}<br />
+                    <b>Username: </b>{{ $connection['username'] }}<br />
+                    <b>Password: </b>{{ $connection['password'] }}<br />
+                    <b>Charset: </b>{{ $connection['charset'] }}<br />
+                    <b>Collation: </b>{{ $connection['collation'] }}
+                    
+                    </div>
+                </div>
+                @endif
             
             
             </div> <!-- /container -->
