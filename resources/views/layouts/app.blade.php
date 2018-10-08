@@ -107,7 +107,7 @@
                                 <li>
                                     <a href="/user/{{ Auth::user()->username }}">Profile</a>
                                 </li>
-                                @if (Schema::hasTable('photos'))
+                                @if (Schema::hasTable('photos') && !Session::get('readonly'))
                                 <li>
                                     <a href="{{ url('/upload') }}">Upload</a>
                                 </li>
@@ -136,6 +136,16 @@
         <div class="row"  style="margin-top: -10px;">
             <div class="col-md-8 col-md-offset-2">
                 <div id="adblockerwarning" class="alert alert-warning alert-important" role="alert" style="display:none;text-align:center;">Adblocker detected! Please deactivate your Adblocker!</div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    @if (Session::get('readonly'))
+    <div class="container">
+        <div class="row"  style="margin-top: -10px;">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="alert alert-info alert-important" role="alert" style="text-align:center;">Hub is in Maintenance Mode. Read Only.</div>
             </div>
         </div>
     </div>

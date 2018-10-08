@@ -14,18 +14,18 @@
         <form class="like_form" data-id="{{ $photo->id }}" method="post" style='display:inline;'>
             <input type="hidden" value="{{ $photo->id }}" name="photo_id" >
             {{ csrf_field() }}
-            <button class="btn btn-primary btn-small like-btn"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<span id="likes{{ $photo->id }}">{{ count($photo->likes) }}</span> likes</button>
+            <button {{ Session::get('readonly') ? "disabled" : "" }} class="btn btn-primary btn-small like-btn"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<span id="likes{{ $photo->id }}">{{ count($photo->likes) }}</span> likes</button>
         </form>
         {{-- <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->likes) }} Likes --}}  
         @if (Auth::user()->id == $photo->user->id || Auth::user()->allowed('dba'))
-            <a href="{{'../photo/' . $photo->id . '/destroy'}}" class="btn btn-danger pull-right" role="button"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
+            <a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../photo/' . $photo->id . '/destroy'}}" class="btn btn-danger pull-right" role="button"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
         @endif
     </div>
     @else
     <div class="meta text-right" style='padding-bottom:20px;'>    
         {{-- <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp; {{ count($photo->likes) }} Likes --}}  
         @if (Auth::user()->id == $photo->user->id || Auth::user()->allowed('dba'))
-            <a href="{{'../photo/' . $photo->id . '/destroy'}}" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
+            <a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../photo/' . $photo->id . '/destroy'}}" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a>
         @endif
     </div>
     @endif
@@ -45,7 +45,7 @@
                 @foreach ($photo->comments as $comment)
                     <div class="list-group-item">
                         <b><a href="/user/{{ $comment->user->username }}">{{ $comment->user->username }}</a></b>: {!! $comment->html !!}
-                        @if (Auth::user()->id == $photo->user->id || Auth::user()->id == $comment->user->id || Auth::user()->allowed('dba'))
+                        @if ((Auth::user()->id == $photo->user->id || Auth::user()->id == $comment->user->id || Auth::user()->allowed('dba')) && !Session::get('readonly'))
                             <a href="{{'../comment/' . $comment->id . '/destroy'}}" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                         @endif
                     </div>
@@ -57,14 +57,14 @@
     <form method="post" class="comment_form" data-id="{{ $photo->id }}">
 
         <div class="form-group">
-            <textarea name="comment{{ $photo->id }}" class="form-control" id="comment" placeholder="Add a Comment"></textarea>
+            <textarea {{ Session::get('readonly') ? "disabled" : "" }} name="comment{{ $photo->id }}" class="form-control" id="comment" placeholder="Add a Comment"></textarea>
         </div>
         
         <input type="hidden" value="{{ $photo->id }}" name="photo_id" >
 
         <div class="form-group">
             {{ csrf_field()  }}
-            <input type="submit" class="btn btn-primary" value="Comment">
+            <input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-primary" value="Comment">
         </div>
         
     </form>

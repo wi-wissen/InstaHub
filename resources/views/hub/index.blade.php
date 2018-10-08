@@ -19,24 +19,43 @@
                         <tr id="{{ $hub->id }}">
                                     <td><a href="https://{{ $hub->name . env('SESSION_DOMAIN')  . '/'}}">{{ $hub->name }}</a></td>
                                     @if ($hub->hasWorkingUser())
-                                    <td>{{ $hub->adminname() }}</td>
-                                    <td>{{ $hub->created_at }}</td>
-                                    <td>
-                                    @if ($hub->activated() == 0)
-                                    <a href="{{ url('/hubs/' . $hub->id . '/activate') }}" class="btn btn-default">Activate</a>
-                                    @endif
-                                    <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
-                                    <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as DBA</a>
-                                    <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-default">Fill all Tables</a>
-                                    @if ($hub->activated() == 1)
-                                        <a href="{{ url('/hubs/' . $hub->id . '/deactivate') }}" class="btn btn-danger">Deactivate</a>
-                                    @endif
+                                        <td>{{ $hub->adminname() }}</td>
+                                        <td>{{ $hub->created_at }}</td>
+                                        <td>
+                                        @if ($hub->activated() == 0)
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/activate') }}" class="btn btn-default">Activate</a>
+                                        @endif
+                                        @if ($hub->readonly() == 0)
+                                        <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
+                                        @endif
+                                        <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as DBA</a>
+                                        @if ($hub->readonly() == 0)
+                                        <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-default">Fill all Tables</a>
+                                        @endif
+                                        @if ($hub->readonly() == 1)
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readwrite') }}" class="btn btn-default">Run</a>
+                                        @else
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readonly') }}" class="btn btn-danger">Maintenance</a>
+                                        @endif
+                                        @if ($hub->activated() == 1)
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/deactivate') }}" class="btn btn-danger">Deactivate</a>
+                                        @endif
                                     @else
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                    <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
-                                    <a href="#" class="btn btn-danger disabled">Login as DBA</a>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                        @if ($hub->readonly() == 0)
+                                        <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
+                                        @endif
+                                        <a href="#" class="btn btn-danger disabled">Login as DBA</a>
+                                        @if ($hub->readonly() == 0)
+                                        <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-default">Fill all Tables</a>
+                                        @endif
+                                        @if ($hub->readonly() == 1)
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readwrite') }}" class="btn btn-default">Run</a>
+                                        @else
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readonly') }}" class="btn btn-danger">Maintenance</a>
+                                        @endif
                                     @endif
                                     <form action="{{ url('../hubs/' .$hub->id) }}" method="post" style="display: inline;">
                                         {{ csrf_field() }}

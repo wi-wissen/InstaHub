@@ -38,7 +38,7 @@
         <p>Share the best moments with your friends!</p>
 
         <div id="btns">
-            <a href="{{ url('/register') }}" class="btn btn-primary btn-xl">Sign Up</a>
+            <a {{ Session::get('readonly') ? "disabled" : "" }} href="{{ url('/register') }}" class="btn btn-primary btn-xl">Sign Up</a>
             &nbsp;
             <a href="{{ url('/login') }}" class="btn btn-default btn-xl">Sign In</a>
         </div>

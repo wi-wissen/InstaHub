@@ -110,12 +110,12 @@ class HubController extends Controller
         
         //Added create database and databaseuser
         \DB::statement("CREATE DATABASE IF NOT EXISTS ". env('DB_DATABASE') ."_" . $hub->id . ";");
+        \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost'IDENTIFIED BY '" . $hub->password . "';");
         
-        $host = "localhost";
-        if(env('ALLOW_PUBLIC_DB_ACCESS')) $host = "%";
+        if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
+            \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'IDENTIFIED BY '" . $hub->password . "';");
+        }
 
-        \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'" . $host . "'IDENTIFIED BY '" . $hub->password . "';");
- 
         //set db
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
             'driver'    => 'mysql',
@@ -300,6 +300,42 @@ class HubController extends Controller
         $user->save();
 
         flash('Hub deactivated')->success();
+        return redirect("/hubs");
+     }
+
+     public function readonly($id)
+     {
+        $hub = Hub::find($id);
+
+        \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+        \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+        \DB::statement("GRANT INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+        //otherwise logout will fail
+        \DB::statement("GRANT UPDATE (remember_token, updated_at) ON ". env('DB_DATABASE') ."_" . $hub->id . ".users TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+        
+        if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
+            \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'");
+            \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+            \DB::statement("GRANT INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+        }
+
+        flash('Hub may now only log user activity')->success();
+
+        return redirect("/hubs");
+     }
+
+     public function readwrite($id)
+     {
+        $hub = Hub::find($id);
+        
+        \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost'IDENTIFIED BY '" . $hub->password . "';");
+        
+        if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
+            \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'IDENTIFIED BY '" . $hub->password . "';");
+        }
+
+        flash('Hub has now full Database access')->success();
+
         return redirect("/hubs");
      }
 

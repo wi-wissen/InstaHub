@@ -98,9 +98,6 @@ Route::get('/noad', function () {
 Auth::routes();
 
 Route::get('/home', 'HubController@index');
-Route::resource('hubs', 'HubController');
-Route::resource('hubs/{id}/activate', 'HubController@activate');
-Route::resource('hubs/{id}/deactivate', 'HubController@deactivate');
 
 Route::group(['middleware' => ['auth', 'role:teacher']], function () {
     Route::get('/user/{username}', 'ProfileController@show');
@@ -119,9 +116,16 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
 
     Route::group(['middleware' => ['auth', 'role:teacher']], function () {
         //dbadmin
+        Route::resource('hubs', 'HubController');
+        Route::get('hubs/{id}/dba/activate', 'HubController@activate');
+        Route::get('hubs/{id}/dba/deactivate', 'HubController@deactivate');
+
         Route::get('hubs/{id}/dba/admin', 'DbadminController@index');
 
         Route::get('hubs/{id}/dba/resetpw', 'DbadminController@setAdminPW');
+
+        Route::get('hubs/{id}/dba/readonly', 'HubController@readonly');
+        Route::get('hubs/{id}/dba/readwrite', 'HubController@readwrite');
 
         Route::get('hubs/{id}/dba/tables/fill/{list}', 'DbadminController@fillTables');
 

@@ -110,4 +110,19 @@ class Hub extends Model
 
         return User::where('role', '=', 'dba')->first()->name;
     }
+
+    public function readonly()
+    {   
+        //select root user
+        Config::set('database.default', env('DB_CONNECTION'));
+        //checks for privilege to update in selected database, this is only given in this case if user have all privilegs
+        $r = \DB::select('select Update_priv from mysql.db where db=? and User =?', [env('DB_DATABASE') . "_" . $this->id,env('DB_DATABASE') . "_" . $this->id,]);
+        $r = (array) $r;
+        if(current((array) $r[0]) == "Y") {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }

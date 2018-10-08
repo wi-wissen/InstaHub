@@ -26,12 +26,12 @@
                                 <form style="float: right;" action="{{ url('../user/follow/' .$user->id) }}" method="post">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input type="submit" class="btn btn-danger" value="Unfollow" />
+                                        <input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-danger" value="Unfollow" />
                                 </form>
                             @elseif (Auth::user()->id != $user->id)
                                 <form style="float: right;"action="{{ url('../user/follow/' .$user->id) }}" method="post">
                                     {{ csrf_field() }}
-                                    <input type="submit" class="btn btn-success" value="Follow" />
+                                    <input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-success" value="Follow" />
                                 </form>
                             @endif
                             @endif

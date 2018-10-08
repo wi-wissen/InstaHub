@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Session;
+
 class LoginController extends Controller
 {
     /*
@@ -45,5 +47,19 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         return '/home';
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogout()
+    {
+        Session::flush();
+        
+        $this->auth->logout();
+
+        return redirect('/');
     }
 }

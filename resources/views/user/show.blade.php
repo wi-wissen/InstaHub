@@ -66,24 +66,24 @@
 							<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
 									{{ csrf_field() }}
 									<input type="hidden" name="_method" value="DELETE">
-									<input type="submit" class="btn btn-danger" value="Unfollow" />
+									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-danger" value="Unfollow" />
 							</form>
 							@else
 								<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
 									{{ csrf_field() }}
-									<input type="submit" class="btn btn-success" value="Follow" />
+									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-success" value="Follow" />
 								</form>
 							@endif
 							@endif
 						@endif
 
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
-							<a href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-default" role="button">Edit</a>
+							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-default" role="button">Edit</a>
 							@if (Auth::user()->id == $user->id)
-								<a href="{{'../user/' . $user->username . '/password'}}" class="btn btn-default" role="button">Change Password</a>
+								<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/password'}}" class="btn btn-default" role="button">Change Password</a>
 							@endif
-							<button id="pw{{ $user->id }}" class="newPassword btn btn-default" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}" >Reset Password</button>
-							<a href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-danger" role="button">Delete</a>
+							<button {{ Session::get('readonly') ? "disabled" : "" }} id="pw{{ $user->id }}" class="newPassword btn btn-default" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}" >Reset Password</button>
+							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-danger" role="button">Delete</a>
 						@endif
 						
 					</div>
