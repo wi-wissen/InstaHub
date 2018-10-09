@@ -37,18 +37,23 @@ html { /*http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-nav
 
   .home h1 {
     font-size: 700%;
-    font-family: 'Shadows Into Light', cursive;
-    font-weight: 500;
+    font-family: 'Cookie';
+    font-weight: 400;
     margin-top: 0px;
     margin-bottom: 0px;
   }
 
   .home p {
     font-size: 200%;
-    font-family: 'Shadows Into Light', cursive;
+    font-family: 'Cookie', cursive;
     font-weight: 100;
     margin-top: 20px;
   }
+
+  .navbar-brand {
+    font-family: 'Cookie', cursive;
+    font-size: 30px;
+}
 
   .btn-xl {
     padding: 10px 20px;
@@ -76,4 +81,14 @@ html { /*http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-nav
 .thumb img.portrait {
   width: 100%;
   height: auto;
+}
+
+/* cookie-regular - latin */
+@font-face {
+  font-family: 'Cookie';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cookie-Regular'),
+       url('../fonts/cookie-v8-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/cookie-v8-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }

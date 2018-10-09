@@ -99,6 +99,8 @@ Auth::routes();
 
 Route::get('/home', 'HubController@index');
 
+Route::resource('hubs', 'HubController');
+
 Route::group(['middleware' => ['auth', 'role:teacher']], function () {
     Route::get('/user/{username}', 'ProfileController@show');
 
@@ -116,7 +118,6 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
 
     Route::group(['middleware' => ['auth', 'role:teacher']], function () {
         //dbadmin
-        Route::resource('hubs', 'HubController');
         Route::get('hubs/{id}/dba/activate', 'HubController@activate');
         Route::get('hubs/{id}/dba/deactivate', 'HubController@deactivate');
 
