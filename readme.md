@@ -32,6 +32,7 @@ Many thanks and respect to:
 
 #### Prerequisits 
 
+- Have min. PHP 7.0
 - Download composer https://getcomposer.org/download/
 - Download git https://git-scm.com/downloads
 - Have a top-level domain for InstaHub

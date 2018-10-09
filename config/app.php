@@ -165,7 +165,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
         \hisorange\BrowserDetect\ServiceProvider::class,
 
@@ -230,7 +229,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Browser' => \hisorange\BrowserDetect\Facade::class,
 
     ],
