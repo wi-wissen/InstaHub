@@ -19,14 +19,15 @@ Many thanks and respect to:
 - [Laravel](https://laravel.com/)
 	- [laracasts/flash](https://github.com/laracasts/flash)
     - [orangehill/iseed](https://github.com/orangehill/iseed)
-    - [graham-campbell/exceptions](https://github.com/graham-campbell/exceptions)
 	- [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer)
 	- [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
+	- [hisorange/browser-detect](https://github.com/hisorange/browser-detect)
 - [Bootstrap](http://bootstrap.com/)
 - [jQuery](https://jquery.com/) with [Backstretch](https://github.com/jquery-backstretch/jquery-backstretch)
 - Photos by [pixabay](https://pixabay.com/) (CC0)
 - Splash images by [unsplash.com](https://unsplash.com/) (CC0)
 - Face images by [unsplash.com](https://unsplash.com/) (CC0)
+- Fake Ad images based on [unsplash.com](https://unsplash.com/) (CC0)
 
 ### Install
 
@@ -77,8 +78,4 @@ Thank you for considering contributing to the InstaHub! Create a pull request or
 InstaHub used parts of [Laragram](https://github.com/itsshady101/Laragram) from [itsshady101](https://github.com/itsshady101) 
 
 ### License
-[Mozilla Public License (MPL)](https://www.mozilla.org/en-US/MPL/1.1/)
-
-Commits up to [9c21886](https://github.com/wi-wissen/InstaHub/commit/9c21886f1a578bd991fa4ad5d02c2d7033413a34) are licenced under MIT License. 
-
-Contact [me](https://wi-wissen.de/contact.php) if you need an other licence. 
+[Mozilla Public License (MPL)](https://www.mozilla.org/en-US/MPL/2.0/)

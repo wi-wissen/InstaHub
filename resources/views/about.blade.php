@@ -7,8 +7,8 @@
         <div class="col-md-8 col-md-offset-2">
             	
             <h2>InstaHub</h2>
-            <p>InstaHub is a social network for educational purpose only. Students can create their own social network as a database admin. They learn basics about working in a software project, creating and managing a database, querying (SQL SELECT) and editing (SQL INSERT, UPDATE and DELETE).</p>
-            <p>This project aims to help students develop a general technical understanding of social networks. As result, they will be able to discuss sinjects as big data and information privacy.</p>
+            <p>InstaHub is a social network for educational purpose only. Students can create their own social network as a database admin. They learn basics about working in a software project, creating and managing a database, querying (SQL <code>SELECT</code>) and editing (SQL <code>INSERT</code>, <code>UPDATE</code> and <code>DELETE</code>).</p>
+            <p>This project aims to help students develop a general technical understanding of social networks. As result, they will be able to discuss subjects as big data and information privacy.</p>
             <p>Read more (only in German): <a href='https://blog.wi-wissen.de/' target='_blank' >https://blog.wi-wissen.de/</a></p>
             
             <h3>Hosting</h3>
@@ -25,11 +25,8 @@
             <li><a href='https://laravel.com/'>Laravel</a>
             <ul>
             <li><a href='https://github.com/laracasts/flash'>laracasts/flash</a>
-            <ul>
             <li><a href='https://github.com/orangehill/iseed'>orangehill/iseed</a></li>
-            <li><a href='https://github.com/graham-campbell/exceptions'>graham-campbell/exceptions</a></li>
-            
-            </ul>
+            <li><a href='https://github.com/hisorange/browser-detect'>hisorange/browser-detect</a></li>
             </li>
             <li><a href='https://github.com/rap2hpoutre/laravel-log-viewer'>rap2hpoutre/laravel-log-viewer</a>
             </li>
@@ -38,7 +35,7 @@
             
             </ul>
             </li>
-            <li><a href='http://bootstrap.com/'>Bootstrap</a>
+            <li><a href='http://bootstrap.com/'>Bootstrap 3</a>
             </li>
             <li><a href='https://jquery.com/'>jQuery</a> with <a href='https://github.com/jquery-backstretch/jquery-backstretch'>Backstretch</a>
             </li>
@@ -46,7 +43,9 @@
             </li>
             <li>Splash images by <a href='https://unsplash.com/'>unsplash.com</a> (CC0)
             </li>
-            <li>Face images by <a href='https://www.flickr.com/photos/gregpc/'>Greg Peverill-Conti</a> (CC BY-NC-SA 2.0)
+            <li>Face images by <a href='https://unsplash.com/'>unsplash.com</a> (CC0)
+            </li>
+            <li>Fake Ad images based on <a href='https://unsplash.com/'>unsplash.com</a> (CC0)
             </li>
             
             </ul>
@@ -58,9 +57,7 @@
             <p>InstaHub used parts of <a href='https://github.com/itsshady101/Laragram'>Laragram</a> from <a href='https://github.com/itsshady101'>itsshady101</a> </p>
 
             <h3>License</h3>
-            <p><a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a></p>
-            <p>Commits up to <a href='https://github.com/wi-wissen/InstaHub/commit/9c21886f1a578bd991fa4ad5d02c2d7033413a34'>9c21886</a> are licenced under MIT License. </p>
-            <p>Contact <a href='https://wi-wissen.de/contact.php'>me</a> if you need an other licence. </p>
+            <p><a href='https://www.mozilla.org/en-US/MPL/2.0/'>Mozilla Public License (MPL)</a></p>
 
             </div>
         </div>
