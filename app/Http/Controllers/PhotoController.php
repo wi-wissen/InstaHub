@@ -125,7 +125,7 @@ class PhotoController extends Controller
 
 		if ($entry) {
 			// _960 cant (hopfully) part of an uuid, so it is an present photo
-			if (strpos($filename, '_960') !== false) {
+			if (strpos($entry->url, '_960') == false) {
 				Storage::disk('local')->delete($entry->url);
 			}
 
@@ -146,6 +146,7 @@ class PhotoController extends Controller
 		$val = ini_get('post_max_size');
 		$val = trim($val);
 		$last = strtolower($val[strlen($val)-1]);
+		$val = substr($val, 0, -1); 
 		switch($last) {
 			// The 'G' modifier is available since PHP 5.1.0
 			case 'g':

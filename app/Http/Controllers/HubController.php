@@ -17,6 +17,7 @@ use DB;
 use App\Like;
 use App\Hub;
 use App\User;
+use App\Photo;
 
 class HubController extends Controller
 {
@@ -253,12 +254,14 @@ class HubController extends Controller
 
         Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
 
-        $photos = Photo::all();
-        foreach ($photos as $photo) {
-            // _960 cant (hopfully) part of an uuid, so it is an present photo
-			if (strpos($photo->url, '_960') !== false) {
-				Storage::disk('local')->delete($entry->url);
-			}
+        if (Schema::hasTable('photos')) {
+            $photos = Photo::all();
+            foreach ($photos as $photo) {
+                // _960 cant (hopfully) part of an uuid, so it is an present photo
+                if (strpos($photo->url, '_960') == false) {
+                    Storage::disk('local')->delete($entry->url);
+                }
+            }
         }
 
         $avatars = User::all();
@@ -276,6 +279,7 @@ class HubController extends Controller
 
         \DB::statement("DROP DATABASE IF EXISTS ". env('DB_DATABASE') ."_" . $hub->name . ";");
         \DB::statement("DROP USER IF EXISTS '". env('DB_DATABASE') ."_" . $hub->name . "'@'localhost';");
+        \DB::statement("DROP USER IF EXISTS '". env('DB_DATABASE') ."_" . $hub->name . "'@'%';");
         
         $hub->delete();
 
@@ -345,14 +349,18 @@ class HubController extends Controller
 
         \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
         \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
-        \DB::statement("GRANT INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+        if (Schema::hasTable('analytics')) {
+            \DB::statement("GRANT INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+        }
         //otherwise logout will fail
         \DB::statement("GRANT UPDATE (remember_token, updated_at) ON ". env('DB_DATABASE') ."_" . $hub->id . ".users TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
         
         if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
             \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'");
             \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
-            \DB::statement("GRANT INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+            if (Schema::hasTable('analytics')) {
+                \DB::statement("GRANT INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+            }
         }
 
         flash('Hub may now only log user activity')->success();
