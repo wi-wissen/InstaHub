@@ -167,7 +167,6 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
-        'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
         \hisorange\BrowserDetect\ServiceProvider::class,
 
         /*

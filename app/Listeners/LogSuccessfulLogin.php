@@ -29,6 +29,6 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        Session::set('user_hub', Session::get('hub', 'root'));
+        Session::put('user_hub', Session::get('hub', 'root'));
     }
 }

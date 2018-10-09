@@ -199,7 +199,7 @@ class HubController extends Controller
 
         $user = User::where('role', '=', 'dba')->first();
         Auth::login($user);
-        Session::set('user_hub', $hub->name);
+        Session::put('user_hub', $hub->name);
         \Debugbar::info('logged in as' . $user->username);
 
 

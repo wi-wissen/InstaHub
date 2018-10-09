@@ -29,6 +29,6 @@ class LogRegisteredUser
      */
     public function handle(Registered $event)
     {
-        Session::set('user_hub', Session::get('hub', 'root'));
+        Session::put('user_hub', Session::get('hub', 'root'));
     }
 }
