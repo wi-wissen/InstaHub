@@ -57,7 +57,7 @@ Many thanks and respect to:
     -  `DB_*` - if you want another database than MySQL, you have to edit source code.
     - `DB_USERNAME` - user for database
     - `DB_PASSWORD` - passwort for database
-    - `MAIL_*` - mail provider for resetting passworts (admin accounts may reset passworts without sending a mail)
+    - `MAIL_*` - mail provider for notification of new teachers and resetting passworts (admin accounts may reset passworts without sending a mail)
 6. Open the console and cd to your project root directory
 7. Run `composer install` or ```php composer.phar install``` ([Howto install composer](https://getcomposer.org/download/))
 8.  You may need to configure some permissions. Directories within the `storage` and the `bootstrap/cache` directories should be writable by your web server 
