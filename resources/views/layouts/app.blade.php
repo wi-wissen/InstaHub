@@ -79,7 +79,7 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
 
-                    @if (Schema::hasTable('analytics'))
+                    @if (Schema::hasTable('ads'))
                     <li><a href="{{ url('/business') }}">Business</a></li>
                     @endif
                     @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
@@ -121,7 +121,7 @@
         </div>
     </nav>
 
-    @if (Schema::hasTable('analytics') && Session::get('hub', 'root') != 'root')
+    @if (Schema::hasTable('ads') && Session::get('hub', 'root') != 'root')
     <div class="container">
         <div class="row"  style="margin-top: -10px;">
             <div class="col-md-8 col-md-offset-2">
