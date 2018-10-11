@@ -10,6 +10,7 @@ use Auth;
 
 use Debugbar;
 use App\User;
+use App\Hub;
 
 class subdomain
 {
@@ -22,7 +23,12 @@ class subdomain
      */
     public function handle($request, Closure $next)
     {
+        $request->session()->put('readonly', 0);
+
         if ($request->route()->parameter('subdomain') != null) {
+            $request->session()->put('readonly', \Request::get('hubreadonly'));
+
+            Debugbar::info($request->session()->get('readonly'));
             $request->session()->put('hub', $request->route()->parameter('subdomain'));
         } else {
             $request->session()->forget('hub');

@@ -24,8 +24,6 @@ class selectdb
      */
     public function handle($request, Closure $next)
     {
-        Session::forget('readonly');
-
         //run only on subdomains
         if (substr_count($request->server('HTTP_HOST'), '.') == 2) {
             
@@ -35,9 +33,8 @@ class selectdb
                 // hub does not exist
                 flash('Hub does not exist!')->warning();
                 return redirect(env('APP_URL'));
-            } else {
-                Session::put('readonly', (($hub->readonly()) ? 1 : 0 ));
-                Debugbar::info('readonly:' . (($hub->readonly()) ? 1 : 0 ));
+            } else {               
+                $request->attributes->add(['hubreadonly' => ($hub->readonly()) ? 1 : 0 ]);
 
                 Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
                     'driver'    => 'mysql',
