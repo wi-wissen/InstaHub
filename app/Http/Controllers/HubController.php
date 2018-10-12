@@ -350,18 +350,19 @@ class HubController extends Controller
 
         \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
         \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
-        if (Schema::hasTable('analytics')) {
-            \DB::statement("GRANT INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
-        }
+        //a bit hacky to prevent failing if table does not exist you have to grant 'CREATE', but you may remove it later
+        \DB::statement("GRANT CREATE, INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+        \DB::statement("REVOKE CREATE ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+
         //otherwise logout will fail
         \DB::statement("GRANT UPDATE (remember_token, updated_at) ON ". env('DB_DATABASE') ."_" . $hub->id . ".users TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
         
         if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
             \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'");
             \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
-            if (Schema::hasTable('analytics')) {
-                \DB::statement("GRANT INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
-            }
+            //a bit hacky to prevent failing if table does not exist you have to grant 'CREATE', but you may remove it later
+            \DB::statement("GRANT CREATE, INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+            \DB::statement("REVOKE CREATE ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
         }
 
         flash('Hub may now only log user activity')->success();
