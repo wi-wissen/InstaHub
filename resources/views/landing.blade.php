@@ -145,7 +145,7 @@
             <div class="tab-pane fade" id="medien">
                 <div class="media">
                     <div class="media-left media-middle">
-                        <a href="/img/screenshots/dba.png">
+                        <a href="/img/screenshots/ad.png">
                         <img class="media-object" src="/img/screenshots/ad-small.jpg" alt="AD">
                         </a>
                     </div>
@@ -167,7 +167,7 @@
             <div class="tab-pane fade in active" id="schueler">
                 <div class="media">
                     <div class="media-left media-middle">
-                        <a href="/img/screenshots/sql.png">
+                        <a href="/img/screenshots/profile.png">
                         <img class="media-object" src="/img/screenshots/profile-small.jpg" alt="Profil">
                         </a>
                     </div>
@@ -186,7 +186,7 @@
             <div class="tab-pane fade" id="eltern">
                 <div class="media">
                     <div class="media-left media-middle">
-                        <a href="/img/screenshots/sql.png">
+                        <a href="/img/screenshots/profile.png">
                         <img class="media-object" src="/img/screenshots/profile-small.jpg" alt="Profil">
                         </a>
                     </div>
