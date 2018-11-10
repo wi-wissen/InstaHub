@@ -21,8 +21,8 @@ class AdsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'priority' => 1,
-                'name' => 'default',
-                'type' => 'photo',
+                'name' => 'freizeitpark',
+                'type' => 'banner',
                 'url' => '/noad',
                 'img' => '/img/ad/freizeitpark.jpg',
                 'query' => 'SELECT CASE gender WHEN \'male\' THEN true ELSE false END FROM users where id=$user',
