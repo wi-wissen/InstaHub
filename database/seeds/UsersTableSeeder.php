@@ -273,7 +273,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Benjamin Papst',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1005-07-21 00:00:00',
+                'birthday' => '2005-07-21 00:00:00',
                 'city' => 'Weimar',
                 'country' => 'Germany',
                 'centimeters' => 183,
