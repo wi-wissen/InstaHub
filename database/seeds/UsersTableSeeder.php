@@ -1277,10 +1277,10 @@ class UsersTableSeeder extends Seeder
             2 => 
             array (
                 'id' => 63,
-                'username' => 'jungennamen212',
-                'email' => 'JungennamenFassbinder@instahub.test',
+                'username' => 'luca212',
+                'email' => 'LucaFassbinder@instahub.test',
                 'password' => '$2y$10$2SDw.rjcZiQvm.8dE0YiEu78ezECP.a2.PRKDLqG3aBPhlIbPjaSu',
-                'name' => 'Jungennamen Fassbinder',
+                'name' => 'Luca Fassbinder',
                 'bio' => '',
                 'gender' => 'male',
                 'birthday' => '2001-10-10 00:00:00',
