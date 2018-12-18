@@ -28,37 +28,43 @@ class SqlController extends Controller
         if ($request->has('editor')) {
              //Ergebnis vorbereiten
             try {
-                $r = DB::select($request->editor);
-                if (!$r && strpos(strtolower($request->editor), "select") !== false) {
-                    //nothing found
-                    flash("Anfrage ausgeführt. 0 Ergebnisse gefunden.", 'warning')->important();
-                } else if (!$r){
+                if(strpos(strtolower($request->editor), "select") === false) {
+                    // other statement - https://laravel.com/docs/5.7/database#running-queries
+                    DB::statement($request->editor);
                     //nothing to show, cause no select-statement
                     flash("Anfrage ausgeführt.", 'success')->important();
-                } else{
-                    flash("Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden.", 'success')->important();
-
-                    $cols = array_keys((array) $r[0]);
-                    $t = "<table class='table'>";
-                    foreach ($cols as &$col) {
-                        $t = $t . '<th>' . $col . '</th>';
-                    }
-                    foreach ($r as $row) {
-                        $row = (array) $row;
-                        $t = $t . "<tr>";
-                        foreach ($cols as &$col) {
-                            $wert = $row[$col];
-                            //Ausgabe ggf. anpassen - Links
-                            if (filter_var($wert, FILTER_VALIDATE_URL)) $wert = "<a href='$wert'>$wert</a>"; //Links
-                            //if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<img src='$wert'>"; //Bilder
-                            if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<a href='$wert'>$wert</a>"; //Bilder for cleaner table
-                            $t = $t . '<td>' . $wert . '</td>';
-                        }
-                        $t = $t . "</tr>";
-                    }
-                    $t = $t . "</table>";
                 }
-                              
+                else {
+                    //select
+                    $r = DB::select($request->editor);
+                    if (!$r) {
+                        //nothing found
+                        flash("Anfrage ausgeführt. 0 Ergebnisse gefunden.", 'warning')->important();
+                    }
+                    else {
+                        flash("Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden.", 'success')->important();
+    
+                        $cols = array_keys((array) $r[0]);
+                        $t = "<table class='table'>";
+                        foreach ($cols as &$col) {
+                            $t = $t . '<th>' . $col . '</th>';
+                        }
+                        foreach ($r as $row) {
+                            $row = (array) $row;
+                            $t = $t . "<tr>";
+                            foreach ($cols as &$col) {
+                                $wert = $row[$col];
+                                //Ausgabe ggf. anpassen - Links
+                                if (filter_var($wert, FILTER_VALIDATE_URL)) $wert = "<a href='$wert'>$wert</a>"; //Links
+                                //if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<img src='$wert'>"; //Bilder
+                                if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<a href='$wert'>$wert</a>"; //Bilder for cleaner table
+                                $t = $t . '<td>' . $wert . '</td>';
+                            }
+                            $t = $t . "</tr>";
+                        }
+                        $t = $t . "</table>";
+                    }
+                }                              
             } catch(\Illuminate\Database\QueryException $ex){ 
                 flash($ex->getMessage(), 'danger')->important(); 
             }
