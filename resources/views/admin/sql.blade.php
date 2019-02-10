@@ -4,58 +4,53 @@
 <div class="container">
 	@include('flash::message')
 	<div class="row">
-		<div class="col-md-12 col-md-offset-0">
-            <div class="container">
-        
-                <h1>SQL-Editor</h1>
-                <p>In diesem Formular können SQL-Befehle direkt an die Datenbank gerichtet werden.</p>
-                <form action="sql" method="post">
-                {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="comment">SQL-Befehl:</label>
-                        <textarea class="form-control" rows="5" name="editor" id="editor"><?php if ($_POST) echo $_POST['editor'] ?></textarea>
-                        <p id="run"><button type="submit" class="btn btn-primary btn-block">Ausführen</button></p>
-                    </div>
-                </form>
-                @include('flash::message')
-                @if ($result)
-                <div style="overflow: auto;">
-                    {!! $result !!}
+		<div class="col-md-12 col-md-offset-0">       
+            <h1>SQL-Editor</h1>
+            <p>In diesem Formular können SQL-Befehle direkt an die Datenbank gerichtet werden.</p>
+            <form action="sql" method="post">
+            {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="comment">SQL-Befehl:</label>
+                    <textarea class="form-control" rows="5" name="editor" id="editor"><?php if ($_POST) echo $_POST['editor'] ?></textarea>
+                    <p id="run"><button type="submit" class="btn btn-primary btn-block">Ausführen</button></p>
                 </div>
-                @endif
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <p> Folgende einzelne Tabellen können abgefragt werden:</p>
-                        {!! $tables !!}
-                    </div>
+            </form>
+            @include('flash::message')
+            @if ($result)
+            <div style="overflow: auto;">
+                {!! $result !!}
+            </div>
+            @endif
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p> Folgende einzelne Tabellen können abgefragt werden:</p>
+                    {!! $tables !!}
                 </div>
+            </div>
 
-                @if(env('ALLOW_PUBLIC_DB_ACCESS'))
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                    @php
-                        $connection = config('database.connections');
-                        $connection = end($connection);
-                    @endphp
-                    <b>Database Server:</b>
-                    @if (env('DB_HOST') == '127.0.0.1' || env('DB_HOST') == 'localhost')
-                        {{ env('APP_URL') . ':' . env('DB_PORT') }}
-                    @else
-                        {{ $connection['host'] . ':' . env('DB_PORT') }}
-                    @endif
-                    <br />
-                    <b>Database: </b>{{ $connection['database'] }}<br />
-                    <b>Username: </b>{{ $connection['username'] }}<br />
-                    <b>Password: </b>{{ $connection['password'] }}<br />
-                    <b>Charset: </b>{{ $connection['charset'] }}<br />
-                    <b>Collation: </b>{{ $connection['collation'] }}
-                    
-                    </div>
-                </div>
+            @if(env('ALLOW_PUBLIC_DB_ACCESS'))
+            <div class="panel panel-default">
+                <div class="panel-body">
+                @php
+                    $connection = config('database.connections');
+                    $connection = end($connection);
+                @endphp
+                <b>Database Server:</b>
+                @if (env('DB_HOST') == '127.0.0.1' || env('DB_HOST') == 'localhost')
+                    {{ env('APP_URL') . ':' . env('DB_PORT') }}
+                @else
+                    {{ $connection['host'] . ':' . env('DB_PORT') }}
                 @endif
-            
-            
-            </div> <!-- /container -->
+                <br />
+                <b>Database: </b>{{ $connection['database'] }}<br />
+                <b>Username: </b>{{ $connection['username'] }}<br />
+                <b>Password: </b>{{ $connection['password'] }}<br />
+                <b>Charset: </b>{{ $connection['charset'] }}<br />
+                <b>Collation: </b>{{ $connection['collation'] }}
+                
+                </div>
+            </div>
+            @endif
 		</div>
 	</div>
 </div>

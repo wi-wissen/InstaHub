@@ -3996,7 +3996,7 @@ class UsersTableSeeder extends Seeder
                 'avatar' => 'avatars/197.jpg',
                 'role' => 'user',
                 'is_active' => 0,
-                'remember_token' => 'z5Xy43wtqpwQRl7aJHhrlMCCp6Eg5bkI6hBmvHtztOT8i6Xr8huKV2nj3tub',
+                'remember_token' => '',
                 'created_at' => '2017-08-26 22:14:11',
                 'updated_at' => '2018-10-04 17:04:59',
             ),

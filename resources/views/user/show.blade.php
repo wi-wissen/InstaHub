@@ -38,7 +38,7 @@
 							@if ($user->country != "")
 								@if ('unknown' == $user->age())
 									and
-								@else
+								@elseif (isset($user->gender))
 									,
 								@endif
 							@endif

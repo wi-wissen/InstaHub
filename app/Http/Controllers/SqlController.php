@@ -28,7 +28,7 @@ class SqlController extends Controller
         if ($request->has('editor')) {
              //Ergebnis vorbereiten
             try {
-                if(strpos(strtolower($request->editor), "select") === false) {
+                if(strpos(strtolower(trim($request->editor)), "select") !== 0) { //false for not found, 0 for starts with. 
                     // other statement - https://laravel.com/docs/5.7/database#running-queries
                     DB::statement($request->editor);
                     //nothing to show, cause no select-statement

@@ -155,12 +155,12 @@ class HubController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'bio' => $request->bio,
-            'gender' => $request->gender,
-            'birthday' => $request->birthday_birthDay,
-            'city' => $request->city,
-            'country' => $request->country,
-            'centimeters' => $request->centimeters,
+            'bio' => $request->bio ?: null,
+            'gender' => $request->gender ?: null,
+            'birthday' => $request->birthday_birthDay ?: null,
+            'city' => $request->city ?: null,
+            'country' => $request->country ?: null,
+            'centimeters' => $request->centimeters ?: null,
             'avatar' => $url,
             'role' => 2
         ]);

@@ -20,7 +20,7 @@ class AdsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'priority' => 1,
+                'priority' => 2,
                 'name' => 'freizeitpark',
                 'type' => 'banner',
                 'url' => '/noad',
@@ -50,7 +50,7 @@ WHERE id=$photo',
             2 => 
             array (
                 'id' => 3,
-                'priority' => 1,
+                'priority' => 2,
                 'name' => 'ivo',
                 'type' => 'photo',
                 'url' => '/noad',
@@ -70,7 +70,7 @@ LIMIT 1',
             3 => 
             array (
                 'id' => 4,
-                'priority' => 1,
+                'priority' => 2,
                 'name' => 'princess',
                 'type' => 'banner',
                 'url' => '/noad',
@@ -118,7 +118,7 @@ WHERE id=$photo',
             6 => 
             array (
                 'id' => 7,
-                'priority' => 2,
+                'priority' => 3,
                 'name' => 'andromeda ',
                 'type' => 'photo',
                 'url' => '/noad',
@@ -130,7 +130,7 @@ WHERE id=$photo',
             7 => 
             array (
                 'id' => 8,
-                'priority' => 2,
+                'priority' => 3,
                 'name' => 'burgerhaus',
                 'type' => 'banner',
                 'url' => '/noad',

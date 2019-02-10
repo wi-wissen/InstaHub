@@ -193,9 +193,9 @@
                     <div class="media-body">
                         <h4 class="media-heading">Liebe Eltern,</h4>
                         <p>Mit {{env('APP_NAME')}} lernen Ihre Kinder im Unterricht soziale Netzwerke fundiert aus technischer Sicht kennen. 
-                            Nur durch dieses Wissen ist es möglich fundiert über gesellschaftliche, wirtschaftliche und persönliche AUswirkungen zu sprechen.</p>
-                        <p>Eine Nutzung ist nur mit einem Lehrer möglich. Dieser kann auch jederzeit steuernt eingreifen. </p>
-                        <p>Sollten Sie Fragen haben wenden Sie sich bitte an den Lehrer ihres Kindes oder bei der 
+                            Nur durch dieses Wissen ist es möglich fundiert über gesellschaftliche, wirtschaftliche und persönliche Auswirkungen zu sprechen.</p>
+                        <p>Eine Nutzung ist nur mit einem Lehrer möglich. Dieser kann auch jederzeit steuernd eingreifen. </p>
+                        <p>Sollten Sie Fragen haben wenden Sie sich bitte an den Lehrer ihres Kindes oder im Notfall etwa bei der 
                             Bitte um Löschung oder Abschaltung einzelner Hubs an den <a href="https://wi-wissen.de/contact.php">Betreiber</a>.</p>
                     </div>
                 </div>

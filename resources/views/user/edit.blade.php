@@ -61,9 +61,15 @@
                                     @if (old('gender', $user->gender) == 'male')
                                         <option value="male" selected>male</option>
                                         <option value="female">female</option>
-                                    @else
+                                        <option value=""></option>
+                                    @elseif (old('gender', $user->gender) == 'female')
                                         <option value="female" selected>female</option>
                                         <option value="male">male</option>
+                                        <option value=""></option>
+                                    @else
+                                        <option value="female">female</option>
+                                        <option value="male">male</option>
+                                        <option value="" selected></option>
                                     @endif
                                 </select>
 

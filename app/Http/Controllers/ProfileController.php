@@ -65,7 +65,6 @@ class ProfileController extends Controller
 			'name' => 'required|max:255',
 			'email' => 'required|email|unique:users,email,'.$user->id,
 			'bio' => 'max:500',
-			'gender' => 'required',
 			'birthday_birthDay' => 'nullable|date',
 			'city' => 'nullable|string',
 			'country' => 'nullable|string',
@@ -76,7 +75,7 @@ class ProfileController extends Controller
 		$user->name = $request->input('name');
 		$user->email = $request->input('email');
 		$user->bio = $request->input('bio');
-		$user->gender = $request->input('gender');
+		$user->gender = $request->input('gender') ?: null;
 		$user->birthday = $request->input('birthday_birthDay') ?: null;
 		$user->city = $request->input('city') ?: null;
 		$user->country = $request->input('country') ?: null;

@@ -129,6 +129,7 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" id="gender" name="gender">
+                                    <option value=""></option>
                                     <option value="male">male</option>
                                     <option value="female">female</option>
                                 </select>
