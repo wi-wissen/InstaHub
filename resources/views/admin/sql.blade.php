@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	@include('flash::message')
+    {{-- @include('flash::message') - otherwise this will be used for showing sql result infos--}}
 	<div class="row">
 		<div class="col-md-12 col-md-offset-0">       
             <h1>SQL-Editor</h1>

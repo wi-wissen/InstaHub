@@ -29,8 +29,15 @@ class Ad extends Model
             $sql = str_replace('$photo', $photo_id, $sql);
 
             //run query
-            $r = DB::select($sql);
-            $r = (array) $r;
+            try {
+                $r = DB::select($sql);
+                $r = (array) $r;
+            } 
+            catch(\Illuminate\Database\QueryException $ex){ 
+                $r = null;
+                flash('<p> Ad <b>' . $ad->name . '</b> is broken: </p><p>' . $ex->getMessage() . '</p>', 'danger')->important(); 
+            }
+           
 
             if ($r) { //check if someone wants to indicate with an empty result that this is false
                 if(current((array) $r[0])) {
