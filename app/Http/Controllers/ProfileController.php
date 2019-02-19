@@ -55,17 +55,11 @@ class ProfileController extends Controller
 	 {
 		$user = User::where('username', $username)->first();
 
-		if ($request->input('birthday_birthDay') == "NaN-NaN-NaN")
-		{
-			//fix error in js
-			$request->merge(['birthday_birthDay' => null]);
-		}
-
 		$this->validate($request, [
 			'name' => 'required|max:255',
 			'email' => 'required|email|unique:users,email,'.$user->id,
 			'bio' => 'max:500',
-			'birthday_birthDay' => 'nullable|date',
+			'birthday' => 'nullable|date',
 			'city' => 'nullable|string',
 			'country' => 'nullable|string',
 			'centimeters' => 'nullable|numeric',
@@ -76,7 +70,7 @@ class ProfileController extends Controller
 		$user->email = $request->input('email');
 		$user->bio = $request->input('bio');
 		$user->gender = $request->input('gender') ?: null;
-		$user->birthday = $request->input('birthday_birthDay') ?: null;
+		$user->birthday = $request->input('birthday') ?: null;
 		$user->city = $request->input('city') ?: null;
 		$user->country = $request->input('country') ?: null;
 		$user->centimeters = $request->input('centimeters') ?: null;

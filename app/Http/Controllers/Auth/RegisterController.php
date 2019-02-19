@@ -92,7 +92,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'bio' => array_has($data, 'bio') ? $data['bio'] : null,
             'gender' => array_has($data, 'gender') ? $data['gender'] : null,
-            'birthday' => array_has($data, 'birthday_birthDay') ? $data['birthday_birthDay'] : null,
+            'birthday' => array_has($data, 'birthday') ? $data['birthday'] : null,
             'city' => array_has($data, 'city') ? $data['city'] : null,
             'country' => array_has($data, 'country') ? $data['country'] : null,
             'centimeters' => array_has($data, 'centimeters') ? $data['centimeters'] : null,

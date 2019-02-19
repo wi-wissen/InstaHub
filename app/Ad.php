@@ -40,13 +40,24 @@ class Ad extends Model
            
 
             if ($r) { //check if someone wants to indicate with an empty result that this is false
-                if(current((array) $r[0])) {
-                    $id = $ad->id;
-                    break; //leaves foreach
+                $r = (array) $r;
+                if (count($r) > 1) {
+                    //list of possible ids
+                    for ($i = 0; $i < count($r); $i++) {
+                        if ((current($r[$i]) == Auth::id() && !$photo_id) ||
+                            (current($r[$i]) == $photo_id && $photo_id)) $id = $ad->id;
+                    }
+                    if ($id) break; //leaves foreach
                 }
+                else {
+                    //true or false
+                    if(current($r[0])) {
+                        $id = $ad->id;
+                        break; //leaves foreach
+                    }
+                }                
             }
         }
-
         return Ad::find($id);
     }
 }
