@@ -79,6 +79,9 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
 
+                    @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
+                    <li><a href="{{ url('/follower') }}">Graph</a></li>
+                    @endif
                     @if (Schema::hasTable('ads'))
                     <li><a href="{{ url('/business') }}">Business</a></li>
                     @endif

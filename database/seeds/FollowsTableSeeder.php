@@ -2630,8 +2630,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 330,
                 'following_id' => 152,
                 'follower_id' => 94,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             327 => 
             array (
@@ -2958,16 +2958,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 372,
                 'following_id' => 94,
                 'follower_id' => 108,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             368 => 
             array (
                 'id' => 373,
                 'following_id' => 121,
                 'follower_id' => 191,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             369 => 
             array (
@@ -3294,16 +3294,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 414,
                 'following_id' => 56,
                 'follower_id' => 162,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             410 => 
             array (
                 'id' => 415,
                 'following_id' => 139,
                 'follower_id' => 86,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             411 => 
             array (
@@ -3534,8 +3534,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 445,
                 'following_id' => 142,
                 'follower_id' => 43,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             440 => 
             array (
@@ -3574,8 +3574,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 450,
                 'following_id' => 165,
                 'follower_id' => 145,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             445 => 
             array (
@@ -3630,16 +3630,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 457,
                 'following_id' => 16,
                 'follower_id' => 90,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             452 => 
             array (
                 'id' => 458,
                 'following_id' => 10,
                 'follower_id' => 148,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             453 => 
             array (
@@ -3694,8 +3694,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 465,
                 'following_id' => 129,
                 'follower_id' => 66,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             460 => 
             array (
@@ -3806,16 +3806,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 479,
                 'following_id' => 142,
                 'follower_id' => 62,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             474 => 
             array (
                 'id' => 480,
                 'following_id' => 98,
                 'follower_id' => 81,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             475 => 
             array (
@@ -3870,8 +3870,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 487,
                 'following_id' => 65,
                 'follower_id' => 189,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             482 => 
             array (
@@ -3910,8 +3910,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 492,
                 'following_id' => 153,
                 'follower_id' => 124,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             487 => 
             array (
@@ -3966,16 +3966,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 500,
                 'following_id' => 151,
                 'follower_id' => 100,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             494 => 
             array (
                 'id' => 501,
                 'following_id' => 23,
                 'follower_id' => 97,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             495 => 
             array (
@@ -4032,8 +4032,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 509,
                 'following_id' => 56,
                 'follower_id' => 3,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             2 => 
             array (
@@ -4104,8 +4104,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 518,
                 'following_id' => 71,
                 'follower_id' => 45,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             11 => 
             array (
@@ -4144,16 +4144,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 523,
                 'following_id' => 6,
                 'follower_id' => 141,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             16 => 
             array (
                 'id' => 524,
                 'following_id' => 153,
                 'follower_id' => 59,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             17 => 
             array (
@@ -4208,8 +4208,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 531,
                 'following_id' => 180,
                 'follower_id' => 89,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             24 => 
             array (
@@ -4248,8 +4248,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 536,
                 'following_id' => 138,
                 'follower_id' => 62,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             29 => 
             array (
@@ -4304,16 +4304,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 543,
                 'following_id' => 98,
                 'follower_id' => 99,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             36 => 
             array (
                 'id' => 544,
                 'following_id' => 47,
                 'follower_id' => 137,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             37 => 
             array (
@@ -4368,8 +4368,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 551,
                 'following_id' => 149,
                 'follower_id' => 32,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             44 => 
             array (
@@ -4440,8 +4440,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 560,
                 'following_id' => 25,
                 'follower_id' => 4,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             53 => 
             array (
@@ -4480,16 +4480,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 565,
                 'following_id' => 121,
                 'follower_id' => 52,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             58 => 
             array (
                 'id' => 566,
                 'following_id' => 139,
                 'follower_id' => 117,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             59 => 
             array (
@@ -4544,16 +4544,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 573,
                 'following_id' => 1,
                 'follower_id' => 80,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             66 => 
             array (
                 'id' => 574,
                 'following_id' => 175,
                 'follower_id' => 22,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             67 => 
             array (
@@ -4584,8 +4584,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 578,
                 'following_id' => 12,
                 'follower_id' => 144,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             71 => 
             array (
@@ -4640,16 +4640,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 585,
                 'following_id' => 187,
                 'follower_id' => 157,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             78 => 
             array (
                 'id' => 586,
                 'following_id' => 136,
                 'follower_id' => 123,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             79 => 
             array (
@@ -4704,8 +4704,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 593,
                 'following_id' => 53,
                 'follower_id' => 91,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             86 => 
             array (
@@ -4776,8 +4776,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 602,
                 'following_id' => 163,
                 'follower_id' => 112,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             95 => 
             array (
@@ -4816,16 +4816,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 608,
                 'following_id' => 54,
                 'follower_id' => 45,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             100 => 
             array (
                 'id' => 609,
                 'following_id' => 178,
                 'follower_id' => 68,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             101 => 
             array (
@@ -4880,16 +4880,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 616,
                 'following_id' => 189,
                 'follower_id' => 77,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             108 => 
             array (
                 'id' => 617,
                 'following_id' => 6,
                 'follower_id' => 121,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             109 => 
             array (
@@ -4920,8 +4920,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 621,
                 'following_id' => 18,
                 'follower_id' => 155,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             113 => 
             array (
@@ -4976,16 +4976,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 628,
                 'following_id' => 36,
                 'follower_id' => 193,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             120 => 
             array (
                 'id' => 629,
                 'following_id' => 91,
                 'follower_id' => 86,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             121 => 
             array (
@@ -5040,8 +5040,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 636,
                 'following_id' => 73,
                 'follower_id' => 145,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             128 => 
             array (
@@ -5112,8 +5112,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 645,
                 'following_id' => 155,
                 'follower_id' => 31,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             137 => 
             array (
@@ -5152,16 +5152,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 650,
                 'following_id' => 107,
                 'follower_id' => 79,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             142 => 
             array (
                 'id' => 651,
                 'following_id' => 8,
                 'follower_id' => 13,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             143 => 
             array (
@@ -5216,16 +5216,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 658,
                 'following_id' => 26,
                 'follower_id' => 109,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             150 => 
             array (
                 'id' => 659,
                 'following_id' => 34,
                 'follower_id' => 85,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             151 => 
             array (
@@ -5256,8 +5256,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 663,
                 'following_id' => 153,
                 'follower_id' => 29,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             155 => 
             array (
@@ -5312,16 +5312,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 671,
                 'following_id' => 90,
                 'follower_id' => 67,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             162 => 
             array (
                 'id' => 672,
                 'following_id' => 180,
                 'follower_id' => 150,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             163 => 
             array (
@@ -5376,8 +5376,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 679,
                 'following_id' => 127,
                 'follower_id' => 193,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             170 => 
             array (
@@ -5448,8 +5448,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 688,
                 'following_id' => 70,
                 'follower_id' => 38,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             179 => 
             array (
@@ -5488,16 +5488,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 693,
                 'following_id' => 21,
                 'follower_id' => 9,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             184 => 
             array (
                 'id' => 694,
                 'following_id' => 137,
                 'follower_id' => 28,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             185 => 
             array (
@@ -5552,16 +5552,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 701,
                 'following_id' => 164,
                 'follower_id' => 161,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             192 => 
             array (
                 'id' => 702,
                 'following_id' => 177,
                 'follower_id' => 38,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             193 => 
             array (
@@ -5592,8 +5592,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 706,
                 'following_id' => 171,
                 'follower_id' => 65,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             197 => 
             array (
@@ -5648,16 +5648,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 713,
                 'following_id' => 127,
                 'follower_id' => 195,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             204 => 
             array (
                 'id' => 714,
                 'following_id' => 122,
                 'follower_id' => 17,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             205 => 
             array (
@@ -5712,8 +5712,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 721,
                 'following_id' => 2,
                 'follower_id' => 15,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             212 => 
             array (
@@ -5784,8 +5784,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 730,
                 'following_id' => 128,
                 'follower_id' => 34,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             221 => 
             array (
@@ -5824,16 +5824,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 735,
                 'following_id' => 176,
                 'follower_id' => 150,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             226 => 
             array (
                 'id' => 736,
                 'following_id' => 26,
                 'follower_id' => 168,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             227 => 
             array (
@@ -5888,16 +5888,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 744,
                 'following_id' => 190,
                 'follower_id' => 100,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             234 => 
             array (
                 'id' => 745,
                 'following_id' => 149,
                 'follower_id' => 96,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             235 => 
             array (
@@ -5912,8 +5912,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 747,
                 'following_id' => 53,
                 'follower_id' => 101,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             237 => 
             array (
@@ -5928,8 +5928,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 749,
                 'following_id' => 157,
                 'follower_id' => 46,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             239 => 
             array (
@@ -5984,16 +5984,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 756,
                 'following_id' => 145,
                 'follower_id' => 131,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             246 => 
             array (
                 'id' => 757,
                 'following_id' => 88,
                 'follower_id' => 138,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             247 => 
             array (
@@ -6048,8 +6048,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 764,
                 'following_id' => 169,
                 'follower_id' => 41,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             254 => 
             array (
@@ -6120,8 +6120,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 773,
                 'following_id' => 44,
                 'follower_id' => 118,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             263 => 
             array (
@@ -6160,16 +6160,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 778,
                 'following_id' => 65,
                 'follower_id' => 138,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             268 => 
             array (
                 'id' => 779,
                 'following_id' => 88,
                 'follower_id' => 111,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             269 => 
             array (
@@ -6224,16 +6224,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 786,
                 'following_id' => 50,
                 'follower_id' => 54,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             276 => 
             array (
                 'id' => 787,
                 'following_id' => 186,
                 'follower_id' => 64,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             277 => 
             array (
@@ -6248,8 +6248,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 789,
                 'following_id' => 141,
                 'follower_id' => 161,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             279 => 
             array (
@@ -6264,8 +6264,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 791,
                 'following_id' => 101,
                 'follower_id' => 133,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             281 => 
             array (
@@ -6320,16 +6320,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 798,
                 'following_id' => 93,
                 'follower_id' => 131,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             288 => 
             array (
                 'id' => 800,
                 'following_id' => 182,
                 'follower_id' => 45,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             289 => 
             array (
@@ -6384,8 +6384,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 807,
                 'following_id' => 13,
                 'follower_id' => 162,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             296 => 
             array (
@@ -6456,8 +6456,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 816,
                 'following_id' => 169,
                 'follower_id' => 187,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             305 => 
             array (
@@ -6496,16 +6496,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 821,
                 'following_id' => 73,
                 'follower_id' => 66,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             310 => 
             array (
                 'id' => 822,
                 'following_id' => 173,
                 'follower_id' => 186,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             311 => 
             array (
@@ -6560,16 +6560,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 829,
                 'following_id' => 150,
                 'follower_id' => 153,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             318 => 
             array (
                 'id' => 830,
                 'following_id' => 155,
                 'follower_id' => 112,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             319 => 
             array (
@@ -6584,8 +6584,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 832,
                 'following_id' => 32,
                 'follower_id' => 178,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             321 => 
             array (
@@ -6600,8 +6600,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 834,
                 'following_id' => 28,
                 'follower_id' => 50,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             323 => 
             array (
@@ -6656,16 +6656,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 841,
                 'following_id' => 8,
                 'follower_id' => 33,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             330 => 
             array (
                 'id' => 842,
                 'following_id' => 114,
                 'follower_id' => 127,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             331 => 
             array (
@@ -6712,16 +6712,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 848,
                 'following_id' => 39,
                 'follower_id' => 62,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             337 => 
             array (
                 'id' => 849,
                 'following_id' => 135,
                 'follower_id' => 184,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             338 => 
             array (
@@ -6792,8 +6792,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 858,
                 'following_id' => 123,
                 'follower_id' => 180,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             347 => 
             array (
@@ -6832,16 +6832,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 863,
                 'following_id' => 56,
                 'follower_id' => 176,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             352 => 
             array (
                 'id' => 864,
                 'following_id' => 62,
                 'follower_id' => 10,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             353 => 
             array (
@@ -6896,16 +6896,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 871,
                 'following_id' => 8,
                 'follower_id' => 15,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             360 => 
             array (
                 'id' => 872,
                 'following_id' => 26,
                 'follower_id' => 117,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             361 => 
             array (
@@ -6920,8 +6920,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 874,
                 'following_id' => 43,
                 'follower_id' => 71,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             363 => 
             array (
@@ -6936,8 +6936,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 876,
                 'following_id' => 104,
                 'follower_id' => 195,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             365 => 
             array (
@@ -6992,16 +6992,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 883,
                 'following_id' => 98,
                 'follower_id' => 120,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             372 => 
             array (
                 'id' => 884,
                 'following_id' => 89,
                 'follower_id' => 35,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             373 => 
             array (
@@ -7048,16 +7048,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 890,
                 'following_id' => 34,
                 'follower_id' => 183,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             379 => 
             array (
                 'id' => 891,
                 'following_id' => 193,
                 'follower_id' => 141,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             380 => 
             array (
@@ -7128,8 +7128,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 900,
                 'following_id' => 101,
                 'follower_id' => 162,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             389 => 
             array (
@@ -7168,16 +7168,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 905,
                 'following_id' => 106,
                 'follower_id' => 33,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             394 => 
             array (
                 'id' => 906,
                 'following_id' => 189,
                 'follower_id' => 27,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             395 => 
             array (
@@ -7232,16 +7232,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 914,
                 'following_id' => 28,
                 'follower_id' => 87,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             402 => 
             array (
                 'id' => 915,
                 'following_id' => 133,
                 'follower_id' => 165,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             403 => 
             array (
@@ -7256,8 +7256,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 917,
                 'following_id' => 131,
                 'follower_id' => 55,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             405 => 
             array (
@@ -7272,8 +7272,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 920,
                 'following_id' => 47,
                 'follower_id' => 133,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             407 => 
             array (
@@ -7328,16 +7328,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 927,
                 'following_id' => 53,
                 'follower_id' => 31,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             414 => 
             array (
                 'id' => 928,
                 'following_id' => 98,
                 'follower_id' => 65,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             415 => 
             array (
@@ -7384,16 +7384,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 934,
                 'following_id' => 114,
                 'follower_id' => 153,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             421 => 
             array (
                 'id' => 935,
                 'following_id' => 24,
                 'follower_id' => 63,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             422 => 
             array (
@@ -7464,8 +7464,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 944,
                 'following_id' => 145,
                 'follower_id' => 23,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             431 => 
             array (
@@ -7504,16 +7504,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 949,
                 'following_id' => 76,
                 'follower_id' => 156,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             436 => 
             array (
                 'id' => 950,
                 'following_id' => 183,
                 'follower_id' => 163,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             437 => 
             array (
@@ -7568,16 +7568,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 957,
                 'following_id' => 35,
                 'follower_id' => 17,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             444 => 
             array (
                 'id' => 958,
                 'following_id' => 45,
                 'follower_id' => 16,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             445 => 
             array (
@@ -7592,8 +7592,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 960,
                 'following_id' => 187,
                 'follower_id' => 134,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             447 => 
             array (
@@ -7608,8 +7608,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 962,
                 'following_id' => 128,
                 'follower_id' => 98,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             449 => 
             array (
@@ -7664,16 +7664,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 969,
                 'following_id' => 172,
                 'follower_id' => 48,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             456 => 
             array (
                 'id' => 970,
                 'following_id' => 79,
                 'follower_id' => 49,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             457 => 
             array (
@@ -7720,16 +7720,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 976,
                 'following_id' => 160,
                 'follower_id' => 64,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             463 => 
             array (
                 'id' => 977,
                 'following_id' => 23,
                 'follower_id' => 57,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             464 => 
             array (
@@ -7800,8 +7800,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 988,
                 'following_id' => 125,
                 'follower_id' => 108,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             473 => 
             array (
@@ -7840,16 +7840,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 993,
                 'following_id' => 52,
                 'follower_id' => 33,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             478 => 
             array (
                 'id' => 994,
                 'following_id' => 125,
                 'follower_id' => 133,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             479 => 
             array (
@@ -7904,32 +7904,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1001,
                 'following_id' => 170,
                 'follower_id' => 50,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             486 => 
             array (
                 'id' => 1002,
                 'following_id' => 70,
                 'follower_id' => 107,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             487 => 
             array (
                 'id' => 1003,
                 'following_id' => 80,
                 'follower_id' => 9,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             488 => 
             array (
                 'id' => 1004,
                 'following_id' => 53,
                 'follower_id' => 105,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             489 => 
             array (
@@ -7944,8 +7944,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1006,
                 'following_id' => 97,
                 'follower_id' => 22,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             491 => 
             array (
@@ -8000,16 +8000,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1013,
                 'following_id' => 182,
                 'follower_id' => 169,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             498 => 
             array (
                 'id' => 1014,
                 'following_id' => 120,
                 'follower_id' => 155,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             499 => 
             array (
@@ -8058,16 +8058,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1022,
                 'following_id' => 21,
                 'follower_id' => 52,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             5 => 
             array (
                 'id' => 1023,
                 'following_id' => 105,
                 'follower_id' => 71,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             6 => 
             array (
@@ -8138,8 +8138,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1032,
                 'following_id' => 148,
                 'follower_id' => 15,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             15 => 
             array (
@@ -8178,16 +8178,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1037,
                 'following_id' => 53,
                 'follower_id' => 8,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             20 => 
             array (
                 'id' => 1038,
                 'following_id' => 69,
                 'follower_id' => 136,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             21 => 
             array (
@@ -8242,32 +8242,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1045,
                 'following_id' => 194,
                 'follower_id' => 82,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             28 => 
             array (
                 'id' => 1046,
                 'following_id' => 178,
                 'follower_id' => 164,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             29 => 
             array (
                 'id' => 1047,
                 'following_id' => 115,
                 'follower_id' => 85,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             30 => 
             array (
                 'id' => 1048,
                 'following_id' => 9,
                 'follower_id' => 61,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             31 => 
             array (
@@ -8282,8 +8282,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1050,
                 'following_id' => 182,
                 'follower_id' => 173,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             33 => 
             array (
@@ -8338,16 +8338,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1057,
                 'following_id' => 121,
                 'follower_id' => 125,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             40 => 
             array (
                 'id' => 1058,
                 'following_id' => 155,
                 'follower_id' => 167,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             41 => 
             array (
@@ -8394,16 +8394,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1064,
                 'following_id' => 83,
                 'follower_id' => 22,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             47 => 
             array (
                 'id' => 1065,
                 'following_id' => 7,
                 'follower_id' => 6,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             48 => 
             array (
@@ -8474,8 +8474,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1074,
                 'following_id' => 138,
                 'follower_id' => 40,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             57 => 
             array (
@@ -8514,16 +8514,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1079,
                 'following_id' => 119,
                 'follower_id' => 16,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             62 => 
             array (
                 'id' => 1080,
                 'following_id' => 139,
                 'follower_id' => 187,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             63 => 
             array (
@@ -8578,32 +8578,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1087,
                 'following_id' => 148,
                 'follower_id' => 24,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             70 => 
             array (
                 'id' => 1088,
                 'following_id' => 27,
                 'follower_id' => 158,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             71 => 
             array (
                 'id' => 1089,
                 'following_id' => 20,
                 'follower_id' => 69,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             72 => 
             array (
                 'id' => 1090,
                 'following_id' => 51,
                 'follower_id' => 109,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             73 => 
             array (
@@ -8618,8 +8618,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1093,
                 'following_id' => 2,
                 'follower_id' => 29,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             75 => 
             array (
@@ -8674,16 +8674,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1100,
                 'following_id' => 30,
                 'follower_id' => 84,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             82 => 
             array (
                 'id' => 1101,
                 'following_id' => 111,
                 'follower_id' => 187,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             83 => 
             array (
@@ -8730,16 +8730,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1107,
                 'following_id' => 158,
                 'follower_id' => 113,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             89 => 
             array (
                 'id' => 1108,
                 'following_id' => 150,
                 'follower_id' => 40,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             90 => 
             array (
@@ -8810,8 +8810,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1118,
                 'following_id' => 156,
                 'follower_id' => 155,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             99 => 
             array (
@@ -8850,16 +8850,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1123,
                 'following_id' => 30,
                 'follower_id' => 54,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             104 => 
             array (
                 'id' => 1124,
                 'following_id' => 100,
                 'follower_id' => 59,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             105 => 
             array (
@@ -8914,32 +8914,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1131,
                 'following_id' => 56,
                 'follower_id' => 96,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             112 => 
             array (
                 'id' => 1132,
                 'following_id' => 29,
                 'follower_id' => 6,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             113 => 
             array (
                 'id' => 1133,
                 'following_id' => 18,
                 'follower_id' => 44,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             114 => 
             array (
                 'id' => 1134,
                 'following_id' => 145,
                 'follower_id' => 18,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             115 => 
             array (
@@ -8954,8 +8954,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1136,
                 'following_id' => 84,
                 'follower_id' => 159,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             117 => 
             array (
@@ -9010,16 +9010,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1143,
                 'following_id' => 38,
                 'follower_id' => 142,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             124 => 
             array (
                 'id' => 1144,
                 'following_id' => 159,
                 'follower_id' => 88,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             125 => 
             array (
@@ -9066,16 +9066,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1150,
                 'following_id' => 25,
                 'follower_id' => 65,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             131 => 
             array (
                 'id' => 1151,
                 'following_id' => 172,
                 'follower_id' => 4,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             132 => 
             array (
@@ -9146,8 +9146,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1160,
                 'following_id' => 70,
                 'follower_id' => 190,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             141 => 
             array (
@@ -9186,16 +9186,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1165,
                 'following_id' => 146,
                 'follower_id' => 1,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             146 => 
             array (
                 'id' => 1166,
                 'following_id' => 167,
                 'follower_id' => 54,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             147 => 
             array (
@@ -9250,32 +9250,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1173,
                 'following_id' => 116,
                 'follower_id' => 141,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             154 => 
             array (
                 'id' => 1174,
                 'following_id' => 195,
                 'follower_id' => 73,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             155 => 
             array (
                 'id' => 1175,
                 'following_id' => 143,
                 'follower_id' => 80,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             156 => 
             array (
                 'id' => 1177,
                 'following_id' => 174,
                 'follower_id' => 132,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             157 => 
             array (
@@ -9290,8 +9290,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1179,
                 'following_id' => 63,
                 'follower_id' => 141,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             159 => 
             array (
@@ -9346,16 +9346,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1187,
                 'following_id' => 170,
                 'follower_id' => 8,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             166 => 
             array (
                 'id' => 1188,
                 'following_id' => 174,
                 'follower_id' => 49,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             167 => 
             array (
@@ -9402,16 +9402,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1194,
                 'following_id' => 130,
                 'follower_id' => 157,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             173 => 
             array (
                 'id' => 1195,
                 'following_id' => 47,
                 'follower_id' => 31,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             174 => 
             array (
@@ -9482,8 +9482,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1204,
                 'following_id' => 81,
                 'follower_id' => 184,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             183 => 
             array (
@@ -9522,16 +9522,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1209,
                 'following_id' => 131,
                 'follower_id' => 127,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             188 => 
             array (
                 'id' => 1210,
                 'following_id' => 6,
                 'follower_id' => 70,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             189 => 
             array (
@@ -9586,32 +9586,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1217,
                 'following_id' => 126,
                 'follower_id' => 12,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             196 => 
             array (
                 'id' => 1218,
                 'following_id' => 8,
                 'follower_id' => 26,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             197 => 
             array (
                 'id' => 1219,
                 'following_id' => 171,
                 'follower_id' => 93,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             198 => 
             array (
                 'id' => 1220,
                 'following_id' => 27,
                 'follower_id' => 55,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             199 => 
             array (
@@ -9626,8 +9626,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1222,
                 'following_id' => 111,
                 'follower_id' => 73,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             201 => 
             array (
@@ -9682,16 +9682,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1229,
                 'following_id' => 110,
                 'follower_id' => 138,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             208 => 
             array (
                 'id' => 1230,
                 'following_id' => 144,
                 'follower_id' => 115,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             209 => 
             array (
@@ -9738,16 +9738,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1236,
                 'following_id' => 141,
                 'follower_id' => 89,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             215 => 
             array (
                 'id' => 1237,
                 'following_id' => 80,
                 'follower_id' => 63,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             216 => 
             array (
@@ -9818,8 +9818,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1246,
                 'following_id' => 184,
                 'follower_id' => 71,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             225 => 
             array (
@@ -9858,16 +9858,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1251,
                 'following_id' => 125,
                 'follower_id' => 83,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             230 => 
             array (
                 'id' => 1252,
                 'following_id' => 90,
                 'follower_id' => 111,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             231 => 
             array (
@@ -9922,32 +9922,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1259,
                 'following_id' => 149,
                 'follower_id' => 156,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             238 => 
             array (
                 'id' => 1260,
                 'following_id' => 98,
                 'follower_id' => 23,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             239 => 
             array (
                 'id' => 1261,
                 'following_id' => 100,
                 'follower_id' => 179,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             240 => 
             array (
                 'id' => 1262,
                 'following_id' => 8,
                 'follower_id' => 169,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             241 => 
             array (
@@ -9962,8 +9962,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1264,
                 'following_id' => 174,
                 'follower_id' => 58,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             243 => 
             array (
@@ -10018,16 +10018,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1271,
                 'following_id' => 154,
                 'follower_id' => 65,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             250 => 
             array (
                 'id' => 1272,
                 'following_id' => 76,
                 'follower_id' => 64,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             251 => 
             array (
@@ -10074,16 +10074,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1278,
                 'following_id' => 161,
                 'follower_id' => 48,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             257 => 
             array (
                 'id' => 1279,
                 'following_id' => 183,
                 'follower_id' => 18,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             258 => 
             array (
@@ -10154,8 +10154,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1289,
                 'following_id' => 135,
                 'follower_id' => 189,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             267 => 
             array (
@@ -10194,16 +10194,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1295,
                 'following_id' => 133,
                 'follower_id' => 8,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             272 => 
             array (
                 'id' => 1296,
                 'following_id' => 88,
                 'follower_id' => 54,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             273 => 
             array (
@@ -10258,32 +10258,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1303,
                 'following_id' => 93,
                 'follower_id' => 100,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             280 => 
             array (
                 'id' => 1304,
                 'following_id' => 138,
                 'follower_id' => 73,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             281 => 
             array (
                 'id' => 1305,
                 'following_id' => 14,
                 'follower_id' => 184,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             282 => 
             array (
                 'id' => 1306,
                 'following_id' => 12,
                 'follower_id' => 110,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             283 => 
             array (
@@ -10298,8 +10298,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1308,
                 'following_id' => 169,
                 'follower_id' => 138,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             285 => 
             array (
@@ -10354,16 +10354,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1316,
                 'following_id' => 188,
                 'follower_id' => 193,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             292 => 
             array (
                 'id' => 1317,
                 'following_id' => 65,
                 'follower_id' => 49,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             293 => 
             array (
@@ -10410,16 +10410,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1323,
                 'following_id' => 109,
                 'follower_id' => 75,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             299 => 
             array (
                 'id' => 1324,
                 'following_id' => 128,
                 'follower_id' => 100,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             300 => 
             array (
@@ -10442,8 +10442,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1327,
                 'following_id' => 21,
                 'follower_id' => 158,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             303 => 
             array (
@@ -10466,8 +10466,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1330,
                 'following_id' => 8,
                 'follower_id' => 106,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             306 => 
             array (
@@ -10490,8 +10490,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1333,
                 'following_id' => 119,
                 'follower_id' => 63,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             309 => 
             array (
@@ -10530,16 +10530,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1338,
                 'following_id' => 36,
                 'follower_id' => 62,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             314 => 
             array (
                 'id' => 1339,
                 'following_id' => 33,
                 'follower_id' => 191,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             315 => 
             array (
@@ -10594,32 +10594,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1346,
                 'following_id' => 143,
                 'follower_id' => 188,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             322 => 
             array (
                 'id' => 1347,
                 'following_id' => 32,
                 'follower_id' => 95,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             323 => 
             array (
                 'id' => 1348,
                 'following_id' => 86,
                 'follower_id' => 68,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             324 => 
             array (
                 'id' => 1349,
                 'following_id' => 150,
                 'follower_id' => 91,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             325 => 
             array (
@@ -10634,8 +10634,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1351,
                 'following_id' => 159,
                 'follower_id' => 183,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             327 => 
             array (
@@ -10690,16 +10690,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1358,
                 'following_id' => 134,
                 'follower_id' => 2,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             334 => 
             array (
                 'id' => 1359,
                 'following_id' => 132,
                 'follower_id' => 100,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             335 => 
             array (
@@ -10746,16 +10746,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1365,
                 'following_id' => 185,
                 'follower_id' => 59,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             341 => 
             array (
                 'id' => 1366,
                 'following_id' => 79,
                 'follower_id' => 163,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             342 => 
             array (
@@ -10778,8 +10778,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1369,
                 'following_id' => 53,
                 'follower_id' => 178,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             345 => 
             array (
@@ -10802,8 +10802,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1372,
                 'following_id' => 161,
                 'follower_id' => 68,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             348 => 
             array (
@@ -10826,8 +10826,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1375,
                 'following_id' => 193,
                 'follower_id' => 74,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             351 => 
             array (
@@ -10866,16 +10866,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1380,
                 'following_id' => 120,
                 'follower_id' => 26,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             356 => 
             array (
                 'id' => 1381,
                 'following_id' => 75,
                 'follower_id' => 30,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             357 => 
             array (
@@ -10914,8 +10914,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1387,
                 'following_id' => 25,
                 'follower_id' => 14,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             362 => 
             array (
@@ -10930,32 +10930,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1390,
                 'following_id' => 24,
                 'follower_id' => 190,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             364 => 
             array (
                 'id' => 1392,
                 'following_id' => 55,
                 'follower_id' => 27,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             365 => 
             array (
                 'id' => 1393,
                 'following_id' => 23,
                 'follower_id' => 156,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             366 => 
             array (
                 'id' => 1395,
                 'following_id' => 91,
                 'follower_id' => 56,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             367 => 
             array (
@@ -10970,8 +10970,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1397,
                 'following_id' => 6,
                 'follower_id' => 145,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             369 => 
             array (
@@ -11026,16 +11026,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1404,
                 'following_id' => 24,
                 'follower_id' => 175,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             376 => 
             array (
                 'id' => 1405,
                 'following_id' => 132,
                 'follower_id' => 64,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             377 => 
             array (
@@ -11082,16 +11082,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1412,
                 'following_id' => 95,
                 'follower_id' => 71,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             383 => 
             array (
                 'id' => 1413,
                 'following_id' => 80,
                 'follower_id' => 88,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             384 => 
             array (
@@ -11114,8 +11114,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1416,
                 'following_id' => 69,
                 'follower_id' => 112,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             387 => 
             array (
@@ -11138,8 +11138,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1419,
                 'following_id' => 37,
                 'follower_id' => 64,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             390 => 
             array (
@@ -11162,8 +11162,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1423,
                 'following_id' => 28,
                 'follower_id' => 180,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             393 => 
             array (
@@ -11202,16 +11202,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1429,
                 'following_id' => 58,
                 'follower_id' => 67,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             398 => 
             array (
                 'id' => 1430,
                 'following_id' => 183,
                 'follower_id' => 88,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             399 => 
             array (
@@ -11250,8 +11250,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1435,
                 'following_id' => 145,
                 'follower_id' => 87,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             404 => 
             array (
@@ -11266,32 +11266,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1437,
                 'following_id' => 20,
                 'follower_id' => 58,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             406 => 
             array (
                 'id' => 1438,
                 'following_id' => 73,
                 'follower_id' => 188,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             407 => 
             array (
                 'id' => 1439,
                 'following_id' => 22,
                 'follower_id' => 19,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             408 => 
             array (
                 'id' => 1440,
                 'following_id' => 63,
                 'follower_id' => 103,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             409 => 
             array (
@@ -11306,8 +11306,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1442,
                 'following_id' => 59,
                 'follower_id' => 134,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             411 => 
             array (
@@ -11362,16 +11362,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1449,
                 'following_id' => 55,
                 'follower_id' => 194,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             418 => 
             array (
                 'id' => 1450,
                 'following_id' => 115,
                 'follower_id' => 125,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             419 => 
             array (
@@ -11418,16 +11418,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1456,
                 'following_id' => 132,
                 'follower_id' => 133,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             425 => 
             array (
                 'id' => 1457,
                 'following_id' => 53,
                 'follower_id' => 135,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             426 => 
             array (
@@ -11450,8 +11450,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1460,
                 'following_id' => 37,
                 'follower_id' => 176,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             429 => 
             array (
@@ -11474,8 +11474,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1464,
                 'following_id' => 96,
                 'follower_id' => 68,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             432 => 
             array (
@@ -11498,8 +11498,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1467,
                 'following_id' => 59,
                 'follower_id' => 14,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             435 => 
             array (
@@ -11538,16 +11538,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1473,
                 'following_id' => 109,
                 'follower_id' => 14,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             440 => 
             array (
                 'id' => 1474,
                 'following_id' => 100,
                 'follower_id' => 132,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             441 => 
             array (
@@ -11586,8 +11586,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1480,
                 'following_id' => 124,
                 'follower_id' => 42,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             446 => 
             array (
@@ -11602,32 +11602,32 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1482,
                 'following_id' => 14,
                 'follower_id' => 186,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             448 => 
             array (
                 'id' => 1483,
                 'following_id' => 24,
                 'follower_id' => 166,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             449 => 
             array (
                 'id' => 1484,
                 'following_id' => 23,
                 'follower_id' => 28,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             450 => 
             array (
                 'id' => 1485,
                 'following_id' => 107,
                 'follower_id' => 185,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             451 => 
             array (
@@ -11642,8 +11642,8 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1487,
                 'following_id' => 40,
                 'follower_id' => 142,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             453 => 
             array (
@@ -11698,16 +11698,16 @@ class FollowsTableSeeder extends Seeder
                 'id' => 1496,
                 'following_id' => 156,
                 'follower_id' => 102,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             460 => 
             array (
                 'id' => 1497,
                 'following_id' => 83,
                 'follower_id' => 33,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2019-02-19 00:00:00',
+                'updated_at' => '2019-02-19 00:00:00',
             ),
             461 => 
             array (
