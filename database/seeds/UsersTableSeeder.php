@@ -3302,7 +3302,7 @@ class UsersTableSeeder extends Seeder
                 'password' => '$2y$10$pyJBMNMw81saINQDbzTqO./ZbqUBTGbjcaweJiNEYFiI/rF7tx2h6',
                 'name' => 'Tialda Ostermann',
                 'bio' => '',
-                'gender' => 'male',
+                'gender' => 'female',
                 'birthday' => '2000-08-10 00:00:00',
                 'city' => 'München',
                 'country' => 'Germany',
