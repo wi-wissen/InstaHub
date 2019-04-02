@@ -32,7 +32,7 @@
 							@if ($user->city != "" && $user->country != "")
 								is from {{$user->city}} ({{$user->country}})
 							@elseif ($user->country != "")
-								is from $user->country
+								is from {{ $user->country }}
 							@endif
 
 							@if ($user->country != "")

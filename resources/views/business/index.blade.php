@@ -44,7 +44,7 @@
         <p><em>Jeder mag Urlaub. Egal ob Schüler, Erwachsene, Renter oder unser Karnickel Gerd. Unser Motte: Meer ist mehr.</em> </p>
         <p class="text-right">Laura Kaiser, Head of Sales</p>
         <h3>Burgerhaus</h3>
-        <p><img src='/img/ad/brokkolie.jpg' alt='brokkolie' style="width:100%" /></p>
+        <p><img src='/img/ad/brokkoli.jpg' alt='brokkolie' style="width:100%" /></p>
         <p><em>Burgerhaus ist ein neues Fastfood-Restaurant in jeder großen Stadt. Wir möchten den Kunden neugierig auf neues Essen machen. Es muss nicht immer Sellerie sein.</em> </p>
         <p class="text-right">Alexander Wirtz, Burgermeister</p>
         <h3>Andromeda Publishing Ltd</h3>
