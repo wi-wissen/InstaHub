@@ -1,0 +1,36 @@
+
+// Body
+//$body-bg: #f8fafc;
+$body-bg: #fafafa;
+
+//Font
+$font-family-sans-serif:  "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   "Source Code Pro", "Monaco", "Consolas", "Courier New", monospace;
+
+// Typography
+$font-family-base: $font-family-sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+//Layout
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 958px, //992
+  xl: 1200px
+);
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66D9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;

@@ -1,0 +1,83 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//FontAwesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
+//CodeMirror
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/material';
+
+//table
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+
+
+  //Vue
+  [v-cloak]  > * { display:none; }
+  [v-cloak]::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: url(/svg/oval.svg);
+    background-size: cover;
+    left: 50%;
+    top: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+  }
+  
+  /* Sticky footer styles
+  -------------------------------------------------- */
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 40px + 60px;
+  }
+  .footer {
+    padding: 0 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    line-height: 40px; /* Vertically center the text there */
+    text-align: center;
+  }
+  
+  .footer div span a {
+    color: #6c757d !important;
+  }
+
+  /*navbar*/
+  .box-shadow {
+    /*box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);*/
+    box-shadow: 0 .05rem .25rem rgba(0, 0, 0, .05);
+  }
+
+  .container-fluid {
+    margin-top: 60px;
+  }
+
+  main > .container {
+    margin-top: 60px;
+  }
+  
