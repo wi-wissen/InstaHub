@@ -2,130 +2,130 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Register</div>
+                    <div class="card-body">
                     <div class="alert alert-warning  alert-important" role="alert">Your Hub must activated by your Teacher! </div>
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/hubs') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('hub') ? ' has-error' : '' }}">
-                            <label for="hub" class="col-md-4 control-label">Hub</label>
+                        <div class="form-group{{ $errors->has('hub') ? ' has-error' : '' }} row">
+                            <label for="hub" class="col-md-4 col-form-label text-md-right">Hub</label>
 
                             <div class="col-md-6">
                                 <input id="hub" type="text" class="form-control" name="hub" value="{{ old('hub', $hub) }}" required readonly>
 
                                 @if ($errors->has('hub'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('hub') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('teacher') ? ' has-error' : '' }}">
-                            <label for="teacher" class="col-md-4 control-label">Your Teacher</label>
+                        <div class="form-group{{ $errors->has('teacher') ? ' has-error' : '' }} row">
+                            <label for="teacher" class="col-md-4 col-form-label text-md-right">Your Teacher</label>
 
                             <div class="col-md-6">
                                 <input id="teacher" type="text" class="form-control" name="teacher" value="{{ old('teacher') }}" required autofocus>
 
                                 @if ($errors->has('teacher'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('teacher') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">Username</label>
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }} row">
+                            <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username', $username) }}" required readonly>
 
                                 @if ($errors->has('username'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
 
                                 @if ($errors->has('name'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }} row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('bio') ? ' has-error' : '' }}">
-                            <label for="bio" class="col-md-4 control-label">Bio</label>
+                        <div class="form-group{{ $errors->has('bio') ? ' has-error' : '' }} row">
+                            <label for="bio" class="col-md-4 col-form-label text-md-right">Bio</label>
 
                             <div class="col-md-6">
                                 <textarea name="bio" id="bio" class="form-control" placeholder="Your Bio...."></textarea>
 
                                 @if ($errors->has('bio'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('bio') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                            <label for="gender" class="col-md-4 control-label">Gender</label>
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }} row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" id="gender" name="gender">
@@ -135,77 +135,80 @@
                                 </select>
 
                                 @if ($errors->has('gender'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('gender') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 						
-                        <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }}">
-                            <label for="birthday" class="col-md-4 control-label">Birthday</label>
+                        <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }} row">
+                            <label for="birthday" class="col-md-4 col-form-label text-md-right">Birthday</label>
 
                             <div class="col-md-6">
                                 <input id="birthday" type="date" class="form-control dateinput" name="birthday" value="{{ old('birthday') }}" autofocus>
 
                                 @if ($errors->has('birthday'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('birthday') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 						
-                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">City</label>
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }} row">
+                            <label for="city" class="col-md-4 col-form-label text-md-right">City</label>
 
                             <div class="col-md-6">
                                 <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" autofocus>
 
                                 @if ($errors->has('city'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('city') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 						
-                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                            <label for="country" class="col-md-4 control-label">Country</label>
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }} row">
+                            <label for="country" class="col-md-4 col-form-label text-md-right">Country</label>
 
                             <div class="col-md-6">
                                 <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}" autofocus>
 
                                 @if ($errors->has('country'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('country') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 						
-                        <div class="form-group{{ $errors->has('centimeters') ? ' has-error' : '' }}">
-                            <label for="centimeters" class="col-md-4 control-label">Centimeters</label>
+                        <div class="form-group{{ $errors->has('centimeters') ? ' has-error' : '' }} row">
+                            <label for="centimeters" class="col-md-4 col-form-label text-md-right">Centimeters</label>
 
                             <div class="col-md-6">
                                 <input id="centimeters" type="text" class="form-control" name="centimeters" value="{{ old('centimeters') }}" autofocus>
 
                                 @if ($errors->has('centimeters'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('centimeters') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
-                            <label for="avatar" class="col-md-4 control-label">Avatar</label>
+                        <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }} row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">Avatar</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="avatar" id="avatar">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="avatar">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
 
                                 @if ($errors->has('avatar'))
-                                    <span class="help-block">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('avatar') }}</strong>
                                     </span>
                                 @endif

@@ -3,27 +3,30 @@
 @section('content')
 <div class="container">
 	@include('flash::message')
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h1>Upload new Image</h1>
-				</div>
-				<div class="panel-body">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Upload new Photo') }}</div>
+                	<div class="card-body">
 
 					<form method="POST" action="{{ url('/upload') }}" enctype="multipart/form-data">
-						{{ csrf_field() }}
 						<div class="form-group">
-							<label for="image" >Image:</label>
-							<input type="file" name="photo" id="photo">
+                            <label for="photo">Photo</label>
 
-							@if ($errors->has('photo'))
-								<span class="help-block">
-									<strong>{{ $errors->first('photo') }}</strong>
-								</span>
-							@endif
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="photo">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
 
+                                @if ($errors->has('photo'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('photo') }}</strong>
+                                    </span>
+                                @endif
 						</div>
+						
+						{{ csrf_field() }}
+						
 						<div class="form-group">
 							<label for="desc" >Description</label>
 							<textarea name="description" id="description" class="form-control" placeholder="Description..."></textarea>
@@ -32,7 +35,7 @@
 							<button action="submit" class="btn btn-primary">Upload</button>
 						</div>
 					</form>
-
+					</div>
 				</div>
 			</div>
 			

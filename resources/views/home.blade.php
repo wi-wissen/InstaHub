@@ -1,24 +1,30 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+    .card{
+        margin-bottom: 1em;
+    }
+</style>
+@endsection
+
 @section('content')
-<div id="username" style="display: none;">{{ Auth::user()->username }}</div>
 <div class="container">
-    @include('flash::message')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+		@include('flash::message')
+		<div class="row justify-content-center">
+			<div class="col-10">
             	@foreach ($photos as $photo)
                     @include('photo.photo', ['photo' => $photo, 'single' => false])
  
                     @if (Schema::hasTable('ads') && $loop->iteration == 2)
-                    @if ($ad != null)
-                    <div class="well">
-                        <div class="user-data">
-                            <h4><img class="img-circle" src="/000.jpg" alt="000.jpg" width="30" height="30"> <span style="color: #333">Special Offer</span></h4>
+                        @if ($ad != null)
+                        <div class="card">
+                            <div class="card-body" style="padding:1.00rem 0;">
+                                <h5 style="padding-left:1.00rem;" class="card-title"><img class="rounded-circle img-thumbnail" src="/000.jpg" alt=000.jpg" width="50" height="50"> <a href="#" style="color: #333">Special Offer</a></h5>
+                                    <a href="{{$ad->url}}"><img src="{{$ad->img}}" class="img-fluid" style="display: block;margin: 0 auto; width:100%"></a>
+                            </div>
                         </div>
-
-                        <a href="{{$ad->url}}"><img src="{{$ad->img}}" class="img-responsive" style="display: block;margin: 0 auto; width:100%"></a><br>
-                    </div>
-                    @endif
+                        @endif
                     @endif
             	@endforeach
                 
@@ -37,10 +43,5 @@
                 @endif
             </div>
         </div>
-    </div>
 </div>
 @endsection
-
-<script>
-    
-</script>

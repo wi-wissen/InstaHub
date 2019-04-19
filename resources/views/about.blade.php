@@ -2,9 +2,11 @@
 
 @section('content')
 <div class="container">
-    @include('flash::message')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+		@include('flash::message')
+		<div class="row justify-content-center">
+			<div class="col-10">
+                <div class="card">
+                    <div class="card-body">
             	
             <h2>InstaHub</h2>
             <p>InstaHub is a social network for educational purpose only. Students can create their own social network as a database admin. They learn basics about working in a software project, creating and managing a database, querying (SQL <code>SELECT</code>) and editing (SQL <code>INSERT</code>, <code>UPDATE</code> and <code>DELETE</code>).</p>
@@ -59,6 +61,9 @@
             <h3>License</h3>
             <p><a href='https://www.mozilla.org/en-US/MPL/2.0/'>Mozilla Public License (MPL)</a></p>
 
+            </div>
+        </div>
+    
             </div>
         </div>
     </div>

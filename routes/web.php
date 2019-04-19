@@ -92,7 +92,7 @@ Route::get('/', function () {
 });
 
 Route::get('/noad', function () {
-    return view('noad');   
+    return view('errors.noad');   
 });
 
 Auth::routes();

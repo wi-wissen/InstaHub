@@ -12,6 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js').extract(['vue', 'popper.js', 'axios', 'lodash', 'bootstrap', 'codemirror'])
+   .copy('resources/js/ads.js', 'public/js/ads.js')
+   .copy('resources/js/jquery-app.js', 'public/js/jquery-app.js')
    .sass('resources/sass/app.scss', 'public/css')
    .disableSuccessNotifications();
 
@@ -21,4 +23,5 @@ if (mix.inProduction()) {
 
 if (!mix.inProduction()) {
     mix.sourceMaps();
+    mix.browserSync('instahub.test')
 }

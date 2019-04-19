@@ -2,11 +2,15 @@
 
 @section('content')
 <div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+
     {{-- @include('flash::message') - otherwise this will be used for showing sql result infos--}}
 	<div class="row">
-		<div class="col-md-12 col-md-offset-0">       
-            <h1>SQL-Editor</h1>
-            <p>In diesem Formular können SQL-Befehle direkt an die Datenbank gerichtet werden.</p>
+		<div class="col-md-12">       
+            <h1>Database</h1>
             <form action="sql" method="post">
             {{ csrf_field() }}
                 <div class="form-group">
@@ -54,61 +58,35 @@
 		</div>
 	</div>
 </div>
+
+        </div>
+    </div>
+</div>
 	
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="codemirror/lib/codemirror.css">
 <style>
-    .CodeMirror {
-        height: auto;
-        /* Bootstrap Settings */
-        box-sizing: border-box;
-        margin: 0;
-        font: inherit;
-        overflow: auto;
-        font-family: inherit;
-        display: block;
-        width: 100%;
-        /*padding: 6px 12px;*/
-        font-size: 14px;
-        line-height: 1.42857143;
-        color: #555;
-        background-color: #fff;
-        background-image: none;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-        /* Code Mirror Settings */
-        font-family: monospace;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .CodeMirror-focused {
-        /* Bootstrap Settings */
-        border-color: #66afe9;
-        outline: 0;
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    }
-
+.CodeMirror {
+    width: 100%;
+    height: auto;
+    color: #495057;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+.CodeMirror:focus-within {
+    color: #495057;
+    background-color: #fff;
+    border-color: #a1cbef;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+}
     #run {
         margin:5px 0 0;
     }
 
 </style>
-@endsection
-
-@section('script')
-<script src="codemirror/lib/codemirror.js"></script>
-<script src="codemirror/mode/sql/sql.js"></script>
-<script>
-    var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
-        lineNumbers: true,
-        mode: "text/x-sql",
-        matchBrackets: true,
-    });
-</script>
 @endsection

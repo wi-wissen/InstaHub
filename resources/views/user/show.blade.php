@@ -1,17 +1,70 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+.media-left{
+	padding-right: 40px;
+}
+
+.media-left img{
+	background-color: white;
+}
+
+h5 {
+	margin-bottom: 0;
+}
+
+.panel {
+  display: flex; /* or inline-flex */
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: flex-start;
+}
+
+.imgcontainer {
+	width: 28%;
+	height: 28%;
+	margin: 2%;
+}
+
+.square {
+    width: 100%;
+    padding-bottom: 100%;
+    background-size: cover;
+	background-position: center;
+}
+</style>
+
+@endsection
+
 @section('content')
 	<div class="container">
 		@include('flash::message')
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+		<div class="row justify-content-center">
+			<div class="col-10">
+				<img class="rounded-circle img-thumbnail mx-auto d-block d-sm-none" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="150" height="150">
 				<div class="media">
-					<div class="media-left">
-						<img class="img-circle" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="175" height="175">
+					<div class="media-left d-none d-sm-block">
+						<img class="rounded-circle img-thumbnail" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="175" height="175">
 					</div>
 					<div class="media-body">
-						<h2>{{ $user->name }}</h2>
-						<h5>{{ '@' . $user->username }}</h5>
+						@if (Auth::user()->id != $user->id)
+							@if (Schema::hasTable('follows'))
+							@if (Auth::user()->isfollowing($user))
+							<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
+									{{ csrf_field() }}
+									<input type="hidden" name="_method" value="DELETE">
+									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-outline-danger float-right" value="Unfollow" />
+							</form>
+							@else
+								<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
+									{{ csrf_field() }}
+									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-success float-right" value="Follow" />
+								</form>
+							@endif
+							@endif
+						@endif
+						<h2>{{ $user->username }}</h2>
 						<p>
 							@if (Schema::hasTable('photos'))
 							<b>{{$user->photos()->count()}}</b> Photos.
@@ -26,7 +79,10 @@
 							<a href ="{{'../user/' . $user->username . '/following'}}">Following <b>{{$user->following->count()}}</b></a>.
 							@endif
 						</p>
+						<h5>{{ $user->name }}</h5>
+						@if($user->bio != '')
 						<p><i>{{ $user->bio }}</i></p>
+						@endif
 						@if ($user->country != "" || isset($user->gender) || 'unknown' != $user->age())
 						<p>{{ $user->name }} 
 							@if ($user->city != "" && $user->country != "")
@@ -60,48 +116,27 @@
 							</p>
 						@endif
 						
-						@if (Auth::user()->id != $user->id)
-							@if (Schema::hasTable('follows'))
-							@if (Auth::user()->isfollowing($user))
-							<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
-									{{ csrf_field() }}
-									<input type="hidden" name="_method" value="DELETE">
-									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-danger" value="Unfollow" />
-							</form>
-							@else
-								<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
-									{{ csrf_field() }}
-									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-success" value="Follow" />
-								</form>
-							@endif
-							@endif
-						@endif
-
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
-							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-default" role="button">Edit</a>
+							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm" role="button">Edit</a>
 							@if (Auth::user()->id == $user->id)
-								<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/password'}}" class="btn btn-default" role="button">Change Password</a>
+								<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/password'}}" class="btn btn-outline-dark btn-sm" role="button">Change Password</a>
 							@endif
-							<button {{ Session::get('readonly') ? "disabled" : "" }} id="pw{{ $user->id }}" class="newPassword btn btn-default" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}" >Reset Password</button>
-							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-danger" role="button">Delete</a>
+							<button {{ Session::get('readonly') ? "disabled" : "" }} id="pw{{ $user->id }}" class="newPassword btn btn-outline-dark btn-sm" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}" >Reset Password</button>
+							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm" role="button">Delete</a>
 						@endif
 						
 					</div>
 				</div>
 				<hr>
 				@if (Schema::hasTable('photos'))
-				<div class="panel panel-defaut">
-					<div class="row">
-						@foreach ($user->photos as $photo)
-						<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
-							<a href="{{  '../photo/' . $photo->id }}" class="thumbnail thumb-square">
-							<div class="thumb"><img src="{{  '../' . $photo->url }}" alt="{{$photo->description}}"></div>
-							</a>
-						</div>
-					
-						@endforeach
-					</div>
-
+				<div class="panel">
+					@foreach ($user->photos as $photo)
+					<div class="imgcontainer">
+						<a href="{{  '../photo/' . $photo->id }}">
+							<div class="square" style="background-image: url('{{  '../' . $photo->url }}')" alt="{{$photo->description}}"></div>
+						</a>
+					</div>						
+					@endforeach
 				</div>
 				@endif
 			</div>

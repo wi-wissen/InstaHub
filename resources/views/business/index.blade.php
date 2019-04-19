@@ -3,9 +3,12 @@
 @section('content')
 <div id="username" style="display: none;">{{ Auth::user()->username }}</div>
 <div class="container">
-    @include('flash::message')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        @include('flash::message')
+            <div class="card">
+                <div class="card-body">
+
         <h1>Verbindungen, die inspirieren</h1>
         <p><img src='/img/ad/_main.jpg' alt='happy womein' referrerPolicy='no-referrer' style="width:100%" /></p>
         <p>Auf InstaHub kann dein Unternehmen Fotos oder Werbeanzeigen 

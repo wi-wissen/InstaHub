@@ -2,6 +2,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
 
 // Variables
 @import 'variables';
@@ -23,6 +24,37 @@
 .table th.fit {
     white-space: nowrap;
     width: 1%;
+}
+
+//nav
+.navbar-light {
+  background-color: white !important;
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+  margin-bottom: 2em;
+}
+
+.navbar-brand{
+  font-family: 'Satisfy';
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+.navbar-brand div{
+  margin-bottom: -3px;
+  display: inline-block !important;
+  vertical-align: bottom;
+}
+
+//Bootstrap
+.card-header {
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 1.125rem;
 }
 
 
