@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
-use App\Follow;
+use App\Http\Resources\Follow as FollowResource;
 use Auth;
 
 class FollowController extends Controller
@@ -14,7 +14,13 @@ class FollowController extends Controller
 	public function __construct ()
 	{
 		$this->middleware('auth'); // only authenticated users can access this route
-	}
+     }
+     
+     public function index() 
+     {
+          return  FollowResource::collection(User::all());
+          return view('follow.index', ['user' => $user]);
+     }
    
     public function followers($username) 
 	{

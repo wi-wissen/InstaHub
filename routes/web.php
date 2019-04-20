@@ -66,6 +66,8 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         //admin
         Route::get('user/password/{id}', 'UserController@getNewPassword');
 
+        Route::get('/follower', 'FollowController@index');
+        
         Route::get('/sql', 'SqlController@getQuery');
         Route::post('/sql', 'SqlController@getQuery');
 
