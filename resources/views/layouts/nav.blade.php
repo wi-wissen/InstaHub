@@ -30,10 +30,7 @@
         </button>
         @if (!Auth::guest())
         <div class="nav navbar-nav flex-fill justify-content-center d-none d-sm-block">
-
-  <form class="form-inline">
-                <search-box style="width:200px;"/>
-            </form>    
+            <search-box style="width:200px;"/>  
         </div>
         @endif
         <!-- Right Side Of Navbar -->
@@ -43,11 +40,10 @@
                 <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
             @else
-                <form class="form-inline d-inline d-sm-none">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-
+                <li class="d-inline d-sm-none" class="nav-item">
+                    <search-box style="width:200px;"/>
+                </li>
+            
                 @if (Schema::hasTable('ads'))
                 <li class="nav-item"><a class="nav-link"href="{{ url('/business') }}"><img src="/clarity/store-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Busines</span></a></li>
                 @endif
