@@ -27,6 +27,10 @@ h2{
     background-color: #fff;
 }
 
+.jumbotron-heading {
+    font-size: 3.25rem;
+}
+
 .lead-small {
     font-size: 1.05rem;
 }
@@ -38,8 +42,9 @@ td {
 @endsection
 
 @section('website')
+<div id="landing">
 <nav class="navbar navbar-expand-sm navbar-light bg-light main-nav sticky-top" style="background-color: #fff;">
-    <a class="navbar-brand w-50" href="{{ url('/') }}">
+    <a v-on:click="active=''" class="navbar-brand w-50" href="#">
         <img src="/clarity/camera-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">
         &nbsp;
         <div>InstaHub</div>
@@ -50,39 +55,39 @@ td {
     </button>
     <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
         <ul class="navbar-nav w-100 justify-content-center">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Teacher</a>
+            <li class="nav-item">
+                <a v-on:click="active='teacher'" class="nav-link" href="#teacher">Teacher</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="//codeply.com">Student</a>
+                <a v-on:click="active='student'" class="nav-link" href="#student">Student</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Guest</a>
+                <a v-on:click="active='guest'" class="nav-link" href="#guest">Guest</a>
             </li>
         </ul>
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="#">Documentation</a>
+                <a class="nav-link" href="{{ env('DOC_URL') }}">Documentation</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div class="container">
+<div v-if="active==''" class="container">
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">InstaHub</h1>
         <p class="lead text-muted">
-            InstaHub ist ein soziales Netzwerk, welches im Unterricht eingesetzt wird, um die Themen Informatik und Medien zu lehren.
+            InstaHub ist ein soziales Netzwerk, welches im Unterricht eingesetzt wird, um die Themen Datenbanken, Umgang mit sozialen Netzen und Datenschutz zu lehren.
         </p>
         <p class="lead text-muted">
-            Ausgezeichnet mit dem <a href="Unterrichtspreis der Gesellschaft für Informatik">Unterrichtspreis der Gesellschaft für Informatik</a> (2017) 
+            Ausgezeichnet mit dem <a href="https://gi.de/meldung/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone/">Unterrichtspreis der Gesellschaft für Informatik</a> (2017) 
             und den <a href="https://www.mnu.de/blog/535-preis-fuer-innovative-mint-unterrichtsideen-2019">1. Platz im Wettbewerb Innovative MINT-Unterrichtsideen</a> der MNU mit dem Klett-Verlag (2019).
         </p>
         <p>
-        <a href="#" class="btn btn-primary my-2">LehrerInnen</a>
-        <a href="#" class="btn btn-primary my-2">SchülerInnen</a>
-        <a href="#" class="btn btn-secondary my-2">Gäste</a>
+        <a v-on:click="active='teacher'" href="#teacher" class="btn btn-primary my-2">LehrerInnen</a>
+        <a v-on:click="active='student'" href="#student" class="btn btn-primary my-2">SchülerInnen</a>
+        <a v-on:click="active='guest'" href="#guest" class="btn btn-secondary my-2">Gäste</a>
         </p>
     </div>
 </section>
@@ -120,8 +125,9 @@ td {
       </div>
     </div>
   </section>
+</div>
 
-<div class="container-fluid">
+<div v-if="active=='student'" class="container-fluid">
 <div class="row justify-content-center">
     <div class="d-none d-sm-none d-md-block col-md-4 text-right">
     <img src="/img/pixel3+hub.png" class="img-fluid" Style="max-width: 250px;" alt="Smartphone">
@@ -146,11 +152,11 @@ td {
             <li class="list-group-item">
                 <h5 class="card-title">Login</h5>
 
-                <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                <form method="POST" v-bind:action="hubname + '{{ env('SESSION_DOMAIN') }}/login'" aria-label="{{ __('Login') }}">
                     @csrf
 
                     <div class="form-group">
-                        <input id="hubname" placeholder="{{ __('Hubname') }}" type="text" class="form-control{{ $errors->has('hubname') ? ' is-invalid' : '' }}" name="hubname" value="{{ old('hubname') }}" required autofocus>
+                        <input id="hubname" v-model="hubname" placeholder="{{ __('Hubname') }}" type="text" class="form-control{{ $errors->has('hubname') ? ' is-invalid' : '' }}" name="hubname" value="{{ old('hubname') }}" required autofocus>
 
                             @if ($errors->has('hubname'))
                                 <span class="invalid-feedback" role="alert">
@@ -211,17 +217,17 @@ td {
 </div>
 
 
-<div class="container-fluid">
+<div v-if="active=='teacher'" class="container-fluid">
 <div class="row justify-content-center">
-    <div class="d-none d-sm-none d-md-block col-md-4 text-right">
-        <div class="card" style="max-width: 20rem; margin-top: 0.5em;">
+    <div class="d-none d-sm-none d-md-block col-md-4">
+        <div class="card float-right" style="max-width: 20rem; margin-top: 0.5em;">
             <div class="card-img-top embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/wCj3keNW-74?rel=0" allowfullscreen></iframe>
             </div>
             <div class="card-body text-left">
                 <p class="card-text">Beantrage zuerst einen Lehrer-Account. Anschließend kannst du dir als SchülerIn einen Hub anlegen, dich in 
                     deiner LehrerInnenrolle freischalten und alle Funktionen erkunden. Schau auch in der Hilfe nach fertigen Aufgaben und Stundenentwürfen.</p>
-                <a href="#" class="btn btn-outline-dark btn-lg btn-block">Documentation</a>
+                <a href="{{ env('DOC_URL') }}" class="btn btn-outline-dark btn-lg btn-block">Documentation</a>
             </div>
         </div>
     </div>
@@ -300,8 +306,8 @@ td {
   </div>
 </div>
 
-
-<div class="container-fluid">
+<div v-if="active=='guest'" >
+<div class="container">
 
 <div class="row justify-content-center alert alert-primary">
     <div class="col-md-4">
@@ -336,20 +342,25 @@ td {
     </div>
     <div class="col-md-4">
         <table>
-            <tbody><tr>
-                <td style="vertical-align: top;"><b>Junge</b></td>
-                <td>
-                    Benutzer: <br>
-                    Passwort:
-                </td>
-                <td>
-                    <code>adrian211</code> <br>
-                    <code>adrian211</code>
-                </td>
-            </tr>
-        </tbody></table>
+            <tbody>
+                <tr>
+                    <td style="vertical-align: top;"><b>Junge</b></td>
+                    <td>
+                        Benutzer: <br>
+                        Passwort:
+                    </td>
+                    <td>
+                        <code>adrian211</code> <br>
+                        <code>adrian211</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+
+</div>
+<div class="container-fluid">
 
 <div class="row justify-content-center">
     <div class="d-none d-sm-none d-md-block col-md-4 text-right">
@@ -371,7 +382,7 @@ td {
             <li class="list-group-item">
                 <h5 class="card-title">Login</h5>
 
-                <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                <form method="POST" action="public{{ env('SESSION_DOMAIN') }}/login" aria-label="{{ __('Login') }}">
                     @csrf
 
                     <div class="form-group">
@@ -434,6 +445,9 @@ td {
     </div>
   </div>
 </div>
+</div>
 
     @include('layouts.footer')
+
+</div>
 @endsection

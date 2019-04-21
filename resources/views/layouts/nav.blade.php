@@ -1,5 +1,5 @@
 <!-- https://stackoverflow.com/questions/33867603/center-an-element-in-bootstrap-4-navbar -->
-<nav class="navbar navbar-expand-sm navbar-light bg-light main-nav sticky-top" style="background-color: #fff;">
+<nav class="navbar navbar-expand-sm navbar-light bg-light main-nav sticky-top" style="background-color: #fff;" id="nav">
     <div class="container justify-content-center">
         <!-- Left Side Of Navbar -->
         <div class="nav navbar-nav flex-fill w-md-100 flex-nowrap">
@@ -8,12 +8,20 @@
             @if (Auth::guest())
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="/clarity/camera-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">
-                <div>{{Session::get('hub')}}</div>
+                @if(Session::get('hub', 'root') != 'root')
+                    <div>{{Session::get('hub')}}</div>
+                @else
+                    <div>{{ env('APP_NAME') }}</div>
+                @endif
             </a>
             @else
             <a class="navbar-brand" href="{{ url('/home') }}">
                 <img src="/clarity/camera-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">
-                <div>{{Session::get('hub')}}</div>
+                @if(Session::get('hub', 'root') != 'root')
+                    <div>{{Session::get('hub')}}</div>
+                @else
+                    <div>{{ env('APP_NAME') }}</div>
+                @endif
             </a>
             @endif
         </div>
@@ -22,9 +30,10 @@
         </button>
         @if (!Auth::guest())
         <div class="nav navbar-nav flex-fill justify-content-center d-none d-sm-block">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
+
+  <form class="form-inline">
+                <search-box style="width:200px;"/>
+            </form>    
         </div>
         @endif
         <!-- Right Side Of Navbar -->

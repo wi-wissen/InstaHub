@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Auth;
+
 use App\Comment;
+use App\Http\Resources\Comment as CommentResource;
 
 class CommentController extends Controller
 {
@@ -18,15 +21,13 @@ class CommentController extends Controller
 
     public function store($photo_id, Request $request)
     {
-        Comment::create([
-            'user_id' => $request->user()->id,
+        $comment = Comment::create([
+            'user_id' => Auth::id(),
             'photo_id' =>  $photo_id,
             'body' => $request->comment,
         ]);
         
-        return response()->json([
-            'success' => 'true',
-        ]);
+        return new CommentResource($comment);
     }
 
     /**
@@ -42,8 +43,9 @@ class CommentController extends Controller
 		//$this->authorize('view', $entry);
 
 		$entry->delete();
-		flash('Comment deleted')->success();
-        return redirect('home');
+		return response()->json([
+            'success' => 'true',
+        ]);
 	 }
 
 

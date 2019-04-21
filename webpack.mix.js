@@ -15,6 +15,9 @@ mix.js('resources/js/app.js', 'public/js').extract(['vue', 'popper.js', 'axios',
    .copy('resources/js/ads.js', 'public/js/ads.js')
    .copy('resources/js/jquery-app.js', 'public/js/jquery-app.js')
    .sass('resources/sass/app.scss', 'public/css')
+   .styles([
+        'node_modules/vue-bootstrap-typeahead/dist/VueBootstrapTypeahead.css'
+    ], 'public/css/vendor.css')
    .disableSuccessNotifications();
 
 if (mix.inProduction()) {
@@ -23,5 +26,5 @@ if (mix.inProduction()) {
 
 if (!mix.inProduction()) {
     mix.sourceMaps();
-    mix.browserSync('instahub.test')
+    mix.browserSync('hub.instahub.test')
 }

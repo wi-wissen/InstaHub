@@ -23,6 +23,7 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         //user
         Route::get('/user', 'ProfileController@index');
         Route::get('/user/letter/{char}', 'ProfileController@filter');
+        Route::get('/api/user/search/{query}', 'UserController@search');
         Route::get('/user/{user_id}/followers', 'FollowController@followers');
         Route::get('/user/{user_id}/following', 'FollowController@following');
 
@@ -31,7 +32,7 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         Route::get('/user/{username}/edit', 'ProfileController@edit');
         Route::put('/user/{username}/update', 'ProfileController@update');
         Route::get('/user/{username}/destroy', 'UserController@destroy');
-        Route::get('user/{username}/password', 'UserController@getPassword');
+        Route::get('/user/{username}/password', 'UserController@getPassword');
         Route::post('user/{username}/password', 'UserController@postPassword');
         Route::get('/user/{username}/activate', 'ProfileController@activate');
         Route::get('/user/{username}/deactivate', 'ProfileController@deactivate');
@@ -46,17 +47,17 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         Route::get('/upload', 'PhotoController@create');
 
         //follow
-        Route::delete('/user/follow/{id}', 'FollowController@unfollow');
-        Route::post('/user/follow/{id}', 'FollowController@follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
+        Route::delete('/api/user/follow/{id}', 'FollowController@unfollow');
+        Route::post('/api/user/follow/{id}', 'FollowController@follow'); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
 
         Route::post('/upload', 'PhotoController@store');
 
         //like
-        Route::post('/like/{id}', 'LikesController@like')->name('like');
+        Route::post('/api/like/{id}', 'LikesController@like');
 
         //comment
-        Route::post('/comment/{photo_id}', 'CommentController@store');
-        Route::get('/comment/{id}/destroy', 'CommentController@destroy');
+        Route::post('/api/comment/{photo_id}', 'CommentController@store');
+        Route::delete('/api/comment/{id}', 'CommentController@destroy');
 
         //Business (Analytic)
         Route::get('/business', 'BusinessController@index');
@@ -64,9 +65,10 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 
     Route::group(['middleware' => ['auth', 'role:dba']], function () {
         //admin
-        Route::get('user/password/{id}', 'UserController@getNewPassword');
+        Route::get('/api/user/password/{id}', 'UserController@getNewPassword');
 
         Route::get('/follower', 'FollowController@index');
+        Route::get('/api/follower', 'FollowController@apiIndex');
         
         Route::get('/sql', 'SqlController@getQuery');
         Route::post('/sql', 'SqlController@getQuery');

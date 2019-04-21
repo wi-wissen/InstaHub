@@ -13,6 +13,8 @@ use Config;
 use Auth;
 use Schema;
 
+use App\Http\Resources\User as UserResource;
+
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -20,6 +22,12 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function search($query)
+    {
+        $user = User::where('username', 'LIKE', $query . '%')->limit(10)->get();
+        return UserResource::collection($user);
     }
 
     public function destroy($username)

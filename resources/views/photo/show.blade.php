@@ -1,18 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="username" style="display: none;">{{ Auth::user()->username }}</div>
-<div class="container">
+<div class="container" id="container">
 	@include('flash::message')
 
 	<div class="row justify-content-center">
 		<div class="col-md-10">
-			@if (Schema::hasTable('ads'))
-		    	@include('photo.photo', ['photo' => $photo, 'ad' => $ad, 'single' => true])
-			@else
-				@include('photo.photo', ['photo' => $photo, 'single' => true])
-			@endif
+			<photo-show
+				:photo = "photo"
+				:readonly = "readonly"
+				@if (Schema::hasTable('ads'))
+				:ad = "ad"
+				@endif
+				:admin = "admin"
+			></photo-show>
+
+			
       </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+	var data = {
+		photo:{!! $photo !!}.data,
+		ad:{!! $ad !!}.data,
+		readonly: {{Session::get('readonly')}},
+		admin: {{Auth::user()->allowed('dba')}}
+	}
+</script>
 @endsection

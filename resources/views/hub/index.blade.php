@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+	.table {
+		background-color: white;
+	}
+</style>
+@endsection
+
 @section('content')
     <div class="container">
         @include('flash::message')
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0">
+        <div class="row  justify-content-center">
+            <div class="col-md-12">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -23,17 +31,17 @@
                                         <td>{{ $hub->created_at }}</td>
                                         <td>
                                         @if ($hub->activated() == 0)
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/activate') }}" class="btn btn-default">Activate</a>
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/activate') }}" class="btn btn-outline-dark">Activate</a>
                                         @endif
                                         @if ($hub->readonly() == 0)
                                         <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
                                         @endif
-                                        <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-default">Login as DBA</a>
+                                        <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-outline-dark">Login as DBA</a>
                                         @if ($hub->readonly() == 0)
-                                        <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-default">Fill all Tables</a>
+                                        <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-outline-dark">Fill all Tables</a>
                                         @endif
                                         @if ($hub->readonly() == 1)
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readwrite') }}" class="btn btn-default">Run</a>
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readwrite') }}" class="btn btn-outline-dark">Run</a>
                                         @else
                                             <a href="{{ url('/hubs/' . $hub->id . '/dba/readonly') }}" class="btn btn-danger">Maintenance</a>
                                         @endif
@@ -49,10 +57,10 @@
                                         @endif
                                         <a href="#" class="btn btn-danger disabled">Login as DBA</a>
                                         @if ($hub->readonly() == 0)
-                                        <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-default">Fill all Tables</a>
+                                        <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-outline-dark">Fill all Tables</a>
                                         @endif
                                         @if ($hub->readonly() == 1)
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readwrite') }}" class="btn btn-default">Run</a>
+                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readwrite') }}" class="btn btn-outline-dark">Run</a>
                                         @else
                                             <a href="{{ url('/hubs/' . $hub->id . '/dba/readonly') }}" class="btn btn-danger">Maintenance</a>
                                         @endif

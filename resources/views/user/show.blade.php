@@ -17,13 +17,13 @@ h5 {
 .panel {
   display: flex; /* or inline-flex */
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  /*justify-content: space-evenly;*/
   align-content: flex-start;
 }
 
 .imgcontainer {
-	width: 28%;
-	height: 28%;
+	width: 29%;
+	height: 29%;
 	margin: 2%;
 }
 
@@ -38,7 +38,7 @@ h5 {
 @endsection
 
 @section('content')
-	<div class="container">
+	<div class="container" id="user-show">
 		@include('flash::message')
 		<div class="row justify-content-center">
 			<div class="col-10">
@@ -50,18 +50,7 @@ h5 {
 					<div class="media-body">
 						@if (Auth::user()->id != $user->id)
 							@if (Schema::hasTable('follows'))
-							@if (Auth::user()->isfollowing($user))
-							<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
-									{{ csrf_field() }}
-									<input type="hidden" name="_method" value="DELETE">
-									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-outline-danger float-right" value="Unfollow" />
-							</form>
-							@else
-								<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
-									{{ csrf_field() }}
-									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-success float-right" value="Follow" />
-								</form>
-							@endif
+							<follow-button class="float-right" id="{{$user->id}}" v-bind:isfollowing="{{Auth::user()->isfollowing($user)}}"></follow-button>
 							@endif
 						@endif
 						<h2>{{ $user->username }}</h2>
@@ -121,7 +110,8 @@ h5 {
 							@if (Auth::user()->id == $user->id)
 								<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/password'}}" class="btn btn-outline-dark btn-sm" role="button">Change Password</a>
 							@endif
-							<button {{ Session::get('readonly') ? "disabled" : "" }} id="pw{{ $user->id }}" class="newPassword btn btn-outline-dark btn-sm" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}" >Reset Password</button>
+							<button v-if="!pw" v-on:click="getNewPw()" {{ Session::get('readonly') ? "disabled" : "" }} class="newPassword btn btn-outline-dark btn-sm">Reset Password</button>
+							<code v-else style="padding: 0.25rem 0.5rem; font-size: 0.7875rem;">@{{pw}}</code>
 							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm" role="button">Delete</a>
 						@endif
 						
@@ -142,4 +132,10 @@ h5 {
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('script')
+<script>
+var id = {{ $user->id }};
+</script>
 @endsection

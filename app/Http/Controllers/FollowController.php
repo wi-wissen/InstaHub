@@ -18,8 +18,13 @@ class FollowController extends Controller
      
      public function index() 
      {
+          $follow = FollowResource::collection(User::all());
+          return view('follow.index', ['follow' => $follow->response()->content()]);
+     }
+
+     public function apiIndex() 
+     {
           return  FollowResource::collection(User::all());
-          return view('follow.index', ['user' => $user]);
      }
    
     public function followers($username) 
@@ -37,14 +42,16 @@ class FollowController extends Controller
     public function follow($id, Request $request) // id of the person to be followed
    {
         Auth::user()->following()->attach($id); 
-        flash('Now following ' . User::find($id)->name . '.')->success();
-        return redirect('/user/' . User::find($id)->username);
+        return response()->json([
+          'follow' => 'true'
+        ]);
    }
 
    public function unfollow($id, Request $request) // id of the person to be followed
    {
-        Auth::user()->following()->detach(User::find($id));  
-        flash('Unfollowed ' . User::find($id)->name . '.')->success();      
-        return redirect('/user/' . $request->user()->username);
+        Auth::user()->following()->detach(User::find($id));       
+        return response()->json([
+          'follow' => 'false'
+        ]);
    }
 }

@@ -20,8 +20,9 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Styles -->
+    <link href="{{ mix('css/vendor.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    @yield('css')    
+    @yield('css')  
 </head>
 <body>
     
@@ -32,6 +33,10 @@
    <script src="{{ mix('js/vendor.js') }}" defer></script>
    <script src="{{ mix('js/app.js') }}" defer></script>
    <script src="/js/ads.js"></script>
+   <script>
+        window.default_locale = "{{ config('app.locale') }}";
+        window.fallback_locale = "{{ config('app.fallback_locale') }}";
+   </script>
    <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),

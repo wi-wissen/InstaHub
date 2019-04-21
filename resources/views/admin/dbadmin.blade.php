@@ -1,22 +1,37 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+	.card {
+		margin-bottom: 2em;
+	}
+</style>
+@endsection
+
 @section('content')
 <div class="container">
 	@include('flash::message')
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="pull-right"><a href="/hubs/{{$hub->id}}/dba/resetpw" type="button" class="btn btn-default btn-block">Reset Admin-Password</a></div>
-			<h1 >Hub: {{$hub->name}}</h3>
-			<div class="panel panel-default">
-				<div class="panel-body">
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<div class="card">
+			<div class="card-header">
+				{{$hub->name}}
+			</div>
+				<div class="card-body">
+
+			<div class="float-right"><a href="/hubs/{{$hub->id}}/dba/resetpw" type="button" class="btn btn-outline-dark btn-block">Reset Admin-Password</a></div>
+				<div class="card-body">
 					{!! $state !!}
 				</div>
-			</div>	
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Tables</h3>
+			
 				</div>
-				<div class="panel-body">
+			</div>	
+			
+			<div class="card">
+				<div class="card-header">
+					Tables
+				</div>
+				<div class="card-body">
 					<div class="row" style="padding-bottom:10px;">
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/comments" type="button" class="btn btn-success btn-block">(Re)Create Comments</a></div>
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/comments" type="button" class="btn btn-primary btn-block">(Re)Fill Comments</a></div>
@@ -50,11 +65,11 @@
 				</div>
 			</div>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Table Photos</h3>
+			<div class="card">
+				<div class="card-header">
+					Table Photos
 				</div>
-				<div class="panel-body">
+				<div class="card-body">
 				<div class="alert alert-warning  alert-important" role="alert">This table is neccesary for all tables above!</div>
 					<div class="row">
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/photos" type="button" class="btn btn-success btn-block">(Re)Create Photos</a></div>
@@ -64,11 +79,11 @@
 				</div>
 			</div>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Table Users</h3>
+			<div class="card">
+				<div class="card-header">
+					Table Users
 				</div>
-				<div class="panel-body">
+				<div class="card-body">
 				<div class="alert alert-warning  alert-important" role="alert">This table is neccesary for all tables above!</div>
 					<div class="row">
 						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/users" type="button" class="btn btn-success btn-block">(Re)Create Users</a></div>
@@ -77,8 +92,7 @@
 					</div>
 				</div>
 			</div>
-
-    </div>
+		</div>
 	</div>
 </div>
 @endsection

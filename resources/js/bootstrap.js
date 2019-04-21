@@ -45,6 +45,47 @@ if (token) {
 }
 
 /**
+ * Vue
+ */
+window.Vue = require('vue');
+
+import './vue-translation';
+
+import i18n from './vue-i18n' // //TODO check if local changes are needed
+Vue.use(i18n, window.translations)
+
+import VueProgressBar from 'vue-progressbar'
+const VueProgressBarOptions = {
+    color: '#3490dc',
+    failedColor: '#e3342f',
+    thickness: '3px',
+    transition: {
+      speed: '0.2s',
+      opacity: '0.6s',
+      termination: 300
+    },
+}
+Vue.use(VueProgressBar, VueProgressBarOptions)
+
+/**
+* Our Vuejs event handler which we will be using for flash messaging
+* @type  {Vue}
+*/
+window.events = new Vue();
+
+/**
+* Our Flash function which will be used to add new flash events to our event handler
+*
+* @param    String message Our alert message
+* @param    String type    The type of alert we want to show
+*/
+window.flash = function(message, type) {
+    window.events.$emit('flash', message, type);
+};
+    
+Vue.component('flash', require('vue-flash').default);
+
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
@@ -64,9 +105,11 @@ if (token) {
 window.CodeMirror = require('codemirror/mode/sql/sql');
 window.CodeMirror = require('codemirror');
 
+if (document.getElementById("editor")) {
+    const editor = window.CodeMirror.fromTextArea(document.getElementById("editor"), {
+        lineNumbers: true,
+        mode: "text/x-sql",
+        matchBrackets: true,
+    });
+}
 
-var editor = window.CodeMirror.fromTextArea(document.getElementById("editor"), {
-    lineNumbers: true,
-    mode: "text/x-sql",
-    matchBrackets: true,
-});

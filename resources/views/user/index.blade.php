@@ -30,7 +30,7 @@ p {
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container" id="user-index">
         @include('flash::message')
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -58,18 +58,7 @@ p {
                         </a>
                         <div class="media-body">
                         @if (Schema::hasTable('follows'))
-							@if (Auth::user()->isfollowing($user))
-							<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
-									{{ csrf_field() }}
-									<input type="hidden" name="_method" value="DELETE">
-									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-danger float-right" value="Unfollow" />
-							</form>
-							@else
-								<form action="{{ url('../user/follow/' .$user->id) }}" method="post" style="display: inline;">
-									{{ csrf_field() }}
-									<input {{ Session::get('readonly') ? "disabled" : "" }} type="submit" class="btn btn-success float-right" value="Follow" />
-								</form>
-							@endif
+                            <follow-button class="float-right" id="{{$user->id}}" v-bind:isfollowing="{{Auth::user()->isfollowing($user)}}"></follow-button>
 						@endif
                             <a class="user" href ="{{'/user/' . $user->username}}"><h4 class="mt-0">{{ $user->username }}</h4></a>
                             <p>{{ $user->name }}</p>

@@ -10,6 +10,9 @@ use App\User;
 use App\Analytic;
 use App\Ad;
 
+use App\Http\Resources\Photo as PhotoResource;
+use App\Http\Resources\Ad as AdResource;
+
 use Auth;
 use Debugbar;
 use Config;
@@ -89,19 +92,25 @@ class HomeController extends Controller
 
     public function single($photo_id, Request $request) 
 	{
-		$photo = Photo::findOrFail($photo_id);
+        $photo = Photo::findOrFail($photo_id);
+        
+        $photo = new PhotoResource($photo);
 
         //analytic
         if (Schema::hasTable('analytics')) {
             Analytic::create(['user_id' => Auth::id(), 'photo_id' => $photo->id]);
         }
 
+        //return(new PhotoResource($photo));
+
         if (Schema::hasTable('ads')) {
             $ad = Ad::getAd($photo_id);
-            return view('photo.show', ['photo' => $photo, 'ad' => $ad]);
+            $ad = new AdResource($ad);
+
+            return view('photo.show', ['photo' => $photo->response()->content(), 'ad' => $ad->response()->content()]);
         }
         else {
-            return view('photo.show', ['photo' => $photo]);
+            return view('photo.show', ['photo' => $photo->response()->content()]);
         }
 	}
 }

@@ -28,7 +28,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.1.0",
         "codemirror": "^5.40.2",
-        "voo-i18n": "^1.0.10",
+        "vue-bootstrap-typeahead": "^0.2.6",
         "vue-flash": "^2.1.2",
         "vue-progressbar": "^0.7.5"
     }
