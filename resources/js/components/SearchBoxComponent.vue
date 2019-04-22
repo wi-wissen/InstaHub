@@ -13,7 +13,7 @@
     <div class="d-flex align-items-center">
         <img
         class="rounded-circle"
-        :src="data.avatar"
+        :src="'/' + data.avatar"
         style="width: 40px; height: 40px;" />
 
         <!-- Note: the v-html binding is used, as htmlText contains

@@ -16,7 +16,6 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \App\Http\Middleware\selectdb::class,
-        \App\Http\Middleware\SetBrowserLocale::class,
     ];
 
     /**
@@ -33,6 +32,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\subdomain::class,
+            \App\Http\Middleware\SetBrowserLocale::class,
         ],
 
         'api' => [

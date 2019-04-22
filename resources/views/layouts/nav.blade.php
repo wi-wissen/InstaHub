@@ -44,8 +44,16 @@
                     <search-box style="width:200px;"/>
                 </li>
             
-                @if (Schema::hasTable('ads'))
-                <li class="nav-item"><a class="nav-link"href="{{ url('/business') }}"><img src="/clarity/store-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Busines</span></a></li>
+                @if (Schema::hasTable('ads') && Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root')
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarBusinessDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/clarity/store-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Busines</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarBusinessDropdown">
+                        <a class="dropdown-item" href="{{ url('/business') }}">Overview</a>
+                        <a class="dropdown-item" href="/ads">Campains</a>
+                    </div>
+                </li>
                 @endif
                 <li class="nav-item"><a class="nav-link"href="{{ url('/user') }}"><img src="/clarity/compass-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Explore</span></a></li>    
                 @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
@@ -55,11 +63,10 @@
                 <li class="nav-item"><a class="nav-link"href="{{ env('DOC_URL') }}"><img src="/clarity/help-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Help</span></a></li>
                 @endif
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="/clarity/user-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">User</span>
                     </a>
-
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
                         <a class="dropdown-item" href="/user/{{ Auth::user()->username }}">{{ Auth::user()->name }}</a>
                         @if (Schema::hasTable('photos') && !Session::get('readonly'))
                             <a class="dropdown-item" href="{{ url('/upload') }}">Upload</a>

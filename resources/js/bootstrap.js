@@ -17,7 +17,8 @@ try {
 }
 
 jQuery(function () {
-    jQuery('[data-toggle="tooltip"]').tooltip()
+    jQuery('[data-toggle="tooltip"]').tooltip();
+    jQuery('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 })
 
 /**
@@ -110,6 +111,11 @@ if (document.getElementById("editor")) {
         lineNumbers: true,
         mode: "text/x-sql",
         matchBrackets: true,
+        extraKeys: {
+           "Ctrl-Enter": function(instance) { 
+             $("#sqlform").submit();
+           },
+         }    
     });
 }
 

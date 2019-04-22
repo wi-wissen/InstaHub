@@ -1,8 +1,10 @@
 //adblock detection
 //it seems that antiadblock kiler set canRunAds=true so I changed to different variable. nice try. :D
-document.getElementById('adblockerwarning').style.display = 'block';
-if (aes7EU2p7XzhcQ6B) {
-    document.getElementById('adblockerwarning').style.display = 'none';
+if (document.getElementById("adblockerwarning")) {
+    document.getElementById('adblockerwarning').style.display = 'block';
+    if (typeof aes7EU2p7XzhcQ6B !== 'undefined') {
+        document.getElementById('adblockerwarning').style.display = 'none';
+    }
 }
 
 /**
@@ -86,5 +88,51 @@ if ($("#user-show")[0]) {
 if ($("#user-index")[0]) {
     const userShow = new Vue({
         el: '#user-index'
+    });
+}
+
+if ($("#sql-editor")[0]) {
+    const sqlEditor = new Vue({
+        el: '#sql-editor',
+        data: {
+            table: true,
+        },
+        methods: {
+            removeResult: function() {
+              this.table=false;
+            }
+        }
+    });
+}
+
+if ($("#ad-index")[0]) {
+    const adIndex = new Vue({
+        el: '#ad-index',
+        data: data,
+        methods: {
+            deleteAd: function (index) {
+                var self = this;
+                this.$Progress.start();
+                axios({
+                    method: 'delete',
+                    url: '/api/ads/' + this.ads[index].id
+                })
+                .then(function (response) {
+                    self.ads.splice(index, 1)
+                    self.$Progress.finish();
+                })
+                .catch(function (error) {
+                    flash("Sorry, we can't delete this Ad.", 'error');
+                    self.$Progress.fail();
+                });
+            },
+        }
+    });
+}
+
+if ($("#ad-edit")[0]) {
+    const adEdit = new Vue({
+        el: '#ad-edit',
+        data: data,
     });
 }

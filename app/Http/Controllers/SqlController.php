@@ -25,6 +25,8 @@ class SqlController extends Controller
     public function getQuery(Request $request)
     {
         $t = "";
+        $message = null; $type= null;
+
         if ($request->has('editor')) {
              //Ergebnis vorbereiten
             try {
@@ -32,17 +34,17 @@ class SqlController extends Controller
                     // other statement - https://laravel.com/docs/5.7/database#running-queries
                     DB::statement($request->editor);
                     //nothing to show, cause no select-statement
-                    flash("Anfrage ausgeführt.", 'success')->important();
+                    $message = "Anfrage ausgeführt."; $type= 'success';
                 }
                 else {
                     //select
                     $r = DB::select($request->editor);
                     if (!$r) {
                         //nothing found
-                        flash("Anfrage ausgeführt. 0 Ergebnisse gefunden.", 'warning')->important();
+                        $message = "Anfrage ausgeführt. 0 Ergebnisse gefunden."; $type= 'warning';
                     }
                     else {
-                        flash("Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden.", 'success')->important();
+                        $message = "Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden."; $type= 'success';
     
                         $cols = array_keys((array) $r[0]);
                         $t = "<table class='table'>";
@@ -66,7 +68,7 @@ class SqlController extends Controller
                     }
                 }                              
             } catch(\Illuminate\Database\QueryException $ex){ 
-                flash($ex->getMessage(), 'danger')->important(); 
+                $message = $ex->getMessage(); $type= 'danger'; 
             }
         }
 
@@ -90,6 +92,6 @@ class SqlController extends Controller
 
 
 
-        return view('admin.sql', ['result' => $t, 'tables' => $dbclass]);
+        return view('admin.sql', ['result' => $t, 'tables' => $dbclass, 'message' => $message, 'type' => $type,]);
     }
 }

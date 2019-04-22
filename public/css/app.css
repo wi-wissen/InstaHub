@@ -17261,6 +17261,24 @@ span.CodeMirror-selectedtext {
   color: white !important;
 }
 
+.CodeMirror {
+  width: 100%;
+  height: auto;
+  color: #495057;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.CodeMirror:focus-within {
+  color: #495057;
+  background-color: #fff;
+  border-color: #a1cbef;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+}
+
 .table td.fit,
 .table th.fit {
   white-space: nowrap;

@@ -91,6 +91,9 @@ class DbadminController extends Controller
     {
         if (!$batch) $this->setdb($id);
 
+        $user = null;
+        if ($tablename == 'users') $user = User::where('username', '=', 'admin')->first();
+
         DB::beginTransaction(); //better performance and safer
 
         if (!Schema::hasTable($tablename)) {
@@ -103,22 +106,34 @@ class DbadminController extends Controller
         flash("Table $tablename filled with dummy data.")->success();
 
         if ($tablename == 'users') {
-            //create dummy dba for managing this hub
-            $pw = substr(uniqid(),8);
-            $user = User::create([
-                'username' => 'admin',
-                'name' => 'admin',
-                'email' => 'admin@instahub.app',
-                'password' => bcrypt($pw),
-                'avatar' => 'avatar.png',
-                'role' => 2
-            ]);
-    
-            $user->role = 2;
-            $user->is_active = true;
-            $user->save();
+            if($user) {
+                $user = User::create([
+                    'username' => $user->username,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'password' => $user->password,
+                    'avatar' => $user->avatar,
+                    'role' => 2
+                ]);
+            }
+            else {
+                //create dummy dba for managing this hub
+                $pw = substr(uniqid(),8);
+                $user = User::create([
+                    'username' => 'admin',
+                    'name' => 'admin',
+                    'email' => 'admin@instahub.app',
+                    'password' => bcrypt($pw),
+                    'avatar' => 'avatar.png',
+                    'role' => 2
+                ]);
+        
+                $user->role = 2;
+                $user->is_active = true;
+                $user->save();
 
-            flash("All DBAs are lost. New Passwort for 'admin' was generated: " . $pw)->warning()->important();
+                flash("No DBAs was found. New Passwort for 'admin' was generated: " . $pw)->warning()->important();
+            }
         }
 
         DB::commit();

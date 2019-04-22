@@ -10,7 +10,17 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::group(['domain' => env('APP_DOMAIN')], function () {   
+
+Route::get('/about', function () {
+    return view('about');   
+});
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes for Hubs
+|--------------------------------------------------------------------------
+*/
+Route::group(['domain' => env('APP_DOMAIN')], function () { 
     Auth::routes();
 
     Route::group(['middleware' => ['auth', 'role:user']], function () {
@@ -61,6 +71,14 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 
         //Business (Analytic)
         Route::get('/business', 'BusinessController@index');
+
+        //Ads (nested in Business Submenu)
+        Route::get('/ads', 'AdController@index');
+        Route::get('/ads/create', 'AdController@create');
+        Route::get('/ads/{id}', 'AdController@edit');
+        Route::post('/ads', 'AdController@store');
+        Route::put('/ads/{id}', 'AdController@update');
+        Route::delete('/api/ads/{id}', 'AdController@destroy');
     });
 
     Route::group(['middleware' => ['auth', 'role:dba']], function () {
@@ -85,8 +103,17 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
             return view('welcome');
         }   
     });
+
+    Route::get('/noad', function () {
+        return view('errors.noad');   
+    });
 });
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes for Main (will also handle unhandled Routes in Hub)
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
     if(Auth::check()){
         return redirect('/home');
@@ -115,8 +142,6 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
     Route::get('/user/{username}/destroy', 'UserController@destroy');
     Route::get('user/{username}/password', 'UserController@getPassword');
     Route::post('user/{username}/password', 'UserController@postPassword');
-    Route::get('/user/{username}/activate', 'ProfileController@activate');
-    Route::get('/user/{username}/deactivate', 'ProfileController@deactivate');
 
     Route::get('user/password/{id}', 'UserController@getNewPassword');
 
@@ -142,6 +167,9 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/user', 'ProfileController@index');
+    Route::get('/user/{username}/activate', 'ProfileController@activate');
+    Route::get('/user/{username}/deactivate', 'ProfileController@deactivate');
+
     Route::get('/avatars/{photo_id}', 'PhotoController@showavatar');
 
     Route::get('/trimanalytics', 'DbadminController@trimAnalytics');
@@ -149,6 +177,3 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 });
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
-Route::get('/about', function () {
-    return view('about');   
-});
