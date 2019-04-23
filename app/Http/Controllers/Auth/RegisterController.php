@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Photo;
-use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Storage;
 use Session;
@@ -33,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -89,7 +90,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => Hash::make($data['password']),
             'bio' => array_has($data, 'bio') ? $data['bio'] : null,
             'gender' => array_has($data, 'gender') ? $data['gender'] : null,
             'birthday' => array_has($data, 'birthday') ? $data['birthday'] : null,
@@ -111,10 +112,5 @@ class RegisterController extends Controller
         }
         
         return $user;
-    }
-
-    protected function redirectTo()
-    {
-        return '/home';
     }
 }
