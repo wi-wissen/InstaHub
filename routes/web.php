@@ -106,9 +106,7 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 */
 Route::get('/', 'StaticController@landingMain');
 
-Route::get('/noad', function () {
-    return view('errors.noad');   
-});
+Route::get('/noad', 'StaticController@noad');
 
 Auth::routes();
 
