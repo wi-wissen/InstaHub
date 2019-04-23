@@ -22,9 +22,12 @@ require('./bootstrap');
  */
 
 
+Vue.component('PaginationLinks', require('./components/PaginationComponent.vue').default);
 
 Vue.component('PhotoShow', require('./components/PhotoComponent.vue').default);
 Vue.component('FollowButton', require('./components/FollowButtonComponent.vue').default);
+Vue.component('SqlButton', require('./components/SqlButtonComponent.vue').default);
+Vue.component('HubButtons', require('./components/HubButtonsComponent.vue').default);
 Vue.component('SearchBox', require('./components/SearchBoxComponent.vue').default);
 
 if ($("#container")[0]) {
@@ -134,5 +137,106 @@ if ($("#ad-edit")[0]) {
     const adEdit = new Vue({
         el: '#ad-edit',
         data: data,
+    });
+}
+
+if ($("#dba-admin")[0]) {
+    const dbaAdmin = new Vue({
+        el: '#dba-admin',
+        data: {
+            pw: '****',
+            state: '',
+            hub: hub
+        },
+        mounted: function() {
+            this.getStatus();
+        },
+        methods: {
+            getStatus: function() {
+                self = this;
+                this.$Progress.start();
+                axios
+                  .get('/api/hubs/' + this.hub + '/dba/gettablestatus', {})
+                  .then(function(response) {
+                    self.state = response.data.state;
+                    self.$Progress.finish();
+                  })
+                  .catch(function(error) {
+                    self.$Progress.fail();
+                    flash(
+                        Vue.prototype.$t("Sorry, we can't recive Status."),
+                        "error"
+                     );
+                  }); 
+              },
+            resetPw: function() {
+                self = this;
+                this.$Progress.start();
+                axios
+                    .get('/api/hubs/' + this.hub + '/dba/resetpw', {})
+                    .then(function(response) {
+                    self.pw = response.data.pw;
+                    self.$Progress.finish();
+                    })
+                    .catch(function(error) {
+                    self.$Progress.fail();
+                    flash(
+                        Vue.prototype.$t("Sorry, we can't recive a new Password."),
+                        "error"
+                        );
+                    }); 
+            }
+        }
+    });
+}
+
+if ($("#hub-index")[0]) {
+    const hubIndex = new Vue({
+        el: '#hub-index',
+        data: {
+            hubs: {},
+            pagination: {
+                'current_page': 1
+            },
+            session_domain: session_domain,
+            deleteLoading: [],
+        },
+        methods: {
+            deleteHub: function(index) {
+                self = this;
+                this.deleteLoading[index] = true;
+          
+                axios
+                  .delete('/api/hubs/' + this.hubs[index].id, {})
+                  .then(function(response) {
+                    self.deleteLoading[index] = false;
+                    self.hubs.splice(index, 1);
+                  })
+                  .catch(function(error) {
+                    self.deleteLoading[index] = false;
+                    flash(
+                        "Sorry, you can't change DB-User privileges for " + self.hub.name + ".",
+                        "error"
+                     );
+                  }); 
+            },
+            fetchHubs() {
+                self = this;
+                this.$Progress.start();
+
+                axios.get('api/hubs?page=' + this.pagination.current_page)
+                    .then(function(response) {
+                        self.hubs = response.data.data;
+                        self.pagination = response.data.meta;
+                        self.$Progress.finish();
+                    })
+                    .catch(function(error) {
+                        self.$Progress.fail();
+                    });
+            }
+        },
+        mounted() {
+            this.fetchHubs();
+        }
     });
 }

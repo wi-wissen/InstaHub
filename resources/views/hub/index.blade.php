@@ -4,16 +4,23 @@
 <style>
 	.table {
 		background-color: white;
-	}
+    }
+    
+    .spinner-border {
+        width: 1rem;
+        height: 1rem;
+    }
 </style>
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container" v-cloak id="hub-index">
         @include('flash::message')
+        <vue-progress-bar></vue-progress-bar>
         <div class="row  justify-content-center">
             <div class="col-md-12">
-                <table class="table table-striped table-bordered">
+            @verbatim
+                <table v-if="hubs.length" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <td>Hub</td>
@@ -23,63 +30,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($hubs as $hub)
-                        <tr id="{{ $hub->id }}">
-                                    <td><a href="https://{{ $hub->name . env('SESSION_DOMAIN')  . '/'}}">{{ $hub->name }}</a></td>
-                                    @if ($hub->hasWorkingUser())
-                                        <td>{{ $hub->adminname() }}</td>
-                                        <td>{{ $hub->created_at }}</td>
-                                        <td>
-                                        @if ($hub->activated() == 0)
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/activate') }}" class="btn btn-outline-dark">Activate</a>
-                                        @endif
-                                        @if ($hub->readonly() == 0)
-                                        <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
-                                        @endif
-                                        <a href="{{ url('/hubs/' . $hub->id) }}" class="btn btn-outline-dark">Login as DBA</a>
-                                        @if ($hub->readonly() == 0)
-                                        <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-outline-dark">Fill all Tables</a>
-                                        @endif
-                                        @if ($hub->readonly() == 1)
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readwrite') }}" class="btn btn-outline-dark">Run</a>
-                                        @else
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readonly') }}" class="btn btn-danger">Maintenance</a>
-                                        @endif
-                                        @if ($hub->activated() == 1)
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/deactivate') }}" class="btn btn-danger">Deactivate</a>
-                                        @endif
-                                    @else
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                        @if ($hub->readonly() == 0)
-                                        <a href="{{ url('/hubs/' . $hub->id . '/dba/admin') }}" class="btn btn-primary">DB Admin</a>
-                                        @endif
-                                        <a href="#" class="btn btn-danger disabled">Login as DBA</a>
-                                        @if ($hub->readonly() == 0)
-                                        <a href="/hubs/{{$hub->id}}/dba/tables/fill/photos,tags,likes,follows,comments,analytics,ads" class="btn btn-outline-dark">Fill all Tables</a>
-                                        @endif
-                                        @if ($hub->readonly() == 1)
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readwrite') }}" class="btn btn-outline-dark">Run</a>
-                                        @else
-                                            <a href="{{ url('/hubs/' . $hub->id . '/dba/readonly') }}" class="btn btn-danger">Maintenance</a>
-                                        @endif
-                                    @endif
-                                    <form action="{{ url('../hubs/' .$hub->id) }}" method="post" style="display: inline;">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="submit" class="btn btn-danger" value="Delete" />
-                                    </form>
-                                    </td>
+                        <tr v-for="(hub, index) in hubs">
+                            <td>
+                                <a v-bind:href="'https://' + hub.name + session_domain">{{hub.name}}</a>
+                            </td>
+                            <td>
+                                {{hub.admin}}
+                            </td>
+                            <td>
+                                {{new Date(hub.created_at).toLocaleDateString()}}
+                            </td>
+                            <td>
+                                <hub-buttons v-bind:hub="hub" style="display: inline-block;"></hub-buttons>
+                                <button v-on:click="deleteHub()" class="btn btn-danger"><div v-if="deleteLoading[index]" class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>Delete</button>
+                            </td>
                         </tr>
-                    @endforeach
                     </tbody>
                 </table>
-                {{ $hubs->links() }}
+
+                <div v-else class="alert alert-primary" role="alert">
+                    {{__('There are no Hubs. You may create one if you use an other browser or log out.')}}
+                </div>
+
+                <pagination-links v-if="pagination.last_page > 1" :pagination="pagination" :offset="10" @paginate="fetchHubs()"></pagination-links>
+            @endverbatim
             </div>
         </div>
     </div>
 
+@endsection
 
-
+@section('script')
+<script>
+    var session_domain = "{{env('SESSION_DOMAIN')}}";
+</script>
 @endsection

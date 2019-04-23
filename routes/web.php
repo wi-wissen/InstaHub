@@ -128,8 +128,6 @@ Route::get('/noad', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HubController@index');
-
 Route::resource('hubs', 'HubController');
 
 Route::group(['middleware' => ['auth', 'role:teacher']], function () {
@@ -146,22 +144,21 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
     Route::get('user/password/{id}', 'UserController@getNewPassword');
 
     Route::group(['middleware' => ['auth', 'role:teacher']], function () {
-        //dbadmin
-        Route::get('hubs/{id}/dba/activate', 'HubController@activate');
-        Route::get('hubs/{id}/dba/deactivate', 'HubController@deactivate');
+        Route::get('/home', 'HubController@index');
 
+        //dbadmin
         Route::get('hubs/{id}/dba/admin', 'DbadminController@index');
 
-        Route::get('hubs/{id}/dba/resetpw', 'DbadminController@setAdminPW');
+        Route::get('api/hubs/{id}/dba/resetpw', 'DbadminController@setAdminPW');
+        Route::get('api/hubs/{id}/dba/gettablestatus', 'DbadminController@getTableStatus');
 
-        Route::get('hubs/{id}/dba/readonly', 'HubController@readonly');
-        Route::get('hubs/{id}/dba/readwrite', 'HubController@readwrite');
+        Route::get('api/hubs', 'HubController@apiIndex');
+        
+        Route::post('api/hubs/{id}/dba/readonly', 'HubController@setReadonly');
+        Route::post('api/hubs/{id}/dba/activate', 'HubController@setActivate');
+        Route::delete('api/hubs/{id}', 'HubController@destroy');
 
-        Route::get('hubs/{id}/dba/tables/fill/{list}', 'DbadminController@fillTables');
-
-        Route::get('hubs/{id}/dba/table/create/{tablename}', 'DbadminController@migrateTable');
-        Route::get('hubs/{id}/dba/table/fill/{tablename}', 'DbadminController@fillTable');
-        Route::get('hubs/{id}/dba/table/drop/{tablename}', 'DbadminController@dropTable');
+        Route::post('api/hubs/{name}/dba/table', 'DbadminController@changeTable');
     });
 });
 

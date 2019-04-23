@@ -28,7 +28,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        @if (!Auth::guest())
+        @if ((!Auth::guest() && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('dba'))
         <div class="nav navbar-nav flex-fill justify-content-center d-none d-sm-block">
             <search-box style="width:200px;"/>  
         </div>
@@ -40,9 +40,11 @@
                 <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
             @else
+                @if (Session::get('hub', 'root') != 'root' || Auth::user()->allowed('dba'))
                 <li class="d-inline d-sm-none" class="nav-item">
-                    <search-box style="width:200px;"/>
+                    <search-box style="width:200px;"/>  
                 </li>
+                @endif
             
                 @if (Schema::hasTable('ads') && Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root')
                 <li class="nav-item dropdown">
