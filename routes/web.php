@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/about', function () {
-    return view('about');   
-});
+Route::get('/about', 'StaticController@about');
 
 /*
 |--------------------------------------------------------------------------
@@ -96,17 +94,9 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
     });
 
     //guest
-    Route::get('/', function () {
-        if(Auth::check()){
-            return redirect('/home');
-        }else{
-            return view('welcome');
-        }   
-    });
-
-    Route::get('/noad', function () {
-        return view('errors.noad');   
-    });
+	Route::get('/', 'StaticController@landingHub');
+	
+	Route::get('/noad', 'StaticController@noad');
 });
 
 /*
@@ -114,13 +104,7 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 | Web Routes for Main (will also handle unhandled Routes in Hub)
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    if(Auth::check()){
-        return redirect('/home');
-    }else{
-        return view('landing');
-    }   
-});
+Route::get('/', 'StaticController@landingMain');
 
 Route::get('/noad', function () {
     return view('errors.noad');   
