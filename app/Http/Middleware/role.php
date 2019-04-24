@@ -38,7 +38,7 @@ class role
             //is user allowed to do so?
             if (!($request->user()->allowed($role) || $this->sessionRole($role))) {
                 flash('You are not allowed to do this!')->error();
-                return redirect('/home');
+                return redirect('/');
             } else {
                 return $next($request);
             }

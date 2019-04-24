@@ -152,7 +152,7 @@ td {
             <li class="list-group-item">
                 <h5 class="card-title">Login</h5>
 
-                <form method="POST" v-bind:action="hubname + '{{ env('SESSION_DOMAIN') }}/login'" aria-label="{{ __('Login') }}">
+                <form method="POST" v-bind:action="'https://' + hubname + '{{ env('SESSION_DOMAIN') }}/login'" aria-label="{{ __('Login') }}">
                     @csrf
 
                     <div class="form-group">
@@ -382,7 +382,7 @@ td {
             <li class="list-group-item">
                 <h5 class="card-title">Login</h5>
 
-                <form method="POST" action="public{{ env('SESSION_DOMAIN') }}/login" aria-label="{{ __('Login') }}">
+                <form method="POST" action="https://public{{ env('SESSION_DOMAIN') }}/login" aria-label="{{ __('Login') }}">
                     @csrf
 
                     <div class="form-group">

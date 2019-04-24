@@ -49,7 +49,7 @@
                 </table>
 
                 <div v-else class="alert alert-primary" role="alert">
-                    {{__('There are no Hubs. You may create one if you use an other browser or log out.')}}
+                    There are no Hubs. You may create one if you use an other browser or log out.
                 </div>
 
                 <pagination-links v-if="pagination.last_page > 1" :pagination="pagination" :offset="10" @paginate="fetchHubs()"></pagination-links>

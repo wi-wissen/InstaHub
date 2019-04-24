@@ -32,6 +32,10 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         Route::get('/user', 'ProfileController@index');
         Route::get('/user/letter/{char}', 'ProfileController@filter');
         Route::get('/api/user/search/{query}', 'UserController@search');
+
+        Route::get('/user/password', 'UserController@getPassword');
+        Route::post('/user/password', 'UserController@postPassword');
+
         Route::get('/user/{user_id}/followers', 'FollowController@followers');
         Route::get('/user/{user_id}/following', 'FollowController@following');
 
@@ -40,8 +44,6 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         Route::get('/user/{username}/edit', 'ProfileController@edit');
         Route::put('/user/{username}/update', 'ProfileController@update');
         Route::get('/user/{username}/destroy', 'UserController@destroy');
-        Route::get('/user/{username}/password', 'UserController@getPassword');
-        Route::post('user/{username}/password', 'UserController@postPassword');
         Route::get('/user/{username}/activate', 'ProfileController@activate');
         Route::get('/user/{username}/deactivate', 'ProfileController@deactivate');
 
@@ -117,11 +119,12 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
 
     Route::get('/user/letter/{char}', 'ProfileController@filter');
 
+    Route::get('/user/password', 'UserController@getPassword');
+    Route::post('/user/password', 'UserController@postPassword');
+
     Route::get('/user/{username}/edit', 'ProfileController@edit');
     Route::put('/user/{username}/update', 'ProfileController@update');
     Route::get('/user/{username}/destroy', 'UserController@destroy');
-    Route::get('user/{username}/password', 'UserController@getPassword');
-    Route::post('user/{username}/password', 'UserController@postPassword');
 
     Route::get('user/password/{id}', 'UserController@getNewPassword');
 
