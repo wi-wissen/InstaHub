@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply' . substr(env('SESSION_DOMAIN', '.instahub.test'), 1)),
+        'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'InstaHub')),
     ],
 
     /*
@@ -99,7 +99,7 @@ return [
     |
     */
 
-    'sendmail' => '/usr/sbin/sendmail -bs',
+    'sendmail' => '/usr/sbin/sendmail -t -i',
 
     /*
     |--------------------------------------------------------------------------
@@ -132,5 +132,18 @@ return [
     */
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mailgun
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_KEY'),
+        'endpoint' => 'api.eu.mailgun.net',
+    ],
 
 ];
