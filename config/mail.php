@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'noreply' . substr(env('SESSION_DOMAIN', '.instahub.test'), 1)),
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply@' . substr(env('SESSION_DOMAIN', '.instahub.test'), 1)),
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'InstaHub')),
     ],
 
