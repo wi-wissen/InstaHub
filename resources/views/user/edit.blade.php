@@ -162,12 +162,12 @@
                             @if (old('is_active', $user->is_active) == true)
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="is_active" id="is_active" value="1" checked>
-                                <label class="custom-control-label" for="customCheck">Active</label>
+                                <label class="custom-control-label" for="is_active">Active</label>
                             </div>
                             @else
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="is_active" id="is_active" value="1">
-                                <label class="custom-control-label" for="customCheck">Active</label>
+                                <label class="custom-control-label" for="is_active">Active</label>
                             </div>
                             @endif
 

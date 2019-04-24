@@ -26,7 +26,7 @@
 		photo:{!! $photo !!}.data,
 		ad:{!! $ad !!}.data,
 		readonly: {{Session::get('readonly')}},
-		admin: {{Auth::user()->allowed('dba')}}
+		admin: {{(Auth::user()->allowed('dba')) ? 'true' : 'false'}}
 	}
 </script>
 @endsection
