@@ -19,7 +19,7 @@
             <img v-if="photo.like" src="/clarity/heart-solid.svg" alt="">
             <img v-else src="/clarity/heart-line.svg" style="fill:red" alt="">
         </span>
-        <span>
+        <span v-if="photo.likes">
             {{photo.likes}} likes
         </span>
 

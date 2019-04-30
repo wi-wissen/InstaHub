@@ -24,7 +24,7 @@
 <script>
 	var data = {
 		photo:{!! $photo !!}.data,
-		ad:{!! $ad !!}.data,
+		ad:{!! isset($ad) ? $ad . '.data': 'null' !!},
 		readonly: {{Session::get('readonly')}},
 		admin: {{(Auth::user()->allowed('dba')) ? 'true' : 'false'}}
 	}

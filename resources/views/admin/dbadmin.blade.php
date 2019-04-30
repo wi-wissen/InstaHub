@@ -40,15 +40,9 @@
 					</div>
 
 					<div class="row" style="padding-bottom:10px;">
-						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="follows" action="create">(Re)Create Comments</sql-button></div>
-						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="follows" action="fill">(Re)Fill Comments</sql-button></div>
-						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="follows" action="drop">Drop Comments</sql-button></div>
-					</div>
-
-					<div class="row" style="padding-bottom:10px;">
-						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="comments" action="create">(Re)Create Follows</sql-button></div>
-						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="comments" action="fill">(Re)Fill Follows</sql-button></div>
-						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="comments" action="drop">Drop Follows</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="follows" action="create">(Re)Create Follows</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="follows" action="fill">(Re)Fill Follows</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="follows" action="drop">Drop Follows</sql-button></div>
 					</div>
 
 					<div class="row" style="padding-bottom:10px;">
