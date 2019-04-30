@@ -101,12 +101,14 @@ class RegisterController extends Controller
             'role' => $role
         ]);
 
+        if (env('APP_ENV') == 'local') $user->is_active = 1;
+
         //don't work above. I have no clue...
         $user->role = $role;
         $user->save();
 
         //send message to admin if teacher apply for account in root
-        if (Session::get('hub', 'root') == 'root') {
+        if (Session::get('hub', 'root') == 'root' && env('APP_ENV') != 'local') {
             //Mail::to(User::where('role','=', 'admin')->first())->send(new NewUser($user, $data['messageToAdmin']));
             User::where('role','=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
         }

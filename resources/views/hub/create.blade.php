@@ -13,7 +13,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('hub') ? ' has-error' : '' }} row">
-                            <label for="hub" class="col-md-4 col-form-label text-md-right">Hub</label>
+                            <label for="hub" class="col-md-4 col-form-label text-md-right"><b>Hub</b></label>
 
                             <div class="col-md-6">
                                 <input id="hub" type="text" class="form-control" name="hub" value="{{ old('hub', $hub) }}" required readonly>
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('teacher') ? ' has-error' : '' }} row">
-                            <label for="teacher" class="col-md-4 col-form-label text-md-right">Your Teacher</label>
+                            <label for="teacher" class="col-md-4 col-form-label text-md-right"><b>Your Teacher</b></label>
 
                             <div class="col-md-6">
                                 <input id="teacher" type="text" class="form-control" name="teacher" value="{{ old('teacher') }}" required autofocus>
@@ -41,7 +41,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }} row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-right"><b>Username</b></label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username', $username) }}" required readonly>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right"><b>Name</b></label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right"><b>E-Mail Address</b></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right"><b>Password</b></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
@@ -97,7 +97,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }} row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><b>Confirm Password</b></label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">

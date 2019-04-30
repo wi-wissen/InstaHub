@@ -48,7 +48,7 @@
                     </tbody>
                 </table>
 
-                <div v-else class="alert alert-primary" role="alert">
+                <div v-else class="alert alert-primary alert-important" role="alert">
                     There are no Hubs. You may create one if you use an other browser or log out.
                 </div>
 
