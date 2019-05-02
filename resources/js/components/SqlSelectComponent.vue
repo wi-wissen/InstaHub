@@ -93,6 +93,10 @@
         </div>
     </div>
 
+    <div v-if="!sql.valid" class="alert alert-danger" role="alert">
+       Your Search is not valid!
+    </div>
+
     <pre v-if="sql.tables.length" v-bind:class="{ 'd-none': !settings.showsql }">{{query}}</pre>
   </div>
 </template>
@@ -323,9 +327,10 @@ export default {
           if (this.sql.tables.includes('users') && this.sql.tables.includes('analytics')) join = join + 'AND users.id = analytics.user_id\n';
           if (this.sql.tables.includes('photos') && this.sql.tables.includes('analytics')) join = join + 'AND photos.id = analytics.photo_id\n';
           if (join.length>3) join = join.substr(4,join.length-4);
+          console.log(join);
 
           //validate
-          if (!!join && this.sql.tables.length>1) {
+          if (!join && this.sql.tables.length>1) {
                this.sql.valid=false;
           }
           else {
