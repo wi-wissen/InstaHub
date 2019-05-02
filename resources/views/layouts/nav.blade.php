@@ -59,7 +59,15 @@
                 @endif
                 <li class="nav-item"><a class="nav-link"href="{{ url('/user') }}"><img src="/clarity/compass-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Explore</span></a></li>    
                 @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
-                <li class="nav-item"><a class="nav-link"href="{{ url('/sql') }}"><img src="/clarity/storage-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Database</span></a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDatabaseDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/clarity/storage-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Database</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDatabaseDropdown">
+                        <a class="dropdown-item" href="{{ url('/sql/select') }}">Search</a>
+                        <a class="dropdown-item" href="{{ url('/sql') }}">SQL</a>
+                    </div>
+                </li>
                 @endif
                 @if (!Auth::guest() && Session::get('hub', 'root') == 'root' && Auth::user()->allowed('teacher'))
                 <li class="nav-item"><a class="nav-link"href="{{ env('DOC_URL') }}"><img src="/clarity/help-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Help</span></a></li>

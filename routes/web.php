@@ -90,6 +90,9 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         
         Route::get('/sql', 'SqlController@getQuery');
         Route::post('/sql', 'SqlController@getQuery');
+        Route::get('/sql/select', 'SqlController@selectGui');
+        Route::get('/api/sql/tables', 'SqlController@getTables');
+        Route::post('/api/sql', 'SqlController@getApiQuery');
 
         Route::get('/dba/updateTags', 'DbadminController@updateTags');
         Route::get('/dba/cryptPWs', 'DbadminController@cryptPWs');

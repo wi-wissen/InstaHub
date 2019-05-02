@@ -25,5 +25,5 @@ if (mix.inProduction()) {
 
 if (!mix.inProduction()) {
     mix.sourceMaps();
-    mix.browserSync('instahub.test')
+    mix.browserSync('hub.instahub.test')
 }

@@ -29,6 +29,7 @@ Vue.component('FollowButton', require('./components/FollowButtonComponent.vue').
 Vue.component('SqlButton', require('./components/SqlButtonComponent.vue').default);
 Vue.component('HubButtons', require('./components/HubButtonsComponent.vue').default);
 Vue.component('SearchBox', require('./components/SearchBoxComponent.vue').default);
+Vue.component('SqlSelectGui', require('./components/SqlSelectComponent.vue').default);
 
 if ($("#container")[0]) {
     const app = new Vue({
@@ -103,6 +104,47 @@ if ($("#sql-editor")[0]) {
         methods: {
             removeResult: function() {
               this.table=false;
+            }
+        }
+    });
+}
+
+if ($("#sql-select")[0]) {
+    const sqlSelect = new Vue({
+        el: '#sql-select',
+        data: {
+            message: {
+                type: '',
+                text: ''
+            },
+            table: "",
+            query: ""
+        },
+        methods: {
+            getResult: function() {
+                if (this.query) {
+                    var self = this;
+                    this.$Progress.start();
+                    axios
+                    .post('/api/sql', {
+                        editor: this.query
+                    })
+                    .then(function (response) {
+                        self.message.type = response.data.type;
+                        self.message.text = response.data.message;
+                        self.table = response.data.result;
+                        self.$Progress.finish();
+                    })
+                    .catch(function (error) {
+                        flash("Sorry, there is no valid answer from your Database.", 'error');
+                        self.$Progress.fail();
+                    });
+                }
+            },
+            removeResult: function() {
+              this.table="";
+              this.message.txte="";
+              this.message.type="";
             }
         }
     });
