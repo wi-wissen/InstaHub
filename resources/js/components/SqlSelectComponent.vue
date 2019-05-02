@@ -321,9 +321,9 @@ export default {
           if (this.sql.tables.includes('users') && this.sql.tables.includes('follows')) join = join + 'AND users.id = follows.following_id\n';
           if (this.sql.tables.includes('users') && this.sql.tables.includes('likes')) join = join + 'AND users.id = likes.user_id\n';
           if (this.sql.tables.includes('users') && this.sql.tables.includes('comments')) join = join + 'AND users.id = comments.user_id\n';
-          if (this.sql.tables.includes('tags') && this.sql.tables.includes('photos')) join = join + 'AND photos.id = photos.photo_id\n';
-          if (this.sql.tables.includes('likes') && this.sql.tables.includes('photos')) join = join + 'AND photos.id = photos.photo_id\n';
-          if (this.sql.tables.includes('comments') && this.sql.tables.includes('photos')) join = join + 'AND photos.id = photos.photo_id\n';
+          if (this.sql.tables.includes('tags') && this.sql.tables.includes('photos')) join = join + 'AND photos.id = tags.photo_id\n';
+          if (this.sql.tables.includes('likes') && this.sql.tables.includes('photos')) join = join + 'AND photos.id = likes.photo_id\n';
+          if (this.sql.tables.includes('comments') && this.sql.tables.includes('photos')) join = join + 'AND photos.id = comments.photo_id\n';
           if (this.sql.tables.includes('users') && this.sql.tables.includes('analytics')) join = join + 'AND users.id = analytics.user_id\n';
           if (this.sql.tables.includes('photos') && this.sql.tables.includes('analytics')) join = join + 'AND photos.id = analytics.photo_id\n';
           if (join.length>3) join = join.substr(4,join.length-4);
