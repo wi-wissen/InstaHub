@@ -7,7 +7,7 @@
         v-bind:class="type" 
         class="btn">
         <div v-if="loading" class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">{{ $t('Loading') }}...</span>
         </div>
         <slot></slot>
     </button>

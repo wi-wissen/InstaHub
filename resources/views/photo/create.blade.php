@@ -15,7 +15,7 @@
 
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="photo">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <label class="custom-file-label" for="customFile">{{ __('Choose file') }}</label>
                             </div>
 
                                 @if ($errors->has('photo'))
@@ -28,11 +28,11 @@
 						{{ csrf_field() }}
 						
 						<div class="form-group">
-							<label for="desc" >Description</label>
+							<label for="desc" >{{ __('Description') }}</label>
 							<textarea name="description" id="description" class="form-control" placeholder="Description..."></textarea>
 						</div>
 						<div class="form-group">
-							<button action="submit" class="btn btn-primary">Upload</button>
+							<button action="submit" class="btn btn-primary">{{ __('Upload') }}</button>
 						</div>
 					</form>
 					</div>

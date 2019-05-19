@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Register</div>
+                <div class="card-header">{{ __('Register') }}</div>
                     <div class="card-body">
-                    <div class="alert alert-warning  alert-important" role="alert">Your Hub must activated by your Teacher! </div>
+                    <div class="alert alert-warning  alert-important" role="alert">{{ __('messages.activateByTeacher') }}</div>
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/hubs') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('hub') ? ' has-error' : '' }} row">
-                            <label for="hub" class="col-md-4 col-form-label text-md-right"><b>Hub</b></label>
+                            <label for="hub" class="col-md-4 col-form-label text-md-right"><b>{{ __('Hub') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="hub" type="text" class="form-control" name="hub" value="{{ old('hub', $hub) }}" required readonly>
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('teacher') ? ' has-error' : '' }} row">
-                            <label for="teacher" class="col-md-4 col-form-label text-md-right"><b>Your Teacher</b></label>
+                            <label for="teacher" class="col-md-4 col-form-label text-md-right"><b>{{ __('Your Teacher') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="teacher" type="text" class="form-control" name="teacher" value="{{ old('teacher') }}" required autofocus>
@@ -41,7 +41,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }} row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right"><b>Username</b></label>
+                            <label for="username" class="col-md-4 col-form-label text-md-right"><b>{{ __('Username') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username', $username) }}" required readonly>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right"><b>Name</b></label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right"><b>{{ __('Name') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right"><b>E-Mail Address</b></label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right"><b>{{ __('Email') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"><b>Password</b></label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right"><b>{{ __('Password') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
@@ -97,7 +97,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }} row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><b>Confirm Password</b></label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><b>{{ __('Confirm Password') }}</b></label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
@@ -111,7 +111,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('bio') ? ' has-error' : '' }} row">
-                            <label for="bio" class="col-md-4 col-form-label text-md-right">Bio</label>
+                            <label for="bio" class="col-md-4 col-form-label text-md-right">{{ __('Bio') }}</label>
 
                             <div class="col-md-6">
                                 <textarea name="bio" id="bio" class="form-control" placeholder="Your Bio...."></textarea>
@@ -125,13 +125,13 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }} row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" id="gender" name="gender">
                                     <option value=""></option>
-                                    <option value="male">male</option>
-                                    <option value="female">female</option>
+                                    <option value="male">{{ __('male') }}</option>
+                                    <option value="female">{{ __('female') }}</option>
                                 </select>
 
                                 @if ($errors->has('gender'))
@@ -143,7 +143,7 @@
                         </div>
 						
                         <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }} row">
-                            <label for="birthday" class="col-md-4 col-form-label text-md-right">Birthday</label>
+                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
                             <div class="col-md-6">
                                 <input id="birthday" type="date" class="form-control dateinput" name="birthday" value="{{ old('birthday') }}" autofocus>
@@ -157,7 +157,7 @@
                         </div>
 						
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }} row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">City</label>
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
                                 <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" autofocus>
@@ -171,7 +171,7 @@
                         </div>
 						
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }} row">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">Country</label>
+                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
                                 <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}" autofocus>
@@ -185,7 +185,7 @@
                         </div>
 						
                         <div class="form-group{{ $errors->has('centimeters') ? ' has-error' : '' }} row">
-                            <label for="centimeters" class="col-md-4 col-form-label text-md-right">Centimeters</label>
+                            <label for="centimeters" class="col-md-4 col-form-label text-md-right">{{ __('Centimeters') }}</label>
 
                             <div class="col-md-6">
                                 <input id="centimeters" type="text" class="form-control" name="centimeters" value="{{ old('centimeters') }}" autofocus>
@@ -199,12 +199,12 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }} row">
-                            <label for="avatar" class="col-md-4 col-form-label text-md-right">Avatar</label>
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                             <div class="col-md-6">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="avatar">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <label class="custom-file-label" for="customFile">{{ __('Choose file') }}</label>
                             </div>
 
                                 @if ($errors->has('avatar'))
@@ -218,7 +218,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
@@ -228,22 +228,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('script')
-<script src="/js/jquery-birthday-picker.min.js"></script>
-
-<!--http://www.jqueryscript.net/time-clock/Customizable-Dropdown-Birthday-Picker-Plugin-with-jQuery.html -->
-<script>
-    $("#birthday").birthdayPicker({
-	maxAge: 100,
-	minAge: 14,
-	maxYear: 'todayYear',
-	dateFormat: "littleEndian",
-	monthFormat: "number",
-	placeholder: true,
-	defaultDate: false,
-	sizeClass: "span2"
-	});
-</script>
 @endsection

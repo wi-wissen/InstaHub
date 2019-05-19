@@ -2,8 +2,8 @@
 
 @section('title', __('No Ad!'))
 
-@section('message', __('Sorry, but you missed this great opportunity!'))
+@section('message', {!!__('messages.missedAd')!!})
 
 @section('help')
-{!!__('messages.noad')!!}
+    {!!__('messages.noad')!!}
 @endsection

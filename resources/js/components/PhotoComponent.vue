@@ -20,10 +20,10 @@
             <img v-else src="/clarity/heart-line.svg" style="fill:red" alt="">
         </span>
         <span v-if="photo.likes">
-            {{photo.likes}} likes
+            {{ $t('{count} likes', {count: photo.likes}) }}
         </span>
 
-        <button v-if="admin" :disabled="!!readonly" class="btn btn-outline-danger btn-sm float-right">Delete</button>
+        <button v-if="admin" :disabled="!!readonly" class="btn btn-outline-danger btn-sm float-right">{{ $t('Delete') }}</button>
       </div>
 
       <a v-if="ad" :href="ad.url">
@@ -49,7 +49,7 @@
       <div class="input-group" v-if='showinput' >
         <input type="text" class="form-control" v-model="comment" id="comment" placeholder="Add a Comment" aria-label="Comment" aria-describedby="basic-addon2" >
         <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" v-on:click.stop.prevent="postComment()">Comment</button>
+        <button class="btn btn-outline-secondary" type="button" v-on:click.stop.prevent="postComment()">{{ $t('Comment') }}</button>
         </div>
       </div>
 

@@ -37,8 +37,8 @@
         <ul class="nav navbar-nav flex-fill w-100 justify-content-end collapse navbar-collapse"  id="navbarSupportedContent">
             <!-- Authentication Links -->
             @if (Auth::guest())
-                <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">{{ __('Login') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">{{ __('Register') }}</a></li>
             @else
                 @if (Session::get('hub', 'root') != 'root' || (!Auth::guest() && Auth::user()->allowed('dba')))
                 <li class="d-inline d-sm-none" class="nav-item">
@@ -49,43 +49,43 @@
                 @if (Schema::hasTable('ads') && Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarBusinessDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/clarity/store-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Busines</span>
+                        <img src="/clarity/store-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Busines') }}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarBusinessDropdown">
-                        <a class="dropdown-item" href="{{ url('/business') }}">Overview</a>
-                        <a class="dropdown-item" href="/ads">Campains</a>
+                        <a class="dropdown-item" href="{{ url('/business') }}">{{ __('Overview') }}</a>
+                        <a class="dropdown-item" href="/ads">{{ __('Campains') }}</a>
                     </div>
                 </li>
                 @endif
-                <li class="nav-item"><a class="nav-link"href="{{ url('/user') }}"><img src="/clarity/compass-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Explore</span></a></li>    
+                <li class="nav-item"><a class="nav-link"href="{{ url('/user') }}"><img src="/clarity/compass-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Explore') }}</span></a></li>    
                 @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDatabaseDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/clarity/storage-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Database</span>
+                        <img src="/clarity/storage-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Database') }}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDatabaseDropdown">
-                        <a class="dropdown-item" href="{{ url('/sql/select') }}">Search</a>
+                        <a class="dropdown-item" href="{{ url('/sql/select') }}">{{ __('Search') }}</a>
                         <a class="dropdown-item" href="{{ url('/sql') }}">SQL</a>
                     </div>
                 </li>
                 @endif
                 @if (!Auth::guest() && Session::get('hub', 'root') == 'root' && Auth::user()->allowed('teacher'))
-                <li class="nav-item"><a class="nav-link"href="{{ env('DOC_URL') }}"><img src="/clarity/help-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">Help</span></a></li>
+                <li class="nav-item"><a class="nav-link"href="{{ env('DOC_URL') }}"><img src="/clarity/help-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Help') }}</span></a></li>
                 @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/clarity/user-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">User</span>
+                        <img src="/clarity/user-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('User') }}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
                         <a class="dropdown-item" href="/user/{{ Auth::user()->username }}">{{ Auth::user()->name }}</a>
                         @if (Schema::hasTable('photos') && !Session::get('readonly'))
-                            <a class="dropdown-item" href="{{ url('/upload') }}">Upload</a>
+                            <a class="dropdown-item" href="{{ url('/upload') }}">{{ __('Upload') }}</a>
                         @endif
                         <div>
                             <a class="dropdown-item" href="{{ url('/logout') }}"
                                 onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                Logout
+                                {{ __('Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

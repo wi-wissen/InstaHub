@@ -3,11 +3,11 @@
     <div class="vqb-group-heading" :class="{ 'card-header': styled }">
       <div class="match-type-container" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
-          <label for="vqb-match-type" class="mr-2">Match </label>
+          <label for="vqb-match-type" class="mr-2">{{ $t('Match') }} </label>
           <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
             <option v-for="(label, index) in labels.matchTypes" :key="index" :value="label.id">{{ label.label }}</option>
           </select>
-          <label for="vqb-match-type" class="ml-2"> Rules</label>
+          <label for="vqb-match-type" class="ml-2"> {{ $t('Rules') }}</label>
         </div>
         <button type="button" :class="{ 'close ml-auto': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
       </div>

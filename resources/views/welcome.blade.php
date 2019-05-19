@@ -38,11 +38,11 @@ h2{
             </h2>
 
                 <a {{ Session::get('readonly') ? "disabled" : "" }} href="{{ url('/register') }}" type="button" class="btn btn-success btn-lg btn-block">
-                    Create Account
+                {{ __('Create Account') }}
                 </a>
             </li>
             <li class="list-group-item">
-                <h5 class="card-title">Login</h5>
+                <h5 class="card-title">{{ __('Login') }}</h5>
 
                 <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @csrf

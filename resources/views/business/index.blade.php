@@ -9,19 +9,17 @@
             <div class="card">
                 <div class="card-body">
 
-        <h1>Verbindungen, die inspirieren</h1>
-        <p><img src='/img/ad/_main.jpg' alt='happy womein' referrerPolicy='no-referrer' style="width:100%" /></p>
-        <p>Auf InstaHub kann dein Unternehmen Fotos oder Werbeanzeigen 
-        verwenden, um Personen zu inspirieren, seine Bekanntheit zu steigern und
-        zu Handlungen anzuregen.</p>
+        <h1>{{ __('messages.ad.heading') }}</h1>
+        <p><img src='/img/ad/_main.jpg' alt='happy women' referrerPolicy='no-referrer' style="width:100%" /></p>
+        <p>
+            {{ __('messages.ad.intro') }}
+        </p>
         <p>&nbsp;</p>
-        <h2>Motiviere Menschen zum Handeln</h2>
-        <p>Rege Personen dazu an, deine Website oder dein Geschäft zu besuchen, deine App herunterzuladen oder Produkte zu kaufen. </p>
-        <p>Wir schlagen dazu direkt im Photo-Feed unsere Nutzer deinen Inhalt vor. Wir wählen dabei nur Nutzer zielgenau aus, welche sich aufgrund ihrer Person oder ihres Nutzungsverhalten auch wirklich für dein Produkt interessieren. </p>
-        <p>Möchtest du nahtlos zu ähnlichen Inhalten angezeigt werden, bieten wir dir das bei der Detailansicht der einzelen Bilder an.</p>
+        <h2>{{ __('Motivate People to Act') }}</h2>
+            {!! __('messages.ad.howItWorks') !!}
         <p>&nbsp;</p>
-        <h2>Erfolgsgeschichten</h2>
-        <p>Namenhafte Unternehmen nutzen bereits InstaHub. Erfahre mehr über ihren Erfolg.</p>
+        <h2>{{ __('Success Stories') }}</h2>
+        <p>{{ __('messages.ad.reference') }}</p>
         <h3>Freizeitpark Gützlow - Immer ein Abenteuer wert!</h3>
         <p><img src='/img/ad/freizeitpark.jpg' alt='freizeitpark' referrerPolicy='no-referrer' style="width:100%" /></p>
         <p><em>Junge Männer suchen den Kick. Nur bei uns in Güterslow erlebst du den Kick! Seit 20 Jahren kein TÜV mehr. Hier wird auch das Karusell zur ultimativen Nervenkitzel.</em></p>

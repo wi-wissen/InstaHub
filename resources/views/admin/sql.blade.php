@@ -15,7 +15,7 @@
                             {{ csrf_field() }}
                                 <div class="form-group">
                                     <textarea class="form-control" rows="5" name="editor" id="editor"><?php if ($_POST) echo $_POST['editor'] ?></textarea>
-                                    <p id="run"><button type="submit" class="btn btn-primary btn-block">Ausführen</button></p>
+                                    <p id="run"><button type="submit" class="btn btn-primary btn-block">{{ __('Run') }}</button></p>
                                 </div>
                             </form>
 
@@ -40,7 +40,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <p> Folgende einzelne Tabellen können abgefragt werden:</p>
+                            <p>{{ __('The following tables may be queried') }}:</p>
                             {!! $tables !!}
                         </div>
                     </div>
@@ -59,11 +59,11 @@
                                 {{ $connection['host'] . ':' . env('DB_PORT') }}
                             @endif
                             <br />
-                            <b>Database: </b>{{ $connection['database'] }}<br />
-                            <b>Username: </b>{{ $connection['username'] }}<br />
-                            <b>Password: </b>{{ $connection['password'] }}<br />
-                            <b>Charset: </b>{{ $connection['charset'] }}<br />
-                            <b>Collation: </b>{{ $connection['collation'] }}
+                            <b>{{ __('Database') }}: </b>{{ $connection['database'] }}<br />
+                            <b>{{ __('Username') }}: </b>{{ $connection['username'] }}<br />
+                            <b>{{ __('Password') }}: </b>{{ $connection['password'] }}<br />
+                            <b>{{ __('Charset') }}: </b>{{ $connection['charset'] }}<br />
+                            <b>{{ __('Collation') }}: </b>{{ $connection['collation'] }}
                         </div>
                     </div>
                     @endif

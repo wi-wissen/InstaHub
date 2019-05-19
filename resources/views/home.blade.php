@@ -25,7 +25,7 @@
                         @if ($ad != null)
                         <div class="card">
                             <div class="card-body" style="padding:1rem 0 0 0;">
-                                <h5 style="padding-left:1.00rem;" class="card-title"><img class="rounded-circle img-thumbnail" src="/000.jpg" alt="000.jpg" width="50" height="50"> <a href="#" style="color: #333">Special Offer</a></h5>              
+                                <h5 style="padding-left:1.00rem;" class="card-title"><img class="rounded-circle img-thumbnail" src="/000.jpg" alt="000.jpg" width="50" height="50"> <a href="#" style="color: #333">{{ __('Special Offer') }}</a></h5>              
                             </div>
                             <a href="{{$ad->url}}"><img src="{{$ad->img}}" class="card-img-bottom" style="display: block;margin: 0 auto; width:100%"></a>
                         </div>
@@ -38,11 +38,11 @@
                 @else
                     @if (Schema::hasTable('follows') && Schema::hasTable('follows')) 
                     <div class="alert alert-info alert-important" role="alert">
-                        Nothing to show. <strong>Follow some great <a href="/user">Members</a>!</strong>
+                        {{ __('Nothing to show.') }} <strong>{{ __('Follow some great') }} <a href="/user">{{ __('Members') }}</a>!</strong>
                     </div>
                     @else 
                     <div class="alert alert-success alert-important" role="alert">
-                        You are logged in.</strong>
+                        {{ __('You are logged in.') }}</strong>
                     </div>
                     @endif
                 @endif

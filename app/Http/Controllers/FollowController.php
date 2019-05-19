@@ -30,13 +30,13 @@ class FollowController extends Controller
     public function followers($username) 
 	{
 		$user = User::where('username', $username)->first();
-		return view('user.index', ['users' => $user->followers()->paginate(10), 'heading' => 'Followers of ' . $user->username]);
+		return view('user.index', ['users' => $user->followers()->paginate(10), 'heading' => __('Followers of ') . $user->username]);
 	}
 
 	public function following($username) 
 	{
 		$user = User::where('username', $username)->first();
-		return view('user.index', ['users' => $user->following()->paginate(10), 'heading' => 'User that ' . $user->username . ' follows']);
+		return view('user.index', ['users' => $user->following()->paginate(10), 'heading' => __('User that ') . $user->username . __(' follows')]);
     }
     
     public function follow($id, Request $request) // id of the person to be followed

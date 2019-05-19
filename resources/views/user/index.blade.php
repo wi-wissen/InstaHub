@@ -40,7 +40,7 @@ p {
 
                 @if(isset($char))
                 <ul class="pagination" style="margin-top:0!important">
-                    <li class="page-item {{ $char == 'All' ? 'active' : '' }}"><a class="page-link" href="/user">All</a></li>
+                    <li class="page-item {{ $char == 'All' ? 'active' : '' }}"><a class="page-link" href="/user">{{ __('All') }}</a></li>
                     @foreach(range('A','Z') as $v)
                     <li class="page-item {{ $char == $v ? 'active' : '' }}"><a class="page-link" href="/user/letter/{{$v}}">{{$v}}</a></li>
                     @endforeach
@@ -64,11 +64,11 @@ p {
                             <p>{{ $user->name }}</p>
                             <p>
                                 @if (Schema::hasTable('photos'))
-                                <b>{{$user->photos()->count()}}</b> Photos.
+                                <b>{{$user->photos()->count()}}</b> {{ __('Photos') }}.
                                 @endif
                                 @if (Schema::hasTable('follows')) 
-                                <a href ="{{'/user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> Follower</a>.
-                                <a href ="{{'/user/' . $user->username . '/following'}}">Follows <b>{{$user->following->count()}}</b></a>.
+                                <a href ="{{'/user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('followers') }}</a>.
+                                <a href ="{{'/user/' . $user->username . '/following'}}"><b>{{$user->following->count()}}</b> {{ __('following') }}</a>.
                                 @endif
                             </p>
                         </div>

@@ -20,16 +20,16 @@
 				<a href="#" v-on:click.stop.prevent="getStatus()" class="float-right text-muted"><img src="/clarity/refresh-line.svg" width="16" height="16" alt="Refresh"></a>
 			</div>
 				<div class="card-body">
-					<button v-on:click.stop.prevent="resetPw()" class="float-right btn btn-outline-dark">Reset Admin-Passwort</button>
+					<button v-on:click.stop.prevent="resetPw()" class="float-right btn btn-outline-dark">{{ __('Reset Admin Passwort') }}</button>
 					<div v-html="state"></div>
 					<br />
-					<b>Admin-Passwort</b>: <code>@{{pw}}</code>
+					<b>{{ __('Admin Password') }}</b>: <code>@{{pw}}</code>
 				</div>		
 			</div>	
 			
 			<div class="card">
 				<div class="card-header"> 
-					Tables
+					{{ __('Tables') }}
 				</div>
 				<div class="card-body">
 					
@@ -73,10 +73,10 @@
 
 			<div class="card">
 				<div class="card-header">
-					Table Photos
+					{{ __('Table') }} Photos
 				</div>
 				<div class="card-body">
-				<div class="alert alert-warning  alert-important" role="alert">This table is neccesary for all tables above!</div>
+				<div class="alert alert-warning  alert-important" role="alert">{{ __('This table is neccesary for all tables above!') }}</div>
 					<div class="row">
 						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="photos" action="create">(Re)Create Photos</sql-button></div>
 						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="photos" action="fill">(Re)Fill Photos</sql-button></div>
@@ -87,10 +87,10 @@
 
 			<div class="card">
 				<div class="card-header">
-					Table Users
+					{{ __('Table') }} Users
 				</div>
 				<div class="card-body">
-				<div class="alert alert-warning  alert-important" role="alert">This table is neccesary for all tables above!</div>
+				<div class="alert alert-warning  alert-important" role="alert">{{ __('This table is neccesary for all tables above!') }}</div>
 					<div class="row">
 						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="users" action="create">(Re)Create Users</sql-button></div>
 						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="users" action="fill">(Re)Fill Users</sql-button></div>

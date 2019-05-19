@@ -13,7 +13,7 @@
 
                             <sql-select-gui v-model="query"></sql-select-gui>
 
-                            <button :disabled="!query" v-on:click="getResult()" class="btn btn-primary btn-block">Ausführen</button>
+                            <button :disabled="!query" v-on:click="getResult()" class="btn btn-primary btn-block">{{ __('Run') }}</button>
 
                             <div v-if="message.text" role="alert" v-bind:class="'alert alert-' + message.type + ' alert-important'" style="margin-top: 1rem;">
                                 <button v-on:click.stop.prevent="removeResult()" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

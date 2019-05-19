@@ -4,7 +4,7 @@
         v-model="query"
         :data="users"
         :serializer="item => item.username"
-        placeholder="Search Users"
+        :placeholder="$t('Search Users')"
         @hit="showUser"
     >
 

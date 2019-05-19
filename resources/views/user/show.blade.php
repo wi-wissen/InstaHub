@@ -56,16 +56,16 @@ h5 {
 						<h2>{{ $user->username }}</h2>
 						<p>
 							@if (Schema::hasTable('photos'))
-							<b>{{$user->photos()->count()}}</b> Photos.
+							<b>{{$user->photos()->count()}}</b> {{ __('Photos') }}.
 							@endif
 							@if (Schema::hasTable('follows')) 
 							@if ($user->followers->count() < 2)
-							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> Follower</a>.
+							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('follower') }}</a>.
 							@else
-							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> Followers</a>.
+							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('followers') }}</a>.
 							@endif
 							
-							<a href ="{{'../user/' . $user->username . '/following'}}">Following <b>{{$user->following->count()}}</b></a>.
+							<a href ="{{'../user/' . $user->username . '/following'}}"><b>{{$user->following->count()}} {{ __('following') }}</b></a>.
 							@endif
 						</p>
 						<h5>{{ $user->name }}</h5>
@@ -75,44 +75,44 @@ h5 {
 						@if ($user->country != "" || isset($user->gender) || 'unknown' != $user->age())
 						<p>{{ $user->name }} 
 							@if ($user->city != "" && $user->country != "")
-								is from {{$user->city}} ({{$user->country}})
+								{{ __('is from') }} {{$user->city}} ({{$user->country}})
 							@elseif ($user->country != "")
-								is from {{ $user->country }}
+								{{ __('is from') }} {{ $user->country }}
 							@endif
 
 							@if ($user->country != "")
 								@if ('unknown' == $user->age())
-									and
+									{{ __('and') }}
 								@elseif (isset($user->gender))
 									,
 								@endif
 							@endif
 							
 							@if (isset($user->gender))
-								is {{$user->gender}} 
+								{{ __('is') }} {{__($user->gender)}} 
 							@endif
 
 							@if (($user->country != "" || isset($user->gender)) && 'unknown' != $user->age())
-								and
+								{{ __('and') }}
 							@else 
 								.
 							@endif
 
 							@if ('unknown' != $user->age())
-								is {{$user->age()}} years old.
+								{{ __('is') }} {{$user->age()}} {{ __('years old') }}.
 							@endif
 
 							</p>
 						@endif
 						
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
-							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm" role="button">Edit</a>
+							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm" role="button">{{ __('Edit') }}</a>
 							@if (Auth::user()->id == $user->id)
-								<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/password'}}" class="btn btn-outline-dark btn-sm" role="button">Change Password</a>
+								<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/password'}}" class="btn btn-outline-dark btn-sm" role="button">{{ __('Change Password') }}</a>
 							@endif
-							<button v-if="!pw" v-on:click="getNewPw()" {{ Session::get('readonly') ? "disabled" : "" }} class="newPassword btn btn-outline-dark btn-sm">Reset Password</button>
+							<button v-if="!pw" v-on:click="getNewPw()" {{ Session::get('readonly') ? "disabled" : "" }} class="newPassword btn btn-outline-dark btn-sm">{{ __('Reset Password') }}</button>
 							<code v-else style="padding: 0.25rem 0.5rem; font-size: 0.7875rem;">@{{pw}}</code>
-							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm" role="button">Delete</a>
+							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm" role="button">{{ __('Delete') }}</a>
 						@endif
 						
 					</div>

@@ -56,18 +56,18 @@ td {
     <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
         <ul class="navbar-nav w-100 justify-content-center">
             <li class="nav-item">
-                <a v-on:click="active='teacher'" class="nav-link" href="#teacher">Teacher</a>
+                <a v-on:click="active='teacher'" class="nav-link" href="#teacher">{{ __('Teacher') }}</a>
             </li>
             <li class="nav-item">
-                <a v-on:click="active='student'" class="nav-link" href="#student">Student</a>
+                <a v-on:click="active='student'" class="nav-link" href="#student">{{ __('Student') }}</a>
             </li>
             <li class="nav-item">
-                <a v-on:click="active='guest'" class="nav-link" href="#guest">Guest</a>
+                <a v-on:click="active='guest'" class="nav-link" href="#guest">{{ __('Guest') }}</a>
             </li>
         </ul>
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="{{ env('DOC_URL') }}">Documentation</a>
+                <a class="nav-link" href="{{ env('DOC_URL') }}">{{ __('Documentation') }}</a>
             </li>
         </ul>
     </div>
@@ -78,16 +78,15 @@ td {
     <div class="container">
         <h1 class="jumbotron-heading">InstaHub</h1>
         <p class="lead text-muted">
-            InstaHub ist ein soziales Netzwerk, welches im Unterricht eingesetzt wird, um die Themen Datenbanken, Umgang mit sozialen Netzen und Datenschutz zu lehren.
+            {{ __('messages.instahub') }}
         </p>
         <p class="lead text-muted">
-            Ausgezeichnet mit dem <a href="https://gi.de/meldung/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone/">Unterrichtspreis der Gesellschaft für Informatik</a> (2017) 
-            und den <a href="https://www.mnu.de/blog/535-preis-fuer-innovative-mint-unterrichtsideen-2019">1. Platz im Wettbewerb Innovative MINT-Unterrichtsideen</a> der MNU mit dem Klett-Verlag (2019).
+            {!! __('messages.competitions') !!}
         </p>
         <p>
-        <a v-on:click="active='teacher'" href="#teacher" class="btn btn-primary my-2">LehrerInnen</a>
-        <a v-on:click="active='student'" href="#student" class="btn btn-primary my-2">SchülerInnen</a>
-        <a v-on:click="active='guest'" href="#guest" class="btn btn-secondary my-2">Gäste</a>
+        <a v-on:click="active='teacher'" href="#teacher" class="btn btn-primary my-2">{{ __('Teacher') }}</a>
+        <a v-on:click="active='student'" href="#student" class="btn btn-primary my-2">{{ __('Student') }}</a>
+        <a v-on:click="active='guest'" href="#guest" class="btn btn-secondary my-2">{{ __('Guest') }}</a>
         </p>
     </div>
 </section>
@@ -100,8 +99,8 @@ td {
             <div class="features-icons-icon d-flex">
                 <i class="icon-layers m-auto text-primary"><img src="/clarity/users-line.svg" width="90px" height="90px" class="d-inline-block align-middle" alt=""></i>
             </div>
-            <h3>Datenschutz</h3>
-            <p class="lead  lead-small mb-0">Ähnlich Instagram können SchülerInnen zu Lernzwecken in einem geschützten Umfeld agieren.</p>
+            <h3>{{ __('Data Protection') }}</h3>
+            <p class="lead  lead-small mb-0">{{ __('messages.privacy') }}</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -109,8 +108,8 @@ td {
             <div class="features-icons-icon d-flex">
               <i class="icon-layers m-auto text-primary"><img src="/clarity/storage-line.svg" width="90px" height="90px" class="d-inline-block align-middle" alt=""></i>
             </div>
-            <h3>Datenbank</h3>
-            <p class="lead  lead-small mb-0">Voller Zugriff auf die gesammte Datenbank und das Backend mit allen Einstellungen für Administratoren und "Werbetreibende".</p>
+            <h3>{{ __('Database') }}</h3>
+            <p class="lead  lead-small mb-0">{{ __('messages.database') }}</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -118,8 +117,8 @@ td {
             <div class="features-icons-icon d-flex">
                 <i class="icon-layers m-auto text-primary"><img src="/clarity/savings-line.svg" width="90px" height="90px" class="d-inline-block align-middle" alt=""></i>
             </div>
-            <h3>Frei</h3>
-            <p class="lead lead-small mb-0">Kostenfrei und Open Source für den Einsatz zu Lehrzwecken. Schulungen und Support auf Anfrage auch bei Ihnen vor Ort möglich.</p>
+            <h3>{{ __('Open') }}</h3>
+            <p class="lead lead-small mb-0">{{ __('messages.openfree') }}</p>
           </div>
         </div>
       </div>
@@ -146,11 +145,11 @@ td {
             </h2>
 
                 <a href="{{ url('/hubs/create') }}" type="button" class="btn btn-success btn-lg btn-block">
-                    Create Hub
+                {{ __('Create Hub') }}
                 </a>
             </li>
             <li class="list-group-item">
-                <h5 class="card-title">Login</h5>
+                <h5 class="card-title">{{ __('Login') }}</h5>
 
                 <form method="POST" v-bind:action="'https://' + hubname + '{{ env('SESSION_DOMAIN') }}/login'" aria-label="{{ __('Login') }}">
                     @csrf
@@ -225,9 +224,10 @@ td {
                 <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/wCj3keNW-74?rel=0" allowfullscreen></iframe>
             </div>
             <div class="card-body text-left">
-                <p class="card-text">Beantrage zuerst einen Lehrer-Account. Anschließend kannst du dir als SchülerIn einen Hub anlegen, dich in 
-                    deiner LehrerInnenrolle freischalten und alle Funktionen erkunden. Schau auch in der Hilfe nach fertigen Aufgaben und Stundenentwürfen.</p>
-                <a href="{{ env('DOC_URL') }}" class="btn btn-outline-dark btn-lg btn-block">Documentation</a>
+                <p class="card-text">
+                    {{ __('messages.firstStepTeacher') }}
+                </p>
+                <a href="{{ env('DOC_URL') }}" class="btn btn-outline-dark btn-lg btn-block">{{ __('Documentation') }}</a>
             </div>
         </div>
     </div>
@@ -246,11 +246,11 @@ td {
             </h2>
 
                 <a href="{{ url('/register') }}" type="button" class="btn btn-success btn-lg btn-block">
-                    Get Teacher Account
+                    {{ __('Get Teacher Account') }}
                 </a>
             </li>
             <li class="list-group-item">
-                <h5 class="card-title">Login</h5>
+                <h5 class="card-title">{{ __('Login') }}</h5>
 
                 <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @csrf
@@ -315,8 +315,8 @@ td {
             <tbody><tr>
                 <td style="vertical-align: top;"><b>Admin</b></td>
                 <td>
-                    Benutzer: <br>
-                    Passwort:
+                    {{ __('User') }}: <br>
+                    {{ __('Password') }}:
                 </td>
                 <td>
                     <code>admin</code> <br>
@@ -328,10 +328,10 @@ td {
     <div class="col-md-4">
         <table>
             <tbody><tr>
-                <td style="vertical-align: top;"><b>Mädchen</b></td>
+                <td style="vertical-align: top;"><b>{{ __('Girl') }}</b></td>
                 <td>
-                    Benutzer: <br>
-                    Passwort:
+                    {{ __('User') }}: <br>
+                    {{ __('Password') }}:
                 </td>
                 <td>
                     <code>eva125</code> <br>
@@ -344,10 +344,10 @@ td {
         <table>
             <tbody>
                 <tr>
-                    <td style="vertical-align: top;"><b>Junge</b></td>
+                    <td style="vertical-align: top;"><b>{{ __('Boy') }}</b></td>
                     <td>
-                        Benutzer: <br>
-                        Passwort:
+                        {{ __('User') }}: <br>
+                        {{ __('Password') }}:
                     </td>
                     <td>
                         <code>adrian211</code> <br>
@@ -380,7 +380,7 @@ td {
             </h2>
             </li>
             <li class="list-group-item">
-                <h5 class="card-title">Login</h5>
+                <h5 class="card-title">{{ __('Login') }}</h5>
 
                 <form method="POST" action="https://public{{ env('SESSION_DOMAIN') }}/login" aria-label="{{ __('Login') }}">
                     @csrf

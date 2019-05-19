@@ -4,7 +4,7 @@
     <vue-progress-bar></vue-progress-bar>
     <flash :timeout="5000" :display-icons="false" transition="fade"></flash>
 
-    <label for="tables">Pick Tables</label>
+    <label for="tables">{{ $t('Pick Tables') }}</label>
     <vue-taggable-select
         class="form-vue-select"
         id="tables"
@@ -17,22 +17,22 @@
     <div>
         <div class="custom-control custom-control-inline custom-checkbox" v-if="sql.tables.length" >
             <input v-model="settings.attributes" type="checkbox" class="custom-control-input" id="attributes" name="attributes">
-            <label class="custom-control-label" for="attributes">Filter Attributes</label>
+            <label class="custom-control-label" for="attributes">{{ $t('Filter Attributes') }}</label>
         </div>
         <div class="custom-control custom-control-inline custom-checkbox" v-if="sql.tables.length" >
             <input v-model="settings.rows" type="checkbox" class="custom-control-input" id="rows" name="rows">
-            <label class="custom-control-label" for="rows">Filter Rows</label>
+            <label class="custom-control-label" for="rows">{{ $t('Filter Rows') }}</label>
         </div>
         <div class="custom-control custom-control-inline custom-checkbox" v-if="sql.tables.length" >
             <input v-model="settings.expert" type="checkbox" class="custom-control-input" id="expert" name="expert">
-            <label class="custom-control-label" for="expert">Expert</label>
+            <label class="custom-control-label" for="expert">{{ $t('Expert') }}</label>
         </div>
         <div class="custom-control custom-control-inline custom-checkbox" v-if="sql.tables.length" >
             <input v-model="settings.showsql" type="checkbox" class="custom-control-input" id="showsql" name="showsql">
-            <label class="custom-control-label" for="showsql">Show SQL</label>
+            <label class="custom-control-label" for="showsql">{{ $t('Show SQL') }}</label>
         </div>
     </div>
-    <label v-if="sql.tables.length && settings.attributes" for="attr">Pick Attribute</label>
+    <label v-if="sql.tables.length && settings.attributes" for="attr">{{ $t('Pick Attribute') }}</label>
     <vue-taggable-select
         class="form-vue-select"
         id="attr"
@@ -43,7 +43,7 @@
         :options="attr"
     ></vue-taggable-select>
 
-    <label v-if="sql.tables.length && settings.rows" for="rules">Filter Entrys</label>
+    <label v-if="sql.tables.length && settings.rows" for="rules">{{ $t('Filter Entrys') }}</label>
     <vue-query-builder 
         v-if="sql.tables.length && settings.rows" 
         :rules="rules"
@@ -52,12 +52,12 @@
 
     <div class="custom-control custom-checkbox" v-if="sql.tables.length && settings.expert" >
         <input v-model="sql.distinct" type="checkbox" class="custom-control-input" id="distinct" name="distinct">
-        <label class="custom-control-label" for="distinct">Distinct</label>
+        <label class="custom-control-label" for="distinct">{{ $t('Distinct') }}</label>
     </div>
 
     <div class="row form-vue-select" v-if="sql.tables.length && settings.expert">
         <div class="col-auto">
-            <label for="attr">Order By</label>
+            <label for="attr">{{ $t('Order By') }}</label>
         </div>
         <div class="col">
             <vue-single-select   
@@ -70,7 +70,7 @@
         <div class="col">
             <vue-single-select     
                 v-model="sql.orderBy.direction" 
-                :options="[{title: 'ascending', id: 'ASC'}, {title: 'descanding', id: 'DESC'}]"
+                :options="[{title: $t('ascending'), id: 'ASC'}, {title: $t('descanding'), id: 'DESC'}]"
                 option-label="title"
                 name="orderByDirection"
                 placeholder=""
@@ -80,7 +80,7 @@
 
     <div class="row form-vue-select" v-if="sql.tables.length && settings.expert">
         <div class="col-auto">
-            <label for="attr">Group By</label>
+            <label for="attr">{{ $t('Group By') }}</label>
         </div>
         <div class="col">
             <vue-single-select     
@@ -94,7 +94,7 @@
     </div>
 
     <div v-if="!sql.valid" class="alert alert-danger" role="alert">
-       Your Search is not valid!
+       {{ $t('Your Search is not valid!') }}
     </div>
 
     <pre v-if="sql.tables.length" v-bind:class="{ 'd-none': !settings.showsql }">{{query}}</pre>
@@ -183,7 +183,7 @@ export default {
               for (let attr of this.sql.attrs) {
                     if (this.sql.groupBy && this.sql.groupBy != attr) {
                         //count this attribute
-                        sql = sql + "COUNT(" + attr + ") AS 'COUNT '"+ attr +", "
+                        sql = sql + "COUNT(" + attr + ") AS 'COUNT "+ attr +"', "
                     }
                     else {
                         sql = sql + attr + ", "
@@ -220,22 +220,22 @@ export default {
                             if (!!a.children[index].query.value) { //valid rule
                                 var operator = '';
                                 switch(a.children[index].query.selectedOperator) {
-                                    case 'equals':
+                                    case Vue.prototype.$t('equals'):
                                         operator = '=';
                                         break;
-                                    case 'does not equal':
+                                    case Vue.prototype.$t('does not equal'):
                                         operator = '!=';
                                         break;
-                                    case 'contains':
+                                    case Vue.prototype.$t('contains'):
                                         operator = 'LIKE';
                                         break;
-                                    case 'does not contain':
+                                    case Vue.prototype.$t('does not contain'):
                                         operator = 'NOT LIKE';
                                         break;
-                                    case 'smaller':
+                                    case Vue.prototype.$t('smaller'):
                                         operator = '<';
                                         break;
-                                    case 'bigger':
+                                    case Vue.prototype.$t('bigger'):
                                         operator = '>';
                                         break;
                                     default:
@@ -249,7 +249,7 @@ export default {
 
                                 if (index + 1 != a.children.length) {
                                     if (!!a.children[index + 1].query.value) {
-                                        str = str + ((a.logicalOperator == 'all') ? 'AND ' : 'OR ');  
+                                        str = str + ((a.logicalOperator == Vue.prototype.$t('all')) ? 'AND ' : 'OR ');  
                                     }
                                 }  
                             }

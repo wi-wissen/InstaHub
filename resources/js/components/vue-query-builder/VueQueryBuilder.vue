@@ -20,16 +20,16 @@ import QueryBuilderGroup from './components/QueryBuilderGroup.vue';
 import deepClone from './utilities.js';
 
 var defaultLabels = {
-  matchType: "Match Type",
+  matchType: Vue.prototype.$t("Match Type"),
   matchTypes: [
-    {"id": "all", "label": "All"},
-    {"id": "any", "label": "Any"},
+    {"id": "all", "label": Vue.prototype.$t("All")},
+    {"id": "any", "label": Vue.prototype.$t("Any")},
   ],
-  addRule: "Add Rule",
-  removeRule: "&times;",
-  addGroup: "Add Group",
-  removeGroup: "&times;",
-  textInputPlaceholder: "value",
+  addRule: Vue.prototype.$t("Add Rule"),
+  removeRule: Vue.prototype.$t("&times;"),
+  addGroup: Vue.prototype.$t("Add Group"),
+  removeGroup: Vue.prototype.$t("&times;"),
+  textInputPlaceholder: Vue.prototype.$t("value"),
 };
 
 export default {
@@ -70,7 +70,14 @@ export default {
       },
       ruleTypes: {
         "text": {
-          operators: ['equals','does not equal','contains','does not contain','smaller','bigger'],
+          operators: [
+            Vue.prototype.$t('equals'),
+            Vue.prototype.$t('does not equal'),
+            Vue.prototype.$t('contains'),
+            Vue.prototype.$t('does not contain'),
+            Vue.prototype.$t('smaller'),
+            Vue.prototype.$t('bigger')
+          ],
           inputType: "text",
           id: "text-field"
         },
