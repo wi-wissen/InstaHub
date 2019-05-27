@@ -92,14 +92,16 @@ class HubController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'hub' => 'required|max:255|alpha_num|unique:hubs,name',
+            'hub' => 'required|max:191|alpha_num|unique:hubs,name',
             'password' => 'required|min:5|confirmed',
             'teacher' => [
                 'required',
                 Rule::exists('users', 'username')->where(function ($query) {
                     $query->where('is_active', 1);
                 }),
-            ]
+            ],
+            'name' => 'required|max:191',
+            'email' =>  'required|email',
         ]);
 
 

@@ -144,7 +144,7 @@ td {
                 {{Session::get('hub')}}
             </h2>
 
-                <a href="{{ url('/hubs/create') }}" type="button" class="btn btn-success btn-lg btn-block">
+                <a href="{{ url('/hubs/create') }}" class="btn btn-success btn-lg btn-block">
                 {{ __('Create Hub') }}
                 </a>
             </li>
@@ -245,7 +245,7 @@ td {
                 
             </h2>
 
-                <a href="{{ url('/register') }}" type="button" class="btn btn-success btn-lg btn-block">
+                <a href="{{ url('/register') }}" class="btn btn-success btn-lg btn-block">
                     {{ __('Get Teacher Account') }}
                 </a>
             </li>

@@ -41,9 +41,13 @@ export default {
         })
         .then(function(response) {
           self.loading = false;
+          flash('Filled all Tables.', "success");
+          //the following cause handing on browser. Seems problem of package
+          /*
           response.data.forEach(function(element) {
             flash(element, "success");
           }); 
+          */
         })
         .catch(function(error) {
           self.loading = false;

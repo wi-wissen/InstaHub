@@ -37,7 +37,7 @@ h2{
                 {{Session::get('hub')}}
             </h2>
 
-                <a {{ Session::get('readonly') ? "disabled" : "" }} href="{{ url('/register') }}" type="button" class="btn btn-success btn-lg btn-block">
+                <a {{ Session::get('readonly') ? "disabled" : "" }} href="{{ url('/register') }}" class="btn btn-success btn-lg btn-block">
                 {{ __('Create Account') }}
                 </a>
             </li>

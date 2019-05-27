@@ -19,13 +19,13 @@
                             <label for="username" class="col-md-4 col-form-label text-md-right"><b>{{ __('Username') }}</b></label>
 
                             <div class="col-md-6">
-                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="" required autofocus>
+                            <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="" required autofocus>
 
-                                @if ($errors->has('username'))
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('username') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -33,13 +33,13 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right"><b>{{ __('Name') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}">
+                                <input id="name" type="text" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
 
-                                @if ($errors->has('name'))
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -47,13 +47,13 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right"><b>{{ __('Email') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
 
-                                @if ($errors->has('email'))
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -61,13 +61,13 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right"><b>{{ __('Password') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
 
-                                @if ($errors->has('password'))
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -75,13 +75,13 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><b>{{ __('Confirm Password') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation">
 
-                                @if ($errors->has('password_confirmation'))
+                                @error('password_confirmation')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -91,13 +91,13 @@
                             <label for="bio" class="col-md-4 col-form-label text-md-right">{{ __('Bio') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name="bio" id="bio" class="form-control {{ $errors->has('bio') ? ' is-invalid' : '' }}" placeholder="Your Bio...."></textarea>
+                                <textarea name="bio" id="bio" class="form-control @error('bio') is-invalid @enderror" placeholder="Your Bio...."></textarea>
 
-                                @if ($errors->has('bio'))
+                                @error('bio')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('bio') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -105,17 +105,17 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control {{ $errors->has('gender') ? ' is-invalid' : '' }}" id="gender" name="gender">
+                                <select class="form-control @error('gender') is-invalid @enderror" id="gender" name="gender">
                                     <option value=""></option>
-                                    <option value="male">{{ __('bb') }}male</option>
-                                    <option value="female">{{ __('bb') }}female</option>
+                                    <option value="male">{{ __('male') }}</option>
+                                    <option value="female">{{ __('female') }}</option>
                                 </select>
 
-                                @if ($errors->has('gender'))
+                                @error('gender')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('gender') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -123,13 +123,13 @@
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthday" type="date" class="form-control dateinput  {{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" autofocus>
+                                <input id="birthday" type="date" class="form-control dateinput @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" autofocus>
 
-                                @if ($errors->has('birthday'))
+                                @error('birthday')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('birthday') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -137,13 +137,13 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control {{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" autofocus>
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" autofocus>
 
-                                @if ($errors->has('city'))
+                                @error('city')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('city') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -151,13 +151,13 @@
                             <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
-                                <input id="country" type="text" class="form-control {{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}" autofocus>
+                                <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" autofocus>
 
-                                @if ($errors->has('country'))
+                                @error('country')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('country') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -165,13 +165,13 @@
                             <label for="centimeters" class="col-md-4 col-form-label text-md-right">{{ __('Centimeters') }}</label>
 
                             <div class="col-md-6">
-                                <input id="centimeters" type="text" class="form-control {{ $errors->has('centimeters') ? ' is-invalid' : '' }}" name="centimeters" value="{{ old('centimeters') }}" autofocus>
+                                <input id="centimeters" type="text" class="form-control @error('centimeters') is-invalid @enderror" name="centimeters" value="{{ old('centimeters') }}" autofocus>
 
-                                @if ($errors->has('centimeters'))
+                                @error('centimeters')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('centimeters') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -184,11 +184,11 @@
                                 <label class="custom-file-label" for="customFile">{{ __('Choose file') }}</label>
                             </div>
 
-                                @if ($errors->has('avatar'))
+                                @error('avatar')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('avatar') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -197,13 +197,13 @@
                             <label for="messageToAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Message') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name="messageToAdmin" id="messageToAdmin" class="form-control  {{ $errors->has('messageToAdmin') ? ' is-invalid' : '' }}" placeholder="Please use your work email adress or provide other prove that you are a teacher."></textarea>
+                                <textarea name="messageToAdmin" id="messageToAdmin" class="form-control @error('messageToAdmin') is-invalid @enderror" placeholder="Please use your work email adress or provide other prove that you are a teacher."></textarea>
 
-                                @if ($errors->has('messageToAdmin'))
+                                @error('messageToAdmin')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('messageToAdmin') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
                         @endif
