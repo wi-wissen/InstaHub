@@ -56,7 +56,7 @@
                             <label for="priority" class="col-md-4 col-form-label text-md-right">{{ __('Priority') }}</label>
 
                             <div class="col-md-6">
-                                <input v-model="priority" id="priority" type="text" class="form-control @error('priority') is-invalid @enderror" name="priority" value="{{ old('priority') }}" placeholder="1" autofocus>
+                                <input id="priority" type="text" class="form-control @error('priority') is-invalid @enderror" name="priority" value="{{ old('priority') }}" placeholder="1" autofocus>
                                 <small id="passwordHelpBlock" class="form-text text-muted">
                                     {{ __('messages.adEditor.priority') }}
                                 </small>
