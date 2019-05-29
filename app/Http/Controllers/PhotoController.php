@@ -52,7 +52,7 @@ class PhotoController extends Controller
 			'url' => $url
 		]);
 		
-		flash('Photo uploaded')->success();
+		flash(__('Photo uploaded'))->success();
 		return redirect('photo/' . $photo->id);
 	}
 
@@ -131,7 +131,7 @@ class PhotoController extends Controller
 
 			$entry->delete();
 
-			flash('Photo deleted')->success();
+			flash(__('Photo deleted'))->success();
 		} else {
 			flash('Photo ' . $id . ' does not exist')->error();
 		}

@@ -20,6 +20,11 @@
 
                             <div class="col-md-6">
                             <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="" required autofocus>
+                            @if (Session::get('hub', 'root') == 'root')
+                            <small id="usernameHelpBlock" class="form-text text-muted">
+                                {{ __('messages.teachername') }}
+                            </small>
+                            @endif
 
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
@@ -197,7 +202,7 @@
                             <label for="messageToAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Message') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name="messageToAdmin" id="messageToAdmin" class="form-control @error('messageToAdmin') is-invalid @enderror" placeholder="Please use your work email adress or provide other prove that you are a teacher."></textarea>
+                                <textarea name="messageToAdmin" id="messageToAdmin" class="form-control @error('messageToAdmin') is-invalid @enderror" placeholder="{{ __('messages.provideProof') }}"></textarea>
 
                                 @error('messageToAdmin')
                                     <span class="invalid-feedback" role="alert">

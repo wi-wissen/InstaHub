@@ -19,11 +19,11 @@
             <img v-if="photo.like" src="/clarity/heart-solid.svg" alt="">
             <img v-else src="/clarity/heart-line.svg" style="fill:red" alt="">
         </span>
-        <span v-if="photo.likes">
+        <span v-if="photo.hasOwnProperty('likes')">
             {{ $t('{count} likes', {count: photo.likes}) }}
         </span>
 
-        <button v-if="admin" :disabled="!!readonly" class="btn btn-outline-danger btn-sm float-right">{{ $t('Delete') }}</button>
+        <a v-bind:href="'photo/' + this.photo.id + '/destroy'" v-if="admin" :disabled="!!readonly" class="btn btn-outline-danger btn-sm float-right">{{ $t('Delete') }}</a>
       </div>
 
       <a v-if="ad" :href="ad.url">

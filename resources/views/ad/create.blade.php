@@ -17,13 +17,13 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input v-model="name" id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                <input v-model="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autofocus>
 
-                                @if ($errors->has('name'))
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                             <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Type') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" id="type" name="type">
+                                <select class="form-control @error('type') is-invalid @enderror" id="type" name="type">
                                     @if (old('type') == 'banner')
                                         <option value="banner" selected>{{ __('Banner') }}</option>
                                         <option value="photo">{{ __('Photo') }}</option>
@@ -41,11 +41,11 @@
                                     @endif
                                 </select>
 
-                                @if ($errors->has('type'))
+                                @error('type')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('type') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                                 <small id="passwordHelpBlock" class="form-text text-muted">
                                     {{ __('messages.adEditor.position') }}
                                 </small>
@@ -56,16 +56,16 @@
                             <label for="priority" class="col-md-4 col-form-label text-md-right">{{ __('Priority') }}</label>
 
                             <div class="col-md-6">
-                                <input v-model="priority" id="priority" type="text" class="form-control" name="priority" value="{{ old('priority') }}" placeholder="1" autofocus>
+                                <input v-model="priority" id="priority" type="text" class="form-control @error('priority') is-invalid @enderror" name="priority" value="{{ old('priority') }}" placeholder="1" autofocus>
                                 <small id="passwordHelpBlock" class="form-text text-muted">
                                     {{ __('messages.adEditor.priority') }}
                                 </small>
 
-                                @if ($errors->has('priority'))
+                                @error('priority')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('priority') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 												
@@ -73,16 +73,16 @@
                             <label for="url" class="col-md-4 col-form-label text-md-right">{{ __('URL') }}</label>
 
                             <div class="col-md-6">
-                                <input v-model="url" id="url" type="text" class="form-control" name="url" value="{{ old('url') }}" placeholder="/noad" autofocus>
+                                <input v-model="url" id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') }}" placeholder="/noad" autofocus>
                                 <small id="passwordHelpBlock" class="form-text text-muted">
                                     {{ __('messages.adEditor.url') }}
                                 </small>
 
-                                @if ($errors->has('url'))
+                                @error('url')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('url') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -90,16 +90,16 @@
                             <label for="img" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
-                                <input v-model="img" id="img" type="text" class="form-control" name="img" value="{{ old('img') }}"  placeholder="/img/ad/sommerferien.jpg" autofocus>
+                                <input v-model="img" id="img" type="text" class="form-control @error('img') is-invalid @enderror" name="img" value="{{ old('img') }}"  placeholder="/img/ad/sommerferien.jpg" autofocus>
                                 <small id="passwordHelpBlock" class="form-text text-muted">
                                     {!! __('messages.adEditor.image') !!}
                                 </small>
 
-                                @if ($errors->has('img'))
+                                @error('img')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('img') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -107,16 +107,16 @@
                             <label for="query" class="col-md-4 col-form-label text-md-right">{{ __('SQL-Query') }}</label>
 
                             <div class="col-md-6">
-                                <input id="query" type="text" class="form-control" name="query" value="{{ old('query') }}" autofocus>
+                                <input id="query" type="text" class="form-control @error('query') is-invalid @enderror" name="query" value="{{ old('query') }}" autofocus>
                                 <small id="passwordHelpBlock" class="form-text text-muted">
                                 {!! __('messages.adEditor.query') !!}
                                 </small>
 
-                                @if ($errors->has('query'))
+                                @error('query')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('query') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						

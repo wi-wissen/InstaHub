@@ -2,7 +2,7 @@
 
 @section('title', __('No Ad!'))
 
-@section('message', {!!__('messages.missedAd')!!})
+@section('message', __('messages.missedAd'))
 
 @section('help')
     {!!__('messages.noad')!!}

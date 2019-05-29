@@ -28,7 +28,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        @if ((!Auth::guest() && Session::get('hub', 'root') != 'root') || (!Auth::guest() && Auth::user()->allowed('dba')))
+        @if ((!Auth::guest() && Session::get('hub', 'root') != 'root') || (!Auth::guest() && Auth::user()->allowed('admin')))
         <div class="nav navbar-nav flex-fill justify-content-center d-none d-sm-block">
             <search-box style="width:200px;"/>  
         </div>
@@ -40,7 +40,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">{{ __('Login') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">{{ __('Register') }}</a></li>
             @else
-                @if (Session::get('hub', 'root') != 'root' || (!Auth::guest() && Auth::user()->allowed('dba')))
+                @if (Session::get('hub', 'root') != 'root' || (!Auth::guest() && Auth::user()->allowed('admin')))
                 <li class="d-inline d-sm-none" class="nav-item">
                     <search-box style="width:200px;"/>  
                 </li>
@@ -57,7 +57,9 @@
                     </div>
                 </li>
                 @endif
+                @if (Session::get('hub', 'root') != 'root' || (!Auth::guest() && Auth::user()->allowed('admin')))
                 <li class="nav-item"><a class="nav-link"href="{{ url('/user') }}"><img src="/clarity/compass-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Explore') }}</span></a></li>    
+                @endif
                 @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDatabaseDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         $user = User::where('username', $username)->first();
         $user->delete();
-        flash('User deleted')->success();
+        flash(__('User deleted'))->success();
         return redirect('home');
     }
 
@@ -55,18 +55,18 @@ class UserController extends Controller
                 if (strlen($request->input('password'))>4) {
                     Auth::user()->password = bcrypt($request->input('password'));
                     Auth::user()->save();
-                    flash('Password changed', 'success');
+                    flash(__('Password changed)'), 'success');
                 } else {
-                    flash('Password minlength is 5 characters', 'warning');
+                    flash(__('Password minlength is 5 characters'), 'warning');
                 }
                 
             } else {
-                flash('New password does not match with confirmed password', 'danger');
+                flash(__('New password does not match with confirmed password'), 'danger');
             }
 
         }
         else {
-            flash('Wrong password', 'danger');
+            flash(__('Wrong password', 'danger'));
         }
         
         return redirect('/home');

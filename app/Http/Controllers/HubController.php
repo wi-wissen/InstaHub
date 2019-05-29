@@ -183,7 +183,7 @@ class HubController extends Controller
 
         DB::commit();
 
-        flash('Your hub must be activated by your teacher!')->warning();
+        flash(__('Your hub must be activated by your teacher!'))->warning();
         return redirect("https://" . $hub->name . env('SESSION_DOMAIN')  . "/home");
     }
 

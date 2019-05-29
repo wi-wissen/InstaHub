@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('bb') }}Edit <b>{{$user->username}}</b></div>
+                <div class="card-header">{{ __('Edit') }} <b>{{$user->username}}</b></div>
                 <div class="card-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ '/user/' . $user->username . '/update' }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -15,13 +15,13 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $user->name) }}" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name) }}" autofocus>
 
-                                @if ($errors->has('name'))
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -29,13 +29,13 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email', $user->email) }}">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email) }}">
 
-                                @if ($errors->has('email'))
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -43,13 +43,13 @@
                             <label for="bio" class="col-md-4 col-form-label text-md-right">{{ __('Bio') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name="bio" id="bio" class="form-control" placeholder="Your Bio....">{{ old('bio', $user->bio) }}</textarea>
+                                <textarea name="bio" id="bio" class="form-control @error('bio') is-invalid @enderror" placeholder="Your Bio....">{{ old('bio', $user->bio) }}</textarea>
 
-                                @if ($errors->has('bio'))
+                                @error('bio')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('bio') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 
@@ -57,7 +57,7 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" id="gender" name="gender">
+                                <select class="form-control @error('gender') is-invalid @enderror" id="gender" name="gender">
                                     @if (old('gender', $user->gender) == 'male')
                                         <option value="male" selected>{{ __('male') }}</option>
                                         <option value="female">{{ __('female') }}</option>
@@ -68,16 +68,16 @@
                                         <option value=""></option>
                                     @else
                                         <option value="female">{{ __('female') }}</option>
-                                        <option value="male">{{ __('malebb') }}</option>
+                                        <option value="male">{{ __('male') }}</option>
                                         <option value="" selected></option>
                                     @endif
                                 </select>
 
-                                @if ($errors->has('gender'))
+                                @error('gender')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('gender') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -85,13 +85,13 @@
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthday" type="date" class="form-control dateinput" name="birthday" value="{{ old('birthday', ($user->birthday) ? $user->birthday->format('Y-m-d') : null) }}" autofocus>
+                                <input id="birthday" type="date" class="form-control @error('birthday') is-invalid @enderror dateinput" name="birthday" value="{{ old('birthday', ($user->birthday) ? $user->birthday->format('Y-m-d') : null) }}" autofocus>
 
-                                @if ($errors->has('birthday'))
+                                @error('birthday')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('birthday') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -99,13 +99,13 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city', $user->city) }}" autofocus>
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city', $user->city) }}" autofocus>
 
-                                @if ($errors->has('city'))
+                                @error('city')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('city') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -113,13 +113,13 @@
                             <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
-                                <input id="country" type="text" class="form-control" name="country" value="{{ old('country', $user->country) }}" autofocus>
+                                <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country', $user->country) }}" autofocus>
 
-                                @if ($errors->has('country'))
+                                @error('country')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('country') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -127,13 +127,13 @@
                             <label for="centimeters" class="col-md-4 col-form-label text-md-right">{{ __('Centimeters') }}</label>
 
                             <div class="col-md-6">
-                                <input id="centimeters" type="text" class="form-control" name="centimeters" value="{{ old('centimeters', $user->centimeters) }}" autofocus>
+                                <input id="centimeters" type="text" class="form-control @error('centimeters') is-invalid @enderror" name="centimeters" value="{{ old('centimeters', $user->centimeters) }}" autofocus>
 
-                                @if ($errors->has('centimeters'))
+                                @error('centimeters')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('centimeters') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 						
@@ -146,11 +146,11 @@
                                 <label class="custom-file-label" for="customFile">{{ __('Choose file') }}</label>
                             </div>
 
-                                @if ($errors->has('avatar'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('avatar') }}</strong>
-                                    </span>
-                                @endif
+                            @error('avatar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
 
@@ -162,27 +162,27 @@
                             @if (old('is_active', $user->is_active) == true)
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="is_active" id="is_active" value="1" checked>
-                                <label class="custom-control-label" for="is_active">{{ __('Account ist active') }}</label>
+                                <label class="custom-control-label" for="is_active">{{ __('Account is active') }}</label>
                             </div>
                             @else
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="is_active" id="is_active" value="1">
-                                <label class="custom-control-label" for="is_active">{{ __('Account ist active') }}</label>
+                                <label class="custom-control-label" for="is_active">{{ __('Account is active') }}</label>
                             </div>
                             @endif
 
-                            @if ($errors->has('is_active'))
+                            @error('is_active')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('is_active') }}</strong>
+                                    <strong>{{ $message }}</strong>
                                 </span>
-                            @endif
+                            @enderror
                         </div>
                     </div>
                 @endif
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary float-right">
                                     {{ __('Edit') }}
                                 </button>
                             </div>

@@ -152,12 +152,21 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/user', 'ProfileController@index');
+    Route::get('/api/user/search/{query}', 'UserController@search');
     Route::get('/user/{username}/activate', 'ProfileController@activate');
     Route::get('/user/{username}/deactivate', 'ProfileController@deactivate');
+    Route::get('/api/user/password/{id}', 'UserController@getNewPassword');
 
     Route::get('/avatars/{photo_id}', 'PhotoController@showavatar');
 
     Route::get('/trimanalytics', 'DbadminController@trimAnalytics');
+
+    //sql
+    Route::get('/sql', 'SqlController@getQuery');
+    Route::post('/sql', 'SqlController@getQuery');
+    Route::get('/sql/select', 'SqlController@selectGui');
+    Route::get('/api/sql/tables', 'SqlController@getTables');
+    Route::post('/api/sql', 'SqlController@getApiQuery');
     
 });
 

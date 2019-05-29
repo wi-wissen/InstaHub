@@ -31,7 +31,7 @@ class selectdb
 
             if (!$hub) {
                 // hub does not exist
-                flash('Hub does not exist!')->warning();
+                flash(__('Hub does not exist!'))->warning();
                 return redirect(env('APP_URL'));
             } else {               
                 $request->attributes->add(['hubreadonly' => ($hub->readonly()) ? 1 : 0 ]);

@@ -19,6 +19,8 @@ return [
 	'maintenance' => 'Hub is in Maintenance Mode. Read Only.',
 	'noHubs' => 'There are no Hubs. You may create one if you use an other browser or log out.',
 	'activateByTeacher' => 'Your Hub must activated by your Teacher! ',
+	'teachername' => 'Students use your username to apply to you for the activation of their hub.',
+	'provideProof' => 'Please use your work email adress or provide other prove that you are a teacher.',
 	'ad' => [
 		'heading' => 'Connect with the people who will love your business.',
 		'intro' => 'On InstaHub your company may use photos or advertisements 

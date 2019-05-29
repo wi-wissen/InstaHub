@@ -50,7 +50,7 @@ class SqlController extends Controller
                 }
                 else {
                     //select
-                    $r = DB::select($request->editor . ' LIMIT 10000');
+                    $r = DB::select($request->editor);
                     if (!$r) {
                         //nothing found
                         $message = "Anfrage ausgeführt. 0 Ergebnisse gefunden."; $type= 'warning';
@@ -87,7 +87,7 @@ class SqlController extends Controller
 
         //Tabelle darstellen
         $dbclass ="";
-        $r = DB::table('information_schema.tables')->get();
+        $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
         if (!$r) {
                 echo "<div class='alert alert-danger'>Keine Tabellen gefunden.</div>";
         }
@@ -114,7 +114,7 @@ class SqlController extends Controller
 
     public function getTables() {
         $dbclass ="";
-        $r = DB::table('information_schema.tables')->get();
+        $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
         if (!$r) {
             return response()->json([]);
         }

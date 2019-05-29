@@ -15,10 +15,12 @@ return [
 	'targetInstaHub' => 'Ziel des Projektes ist mit InstaHub ein allgemeines Verständnis über die technische Funktion von sozialen Netzwerken zu vermitteln und Themen wie Datenbanken und Datenschutz fundiert und lebensnah vermitteln zu können.',
 	'contributing' => 'Vielen Dank, dass du etwas zu InstaHub beitragen möchtest! Der Quelltext ist auf <a href="https://github.com/wi-wissen/instahub">GitHub</a> verfügbar.',
 	'contributers' => 'InstaHub hat Teile des Projekts <a href="https://github.com/itsshady101/Laragram">Laragram</a> vpn <a href="https://github.com/itsshady101">itsshady101</a> genutzt.',
-	'adblocker' => 'Adblocker erkannt! Bitte deaktiviere deien Adblocker!',
+	'adblocker' => 'Adblocker erkannt! Bitte deaktiviere deinen Adblocker!',
 	'maintenance' => 'Hub ist im Wartungsmodus. Es können keine Änderungen vorgenommen werden.',
-	'noHubs' => 'Du verwaltest keine Hubs. Um selbst welche anzulegen kannst du dich entweder ausloggen oder einen Browser verwenden. Denk dran, sich selbst als LehrerIn einzutragen.',
+	'noHubs' => 'Du verwaltest aktuell keine Hubs. Um selbst welche anzulegen, kannst du dich entweder ausloggen oder einen Browser verwenden. Denk dran, dich selbst als LehrerIn einzutragen und anschließend freizuschalten.',
 	'activateByTeacher' => 'Dein Hub muss von deiner/m LehrerIn freigeschalten werden!',
+	'teachername' => 'SchülerInnen verwenden deinen Benutzernamen, um bei dir die Freischaltung ihres Hubs zu beantragen.',
+	'provideProof' => 'Bitte verwende deine Arbeits-E-Mail-Adresse oder gib einen anderen Nachweise an, dass du LehrerIn bist.',
 	'ad' => [
 		'heading' => 'Verbinde dich mit den Personen, die dein Unternehmen lieben werden.',
 		'intro' => 'Auf InstaHub kann dein Unternehmen Fotos oder Werbeanzeigen 
