@@ -21,6 +21,12 @@ jQuery(function () {
     jQuery('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 })
 
+// Add the following code if you want the name of the file appear on select
+jQuery(".custom-file-input").on("change", function() {
+    var fileName = jQuery(this).val().split("\\").pop();
+    jQuery(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

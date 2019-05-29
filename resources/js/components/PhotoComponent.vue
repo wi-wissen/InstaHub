@@ -15,7 +15,7 @@
             <img src="/clarity/chat-bubble-line.svg" alt="">
         </span>
 
-        <span v-if="!readonly && photo.likes" v-on:click.stop.prevent="like()" class="svgbutton align-middle">
+        <span v-if="!readonly && photo.hasOwnProperty('likes')" v-on:click.stop.prevent="like()" class="svgbutton align-middle">
             <img v-if="photo.like" src="/clarity/heart-solid.svg" alt="">
             <img v-else src="/clarity/heart-line.svg" style="fill:red" alt="">
         </span>

@@ -40,7 +40,8 @@ class PhotoController extends Controller
 	public function store(Request $request)
 	{
 		$this->validate($request, [
-			'photo' => 'required|max:'. $this->max_filesize()
+			'photo' => 'required|max:'. $this->max_filesize(),
+			'description' => 'required'
 		]);
 
 		$url = $request->file('photo')->store('photos');
@@ -150,16 +151,12 @@ class PhotoController extends Controller
 		switch($last) {
 			// The 'G' modifier is available since PHP 5.1.0
 			case 'g':
-				$val *= 1024;
+				$val *= 1024; // no break to also calc with mega.
 			case 'm':
-				$val *= 1024;
-			case 'k':
 				$val *= 1024;
 		}
 
-		$val = $val / 1024;
-	
-		return $val;
+		return $val; //in kbyte
 	 }
 
 	
