@@ -36,6 +36,11 @@
    <script>
         window.default_locale = "{{ config('app.locale') }}";
         window.fallback_locale = "{{ config('app.fallback_locale') }}";
+        @if(Session::has('readonly'))
+        window.readonly = {{ Session::get('readonly')}};
+        @else
+        window.readonly = false;
+        @endif
    </script>
    <script>
         window.Laravel = <?php echo json_encode([

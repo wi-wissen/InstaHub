@@ -106,13 +106,13 @@ h5 {
 						@endif
 						
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
-							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm" role="button">{{ __('Edit') }}</a>
+							<a href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm {{ Session::get('readonly') ? "disabled" : "" }}" role="button">{{ __('Edit') }}</a>
 							@if (Auth::user()->id == $user->id)
-								<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/password'}}" class="btn btn-outline-dark btn-sm" role="button">{{ __('Change Password') }}</a>
+								<a href="{{'../user/password'}}" class="btn btn-outline-dark btn-sm {{ Session::get('readonly') ? "disabled" : "" }}" role="button">{{ __('Change Password') }}</a>
 							@endif
 							<button v-if="!pw" v-on:click="getNewPw()" {{ Session::get('readonly') ? "disabled" : "" }} class="newPassword btn btn-outline-dark btn-sm">{{ __('Reset Password') }}</button>
 							<code v-else style="padding: 0.25rem 0.5rem; font-size: 0.7875rem;">@{{pw}}</code>
-							<a {{ Session::get('readonly') ? "disabled" : "" }} href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm" role="button">{{ __('Delete') }}</a>
+							<a href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm {{ Session::get('readonly') ? "disabled" : "" }}" role="button">{{ __('Delete') }}</a>
 						@endif
 						
 					</div>

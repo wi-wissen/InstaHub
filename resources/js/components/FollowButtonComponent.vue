@@ -2,8 +2,8 @@
   <div style="background-color: transparent;">
     <vue-progress-bar></vue-progress-bar>
     <flash :timeout="5000" :display-icons="false" transition="fade"></flash>
-    <button v-if="!isfollowing" v-on:click="follow()" type="button" class="btn btn-success">{{ $t('Follow') }}</button>
-    <button v-else v-on:click="unfollow()" type="button" class="btn btn-outline-danger">{{ $t('Unfollow') }}</button>
+    <button v-if="!isfollowing" v-on:click="follow()" :disabled="!!readonly" type="button" class="btn btn-success">{{ $t('Follow') }}</button>
+    <button v-else v-on:click="unfollow()" :disabled="!!readonly" type="button" class="btn btn-outline-danger">{{ $t('Unfollow') }}</button>
   </div>
 </template>
 

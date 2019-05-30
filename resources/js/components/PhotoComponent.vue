@@ -23,7 +23,7 @@
             {{ $t('{count} likes', {count: photo.likes}) }}
         </span>
 
-        <a v-bind:href="'photo/' + this.photo.id + '/destroy'" v-if="admin" :disabled="!!readonly" class="btn btn-outline-danger btn-sm float-right">{{ $t('Delete') }}</a>
+        <a v-bind:href="'photo/' + this.photo.id + '/destroy'" v-if="admin" v-bind:class="{ disabled: !!readonly }" class="btn btn-outline-danger btn-sm float-right">{{ $t('Delete') }}</a>
       </div>
 
       <a v-if="ad" :href="ad.url">

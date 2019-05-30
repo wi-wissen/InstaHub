@@ -125,3 +125,13 @@ if (document.getElementById("editor")) {
     });
 }
 
+Vue.mixin({
+    data: function() {
+      return {
+        get readonly() {
+          return readonly;
+        },
+      }
+    }
+});
+
