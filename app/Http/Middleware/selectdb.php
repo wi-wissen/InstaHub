@@ -25,7 +25,7 @@ class selectdb
     public function handle($request, Closure $next)
     {
         //run only on subdomains
-        if (substr_count($request->server('HTTP_HOST'), '.') == 2) {
+        if (env('SESSION_DOMAIN') != '.' . $request->server('HTTP_HOST')) {
             
             $hub = Hub::where('name', '=', str_replace(env('SESSION_DOMAIN'), '',$request->server('HTTP_HOST')))->first();
 
