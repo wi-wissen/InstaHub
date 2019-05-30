@@ -19,7 +19,7 @@ class Hub extends Resource
             'id' => $this->id,
             'name' => $this->name,
             'hasWorkingUser' => $hasWorkingUser,
-            'activated' => $this->activated(),
+            'activated' => ($hasWorkingUser) ? $this->activated() : false,
             'admin' => ($hasWorkingUser) ? $this->adminname() : '',
             'readonly' => $this->readonly(),
             'created_at' => $this->created_at,

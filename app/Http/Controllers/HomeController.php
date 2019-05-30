@@ -105,9 +105,14 @@ class HomeController extends Controller
 
         if (Schema::hasTable('ads')) {
             $ad = Ad::getAd($photo_id);
-            $ad = new AdResource($ad);
 
-            return view('photo.show', ['photo' => $photo->response()->content(), 'ad' => $ad->response()->content()]);
+            if ($ad) { //is there a matching ad?
+                $ad = new AdResource($ad);
+                return view('photo.show', ['photo' => $photo->response()->content(), 'ad' => $ad->response()->content()]);
+            }
+            else {
+                return view('photo.show', ['photo' => $photo->response()->content()]);
+            }
         }
         else {
             return view('photo.show', ['photo' => $photo->response()->content()]);
