@@ -23,7 +23,7 @@
 								>
                                 <label class="custom-file-label" for="photo">{{ __('Choose file') }}</label>
 								<small id="fileHelpBlock" class="form-text text-muted">
-                                    {{ __('File Size Limit') . ': ' . $filesize . 'MB'}}
+                                    {{ __('File Size Limit') . ': ' . $filesize / 1024 . 'MB'}}
                                 </small>
 
 								@error('photo')
