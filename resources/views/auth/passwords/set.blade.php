@@ -2,23 +2,23 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="panel-body">
+                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('user/' . Auth::user()->id . '/password') }}">
+                    <form role="form" method="POST" action="{{ url('user/password') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
-                            <label for="old_password" class="col-md-4 control-label">Old Password</label>
+                        <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}  row">
+                            <label for="old_password" class="col-md-4 control-label">{{__('Old Password')}}</label>
 
                             <div class="col-md-6">
                                 <input id="old_password" type="password" class="form-control" name="old_password" required>
@@ -31,8 +31,8 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">New Password</label>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}  row">
+                            <label for="password" class="col-md-4 control-label">{{__('New Password')}}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -45,8 +45,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm new Password</label>
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}  row">
+                            <label for="password-confirm" class="col-md-4 control-label">{{__('Confirm new Password')}}</label>
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 
@@ -58,12 +58,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Save new Password
+                        <div class="form-group" row>
+                                <button type="submit" class="btn btn-primary float-right">
+                                    {{__('Save new Password')}}
                                 </button>
-                            </div>
                         </div>
                     </form>
                 </div>

@@ -113,7 +113,7 @@ class User extends Authenticatable
             else if ($role == "user") return true;
             else return false;
         } else {
-            flash('Your account is not activated!')->warning()->important();
+            flash(__('Your account is not activated!'))->warning()->important();
             return false;
         }
 

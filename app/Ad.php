@@ -9,7 +9,7 @@ use DB;
 
 class Ad extends Model
 {
-    protected $fillable = ['name', 'type', 'url', 'img', 'query'];
+    protected $fillable = ['name', 'type', 'priority', 'url', 'img', 'query'];
 
     static public function getAd($photo_id = null) {
         $ads = null;

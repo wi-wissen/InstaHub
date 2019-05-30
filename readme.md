@@ -17,15 +17,14 @@ Many thanks and respect to:
 - [MySQL](https://www.mysql.com/)
 - [php](http://php.net/)
 - [Laravel](https://laravel.com/)
-	- [laracasts/flash](https://github.com/laracasts/flash)
+  - [laracasts/flash](https://github.com/laracasts/flash)
     - [orangehill/iseed](https://github.com/orangehill/iseed)
-	- [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer)
-	- [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
-	- [hisorange/browser-detect](https://github.com/hisorange/browser-detect)
-- [Bootstrap](http://bootstrap.com/)
-- [jQuery](https://jquery.com/) with [Backstretch](https://github.com/jquery-backstretch/jquery-backstretch)
+  - [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer)
+  - [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
+  - [hisorange/browser-detect](https://github.com/hisorange/browser-detect)
+- [Bootstrap](https://getbootstrap.com/)
+- [Vue](https://vuejs.org/)
 - Photos by [pixabay](https://pixabay.com/) (CC0)
-- Splash images by [unsplash.com](https://unsplash.com/) (CC0)
 - Face images by [unsplash.com](https://unsplash.com/) (CC0)
 - Fake Ad images based on [unsplash.com](https://unsplash.com/) (CC0)
 
@@ -33,10 +32,9 @@ Many thanks and respect to:
 
 #### Prerequisits 
 
-- Have min. PHP 7.0
+- Have min. PHP 7.1.3
 - Download composer https://getcomposer.org/download/
 - Download git https://git-scm.com/downloads
-- Have a top-level domain for InstaHub
 
 #### Prerequisits for Windows users
 
@@ -52,7 +50,7 @@ Many thanks and respect to:
 4. Rename `.env.example` file to `.env`inside your project root and fill in the database information.
   (windows won't let you do that, so you have to use Notepad++ or open your console, cd your project root directory and run `mv .env.example .env` )
 5. Edit `.env`
-    - `APP_ENV=production`
+    - `APP_ENV=production` (In `test` Teacher will be activated automatically.)
     - `APP_DEBUG=false` - enable only temporaly for debugging!
     -  `DB_*` - if you want another database than MySQL, you have to edit source code.
     - `DB_USERNAME` - user for database
@@ -60,6 +58,7 @@ Many thanks and respect to:
     - `MAIL_*` - mail provider for notification of new teachers and resetting passworts (admin accounts may reset passworts without sending a mail)
 6. Open the console and cd to your project root directory
 7. Run `composer install` or ```php composer.phar install``` ([Howto install composer](https://getcomposer.org/download/))
+Optional: Just to be safe or if an error occur on bootup run `php artisan config:clear`
 8.  You may need to configure some permissions. Directories within the `storage` and the `bootstrap/cache` directories should be writable by your web server 
 9. Run `php artisan key:generate` 
 10. Run `php artisan migrate`

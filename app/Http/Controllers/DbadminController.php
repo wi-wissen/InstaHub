@@ -16,6 +16,8 @@ use Config;
 
 class DbadminController extends Controller
 {
+    private $messages; //for functions that call other functions
+
     /**
      * Create a new controller instance.
      *
@@ -55,10 +57,37 @@ class DbadminController extends Controller
         DB::commit();
     }
 
-    public function migrateTable($id, $tablename)
+    /**
+     * change tables.
+     *
+     * @return Response
+     */
+    public function changeTable(Request $request) 
     {
-        $this->setdb($id);
+        $hub = Hub::where('name', $request->name)->firstOrFail();
+        if($hub->teacher_id == Auth::id() || Auth::user()->role == 'admin') {
+            $this->setdb($hub->id);
 
+            foreach ($request->tables as $t) {
+                if ($request->action == 'fill')
+                    $this->fillTable($hub->id, $t);
+                elseif ($request->action == 'drop') {
+                    $this->dropTable($hub->id, $t);
+                }
+                elseif ($request->action == 'create') {
+                    $this->migrateTable($hub->id, $t);
+                }
+            }
+
+            return response()->json($this->messages);
+        }
+        else {
+            abort(403, 'Unauthorized action.');
+        }
+    }
+
+    private function migrateTable($id, $tablename)
+    {
         DB::beginTransaction(); //better performance and safer
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
@@ -71,25 +100,13 @@ class DbadminController extends Controller
 
         DB::commit();
 
-        flash("Table $tablename exists (now).")->success();
-        return redirect("/hubs/$id/dba/admin");
+        $this->messages[] = "Table $tablename exists (now).";
     }
 
-    public function fillTables($id, $list)
+    private function fillTable($id, $tablename)
     {
-        $this->setdb($id);
-
-        $a=explode(',',$list);
-        foreach ($a as $t) {
-            $this->fillTable($id, $t, true);
-        }
-
-        return redirect("/hubs/$id/dba/admin");
-    }
-    
-    public function fillTable($id, $tablename, $batch=false)
-    {
-        if (!$batch) $this->setdb($id);
+        $user = null;
+        if ($tablename == 'users') $user = User::where('username', '=', 'admin')->first();
 
         DB::beginTransaction(); //better performance and safer
 
@@ -100,36 +117,44 @@ class DbadminController extends Controller
 
         Artisan::call('db:seed', array('--class' => ucfirst($tablename) . "TableSeeder"));
 
-        flash("Table $tablename filled with dummy data.")->success();
+        $this->messages[] = "Table $tablename filled with dummy data.";
 
         if ($tablename == 'users') {
-            //create dummy dba for managing this hub
-            $pw = substr(uniqid(),8);
-            $user = User::create([
-                'username' => 'admin',
-                'name' => 'admin',
-                'email' => 'admin@instahub.app',
-                'password' => bcrypt($pw),
-                'avatar' => 'avatar.png',
-                'role' => 2
-            ]);
-    
-            $user->role = 2;
-            $user->is_active = true;
-            $user->save();
+            if($user) {
+                $user = User::create([
+                    'username' => $user->username,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'password' => $user->password,
+                    'avatar' => $user->avatar,
+                    'role' => 2
+                ]);
+            }
+            else {
+                //create dummy dba for managing this hub
+                $pw = substr(uniqid(),8);
+                $user = User::create([
+                    'username' => 'admin',
+                    'name' => 'admin',
+                    'email' => 'admin@instahub.app',
+                    'password' => bcrypt($pw),
+                    'avatar' => 'avatar.png',
+                    'role' => 2
+                ]);
+        
+                $user->role = 2;
+                $user->is_active = true;
+                $user->save();
 
-            flash("All DBAs are lost. New Passwort for 'admin' was generated: " . $pw)->warning()->important();
+                $this->messages[] = "No DBAs was found. New Passwort for 'admin' was generated: " . $pw;
+            }
         }
 
         DB::commit();
-
-        if (!$batch) return redirect("/hubs/$id/dba/admin");
     }
 
-    public function dropTable($id, $tablename)
+    private function dropTable($id, $tablename)
     {
-        $this->setdb($id);
-
         DB::beginTransaction(); //better performance and safer
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
@@ -139,8 +164,7 @@ class DbadminController extends Controller
 
         DB::commit();
 
-        flash("Table $tablename does not (longer) exist.")->success();
-        return redirect("/hubs/$id/dba/admin");
+        $this->messages[] = "Table $tablename does not (longer) exist.";
     }
 
     public function setAdminPW($id) {
@@ -152,12 +176,18 @@ class DbadminController extends Controller
         $user->password = bcrypt($pw);
         $user->save();
 
-        flash("New Passwort for 'admin' was generated: " . $pw)->success()->important();
-
-        return redirect("/hubs/$id/dba/admin");
+        return response()->json([
+            'pw' => $pw
+        ]);
     }
 
     public function index($id) 
+    {
+        $hub = Hub::find($id);
+        return view('admin.dbadmin', ['hub' => $hub]);
+    }
+
+    public function getTableStatus($id) 
     {
         $hub = Hub::find($id);
 
@@ -174,7 +204,9 @@ class DbadminController extends Controller
             $dbclass = $dbclass . "<b>" . $v->TABLE_NAME . ':</b> ' . DB::table($v->TABLE_NAME)->count() . ' rows <br />';
         }
 
-        return view('admin.dbadmin', ['hub' => $hub, 'state' => $dbclass]);
+        return response()->json([
+            'state' => $dbclass
+        ]);
     }
 
     public function trimAnalytics() 

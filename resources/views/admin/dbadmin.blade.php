@@ -1,84 +1,110 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+	.card {
+		margin-bottom: 2em;
+	}
+</style>
+@endsection
+
 @section('content')
-<div class="container">
+<div class="container" v-cloak id="dba-admin">
 	@include('flash::message')
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="pull-right"><a href="/hubs/{{$hub->id}}/dba/resetpw" type="button" class="btn btn-default btn-block">Reset Admin-Password</a></div>
-			<h1 >Hub: {{$hub->name}}</h3>
-			<div class="panel panel-default">
-				<div class="panel-body">
-					{!! $state !!}
-				</div>
+	<vue-progress-bar></vue-progress-bar>
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<div class="card">
+			<div class="card-header">
+				{{$hub->name}}
+				<a href="#" v-on:click.stop.prevent="getStatus()" class="float-right text-muted"><img src="/clarity/refresh-line.svg" width="16" height="16" alt="Refresh"></a>
+			</div>
+				<div class="card-body">
+					<button v-on:click.stop.prevent="resetPw()" class="float-right btn btn-outline-dark">{{ __('Reset Admin Passwort') }}</button>
+					<div v-html="state"></div>
+					<br />
+					<b>{{ __('Admin Password') }}</b>: <code>@{{pw}}</code>
+				</div>		
 			</div>	
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Tables</h3>
+			
+			<div class="card">
+				<div class="card-header"> 
+					{{ __('Tables') }}
 				</div>
-				<div class="panel-body">
+				<div class="card-body">
+					
 					<div class="row" style="padding-bottom:10px;">
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/comments" type="button" class="btn btn-success btn-block">(Re)Create Comments</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/comments" type="button" class="btn btn-primary btn-block">(Re)Fill Comments</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/comments" type="button" class="btn btn-danger btn-block">Drop Comments</a></div>
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="comments" action="create">(Re)Create Comments</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="comments" action="fill">(Re)Fill Comments</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="comments" action="drop">Drop Comments</sql-button></div>
 					</div>
+
 					<div class="row" style="padding-bottom:10px;">
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/follows" type="button" class="btn btn-success btn-block">(Re)Create Follows</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/follows" type="button" class="btn btn-primary btn-block">(Re)Fill Follows</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/follows" type="button" class="btn btn-danger btn-block">Drop Follows</a></div>
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="follows" action="create">(Re)Create Follows</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="follows" action="fill">(Re)Fill Follows</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="follows" action="drop">Drop Follows</sql-button></div>
 					</div>
+
 					<div class="row" style="padding-bottom:10px;">
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/likes" type="button" class="btn btn-success btn-block">(Re)Create Likes</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/likes" type="button" class="btn btn-primary btn-block">(Re)Fill Likes</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/likes" type="button" class="btn btn-danger btn-block">Drop Likes</a></div>
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="likes" action="create">(Re)Create Likes</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="likes" action="fill">(Re)Fill Likes</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="likes" action="drop">Drop Likes</sql-button></div>
 					</div>
+
 					<div class="row" style="padding-bottom:10px;">
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/tags" type="button" class="btn btn-success btn-block">(Re)Create Tags</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/tags" type="button" class="btn btn-primary btn-block">(Re)Fill Tags</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/tags" type="button" class="btn btn-danger btn-block">Drop Tags</a></div>
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="tags" action="create">(Re)Create Tags</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="tags" action="fill">(Re)Fill Tags</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="tags" action="drop">Drop Tags</sql-button></div>
 					</div>
+
 					<div class="row" style="padding-bottom:10px;">
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/ads" type="button" class="btn btn-success btn-block">(Re)Create Ads</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/ads" type="button" class="btn btn-primary btn-block">(Re)Fill Ads</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/ads" type="button" class="btn btn-danger btn-block">Drop Ads</a></div>
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="ads" action="create">(Re)Create Ads</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="ads" action="fill">(Re)Fill Ads</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="ads" action="drop">Drop Ads</sql-button></div>
 					</div>
-					<div class="row">
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/analytics" type="button" class="btn btn-success btn-block">(Re)Create Analytics</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/analytics" type="button" class="btn btn-primary btn-block">(Re)Fill Analytics</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/analytics" type="button" class="btn btn-danger btn-block">Drop Analytics</a></div>
+
+					<div class="row" style="padding-bottom:10px;">
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="analytics" action="create">(Re)Create Analytics</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="analytics" action="fill">(Re)Fill Analytics</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="analytics" action="drop">Drop Analytics</sql-button></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Table Photos</h3>
+			<div class="card">
+				<div class="card-header">
+					{{ __('Table') }} Photos
 				</div>
-				<div class="panel-body">
-				<div class="alert alert-warning  alert-important" role="alert">This table is neccesary for all tables above!</div>
+				<div class="card-body">
+				<div class="alert alert-warning  alert-important" role="alert">{{ __('This table is neccesary for all tables above!') }}</div>
 					<div class="row">
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/photos" type="button" class="btn btn-success btn-block">(Re)Create Photos</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/photos" type="button" class="btn btn-primary btn-block">(Re)Fill Photos</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/photos" type="button" class="btn btn-danger btn-block">Drop Photos</a></div>
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="photos" action="create">(Re)Create Photos</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="photos" action="fill">(Re)Fill Photos</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="photos" action="drop">Drop Photos</sql-button></div>
 					</div>
 				</div>
 			</div>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Table Users</h3>
+			<div class="card">
+				<div class="card-header">
+					{{ __('Table') }} Users
 				</div>
-				<div class="panel-body">
-				<div class="alert alert-warning  alert-important" role="alert">This table is neccesary for all tables above!</div>
+				<div class="card-body">
+				<div class="alert alert-warning  alert-important" role="alert">{{ __('This table is neccesary for all tables above!') }}</div>
 					<div class="row">
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/create/users" type="button" class="btn btn-success btn-block">(Re)Create Users</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/fill/users" type="button" class="btn btn-primary btn-block">(Re)Fill Users</a></div>
-						<div class="col-md-4"><a href="/hubs/{{$hub->id}}/dba/table/drop/users" type="button" class="btn btn-danger btn-block">Drop Users</a></div>
+						<div class="col-md-4"><sql-button type="btn-success btn-block" hub="{{$hub->name}}" tables="users" action="create">(Re)Create Users</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-primary btn-block" hub="{{$hub->name}}" tables="users" action="fill">(Re)Fill Users</sql-button></div>
+						<div class="col-md-4"><sql-button type="btn-danger btn-block" hub="{{$hub->name}}" tables="users" action="drop">Drop Users</sql-button></div>
 					</div>
 				</div>
 			</div>
-
-    </div>
+		</div>
 	</div>
 </div>
+@endsection
+
+@section('script')
+<script>
+	var hub = {{$hub->id}}
+</script>
 @endsection

@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'noad' => 'Diese Plattform schaltet <b>keine</b> reale Werbung.',
+	'missedAd' => 'Schade! Du hast dieses tolle Angebot verpasst. 🙁',
+	'instahub' => 'InstaHub ist ein soziales Netzwerk, welches im Unterricht eingesetzt wird, um die Themen Datenbanken, Umgang mit sozialen Netzen und Datenschutz zu lehren.',
+	'competitions' => 'Ausgezeichnet mit dem <a href="https://gi.de/meldung/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone/">Unterrichtspreis der Gesellschaft für Informatik</a> (2017) 
+            und den <a href="https://www.mnu.de/blog/535-preis-fuer-innovative-mint-unterrichtsideen-2019">1. Platz im Wettbewerb Innovative MINT-Unterrichtsideen</a> der MNU mit dem Klett-Verlag (2019).',
+	'privacy' => 'Ähnlich Instagram können SchülerInnen zu Lernzwecken in einem geschützten Umfeld agieren.',
+	'database' => 'Voller Zugriff auf die gesammte Datenbank und das Backend mit allen Einstellungen für Administratoren und "Werbetreibende".',
+	'openfree' => 'Kostenfrei und Open Source für den Einsatz zu Lehrzwecken. Schulungen und Support auf Anfrage auch bei Ihnen vor Ort möglich.',
+	'firstStepTeacher' => 'Beantrage zuerst einen Lehrer-Account. Anschließend kannst du dir als SchülerIn einen Hub anlegen, dich in 
+                    deiner LehrerInnenrolle freischalten und alle Funktionen erkunden. Schau auch in der Hilfe nach fertigen Aufgaben und Stundenentwürfen.',
+	'aboutInstaHub' => 'InstaHub ist ein soziales Netzwerk, welches speziell für den Einsatz im Unterricht entwickelt wurde. SchülerInnen werden Administrator ihres eigenen sozialen Netzwerkes. Sie können als Datenbankadministrator direkt auf die Datenbank zugreifen und mit SQL Daten abfragen(<code>SELECT</code>) einfügen (<code>INSERT</code>, bearbeiten (<code>UPDATE</code>) und löschen <code>DELETE</code>). Als Moderator können sie Beiträge löschen und als Werbepartner eigene Werbung schalten und das Nutzungsverhalten analysieren.',
+	'targetInstaHub' => 'Ziel des Projektes ist mit InstaHub ein allgemeines Verständnis über die technische Funktion von sozialen Netzwerken zu vermitteln und Themen wie Datenbanken und Datenschutz fundiert und lebensnah vermitteln zu können.',
+	'contributing' => 'Vielen Dank, dass du etwas zu InstaHub beitragen möchtest! Der Quelltext ist auf <a href="https://github.com/wi-wissen/instahub">GitHub</a> verfügbar.',
+	'contributers' => 'InstaHub hat Teile des Projekts <a href="https://github.com/itsshady101/Laragram">Laragram</a> vpn <a href="https://github.com/itsshady101">itsshady101</a> genutzt.',
+	'adblocker' => 'Adblocker erkannt! Bitte deaktiviere deinen Adblocker!',
+	'maintenance' => 'Hub ist im Wartungsmodus. Es können keine Änderungen vorgenommen werden.',
+	'noHubs' => 'Du verwaltest aktuell keine Hubs. Um selbst welche anzulegen, kannst du dich entweder ausloggen oder einen Browser verwenden. Denk dran, dich selbst als LehrerIn einzutragen und anschließend freizuschalten.',
+	'activateByTeacher' => 'Dein Hub muss von deiner/m LehrerIn freigeschalten werden!',
+	'teachername' => 'SchülerInnen verwenden deinen Benutzernamen, um bei dir die Freischaltung ihres Hubs zu beantragen.',
+	'provideProof' => 'Bitte verwende deine Arbeits-E-Mail-Adresse oder gib einen anderen Nachweise an, dass du LehrerIn bist.',
+	'ad' => [
+		'heading' => 'Verbinde dich mit den Personen, die dein Unternehmen lieben werden.',
+		'intro' => 'Auf InstaHub kann dein Unternehmen Fotos oder Werbeanzeigen 
+        verwenden, um Personen zu inspirieren, seine Bekanntheit zu steigern und
+        zu Handlungen anzuregen.',
+		'motivate' => 'Motiviere Menschen zum Handeln',
+		'howItWorks' => '<p>Rege Personen dazu an, deine Website oder dein Geschäft zu besuchen, deine App herunterzuladen oder Produkte zu kaufen. </p>
+        <p>Wir schlagen dazu direkt im Photo-Feed unsere Nutzer deinen Inhalt vor. Wir wählen dabei nur Nutzer zielgenau aus, welche sich aufgrund ihrer Person oder ihres Nutzungsverhalten auch wirklich für dein Produkt interessieren. </p>
+        <p>Möchtest du nahtlos zu ähnlichen Inhalten angezeigt werden, bieten wir dir das bei der Detailansicht der einzelen Bilder an.</p>',
+		'reference' => 'Namenhafte Unternehmen nutzen bereits InstaHub. Erfahre mehr über ihren Erfolg.',
+	],
+	'adEditor' => [
+		'position' => 'Banner werden unter Photos und Photos an dritter Stelle des Newsfeeds angezeigt.',
+		'priority' => 'Wenn zwei oder mehr Anezigen möglich sind, dann wird die mit der höheren Priorität (etwa 1) ausgewählt.',
+		'url' => 'Link zur Werbekampagne.',
+		'image' => 'Absolute (<code>https://public.instahub.org/img/ad/brokkoli.jpg</code>) oder relative (<code>/img/ad/brokkoli.jpg</code>) URL zum anzuzeigenden Bild.',
+		'query' => 'Die Abfrage muss <code>true</code> oder <code>false</code> ergeben. Alternativ kann auch eine Liste zurückgegeben werden, in welcher die Benutzer-ID gesucht wird. <code>$user</code> kann als Platzhalter für den angemeldeten Benutzer und <code>$photo</code> für das aktuelle Photo verwendet werden.',
+	],
+];

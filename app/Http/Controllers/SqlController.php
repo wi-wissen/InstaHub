@@ -22,9 +22,23 @@ class SqlController extends Controller
         $this->middleware('auth');
     }
 
+    public function getApiQuery(Request $request) {
+        $data = $this->_getQuery($request);
+        return response()->json($data);
+    }
+
     public function getQuery(Request $request)
     {
+        $data = $this->_getQuery($request);
+        //dd($data);
+        return view('admin.sql', ['result' => $data['result'], 'tables' => $data['tables'], 'message' => $data['message'], 'type' => $data['type']]);
+    }
+
+    public function _getQuery(Request $request)
+    {
         $t = "";
+        $message = null; $type= null;
+
         if ($request->has('editor')) {
              //Ergebnis vorbereiten
             try {
@@ -32,17 +46,17 @@ class SqlController extends Controller
                     // other statement - https://laravel.com/docs/5.7/database#running-queries
                     DB::statement($request->editor);
                     //nothing to show, cause no select-statement
-                    flash("Anfrage ausgeführt.", 'success')->important();
+                    $message = "Anfrage ausgeführt."; $type= 'success';
                 }
                 else {
                     //select
                     $r = DB::select($request->editor);
                     if (!$r) {
                         //nothing found
-                        flash("Anfrage ausgeführt. 0 Ergebnisse gefunden.", 'warning')->important();
+                        $message = "Anfrage ausgeführt. 0 Ergebnisse gefunden."; $type= 'warning';
                     }
                     else {
-                        flash("Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden.", 'success')->important();
+                        $message = "Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden."; $type= 'success';
     
                         $cols = array_keys((array) $r[0]);
                         $t = "<table class='table'>";
@@ -66,14 +80,14 @@ class SqlController extends Controller
                     }
                 }                              
             } catch(\Illuminate\Database\QueryException $ex){ 
-                flash($ex->getMessage(), 'danger')->important(); 
+                $message = $ex->getMessage(); $type= 'danger'; 
             }
         }
 
 
         //Tabelle darstellen
         $dbclass ="";
-        $r = DB::table('information_schema.tables')->get();
+        $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
         if (!$r) {
                 echo "<div class='alert alert-danger'>Keine Tabellen gefunden.</div>";
         }
@@ -88,8 +102,38 @@ class SqlController extends Controller
             }
         }
 
+        return array(
+            "result" => $t,
+            "tables" => $dbclass,
+            "message" => $message,
+            "type" => $type,
+        );
 
+        //return view('admin.sql', ['result' => $t, 'tables' => $dbclass, 'message' => $message, 'type' => $type,]);
+    }
 
-        return view('admin.sql', ['result' => $t, 'tables' => $dbclass]);
+    public function getTables() {
+        $dbclass ="";
+        $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
+        if (!$r) {
+            return response()->json([]);
+        }
+        else {
+            $arr = [];
+            foreach ($r as $v) {
+                if (!strcmp($v->TABLE_TYPE, "BASE TABLE") && $v->TABLE_NAME != "migrations" && $v->TABLE_NAME != "password_resets") {
+                    $arr[$v->TABLE_NAME] = [];
+                    $columns = Schema::getColumnListing($v->TABLE_NAME);
+                    foreach ($columns as &$column) {
+                        $arr[$v->TABLE_NAME][] = $column;
+                    }
+                }
+            }
+            return response()->json($arr); 
+        }
+    }
+
+    public function selectGui() {
+        return view('admin.select');
     }
 }

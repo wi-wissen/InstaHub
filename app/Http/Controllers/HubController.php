@@ -19,6 +19,8 @@ use App\Hub;
 use App\User;
 use App\Photo;
 
+use App\Http\Resources\Hub as HubResource;
+
 class HubController extends Controller
 {
     public function __construct()
@@ -45,13 +47,22 @@ class HubController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index() 
     {
-        $hubs = [];
-        if (Auth::user()->role == 'admin') $hubs = Hub::paginate(20);
-        elseif (Auth::user()->role == 'teacher') $hubs = User::find(Auth::user()->id)->hubs()->paginate(20);
+        return view('hub.index');
+    }
 
-        return view('hub.index')->with('hubs', $hubs);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function apiIndex() 
+    {
+        if (Auth::user()->role == 'admin') $hubs = Hub::paginate(30);
+        elseif (Auth::user()->role == 'teacher') $hubs = User::find(Auth::user()->id)->hubs()->paginate(30);
+        
+        return HubResource::collection($hubs);
     }
 
     /**
@@ -81,14 +92,16 @@ class HubController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'hub' => 'required|max:255|alpha_num|unique:hubs,name',
+            'hub' => 'required|max:191|alpha_num|unique:hubs,name',
             'password' => 'required|min:5|confirmed',
             'teacher' => [
                 'required',
                 Rule::exists('users', 'username')->where(function ($query) {
                     $query->where('is_active', 1);
                 }),
-            ]
+            ],
+            'name' => 'required|max:191',
+            'email' =>  'required|email',
         ]);
 
 
@@ -170,7 +183,7 @@ class HubController extends Controller
 
         DB::commit();
 
-        flash('Your hub must be activated by your teacher!')->warning();
+        flash(__('Your hub must be activated by your teacher!'))->warning();
         return redirect("https://" . $hub->name . env('SESSION_DOMAIN')  . "/home");
     }
 
@@ -182,7 +195,7 @@ class HubController extends Controller
      */
     public function show($id)
     {
-        $hub = Hub::find($id);
+        $hub = Hub::findOrFail($id);
 
         //set db
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
@@ -235,9 +248,9 @@ class HubController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        $hub = Hub::find($id);
+        $hub = Hub::findOrFail($request->id);
 
         //delete all old photos from disk
         //set db
@@ -284,20 +297,22 @@ class HubController extends Controller
         
         $hub->delete();
 
-        flash('Hub deleted')->success();
-        return redirect("/hubs");
+        return response()->json([
+            'destroyed' => true
+        ]);
     }
 
     /**
-     * Activate Hub (admin user).
+     * setActivate Hub.
      *
      * @param  int  $id
-     * @return Response
+     * @return active
      */
-     public function activate($id)
+     public function setActivate(Request $request)
      {
         //set db
-        $hub = Hub::find($id);
+        $hub = Hub::findOrFail($request->id);
+
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
             'driver'    => 'mysql',
             'host'      => 'localhost',
@@ -312,77 +327,52 @@ class HubController extends Controller
         Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
         
         $user = User::where('username', '=', 'admin')->first();
-        $user->is_active = true;
+        $user->is_active = $request->activate;
         $user->save();
 
-        flash('Hub activated')->success();
-        return redirect("/hubs");
+        return response()->json([
+            'activate' => $request->activate
+        ]);
      }
 
-     public function deactivate($id)
+    /**
+     * setReadonly Hub.
+     *
+     * @param  int  $id
+     * @return active
+     */
+     public function setReadonly(Request $request)
      {
-        //set db
-        $hub = Hub::find($id);
-        Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
-            'driver'    => 'mysql',
-            'host'      => 'localhost',
-            'database'  => env('DB_DATABASE') . "_" . $hub->id,
-            'username'  => env('DB_DATABASE') . "_" . $hub->id,
-            'password'  => $hub->password,
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => '',
-        ));
+        $hub = Hub::findOrFail($request->id);
 
-        Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
-        
-        $user = User::where('username', '=', 'admin')->first();
-        $user->is_active = false;
-        $user->save();
-
-        flash('Hub deactivated')->success();
-        return redirect("/hubs");
-     }
-
-     public function readonly($id)
-     {
-        $hub = Hub::find($id);
-
-        \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
-        \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
-        //a bit hacky to prevent failing if table does not exist you have to grant 'CREATE', but you may remove it later
-        \DB::statement("GRANT CREATE, INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
-        \DB::statement("REVOKE CREATE ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
-
-        //otherwise logout will fail
-        \DB::statement("GRANT UPDATE (remember_token, updated_at) ON ". env('DB_DATABASE') ."_" . $hub->id . ".users TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
-        
-        if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
-            \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'");
-            \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+        if($request->readonly) {
+            \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+            \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
             //a bit hacky to prevent failing if table does not exist you have to grant 'CREATE', but you may remove it later
-            \DB::statement("GRANT CREATE, INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
-            \DB::statement("REVOKE CREATE ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+            \DB::statement("GRANT CREATE, INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+            \DB::statement("REVOKE CREATE ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+    
+            //otherwise logout will fail
+            \DB::statement("GRANT UPDATE (remember_token, updated_at) ON ". env('DB_DATABASE') ."_" . $hub->id . ".users TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
+            
+            if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
+                \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'");
+                \DB::statement("GRANT SELECT ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+                //a bit hacky to prevent failing if table does not exist you have to grant 'CREATE', but you may remove it later
+                \DB::statement("GRANT CREATE, INSERT ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+                \DB::statement("REVOKE CREATE ON ". env('DB_DATABASE') ."_" . $hub->id . ".analytics FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'%';");
+            }
+        }
+        else {
+            \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost'IDENTIFIED BY '" . $hub->password . "';");
+        
+            if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
+                \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'IDENTIFIED BY '" . $hub->password . "';");
+            }
         }
 
-        flash('Hub may now only log user activity')->success();
-
-        return redirect("/hubs");
+        return response()->json([
+            'readonly' => $request->readonly
+        ]);
      }
-
-     public function readwrite($id)
-     {
-        $hub = Hub::find($id);
-        
-        \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost'IDENTIFIED BY '" . $hub->password . "';");
-        
-        if(env('ALLOW_PUBLIC_DB_ACCESS')) { //second user needed because % means all except localhost
-            \DB::statement("GRANT ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* TO '". env('DB_DATABASE') ."_" . $hub->id . "'@'%'IDENTIFIED BY '" . $hub->password . "';");
-        }
-
-        flash('Hub has now full Database access')->success();
-
-        return redirect("/hubs");
-     }
-
 }

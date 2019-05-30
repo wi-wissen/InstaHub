@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Photo;
-use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Storage;
 use Session;
@@ -33,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -89,7 +90,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => Hash::make($data['password']),
             'bio' => array_has($data, 'bio') ? $data['bio'] : null,
             'gender' => array_has($data, 'gender') ? $data['gender'] : null,
             'birthday' => array_has($data, 'birthday') ? $data['birthday'] : null,
@@ -100,21 +101,18 @@ class RegisterController extends Controller
             'role' => $role
         ]);
 
+        if (env('APP_ENV') == 'local') $user->is_active = 1;
+
         //don't work above. I have no clue...
         $user->role = $role;
         $user->save();
 
         //send message to admin if teacher apply for account in root
-        if (Session::get('hub', 'root') == 'root') {
+        if (Session::get('hub', 'root') == 'root' && env('APP_ENV') != 'local') {
             //Mail::to(User::where('role','=', 'admin')->first())->send(new NewUser($user, $data['messageToAdmin']));
             User::where('role','=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
         }
         
         return $user;
-    }
-
-    protected function redirectTo()
-    {
-        return '/home';
     }
 }

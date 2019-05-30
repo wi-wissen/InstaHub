@@ -80,11 +80,11 @@ class ProfileController extends Controller
 			if ($request->file('avatar')->isValid()) {
 				$user->avatar = Storage::putFile('avatars', $request->file('avatar'));
 			} else {
-				flash('Can not upload Avatar')->error();
+				flash(__('Can not upload Avatar'))->error();
 			}	
 		}
 		$user->save();
-		flash('All Changes saved')->success();
+		flash(__('All Changes saved'))->success();
 		return redirect('user/' . $user->username);
 	 }
 
@@ -98,14 +98,14 @@ class ProfileController extends Controller
 			$user->save();
 			$user->is_active = true;
 			$user->save();
-			flash('User activated')->success();
+			flash(__('User activated'))->success();
 
 			if (Session::get('hub', 'root') == 'root') {
 				$user->notify(new UserActivated());
 			}
 		}
 		else {
-			flash('You are not allowed to do this.')->error();
+			flash(__('You are not allowed to do this!'))->error();
 		}
 
 		return redirect('user/' . $user->username);
@@ -121,10 +121,10 @@ class ProfileController extends Controller
 			$user->save();
 			$user->is_active = false;
 			$user->save();
-			flash('User deactivated')->success();
+			flash(__('User deactivated'))->success();
 		}
 		else {
-			flash('You are not allowed to do this.')->error();
+			flash(__('You are not allowed to do this!'))->error();
 		}
 
 		return redirect('user/' . $user->username);

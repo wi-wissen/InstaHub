@@ -67,7 +67,15 @@ class Hub extends Model
 
         Config::set('database.default', env('DB_DATABASE') . "_" . $this->id);
         
-        return User::where('role', '=', 'dba')->first()->is_active;
+        $user = User::where('role', '=', 'dba')->first();
+
+        if($user) {
+            return $user->is_active;
+        }
+        else {
+            return false;
+        }
+        
     }
 
     public function activate(Boolean $yes)

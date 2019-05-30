@@ -24,7 +24,7 @@ class role
         //check subdomain
         \Debugbar::info('user_hub:' . \Session::get('user_hub', 'not logged in'));
         if (Session::get('hub', 'root') != Session::get('user_hub', 'root')) {
-            flash('This was not your hub! You have to first logout from from this hub.')->warning();
+            flash(__('This was not your hub! You have to first logout from from this hub.'))->warning();
             if (Session::get('user_hub', 'root') == 'root') {
                 return redirect(env('APP_URL') . '/home');
             } else {
@@ -37,14 +37,14 @@ class role
         if ($request->user()->is_active) {
             //is user allowed to do so?
             if (!($request->user()->allowed($role) || $this->sessionRole($role))) {
-                flash('You are not allowed to do this!')->error();
-                return redirect('/home');
+                flash(__('You are not allowed to do this!'))->error();
+                return redirect('/');
             } else {
                 return $next($request);
             }
         } else {
             Auth::logout();
-            flash('Your account is not activated!')->warning();
+            flash(__('Your account is not activated!'))->warning();
             return redirect('/login');
         }
     }

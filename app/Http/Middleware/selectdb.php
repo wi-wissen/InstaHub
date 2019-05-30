@@ -31,7 +31,7 @@ class selectdb
 
             if (!$hub) {
                 // hub does not exist
-                flash('Hub does not exist!')->warning();
+                flash(__('Hub does not exist!'))->warning();
                 return redirect(env('APP_URL'));
             } else {               
                 $request->attributes->add(['hubreadonly' => ($hub->readonly()) ? 1 : 0 ]);
@@ -48,6 +48,7 @@ class selectdb
                 ));
 
                 Config::set('database.default', env('DB_DATABASE') . "_" . $hub->id);
+                //Config::set('session.domain', $hub->id . env('SESSION_DOMAIN'));
  
             }
         }
