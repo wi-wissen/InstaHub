@@ -22,13 +22,17 @@
 									accept="image/png, image/jpeg, image/jpg, image/gif"
 								>
                                 <label class="custom-file-label" for="photo">{{ __('Choose file') }}</label>
-                            </div>
+								<small id="fileHelpBlock" class="form-text text-muted">
+                                    {{ __('File Size Limit') . ': ' . $filesize . 'MB'}}
+                                </small>
 
-							@error('photo')
-								<span class="invalid-feedback" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
+								@error('photo')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+
+                            </div>
 						</div>
 						
 						{{ csrf_field() }}

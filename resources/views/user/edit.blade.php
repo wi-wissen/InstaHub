@@ -144,13 +144,13 @@
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="avatar" id="avatar" accept="image/png, image/jpeg, image/jpg, image/gif">
                                 <label class="custom-file-label" for="customFile">{{ __('Choose file') }}</label>
-                            </div>
-
-                            @error('avatar')
+                                @error('avatar')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                                @enderror
+                            </div>
+
                             </div>
                         </div>
 

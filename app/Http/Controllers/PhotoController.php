@@ -33,8 +33,7 @@ class PhotoController extends Controller
 
 	public function create()
 	{
-		\Debugbar::info('max filesize in kilobyte: ' . $this->max_filesize());
-		return view('photo.create');
+		return view('photo.create', ['filesize' => $this->max_filesize()]);
 	}
 
 	public function store(Request $request)
@@ -156,7 +155,23 @@ class PhotoController extends Controller
 				$val *= 1024;
 		}
 
-		return $val; //in kbyte
+		$result = $val;
+
+		$val = ini_get('upload_max_filesize');
+		$val = trim($val);
+		$last = strtolower($val[strlen($val)-1]);
+		$val = substr($val, 0, -1); 
+		switch($last) {
+			// The 'G' modifier is available since PHP 5.1.0
+			case 'g':
+				$val *= 1024; // no break to also calc with mega.
+			case 'm':
+				$val *= 1024;
+		}
+
+		if($result > $val) $result = $val;
+
+		return $result; //in kbyte
 	 }
 
 	
