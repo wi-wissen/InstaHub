@@ -115,7 +115,7 @@ class DbadminController extends Controller
             Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
         }
 
-        Artisan::call('db:seed', array('--class' => ucfirst($tablename) . "TableSeeder"));
+        Artisan::call('db:seed', array('--class' => ucfirst($tablename) . "TableSeeder", '--force' => true));
 
         $this->messages[] = "Table $tablename filled with dummy data.";
 
