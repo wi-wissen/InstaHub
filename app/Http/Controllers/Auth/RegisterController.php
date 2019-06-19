@@ -78,7 +78,12 @@ class RegisterController extends Controller
     {
         //$url = $data['avatar']->file('avatar')->store('avatars'); 
         if (array_key_exists('avatar', $data)) {
-            $url = Storage::putFile('avatars', $data['avatar']);
+            if ($data['avatar']) {
+                $url = Storage::putFile('avatars', $data['avatar']);
+            }
+            else {
+                $url = "avatar.png";
+            }
         } else {
             $url = "avatar.png";
         }
