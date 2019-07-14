@@ -249,7 +249,7 @@ export default {
 
                                 if (index + 1 != a.children.length) {
                                     if (!!a.children[index + 1].query.value) {
-                                        str = str + ((a.logicalOperator == Vue.prototype.$t('all')) ? 'AND ' : 'OR ');  
+                                        str = str + ((a.logicalOperator == 'all') ? 'AND ' : 'OR ');  
                                     }
                                 }  
                             }
