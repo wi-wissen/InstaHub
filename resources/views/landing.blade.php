@@ -221,7 +221,7 @@ td {
     <div class="d-none d-sm-none d-md-block col-md-4">
         <div class="card float-right" style="max-width: 20rem; margin-top: 0.5em;">
             <div class="card-img-top embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/wCj3keNW-74?rel=0" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/J3WAaPNjANE?rel=0" allowfullscreen></iframe>
             </div>
             <div class="card-body text-left">
                 <p class="card-text">
