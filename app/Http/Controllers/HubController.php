@@ -248,9 +248,9 @@ class HubController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        $hub = Hub::findOrFail($request->id);
+        $hub = Hub::findOrFail($id);
 
         //delete all old photos from disk
         //set db

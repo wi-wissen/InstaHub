@@ -42,7 +42,7 @@
                             </td>
                             <td>
                                 <hub-buttons v-bind:hub="hub" style="display: inline-block;"></hub-buttons>
-                                <button v-on:click="deleteHub()" class="btn btn-danger"><div v-if="deleteLoading[index]" class="spinner-border" role="status"><span class="sr-only">{{ __('Loading') }}...</span></div>{{ __('Delete') }}</button>
+                                <button v-on:click="deleteHub(index)" class="btn btn-danger"><div v-if="deleteLoading[index]" class="spinner-border" role="status"><span class="sr-only">{{ __('Loading') }}...</span></div>{{ __('Delete') }}</button>
                             </td>
                         </tr>
                     </tbody>

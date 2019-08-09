@@ -257,7 +257,7 @@ if ($("#hub-index")[0]) {
                   .catch(function(error) {
                     self.deleteLoading[index] = false;
                     flash(
-                        "Sorry, you can't change DB-User privileges for " + self.hub.name + ".",
+                        "Sorry, there is a problem deleting " + self.hubs[index].name + ".",
                         "error"
                      );
                   }); 
