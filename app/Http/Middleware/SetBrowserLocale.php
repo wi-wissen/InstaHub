@@ -17,15 +17,17 @@ class SetBrowserLocale
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        //get langs
-        $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        if(isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] )) {
+            //get langs
+            $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+                    
+            //chrome sends de-DE instead of de, so we ignore the second part:
+            $lang = substr($lang, 0, 2);
+
+            //set locale
+            App::setLocale($lang);
+        }
         
-        //chrome sends de-DE instead of de, so we ignore the second part:
-        $lang = substr($lang, 0, 2);
-
-        //set locale
-        App::setLocale($lang);
-
         return $next($request);
     }
 }

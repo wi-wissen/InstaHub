@@ -39,7 +39,7 @@ class ProfileController extends Controller
 	{
 		Debugbar::info(Config::get('database.default'));
 
-		$user = User::where('username', $username)->first();
+		$user = User::where('username', $username)->firstOrFail();
 
 		Debugbar::info($user);
 		return view('user.show', ['user' => $user]);
@@ -47,13 +47,13 @@ class ProfileController extends Controller
 
 	public function edit($username)
     {
-        $user = User::where('username', $username)->first();
+        $user = User::where('username', $username)->firstOrFail();
         return view('user.edit',compact('user'));
     }
 
 	 public function update(Request $request, $username)
 	 {
-		$user = User::where('username', $username)->first();
+		$user = User::where('username', $username)->firstOrFail();
 
 		$this->validate($request, [
 			'name' => 'required|max:255',
@@ -92,7 +92,7 @@ class ProfileController extends Controller
 	{
 		Debugbar::info(Config::get('database.default'));
 
-		$user = User::where('username', $username)->first();
+		$user = User::where('username', $username)->firstOrFail();
 
 		if (Auth::user()->allowed('dba')) {
 			$user->save();
@@ -115,7 +115,7 @@ class ProfileController extends Controller
 	{
 		Debugbar::info(Config::get('database.default'));
 
-		$user = User::where('username', $username)->first();
+		$user = User::where('username', $username)->firstOrFail();
 
 		if (Auth::user()->allowed('dba')) {
 			$user->save();

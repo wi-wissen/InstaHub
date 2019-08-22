@@ -203,7 +203,7 @@
 
                             <div class="col-md-6">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="avatar">
+                                <input type="file" class="custom-file-input" name="avatar" id="avatar" accept="image/png, image/jpeg, image/jpg, image/gif">
                                 <label class="custom-file-label" for="customFile">{{ __('Choose file') }}</label>
                             </div>
 

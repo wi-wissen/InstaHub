@@ -12,7 +12,7 @@
                     <div class="alert alert-warning  alert-important" role="alert">{{ __('Your Account must activated manually.') }}</div>
                     @endif
 
-                    <form method="POST" action="{{ url('/register') }}" aria-label="{{ __('Register') }}">
+                    <form method="POST" action="{{ url('/register') }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group row">

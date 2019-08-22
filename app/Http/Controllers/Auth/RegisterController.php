@@ -64,7 +64,8 @@ class RegisterController extends Controller
 			'birthday_birthDay' => 'nullable|date',
 			'city' => 'nullable|string',
 			'country' => 'nullable|string',
-			'centimeters' => 'nullable|numeric',
+            'centimeters' => 'nullable|numeric',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 

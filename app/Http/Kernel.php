@@ -40,8 +40,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\SetBrowserLocale::class,
         ],
 
-        'api' => [
-            'throttle:60,1',
+        'api' => [ //at the moment ip goes through web
+            //'throttle:60,1', this fires before user is authentificated so whole ip will be blocked
             'bindings',
         ],
     ];

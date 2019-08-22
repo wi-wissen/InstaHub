@@ -55,7 +55,7 @@ class UserController extends Controller
                 if (strlen($request->input('password'))>4) {
                     Auth::user()->password = bcrypt($request->input('password'));
                     Auth::user()->save();
-                    flash(__('Password changed)'), 'success');
+                    flash(__('Password changed'), 'success');
                 } else {
                     flash(__('Password minlength is 5 characters'), 'warning');
                 }
@@ -66,7 +66,7 @@ class UserController extends Controller
 
         }
         else {
-            flash(__('Wrong password', 'danger'));
+            flash(__('Wrong password'), 'danger');
         }
         
         return redirect('/home');
