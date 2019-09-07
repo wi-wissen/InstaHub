@@ -32,20 +32,20 @@
             <label class="custom-control-label" for="showsql">{{ $t('Show SQL') }}</label>
         </div>
     </div>
-    <label v-if="sql.tables.length && settings.attributes" for="attr">{{ $t('Pick Attribute') }}</label>
+    <label v-show="sql.tables.length && settings.attributes" for="attr">{{ $t('Pick Attribute') }}</label>
     <vue-taggable-select
         class="form-vue-select"
         id="attr"
-        v-if="sql.tables.length && settings.attributes"
+        v-show="sql.tables.length && settings.attributes"
         name="attributes"
         placeholder=""
         v-model="sql.attrs"
         :options="attr"
     ></vue-taggable-select>
 
-    <label v-if="sql.tables.length && settings.rows" for="rules">{{ $t('Filter Entrys') }}</label>
+    <label v-show="sql.tables.length && settings.rows" for="rules">{{ $t('Filter Entrys') }}</label>
     <vue-query-builder 
-        v-if="sql.tables.length && settings.rows" 
+        v-show="sql.tables.length && settings.rows" 
         :rules="rules"
         v-model="sql.rules"
     ></vue-query-builder>
@@ -55,7 +55,7 @@
         <label class="custom-control-label" for="distinct">{{ $t('Distinct') }}</label>
     </div>
 
-    <div class="row form-vue-select" v-if="sql.tables.length && settings.expert">
+    <div class="row form-vue-select" v-show="sql.tables.length && settings.expert">
         <div class="col-auto">
             <label for="attr">{{ $t('Order By') }}</label>
         </div>
@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="row form-vue-select" v-if="sql.tables.length && settings.expert">
+    <div class="row form-vue-select" v-show="sql.tables.length && settings.expert">
         <div class="col-auto">
             <label for="attr">{{ $t('Group By') }}</label>
         </div>
