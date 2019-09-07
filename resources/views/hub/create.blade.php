@@ -45,6 +45,9 @@
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control  @error('username') is-invalid @enderror" name="username" value="{{ old('username', $username) }}" required readonly>
+                                <small id="usernameHelpBlock" class="form-text text-muted">
+                                    {{ __('messages.username') }}
+                                </small>
 
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">

@@ -11,10 +11,13 @@
             <h2>InstaHub</h2>
             <p>{!! __('messages.aboutInstaHub') !!}</p>
             <p>{{ __('messages.targetInstaHub') }}</p>
-            <p>{{ __('Read more (only in German)') }}: <a href='https://blog.wi-wissen.de/' target='_blank' >https://blog.wi-wissen.de/</a></p>
+            <p>{{ __('Read more (only in German)') }}: <a href='https://blog.wi-wissen.de/tag/instahub' target='_blank' >blog.wi-wissen.de/tag/instahub</a></p>
             
-            <h3>Hosting</h3>
-            <p>{{ __('InstaHub is hosted and develped by') }} <a href="https://wi-wissen.de/">wi-wissen.de</a></p>
+            <h3>{{ __('Development') }}</h3>
+            <p>{{ __('InstaHub is develped by') }} <a href="https://wi-wissen.de/">WIssen</a></p>
+            
+             <h3>{{ __('Supporter') }}</h3>
+            <p>{{ __('InstaHub is supported by') }} <a href="https://www.mitmachfonds-sachsen.de/">Sächsische Mitmach-Fonds</a></p>
 
             <h3>{{ __('Standing on the shoulders of giants') }}</h3>
             <p>{{ __('Many thanks and respect to') }}:</p>
@@ -36,9 +39,9 @@
             
             </ul>
             </li>
-            <li><a href='http://bootstrap.com/'>Bootstrap 3</a>
+            <li><a href='http://bootstrap.com/'>Bootstrap 4</a>
             </li>
-            <li><a href='https://jquery.com/'>jQuery</a> with <a href='https://github.com/jquery-backstretch/jquery-backstretch'>Backstretch</a>
+            <li><a href='https://vuejs.org/'>Vue</a>
             </li>
             <li>Photos by <a href='https://pixabay.com/'>pixabay</a> (CC0)
             </li>
