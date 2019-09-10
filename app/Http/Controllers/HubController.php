@@ -102,6 +102,11 @@ class HubController extends Controller
             ],
             'name' => 'required|max:191',
             'email' =>  'required|email',
+			'bio' => 'nullable|max:500',
+			'birthday' => 'nullable|date',
+			'city' => 'nullable|string',
+			'country' => 'nullable|string',
+			'centimeters' => 'nullable|numeric',
         ]);
 
 

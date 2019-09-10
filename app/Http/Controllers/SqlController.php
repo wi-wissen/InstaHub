@@ -69,9 +69,8 @@ class SqlController extends Controller
                             foreach ($cols as &$col) {
                                 $wert = $row[$col];
                                 //Ausgabe ggf. anpassen - Links
-                                if (filter_var($wert, FILTER_VALIDATE_URL)) $wert = "<a href='$wert'>$wert</a>"; //Links
-                                //if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<img src='$wert'>"; //Bilder
-                                if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<a href='$wert'>$wert</a>"; //Bilder for cleaner table
+                                if (filter_var($wert, FILTER_VALIDATE_URL)) $wert = "<a href='$wert'>$wert</a>"; //absolute Links
+                                else if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<a href='/$wert'>$wert</a>"; //relative Links to Photos
                                 $t = $t . '<td>' . $wert . '</td>';
                             }
                             $t = $t . "</tr>";
