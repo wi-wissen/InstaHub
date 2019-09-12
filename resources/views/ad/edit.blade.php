@@ -124,7 +124,7 @@
                         <div class="form-group">
                             <div class="col-md-10">
                                 <button :disabled="!!readonly" type="submit" class="btn btn-primary float-right">
-                                    {{ __('Edit') }}
+                                    {{ __('Save') }}
                                 </button>
                             </div>
                         </div>

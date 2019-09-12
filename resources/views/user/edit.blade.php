@@ -183,7 +183,7 @@
                         <div class="form-group">
                             <div class="col">
                                 <button type="submit" class="btn btn-primary float-right">
-                                    {{ __('Edit') }}
+                                    {{ __('Save') }}
                                 </button>
                             </div>
                         </div>
