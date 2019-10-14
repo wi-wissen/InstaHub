@@ -17,7 +17,10 @@
             <p>{{ __('InstaHub is develped by') }} <a href="https://wi-wissen.de/">WIssen</a></p>
             
              <h3>{{ __('Supporter') }}</h3>
-            <p>{{ __('InstaHub is supported by') }} <a href="https://www.mitmachfonds-sachsen.de/">Sächsische Mitmach-Fonds</a></p>
+            <p>
+                {{ __('InstaHub is supported by') }} <a href="https://www.mitmachfonds-sachsen.de/">Sächsische Mitmach-Fonds</a> und
+                <a href="https://fg-bil.gi.de/">Gesellschaft für Informatik - Fachgruppe Bayerische Informatiklehrkräfte (BIL)</a>
+            </p>
 
             <h3>{{ __('Standing on the shoulders of giants') }}</h3>
             <p>{{ __('Many thanks and respect to') }}:</p>

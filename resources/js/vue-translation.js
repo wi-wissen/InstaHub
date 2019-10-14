@@ -33,6 +33,7 @@ window.translations = {
 	  'does not equal': 'ist ungleich',
 	  'contains': 'enthält',
 	  'does not contain': 'enthält nicht',
+	  'starts with': 'startet mit',
 	  'smaller': 'kleiner',
 	  'bigger': 'größer',
 	  'all': 'alle',

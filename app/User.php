@@ -56,12 +56,12 @@ class User extends Authenticatable
 
     public function photos()
     {
-        return $this->hasMany('App\Photo');
+        return $this->hasMany('App\Photo')->orderBy('created_at', 'desc');
     }
 
     public function visits()
     {
-        return $this->hasMany('App\Analytic');
+        return $this->hasMany('App\Analytic')->orderBy('created_at', 'desc');
     }
 
     public function isfollowing($user)

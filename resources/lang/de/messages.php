@@ -18,7 +18,7 @@ return [
 	'adblocker' => 'Adblocker erkannt! Bitte deaktiviere deinen Adblocker!',
 	'maintenance' => 'Hub ist im Wartungsmodus. Es können keine Änderungen vorgenommen werden.',
 	'noHubs' => 'Du verwaltest aktuell keine Hubs. Um selbst welche anzulegen, kannst du dich entweder ausloggen oder einen Browser verwenden. Denk dran, dich selbst als Lehrer*in einzutragen und anschließend freizuschalten.',
-	'activateByTeacher' => 'Dein Hub muss von deiner/m Lehrer*in freigeschalten werden!',
+	'activateByTeacher' => 'Dein Hub muss von deiner/m Lehrer*in freigeschaltet werden!',
 	'teachername' => 'Mit deinem Benutzernamen kannst du dich in Zukunft anmelden. Schüler*innen benötigen ihn, um bei dir die Freischaltung ihres Hubs zu beantragen.',
 	'username' => 'Mit diesem Benutzernamen kannst du dich in Zukunft anmelden.',
 	'provideProof' => 'Bitte verwende deine geschäftliche Mail-Adresse oder gib einen anderen Nachweise an, dass du Lehrer*in bist.',

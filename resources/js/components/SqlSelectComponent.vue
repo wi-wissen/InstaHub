@@ -226,6 +226,9 @@ export default {
                                     case Vue.prototype.$t('does not equal'):
                                         operator = '!=';
                                         break;
+                                    case Vue.prototype.$t('starts with'):
+                                        operator = 'LIKE';
+                                        break;
                                     case Vue.prototype.$t('contains'):
                                         operator = 'LIKE';
                                         break;
@@ -243,9 +246,17 @@ export default {
                                 }
                                 var v = a.children[index].query.value
 
-                                if (isNaN(parseFloat(v))) v = '"' + v + '"'; //not a number
+                                if (a.children[index].query.selectedOperator == Vue.prototype.$t('starts with')) {
+                                    v = '"' + v + '%"'; // convert to string, add % to the end
+                                }
+                                else if (operator == 'LIKE' ||operator == 'NOT LIKE') {
+                                    v = '"%' + v + '%"'; // convert to string, add % to start and end
+                                }
+                                else if (isNaN(parseFloat(v))) { //check if number
+                                    v = '"' + v + '"'; //not a number
+                                }
 
-                                str = str + a.children[index].query.selectedOperand + ' ' + operator + v + '\n';
+                                str = str + a.children[index].query.selectedOperand + ' ' + operator + " " + v + '\n';
 
                                 if (index + 1 != a.children.length) {
                                     if (!!a.children[index + 1].query.value) {
@@ -282,6 +293,9 @@ export default {
                             case 'does not equal':
                                 operator = '!=';
                                 break;
+                            case 'starts with':
+                                operator = 'LIKE';
+                                break;
                             case 'contains':
                                 operator = 'LIKE';
                                 break;
@@ -299,8 +313,16 @@ export default {
                         }
                         var v = a.children[index].query.value
 
-                        if (isNaN(parseFloat(v))) v = '"' + v + '"'; //not a number
-
+                        if (a.children[index].query.selectedOperator == 'starts with') {
+                            v = '"' + v + '%"'; // convert to string, add % to the end
+                        }
+                        else if (operator == 'LIKE' ||operator == 'NOT LIKE') {
+                            v = '"%' + v + '%"'; // convert to string, add % to start and end
+                        }
+                        else if (isNaN(parseFloat(v))) { //check if number
+                            v = '"' + v + '"'; //not a number
+                        }
+                        
                         str = str + a.children[index].query.selectedOperand + ' ' + operator + ' "' + v + '"\n';
 
                         if (index + 1 != a.children.length) {
