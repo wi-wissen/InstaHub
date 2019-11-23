@@ -75,8 +75,10 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right"><b>{{ __('Email') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
-
+                                <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email', $hub . '@instahub.test') }}" required>
+                                <small id="usernameHelpBlock" class="form-text text-muted">
+                                    {{ __('messages.dummyMail') }}
+                                </small>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
