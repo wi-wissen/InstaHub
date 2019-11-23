@@ -173,6 +173,17 @@ export default {
           return arr;
       },
       query: function() {
+          //Helper
+          var filterFloat = function (value) { ////https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
+            if(/^(\-|\+)?([0-9]+(\,[0-9]+)?|Infinity)$/ //Replace German with English seperator
+                .test(value))
+                value=value.replace(",", ".");
+            if(/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
+                .test(value))
+                return Number(value);
+          return NaN;
+          }
+
           var sql = "SELECT ";
           //DISTINCT
           if (this.sql.distinct) sql = sql + "DISTINCT ";
@@ -252,8 +263,11 @@ export default {
                                 else if (operator == 'LIKE' ||operator == 'NOT LIKE') {
                                     v = '"%' + v + '%"'; // convert to string, add % to start and end
                                 }
-                                else if (isNaN(parseFloat(v))) { //check if number
+                                else if (isNaN(filterFloat(v))) { //check if number
                                     v = '"' + v + '"'; //not a number
+                                }
+                                else {
+                                    v = filterFloat(v) //make sure it is a Englisch formated number
                                 }
 
                                 str = str + a.children[index].query.selectedOperand + ' ' + operator + " " + v + '\n';
@@ -319,8 +333,11 @@ export default {
                         else if (operator == 'LIKE' ||operator == 'NOT LIKE') {
                             v = '"%' + v + '%"'; // convert to string, add % to start and end
                         }
-                        else if (isNaN(parseFloat(v))) { //check if number
+                        else if (isNaN(filterFloat(v))) { //check if number
                             v = '"' + v + '"'; //not a number
+                        }
+                        else {
+                            v = filterFloat(v) //make sure it is a Englisch formated number
                         }
                         
                         str = str + a.children[index].query.selectedOperand + ' ' + operator + ' "' + v + '"\n';
