@@ -74,6 +74,13 @@ td {
 </nav>
 
 <div v-if="active==''" class="container">
+
+@if ($errors->has('username'))
+    <div class="alert alert-danger" role="alert">
+        {{ $errors->first('username') }}
+    </div>
+@endif
+
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">InstaHub</h1>

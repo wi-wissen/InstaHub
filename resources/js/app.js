@@ -23,6 +23,7 @@ require('./bootstrap');
 
 
 Vue.component('PaginationLinks', require('./components/PaginationComponent.vue').default);
+Vue.component('DateInput', require('./components/DateInputComponent.vue').default);
 
 Vue.component('PhotoShow', require('./components/PhotoComponent.vue').default);
 Vue.component('FollowButton', require('./components/FollowButtonComponent.vue').default);
@@ -30,6 +31,14 @@ Vue.component('SqlButton', require('./components/SqlButtonComponent.vue').defaul
 Vue.component('HubButtons', require('./components/HubButtonsComponent.vue').default);
 Vue.component('SearchBox', require('./components/SearchBoxComponent.vue').default);
 Vue.component('SqlSelectGui', require('./components/SqlSelectComponent.vue').default);
+
+
+if ($("#component-container")[0]) {
+    const app = new Vue({
+        el: '#component-container',
+        data: {},
+    });
+}
 
 if ($("#container")[0]) {
     const app = new Vue({

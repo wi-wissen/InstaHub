@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" id="component-container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -128,7 +128,7 @@
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthday" type="date" class="form-control dateinput @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" autofocus>
+                                <date-input value="{{ old('birthday') }}" id="birthday" class="@error('birthday') is-invalid @enderror" name="birthday" autofocus>
 
                                 @error('birthday')
                                     <span class="invalid-feedback" role="alert">

@@ -22,7 +22,7 @@ return [
 	'teachername' => 'Mit deinem Benutzernamen kannst du dich in Zukunft anmelden. Schüler*innen benötigen ihn, um bei dir die Freischaltung ihres Hubs zu beantragen.',
 	'username' => 'Mit diesem Benutzernamen kannst du dich in Zukunft anmelden.',
 	'provideProof' => 'Bitte verwende deine geschäftliche Mail-Adresse oder gib einen anderen Nachweise an, dass du Lehrer*in bist.',
-	'dummyMail' => 'Mit einer funktionierenden Mailadresse, kannst du dein Passwort selbst zurücksetzen, wenn du es vergessen hast.',
+	'dummyMail' => 'Mit einer funktionierenden Mailadresse kannst du dein Passwort selbst zurücksetzen, wenn du es vergessen hast.',
 	'ad' => [
 		'heading' => 'Verbinde dich mit den Personen, die dein Unternehmen lieben werden.',
 		'intro' => 'Auf InstaHub kann dein Unternehmen Fotos oder Werbeanzeigen 
