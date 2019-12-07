@@ -1,9 +1,4 @@
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
-@import url('https://fonts.googleapis.com/css?family=Satisfy');
-
 // Variables
 @import 'variables';
 
@@ -68,6 +63,10 @@
 }
 
 //Bootstrap
+.lead {
+  font-weight: 400; //orig: 300
+}
+
 .card-header {
   font-weight: 500;
   line-height: 1.2;

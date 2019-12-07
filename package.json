@@ -28,6 +28,9 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.1.0",
         "codemirror": "^5.40.2",
+        "typeface-satisfy": "0.0.72",
+        "typeface-source-code-pro": "0.0.71",
+        "typeface-source-sans-pro": "0.0.75",
         "vue-bootstrap-typeahead": "^0.2.6",
         "vue-flash": "^2.1.2",
         "vue-moment": "^4.0.0",

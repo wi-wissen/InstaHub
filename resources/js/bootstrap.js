@@ -1,3 +1,8 @@
+//Fonts
+require("typeface-source-sans-pro");
+require("typeface-source-code-pro");
+require("typeface-satisfy");
+
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
