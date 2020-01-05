@@ -18,5 +18,6 @@ return [
     'sent' => 'We have e-mailed your password reset link!',
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
+    'active'   => 'Unfortunately the user has not yet been activated.',
 
 ];

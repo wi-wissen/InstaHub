@@ -17,4 +17,5 @@ return [
     'sent'     => 'Passworterinnerung wurde gesendet!',
     'token'    => 'Der Passwort-Wiederherstellungs-Schlüssel ist ungültig oder abgelaufen.',
     'user'     => 'Es konnte leider kein Nutzer mit dieser E-Mail-Adresse gefunden werden.',
+    'active'   => 'Der Nutzer wurde leider noch nicht aktiviert.',
 ];
