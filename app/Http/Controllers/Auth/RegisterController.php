@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'bio' => 'nullable|max:500',
             'gender' => 'nullable',
-			'birthday_birthDay' => 'nullable|date',
+			'birthday_birthDay' => 'nullable|date_format:Y-m-d',
 			'city' => 'nullable|string',
 			'country' => 'nullable|string',
             'centimeters' => 'nullable|numeric',

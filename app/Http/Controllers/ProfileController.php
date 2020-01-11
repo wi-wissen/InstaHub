@@ -59,7 +59,7 @@ class ProfileController extends Controller
 			'name' => 'required|max:191',
 			'email' => 'required|email|unique:users,email,'.$user->id,
 			'bio' => 'max:500',
-			'birthday' => 'nullable|date',
+			'birthday' => 'nullable|date_format:Y-m-d',
 			'city' => 'nullable|string',
 			'country' => 'nullable|string',
 			'centimeters' => 'nullable|numeric',

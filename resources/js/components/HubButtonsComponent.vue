@@ -1,7 +1,7 @@
 <template>
   <div style="background-color: transparent;">
     <flash :timeout="5000" :display-icons="false" transition="fade"></flash>
-        <button v-on:click="setActivate(true)" v-if="!hub.activated && !hub.readonly" class="btn btn-outline-dark"><div v-if="loading.activate" class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>Activate</button>
+        <button v-on:click="setActivate(true)" v-if="!hub.activated && !hub.readonly && hub.hasWorkingUser" class="btn btn-outline-dark"><div v-if="loading.activate" class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>Activate</button>
         <a v-bind:href="'/hubs/' + hub.id + '/dba/admin'" v-if="!hub.readonly" class="btn btn-primary">DB Admin</a>
         <a v-bind:href="'/hubs/' + hub.id" v-if="hub.activated && hub.hasWorkingUser" class="btn btn-outline-dark">Login as DBA</a>
         <button v-if="!hub.hasWorkingUser || !hub.activated" class="btn btn-danger" disabled>Login as DBA</button>
