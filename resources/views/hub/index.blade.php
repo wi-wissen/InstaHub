@@ -20,6 +20,17 @@
         <div class="row  justify-content-center">
             <div class="col-md-12">
 
+                <div class="row mb-2">
+                    <div class="col-sm">
+                        <label class="sr-only" id="searchDesc" for="search">{{ __('Search') }}</label>
+                        <input v-on:input="searchHubs" v-model="search" type="text" class="form-control" id="search" placeholder="{{ __('Search Hub') }}">
+                    </div>
+                    <div class="col-sm"></div>
+                    <div class="col-sm">
+                        <a href="/hubs/create" type="button" class="btn btn-success float-right">{{ __('Create Hub') }}</a>
+                    </div>
+                </div>
+
                 <table v-if="hubs.length" class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -47,6 +58,10 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <div v-else-if="search.length" class="alert alert-primary alert-important" role="alert">
+                    {{ __('messages.noHubsFound') }}
+                </div>
 
                 <div v-else class="alert alert-primary alert-important" role="alert">
                 {{ __('messages.noHubs') }}

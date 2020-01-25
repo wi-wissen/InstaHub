@@ -249,6 +249,7 @@ if ($("#hub-index")[0]) {
             pagination: {
                 'current_page': 1
             },
+            search: '',
             session_domain: session_domain,
             deleteLoading: [],
         },
@@ -284,7 +285,27 @@ if ($("#hub-index")[0]) {
                     .catch(function(error) {
                         self.$Progress.fail();
                     });
-            }
+            },
+            searchHubs: _.throttle(function() {
+                if (!this.search) {
+                    this.fetchHubs()
+                }
+                else {
+                    self = this;
+                    this.$Progress.start();
+    
+                    axios.get('api/hubs/filter/' + this.search + '?page=1')
+                        .then(function(response) {
+                            self.hubs = response.data.data;
+                            self.pagination = response.data.meta;
+                            self.$Progress.finish();
+                        })
+                        .catch(function(error) {
+                            self.$Progress.fail();
+                        });
+                }
+                
+            }, 500)
         },
         mounted() {
             this.fetchHubs();

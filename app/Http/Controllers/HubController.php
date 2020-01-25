@@ -66,6 +66,19 @@ class HubController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function apiSearch($text) 
+    {
+        if (Auth::user()->role == 'admin') $hubs = Hub::where('name', 'LIKE', '%' . $text . '%')->paginate(30);
+        elseif (Auth::user()->role == 'teacher') $hubs = User::find(Auth::user()->id)->hubs()->where('name', 'LIKE', '%' . $text . '%')->paginate(30);
+        
+        return HubResource::collection($hubs);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Response
@@ -89,7 +102,7 @@ class HubController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $this->validate($request, [
             'hub' => 'required|max:191|alpha_num|unique:hubs,name',
@@ -109,7 +122,9 @@ class HubController extends Controller
 			'centimeters' => 'nullable|numeric',
         ]);
 
-
+        //check if teacher
+        $teacherId = null;
+        if (Auth::check()) if(Auth::user()->role='teacher' || Auth::user()->role='mod') $teacherId = Auth::user()->id;
 
         //generate db password
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!§$%&/()=?{[]}+-#';
@@ -123,7 +138,7 @@ class HubController extends Controller
         //create hub
         $hub = Hub::create([
             'name' => $request->hub,
-            'teacher_id' => User::where('username', '=', $request->teacher)->first()->id,
+            'teacher_id' => ($teacherId) ? $teacherId : User::where('username', '=', $request->teacher)->first()->id, //use own or search teacher.id
             'password' => $pw,
         ]);
         
@@ -188,8 +203,18 @@ class HubController extends Controller
 
         DB::commit();
 
-        flash(__('Your hub must be activated by your teacher!'))->warning();
-        return redirect("https://" . $hub->name . env('SESSION_DOMAIN')  . "/home");
+        if(!$teacherId) {
+            //created by student
+            flash(__('Your hub must be activated by your teacher!'))->warning();
+            return redirect("https://" . $hub->name . env('SESSION_DOMAIN')  . "/home");
+        }
+        else {
+            //created by teacher
+            $user->is_active = 1; //trust himself
+            $user->save();
+
+            return redirect("/home");
+        }
     }
 
     /**

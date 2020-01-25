@@ -140,6 +140,7 @@ Route::group(['middleware' => ['auth', 'role:teacher']], function () {
         Route::get('api/hubs/{id}/dba/resetpw', 'DbadminController@setAdminPW');
         Route::get('api/hubs/{id}/dba/gettablestatus', 'DbadminController@getTableStatus');
 
+        Route::get('api/hubs/filter/{text}', 'HubController@apiSearch');
         Route::get('api/hubs', 'HubController@apiIndex');
         
         Route::post('api/hubs/{id}/dba/readonly', 'HubController@setReadonly');

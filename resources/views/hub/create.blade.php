@@ -5,10 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                @auth
+                <div class="card-header">{{ __('Create Hub') }}</div>
+                @endauth
+                @guest
                 <div class="card-header">{{ __('Register') }}</div>
+                @endguest
                     <div class="card-body">
-                    <div class="alert alert-warning  alert-important" role="alert">{{ __('messages.activateByTeacher') }}</div>
 
+                    @guest
+                    <div class="alert alert-warning  alert-important" role="alert">{{ __('messages.activateByTeacher') }}</div>
+                    @endguest
+                    
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/hubs') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -30,8 +38,14 @@
                             <label for="teacher" class="col-md-4 col-form-label text-md-right"><b>{{ __('Your Teacher') }}</b></label>
 
                             <div class="col-md-6">
+                                @auth
+                                <input id="teacher" type="text" class="form-control @error('teacher') is-invalid @enderror" name="teacher" value="{{ old('teacher', Auth::user()->username) }}" required autofocus>
+                                @endauth
+                                @guest
                                 <input id="teacher" type="text" class="form-control @error('teacher') is-invalid @enderror" name="teacher" value="{{ old('teacher') }}" required autofocus>
 
+                                @endguest
+        
                                 @error('teacher')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -223,7 +237,12 @@
                         <div class="form-group row">
                             <div class="col-md-10">
                                 <button type="submit" class="btn btn-primary float-right">
+                                    @auth
+                                    {{ __('Create Hub') }}
+                                    @endauth
+                                    @guest
                                     {{ __('Register') }}
+                                    @endguest
                                 </button>
                             </div>
                         </div>
