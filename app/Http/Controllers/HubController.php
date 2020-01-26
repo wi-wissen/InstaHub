@@ -226,6 +226,7 @@ class HubController extends Controller
     public function show($id)
     {
         $hub = Hub::findOrFail($id);
+        abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         //set db
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
@@ -281,6 +282,7 @@ class HubController extends Controller
     public function destroy($id)
     {
         $hub = Hub::findOrFail($id);
+        abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         //delete all old photos from disk
         //set db
@@ -342,6 +344,7 @@ class HubController extends Controller
      {
         //set db
         $hub = Hub::findOrFail($request->id);
+        abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $hub->id, array(
             'driver'    => 'mysql',
@@ -374,6 +377,7 @@ class HubController extends Controller
      public function setReadonly(Request $request)
      {
         $hub = Hub::findOrFail($request->id);
+        abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         if($request->readonly) {
             \DB::statement("REVOKE ALL ON ". env('DB_DATABASE') ."_" . $hub->id . ".* FROM '". env('DB_DATABASE') ."_" . $hub->id . "'@'localhost';");
