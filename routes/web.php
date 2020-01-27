@@ -118,12 +118,12 @@ Auth::routes();
 Route::resource('hubs', 'HubController');
 
 Route::group(['middleware' => ['auth', 'role:teacher']], function () {
-    Route::get('/user/{username}', 'ProfileController@show');
-
     Route::get('/user/letter/{char}', 'ProfileController@filter');
 
     Route::get('/user/password', 'UserController@getPassword');
     Route::post('/user/password', 'UserController@postPassword');
+
+    Route::get('/user/{username}', 'ProfileController@show');
 
     Route::get('/user/{username}/edit', 'ProfileController@edit');
     Route::put('/user/{username}/update', 'ProfileController@update');
