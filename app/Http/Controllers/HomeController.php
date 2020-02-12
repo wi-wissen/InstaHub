@@ -76,24 +76,28 @@ class HomeController extends Controller
                     $aff[$user_id] = 1;
                 }
        
-                $likes= Photo::select('photos.user_id as user_id_photo')							// $likes speichert alle Likes, die der User vergeben hat
-                                    ->join('likes',function ($join) use ( $user) {
-                                        $join->on('photos.id', '=', 'likes.photo_id')
-                                        -> where('likes.user_id', '=', $user->id);
-                                    })->orderBy('likes.created_at', 'desc')->limit(100)->get();		// Sortiert nach Datum und auf 100 beschränkt
-                
-                foreach ($likes as $like){
-                    $aff[$like->user_id_photo] += 1;												// Pro Like eines Fotos wird die Affinität zum Urheber um 1 erhöht
+                if (Schema::hasTable('likes')) {
+                    $likes= Photo::select('photos.user_id as user_id_photo')							// $likes speichert alle Likes, die der User vergeben hat
+                                        ->join('likes',function ($join) use ( $user) {
+                                            $join->on('photos.id', '=', 'likes.photo_id')
+                                            -> where('likes.user_id', '=', $user->id);
+                                        })->orderBy('likes.created_at', 'desc')->limit(100)->get();		// Sortiert nach Datum und auf 100 beschränkt
+                    
+                    foreach ($likes as $like){
+                        $aff[$like->user_id_photo] += 1;												// Pro Like eines Fotos wird die Affinität zum Urheber um 1 erhöht
+                    }
                 }
-                
-                $comments= Photo::select('photos.user_id as user_id_photo')							// $comments speichert alle Kommentare, die der User verfasst hat
-                                    ->join('comments',function ($join) use ($user) {
-                                        $join->on('photos.id', '=', 'comments.photo_id')
-                                        -> where('comments.user_id', '=', $user->id);
-                                    })->orderBy('comments.created_at', 'desc')->limit(100)->get();	// Sortiert nach Datum und auf 100 beschränkt
-                
-                foreach ($comments as $comment){
-                    $aff[$comment->user_id_photo] += 2;												// Pro Kommentar wird die Affinität zum Urheber um 2 erhöht
+
+                if (Schema::hasTable('comments')) {   
+                    $comments= Photo::select('photos.user_id as user_id_photo')							// $comments speichert alle Kommentare, die der User verfasst hat
+                                        ->join('comments',function ($join) use ($user) {
+                                            $join->on('photos.id', '=', 'comments.photo_id')
+                                            -> where('comments.user_id', '=', $user->id);
+                                        })->orderBy('comments.created_at', 'desc')->limit(100)->get();	// Sortiert nach Datum und auf 100 beschränkt
+                    
+                    foreach ($comments as $comment){
+                        $aff[$comment->user_id_photo] += 2;												// Pro Kommentar wird die Affinität zum Urheber um 2 erhöht
+                    }
                 }
                 
                 //Affinität und Edge
