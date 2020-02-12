@@ -13,6 +13,21 @@
 		@include('flash::message')
 		<div class="row justify-content-center">
 			<div class="col-10">
+
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle mb-1 btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if(session('sort_feed') == 'best')
+                            {{ __('Best Photos') }}
+                        @else
+                            {{ __('Latest Photos') }}
+                        @endif
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/home/latest">{{ __('Latest Photos') }}</a>
+                        <a class="dropdown-item" href="/home/best">{{ __('Best Photos') }}</a>
+                    </div>
+                </div>
+
             	@foreach ($photos as $photo)
                     <div class="card">
                         <div class="card-body" style="padding:1rem 0 0 0;">
