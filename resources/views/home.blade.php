@@ -14,26 +14,28 @@
 		<div class="row justify-content-center">
 			<div class="col-10">
 
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle mb-1 btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @if(session('sort_feed') == 'best')
-                            {{ __('Best Photos') }}
-                        @else
-                            {{ __('Latest Photos') }}
-                        @endif
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/home/latest">{{ __('Latest Photos') }}</a>
-                        <a class="dropdown-item" href="/home/best">{{ __('Best Photos') }}</a>
+                @if ($photos && $photos->count() && (Schema::hasTable('comments') || Schema::hasTable('likes')))
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle mb-1 btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if(session('sort_feed') == 'best')
+                                {{ __('Best Photos') }}
+                            @else
+                                {{ __('Latest Photos') }}
+                            @endif
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/{{ str_replace('/latest', "", str_replace('/best', "", Request::path())) }}/latest">{{ __('Latest Photos') }}</a>
+                            <a class="dropdown-item" href="/{{ str_replace('/latest', "", str_replace('/best', "", Request::path())) }}/best">{{ __('Best Photos') }}</a>
+                        </div>
                     </div>
-                </div>
+                @endif
 
             	@foreach ($photos as $photo)
                     <div class="card">
                         <div class="card-body" style="padding:1rem 0 0 0;">
                         <h5 style="padding-left:1.00rem;" class="card-title"><img class="rounded-circle img-thumbnail" src="/{{ $photo->user->avatar }}" alt="{{ $photo->user->avatar }}" height="50" width="50"> <a href="/user/{{ $photo->user->username }}" style="color: #333">{{ $photo->user->username  }}</a></h5>              
                         </div>
-                        <a href="../photo/{{ $photo->id }}"><img src="../{{ '' . $photo->url }}" class="img-fluid" style="display: block;margin: 0 auto; width:100%"/></a>
+                        <a href="/photo/{{ $photo->id }}" title="{{$photo->description}} @if(Auth::user()->allowed('dba') && $photo->score)(Score: {{$photo->score}}) @endif"><img src="/{{ '' . $photo->url }}" class="img-fluid" style="display: block;margin: 0 auto; width:100%"/></a>
                     </div>
  
                     @if (Schema::hasTable('ads') && $loop->iteration == 2)

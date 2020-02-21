@@ -61,94 +61,13 @@ class HomeController extends Controller
             if(session('sort_feed') == 'best') { // sort by best
                 
                 if (Photo::where('user_id', $following_ids)->exists()) {   
-                    $photos = Photo::whereIn('user_id', $following_ids)												// $photos speichert die neuesten 100 Fotos von Nutzern, denen
-                        ->withCount('likes')->withCount('comments')->orderBy('created_at','desc')->limit(100)->get();	// der Nutzer folgt
+                    $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at','desc')->limit(100)->get();	// $photos speichert die neuesten 100 Fotos von Nutzern, denen der Nutzer folgt
                 }
+
+                $this->addPhotoScore($photos);
             
-                // EdgeRank
-                // score = aff*edge*decay
-                // Affinität 2
+                $photos = $photos->paginate(5);
                 
-                $aff = [];	// Affinity
-
-                $user_ids = User::get('id')->pluck('id');
-                foreach($user_ids as $user_id) {
-                    $aff[$user_id] = 1;
-                }
-       
-                if (Schema::hasTable('likes')) {
-                    $likes= Photo::select('photos.user_id as user_id_photo')							// $likes speichert alle Likes, die der User vergeben hat
-                                        ->join('likes',function ($join) use ( $user) {
-                                            $join->on('photos.id', '=', 'likes.photo_id')
-                                            -> where('likes.user_id', '=', $user->id);
-                                        })->orderBy('likes.created_at', 'desc')->limit(100)->get();		// Sortiert nach Datum und auf 100 beschränkt
-                    
-                    foreach ($likes as $like){
-                        $aff[$like->user_id_photo] += 1;												// Pro Like eines Fotos wird die Affinität zum Urheber um 1 erhöht
-                    }
-                }
-
-                if (Schema::hasTable('comments')) {   
-                    $comments= Photo::select('photos.user_id as user_id_photo')							// $comments speichert alle Kommentare, die der User verfasst hat
-                                        ->join('comments',function ($join) use ($user) {
-                                            $join->on('photos.id', '=', 'comments.photo_id')
-                                            -> where('comments.user_id', '=', $user->id);
-                                        })->orderBy('comments.created_at', 'desc')->limit(100)->get();	// Sortiert nach Datum und auf 100 beschränkt
-                    
-                    foreach ($comments as $comment){
-                        $aff[$comment->user_id_photo] += 2;												// Pro Kommentar wird die Affinität zum Urheber um 2 erhöht
-                    }
-                }
-                
-                //Affinität und Edge
-                foreach ($photos as $photo){
-                    $photo['score'] = 1;															// Jedes Foto erhält initial die Punktzahl 1
-                }
-
-                $edge_likes = Photo::select('likes.user_id as user_id_likes', 'photos.id as photo_id')		// $edge_likes[i] speichert alle Likes, die das Foto mit ID i erhalten hat
-                    ->join('likes',function ($join) use ($photos) {
-                        $join->on('photos.id', '=', 'likes.photo_id')
-                            ->whereIn('photos.id', $photos->pluck('id'));
-                    })->get();
-
-                foreach ($photos as $photo){
-                    foreach ($edge_likes as $edge_like){						// Für jedes dieser Likes wird der Affinitätswert des 
-                        if($edge_like['photo_id'] == $photo->id) {
-                            $photo['score'] += $aff[$edge_like['user_id_likes']];				// Like-Urhebers zur Punktzahl hinzu addiert
-                        }																		// Hat ein Foto keine Likes erhalten, beträgt die Punktzahl 1
-                    }
-                }
-
-                $edge_comments = Photo::select('comments.user_id as user_id_comments', 'photos.id as photo_id')	// $edge_comments[i] speichert alle Kommentare, 
-                    ->join('comments',function ($join) use ($photos) {		// die das Foto mit ID i erhalten hat
-                        $join->on('photos.id', '=', 'comments.photo_id')
-                            ->whereIn('photos.id', $photos->pluck('id'));;
-                    })->get();
-
-                foreach ($photos as $photo){
-                    foreach ($edge_comments as $edge_comment){					// Für jedes dieser Kommentare wird der zweifache Affinitätswert 
-                        if($edge_comment['photo_id'] == $photo->id) {
-                            $photo['score'] += $aff[$edge_comment['user_id_comments']]*2;		// des Kommentar-Urhebers zur Punktzahl hinzu addiert
-                        }
-                    }																		// Hat ein Foto auch keine Kommentare erhalten, beträgt die Punktzahl immer noch 1
-                }
-                                
-                //Aktualität
-                $decay = [];																				// $decay[i] speichert den Aktualitätswert von Foto i
-                foreach ($photos as $photo){																// Der Wert liegt immer zwischen 1 und 0,1
-                    if((time()+3600-strtotime($photo["created_at"])) < 101530){										//101530 entspricht 10 Tagen in Sek
-                        $decay[$photo->id] = pow(0.995,((time()+3600-strtotime($photo["created_at"]))/900));		//900=60*15 -> alle 15 min -5%
-                    }else{
-                        $decay[$photo->id] = 0.01;
-                    }
-                }
-                
-                //Punktzahl
-                foreach ($photos as $photo){
-                    $photo['score'] *= $decay[$photo->id];						// Die Endpunktzahl ergibt sich aus dem Produkt der bisherigen Punktzahl (aus den Aff.-werten)
-                }																// mit dem Aktualitätswert
-                
-                $photos = $photos->sortByDesc('score')->paginate(5);
             }
             else { // sort by date
                 session(['sort_feed' => 'last']);
@@ -168,28 +87,57 @@ class HomeController extends Controller
         } 
     }
 
-    public function photosbytag ($name) {
+    public function photosbytag ($name, $sort = null) {
+        if($sort) session(['sort_feed' => $sort]);
+
+        $photos = null;
+
         if (Schema::hasTable('tags')) {
-            $photos = Photo::whereHas('tags', function ($query) use($name) {
+
+            if(session('sort_feed') == 'best') { // sort by best
+
+                $photos = Photo::whereHas('tags', function ($query) use($name) {
+                    $query->where('name', '=', strtolower($name));
+                })->orderBy('created_at','desc')->limit(200)->get();
+                    
+                $this->addPhotoScoreGlobal($photos);
+            
+                $photos = $photos->sortByDesc('score')->paginate(5);
+                
+            }
+            else { // sort by date
+                session(['sort_feed' => 'last']);
+    
+                $photos = Photo::whereHas('tags', function ($query) use($name) {
                     $query->where('name', '=', strtolower($name));
                 })->paginate(5);
-            if (Schema::hasTable('ads')) {
-                $ad = Ad::getAd();
-                return view('home', ['photos' => $photos, 'ad' => $ad]);
             }
-            else {
-                return view('home', ['photos' => $photos]);
-            } 
+             
         } elseif (Schema::hasTable('photos')) {
-            $photos = Photo::where('description', 'like', "%#$name%" )->paginate(5);
-            if (Schema::hasTable('ads')) {
-                $ad = Ad::getAd();
-                return view('home', ['photos' => $photos, 'ad' => $ad]);
+
+            if(session('sort_feed') == 'best') { // sort by best
+
+                $photos = Photo::where('description', 'like', "%#$name%" )->orderBy('created_at','desc')->limit(200)->get();
+                                    
+                $this->addPhotoScoreGlobal($photos);
+            
+                $photos = $photos->sortByDesc('score')->paginate(5);
+                
             }
-            else {
-                return view('home', ['photos' => $photos]);
-            } 
+            else { // sort by date
+                session(['sort_feed' => 'last']);
+    
+                $photos = Photo::where('description', 'like', "%#$name%" )->paginate(5);  
+            }
         }
+
+        if (Schema::hasTable('ads')) {
+            $ad = Ad::getAd();
+            return view('home', ['photos' => $photos, 'ad' => $ad]);
+        }
+        else {
+            return view('home', ['photos' => $photos]);
+        } 
     }
 
     public function single($photo_id, Request $request) 
@@ -219,5 +167,134 @@ class HomeController extends Controller
         else {
             return view('photo.show', ['photo' => $photo->response()->content()]);
         }
-	}
+    }
+    
+    private function addPhotoScore(&$photos) {
+        $user = Auth::user();
+
+        // EdgeRank
+        // score = aff*edge*decay
+        // Affinität 2
+        
+        $aff = [];	// Affinity
+
+        $user_ids = User::get('id')->pluck('id');
+        foreach($user_ids as $user_id) {
+            $aff[$user_id] = 1;
+        }
+
+        if (Schema::hasTable('likes')) {
+            $likes= Photo::select('photos.user_id as user_id_photo')							// $likes speichert alle Likes, die der User vergeben hat
+                                ->join('likes',function ($join) use ( $user) {
+                                    $join->on('photos.id', '=', 'likes.photo_id')
+                                    -> where('likes.user_id', '=', $user->id);
+                                })->orderBy('likes.created_at', 'desc')->limit(100)->get();		// Sortiert nach Datum und auf 100 beschränkt
+            
+            foreach ($likes as $like){
+                $aff[$like->user_id_photo] += 1;												// Pro Like eines Fotos wird die Affinität zum Urheber um 1 erhöht
+            }
+        }
+
+        if (Schema::hasTable('comments')) {   
+            $comments= Photo::select('photos.user_id as user_id_photo')							// $comments speichert alle Kommentare, die der User verfasst hat
+                                ->join('comments',function ($join) use ($user) {
+                                    $join->on('photos.id', '=', 'comments.photo_id')
+                                    -> where('comments.user_id', '=', $user->id);
+                                })->orderBy('comments.created_at', 'desc')->limit(100)->get();	// Sortiert nach Datum und auf 100 beschränkt
+            
+            foreach ($comments as $comment){
+                $aff[$comment->user_id_photo] += 2;												// Pro Kommentar wird die Affinität zum Urheber um 2 erhöht
+            }
+        }
+        
+        //Affinität und Edge
+        foreach ($photos as $photo){
+            $photo['score'] = 1;															// Jedes Foto erhält initial die Punktzahl 1
+        }
+
+        if (Schema::hasTable('likes')) {
+            $edge_likes = Photo::select('likes.user_id as user_id_likes', 'photos.id as photo_id')		// $edge_likes[i] speichert alle Likes, die das Foto mit ID i erhalten hat
+                ->join('likes',function ($join) use ($photos) {
+                    $join->on('photos.id', '=', 'likes.photo_id')
+                        ->whereIn('photos.id', $photos->pluck('id'));
+                })->get();
+
+            foreach ($photos as $photo){
+                foreach ($edge_likes as $edge_like){						// Für jedes dieser Likes wird der Affinitätswert des 
+                    if($edge_like['photo_id'] == $photo->id) {
+                        $photo['score'] += $aff[$edge_like['user_id_likes']];				// Like-Urhebers zur Punktzahl hinzu addiert
+                    }																		// Hat ein Foto keine Likes erhalten, beträgt die Punktzahl 1
+                }
+            }
+        }
+
+        if (Schema::hasTable('comments')) {
+            $edge_comments = Photo::select('comments.user_id as user_id_comments', 'photos.id as photo_id')	// $edge_comments[i] speichert alle Kommentare, 
+                ->join('comments',function ($join) use ($photos) {		// die das Foto mit ID i erhalten hat
+                    $join->on('photos.id', '=', 'comments.photo_id')
+                        ->whereIn('photos.id', $photos->pluck('id'));;
+                })->get();
+
+            foreach ($photos as $photo){
+                foreach ($edge_comments as $edge_comment){					// Für jedes dieser Kommentare wird der zweifache Affinitätswert 
+                    if($edge_comment['photo_id'] == $photo->id) {
+                        $photo['score'] += $aff[$edge_comment['user_id_comments']]*2;		// des Kommentar-Urhebers zur Punktzahl hinzu addiert
+                    }
+                }																		// Hat ein Foto auch keine Kommentare erhalten, beträgt die Punktzahl immer noch 1
+            }
+        }
+                        
+        //Aktualität
+        $decay = [];																				// $decay[i] speichert den Aktualitätswert von Foto i
+        foreach ($photos as $photo){																// Der Wert liegt immer zwischen 1 und 0,1
+            if((time()-strtotime($photo["created_at"])) < 101530){										//101530 entspricht 10 Tagen in Sek
+                $decay[$photo->id] = pow(0.995,((time()-strtotime($photo["created_at"]))/900));		//900=60*15 -> alle 15 min -5%
+            }else{
+                $decay[$photo->id] = 0.01;
+            }
+        }
+        
+        //Punktzahl
+        foreach ($photos as $photo){
+            $photo['score'] *= $decay[$photo->id];						// Die Endpunktzahl ergibt sich aus dem Produkt der bisherigen Punktzahl (aus den Aff.-werten)
+        }																// mit dem Aktualitätswert
+        
+        $photos = $photos->sortByDesc('score');
+    }
+
+    private function addPhotoScoreGlobal($photos) {
+        //Affinität und Edge
+        foreach ($photos as $photo){
+            $photo['score'] = 1;															// Jedes Foto erhält initial die Punktzahl 1
+        }
+
+        if (Schema::hasTable('likes')) {
+            $photos->loadCount('likes');
+            foreach ($photos as $photo){
+                $photo['score'] += $photo->likes_count;
+            }
+        }
+
+        if (Schema::hasTable('comments')) {
+            $photos->loadCount('comments');
+            foreach ($photos as $photo){
+                $photo['score'] += 2*$photo->comments_count;
+            }
+        }
+
+        //Aktualität
+        $decay = [];																				// $decay[i] speichert den Aktualitätswert von Foto i
+        foreach ($photos as $photo){																// Der Wert liegt immer zwischen 1 und 0,1
+            if((time()-strtotime($photo["created_at"])) < 101530){										//101530 entspricht 10 Tagen in Sek
+                $decay[$photo->id] = pow(0.995,((time()-strtotime($photo["created_at"]))/900));		//900=60*15 -> alle 15 min -5%
+            }else{
+                $decay[$photo->id] = 0.01;
+            }
+        }
+        
+        //Punktzahl
+        foreach ($photos as $photo){
+            $photo['score'] *= $decay[$photo->id];						// Die Endpunktzahl ergibt sich aus dem Produkt der bisherigen Punktzahl (aus den Aff.-werten)
+        }																// mit dem Aktualitätswert
+    }
 }

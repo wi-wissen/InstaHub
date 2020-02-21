@@ -26,7 +26,7 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
         //feed
         Route::get('/', 'HomeController@index');
         Route::get('/home/{sort?}', 'HomeController@index');
-        Route::get('/tag/{name}', 'HomeController@photosbytag');
+        Route::get('/tag/{name}/{sort?}', 'HomeController@photosbytag');
 
         //user
         Route::get('/user', 'ProfileController@index');
