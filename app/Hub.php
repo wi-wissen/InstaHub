@@ -26,7 +26,7 @@ class Hub extends Model
         //set db
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
             'driver'    => 'mysql',
-            'host'      => 'localhost',
+            'host'      => env('DB_HOST'),
             'database'  => env('DB_DATABASE') . "_" . $this->id,
             'username'  => env('DB_DATABASE') . "_" . $this->id,
             'password'  => $this->password,
@@ -56,7 +56,7 @@ class Hub extends Model
         //set db
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
             'driver'    => 'mysql',
-            'host'      => 'localhost',
+            'host'      => env('DB_HOST'),
             'database'  => env('DB_DATABASE') . "_" . $this->id,
             'username'  => env('DB_DATABASE') . "_" . $this->id,
             'password'  => $this->password,
@@ -83,7 +83,7 @@ class Hub extends Model
         //set db
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
             'driver'    => 'mysql',
-            'host'      => 'localhost',
+            'host'      => env('DB_HOST'),
             'database'  => env('DB_DATABASE') . "_" . $this->id,
             'username'  => env('DB_DATABASE') . "_" . $this->id,
             'password'  => $this->password,
@@ -105,7 +105,7 @@ class Hub extends Model
         //set db
         Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
             'driver'    => 'mysql',
-            'host'      => 'localhost',
+            'host'      => env('DB_HOST'),
             'database'  => env('DB_DATABASE') . "_" . $this->id,
             'username'  => env('DB_DATABASE') . "_" . $this->id,
             'password'  => $this->password,
