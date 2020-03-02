@@ -45,7 +45,7 @@ class ForgotPasswordController extends Controller
     {
         $this->validateEmail($request);
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->firstOrFail();
         if(!$user->is_active) {  //check if verified
             return $this->sendResetLinkFailedResponse($request, 'passwords.active');
         }
