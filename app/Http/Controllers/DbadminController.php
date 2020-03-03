@@ -127,7 +127,7 @@ class DbadminController extends Controller
                     'email' => $user->email,
                     'password' => $user->password,
                     'avatar' => $user->avatar,
-                    'role' => 2
+                    'is_active' => $user->is_active,
                 ]);
             }
             else {
@@ -136,18 +136,17 @@ class DbadminController extends Controller
                 $user = User::create([
                     'username' => 'admin',
                     'name' => 'admin',
-                    'email' => 'admin@instahub.app',
+                    'email' => 'admin@instahub.test',
                     'password' => bcrypt($pw),
                     'avatar' => 'avatar.png',
-                    'role' => 2
+                    'is_active' => true
                 ]);
-        
-                $user->role = 2;
-                $user->is_active = true;
-                $user->save();
 
                 $this->messages[] = "No DBAs was found. New Passwort for 'admin' was generated: " . $pw;
             }
+     
+            $user->role = 2; //dba - role is not massfillable for security reasons
+            $user->save();
         }
 
         DB::commit();
