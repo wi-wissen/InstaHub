@@ -78,17 +78,14 @@ class User extends Authenticatable
     public function age()
     {
         $now = new DateTime();
-        if ($this->birthday != null) {
-            $interval = $this->birthday->diff($now);
-            if ($interval->y > 2000) { //age set to 0
-                return 'unknown';
-            } else {
-                return $interval->y;
-            }
-        } else {
-            return 'unknown';   
+        if ($this->birthday === null) {
+            return 'unknown';
         }
-
+        $interval = $this->birthday->diff($now);
+        if ($interval->y > 2000) { //age set to 0
+            return 'unknown';
+        }
+        return $interval->y;
     }
 
     public static function boot() {
@@ -101,7 +98,7 @@ class User extends Authenticatable
             {
                 //prevent deleting a file who is in use in an other avatar
                 Storage::disk('local')->delete($value->avatar);
-            }  
+            }
         });
     }
 
