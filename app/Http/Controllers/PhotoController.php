@@ -67,12 +67,19 @@ class PhotoController extends Controller
 		 $entry = Photo::where('url', '=', 'photos/' . $filename)->firstOrFail();
 		 
 		 //$this->authorize('view', $entry);
-		 
-		 $file = Storage::disk('local')->get($entry->url);
+
+		 if(Storage::disk('local')->exists($entry->url))  {
+			$file = Storage::disk('local')->get($entry->url);
  
-		 return (new Response($file, 200))
-			   ->header('Content-Type', Storage::mimeType($entry->url))
-			   ->header('Content-Disposition', 'attachment; filename="' . "photo" . '"');       
+			return (new Response($file, 200))
+				  ->header('Content-Type', Storage::mimeType($entry->url))
+				  ->header('Content-Disposition', 'attachment; filename="' . "photo" . '"'); 
+		 }
+		 else {
+			abort(404);
+		 }
+		 
+		       
 	 }
 
 	/**

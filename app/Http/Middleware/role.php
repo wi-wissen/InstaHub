@@ -36,7 +36,7 @@ class role
         //is user activated?
         if ($request->user()->is_active) {
             //is user allowed to do so?
-            if (!($request->user()->allowed($role) || $this->sessionRole($role))) {
+            if (!$request->user()->allowed($role)) {
                 flash(__('You are not allowed to do this!'))->error();
                 return redirect('/');
             } else {
