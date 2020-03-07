@@ -32,7 +32,7 @@ Many thanks and respect to:
 
 #### Prerequisits 
 
-- Have min. PHP 7.1.3
+- Have min. PHP 7.2
 - Download composer https://getcomposer.org/download/
 - Download git https://git-scm.com/downloads
 
