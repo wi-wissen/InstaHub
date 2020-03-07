@@ -18,22 +18,22 @@
         "jquery": "^3.4.1",
         "laravel-mix": "^4.1.4",
         "lodash": "^4.17.15",
-        "popper.js": "^1.16.0",
+        "popper.js": "^1.16.1",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.23.7",
+        "sass": "^1.26.2",
         "sass-loader": "^7.3.1",
-        "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10"
+        "vue": "^2.6.11",
+        "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.11.2",
-        "codemirror": "^5.49.2",
+        "@fortawesome/fontawesome-free": "^5.12.1",
+        "codemirror": "^5.52.0",
         "typeface-satisfy": "0.0.72",
         "typeface-source-code-pro": "0.0.71",
         "typeface-source-sans-pro": "0.0.75",
         "vue-bootstrap-typeahead": "^0.2.6",
         "vue-flash": "^2.1.2",
-        "vue-moment": "^4.0.0",
+        "vue-moment": "^4.1.0",
         "vue-progressbar": "^0.7.5",
         "vuejs-datepicker": "^1.6.2"
     }
