@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        @include('flash::message')
+            @include('flash::message')
             <div class="card">
                 <div class="card-body">
 
@@ -52,6 +52,7 @@
         <p><img src='/img/ad/smoothie.jpg' alt='smoothie' style="width:100%" /></p>
         <p><em>Als Offshore-Firma in Panama, suchen wir einen Weg im deutschen Markt wertvollen Content in Buchform anzubieten. Wir sind sehr gut.</em> </p>
         <p class="text-right">Bernd Herrmann, Founder and Head of Service</p>
+                </div>
             </div>
         </div>
     </div>

@@ -37,8 +37,8 @@
                                         <option value="banner" selected>{{ __('Banner') }}</option>
                                         <option value="photo">{{ __('Photo') }}</option>
                                     @elseif (old('type', $ad->type) == 'photo')
-                                        <option value="banner" selected>{{ __('Banner') }}</option>
-                                        <option value="photo">{{ __('Photo') }}</option>
+                                        <option value="banner">{{ __('Banner') }}</option>
+                                        <option value="photo" selected>{{ __('Photo') }}</option>
                                     @endif
                                 </select>
 

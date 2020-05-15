@@ -30,7 +30,7 @@
         </button>
         @if ((!Auth::guest() && Session::get('hub', 'root') != 'root') || (!Auth::guest() && Auth::user()->allowed('admin')))
         <div class="nav navbar-nav flex-fill justify-content-center d-none d-sm-block">
-            <search-box style="width:200px;"/>  
+            <search-box style="width:200px;"></search-box>  
         </div>
         @endif
         <!-- Right Side Of Navbar -->
@@ -41,15 +41,15 @@
                 <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">{{ __('Register') }}</a></li>
             @else
                 @if (Session::get('hub', 'root') != 'root' || (!Auth::guest() && Auth::user()->allowed('admin')))
-                <li class="d-inline d-sm-none" class="nav-item">
-                    <search-box style="width:200px;"/>  
+                <li class="d-inline d-sm-none nav-item">
+                    <search-box style="width:200px;"></search-box>  
                 </li>
                 @endif
             
                 @if (Schema::hasTable('ads') && Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarBusinessDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/clarity/store-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Busines') }}</span>
+                        <img src="/clarity/store-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp;<span class="d-inline d-sm-none">{{ __('Busines') }}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarBusinessDropdown">
                         <a class="dropdown-item" href="{{ url('/business') }}">{{ __('Overview') }}</a>
@@ -58,12 +58,12 @@
                 </li>
                 @endif
                 @if (Session::get('hub', 'root') != 'root' || (!Auth::guest() && Auth::user()->allowed('admin')))
-                <li class="nav-item"><a class="nav-link"href="{{ url('/user') }}"><img src="/clarity/compass-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Explore') }}</span></a></li>    
+                <li class="nav-item"><a class="nav-link" href="{{ url('/user') }}"><img src="/clarity/compass-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Explore') }}</span></a></li>    
                 @endif
                 @if ((Auth::user()->allowed('dba') && Session::get('hub', 'root') != 'root') || Auth::user()->allowed('admin'))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDatabaseDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/clarity/storage-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Database') }}</span>
+                        <img src="/clarity/storage-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp;<span class="d-inline d-sm-none">{{ __('Database') }}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDatabaseDropdown">
                         <a class="dropdown-item" href="{{ url('/sql/select') }}">{{ __('Search') }}</a>
@@ -72,11 +72,11 @@
                 </li>
                 @endif
                 @if (!Auth::guest() && Session::get('hub', 'root') == 'root' && Auth::user()->allowed('teacher'))
-                <li class="nav-item"><a class="nav-link"href="{{ env('DOC_URL') }}"><img src="/clarity/help-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('Help') }}</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ env('DOC_URL') }}"><img src="/clarity/help-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp;<span class="d-inline d-sm-none">{{ __('Help') }}</span></a></li>
                 @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/clarity/user-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp<span class="d-inline d-sm-none">{{ __('User') }}</span>
+                        <img src="/clarity/user-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">&nbsp;<span class="d-inline d-sm-none">{{ __('User') }}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
                         <a class="dropdown-item" href="/user/{{ Auth::user()->username }}">{{ Auth::user()->name }}</a>
