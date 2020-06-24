@@ -6,7 +6,7 @@ return [
 	'instahub' => 'InstaHub ist ein soziales Netzwerk, welches im Unterricht eingesetzt wird, um die Themen Datenbanken, Umgang mit sozialen Netzen und Datenschutz zu lehren.',
 	'competitions' => 'Ausgezeichnet mit dem <a href="https://gi.de/meldung/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone/">Unterrichtspreis der Gesellschaft für Informatik</a> (2017) 
             und den <a href="https://www.mnu.de/blog/535-preis-fuer-innovative-mint-unterrichtsideen-2019">1. Platz im Wettbewerb Innovative MINT-Unterrichtsideen</a> der MNU mit dem Klett-Verlag (2019).',
-	'privacy' => 'Ähnlich Instagram können SchülerInnen zu Lernzwecken in einem geschützten Umfeld agieren.',
+	'privacy' => 'Ähnlich wie bei Instagram können SchülerInnen zu Lernzwecken in einem geschützten Umfeld agieren.',
 	'database' => 'Voller Zugriff auf die gesammte Datenbank und das Backend mit allen Einstellungen für Administratoren und "Werbetreibende".',
 	'openfree' => 'Kostenfrei und Open Source für den Einsatz zu Lehrzwecken. Schulungen und Support auf Anfrage auch bei Ihnen vor Ort möglich.',
 	'firstStepTeacher' => 'Beantrage zuerst einen Lehrer-Account. Anschließend kannst du dir als SchülerIn einen Hub anlegen, dich in 
