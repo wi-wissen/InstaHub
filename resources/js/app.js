@@ -24,6 +24,7 @@ require('./bootstrap');
 
 Vue.component('PaginationLinks', require('./components/PaginationComponent.vue').default);
 Vue.component('DateInput', require('./components/DateInputComponent.vue').default);
+Vue.component('ScrollBar', require('./components/ScrollBarComponent.vue').default);
 
 Vue.component('PhotoShow', require('./components/PhotoComponent.vue').default);
 Vue.component('FollowButton', require('./components/FollowButtonComponent.vue').default);

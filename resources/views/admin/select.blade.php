@@ -20,9 +20,12 @@
                                 @{{ message.text }}
                             </div>
 
-                            <div v-if="table" style="overflow: auto;" v-html="table">
-                            </div>
-
+                            <template v-if="table">
+                                <scroll-bar for-id="table"></scroll-bar>
+                                <div id="table" style="overflow: auto;" v-html="table">
+                                </div>
+                            </template>
+                            
                             </div>
                         </div>
                     </div>

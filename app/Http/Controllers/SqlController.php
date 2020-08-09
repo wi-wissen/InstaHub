@@ -59,7 +59,7 @@ class SqlController extends Controller
                         $message = "Anfrage ausgeführt. " . count($r) ." Ergebnisse gefunden."; $type= 'success';
     
                         $cols = array_keys((array) $r[0]);
-                        $t = "<table class='table'>";
+                        $t = "<table class='table mb-0'>";
                         foreach ($cols as &$col) {
                             $t = $t . '<th>' . $col . '</th>';
                         }

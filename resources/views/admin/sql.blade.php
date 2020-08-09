@@ -29,7 +29,8 @@
                             @endif
 
                             @if ($result)
-                            <div v-if="table" style="overflow: auto;">
+                            <scroll-bar for-id="table"></scroll-bar>
+                            <div v-if="table" id="table" style="overflow: auto;">
                                 {!! $result !!}
                             </div>
                             @endif
