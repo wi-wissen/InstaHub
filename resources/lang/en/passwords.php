@@ -19,5 +19,6 @@ return [
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
     'active'   => 'Unfortunately the user has not yet been activated.',
+    'unknown'  => 'This mail address could not be found.',
 
 ];
