@@ -106,7 +106,7 @@ class DbadminController extends Controller
     private function fillTable($id, $tablename)
     {
         $user = null;
-        if ($tablename == 'users') $user = User::where('username', '=', 'admin')->first();
+        if ($tablename == 'users' && Schema::hasTable('users')) $user = User::where('username', '=', 'admin')->first();
 
         DB::beginTransaction(); //better performance and safer
 
@@ -169,11 +169,25 @@ class DbadminController extends Controller
     public function setAdminPW($id) {
 
         $this->setdb($id);
+        if(!Schema::hasTable('users')) $this->migrateTable($id, 'users'); //to make sure that needed table exists
 
         $pw = substr(uniqid(),8);
         $user = User::where('username', '=', 'admin')->first();
-        $user->password = bcrypt($pw);
-        $user->save();
+
+        if($user) {
+            $user->password = bcrypt($pw);
+            $user->save();
+        }
+        else {
+            $user = User::create([
+                'username' => 'admin',
+                'name' => 'admin',
+                'email' => 'admin@instahub.test',
+                'password' => bcrypt($pw),
+                'avatar' => 'avatar.png',
+                'is_active' => true
+            ]);
+        }
 
         return response()->json([
             'pw' => $pw
