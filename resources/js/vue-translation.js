@@ -34,6 +34,7 @@ window.translations = {
 	  'contains': 'enthält',
 	  'does not contain': 'enthält nicht',
 	  'starts with': 'startet mit',
+	  'ends with': 'endet mit',
 	  'smaller': 'kleiner',
 	  'bigger': 'größer',
 	  'all': 'alle',

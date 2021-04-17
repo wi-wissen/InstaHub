@@ -240,6 +240,9 @@ export default {
                                     case Vue.prototype.$t('starts with'):
                                         operator = 'LIKE';
                                         break;
+                                    case Vue.prototype.$t('ends with'):
+                                        operator = 'LIKE';
+                                        break;
                                     case Vue.prototype.$t('contains'):
                                         operator = 'LIKE';
                                         break;
@@ -259,6 +262,9 @@ export default {
 
                                 if (a.children[index].query.selectedOperator == Vue.prototype.$t('starts with')) {
                                     v = '"' + v + '%"'; // convert to string, add % to the end
+                                }
+                                else if (a.children[index].query.selectedOperator == Vue.prototype.$t('ends with')) {
+                                    v = '"%' + v + '"'; // convert to string, add % to the beginning
                                 }
                                 else if (operator == 'LIKE' ||operator == 'NOT LIKE') {
                                     v = '"%' + v + '%"'; // convert to string, add % to start and end
@@ -310,6 +316,9 @@ export default {
                             case 'starts with':
                                 operator = 'LIKE';
                                 break;
+                            case 'ends with':
+                                operator = 'LIKE';
+                                break;
                             case 'contains':
                                 operator = 'LIKE';
                                 break;
@@ -329,6 +338,9 @@ export default {
 
                         if (a.children[index].query.selectedOperator == 'starts with') {
                             v = '"' + v + '%"'; // convert to string, add % to the end
+                        }
+                        else if (a.children[index].query.selectedOperator == 'ends with') {
+                            v = '"%' + v + '"'; // convert to string, add % to the beginning
                         }
                         else if (operator == 'LIKE' ||operator == 'NOT LIKE') {
                             v = '"%' + v + '%"'; // convert to string, add % to start and end

@@ -76,6 +76,7 @@ export default {
             Vue.prototype.$t('contains'),
             Vue.prototype.$t('does not contain'),
             Vue.prototype.$t('starts with'),
+            Vue.prototype.$t('ends with'),
             Vue.prototype.$t('smaller'),
             Vue.prototype.$t('bigger')
           ],
