@@ -89,8 +89,7 @@ class HubHelper
     {
         if ($this->isHub()) {
             return (bool) $this->hub->readonly();
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -99,8 +98,7 @@ class HubHelper
     {
         if ($this->isHub()) {
             return $this->hub->id;
-        }
-        else {
+        } else {
             return null;
         }
     }
@@ -109,11 +107,9 @@ class HubHelper
     {
         if ($this->isHub()) {
             return $this->hub->name;
-        }
-        else {
+        } else {
             return null;
         }
-        
     }
 
     public function url($name = null)

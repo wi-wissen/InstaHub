@@ -20,4 +20,4 @@ Artisan::command('inspire', function () {
 Artisan::command('trimAnalytics', function () {
     $controller = new AdminController;
     $controller->trimAnalytics();
-})->describe('Trim Analystics Tables');
+})->purpose('Trim Analystics Tables');

@@ -12,6 +12,7 @@ use App\User;
 use Artisan;
 use Auth;
 use Config;
+use Database\Seeders\UsersTableSeeder;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;

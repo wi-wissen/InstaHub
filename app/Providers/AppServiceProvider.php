@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
         //for older databases add length for utf84mb support - https://laravel-news.com/laravel-5-4-key-too-long-error
         Schema::defaultStringLength(191);
 
+        //The paginator now uses Tailwind for its default styling in Laravel 8.
+        \Illuminate\Pagination\Paginator::useBootstrap();
+
         /**
          * Paginate a standard Laravel Collection.
          *
