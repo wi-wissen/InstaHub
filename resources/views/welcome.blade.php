@@ -20,10 +20,79 @@ h2{
 @section('website')
 
 <div class="container-fluid">
-<div class="row justify-content-center">
-    <div class="d-none d-sm-none d-md-block col-md-4 text-right">
-    <img src="/img/pixel3+hub.png" class="img-fluid" Style="max-width: 250px;" alt="Smartphone">
+@if(RequestHub::isHub() && RequestHub::name() == 'public')
+    <div class="row justify-content-center alert alert-primary">
+        <div class="col-md-4">
+            <table>
+                <tbody><tr>
+                    <td style="vertical-align: top;"><b>Admin</b></td>
+                    <td>
+                        {{ __('User') }}: <br>
+                        {{ __('Password') }}:
+                    </td>
+                    <td>
+                        <code>admin</code> <br>
+                        <code>admin123</code>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div class="col-md-4">
+            <table>
+                <tbody><tr>
+                    <td style="vertical-align: top;"><b>{{ __('Girl') }}</b></td>
+                    <td>
+                        {{ __('User') }}: <br>
+                        {{ __('Password') }}:
+                    </td>
+                    <td>
+                        <code>eva125</code> <br>
+                        <code>eva125</code>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div class="col-md-4">
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: top;"><b>{{ __('Boy') }}</b></td>
+                        <td>
+                            {{ __('User') }}: <br>
+                            {{ __('Password') }}:
+                        </td>
+                        <td>
+                            <code>adrian211</code> <br>
+                            <code>adrian211</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+@endif
+<div class="row justify-content-center">
+
+    @if(RequestHub::isHub())
+    <div class="d-none d-sm-none d-md-block col-md-4 text-right">
+        <img src="/img/pixel3+hub.png" class="img-fluid" Style="max-width: 250px;" alt="Smartphone">
+    </div>
+    @else
+    <div class="d-none d-sm-none d-md-block col-md-4">
+        <div class="card float-right" style="max-width: 20rem; margin-top: 0.5em;">
+            <div class="card-img-top embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/J3WAaPNjANE?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="card-body text-left">
+                <p class="card-text">
+                    {{ __('messages.firstStepTeacher') }}
+                </p>
+                <a href="{{ env('DOC_URL') }}" class="btn btn-outline-dark btn-lg btn-block">{{ __('Documentation') }}</a>
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="col-10 col-md-4 text-left">
     <div class="card" style="max-width: 20rem; margin-top: 0.5em;">
         <div class="card-body text-center">
@@ -34,10 +103,10 @@ h2{
                 {{ env('APP_NAME') }}
             </h1>
             <h2>
-                {{Session::get('hub')}}
+                {{RequestHub::name()}}
             </h2>
 
-                <a {{ Session::get('readonly') ? "disabled" : "" }} href="{{ url('/register') }}" class="btn btn-success btn-lg btn-block">
+                <a {{ RequestHub::isReadOnly() ? "disabled" : "" }} href="{{ url('/register') }}" class="btn btn-success btn-lg btn-block">
                 {{ __('Create Account') }}
                 </a>
             </li>

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Facades\RequestHub;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Schema;
@@ -23,21 +24,9 @@ class Hub extends Model
 
     public function hasWorkingUser()
     {
-        //set db
-        Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
-            'driver'    => 'mysql',
-            'host'      => env('DB_HOST'),
-            'database'  => env('DB_DATABASE') . "_" . $this->id,
-            'username'  => env('DB_DATABASE') . "_" . $this->id,
-            'password'  => $this->password,
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => '',
-        ));
+        RequestHub::setHubDB($this->id);
 
-        Config::set('database.default', env('DB_DATABASE') . "_" . $this->id);
-
-        if (Schema::hasTable('users'))
+        if (RequestHub::hasTable('users'))
         {
             if (Schema::hasColumn('users', 'id') && Schema::hasColumn('users', 'password') && 
                Schema::hasColumn('users', 'username') && Schema::hasColumn('users', 'role')&& 
@@ -53,19 +42,7 @@ class Hub extends Model
     }
     public function activated()
     {
-        //set db
-        Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
-            'driver'    => 'mysql',
-            'host'      => env('DB_HOST'),
-            'database'  => env('DB_DATABASE') . "_" . $this->id,
-            'username'  => env('DB_DATABASE') . "_" . $this->id,
-            'password'  => $this->password,
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => '',
-        ));
-
-        Config::set('database.default', env('DB_DATABASE') . "_" . $this->id);
+        RequestHub::setHubDB($this->id);
         
         $user = User::where('role', '=', 'dba')->first();
 
@@ -80,19 +57,7 @@ class Hub extends Model
 
     public function activate(Boolean $yes)
     {
-        //set db
-        Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
-            'driver'    => 'mysql',
-            'host'      => env('DB_HOST'),
-            'database'  => env('DB_DATABASE') . "_" . $this->id,
-            'username'  => env('DB_DATABASE') . "_" . $this->id,
-            'password'  => $this->password,
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => '',
-        ));
-
-        Config::set('database.default', env('DB_DATABASE') . "_" . $this->id);
+        RequestHub::setHubDB($this->id);
 
         $user = User::where('role', '=', 'dba')->first();
         $user->is_active = $yes;
@@ -102,19 +67,7 @@ class Hub extends Model
 
     public function adminname()
     {
-        //set db
-        Config::set("database.connections." . env('DB_DATABASE') . "_" . $this->id, array(
-            'driver'    => 'mysql',
-            'host'      => env('DB_HOST'),
-            'database'  => env('DB_DATABASE') . "_" . $this->id,
-            'username'  => env('DB_DATABASE') . "_" . $this->id,
-            'password'  => $this->password,
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => '',
-        ));
-
-        Config::set('database.default', env('DB_DATABASE') . "_" . $this->id);
+        RequestHub::setHubDB($this->id);
 
         return User::where('role', '=', 'dba')->first()->name;
     }
@@ -122,7 +75,7 @@ class Hub extends Model
     public function readonly()
     {   
         //select root user
-        Config::set('database.default', env('DB_CONNECTION'));
+        RequestHub::setDefaultDB();
         //checks for privilege to update in selected database, this is only given in this case if user have all privilegs
         $r = \DB::select('select Update_priv from mysql.db where db=? and User =?', [env('DB_DATABASE') . "_" . $this->id,env('DB_DATABASE') . "_" . $this->id,]);
         $r = (array) $r;

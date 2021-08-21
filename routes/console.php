@@ -18,6 +18,6 @@ Artisan::command('inspire', function () {
 });
 
 Artisan::command('trimAnalytics', function () {
-    $controller = new DbadminController;
+    $controller = new AdminController;
     $controller->trimAnalytics();
 })->describe('Trim Analystics Tables');

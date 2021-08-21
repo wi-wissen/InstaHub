@@ -9,7 +9,7 @@
 			<photo-show
 				:photo = "photo"
 				:readonly = "readonly"
-				@if (Schema::hasTable('ads'))
+				@if (RequestHub::hasTable('ads'))
 				:ad = "ad"
 				@endif
 				:admin = "admin"
@@ -25,7 +25,7 @@
 	var data = {
 		photo:{!! $photo !!}.data,
 		ad:{!! isset($ad) ? $ad . '.data': 'null' !!},
-		readonly: {{Session::get('readonly')}},
+		readonly: {{ (RequestHub::isReadOnly()) ? 'true' : 'false' }},
 		admin: {{(Auth::user()->allowed('dba')) ? 'true' : 'false'}}
 	}
 </script>

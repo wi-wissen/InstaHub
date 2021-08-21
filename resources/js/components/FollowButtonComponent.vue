@@ -18,7 +18,7 @@ export default {
       self = this;
       this.$Progress.start();
       axios
-        .post("/api/user/follow/" + this.id, {})
+        .post("/api/me/follow/" + this.id, {})
         .then(function(response) {
           self.isfollowing = true;
           self.$Progress.finish();
@@ -35,7 +35,7 @@ export default {
       self = this;
       this.$Progress.start();
       axios
-        .delete("/api/user/follow/" + this.id, {})
+        .delete("/api/me/follow/" + this.id, {})
         .then(function(response) {
           self.isfollowing = false;
           self.$Progress.finish();

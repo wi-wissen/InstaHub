@@ -37,4 +37,14 @@ class StaticController extends Controller
     {
         return view('errors.noad');   
     }
+
+    /**
+     * Show the business dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function business()
+    {
+        return view('business');
+    }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Helpers\HubHelper;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('requestHub', function() {
+            return new HubHelper();
+        });        
     }
 
     /**

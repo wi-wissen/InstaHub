@@ -20,7 +20,7 @@
 
                             <div class="col-md-6">
                             <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="" required autofocus>
-                            @if (Session::get('hub', 'root') == 'root')
+                            @if (! RequestHub::isHub())
                             <small id="usernameHelpBlock" class="form-text text-muted">
                                 {{ __('messages.teachername') }}
                             </small>
@@ -90,7 +90,7 @@
                             </div>
                         </div>
 
-                        @if (Session::get('hub', 'root') != 'root')
+                        @if (RequestHub::isHub())
 
                         <div class="form-group row">
                             <label for="bio" class="col-md-4 col-form-label text-md-right">{{ __('Bio') }}</label>

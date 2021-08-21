@@ -158,7 +158,7 @@
 		name:"{{ old('name', null) }}",
         img:"{{ old('img', null) }}",
         url:"{{ old('url', null) }}",
-        readonly: {{Session::get('readonly')}},
+        readonly: {{ (RequestHub::isReadOnly() ? true : false }},
 	}
 </script>
 @endsection

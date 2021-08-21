@@ -49,23 +49,23 @@ h5 {
 					</div>
 					<div class="media-body">
 						@if (Auth::user()->id != $user->id)
-							@if (Schema::hasTable('follows'))
+							@if (RequestHub::hasTable('follows'))
 							<follow-button class="float-right" id="{{$user->id}}" v-bind:isfollowing="{{Auth::user()->isfollowing($user)}}"></follow-button>
 							@endif
 						@endif
 						<h2>{{ $user->username }}</h2>
 						<p>
-							@if (Schema::hasTable('photos'))
+							@if (RequestHub::hasTable('photos'))
 							<b>{{$user->photos()->count()}}</b> {{ __('Photos') }}.
 							@endif
-							@if (Schema::hasTable('follows')) 
+							@if (RequestHub::hasTable('follows')) 
 							@if ($user->followers->count() < 2)
-							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('follower') }}</a>.
+							<a href ="{{'../' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('follower') }}</a>.
 							@else
-							<a href ="{{'../user/' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('followers') }}</a>.
+							<a href ="{{'../' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('followers') }}</a>.
 							@endif
 							
-							<a href ="{{'../user/' . $user->username . '/following'}}"><b>{{$user->following->count()}} {{ __('following') }}</b></a>.
+							<a href ="{{'../' . $user->username . '/following'}}"><b>{{$user->following->count()}} {{ __('following') }}</b></a>.
 							@endif
 						</p>
 						<h5>{{ $user->name }}</h5>
@@ -106,23 +106,23 @@ h5 {
 						@endif
 						
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
-							<a href="{{'../user/' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm {{ Session::get('readonly') ? "disabled" : "" }}" role="button">{{ __('Edit') }}</a>
+							<a href="{{'../' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? "disabled" : "" }}" role="button">{{ __('Edit') }}</a>
 							@if (Auth::user()->id == $user->id)
-								<a href="{{'../user/password'}}" class="btn btn-outline-dark btn-sm {{ Session::get('readonly') ? "disabled" : "" }}" role="button">{{ __('Change Password') }}</a>
+								<a href="{{'../password'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? "disabled" : "" }}" role="button">{{ __('Change Password') }}</a>
 							@endif
-							<button v-if="!pw" v-on:click="getNewPw()" {{ Session::get('readonly') ? "disabled" : "" }} class="newPassword btn btn-outline-dark btn-sm">{{ __('Reset Password') }}</button>
+							<button v-if="!pw" v-on:click="getNewPw()" {{ RequestHub::isReadOnly() ? "disabled" : "" }} class="newPassword btn btn-outline-dark btn-sm">{{ __('Reset Password') }}</button>
 							<code v-else style="padding: 0.25rem 0.5rem; font-size: 0.7875rem;">@{{pw}}</code>
-							<a href="{{'../user/' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm {{ Session::get('readonly') ? "disabled" : "" }}" role="button">{{ __('Delete') }}</a>
+							<a href="{{'../' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm {{ RequestHub::isReadOnly() ? "disabled" : "" }}" role="button">{{ __('Delete') }}</a>
 						@endif
 						
 					</div>
 				</div>
 				<hr>
-				@if (Schema::hasTable('photos'))
+				@if (RequestHub::hasTable('photos'))
 				<div class="panel">
 					@foreach ($user->photos as $photo)
 					<div class="imgcontainer">
-						<a href="{{  '../photo/' . $photo->id }}">
+						<a href="{{  '../p/' . $photo->id }}">
 							<div class="square" style="background-image: url('{{  '../' . $photo->url }}')" alt="{{$photo->description}}"></div>
 						</a>
 					</div>						

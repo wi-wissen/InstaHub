@@ -6,13 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Schema;
 
-use Storage;
-use App\Tags;
+use App\Collections\PhotoCollection;
+use App\Facades\RequestHub;
 
 class Photo extends Model
 {
     protected $table = 'photos';
 	protected $fillable = ['user_id', 'description', 'url'];
+
+    /**
+     * Create a new Eloquent Collection instance.
+     *
+     * @param  array  $models
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function newCollection(array $models = [])
+    {
+        return new PhotoCollection($models);
+    }
 
     public function user()
     {
@@ -61,7 +72,7 @@ class Photo extends Model
     }
 
     public function updateTags() {
-        if (Schema::hasTable('tags')) {
+        if (RequestHub::hasTable('tags')) {
             $this->tags()->delete();
             preg_match_all('/#([a-zA-Z0-9äöüÄÖÜß]*)/', $this->description, $treffer);
             foreach ($treffer[1] as $tag) {
@@ -75,7 +86,7 @@ class Photo extends Model
     public function getHtmlAttribute() {
         $html = htmlspecialchars($this->description); //secure user input
         $html = preg_replace('/#([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/tag/$1'>$0</a>", $html);
-        $html = preg_replace('/@([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/user/$1'>$0</a>", $html);
+        $html = preg_replace('/@([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/$1'>$0</a>", $html);
         return $html;
     }
 }

@@ -90,7 +90,7 @@ class RegisterController extends Controller
         }
         
         $role = 1;
-        if (Session::get('hub', 'root') == 'root') $role = 3;
+        if (! RequestHub::isHub()) $role = 3;
 
         $user = User::create([
             'username' => $data['username'],
@@ -114,7 +114,7 @@ class RegisterController extends Controller
         $user->save();
 
         //send message to admin if teacher apply for account in root
-        if (Session::get('hub', 'root') == 'root' && env('APP_ENV') != 'local') {
+        if (! RequestHub::isHub() && env('APP_ENV') != 'local') {
             //Mail::to(User::where('role','=', 'admin')->first())->send(new NewUser($user, $data['messageToAdmin']));
             User::where('role','=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
         }

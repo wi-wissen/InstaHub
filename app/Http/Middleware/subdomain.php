@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Facades\RequestHub;
 use Closure;
 
 use Config;
@@ -12,7 +13,7 @@ use Debugbar;
 use App\User;
 use App\Hub;
 
-class subdomain
+class SubDomain
 {
     /**
      * Handle an incoming request.
@@ -23,23 +24,18 @@ class subdomain
      */
     public function handle($request, Closure $next)
     {
-        $request->session()->put('readonly', 0);
-
         if ($request->route()->parameter('subdomain') != null) {
-            //readonly
-            $request->session()->put('readonly', \Request::get('hubreadonly'));
-            Debugbar::info($request->session()->get('readonly'));
-
-            //subdomain
-            $request->session()->put('hub', $request->route()->parameter('subdomain')); //save in session
-            Config::set('app.url', str_replace("//", "//" . $request->session()->get('hub') . ".", Config::get('app.url')) ); //change app domain (for mails for example)
-            Debugbar::info($request->session()->get('hub'));
-        } else {
-            $request->session()->forget('hub');
+            
+            //change app domain (for mails for example)
+            Config::set('app.url', RequestHub::url());
+            
+            //help controllers to ignore subdomain
+            if(RequestHub::isHub()) {
+                RequestHub::setHubDB();
+                $request->route()->forgetParameter('subdomain');
+            }
         }
-
-        //dd($next($request));
-
+        
         return $next($request);
     }
 }

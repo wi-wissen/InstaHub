@@ -42,6 +42,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Domains
+    |--------------------------------------------------------------------------
+    |
+    | This Domains are used to seperate Tasks
+    |
+    */
+
+    'domain' => env('APP_DOMAIN', 'localhost'),
+    'domain_app' => env('APP_DOMAIN', 'localhost'),
+    'domain_admin' => env('APP_ADMIN_DOMAIN', 'admin.localhost'),
+    'domain_hub' => env('APP_HUB_DOMAIN', '{subdomain}.localhost'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |
@@ -51,11 +65,12 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://') . env('APP_DOMAIN', 'localhost'),
+    'url_app' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://') . env('APP_DOMAIN', 'localhost'),
+    'url_admin' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://') . env('APP_ADMIN_DOMAIN', 'localhost'),
+    'url_hub' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://') . env('APP_HUB_DOMAIN', 'localhost'),
 
     'asset_url' => env('ASSET_URL', null), 
-
-    'session_domain' => env('SESSION_DOMAIN', '.localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -123,6 +138,17 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+
+     /*
+    |--------------------------------------------------------------------------
+    | DB Access Level
+    |--------------------------------------------------------------------------
+    |
+    | Set if Hub Databses will be avaiable for all or only localhost
+    |
+    */
+
+    'allow_public_db_access' => env('ALLOW_PUBLIC_DB_ACCESS', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -223,6 +249,7 @@ return [
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
         'Redis' => Illuminate\Support\Facades\Redis::class,
         'Request' => Illuminate\Support\Facades\Request::class,
+        'RequestHub' => App\Facades\RequestHub::class,
         'Response' => Illuminate\Support\Facades\Response::class,
         'Route' => Illuminate\Support\Facades\Route::class,
         'Schema' => Illuminate\Support\Facades\Schema::class,

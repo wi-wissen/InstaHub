@@ -53,7 +53,7 @@
 <script>
 	var data = {
 		ads:{!! $ads !!}.data,
-		readonly: {{Session::get('readonly')}},
+		readonly: {{ (RequestHub::isReadOnly()) ? 'true' : 'false' }},
     }
 </script>
 

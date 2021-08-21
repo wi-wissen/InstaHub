@@ -57,7 +57,7 @@ $(document).ready(function(){
 		//var comment_list_group = $(this)[0].lastElementChild.children;
 		console.log($comment);
 		console.log("#list-group" + $photo_id);
-		$(comment_list_group).append('<div class="list-group-item"><b><a href="/user/' + $username + '">' + $username.textContent + '</a></b>: ' + $comment +'</div>');
+		$(comment_list_group).append('<div class="list-group-item"><b><a href="/' + $username + '">' + $username.textContent + '</a></b>: ' + $comment +'</div>');
 		$("textarea[name=comment" + $photo_id + "]").val("");
 
 		//return false;
@@ -84,7 +84,7 @@ $(document).ready(function(){
         var token = $(this).data("token");
         $.ajax(
         {
-			url: "/user/password/"+id,
+			url: "/password/"+id,
 			headers: {'X-CSRF-TOKEN': token},
             type: 'GET',
             dataType: "JSON",
