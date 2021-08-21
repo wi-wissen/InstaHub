@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Facades\RequestHub;
 use App\Tags;
@@ -17,7 +17,7 @@ class Hub extends Model
 
     public function teacher()
     {
-        return $this->belongsTo(\App\User::class, 'teacher_id');
+        return $this->belongsTo(\App\Models\User::class, 'teacher_id');
     }
 
     public function hasWorkingUser()

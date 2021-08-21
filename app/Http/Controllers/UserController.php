@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Resources\User as UserResource;
-use App\User;
+use App\Models\User;
 use Auth;
 use Config;
 use DB;

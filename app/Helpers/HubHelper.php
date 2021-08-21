@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Hub;
+use App\Models\Hub;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Boolean;

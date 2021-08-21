@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Ad;
-use App\Analytic;
-use App\Comment;
+use App\Models\Ad;
+use App\Models\Analytic;
+use App\Models\Comment;
 use App\Facades\RequestHub;
 use App\Http\Controllers\Collection;
 use App\Http\Resources\Ad as AdResource;
 use App\Http\Resources\Photo as PhotoResource;
-use App\Like;
-use App\Photo;
-use App\User;
+use App\Models\Like;
+use App\Models\Photo;
+use App\Models\User;
 use Auth;
 use Config;
 use Debugbar;

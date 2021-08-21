@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Resources\Follow as FollowResource;
-use App\User;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 
