@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Http\Resources\User as UserResource;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Comment extends JsonResource

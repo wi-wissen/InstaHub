@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use App\Facades\RequestHub;
 use App\Http\Resources\Comment as CommentResource;
 use App\Http\Resources\User as UserResource;
-use App\Like;
+use App\Models\Like;
 use Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Schema;

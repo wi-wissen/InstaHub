@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Collections\PhotoCollection;
 use App\Facades\RequestHub;
@@ -25,27 +25,27 @@ class Photo extends Model
 
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     public function likes()
     {
-        return $this->hasMany(\App\Like::class);
+        return $this->hasMany(\App\Models\Like::class);
     }
 
     public function comments()
     {
-        return $this->hasMany(\App\Comment::class);
+        return $this->hasMany(\App\Models\Comment::class);
     }
 
     public function tags()
     {
-        return $this->hasMany(\App\Tag::class);
+        return $this->hasMany(\App\Models\Tag::class);
     }
 
     public function viewers()
     {
-        return $this->hasMany(\App\Analytic::class);
+        return $this->hasMany(\App\Models\Analytic::class);
     }
 
     public static function boot()

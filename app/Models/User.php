@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Facades\RequestHub;
 use Auth;
@@ -65,12 +65,12 @@ class User extends Authenticatable
 
     public function photos()
     {
-        return $this->hasMany(\App\Photo::class)->orderBy('created_at', 'desc');
+        return $this->hasMany(\App\Models\Photo::class)->orderBy('created_at', 'desc');
     }
 
     public function visits()
     {
-        return $this->hasMany(\App\Analytic::class)->orderBy('created_at', 'desc');
+        return $this->hasMany(\App\Models\Analytic::class)->orderBy('created_at', 'desc');
     }
 
     public function isfollowing($user)
@@ -81,7 +81,7 @@ class User extends Authenticatable
 
     public function hubs()
     {
-        return $this->hasMany(\App\Hub::class, 'teacher_id', 'id');
+        return $this->hasMany(\App\Models\Hub::class, 'teacher_id', 'id');
     }
 
     public function age()

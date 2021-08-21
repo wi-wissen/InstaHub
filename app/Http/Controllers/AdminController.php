@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Analytic;
+use App\Models\Analytic;
 use App\Facades\RequestHub;
-use App\Hub;
-use App\Photo;
-use App\User;
+use App\Models\Hub;
+use App\Models\Photo;
+use App\Models\User;
 use Artisan;
 use Auth;
 use Config;
