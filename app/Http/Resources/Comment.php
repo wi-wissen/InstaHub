@@ -4,9 +4,9 @@ namespace App\Http\Resources;
 
 use App\Http\Resources\User as UserResource;
 use App\User;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class Comment extends Resource
+class Comment extends JsonResource
 {
     /**
      * Transform the resource into an array.

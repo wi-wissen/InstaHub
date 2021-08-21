@@ -7,10 +7,10 @@ use App\Http\Resources\Comment as CommentResource;
 use App\Http\Resources\User as UserResource;
 use App\Like;
 use Auth;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Schema;
 
-class Photo extends Resource
+class Photo extends JsonResource
 {
     /**
      * Transform the resource into an array.
