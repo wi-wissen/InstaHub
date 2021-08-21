@@ -59,7 +59,8 @@ if (token) {
 /**
  * Vue
  */
-window.Vue = require('vue');
+import Vue from 'vue'
+window.Vue = Vue;
 
 import './vue-translation';
 
