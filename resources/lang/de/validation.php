@@ -150,7 +150,7 @@ return [
     | of "email". This simply helps us make messages a little cleaner.
     |
     */
-    
+
     'attributes'           => [
         'address'               => 'Adresse',
         'age'                   => 'Alter',
