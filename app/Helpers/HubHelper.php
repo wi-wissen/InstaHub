@@ -87,17 +87,33 @@ class HubHelper
 
     public function isReadOnly()
     {
-        return (bool) $this->hub->readonly();
+        if ($this->isHub()) {
+            return (bool) $this->hub->readonly();
+        }
+        else {
+            return false;
+        }
     }
 
     public function id()
     {
-        return $this->hub->id;
+        if ($this->isHub()) {
+            return $this->hub->id;
+        }
+        else {
+            return null;
+        }
     }
 
     public function name()
     {
-        return $this->hub->name;
+        if ($this->isHub()) {
+            return $this->hub->name;
+        }
+        else {
+            return null;
+        }
+        
     }
 
     public function url($name = null)

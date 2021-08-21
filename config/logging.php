@@ -37,7 +37,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => [env('LOG_STACK_CHANNEL', 'single')],
             'ignore_exceptions' => false,
         ],
 

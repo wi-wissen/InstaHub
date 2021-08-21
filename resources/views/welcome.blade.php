@@ -102,9 +102,11 @@ h2{
             <h1>
                 {{ env('APP_NAME') }}
             </h1>
+            @if(RequestHub::name())
             <h2>
                 {{RequestHub::name()}}
             </h2>
+            @endif
 
                 <a {{ RequestHub::isReadOnly() ? "disabled" : "" }} href="{{ url('/register') }}" class="btn btn-success btn-lg btn-block">
                 {{ __('Create Account') }}

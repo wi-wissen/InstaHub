@@ -2,6 +2,27 @@
 
 /*
 |--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
+|
+| These first Rules overrule Rules in Hubs
+|
+*/
+
+Auth::routes();
+Route::get('login/{token}', '\App\Http\Controllers\Auth\LoginController@loginWithToken');
+
+Route::get('/about', 'StaticController@about');
+Route::get('/noad', 'StaticController@noad');
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
+
+/*
+|--------------------------------------------------------------------------
 | Web Routes for Main (will also handle unhandled Routes in Hub)
 |--------------------------------------------------------------------------
 */
@@ -160,13 +181,8 @@ Route::group(['domain' => config('app.domain_hub')], function () {
 | by your application. Just tell Laravel the URIs it should respond
 | to using a Closure or controller method. Build something great!
 |
+| These last Rules are used if they are not fetched un Hubs.
+|
 */
 
-Auth::routes();
-Route::get('login/{token}', '\App\Http\Controllers\Auth\LoginController@loginWithToken');
-
 Route::get('/', 'StaticController@landingMain');
-Route::get('/about', 'StaticController@about');
-Route::get('/noad', 'StaticController@noad');
-
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
