@@ -8,6 +8,6 @@ class Tag extends Model
 {
     public function photo()
     {
-        return $this->belongsTo('App\Photo');
+        return $this->belongsTo(\App\Photo::class);
     }
 }

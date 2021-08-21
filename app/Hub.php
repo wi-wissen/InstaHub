@@ -17,7 +17,7 @@ class Hub extends Model
 
     public function teacher()
     {
-        return $this->belongsTo('App\User', 'teacher_id');
+        return $this->belongsTo(\App\User::class, 'teacher_id');
     }
 
     public function hasWorkingUser()

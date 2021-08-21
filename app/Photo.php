@@ -25,27 +25,27 @@ class Photo extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(\App\User::class);
     }
 
     public function likes()
     {
-        return $this->hasMany('App\Like');
+        return $this->hasMany(\App\Like::class);
     }
 
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(\App\Comment::class);
     }
 
     public function tags()
     {
-        return $this->hasMany('App\Tag');
+        return $this->hasMany(\App\Tag::class);
     }
 
     public function viewers()
     {
-        return $this->hasMany('App\Analytic');
+        return $this->hasMany(\App\Analytic::class);
     }
 
     public static function boot()

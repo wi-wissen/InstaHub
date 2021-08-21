@@ -50,23 +50,23 @@ class User extends Authenticatable
     public function following()
     {
         //return $this->hasMany('App\Follow', 'follower_id');
-        return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id')->withTimestamps();
+        return $this->belongsToMany(\App\User::class, 'follows', 'following_id', 'follower_id')->withTimestamps();
     }
 
     public function followers()
     {
         //return $this->hasMany('App\Follow', 'following_id');
-        return $this->belongsToMany('App\User', 'follows', 'follower_id', 'following_id')->withTimestamps();
+        return $this->belongsToMany(\App\User::class, 'follows', 'follower_id', 'following_id')->withTimestamps();
     }
 
     public function photos()
     {
-        return $this->hasMany('App\Photo')->orderBy('created_at', 'desc');
+        return $this->hasMany(\App\Photo::class)->orderBy('created_at', 'desc');
     }
 
     public function visits()
     {
-        return $this->hasMany('App\Analytic')->orderBy('created_at', 'desc');
+        return $this->hasMany(\App\Analytic::class)->orderBy('created_at', 'desc');
     }
 
     public function isfollowing($user)
@@ -77,7 +77,7 @@ class User extends Authenticatable
 
     public function hubs()
     {
-        return $this->hasMany('App\Hub', 'teacher_id', 'id');
+        return $this->hasMany(\App\Hub::class, 'teacher_id', 'id');
     }
 
     public function age()
