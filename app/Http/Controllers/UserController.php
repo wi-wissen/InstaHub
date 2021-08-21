@@ -3,131 +3,131 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
-use Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
-use DB;
-use Input;
-use Config;
-use Auth;
-use Schema;
-use Debugbar;
-
+use App\Http\Requests;
 use App\Http\Resources\User as UserResource;
+use App\User;
+use Auth;
+use Config;
+use DB;
+use Debugbar;
 use Illuminate\Support\Facades\Hash;
+use Input;
+use Request;
+use Schema;
 
 class UserController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-	}
-	
-	public function index(Request $request, $filter = null, $param = null) 
-	{
-		if($filter == 'suggested') {
-			return view('user.index', ['users' => User::getSuggested(), 'heading' => __('Suggested')]); //TODO: Lassen sich Punkte mit übertragen?
-		}
-		else if ($filter == 'letter') {
-			return view('user.index', ['users' => User::where('username', 'LIKE', $param . '%')->orderBy('username', 'asc')->paginate(10), 'char' => $param]);
-		}
-		else {
-			return view('user.index', ['users' => User::orderBy('username', 'asc')->paginate(10), 'char' => 'All']);
-		}
-	}
-	
-	public function show($username, Request $request) 
-	{
-		$user = User::where('username', $username)->firstOrFail();
-
-		return view('user.show', ['user' => $user]);
-	}
-
-	public function edit($username)
-    {
-        $user = User::where('username', $username)->firstOrFail();
-        return view('user.edit',compact('user'));
     }
 
-	 public function update(Request $request, $username)
-	 {
-		$user = User::where('username', $username)->firstOrFail();
+    public function index(Request $request, $filter = null, $param = null)
+    {
+        if ($filter == 'suggested') {
+            return view('user.index', ['users' => User::getSuggested(), 'heading' => __('Suggested')]); //TODO: Lassen sich Punkte mit übertragen?
+        } elseif ($filter == 'letter') {
+            return view('user.index', ['users' => User::where('username', 'LIKE', $param.'%')->orderBy('username', 'asc')->paginate(10), 'char' => $param]);
+        } else {
+            return view('user.index', ['users' => User::orderBy('username', 'asc')->paginate(10), 'char' => 'All']);
+        }
+    }
 
-		$this->validate($request, [
-			'name' => 'required|max:191',
-			'email' => 'required|email|unique:users,email,'.$user->id,
-			'bio' => 'max:500',
-			'birthday' => 'nullable|date_format:Y-m-d',
-			'city' => 'nullable|string',
-			'country' => 'nullable|string',
-			'centimeters' => 'nullable|numeric',
-			'is_active' => 'boolean'
-		]);
+    public function show($username, Request $request)
+    {
+        $user = User::where('username', $username)->firstOrFail();
 
-		$user->name = $request->input('name');
-		$user->email = $request->input('email');
-		$user->bio = $request->input('bio');
-		$user->gender = $request->input('gender') ?: null;
-		$user->birthday = $request->input('birthday') ?: null;
-		$user->city = $request->input('city') ?: null;
-		$user->country = $request->input('country') ?: null;
-		$user->centimeters = $request->input('centimeters') ?: null;
-		if (Auth::user()->allowed('dba')) $user->is_active = ($request->has('is_active')) ? true : false ;
-		
-		if ($request->hasFile('avatar')) {
-			if ($request->file('avatar')->isValid()) {
-				$user->avatar = Storage::putFile('avatars', $request->file('avatar'));
-			} else {
-				flash(__('Can not upload Avatar'))->error();
-			}	
-		}
-		$user->save();
-		flash(__('All Changes saved'))->success();
-		return redirect('user/' . $user->username);
-	 }
+        return view('user.show', ['user' => $user]);
+    }
 
-	public function activate($username, Request $request) 
-	{
-		$user = User::where('username', $username)->firstOrFail();
+    public function edit($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
 
-		if (Auth::user()->allowed('dba')) {
-			$user->save();
-			$user->is_active = true;
-			$user->save();
-			flash(__('User activated'))->success();
+        return view('user.edit', compact('user'));
+    }
 
-			if (! RequestHub::isHub()) {
-				$user->notify(new UserActivated());
-			}
-		}
-		else {
-			flash(__('You are not allowed to do this!'))->error();
-		}
+    public function update(Request $request, $username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
 
-		return redirect('user/' . $user->username);
-	}
+        $this->validate($request, [
+            'name' => 'required|max:191',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            'bio' => 'max:500',
+            'birthday' => 'nullable|date_format:Y-m-d',
+            'city' => 'nullable|string',
+            'country' => 'nullable|string',
+            'centimeters' => 'nullable|numeric',
+            'is_active' => 'boolean',
+        ]);
 
-	public function deactivate($username, Request $request) 
-	{
-		$user = User::where('username', $username)->firstOrFail();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->bio = $request->input('bio');
+        $user->gender = $request->input('gender') ?: null;
+        $user->birthday = $request->input('birthday') ?: null;
+        $user->city = $request->input('city') ?: null;
+        $user->country = $request->input('country') ?: null;
+        $user->centimeters = $request->input('centimeters') ?: null;
+        if (Auth::user()->allowed('dba')) {
+            $user->is_active = ($request->has('is_active')) ? true : false;
+        }
 
-		if (Auth::user()->allowed('dba')) {
-			$user->save();
-			$user->is_active = false;
-			$user->save();
-			flash(__('User deactivated'))->success();
-		}
-		else {
-			flash(__('You are not allowed to do this!'))->error();
-		}
+        if ($request->hasFile('avatar')) {
+            if ($request->file('avatar')->isValid()) {
+                $user->avatar = Storage::putFile('avatars', $request->file('avatar'));
+            } else {
+                flash(__('Can not upload Avatar'))->error();
+            }
+        }
+        $user->save();
+        flash(__('All Changes saved'))->success();
 
-		return redirect('user/' . $user->username);
-	}
+        return redirect('user/'.$user->username);
+    }
+
+    public function activate($username, Request $request)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+
+        if (Auth::user()->allowed('dba')) {
+            $user->save();
+            $user->is_active = true;
+            $user->save();
+            flash(__('User activated'))->success();
+
+            if (! RequestHub::isHub()) {
+                $user->notify(new UserActivated());
+            }
+        } else {
+            flash(__('You are not allowed to do this!'))->error();
+        }
+
+        return redirect('user/'.$user->username);
+    }
+
+    public function deactivate($username, Request $request)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+
+        if (Auth::user()->allowed('dba')) {
+            $user->save();
+            $user->is_active = false;
+            $user->save();
+            flash(__('User deactivated'))->success();
+        } else {
+            flash(__('You are not allowed to do this!'))->error();
+        }
+
+        return redirect('user/'.$user->username);
+    }
 
     public function search($query)
     {
-        $user = User::where('username', 'LIKE', $query . '%')->limit(10)->get();
+        $user = User::where('username', 'LIKE', $query.'%')->limit(10)->get();
+
         return UserResource::collection($user);
     }
 
@@ -136,6 +136,7 @@ class UserController extends Controller
         $user = User::where('username', $username)->first();
         $user->delete();
         flash(__('User deleted'))->success();
+
         return redirect('home');
     }
 
@@ -152,24 +153,21 @@ class UserController extends Controller
         ]);
 
         if (Hash::check($request->input('old_password'), Auth::user()->getAuthPassword())) {
-            if (!strcmp($request->input('password'), $request->input('password_confirmation'))) {
-                if (strlen($request->input('password'))>4) {
+            if (! strcmp($request->input('password'), $request->input('password_confirmation'))) {
+                if (strlen($request->input('password')) > 4) {
                     Auth::user()->password = bcrypt($request->input('password'));
                     Auth::user()->save();
                     flash(__('Password changed'), 'success');
                 } else {
                     flash(__('Password minlength is 5 characters'), 'warning');
                 }
-                
             } else {
                 flash(__('New password does not match with confirmed password'), 'danger');
             }
-
-        }
-        else {
+        } else {
             flash(__('Wrong password'), 'danger');
         }
-        
+
         return redirect('/home');
     }
 
@@ -192,9 +190,7 @@ class UserController extends Controller
         $user->save();
 
         return response()->json([
-            'password' => $pw
+            'password' => $pw,
         ]);
-
     }
-
 }

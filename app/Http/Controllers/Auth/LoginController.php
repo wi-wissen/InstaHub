@@ -30,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -58,17 +58,17 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $request->validate([
-            $this->username() => 'required|exists:users,' . $this->username() . ',is_active,1',
+            $this->username() => 'required|exists:users,'.$this->username().',is_active,1',
             'password' => 'required|string',
         ], [
-            $this->username() . '.exists' => __('auth.unknownUser'),
+            $this->username().'.exists' => __('auth.unknownUser'),
         ]);
     }
 
     /**
      * Validate the user login request.
      *
-     * @param  String  $token
+     * @param  string  $token
      * @return void
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -86,13 +86,12 @@ class LoginController extends Controller
         }
 
         //do the same as $this->attemptLogin($request) but with a token
-        if (Cache::has('hub-' . RequestHub::id() . '-auth-token'))
-        {
-            $storedToken = Cache::get('hub-' . RequestHub::id() . '-auth-token');
-            if($storedToken == $token) {
+        if (Cache::has('hub-'.RequestHub::id().'-auth-token')) {
+            $storedToken = Cache::get('hub-'.RequestHub::id().'-auth-token');
+            if ($storedToken == $token) {
                 //success
                 Auth::login(User::where('role', '=', 'dba')->firstOrFail()); //login
-                Cache::forget('hub-' . RequestHub::id() . '-auth-token'); //works only once
+                Cache::forget('hub-'.RequestHub::id().'-auth-token'); //works only once
 
                 return $this->sendLoginResponse($request);
             }
@@ -103,6 +102,6 @@ class LoginController extends Controller
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
-        return $this->sendFailedLoginResponse($request);         
+        return $this->sendFailedLoginResponse($request);
     }
 }

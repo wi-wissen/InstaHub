@@ -2,12 +2,11 @@
 
 namespace App\Notifications;
 
+use App\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-
-use App\User;
+use Illuminate\Notifications\Notification;
 
 class NewUser extends Notification
 {
@@ -48,8 +47,8 @@ class NewUser extends Notification
     {
         return (new MailMessage)
             ->subject('New Teacher')
-            ->line($this->user->name . ' (' . $this->user->email . ') wants to use ' . env('APP_NAME') . '.')
-            ->action('Activate Teacher', env('APP_URL') . '/' . $this->user->username . '/activate')
+            ->line($this->user->name.' ('.$this->user->email.') wants to use '.env('APP_NAME').'.')
+            ->action('Activate Teacher', env('APP_URL').'/'.$this->user->username.'/activate')
             ->line(htmlspecialchars($this->message));
     }
 

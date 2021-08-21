@@ -4,7 +4,6 @@ use Illuminate\Database\Seeder;
 
 class AdsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -12,13 +11,10 @@ class AdsTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('ads')->delete();
-        
-        \DB::table('ads')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('ads')->insert([
+            0 => [
                 'id' => 1,
                 'priority' => 2,
                 'name' => 'freizeitpark',
@@ -28,9 +24,8 @@ class AdsTableSeeder extends Seeder
                 'query' => 'SELECT CASE gender WHEN \'male\' THEN true ELSE false END FROM users where id=$user',
                 'created_at' => '2018-10-07 00:00:00',
                 'updated_at' => '2018-10-07 00:00:00',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'priority' => 1,
                 'name' => 'bergalm',
@@ -46,9 +41,8 @@ FROM photos
 WHERE id=$photo',
                 'created_at' => '2018-10-07 23:58:59',
                 'updated_at' => '2018-10-07 23:58:59',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'priority' => 2,
                 'name' => 'ivo',
@@ -66,9 +60,8 @@ ORDER BY id DESC
 LIMIT 1',
                 'created_at' => '2018-10-07 23:58:59',
                 'updated_at' => '2018-10-07 23:58:59',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'priority' => 2,
                 'name' => 'princess',
@@ -78,9 +71,8 @@ LIMIT 1',
                 'query' => 'SELECT CASE gender WHEN \'female\' THEN true ELSE false END FROM users where id=$user',
                 'created_at' => '2018-10-07 23:58:59',
                 'updated_at' => '2018-10-07 23:58:59',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'priority' => 1,
                 'name' => 'oodel',
@@ -96,9 +88,8 @@ FROM users
 WHERE id=$user',
                 'created_at' => '2018-10-07 23:58:59',
                 'updated_at' => '2018-10-07 23:58:59',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'priority' => 1,
                 'name' => 'truti',
@@ -114,9 +105,8 @@ FROM photos
 WHERE id=$photo',
                 'created_at' => '2018-10-07 23:58:59',
                 'updated_at' => '2018-10-07 23:58:59',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'priority' => 3,
                 'name' => 'andromeda ',
@@ -126,9 +116,8 @@ WHERE id=$photo',
                 'query' => 'SELECT id FROM users WHERE id=$user',
                 'created_at' => '2018-10-07 23:58:59',
                 'updated_at' => '2018-10-07 23:58:59',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'priority' => 3,
                 'name' => 'burgerhaus',
@@ -138,9 +127,7 @@ WHERE id=$photo',
                 'query' => 'SELECT id FROM users WHERE id=$user',
                 'created_at' => '2018-10-07 23:58:59',
                 'updated_at' => '2018-10-07 23:58:59',
-            ),
-        ));
-        
-        
+            ],
+        ]);
     }
 }

@@ -3,16 +3,14 @@
 namespace App\Http\Resources;
 
 use App\Facades\RequestHub;
-use Illuminate\Http\Resources\Json\Resource;
-use App\Http\Resources\User as UserResource;
 use App\Http\Resources\Comment as CommentResource;
-
-use Illuminate\Support\Facades\Schema;
-
+use App\Http\Resources\User as UserResource;
 use App\Like;
 use Auth;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Schema;
 
-class Photo extends Resource
+class Photo extends JsonResource
 {
     /**
      * Transform the resource into an array.

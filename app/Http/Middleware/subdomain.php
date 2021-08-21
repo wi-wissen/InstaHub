@@ -3,17 +3,15 @@
 namespace App\Http\Middleware;
 
 use App\Facades\RequestHub;
-use Closure;
-
-use Config;
-use Session;
-use Auth;
-
-use Debugbar;
-use App\User;
 use App\Hub;
+use App\User;
+use Auth;
+use Closure;
+use Config;
+use Debugbar;
+use Session;
 
-class SubDomain
+class subdomain
 {
     /**
      * Handle an incoming request.
@@ -25,17 +23,17 @@ class SubDomain
     public function handle($request, Closure $next)
     {
         if ($request->route()->parameter('subdomain') != null) {
-            
+
             //change app domain (for mails for example)
             Config::set('app.url', RequestHub::url());
-            
+
             //help controllers to ignore subdomain
-            if(RequestHub::isHub()) {
+            if (RequestHub::isHub()) {
                 RequestHub::setHubDB();
                 $request->route()->forgetParameter('subdomain');
             }
         }
-        
+
         return $next($request);
     }
 }

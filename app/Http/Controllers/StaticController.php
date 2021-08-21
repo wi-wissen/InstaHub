@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Schema;
-
 use Auth;
+use Illuminate\Support\Facades\Schema;
 
 class StaticController extends Controller
 {
@@ -15,27 +14,25 @@ class StaticController extends Controller
 
     public function landingHub()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return redirect('/home');
-        }
-        else{
+        } else {
             return view('welcome');
         }
     }
 
     public function landingMain()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return redirect('/home');
-        }
-        else{
+        } else {
             return view('landing');
-        }  
+        }
     }
 
     public function noad()
     {
-        return view('errors.noad');   
+        return view('errors.noad');
     }
 
     /**

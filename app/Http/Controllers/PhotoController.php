@@ -2,28 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
-
-use Illuminate\Support\Arr;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
-use App\Http\Controllers\Collection;
-
-use App\Photo;
-use App\User;
-use App\Analytic;
 use App\Ad;
-use App\Like;
+use App\Analytic;
 use App\Comment;
 use App\Facades\RequestHub;
-use App\Http\Resources\Photo as PhotoResource;
+use App\Http\Controllers\Collection;
 use App\Http\Resources\Ad as AdResource;
-
+use App\Http\Resources\Photo as PhotoResource;
+use App\Like;
+use App\Photo;
+use App\User;
 use Auth;
-use Debugbar;
 use Config;
+use Debugbar;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Schema;
 
 class PhotoController extends Controller
 {
@@ -44,7 +41,9 @@ class PhotoController extends Controller
      */
     public function index(Request $request, $sort = null)
     {
-        if($sort) session(['sort_feed' => $sort]);
+        if ($sort) {
+            session(['sort_feed' => $sort]);
+        }
 
         $photos = [];
 
@@ -58,16 +57,14 @@ class PhotoController extends Controller
             }
             array_push($following_ids, $user->id); //always show own posts
 
-            if(session('sort_feed') == 'best') { // sort by best
-                
-                if (Photo::where('user_id', $following_ids)->exists()) {   
-                    $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at','desc')->limit(100)->get();	// $photos speichert die neuesten 100 Fotos von Nutzern, denen der Nutzer folgt
+            if (session('sort_feed') == 'best') { // sort by best
+
+                if (Photo::where('user_id', $following_ids)->exists()) {
+                    $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at', 'desc')->limit(100)->get();	// $photos speichert die neuesten 100 Fotos von Nutzern, denen der Nutzer folgt
                 }
 
                 $photos = $photos->addPhotoScore()->paginate(5);
-                            
-            }
-            else { // sort by date
+            } else { // sort by date
                 session(['sort_feed' => 'last']);
 
                 if (Photo::where('user_id', $following_ids)->exists()) {
@@ -78,70 +75,68 @@ class PhotoController extends Controller
 
         if (RequestHub::hasTable('ads')) {
             $ad = Ad::getAd();
+
             return view('photo.index', ['photos' => $photos, 'ad' => $ad]);
-        }
-        else {
+        } else {
             return view('photo.index', ['photos' => $photos]);
-        } 
+        }
     }
 
-    public function photosbytag ($name, $sort = null) {
-        if($sort) session(['sort_feed' => $sort]);
+    public function photosbytag($name, $sort = null)
+    {
+        if ($sort) {
+            session(['sort_feed' => $sort]);
+        }
 
         $photos = null;
 
         if (RequestHub::hasTable('tags')) {
+            if (session('sort_feed') == 'best') { // sort by best
 
-            if(session('sort_feed') == 'best') { // sort by best
-
-                $photos = Photo::whereHas('tags', function ($query) use($name) {
+                $photos = Photo::whereHas('tags', function ($query) use ($name) {
                     $query->where('name', '=', strtolower($name));
                 })
-                    ->orderBy('created_at','desc')
+                    ->orderBy('created_at', 'desc')
                     ->limit(200)
                     ->get()
                     ->addPhotoScoreGlobal()
-                    ->paginate(5);                
-            }
-            else { // sort by date
+                    ->paginate(5);
+            } else { // sort by date
                 session(['sort_feed' => 'last']);
-    
-                $photos = Photo::whereHas('tags', function ($query) use($name) {
+
+                $photos = Photo::whereHas('tags', function ($query) use ($name) {
                     $query->where('name', '=', strtolower($name));
                 })->paginate(5);
             }
-             
         } elseif (RequestHub::hasTable('photos')) {
+            if (session('sort_feed') == 'best') { // sort by best
 
-            if(session('sort_feed') == 'best') { // sort by best
-
-                $photos = Photo::where('description', 'like', "%#$name%" )
-                    ->orderBy('created_at','desc')
+                $photos = Photo::where('description', 'like', "%#$name%")
+                    ->orderBy('created_at', 'desc')
                     ->limit(200)
                     ->get()
                     ->addPhotoScoreGlobal()
-                    ->paginate(5);                
-            }
-            else { // sort by date
+                    ->paginate(5);
+            } else { // sort by date
                 session(['sort_feed' => 'last']);
-    
-                $photos = Photo::where('description', 'like', "%#$name%" )->paginate(5);  
+
+                $photos = Photo::where('description', 'like', "%#$name%")->paginate(5);
             }
         }
 
         if (RequestHub::hasTable('ads')) {
             $ad = Ad::getAd();
+
             return view('photo.index', ['photos' => $photos, 'ad' => $ad]);
-        }
-        else {
+        } else {
             return view('photo.index', ['photos' => $photos]);
-        } 
+        }
     }
 
-    public function show(Request $request, $photo_id) 
-	{
+    public function show(Request $request, $photo_id)
+    {
         $photo = Photo::findOrFail($photo_id);
-        
+
         $photo = new PhotoResource($photo);
 
         //analytic
@@ -154,39 +149,39 @@ class PhotoController extends Controller
 
             if ($ad) { //is there a matching ad?
                 $ad = new AdResource($ad);
+
                 return view('photo.show', ['photo' => $photo->response()->content(), 'ad' => $ad->response()->content()]);
-            }
-            else {
+            } else {
                 return view('photo.show', ['photo' => $photo->response()->content()]);
             }
-        }
-        else {
+        } else {
             return view('photo.show', ['photo' => $photo->response()->content()]);
         }
     }
 
     public function create()
-	{
-		return view('photo.create', ['filesize' => $this->max_filesize()]);
-	}
+    {
+        return view('photo.create', ['filesize' => $this->max_filesize()]);
+    }
 
-	public function store(Request $request)
-	{
-		$this->validate($request, [
-			'photo' => 'required|max:'. $this->max_filesize(),
-			'description' => 'required'
-		]);
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'photo' => 'required|max:'.$this->max_filesize(),
+            'description' => 'required',
+        ]);
 
-		$url = $request->file('photo')->store('photos');
-		$user = $request->user();
+        $url = $request->file('photo')->store('photos');
+        $user = $request->user();
 
-		$photo = Photo::create([
-			'user_id' => $user->id,
-			'description' => $request->description,
-			'url' => $url
-		]);
-		
-		flash(__('Photo uploaded'))->success();
-		return redirect('p/' . $photo->id);
-	}
+        $photo = Photo::create([
+            'user_id' => $user->id,
+            'description' => $request->description,
+            'url' => $url,
+        ]);
+
+        flash(__('Photo uploaded'))->success();
+
+        return redirect('p/'.$photo->id);
+    }
 }

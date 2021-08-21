@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
-use Auth;
-use Session;
 use App\User;
+use Auth;
+use Closure;
+use Session;
 
-class Role
+class role
 {
     /**
      * Handle an incoming request.
@@ -18,8 +18,9 @@ class Role
      */
     public function handle($request, Closure $next, $role)
     {
-        if (!$request->user()->allowed($role)) {
+        if (! $request->user()->allowed($role)) {
             flash(__('You are not allowed to do this!'))->error();
+
             return redirect('/');
         } else {
             return $next($request);

@@ -2,17 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-use Illuminate\Support\Facades\Schema;
-
 use App\Collections\PhotoCollection;
 use App\Facades\RequestHub;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 
 class Photo extends Model
 {
     protected $table = 'photos';
-	protected $fillable = ['user_id', 'description', 'url'];
+    protected $fillable = ['user_id', 'description', 'url'];
 
     /**
      * Create a new Eloquent Collection instance.
@@ -27,51 +25,52 @@ class Photo extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(\App\User::class);
     }
 
     public function likes()
     {
-        return $this->hasMany('App\Like');
+        return $this->hasMany(\App\Like::class);
     }
 
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(\App\Comment::class);
     }
 
     public function tags()
     {
-        return $this->hasMany('App\Tag');
+        return $this->hasMany(\App\Tag::class);
     }
 
-    
     public function viewers()
     {
-        return $this->hasMany('App\Analytic');
+        return $this->hasMany(\App\Analytic::class);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
-        
+
         self::deleting(function ($value) {
-            //can't delete file couse stock images my be in use in other hubs. 
+            //can't delete file couse stock images my be in use in other hubs.
             //Storage::disk('local')->delete($entry->url);
             //TODO: Cronjob for deleting unneccesary images which leaves stockphots untuched.
         });
 
-        self::created(function($model){
+        self::created(function ($model) {
             // ... code here
-           $model->updateTags();
+            $model->updateTags();
         });
 
-        self::updated(function($model){
+        self::updated(function ($model) {
             // ... code here
             $model->updateTags();
         });
     }
 
-    public function updateTags() {
+    public function updateTags()
+    {
         if (RequestHub::hasTable('tags')) {
             $this->tags()->delete();
             preg_match_all('/#([a-zA-Z0-9äöüÄÖÜß]*)/', $this->description, $treffer);
@@ -83,10 +82,12 @@ class Photo extends Model
         }
     }
 
-    public function getHtmlAttribute() {
+    public function getHtmlAttribute()
+    {
         $html = htmlspecialchars($this->description); //secure user input
         $html = preg_replace('/#([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/tag/$1'>$0</a>", $html);
         $html = preg_replace('/@([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/$1'>$0</a>", $html);
+
         return $html;
     }
 }

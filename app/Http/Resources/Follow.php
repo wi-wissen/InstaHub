@@ -2,10 +2,10 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\Resource;
 use App\Http\Resources\FollowFollower as FollowerResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class Follow extends Resource
+class Follow extends JsonResource
 {
     /**
      * Transform the resource into an array.

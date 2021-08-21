@@ -2,6 +2,27 @@
 
 /*
 |--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
+|
+| These first Rules overrule Rules in Hubs
+|
+*/
+
+Auth::routes();
+Route::get('login/{token}', '\App\Http\Controllers\Auth\LoginController@loginWithToken');
+
+Route::get('/about', 'StaticController@about');
+Route::get('/noad', 'StaticController@noad');
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
+
+/*
+|--------------------------------------------------------------------------
 | Web Routes for Main (will also handle unhandled Routes in Hub)
 |--------------------------------------------------------------------------
 */
@@ -12,7 +33,6 @@ Route::group(['domain' => config('app.domain_admin')], function () {
     Route::get('/', 'StaticController@landingHub');
 
     Route::group(['middleware' => ['auth', 'role:admin']], function () {
-
         Route::get('/api/users/search/{query}', 'UserController@search');
         Route::get('/{username}/activate', 'UserController@activate');
         Route::get('/{username}/deactivate', 'UserController@deactivate');
@@ -27,11 +47,10 @@ Route::group(['domain' => config('app.domain_admin')], function () {
         Route::post('/sql', 'SqlController@getQuery');
         Route::get('/sql/select', 'SqlController@selectGui');
         Route::get('/api/sql/tables', 'SqlController@getTables');
-        Route::post('/api/sql', 'SqlController@getApiQuery');        
+        Route::post('/api/sql', 'SqlController@getApiQuery');
     });
 
     Route::group(['middleware' => ['auth', 'role:teacher']], function () {
-
         Route::get('/explore/users/{filter?}', 'UserController@index');
         Route::get('/explore/users/{filter}/{param?}', 'UserController@index');
 
@@ -40,7 +59,7 @@ Route::group(['domain' => config('app.domain_admin')], function () {
         Route::get('/password/{id}', 'UserController@getNewPassword');
 
         Route::get('/home', 'HubController@index');
-        
+
         //dbadmin
         Route::resource('hubs', 'HubController');
         Route::get('hubs/{id}/dba/redirect', 'AdminController@redirect');
@@ -50,7 +69,7 @@ Route::group(['domain' => config('app.domain_admin')], function () {
 
         Route::get('api/hubs/filter/{text}', 'HubController@apiSearch');
         Route::get('api/hubs', 'HubController@apiIndex');
-        
+
         Route::post('api/hubs/{id}/dba/readonly', 'AdminController@setReadonly');
         Route::post('api/hubs/{id}/dba/activate', 'AdminController@setActivate');
         Route::delete('api/hubs/{id}', 'HubController@destroy');
@@ -62,7 +81,6 @@ Route::group(['domain' => config('app.domain_admin')], function () {
         Route::get('/{username}/edit', 'UserController@edit');
         Route::put('/{username}/update', 'UserController@update');
         Route::get('/{username}/destroy', 'UserController@destroy');
-
     });
 });
 
@@ -74,7 +92,7 @@ Route::group(['domain' => config('app.domain_admin')], function () {
 Route::group(['domain' => config('app.domain_hub')], function () {
 
     //guest
-	Route::get('/', 'StaticController@landingHub');
+    Route::get('/', 'StaticController@landingHub');
 
     Route::group(['middleware' => ['auth', 'role:dba']], function () {
         //admin
@@ -82,7 +100,7 @@ Route::group(['domain' => config('app.domain_hub')], function () {
 
         Route::get('/follower', 'FollowController@index');
         Route::get('api/me/follower', 'FollowController@apiIndex');
-        
+
         Route::get('/sql', 'SqlController@getQuery');
         Route::post('/sql', 'SqlController@getQuery');
         Route::get('/sql/select', 'SqlController@selectGui');
@@ -163,13 +181,8 @@ Route::group(['domain' => config('app.domain_hub')], function () {
 | by your application. Just tell Laravel the URIs it should respond
 | to using a Closure or controller method. Build something great!
 |
+| These last Rules are used if they are not fetched un Hubs.
+|
 */
 
-Auth::routes();
-Route::get('login/{token}', '\App\Http\Controllers\Auth\LoginController@loginWithToken');
-
 Route::get('/', 'StaticController@landingMain');
-Route::get('/about', 'StaticController@about');
-Route::get('/noad', 'StaticController@noad');
-
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth', 'role:admin');
