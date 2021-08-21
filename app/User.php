@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Facades\RequestHub;
 use Auth;
 use DateTime;
@@ -13,6 +14,8 @@ use Storage;
 
 class User extends Authenticatable
 {
+    use HasFactory;
+
     use Notifiable;
 
     public $score = null;
