@@ -33,7 +33,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $table = 'users';
-    protected $dates = ['birthday'];
+    protected $casts = [
+        'birthday' => 'datetime',
+    ];
     protected $fillable = [
         'username', 'name', 'email', 'password', 'bio', 'avatar', 'birthday', 'city', 'country', 'gender', 'centimeters', 'is_active',
     ];
