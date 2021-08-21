@@ -65,12 +65,12 @@ return [
     |
     */
 
-    'url' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://') . env('APP_DOMAIN', 'localhost'),
-    'url_app' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://') . env('APP_DOMAIN', 'localhost'),
-    'url_admin' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://') . env('APP_ADMIN_DOMAIN', 'localhost'),
-    'url_hub' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://') . env('APP_HUB_DOMAIN', 'localhost'),
+    'url' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_DOMAIN', 'localhost'),
+    'url_app' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_DOMAIN', 'localhost'),
+    'url_admin' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_ADMIN_DOMAIN', 'localhost'),
+    'url_hub' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_HUB_DOMAIN', 'localhost'),
 
-    'asset_url' => env('ASSET_URL', null), 
+    'asset_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------

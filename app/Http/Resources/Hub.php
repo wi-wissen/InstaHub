@@ -15,6 +15,7 @@ class Hub extends Resource
     public function toArray($request)
     {
         $hasWorkingUser = $this->hasWorkingUser();
+
         return [
             'id' => $this->id,
             'name' => $this->name,

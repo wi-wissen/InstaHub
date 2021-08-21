@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\User;
-
-use Illuminate\Http\Resources\Json\Resource;
 use App\Http\Resources\User as UserResource;
+use App\User;
+use Illuminate\Http\Resources\Json\Resource;
 
 class Comment extends Resource
 {

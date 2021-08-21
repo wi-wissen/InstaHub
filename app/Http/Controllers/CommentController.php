@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
-use Auth;
-
 use App\Comment;
+use App\Http\Requests;
 use App\Http\Resources\Comment as CommentResource;
+use Auth;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
@@ -18,7 +15,6 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
 
-
     public function store($photo_id, Request $request)
     {
         $comment = Comment::create([
@@ -26,7 +22,7 @@ class CommentController extends Controller
             'photo_id' =>  $photo_id,
             'body' => $request->comment,
         ]);
-        
+
         return new CommentResource($comment);
     }
 
@@ -36,17 +32,16 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-	 public function destroy($id)
-	 {
+    public function destroy($id)
+    {
         $entry = Comment::find($id);
-		
-		//$this->authorize('view', $entry);
 
-		$entry->delete();
-		return response()->json([
+        //$this->authorize('view', $entry);
+
+        $entry->delete();
+
+        return response()->json([
             'success' => 'true',
         ]);
-	 }
-
-
+    }
 }
