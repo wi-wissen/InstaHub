@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Database\Seeders\UsersTableSeeder;
 use App\Facades\RequestHub;
 use App\Http\Requests;
 use App\Http\Resources\Hub as HubResource;
