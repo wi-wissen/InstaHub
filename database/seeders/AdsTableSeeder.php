@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AdsTableSeeder extends Seeder
 {
@@ -13,9 +14,9 @@ class AdsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('ads')->delete();
+        DB::table('ads')->delete();
 
-        \DB::table('ads')->insert([
+        DB::table('ads')->insert([
             0 => [
                 'id' => 1,
                 'priority' => 2,

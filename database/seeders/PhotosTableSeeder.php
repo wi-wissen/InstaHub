@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PhotosTableSeeder extends Seeder
 {
@@ -16,11 +17,11 @@ class PhotosTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        \DB::table('photos')->delete();
+        DB::table('photos')->delete();
 
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 1,
                 'user_id' => 102,
@@ -822,7 +823,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-13 11:59:09',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 101,
                 'user_id' => 67,
@@ -1624,7 +1625,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-08-27 20:33:54',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 201,
                 'user_id' => 4,
@@ -2426,7 +2427,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-10 00:59:54',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 301,
                 'user_id' => 19,
@@ -3228,7 +3229,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-08-27 12:27:17',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 401,
                 'user_id' => 186,
@@ -4030,7 +4031,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-07 00:55:49',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 501,
                 'user_id' => 187,
@@ -4832,7 +4833,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-08-28 13:49:21',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 601,
                 'user_id' => 32,
@@ -5634,7 +5635,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2018-01-04 00:12:05',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 701,
                 'user_id' => 119,
@@ -6436,7 +6437,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-08 20:19:34',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 801,
                 'user_id' => 170,
@@ -7238,7 +7239,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-01 07:32:44',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 901,
                 'user_id' => 30,
@@ -8040,7 +8041,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2018-01-18 16:47:53',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 1001,
                 'user_id' => 170,
@@ -8842,7 +8843,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-22 00:25:10',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 1101,
                 'user_id' => 43,
@@ -9644,7 +9645,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-18 15:26:22',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 1201,
                 'user_id' => 105,
@@ -10446,7 +10447,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-04 00:08:17',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 1301,
                 'user_id' => 23,
@@ -11248,7 +11249,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2017-09-06 00:34:59',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 1401,
                 'user_id' => 191,
@@ -12050,7 +12051,7 @@ class PhotosTableSeeder extends Seeder
                 'updated_at' => '2018-01-10 21:35:11',
             ],
         ]);
-        \DB::table('photos')->insert([
+        DB::table('photos')->insert([
             0 => [
                 'id' => 1501,
                 'user_id' => 144,
@@ -12229,6 +12230,6 @@ class PhotosTableSeeder extends Seeder
             ],
         ]);
 
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

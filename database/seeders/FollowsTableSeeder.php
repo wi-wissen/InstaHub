@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FollowsTableSeeder extends Seeder
 {
@@ -13,11 +14,11 @@ class FollowsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        \DB::table('follows')->delete();
+        DB::table('follows')->delete();
 
-        \DB::table('follows')->insert([
+        DB::table('follows')->insert([
             0 => [
                 'id' => 1,
                 'following_id' => 17,
@@ -3519,7 +3520,7 @@ class FollowsTableSeeder extends Seeder
                 'updated_at' => '2017-09-07 11:15:34',
             ],
         ]);
-        \DB::table('follows')->insert([
+        DB::table('follows')->insert([
             0 => [
                 'id' => 508,
                 'following_id' => 184,
@@ -7021,7 +7022,7 @@ class FollowsTableSeeder extends Seeder
                 'updated_at' => '2017-09-06 19:06:46',
             ],
         ]);
-        \DB::table('follows')->insert([
+        DB::table('follows')->insert([
             0 => [
                 'id' => 1016,
                 'following_id' => 33,
@@ -10265,6 +10266,6 @@ class FollowsTableSeeder extends Seeder
             ],
         ]);
 
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

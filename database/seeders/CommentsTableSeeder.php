@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CommentsTableSeeder extends Seeder
 {
@@ -13,11 +14,11 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        \DB::table('comments')->delete();
+        DB::table('comments')->delete();
 
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 1,
                 'user_id' => 38,
@@ -1619,7 +1620,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '2018-09-14 12:31:57',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 201,
                 'user_id' => 116,
@@ -3221,7 +3222,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '2018-09-24 11:22:52',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 401,
                 'user_id' => 168,
@@ -4823,7 +4824,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 601,
                 'user_id' => 78,
@@ -6425,7 +6426,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '2018-09-09 14:09:26',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 801,
                 'user_id' => 81,
@@ -8027,7 +8028,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '2018-09-17 04:43:35',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 1001,
                 'user_id' => 71,
@@ -9629,7 +9630,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '2018-09-07 11:15:28',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 1201,
                 'user_id' => 26,
@@ -11231,7 +11232,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '2018-09-08 05:31:09',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 1401,
                 'user_id' => 66,
@@ -12833,7 +12834,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '2018-09-14 23:09:43',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 1601,
                 'user_id' => 154,
@@ -14435,7 +14436,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '2018-09-21 17:27:29',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 1801,
                 'user_id' => 173,
@@ -16037,7 +16038,7 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
             ],
         ]);
-        \DB::table('comments')->insert([
+        DB::table('comments')->insert([
             0 => [
                 'id' => 2001,
                 'user_id' => 115,
@@ -16248,6 +16249,6 @@ class CommentsTableSeeder extends Seeder
             ],
         ]);
 
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

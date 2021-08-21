@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,11 +19,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        \DB::table('users')->delete();
+        DB::table('users')->delete();
 
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 1,
                 'username' => 'niclas258',
@@ -214,7 +215,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:45',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 11,
                 'username' => 'mika247',
@@ -406,7 +407,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:46',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 21,
                 'username' => 'josia137',
@@ -598,7 +599,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:47',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 31,
                 'username' => 'nicolas209',
@@ -790,7 +791,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:47',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 41,
                 'username' => 'malte231',
@@ -982,7 +983,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:48',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 51,
                 'username' => 'justin336',
@@ -1174,7 +1175,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:49',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 61,
                 'username' => 'marc430',
@@ -1366,7 +1367,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:50',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 71,
                 'username' => 'karl134',
@@ -1558,7 +1559,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:50',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 81,
                 'username' => 'jano130',
@@ -1750,7 +1751,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:51',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 91,
                 'username' => 'benjamin257',
@@ -1942,7 +1943,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:52',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 101,
                 'username' => 'celine96',
@@ -2134,7 +2135,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:53',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 111,
                 'username' => 'jamila238',
@@ -2326,7 +2327,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:53',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 121,
                 'username' => 'livia60',
@@ -2518,7 +2519,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:54',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 131,
                 'username' => 'juliette175',
@@ -2710,7 +2711,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:55',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 141,
                 'username' => 'juliette284',
@@ -2902,7 +2903,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:56',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 151,
                 'username' => 'greta110',
@@ -3094,7 +3095,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:56',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 161,
                 'username' => 'heidi270',
@@ -3286,7 +3287,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:57',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 171,
                 'username' => 'mara381',
@@ -3478,7 +3479,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:58',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 181,
                 'username' => 'sabina52',
@@ -3670,7 +3671,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:59',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 191,
                 'username' => 'viktoria121',
@@ -3862,7 +3863,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2018-10-04 17:04:59',
             ],
         ]);
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             0 => [
                 'id' => 201,
                 'username' => 'anke49',
@@ -3922,6 +3923,6 @@ class UsersTableSeeder extends Seeder
             ],
         ]);
 
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

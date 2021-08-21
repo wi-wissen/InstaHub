@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class LikesTableSeeder extends Seeder
 {
@@ -13,11 +14,11 @@ class LikesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        \DB::table('likes')->delete();
+        DB::table('likes')->delete();
 
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 1,
                 'photo_id' => 1145,
@@ -3519,7 +3520,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '2017-09-07 05:40:21',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 501,
                 'photo_id' => 23,
@@ -7021,7 +7022,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '2017-09-12 06:10:21',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 1004,
                 'photo_id' => 780,
@@ -10523,7 +10524,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 1506,
                 'photo_id' => 1034,
@@ -14025,7 +14026,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '2017-09-21 17:27:28',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 2011,
                 'photo_id' => 967,
@@ -17527,7 +17528,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '2017-09-12 19:45:39',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 2514,
                 'photo_id' => 767,
@@ -21029,7 +21030,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 3016,
                 'photo_id' => 263,
@@ -24531,7 +24532,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '2017-09-23 07:11:23',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 3523,
                 'photo_id' => 1240,
@@ -28033,7 +28034,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 4038,
                 'photo_id' => 293,
@@ -31535,7 +31536,7 @@ class LikesTableSeeder extends Seeder
                 'updated_at' => '2017-09-09 14:09:40',
             ],
         ]);
-        \DB::table('likes')->insert([
+        DB::table('likes')->insert([
             0 => [
                 'id' => 4543,
                 'photo_id' => 456,
@@ -34681,6 +34682,6 @@ class LikesTableSeeder extends Seeder
             ],
         ]);
 
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

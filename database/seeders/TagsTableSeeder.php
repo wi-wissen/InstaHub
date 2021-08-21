@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TagsTableSeeder extends Seeder
 {
@@ -13,11 +14,11 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        \DB::table('tags')->delete();
+        DB::table('tags')->delete();
 
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 1,
                 'photo_id' => 1,
@@ -3519,7 +3520,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:22',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 501,
                 'photo_id' => 167,
@@ -7021,7 +7022,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:26',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 1001,
                 'photo_id' => 334,
@@ -10523,7 +10524,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:31',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 1501,
                 'photo_id' => 500,
@@ -14025,7 +14026,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:35',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 2001,
                 'photo_id' => 666,
@@ -17527,7 +17528,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:40',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 2501,
                 'photo_id' => 832,
@@ -21029,7 +21030,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:44',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 3001,
                 'photo_id' => 996,
@@ -24531,7 +24532,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:49',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 3501,
                 'photo_id' => 1163,
@@ -28033,7 +28034,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:54',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 4001,
                 'photo_id' => 1329,
@@ -31535,7 +31536,7 @@ class TagsTableSeeder extends Seeder
                 'updated_at' => '2018-02-03 19:27:58',
             ],
         ]);
-        \DB::table('tags')->insert([
+        DB::table('tags')->insert([
             0 => [
                 'id' => 4501,
                 'photo_id' => 1486,
@@ -32350,6 +32351,6 @@ class TagsTableSeeder extends Seeder
             ],
         ]);
 
-        \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
