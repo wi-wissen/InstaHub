@@ -10264,6 +10264,41 @@ class FollowsTableSeeder extends Seeder
                 'created_at' => '2017-09-30 09:18:49',
                 'updated_at' => '2017-09-30 09:18:49',
             ],
+            463 => [
+                'id' => 1500,
+                'following_id' => 204,
+                'follower_id' => 205,
+                'created_at' => '2021-10-05 18:59:00',
+                'updated_at' => '2021-10-05 18:59:00',
+            ],
+            464 => [
+                'id' => 1501,
+                'following_id' => 204,
+                'follower_id' => 206,
+                'created_at' => '2021-10-05 18:59:00',
+                'updated_at' => '2021-10-05 18:59:00',
+            ],
+            465 => [
+                'id' => 1502,
+                'following_id' => 205,
+                'follower_id' => 204,
+                'created_at' => '2021-10-05 18:59:00',
+                'updated_at' => '2021-10-05 18:59:00',
+            ],
+            466 => [
+                'id' => 1503,
+                'following_id' => 205,
+                'follower_id' => 206,
+                'created_at' => '2021-10-05 18:59:00',
+                'updated_at' => '2021-10-05 18:59:00',
+            ],
+            467 => [
+                'id' => 1504,
+                'following_id' => 206,
+                'follower_id' => 204,
+                'created_at' => '2021-10-05 18:59:00',
+                'updated_at' => '2021-10-05 18:59:00',
+            ],
         ]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');

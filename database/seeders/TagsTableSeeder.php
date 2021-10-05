@@ -32345,9 +32345,37 @@ class TagsTableSeeder extends Seeder
             115 => [
                 'id' => 4616,
                 'photo_id' => 1523,
-                'name' => 'katze',
-                'created_at' => '2018-02-03 19:27:59',
-                'updated_at' => '2018-02-03 19:27:59',
+                'name' => 'festival',
+                'created_at' => '2021-10-05 19:04:00',
+                'updated_at' => '2021-10-05 19:04:00',
+            ],
+            116 => [
+                'id' => 4617,
+                'photo_id' => 1523,
+                'name' => 'party',
+                'created_at' => '2021-10-05 19:04:00',
+                'updated_at' => '2021-10-05 19:04:00',
+            ],
+            117 => [
+                'id' => 4618,
+                'photo_id' => 1523,
+                'name' => 'konzert',
+                'created_at' => '2021-10-05 19:04:00',
+                'updated_at' => '2021-10-05 19:04:00',
+            ],
+            118 => [
+                'id' => 4619,
+                'photo_id' => 1524,
+                'name' => 'party',
+                'created_at' => '2021-10-05 19:04:00',
+                'updated_at' => '2021-10-05 19:04:00',
+            ],
+            119 => [
+                'id' => 4620,
+                'photo_id' => 1524,
+                'name' => 'farbe',
+                'created_at' => '2021-10-05 19:04:00',
+                'updated_at' => '2021-10-05 19:04:00',
             ],
         ]);
 

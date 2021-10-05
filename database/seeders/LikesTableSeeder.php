@@ -34680,6 +34680,13 @@ class LikesTableSeeder extends Seeder
                 'created_at' => '2017-09-02 22:52:25',
                 'updated_at' => '2017-09-02 22:52:25',
             ],
+            449 => [
+                'id' => 4999,
+                'photo_id' => 1523,
+                'user_id' => 206,
+                'created_at' => '2021-10-05 19:04:00',
+                'updated_at' => '2021-10-05 19:04:00',
+            ],
         ]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');

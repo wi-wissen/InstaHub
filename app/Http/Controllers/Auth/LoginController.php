@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Facades\RequestHub;
+use App\Helpers\HubHelper;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -40,6 +41,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $hub = new HubHelper(); //this Controller runs before HubHelper in AppServiceProvider, so we force changing db
     }
 
     public function username()

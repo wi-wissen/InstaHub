@@ -12228,6 +12228,22 @@ class PhotosTableSeeder extends Seeder
                 'created_at' => '2018-01-18 20:18:49',
                 'updated_at' => '2018-01-18 20:18:49',
             ],
+            22 => [
+                'id' => 1523,
+                'user_id' => 204,
+                'description' => '#party #konzert #festival',
+                'url' => 'photos/anthony-delanoix-hzgs56Ze49s-unsplash.jpg',
+                'created_at' => '2021-10-05 19:04:00',
+                'updated_at' => '2021-10-05 19:04:00',
+            ],
+            23 => [
+                'id' => 1524,
+                'user_id' => 204,
+                'description' => '#party, #farbe',
+                'url' => 'photos/adam-whitlock-I9j8Rk-JYFM-unsplash.jpg',
+                'created_at' => '2021-10-05 19:04:00',
+                'updated_at' => '2021-10-05 19:04:00',
+            ],
         ]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');

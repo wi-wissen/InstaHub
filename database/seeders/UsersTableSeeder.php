@@ -22,9 +22,10 @@ class UsersTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         DB::table('users')->delete();
-
-        DB::table('users')->insert([
-            0 => [
+        
+        DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 1,
                 'username' => 'niclas258',
                 'email' => 'NiclasSchweizer@instahub.test',
@@ -32,7 +33,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Niclas Schweizer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1998-01-31 00:00:00',
+                'birthday' => '2001-01-31',
                 'city' => 'Wremen',
                 'country' => 'Germany',
                 'centimeters' => 182,
@@ -41,9 +42,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-13 00:00:03',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            1 => [
+                'updated_at' => '2017-09-13 00:00:03',
+            ),
+            1 => 
+            array (
                 'id' => 2,
                 'username' => 'rafael54',
                 'email' => 'RafaelProbst@instahub.test',
@@ -51,7 +53,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Rafael Probst',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-08-06 00:00:00',
+                'birthday' => '2004-08-06',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 187,
@@ -60,9 +62,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-22 08:32:28',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            2 => [
+                'updated_at' => '2017-09-22 08:32:28',
+            ),
+            2 => 
+            array (
                 'id' => 3,
                 'username' => 'luis52',
                 'email' => 'LuisKrueger@instahub.test',
@@ -70,7 +73,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Luis Krüger',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-12-15 00:00:00',
+                'birthday' => '2004-12-15',
                 'city' => 'Lautertal',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -79,9 +82,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-26 15:00:06',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            3 => [
+                'updated_at' => '2017-08-26 15:00:06',
+            ),
+            3 => 
+            array (
                 'id' => 4,
                 'username' => 'gustav489',
                 'email' => 'GustavMeister@instahub.test',
@@ -89,7 +93,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Gustav Meister',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-07-12 00:00:00',
+                'birthday' => '2004-07-12',
                 'city' => 'Halle',
                 'country' => 'Germany',
                 'centimeters' => 165,
@@ -98,9 +102,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 20:28:29',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            4 => [
+                'updated_at' => '2017-09-20 20:28:29',
+            ),
+            4 => 
+            array (
                 'id' => 5,
                 'username' => 'johannes446',
                 'email' => 'JohannesNadel@instahub.test',
@@ -108,7 +113,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Johannes Nadel',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1997-04-01 00:00:00',
+                'birthday' => '2000-04-01',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 184,
@@ -117,9 +122,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-16 21:05:20',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            5 => [
+                'updated_at' => '2017-09-16 21:05:20',
+            ),
+            5 => 
+            array (
                 'id' => 6,
                 'username' => 'justus206',
                 'email' => 'JustusHartmann@instahub.test',
@@ -127,7 +133,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Justus Hartmann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-04-26 00:00:00',
+                'birthday' => '2004-04-26',
                 'city' => 'Ingolstadt',
                 'country' => 'Germany',
                 'centimeters' => 187,
@@ -136,9 +142,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-05 00:25:15',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            6 => [
+                'updated_at' => '2017-09-05 00:25:15',
+            ),
+            6 => 
+            array (
                 'id' => 7,
                 'username' => 'max383',
                 'email' => 'MaxMaier@instahub.test',
@@ -146,7 +153,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Max Maier',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-09-02 00:00:00',
+                'birthday' => '2005-09-02',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 187,
@@ -155,9 +162,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-06 13:16:04',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            7 => [
+                'updated_at' => '2017-09-06 13:16:04',
+            ),
+            7 => 
+            array (
                 'id' => 8,
                 'username' => 'jonas439',
                 'email' => 'JonasSchuhmacher@instahub.test',
@@ -165,7 +173,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jonas Schuhmacher',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-08-07 00:00:00',
+                'birthday' => '2005-08-07',
                 'city' => 'Ergoldsbach',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -174,9 +182,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 02:07:00',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            8 => [
+                'updated_at' => '2017-09-01 02:07:00',
+            ),
+            8 => 
+            array (
                 'id' => 9,
                 'username' => 'alexander190',
                 'email' => 'AlexanderAchen@instahub.test',
@@ -184,7 +193,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Alexander Achen',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-04-19 00:00:00',
+                'birthday' => '2005-04-19',
                 'city' => 'Magdeburg',
                 'country' => 'Germany',
                 'centimeters' => 177,
@@ -193,9 +202,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 16:11:49',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            9 => [
+                'updated_at' => '2017-09-17 16:11:49',
+            ),
+            9 => 
+            array (
                 'id' => 10,
                 'username' => 'kaspar386',
                 'email' => 'KasparVogel@instahub.test',
@@ -203,7 +213,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Kaspar Vogel',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-06-30 00:00:00',
+                'birthday' => '2003-06-30',
                 'city' => 'Heuerßen',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -212,11 +222,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-10 21:43:38',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-10 21:43:38',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 11,
                 'username' => 'mika247',
                 'email' => 'MikaKaufmann@instahub.test',
@@ -224,7 +235,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Mika Kaufmann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-07-10 00:00:00',
+                'birthday' => '2005-07-10',
                 'city' => 'Albertshofen',
                 'country' => 'Germany',
                 'centimeters' => 178,
@@ -233,9 +244,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 11:57:05',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            1 => [
+                'updated_at' => '2017-09-20 11:57:05',
+            ),
+            1 => 
+            array (
                 'id' => 12,
                 'username' => 'gulian236',
                 'email' => 'GulianMueller@instahub.test',
@@ -243,7 +255,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Gulian Müller',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-09-16 00:00:00',
+                'birthday' => '2005-09-16',
                 'city' => 'Barth',
                 'country' => 'Germany',
                 'centimeters' => 183,
@@ -252,9 +264,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-09 02:57:00',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            2 => [
+                'updated_at' => '2017-09-09 02:57:00',
+            ),
+            2 => 
+            array (
                 'id' => 13,
                 'username' => 'benjamin272',
                 'email' => 'BenjaminPapst@instahub.test',
@@ -262,7 +275,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Benjamin Papst',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2005-07-21 00:00:00',
+                'birthday' => '2008-07-21',
                 'city' => 'Weimar',
                 'country' => 'Germany',
                 'centimeters' => 183,
@@ -271,9 +284,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 12:51:44',
-                'updated_at' => '2018-10-04 17:04:45',
-            ],
-            3 => [
+                'updated_at' => '2017-09-01 12:51:44',
+            ),
+            3 => 
+            array (
                 'id' => 14,
                 'username' => 'fabian141',
                 'email' => 'FabianMoeller@instahub.test',
@@ -281,7 +295,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Fabian Möller',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-09-17 00:00:00',
+                'birthday' => '2003-09-17',
                 'city' => 'Elbingerode',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -290,9 +304,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 08:41:12',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            4 => [
+                'updated_at' => '2017-09-23 08:41:12',
+            ),
+            4 => 
+            array (
                 'id' => 15,
                 'username' => 'noah238',
                 'email' => 'NoahDecker@instahub.test',
@@ -300,7 +315,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Noah Decker',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-05-14 00:00:00',
+                'birthday' => '2004-05-14',
                 'city' => 'Neulingen',
                 'country' => 'Germany',
                 'centimeters' => 184,
@@ -309,9 +324,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-08 11:33:12',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            5 => [
+                'updated_at' => '2017-09-08 11:33:12',
+            ),
+            5 => 
+            array (
                 'id' => 16,
                 'username' => 'joshua468',
                 'email' => 'JoshuaMaier@instahub.test',
@@ -319,7 +335,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Joshua Maier',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-01-31 00:00:00',
+                'birthday' => '2004-01-31',
                 'city' => 'Halfing',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -328,9 +344,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-10 16:57:21',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            6 => [
+                'updated_at' => '2017-09-10 16:57:21',
+            ),
+            6 => 
+            array (
                 'id' => 17,
                 'username' => 'marc256',
                 'email' => 'MarcWeisz@instahub.test',
@@ -338,7 +355,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marc Weisz',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2010-02-26 00:00:00',
+                'birthday' => '2013-02-26',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -347,9 +364,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-09 22:04:47',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            7 => [
+                'updated_at' => '2017-09-09 22:04:47',
+            ),
+            7 => 
+            array (
                 'id' => 18,
                 'username' => 'kilian388',
                 'email' => 'KilianFried@instahub.test',
@@ -357,7 +375,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Kilian Fried',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-04-09 00:00:00',
+                'birthday' => '2003-04-09',
                 'city' => 'Biederitz',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -366,9 +384,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 02:45:29',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            8 => [
+                'updated_at' => '2017-09-01 02:45:29',
+            ),
+            8 => 
+            array (
                 'id' => 19,
                 'username' => 'aaron183',
                 'email' => 'AaronLange@instahub.test',
@@ -376,7 +395,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Aaron Lange',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-01-31 00:00:00',
+                'birthday' => '2004-01-31',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -385,9 +404,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 20:35:32',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            9 => [
+                'updated_at' => '2017-09-17 20:35:32',
+            ),
+            9 => 
+            array (
                 'id' => 20,
                 'username' => 'yves18',
                 'email' => 'YvesBach@instahub.test',
@@ -395,7 +415,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Yves Bach',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1997-01-05 00:00:00',
+                'birthday' => '2000-01-05',
                 'city' => 'Würzburg',
                 'country' => 'Germany',
                 'centimeters' => 190,
@@ -404,11 +424,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 12:34:07',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-01 12:34:07',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 21,
                 'username' => 'josia137',
                 'email' => 'JosiaSchwab@instahub.test',
@@ -416,7 +437,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Josia Schwab',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-02-25 00:00:00',
+                'birthday' => '2004-02-25',
                 'city' => 'Viersen Clörath',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -425,9 +446,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-30 14:14:41',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            1 => [
+                'updated_at' => '2017-08-30 14:14:41',
+            ),
+            1 => 
+            array (
                 'id' => 22,
                 'username' => 'david470',
                 'email' => 'DavidSchmitz@instahub.test',
@@ -435,7 +457,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'David Schmitz',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-01-28 00:00:00',
+                'birthday' => '2004-01-28',
                 'city' => 'Bergisch Gladbach Kaule',
                 'country' => 'Germany',
                 'centimeters' => 189,
@@ -444,9 +466,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-18 10:00:11',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            2 => [
+                'updated_at' => '2017-09-18 10:00:11',
+            ),
+            2 => 
+            array (
                 'id' => 23,
                 'username' => 'jen84',
                 'email' => 'JenKoertig@instahub.test',
@@ -454,7 +477,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jen Körtig',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-05-20 00:00:00',
+                'birthday' => '2005-05-20',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -463,9 +486,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 06:09:23',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            3 => [
+                'updated_at' => '2017-09-01 06:09:23',
+            ),
+            3 => 
+            array (
                 'id' => 24,
                 'username' => 'maximilian267',
                 'email' => 'MaximilianSeiler@instahub.test',
@@ -473,7 +497,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Maximilian Seiler',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1998-07-10 00:00:00',
+                'birthday' => '2001-07-10',
                 'city' => 'Bergheim',
                 'country' => 'Germany',
                 'centimeters' => 186,
@@ -482,9 +506,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-05 00:05:29',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            4 => [
+                'updated_at' => '2017-09-05 00:05:29',
+            ),
+            4 => 
+            array (
                 'id' => 25,
                 'username' => 'pascal353',
                 'email' => 'PascalFreeh@instahub.test',
@@ -492,7 +517,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Pascal Freeh',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-09-25 00:00:00',
+                'birthday' => '2003-09-25',
                 'city' => 'Reiffelbach',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -501,9 +526,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-19 23:00:00',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            5 => [
+                'updated_at' => '2017-09-19 23:00:00',
+            ),
+            5 => 
+            array (
                 'id' => 26,
                 'username' => 'jonas27',
                 'email' => 'JonasKruger@instahub.test',
@@ -511,7 +537,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jonas Kruger',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-09-28 00:00:00',
+                'birthday' => '2003-09-28',
                 'city' => 'Hamburg',
                 'country' => 'Germany',
                 'centimeters' => 181,
@@ -520,9 +546,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-10 08:55:52',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            6 => [
+                'updated_at' => '2017-09-10 08:55:52',
+            ),
+            6 => 
+            array (
                 'id' => 27,
                 'username' => 'henri184',
                 'email' => 'HenriMueller@instahub.test',
@@ -530,7 +557,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Henri Müller',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-09-13 00:00:00',
+                'birthday' => '2005-09-13',
                 'city' => 'Langenhagen',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -539,9 +566,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-31 04:46:55',
-                'updated_at' => '2018-10-04 17:04:46',
-            ],
-            7 => [
+                'updated_at' => '2017-08-31 04:46:55',
+            ),
+            7 => 
+            array (
                 'id' => 28,
                 'username' => 'luis215',
                 'email' => 'LuisFrey@instahub.test',
@@ -549,7 +577,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Luis Frey',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-01-19 00:00:00',
+                'birthday' => '2004-01-19',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 179,
@@ -558,9 +586,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-08 00:13:31',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            8 => [
+                'updated_at' => '2017-09-08 00:13:31',
+            ),
+            8 => 
+            array (
                 'id' => 29,
                 'username' => 'fabian191',
                 'email' => 'FabianSchaefer@instahub.test',
@@ -568,7 +597,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Fabian Schäfer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-10-06 00:00:00',
+                'birthday' => '2003-10-06',
                 'city' => 'Halle',
                 'country' => 'Germany',
                 'centimeters' => 176,
@@ -577,9 +606,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-16 18:47:54',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            9 => [
+                'updated_at' => '2017-09-16 18:47:54',
+            ),
+            9 => 
+            array (
                 'id' => 30,
                 'username' => 'simon384',
                 'email' => 'SimonOster@instahub.test',
@@ -587,7 +617,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Simon Oster',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1987-05-26 00:00:00',
+                'birthday' => '1990-05-26',
                 'city' => 'Wenningstedt',
                 'country' => 'Germany',
                 'centimeters' => 177,
@@ -596,11 +626,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-28 13:24:44',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-08-28 13:24:44',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 31,
                 'username' => 'nicolas209',
                 'email' => 'NicolasJunker@instahub.test',
@@ -608,7 +639,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Nicolas Junker',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-10-31 00:00:00',
+                'birthday' => '2004-10-31',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 181,
@@ -617,9 +648,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 00:53:10',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            1 => [
+                'updated_at' => '2017-09-20 00:53:10',
+            ),
+            1 => 
+            array (
                 'id' => 32,
                 'username' => 'justus142',
                 'email' => 'JustusVogel@instahub.test',
@@ -627,7 +659,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Justus Vogel',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-07-10 00:00:00',
+                'birthday' => '2003-07-10',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 186,
@@ -636,9 +668,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 08:16:06',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            2 => [
+                'updated_at' => '2017-09-11 08:16:06',
+            ),
+            2 => 
+            array (
                 'id' => 33,
                 'username' => 'oliver313',
                 'email' => 'OliverSchweitzer@instahub.test',
@@ -646,7 +679,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Oliver Schweitzer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-09-21 00:00:00',
+                'birthday' => '2003-09-21',
                 'city' => 'Mannheim Schönau',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -655,9 +688,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-06 15:18:00',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            3 => [
+                'updated_at' => '2017-09-06 15:18:00',
+            ),
+            3 => 
+            array (
                 'id' => 34,
                 'username' => 'gulian213',
                 'email' => 'GulianNeumann@instahub.test',
@@ -665,7 +699,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Gulian Neumann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1991-04-25 00:00:00',
+                'birthday' => '1994-04-25',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 186,
@@ -674,9 +708,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 00:52:13',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            4 => [
+                'updated_at' => '2017-09-23 00:52:13',
+            ),
+            4 => 
+            array (
                 'id' => 35,
                 'username' => 'liam395',
                 'email' => 'LiamWalter@instahub.test',
@@ -684,7 +719,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Liam Walter',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-09-26 00:00:00',
+                'birthday' => '2005-09-26',
                 'city' => 'Ottersweier',
                 'country' => 'Germany',
                 'centimeters' => 178,
@@ -693,9 +728,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 01:25:26',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            5 => [
+                'updated_at' => '2017-09-20 01:25:26',
+            ),
+            5 => 
+            array (
                 'id' => 36,
                 'username' => 'tom491',
                 'email' => 'TomKuefer@instahub.test',
@@ -703,7 +739,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Tom Küfer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1992-08-09 00:00:00',
+                'birthday' => '1995-08-09',
                 'city' => 'Übersee',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -712,9 +748,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-26 19:08:27',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            6 => [
+                'updated_at' => '2017-08-26 19:08:27',
+            ),
+            6 => 
+            array (
                 'id' => 37,
                 'username' => 'timon261',
                 'email' => 'TimonHartmann@instahub.test',
@@ -722,7 +759,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Timon Hartmann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-12-16 00:00:00',
+                'birthday' => '2003-12-16',
                 'city' => 'Scheidt',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -731,9 +768,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-29 11:31:52',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            7 => [
+                'updated_at' => '2017-08-29 11:31:52',
+            ),
+            7 => 
+            array (
                 'id' => 38,
                 'username' => 'lennes499',
                 'email' => 'LennesKuhn@instahub.test',
@@ -741,7 +779,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lennes Kuhn',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-07-16 00:00:00',
+                'birthday' => '2003-07-16',
                 'city' => 'Halle',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -750,9 +788,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-08 10:22:42',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            8 => [
+                'updated_at' => '2017-09-08 10:22:42',
+            ),
+            8 => 
+            array (
                 'id' => 39,
                 'username' => 'malte174',
                 'email' => 'MalteHahn@instahub.test',
@@ -760,7 +799,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Malte Hahn',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1995-03-23 00:00:00',
+                'birthday' => '1998-03-23',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 182,
@@ -769,9 +808,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 20:04:16',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-            9 => [
+                'updated_at' => '2017-09-20 20:04:16',
+            ),
+            9 => 
+            array (
                 'id' => 40,
                 'username' => 'timon222',
                 'email' => 'TimonRichter@instahub.test',
@@ -779,7 +819,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Timon Richter',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-09-04 00:00:00',
+                'birthday' => '2004-09-04',
                 'city' => 'Föckelberg',
                 'country' => 'Germany',
                 'centimeters' => 189,
@@ -788,11 +828,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 06:18:51',
-                'updated_at' => '2018-10-04 17:04:47',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-20 06:18:51',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 41,
                 'username' => 'malte231',
                 'email' => 'MalteBayer@instahub.test',
@@ -800,7 +841,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Malte Bayer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-09-22 00:00:00',
+                'birthday' => '2003-09-22',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 175,
@@ -809,9 +850,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 12:13:35',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            1 => [
+                'updated_at' => '2017-09-01 12:13:35',
+            ),
+            1 => 
+            array (
                 'id' => 42,
                 'username' => 'max39',
                 'email' => 'MaxRothstein@instahub.test',
@@ -819,7 +861,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Max Rothstein',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-10-13 00:00:00',
+                'birthday' => '2004-10-13',
                 'city' => 'Halle',
                 'country' => 'Germany',
                 'centimeters' => 189,
@@ -828,9 +870,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-13 00:11:35',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            2 => [
+                'updated_at' => '2017-09-13 00:11:35',
+            ),
+            2 => 
+            array (
                 'id' => 43,
                 'username' => 'max143',
                 'email' => 'MaxSchroeder@instahub.test',
@@ -838,7 +881,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Max Schröder',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1997-11-14 00:00:00',
+                'birthday' => '2000-11-14',
                 'city' => 'Bergheim',
                 'country' => 'Germany',
                 'centimeters' => 181,
@@ -847,9 +890,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-29 00:16:18',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            3 => [
+                'updated_at' => '2017-08-29 00:16:18',
+            ),
+            3 => 
+            array (
                 'id' => 44,
                 'username' => 'julian58',
                 'email' => 'JulianFuerst@instahub.test',
@@ -857,7 +901,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Julian Fürst',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-01-15 00:00:00',
+                'birthday' => '2004-01-15',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -866,9 +910,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 00:53:58',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            4 => [
+                'updated_at' => '2017-09-01 00:53:58',
+            ),
+            4 => 
+            array (
                 'id' => 45,
                 'username' => 'levin53',
                 'email' => 'LevinBosch@instahub.test',
@@ -876,7 +921,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Levin Bosch',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-08-02 00:00:00',
+                'birthday' => '2003-08-02',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 184,
@@ -885,9 +930,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-18 00:40:10',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            5 => [
+                'updated_at' => '2017-09-18 00:40:10',
+            ),
+            5 => 
+            array (
                 'id' => 46,
                 'username' => 'max440',
                 'email' => 'MaxZimmermann@instahub.test',
@@ -895,7 +941,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Max Zimmermann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1992-03-18 00:00:00',
+                'birthday' => '1995-03-18',
                 'city' => 'Durlangen',
                 'country' => 'Germany',
                 'centimeters' => 172,
@@ -904,9 +950,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-09 04:30:02',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            6 => [
+                'updated_at' => '2017-09-09 04:30:02',
+            ),
+            6 => 
+            array (
                 'id' => 47,
                 'username' => 'florian398',
                 'email' => 'FlorianKoehler@instahub.test',
@@ -914,7 +961,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Florian Köhler',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-08-17 00:00:00',
+                'birthday' => '2003-08-17',
                 'city' => 'Königsbronn',
                 'country' => 'Germany',
                 'centimeters' => 177,
@@ -923,9 +970,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 23:39:57',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            7 => [
+                'updated_at' => '2017-09-11 23:39:57',
+            ),
+            7 => 
+            array (
                 'id' => 48,
                 'username' => 'oliver97',
                 'email' => 'OliverWaechter@instahub.test',
@@ -933,7 +981,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Oliver Wächter',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-03-17 00:00:00',
+                'birthday' => '2005-03-17',
                 'city' => 'Kollig',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -942,9 +990,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 04:43:35',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            8 => [
+                'updated_at' => '2017-09-17 04:43:35',
+            ),
+            8 => 
+            array (
                 'id' => 49,
                 'username' => 'julian408',
                 'email' => 'JulianEichmann@instahub.test',
@@ -952,7 +1001,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Julian Eichmann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-11-11 00:00:00',
+                'birthday' => '2004-11-11',
                 'city' => 'Diespeck',
                 'country' => 'Germany',
                 'centimeters' => 183,
@@ -961,9 +1010,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-09 19:43:07',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            9 => [
+                'updated_at' => '2017-09-09 19:43:07',
+            ),
+            9 => 
+            array (
                 'id' => 50,
                 'username' => 'daniel334',
                 'email' => 'DanielKuhn@instahub.test',
@@ -971,7 +1021,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Daniel Kuhn',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-06-09 00:00:00',
+                'birthday' => '2003-06-09',
                 'city' => 'Schwarzach',
                 'country' => 'Germany',
                 'centimeters' => 184,
@@ -980,11 +1030,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 03:21:22',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-20 03:21:22',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 51,
                 'username' => 'justin336',
                 'email' => 'JustinSchuster@instahub.test',
@@ -992,7 +1043,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Justin Schuster',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-03-08 00:00:00',
+                'birthday' => '2005-03-08',
                 'city' => 'Hamburg Blankenese',
                 'country' => 'Germany',
                 'centimeters' => 183,
@@ -1001,9 +1052,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-12 08:50:33',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            1 => [
+                'updated_at' => '2017-09-12 08:50:33',
+            ),
+            1 => 
+            array (
                 'id' => 52,
                 'username' => 'jerome437',
                 'email' => 'JeromeSchuster@instahub.test',
@@ -1011,7 +1063,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jerome Schuster',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-12-02 00:00:00',
+                'birthday' => '2004-12-02',
                 'city' => 'Beuren',
                 'country' => 'Germany',
                 'centimeters' => 184,
@@ -1020,9 +1072,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-12 06:41:13',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            2 => [
+                'updated_at' => '2017-09-12 06:41:13',
+            ),
+            2 => 
+            array (
                 'id' => 53,
                 'username' => 'lennox87',
                 'email' => 'LennoxReinhardt@instahub.test',
@@ -1030,7 +1083,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lennox Reinhardt',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-07-24 00:00:00',
+                'birthday' => '2003-07-24',
                 'city' => 'Frankfurt',
                 'country' => 'Germany',
                 'centimeters' => 178,
@@ -1039,9 +1092,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-08 00:18:10',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            3 => [
+                'updated_at' => '2017-09-08 00:18:10',
+            ),
+            3 => 
+            array (
                 'id' => 54,
                 'username' => 'henri376',
                 'email' => 'HenriEhrlichmann@instahub.test',
@@ -1049,7 +1103,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Henri Ehrlichmann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1988-02-05 00:00:00',
+                'birthday' => '1991-02-05',
                 'city' => 'Halle',
                 'country' => 'Germany',
                 'centimeters' => 180,
@@ -1058,9 +1112,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-10 21:52:01',
-                'updated_at' => '2018-10-04 17:04:48',
-            ],
-            4 => [
+                'updated_at' => '2017-09-10 21:52:01',
+            ),
+            4 => 
+            array (
                 'id' => 55,
                 'username' => 'jonas136',
                 'email' => 'JonasEiffel@instahub.test',
@@ -1068,7 +1123,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jonas Eiffel',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-04-28 00:00:00',
+                'birthday' => '2003-04-28',
                 'city' => 'Flöthe',
                 'country' => 'Germany',
                 'centimeters' => 182,
@@ -1077,9 +1132,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-04 03:09:54',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            5 => [
+                'updated_at' => '2017-09-04 03:09:54',
+            ),
+            5 => 
+            array (
                 'id' => 56,
                 'username' => 'moses255',
                 'email' => 'MosesHueber@instahub.test',
@@ -1087,7 +1143,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Moses Hüber',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-03-11 00:00:00',
+                'birthday' => '2003-03-11',
                 'city' => 'Franzburg',
                 'country' => 'Germany',
                 'centimeters' => 172,
@@ -1096,9 +1152,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 03:32:51',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            6 => [
+                'updated_at' => '2017-09-20 03:32:51',
+            ),
+            6 => 
+            array (
                 'id' => 57,
                 'username' => 'colin173',
                 'email' => 'ColinSommer@instahub.test',
@@ -1106,7 +1163,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Colin Sommer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1993-09-06 00:00:00',
+                'birthday' => '1996-09-06',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 172,
@@ -1115,9 +1172,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-25 02:34:25',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            7 => [
+                'updated_at' => '2017-08-25 02:34:25',
+            ),
+            7 => 
+            array (
                 'id' => 58,
                 'username' => 'pascal130',
                 'email' => 'PascalBauer@instahub.test',
@@ -1125,7 +1183,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Pascal Bauer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1990-05-12 00:00:00',
+                'birthday' => '1993-05-12',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -1134,9 +1192,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-18 12:36:21',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            8 => [
+                'updated_at' => '2017-09-18 12:36:21',
+            ),
+            8 => 
+            array (
                 'id' => 59,
                 'username' => 'pascal288',
                 'email' => 'PascalFuchs@instahub.test',
@@ -1144,7 +1203,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Pascal Fuchs',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-03-24 00:00:00',
+                'birthday' => '2004-03-24',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -1153,9 +1212,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-07 03:06:55',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            9 => [
+                'updated_at' => '2017-09-07 03:06:55',
+            ),
+            9 => 
+            array (
                 'id' => 60,
                 'username' => 'kaspar382',
                 'email' => 'KasparAachen@instahub.test',
@@ -1163,7 +1223,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Kaspar Aachen',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-08-17 00:00:00',
+                'birthday' => '2003-08-17',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 179,
@@ -1172,11 +1232,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-15 06:53:24',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-15 06:53:24',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 61,
                 'username' => 'marc430',
                 'email' => 'MarcWerfel@instahub.test',
@@ -1184,7 +1245,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marc Werfel',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-04-21 00:00:00',
+                'birthday' => '2004-04-21',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 179,
@@ -1193,9 +1254,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-15 14:14:37',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            1 => [
+                'updated_at' => '2017-09-15 14:14:37',
+            ),
+            1 => 
+            array (
                 'id' => 62,
                 'username' => 'adrian211',
                 'email' => 'AdrianFuchs@instahub.test',
@@ -1203,7 +1265,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Adrian Fuchs',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-01-03 00:00:00',
+                'birthday' => '2004-01-03',
                 'city' => 'Heimsheim',
                 'country' => 'Germany',
                 'centimeters' => 176,
@@ -1212,9 +1274,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-22 04:52:55',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            2 => [
+                'updated_at' => '2017-09-22 04:52:55',
+            ),
+            2 => 
+            array (
                 'id' => 63,
                 'username' => 'luca212',
                 'email' => 'LucaFassbinder@instahub.test',
@@ -1222,7 +1285,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Luca Fassbinder',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-10-10 00:00:00',
+                'birthday' => '2004-10-10',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 181,
@@ -1231,9 +1294,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-27 09:46:12',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            3 => [
+                'updated_at' => '2017-08-27 09:46:12',
+            ),
+            3 => 
+            array (
                 'id' => 64,
                 'username' => 'fabian419',
                 'email' => 'FabianProbst@instahub.test',
@@ -1241,7 +1305,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Fabian Probst',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-04-11 00:00:00',
+                'birthday' => '2005-04-11',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 190,
@@ -1250,9 +1314,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-03 16:46:11',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            4 => [
+                'updated_at' => '2017-09-03 16:46:11',
+            ),
+            4 => 
+            array (
                 'id' => 65,
                 'username' => 'lennes90',
                 'email' => 'LennesWeber@instahub.test',
@@ -1260,7 +1325,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lennes Weber',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-07-31 00:00:00',
+                'birthday' => '2003-07-31',
                 'city' => 'Höringen',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -1269,9 +1334,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-26 09:21:25',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            5 => [
+                'updated_at' => '2017-08-26 09:21:25',
+            ),
+            5 => 
+            array (
                 'id' => 66,
                 'username' => 'vincent331',
                 'email' => 'VincentBeyer@instahub.test',
@@ -1279,7 +1345,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Vincent Beyer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1999-02-19 00:00:00',
+                'birthday' => '2002-02-19',
                 'city' => 'Ebersbach-Musbach',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -1288,9 +1354,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 07:46:01',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            6 => [
+                'updated_at' => '2017-09-14 07:46:01',
+            ),
+            6 => 
+            array (
                 'id' => 67,
                 'username' => 'oliver39',
                 'email' => 'OliverAdler@instahub.test',
@@ -1298,7 +1365,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Oliver Adler',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-01-22 00:00:00',
+                'birthday' => '2004-01-22',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -1307,9 +1374,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 02:52:26',
-                'updated_at' => '2018-10-04 17:04:49',
-            ],
-            7 => [
+                'updated_at' => '2017-09-01 02:52:26',
+            ),
+            7 => 
+            array (
                 'id' => 68,
                 'username' => 'moses475',
                 'email' => 'MosesSommer@instahub.test',
@@ -1317,7 +1385,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Moses Sommer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-12-21 00:00:00',
+                'birthday' => '2003-12-21',
                 'city' => 'Hamburg',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -1326,9 +1394,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-05 11:11:18',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            8 => [
+                'updated_at' => '2017-09-05 11:11:18',
+            ),
+            8 => 
+            array (
                 'id' => 69,
                 'username' => 'lukas493',
                 'email' => 'LukasAckermann@instahub.test',
@@ -1336,7 +1405,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lukas Ackermann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-05-25 00:00:00',
+                'birthday' => '2003-05-25',
                 'city' => 'Dommitzsch',
                 'country' => 'Germany',
                 'centimeters' => 188,
@@ -1345,9 +1414,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-18 07:57:14',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            9 => [
+                'updated_at' => '2017-09-18 07:57:14',
+            ),
+            9 => 
+            array (
                 'id' => 70,
                 'username' => 'daniel405',
                 'email' => 'DanielSchweitzer@instahub.test',
@@ -1355,7 +1425,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Daniel Schweitzer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-10-19 00:00:00',
+                'birthday' => '2003-10-19',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 184,
@@ -1364,11 +1434,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-09 16:21:26',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-09 16:21:26',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 71,
                 'username' => 'karl134',
                 'email' => 'KarlDaecher@instahub.test',
@@ -1376,7 +1447,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Karl Dächer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1977-12-19 00:00:00',
+                'birthday' => '1980-12-19',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -1385,9 +1456,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-15 17:12:20',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            1 => [
+                'updated_at' => '2017-09-15 17:12:20',
+            ),
+            1 => 
+            array (
                 'id' => 72,
                 'username' => 'lukas251',
                 'email' => 'LukasProbst@instahub.test',
@@ -1395,7 +1467,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lukas Probst',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1944-06-27 00:00:00',
+                'birthday' => '1947-06-27',
                 'city' => 'Eulenberg',
                 'country' => 'Germany',
                 'centimeters' => 190,
@@ -1404,9 +1476,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 10:30:37',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            2 => [
+                'updated_at' => '2017-09-11 10:30:37',
+            ),
+            2 => 
+            array (
                 'id' => 73,
                 'username' => 'karl261',
                 'email' => 'KarlVogt@instahub.test',
@@ -1414,7 +1487,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Karl Vogt',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-09-04 00:00:00',
+                'birthday' => '2005-09-04',
                 'city' => 'Dresden',
                 'country' => 'Germany',
                 'centimeters' => 186,
@@ -1423,9 +1496,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 15:51:12',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            3 => [
+                'updated_at' => '2017-09-11 15:51:12',
+            ),
+            3 => 
+            array (
                 'id' => 74,
                 'username' => 'henri73',
                 'email' => 'HenriSchuhmacher@instahub.test',
@@ -1433,7 +1507,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Henri Schuhmacher',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-03-27 00:00:00',
+                'birthday' => '2005-03-27',
                 'city' => 'Gesees',
                 'country' => 'Germany',
                 'centimeters' => 184,
@@ -1442,9 +1516,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-13 10:42:47',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            4 => [
+                'updated_at' => '2017-09-13 10:42:47',
+            ),
+            4 => 
+            array (
                 'id' => 75,
                 'username' => 'marco446',
                 'email' => 'MarcoPfaff@instahub.test',
@@ -1452,7 +1527,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marco Pfaff',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-07-30 00:00:00',
+                'birthday' => '2003-07-30',
                 'city' => 'Halle',
                 'country' => 'Germany',
                 'centimeters' => 179,
@@ -1461,9 +1536,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 04:06:01',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            5 => [
+                'updated_at' => '2017-09-21 04:06:01',
+            ),
+            5 => 
+            array (
                 'id' => 76,
                 'username' => 'meiko399',
                 'email' => 'MeikoBar@instahub.test',
@@ -1471,7 +1547,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Meiko Bar',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-12-22 00:00:00',
+                'birthday' => '2003-12-22',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 175,
@@ -1480,9 +1556,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-19 18:01:12',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            6 => [
+                'updated_at' => '2017-09-19 18:01:12',
+            ),
+            6 => 
+            array (
                 'id' => 77,
                 'username' => 'leonard146',
                 'email' => 'LeonardSchwartz@instahub.test',
@@ -1490,7 +1567,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Leonard Schwartz',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1989-10-10 00:00:00',
+                'birthday' => '1992-10-10',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 161,
@@ -1499,9 +1576,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-26 00:21:19',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            7 => [
+                'updated_at' => '2017-08-26 00:21:19',
+            ),
+            7 => 
+            array (
                 'id' => 78,
                 'username' => 'ole23',
                 'email' => 'OleFaerber@instahub.test',
@@ -1509,7 +1587,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Ole Färber',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-06-21 00:00:00',
+                'birthday' => '2003-06-21',
                 'city' => 'Vierkirchen',
                 'country' => 'Germany',
                 'centimeters' => 186,
@@ -1518,9 +1596,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 04:08:43',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            8 => [
+                'updated_at' => '2017-09-23 04:08:43',
+            ),
+            8 => 
+            array (
                 'id' => 79,
                 'username' => 'jerome176',
                 'email' => 'JeromeBohm@instahub.test',
@@ -1528,7 +1607,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jerome Bohm',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1991-06-07 00:00:00',
+                'birthday' => '1994-06-07',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 177,
@@ -1537,9 +1616,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-15 00:30:31',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            9 => [
+                'updated_at' => '2017-09-15 00:30:31',
+            ),
+            9 => 
+            array (
                 'id' => 80,
                 'username' => 'dominik427',
                 'email' => 'DominikStrauss@instahub.test',
@@ -1547,7 +1627,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Dominik Strauss',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-05-20 00:00:00',
+                'birthday' => '2003-05-20',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -1556,11 +1636,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-09 23:18:04',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-09 23:18:04',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 81,
                 'username' => 'jano130',
                 'email' => 'JanoHerman@instahub.test',
@@ -1568,7 +1649,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jano Herman',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1990-04-04 00:00:00',
+                'birthday' => '1993-04-04',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -1577,9 +1658,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-12 22:31:34',
-                'updated_at' => '2018-10-04 17:04:50',
-            ],
-            1 => [
+                'updated_at' => '2017-09-12 22:31:34',
+            ),
+            1 => 
+            array (
                 'id' => 82,
                 'username' => 'jonas252',
                 'email' => 'JonasNadel@instahub.test',
@@ -1587,7 +1669,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jonas Nadel',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-09-12 00:00:00',
+                'birthday' => '2004-09-12',
                 'city' => 'Utarp',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -1596,9 +1678,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 09:27:46',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            2 => [
+                'updated_at' => '2017-09-11 09:27:46',
+            ),
+            2 => 
+            array (
                 'id' => 83,
                 'username' => 'marlo387',
                 'email' => 'MarloScholz@instahub.test',
@@ -1606,7 +1689,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marlo Scholz',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-10-06 00:00:00',
+                'birthday' => '2003-10-06',
                 'city' => 'Hambühren',
                 'country' => 'Germany',
                 'centimeters' => 186,
@@ -1615,9 +1698,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 09:33:09',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            3 => [
+                'updated_at' => '2017-09-23 09:33:09',
+            ),
+            3 => 
+            array (
                 'id' => 84,
                 'username' => 'marlo246',
                 'email' => 'MarloFischer@instahub.test',
@@ -1625,7 +1709,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marlo Fischer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-07-09 00:00:00',
+                'birthday' => '2003-07-09',
                 'city' => 'Bremen Steffensweg',
                 'country' => 'Germany',
                 'centimeters' => 182,
@@ -1634,9 +1718,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-03 03:03:14',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            4 => [
+                'updated_at' => '2017-09-03 03:03:14',
+            ),
+            4 => 
+            array (
                 'id' => 85,
                 'username' => 'linus438',
                 'email' => 'LinusSchiffer@instahub.test',
@@ -1644,7 +1729,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Linus Schiffer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-09-18 00:00:00',
+                'birthday' => '2004-09-18',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -1653,9 +1738,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-07 10:25:09',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            5 => [
+                'updated_at' => '2017-09-07 10:25:09',
+            ),
+            5 => 
+            array (
                 'id' => 86,
                 'username' => 'karl2',
                 'email' => 'KarlTheiss@instahub.test',
@@ -1663,7 +1749,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Karl Theiss',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-11-12 00:00:00',
+                'birthday' => '2003-11-12',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 184,
@@ -1672,9 +1758,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 07:34:35',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            6 => [
+                'updated_at' => '2017-09-17 07:34:35',
+            ),
+            6 => 
+            array (
                 'id' => 87,
                 'username' => 'cedric351',
                 'email' => 'CedricDecker@instahub.test',
@@ -1682,7 +1769,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Cedric Decker',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-03-10 00:00:00',
+                'birthday' => '2005-03-10',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 182,
@@ -1691,9 +1778,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-16 16:38:32',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            7 => [
+                'updated_at' => '2017-09-16 16:38:32',
+            ),
+            7 => 
+            array (
                 'id' => 88,
                 'username' => 'felix17',
                 'email' => 'FelixReiniger@instahub.test',
@@ -1701,7 +1789,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Felix Reiniger',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-01-28 00:00:00',
+                'birthday' => '2004-01-28',
                 'city' => 'Hämelhausen',
                 'country' => 'Germany',
                 'centimeters' => 183,
@@ -1710,9 +1798,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 19:47:44',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            8 => [
+                'updated_at' => '2017-09-21 19:47:44',
+            ),
+            8 => 
+            array (
                 'id' => 89,
                 'username' => 'moses385',
                 'email' => 'MosesHolzman@instahub.test',
@@ -1720,7 +1809,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Moses Holzman',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-05-20 00:00:00',
+                'birthday' => '2003-05-20',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -1729,9 +1818,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-04 02:52:00',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            9 => [
+                'updated_at' => '2017-09-04 02:52:00',
+            ),
+            9 => 
+            array (
                 'id' => 90,
                 'username' => 'lennes160',
                 'email' => 'LennesMaier@instahub.test',
@@ -1739,7 +1829,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lennes Maier',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-02-16 00:00:00',
+                'birthday' => '2003-02-16',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 181,
@@ -1748,11 +1838,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-15 11:50:39',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-15 11:50:39',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 91,
                 'username' => 'benjamin257',
                 'email' => 'BenjaminTheissen@instahub.test',
@@ -1760,7 +1851,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Benjamin Theissen',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-06-11 00:00:00',
+                'birthday' => '2005-06-11',
                 'city' => 'Beckedorf',
                 'country' => 'Germany',
                 'centimeters' => 187,
@@ -1769,9 +1860,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 08:27:15',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            1 => [
+                'updated_at' => '2017-09-20 08:27:15',
+            ),
+            1 => 
+            array (
                 'id' => 92,
                 'username' => 'piet343',
                 'email' => 'PietBaader@instahub.test',
@@ -1779,7 +1871,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Piet Baader',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2000-08-13 00:00:00',
+                'birthday' => '2003-08-13',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -1788,9 +1880,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-29 12:45:33',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            2 => [
+                'updated_at' => '2017-08-29 12:45:33',
+            ),
+            2 => 
+            array (
                 'id' => 93,
                 'username' => 'jannis257',
                 'email' => 'JannisBayer@instahub.test',
@@ -1798,7 +1891,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jannis Bayer',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1997-11-15 00:00:00',
+                'birthday' => '2000-11-15',
                 'city' => 'Hamburg',
                 'country' => 'Germany',
                 'centimeters' => 188,
@@ -1807,9 +1900,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-13 12:13:50',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            3 => [
+                'updated_at' => '2017-09-13 12:13:50',
+            ),
+            3 => 
+            array (
                 'id' => 94,
                 'username' => 'felix186',
                 'email' => 'FelixBader@instahub.test',
@@ -1817,7 +1911,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Felix Bader',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-04-14 00:00:00',
+                'birthday' => '2004-04-14',
                 'city' => 'Düdenbüttel',
                 'country' => 'Germany',
                 'centimeters' => 190,
@@ -1826,9 +1920,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-13 11:59:09',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            4 => [
+                'updated_at' => '2017-09-13 11:59:09',
+            ),
+            4 => 
+            array (
                 'id' => 95,
                 'username' => 'malte260',
                 'email' => 'MalteFuhrmann@instahub.test',
@@ -1836,7 +1931,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Malte Fuhrmann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-03-02 00:00:00',
+                'birthday' => '2004-03-02',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -1845,9 +1940,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-18 00:35:57',
-                'updated_at' => '2018-10-04 17:04:51',
-            ],
-            5 => [
+                'updated_at' => '2017-09-18 00:35:57',
+            ),
+            5 => 
+            array (
                 'id' => 96,
                 'username' => 'tom140',
                 'email' => 'TomSchwab@instahub.test',
@@ -1855,7 +1951,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Tom Schwab',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-08-19 00:00:00',
+                'birthday' => '2004-08-19',
                 'city' => 'Halle',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -1864,9 +1960,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-05 17:32:35',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            6 => [
+                'updated_at' => '2017-09-05 17:32:35',
+            ),
+            6 => 
+            array (
                 'id' => 97,
                 'username' => 'philipp101',
                 'email' => 'PhilippKortig@instahub.test',
@@ -1874,7 +1971,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Philipp Kortig',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '1996-05-28 00:00:00',
+                'birthday' => '1999-05-28',
                 'city' => 'Mühldorf',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -1883,9 +1980,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-22 18:02:49',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            7 => [
+                'updated_at' => '2017-09-22 18:02:49',
+            ),
+            7 => 
+            array (
                 'id' => 98,
                 'username' => 'jano147',
                 'email' => 'JanoEhrlichmann@instahub.test',
@@ -1893,7 +1991,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jano Ehrlichmann',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2002-03-20 00:00:00',
+                'birthday' => '2005-03-20',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -1902,9 +2000,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-07 00:21:22',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            8 => [
+                'updated_at' => '2017-09-07 00:21:22',
+            ),
+            8 => 
+            array (
                 'id' => 99,
                 'username' => 'marlo468',
                 'email' => 'MarloEberhart@instahub.test',
@@ -1912,7 +2011,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marlo Eberhart',
                 'bio' => '',
                 'gender' => 'male',
-                'birthday' => '2001-04-08 00:00:00',
+                'birthday' => '2004-04-08',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 190,
@@ -1921,9 +2020,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 10:29:34',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            9 => [
+                'updated_at' => '2017-09-01 10:29:34',
+            ),
+            9 => 
+            array (
                 'id' => 100,
                 'username' => 'marlo152',
                 'email' => 'MarloKrause@instahub.test',
@@ -1931,7 +2031,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lena Krause',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-11-27 00:00:00',
+                'birthday' => '2003-11-27',
                 'city' => 'Tetenhusen',
                 'country' => 'Germany',
                 'centimeters' => 183,
@@ -1940,11 +2040,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-15 06:02:38',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-15 06:02:38',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 101,
                 'username' => 'celine96',
                 'email' => 'CelineFisher@instahub.test',
@@ -1952,7 +2053,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Celine Fisher',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-12-08 00:00:00',
+                'birthday' => '2004-12-08',
                 'city' => 'Homberg',
                 'country' => 'Germany',
                 'centimeters' => 165,
@@ -1961,9 +2062,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 07:57:19',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            1 => [
+                'updated_at' => '2017-09-21 07:57:19',
+            ),
+            1 => 
+            array (
                 'id' => 102,
                 'username' => 'laura451',
                 'email' => 'LauraMauer@instahub.test',
@@ -1971,7 +2073,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Laura Mauer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-04-30 00:00:00',
+                'birthday' => '2005-04-30',
                 'city' => 'Staffelstein',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -1980,9 +2082,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 10:06:49',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            2 => [
+                'updated_at' => '2017-09-01 10:06:49',
+            ),
+            2 => 
+            array (
                 'id' => 103,
                 'username' => 'emily8',
                 'email' => 'EmilyFaber@instahub.test',
@@ -1990,7 +2093,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Emily Faber',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-01-05 00:00:00',
+                'birthday' => '2004-01-05',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -1999,9 +2102,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-26 03:21:42',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            3 => [
+                'updated_at' => '2017-08-26 03:21:42',
+            ),
+            3 => 
+            array (
                 'id' => 104,
                 'username' => 'susanne378',
                 'email' => 'SusanneSchulz@instahub.test',
@@ -2009,7 +2113,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Susanne Schulz',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-03-21 00:00:00',
+                'birthday' => '2004-03-21',
                 'city' => 'Dietenhofen',
                 'country' => 'Germany',
                 'centimeters' => 152,
@@ -2018,9 +2122,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-13 04:32:31',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            4 => [
+                'updated_at' => '2017-09-13 04:32:31',
+            ),
+            4 => 
+            array (
                 'id' => 105,
                 'username' => 'aurelie141',
                 'email' => 'AurelieHerman@instahub.test',
@@ -2028,7 +2133,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Aurelie Herman',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-07-06 00:00:00',
+                'birthday' => '2005-07-06',
                 'city' => 'Hamburg',
                 'country' => 'Germany',
                 'centimeters' => 153,
@@ -2037,9 +2142,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-24 22:26:35',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            5 => [
+                'updated_at' => '2017-09-24 22:26:35',
+            ),
+            5 => 
+            array (
                 'id' => 106,
                 'username' => 'julia405',
                 'email' => 'JuliaFurst@instahub.test',
@@ -2047,7 +2153,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Julia Furst',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2012-02-03 00:00:00',
+                'birthday' => '2015-02-03',
                 'city' => 'Hamburg Heimfeld',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -2056,9 +2162,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-30 16:20:59',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            6 => [
+                'updated_at' => '2017-08-30 16:20:59',
+            ),
+            6 => 
+            array (
                 'id' => 107,
                 'username' => 'greta104',
                 'email' => 'GretaBauer@instahub.test',
@@ -2066,7 +2173,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Greta Bauer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2010-11-19 00:00:00',
+                'birthday' => '2013-11-19',
                 'city' => 'Weißwasser',
                 'country' => 'Germany',
                 'centimeters' => 156,
@@ -2075,9 +2182,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-18 11:13:14',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            7 => [
+                'updated_at' => '2017-09-18 11:13:14',
+            ),
+            7 => 
+            array (
                 'id' => 108,
                 'username' => 'laila78',
                 'email' => 'LailaEggers@instahub.test',
@@ -2085,7 +2193,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Laila Eggers',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-07-15 00:00:00',
+                'birthday' => '2005-07-15',
                 'city' => 'Blankenhain',
                 'country' => 'Germany',
                 'centimeters' => 158,
@@ -2094,9 +2202,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 13:00:28',
-                'updated_at' => '2018-10-04 17:04:52',
-            ],
-            8 => [
+                'updated_at' => '2017-09-21 13:00:28',
+            ),
+            8 => 
+            array (
                 'id' => 109,
                 'username' => 'julia295',
                 'email' => 'JuliaKluge@instahub.test',
@@ -2104,7 +2213,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Julia Kluge',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-07-05 00:00:00',
+                'birthday' => '2005-07-05',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -2113,9 +2222,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-06 20:29:19',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            9 => [
+                'updated_at' => '2017-09-06 20:29:19',
+            ),
+            9 => 
+            array (
                 'id' => 110,
                 'username' => 'eliana67',
                 'email' => 'ElianaEgger@instahub.test',
@@ -2123,7 +2233,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Eliana Egger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-10-13 00:00:00',
+                'birthday' => '2004-10-13',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -2132,11 +2242,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-07 21:31:15',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-07 21:31:15',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 111,
                 'username' => 'jamila238',
                 'email' => 'JamilaRitter@instahub.test',
@@ -2144,7 +2255,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jamila Ritter',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-02-10 00:00:00',
+                'birthday' => '2005-02-10',
                 'city' => 'Riesa',
                 'country' => 'Germany',
                 'centimeters' => 164,
@@ -2153,9 +2264,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-08 14:21:03',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            1 => [
+                'updated_at' => '2017-09-08 14:21:03',
+            ),
+            1 => 
+            array (
                 'id' => 112,
                 'username' => 'laura365',
                 'email' => 'LauraWurfel@instahub.test',
@@ -2163,7 +2275,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Laura Wurfel',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-02-19 00:00:00',
+                'birthday' => '2004-02-19',
                 'city' => 'Hergensweiler',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -2172,9 +2284,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-27 06:07:16',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            2 => [
+                'updated_at' => '2017-08-27 06:07:16',
+            ),
+            2 => 
+            array (
                 'id' => 113,
                 'username' => 'sophia54',
                 'email' => 'SophiaSaenger@instahub.test',
@@ -2182,7 +2295,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Sophia Sänger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-10-28 00:00:00',
+                'birthday' => '2004-10-28',
                 'city' => 'Kaltenborn',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -2191,9 +2304,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-16 04:37:49',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            3 => [
+                'updated_at' => '2017-09-16 04:37:49',
+            ),
+            3 => 
+            array (
                 'id' => 114,
                 'username' => 'melina303',
                 'email' => 'MelinaAachen@instahub.test',
@@ -2201,7 +2315,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Melina Aachen',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-08-27 00:00:00',
+                'birthday' => '2003-08-27',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -2210,9 +2324,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 01:28:12',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            4 => [
+                'updated_at' => '2017-09-20 01:28:12',
+            ),
+            4 => 
+            array (
                 'id' => 115,
                 'username' => 'johanna23',
                 'email' => 'JohannaSchmidt@instahub.test',
@@ -2220,7 +2335,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Johanna Schmidt',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-01-15 00:00:00',
+                'birthday' => '2003-01-15',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 164,
@@ -2229,9 +2344,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 02:49:26',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            5 => [
+                'updated_at' => '2017-09-21 02:49:26',
+            ),
+            5 => 
+            array (
                 'id' => 116,
                 'username' => 'naomi17',
                 'email' => 'NaomiFaerber@instahub.test',
@@ -2239,7 +2355,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Naomi Färber',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-03-20 00:00:00',
+                'birthday' => '2004-03-20',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -2248,9 +2364,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 17:05:40',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            6 => [
+                'updated_at' => '2017-09-17 17:05:40',
+            ),
+            6 => 
+            array (
                 'id' => 117,
                 'username' => 'julia309',
                 'email' => 'JuliaWeissmuller@instahub.test',
@@ -2258,7 +2375,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Julia Weissmuller',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-03-15 00:00:00',
+                'birthday' => '2003-03-15',
                 'city' => 'Bergisch Gladbach Gladbach',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -2267,9 +2384,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 22:58:57',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            7 => [
+                'updated_at' => '2017-09-23 22:58:57',
+            ),
+            7 => 
+            array (
                 'id' => 118,
                 'username' => 'lana450',
                 'email' => 'LanaNeustadt@instahub.test',
@@ -2277,7 +2395,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lana Neustadt',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-03-08 00:00:00',
+                'birthday' => '2004-03-08',
                 'city' => 'Hamburg',
                 'country' => 'Germany',
                 'centimeters' => 152,
@@ -2286,9 +2404,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 03:35:46',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            8 => [
+                'updated_at' => '2017-09-23 03:35:46',
+            ),
+            8 => 
+            array (
                 'id' => 119,
                 'username' => 'eve15',
                 'email' => 'EveSchmidt@instahub.test',
@@ -2296,7 +2415,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Eve Schmidt',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-08-15 00:00:00',
+                'birthday' => '2005-08-15',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -2305,9 +2424,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-19 08:00:44',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            9 => [
+                'updated_at' => '2017-09-19 08:00:44',
+            ),
+            9 => 
+            array (
                 'id' => 120,
                 'username' => 'ameli68',
                 'email' => 'AmeliHerzog@instahub.test',
@@ -2315,7 +2435,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Ameli Herzog',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-04-18 00:00:00',
+                'birthday' => '2003-04-18',
                 'city' => 'Fuhlendorf',
                 'country' => 'Germany',
                 'centimeters' => 166,
@@ -2324,11 +2444,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 00:08:20',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-21 00:08:20',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 121,
                 'username' => 'livia60',
                 'email' => 'LiviaJaeger@instahub.test',
@@ -2336,7 +2457,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Livia Jäger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-05-26 00:00:00',
+                'birthday' => '2004-05-26',
                 'city' => 'Rosenheim',
                 'country' => 'Germany',
                 'centimeters' => 162,
@@ -2345,9 +2466,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 01:52:16',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            1 => [
+                'updated_at' => '2017-09-14 01:52:16',
+            ),
+            1 => 
+            array (
                 'id' => 122,
                 'username' => 'aileen2',
                 'email' => 'AileenFenstermacher@instahub.test',
@@ -2355,7 +2477,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Aileen Fenstermacher',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-09-04 00:00:00',
+                'birthday' => '2004-09-04',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -2364,9 +2486,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-24 07:04:28',
-                'updated_at' => '2018-10-04 17:04:53',
-            ],
-            2 => [
+                'updated_at' => '2017-09-24 07:04:28',
+            ),
+            2 => 
+            array (
                 'id' => 123,
                 'username' => 'marie292',
                 'email' => 'MarieBohm@instahub.test',
@@ -2374,7 +2497,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marie Bohm',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-04-28 00:00:00',
+                'birthday' => '2005-04-28',
                 'city' => 'Gutenberg',
                 'country' => 'Germany',
                 'centimeters' => 150,
@@ -2383,9 +2506,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-08 03:22:56',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            3 => [
+                'updated_at' => '2017-09-08 03:22:56',
+            ),
+            3 => 
+            array (
                 'id' => 124,
                 'username' => 'magdalena394',
                 'email' => 'MagdalenaSchuster@instahub.test',
@@ -2393,7 +2517,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Magdalena Schuster',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-01-04 00:00:00',
+                'birthday' => '2005-01-04',
                 'city' => 'Haide',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -2402,9 +2526,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-29 20:39:25',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            4 => [
+                'updated_at' => '2017-08-29 20:39:25',
+            ),
+            4 => 
+            array (
                 'id' => 125,
                 'username' => 'bea160',
                 'email' => 'BeaPeters@instahub.test',
@@ -2412,7 +2537,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Bea Peters',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-04-20 00:00:00',
+                'birthday' => '2004-04-20',
                 'city' => 'Duisburg',
                 'country' => 'Germany',
                 'centimeters' => 162,
@@ -2421,9 +2546,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-30 04:33:41',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            5 => [
+                'updated_at' => '2017-08-30 04:33:41',
+            ),
+            5 => 
+            array (
                 'id' => 126,
                 'username' => 'johanna462',
                 'email' => 'JohannaKaestner@instahub.test',
@@ -2431,7 +2557,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Johanna Kästner',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-11-07 00:00:00',
+                'birthday' => '2004-11-07',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 160,
@@ -2440,9 +2566,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-15 14:07:24',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            6 => [
+                'updated_at' => '2017-09-15 14:07:24',
+            ),
+            6 => 
+            array (
                 'id' => 127,
                 'username' => 'zoey291',
                 'email' => 'ZoeyDietrich@instahub.test',
@@ -2450,7 +2577,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Zöy Dietrich',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2005-04-25 00:00:00',
+                'birthday' => '2008-04-25',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 165,
@@ -2459,9 +2586,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-26 20:39:47',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            7 => [
+                'updated_at' => '2017-08-26 20:39:47',
+            ),
+            7 => 
+            array (
                 'id' => 128,
                 'username' => 'xenia437',
                 'email' => 'XeniaFreud@instahub.test',
@@ -2469,7 +2597,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Xenia Freud',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-04-01 00:00:00',
+                'birthday' => '2004-04-01',
                 'city' => 'Bad Essen',
                 'country' => 'Germany',
                 'centimeters' => 161,
@@ -2478,9 +2606,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 17:35:47',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            8 => [
+                'updated_at' => '2017-09-14 17:35:47',
+            ),
+            8 => 
+            array (
                 'id' => 129,
                 'username' => 'julia40',
                 'email' => 'JuliaSchwab@instahub.test',
@@ -2488,7 +2617,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Julia Schwab',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-01-18 00:00:00',
+                'birthday' => '2004-01-18',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 156,
@@ -2497,9 +2626,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 12:10:08',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            9 => [
+                'updated_at' => '2017-09-21 12:10:08',
+            ),
+            9 => 
+            array (
                 'id' => 130,
                 'username' => 'samantha139',
                 'email' => 'SamanthaBader@instahub.test',
@@ -2507,7 +2637,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Samantha Bader',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-10-03 00:00:00',
+                'birthday' => '2004-10-03',
                 'city' => 'Bad Laer',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -2516,11 +2646,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-31 09:30:12',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-08-31 09:30:12',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 131,
                 'username' => 'juliette175',
                 'email' => 'JulietteSanger@instahub.test',
@@ -2528,7 +2659,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Juliette Sanger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2004-07-26 00:00:00',
+                'birthday' => '2007-07-26',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -2537,9 +2668,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 08:35:54',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            1 => [
+                'updated_at' => '2017-09-14 08:35:54',
+            ),
+            1 => 
+            array (
                 'id' => 132,
                 'username' => 'nele239',
                 'email' => 'NeleFreitag@instahub.test',
@@ -2547,7 +2679,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Nele Freitag',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-02-05 00:00:00',
+                'birthday' => '2003-02-05',
                 'city' => 'Schwandorf',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -2556,9 +2688,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-26 22:14:11',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            2 => [
+                'updated_at' => '2017-08-26 22:14:11',
+            ),
+            2 => 
+            array (
                 'id' => 133,
                 'username' => 'bea414',
                 'email' => 'BeaBeich@instahub.test',
@@ -2566,7 +2699,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Bea Beich',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-12-22 00:00:00',
+                'birthday' => '2004-12-22',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -2575,9 +2708,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 08:30:21',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            3 => [
+                'updated_at' => '2017-09-14 08:30:21',
+            ),
+            3 => 
+            array (
                 'id' => 134,
                 'username' => 'emma302',
                 'email' => 'EmmaBarth@instahub.test',
@@ -2585,7 +2719,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Emma Barth',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-07-03 00:00:00',
+                'birthday' => '2003-07-03',
                 'city' => 'Malsch',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -2594,9 +2728,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-30 21:31:34',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            4 => [
+                'updated_at' => '2017-08-30 21:31:34',
+            ),
+            4 => 
+            array (
                 'id' => 135,
                 'username' => 'maret13',
                 'email' => 'MaretKoehler@instahub.test',
@@ -2604,7 +2739,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Maret Köhler',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2009-12-31 00:00:00',
+                'birthday' => '2012-12-31',
                 'city' => 'Weimar',
                 'country' => 'Germany',
                 'centimeters' => 158,
@@ -2613,9 +2748,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 18:45:29',
-                'updated_at' => '2018-10-04 17:04:54',
-            ],
-            5 => [
+                'updated_at' => '2017-09-01 18:45:29',
+            ),
+            5 => 
+            array (
                 'id' => 136,
                 'username' => 'jette388',
                 'email' => 'JetteKaiser@instahub.test',
@@ -2623,7 +2759,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Jette Kaiser',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-06-29 00:00:00',
+                'birthday' => '2003-06-29',
                 'city' => 'Graach an der Mosel',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -2632,9 +2768,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-06 19:33:44',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            6 => [
+                'updated_at' => '2017-09-06 19:33:44',
+            ),
+            6 => 
+            array (
                 'id' => 137,
                 'username' => 'marlene442',
                 'email' => 'MarleneBarth@instahub.test',
@@ -2642,7 +2779,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marlene Barth',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-11-03 00:00:00',
+                'birthday' => '2004-11-03',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 176,
@@ -2651,9 +2788,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-22 21:44:42',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            7 => [
+                'updated_at' => '2017-09-22 21:44:42',
+            ),
+            7 => 
+            array (
                 'id' => 138,
                 'username' => 'mala219',
                 'email' => 'MalaKaiser@instahub.test',
@@ -2661,7 +2799,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Mala Kaiser',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-03-05 00:00:00',
+                'birthday' => '2004-03-05',
                 'city' => 'Meldorf',
                 'country' => 'Germany',
                 'centimeters' => 162,
@@ -2670,9 +2808,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 21:26:58',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            8 => [
+                'updated_at' => '2017-09-11 21:26:58',
+            ),
+            8 => 
+            array (
                 'id' => 139,
                 'username' => 'juliette13',
                 'email' => 'JulietteUnger@instahub.test',
@@ -2680,7 +2819,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Juliette Unger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-08-07 00:00:00',
+                'birthday' => '2004-08-07',
                 'city' => 'Julbach',
                 'country' => 'Germany',
                 'centimeters' => 165,
@@ -2689,9 +2828,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 15:10:53',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            9 => [
+                'updated_at' => '2017-09-14 15:10:53',
+            ),
+            9 => 
+            array (
                 'id' => 140,
                 'username' => 'rahel414',
                 'email' => 'RahelAchen@instahub.test',
@@ -2699,7 +2839,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Rahel Achen',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-02-04 00:00:00',
+                'birthday' => '2005-02-04',
                 'city' => 'Hamburg Altstadt',
                 'country' => 'Germany',
                 'centimeters' => 151,
@@ -2708,11 +2848,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 23:42:30',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-21 23:42:30',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 141,
                 'username' => 'juliette284',
                 'email' => 'JulietteEisenhauer@instahub.test',
@@ -2720,7 +2861,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Juliette Eisenhauer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-10-15 00:00:00',
+                'birthday' => '2004-10-15',
                 'city' => 'Forchheim',
                 'country' => 'Germany',
                 'centimeters' => 167,
@@ -2729,9 +2870,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-27 20:39:03',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            1 => [
+                'updated_at' => '2017-08-27 20:39:03',
+            ),
+            1 => 
+            array (
                 'id' => 142,
                 'username' => 'grete239',
                 'email' => 'GretePropst@instahub.test',
@@ -2739,7 +2881,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Grete Propst',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-06-22 00:00:00',
+                'birthday' => '2005-06-22',
                 'city' => 'Oberreichenbach',
                 'country' => 'Germany',
                 'centimeters' => 153,
@@ -2748,9 +2890,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 18:24:33',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            2 => [
+                'updated_at' => '2017-09-11 18:24:33',
+            ),
+            2 => 
+            array (
                 'id' => 143,
                 'username' => 'magdalena34',
                 'email' => 'MagdalenaFoerster@instahub.test',
@@ -2758,7 +2901,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Magdalena Förster',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-02-11 00:00:00',
+                'birthday' => '2005-02-11',
                 'city' => 'Esslingen Pliensauvorstadt',
                 'country' => 'Germany',
                 'centimeters' => 156,
@@ -2767,9 +2910,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-31 06:06:10',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            3 => [
+                'updated_at' => '2017-08-31 06:06:10',
+            ),
+            3 => 
+            array (
                 'id' => 144,
                 'username' => 'anna247',
                 'email' => 'AnnaEgger@instahub.test',
@@ -2777,7 +2921,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Anna Egger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-07-17 00:00:00',
+                'birthday' => '2003-07-17',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -2786,9 +2930,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 14:57:38',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            4 => [
+                'updated_at' => '2017-09-23 14:57:38',
+            ),
+            4 => 
+            array (
                 'id' => 145,
                 'username' => 'johanna150',
                 'email' => 'JohannaSchaefer@instahub.test',
@@ -2796,7 +2941,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Johanna Schäfer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-07-19 00:00:00',
+                'birthday' => '2005-07-19',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 160,
@@ -2805,9 +2950,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-06 10:57:57',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            5 => [
+                'updated_at' => '2017-09-06 10:57:57',
+            ),
+            5 => 
+            array (
                 'id' => 146,
                 'username' => 'helene447',
                 'email' => 'HeleneMeyer@instahub.test',
@@ -2815,7 +2961,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Helene Meyer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-03-10 00:00:00',
+                'birthday' => '2003-03-10',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 161,
@@ -2824,9 +2970,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-04 23:10:49',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            6 => [
+                'updated_at' => '2017-09-04 23:10:49',
+            ),
+            6 => 
+            array (
                 'id' => 147,
                 'username' => 'eva125',
                 'email' => 'EvaKoenig@instahub.test',
@@ -2834,7 +2981,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Eva König',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-08-16 00:00:00',
+                'birthday' => '2004-08-16',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 159,
@@ -2843,9 +2990,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-27 14:07:15',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            7 => [
+                'updated_at' => '2017-08-27 14:07:15',
+            ),
+            7 => 
+            array (
                 'id' => 148,
                 'username' => 'lena469',
                 'email' => 'LenaWeiss@instahub.test',
@@ -2853,7 +3001,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lena Weiß',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-08-25 00:00:00',
+                'birthday' => '2005-08-25',
                 'city' => 'Breitengüßbach',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -2862,9 +3010,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 06:54:57',
-                'updated_at' => '2018-10-04 17:04:55',
-            ],
-            8 => [
+                'updated_at' => '2017-09-17 06:54:57',
+            ),
+            8 => 
+            array (
                 'id' => 149,
                 'username' => 'sophia151',
                 'email' => 'SophiaVogler@instahub.test',
@@ -2872,7 +3021,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Sophia Vogler',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-01-08 00:00:00',
+                'birthday' => '2005-01-08',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 167,
@@ -2881,9 +3030,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-15 11:51:22',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            9 => [
+                'updated_at' => '2017-09-15 11:51:22',
+            ),
+            9 => 
+            array (
                 'id' => 150,
                 'username' => 'maria422',
                 'email' => 'MariaBaumgartner@instahub.test',
@@ -2891,7 +3041,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Maria Baumgartner',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-02-17 00:00:00',
+                'birthday' => '2004-02-17',
                 'city' => 'Halle',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -2900,11 +3050,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-12 13:31:31',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-12 13:31:31',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 151,
                 'username' => 'greta110',
                 'email' => 'GretaEberhardt@instahub.test',
@@ -2912,7 +3063,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Greta Eberhardt',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-05-17 00:00:00',
+                'birthday' => '2004-05-17',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 152,
@@ -2921,9 +3072,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-09 19:29:36',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            1 => [
+                'updated_at' => '2017-09-09 19:29:36',
+            ),
+            1 => 
+            array (
                 'id' => 152,
                 'username' => 'maja217',
                 'email' => 'MajaGersten@instahub.test',
@@ -2931,7 +3083,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Maja Gersten',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-11-05 00:00:00',
+                'birthday' => '2004-11-05',
                 'city' => 'Sudwalde',
                 'country' => 'Germany',
                 'centimeters' => 165,
@@ -2940,9 +3092,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-13 16:06:26',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            2 => [
+                'updated_at' => '2017-09-13 16:06:26',
+            ),
+            2 => 
+            array (
                 'id' => 153,
                 'username' => 'sophia130',
                 'email' => 'SophiaHerrmann@instahub.test',
@@ -2950,7 +3103,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Sophia Herrmann',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-03-26 00:00:00',
+                'birthday' => '2004-03-26',
                 'city' => 'Itzehoe',
                 'country' => 'Germany',
                 'centimeters' => 162,
@@ -2959,9 +3112,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-07 04:09:00',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            3 => [
+                'updated_at' => '2017-09-07 04:09:00',
+            ),
+            3 => 
+            array (
                 'id' => 154,
                 'username' => 'juliette372',
                 'email' => 'JulietteAmsel@instahub.test',
@@ -2969,7 +3123,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Juliette Amsel',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-08-02 00:00:00',
+                'birthday' => '2003-08-02',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -2978,9 +3132,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-16 06:50:03',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            4 => [
+                'updated_at' => '2017-09-16 06:50:03',
+            ),
+            4 => 
+            array (
                 'id' => 155,
                 'username' => 'thea308',
                 'email' => 'TheaReinhard@instahub.test',
@@ -2988,7 +3143,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Thea Reinhard',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '1938-03-21 00:00:00',
+                'birthday' => '1941-03-21',
                 'city' => 'Bottenbach',
                 'country' => 'Germany',
                 'centimeters' => 161,
@@ -2997,9 +3152,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 22:48:03',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            5 => [
+                'updated_at' => '2017-09-11 22:48:03',
+            ),
+            5 => 
+            array (
                 'id' => 156,
                 'username' => 'nele51',
                 'email' => 'NeleFreud@instahub.test',
@@ -3007,7 +3163,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Nele Freud',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-05-27 00:00:00',
+                'birthday' => '2003-05-27',
                 'city' => 'Mülsen St Jacob',
                 'country' => 'Germany',
                 'centimeters' => 175,
@@ -3016,9 +3172,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-12 21:18:37',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            6 => [
+                'updated_at' => '2017-09-12 21:18:37',
+            ),
+            6 => 
+            array (
                 'id' => 157,
                 'username' => 'janine289',
                 'email' => 'JanineHimmel@instahub.test',
@@ -3026,7 +3183,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Janine Himmel',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-02-08 00:00:00',
+                'birthday' => '2005-02-08',
                 'city' => 'Scheidegg',
                 'country' => 'Germany',
                 'centimeters' => 159,
@@ -3035,9 +3192,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 18:47:37',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            7 => [
+                'updated_at' => '2017-09-17 18:47:37',
+            ),
+            7 => 
+            array (
                 'id' => 158,
                 'username' => 'lilli90',
                 'email' => 'LilliBraun@instahub.test',
@@ -3045,7 +3203,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lilli Braun',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-07-22 00:00:00',
+                'birthday' => '2004-07-22',
                 'city' => 'Wiefelstede',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -3054,9 +3212,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-06 01:40:39',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            8 => [
+                'updated_at' => '2017-09-06 01:40:39',
+            ),
+            8 => 
+            array (
                 'id' => 159,
                 'username' => 'lisa356',
                 'email' => 'LisaRoth@instahub.test',
@@ -3064,7 +3223,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lisa Roth',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-03-29 00:00:00',
+                'birthday' => '2004-03-29',
                 'city' => 'Kammerforst',
                 'country' => 'Germany',
                 'centimeters' => 154,
@@ -3073,9 +3232,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-04 00:11:34',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            9 => [
+                'updated_at' => '2017-09-04 00:11:34',
+            ),
+            9 => 
+            array (
                 'id' => 160,
                 'username' => 'paula193',
                 'email' => 'PaulaReiniger@instahub.test',
@@ -3083,7 +3243,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Paula Reiniger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-07-03 00:00:00',
+                'birthday' => '2003-07-03',
                 'city' => 'Werdohl',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -3092,11 +3252,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 17:49:23',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-23 17:49:23',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 161,
                 'username' => 'heidi270',
                 'email' => 'HeidiSchweizer@instahub.test',
@@ -3104,7 +3265,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Heidi Schweizer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-03-12 00:00:00',
+                'birthday' => '2005-03-12',
                 'city' => 'Coburg',
                 'country' => 'Germany',
                 'centimeters' => 158,
@@ -3113,9 +3274,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-31 21:36:54',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            1 => [
+                'updated_at' => '2017-08-31 21:36:54',
+            ),
+            1 => 
+            array (
                 'id' => 162,
                 'username' => 'mariella397',
                 'email' => 'MariellaBachmeier@instahub.test',
@@ -3123,7 +3285,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Mariella Bachmeier',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-10-03 00:00:00',
+                'birthday' => '2004-10-03',
                 'city' => 'Mittenwald',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -3132,9 +3294,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 14:00:38',
-                'updated_at' => '2018-10-04 17:04:56',
-            ],
-            2 => [
+                'updated_at' => '2017-09-11 14:00:38',
+            ),
+            2 => 
+            array (
                 'id' => 163,
                 'username' => 'tialda93',
                 'email' => 'TialdaOstermann@instahub.test',
@@ -3142,7 +3305,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Tialda Ostermann',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-08-10 00:00:00',
+                'birthday' => '2003-08-10',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 177,
@@ -3151,9 +3314,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-23 14:07:07',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            3 => [
+                'updated_at' => '2017-09-23 14:07:07',
+            ),
+            3 => 
+            array (
                 'id' => 164,
                 'username' => 'henriette28',
                 'email' => 'HenrietteZimmerman@instahub.test',
@@ -3161,7 +3325,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Henriette Zimmerman',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-09-08 00:00:00',
+                'birthday' => '2003-09-08',
                 'city' => 'Uehlfeld',
                 'country' => 'Germany',
                 'centimeters' => 159,
@@ -3170,9 +3334,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-29 02:30:25',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            4 => [
+                'updated_at' => '2017-08-29 02:30:25',
+            ),
+            4 => 
+            array (
                 'id' => 165,
                 'username' => 'pauline128',
                 'email' => 'PaulineFoerster@instahub.test',
@@ -3180,7 +3345,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Pauline Förster',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-01-01 00:00:00',
+                'birthday' => '2004-01-01',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 161,
@@ -3189,9 +3354,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 12:45:24',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            5 => [
+                'updated_at' => '2017-09-01 12:45:24',
+            ),
+            5 => 
+            array (
                 'id' => 166,
                 'username' => 'ivette355',
                 'email' => 'IvetteBeckenbauer@instahub.test',
@@ -3199,7 +3365,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Ivette Beckenbauer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-06-17 00:00:00',
+                'birthday' => '2003-06-17',
                 'city' => 'Neuss Hoisten',
                 'country' => 'Germany',
                 'centimeters' => 151,
@@ -3208,9 +3374,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-16 03:50:35',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            6 => [
+                'updated_at' => '2017-09-16 03:50:35',
+            ),
+            6 => 
+            array (
                 'id' => 167,
                 'username' => 'sophia392',
                 'email' => 'SophiaHoltzmann@instahub.test',
@@ -3218,7 +3385,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Sophia Holtzmann',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-09-21 00:00:00',
+                'birthday' => '2003-09-21',
                 'city' => 'Hamburg',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -3227,9 +3394,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-30 23:15:21',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            7 => [
+                'updated_at' => '2017-08-30 23:15:21',
+            ),
+            7 => 
+            array (
                 'id' => 168,
                 'username' => 'may475',
                 'email' => 'MayKoenig@instahub.test',
@@ -3237,7 +3405,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'May König',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-02-16 00:00:00',
+                'birthday' => '2005-02-16',
                 'city' => 'Mönchengladbach Uedding',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -3246,9 +3414,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-06 01:03:32',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            8 => [
+                'updated_at' => '2017-09-06 01:03:32',
+            ),
+            8 => 
+            array (
                 'id' => 169,
                 'username' => 'leonore116',
                 'email' => 'LeonoreKaufmann@instahub.test',
@@ -3256,7 +3425,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Leonore Kaufmann',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-06-11 00:00:00',
+                'birthday' => '2005-06-11',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 158,
@@ -3265,9 +3434,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 03:22:08',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            9 => [
+                'updated_at' => '2017-09-17 03:22:08',
+            ),
+            9 => 
+            array (
                 'id' => 170,
                 'username' => 'tialda361',
                 'email' => 'TialdaSchroeder@instahub.test',
@@ -3275,7 +3445,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Tialda Schröder',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-04-18 00:00:00',
+                'birthday' => '2005-04-18',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 172,
@@ -3284,11 +3454,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-16 21:55:43',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-16 21:55:43',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 171,
                 'username' => 'mara381',
                 'email' => 'MaraBoehm@instahub.test',
@@ -3296,7 +3467,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Mara Böhm',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-10-15 00:00:00',
+                'birthday' => '2004-10-15',
                 'city' => 'Witten Stockum',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -3305,9 +3476,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 19:47:19',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            1 => [
+                'updated_at' => '2017-09-14 19:47:19',
+            ),
+            1 => 
+            array (
                 'id' => 172,
                 'username' => 'livia344',
                 'email' => 'LiviaBayer@instahub.test',
@@ -3315,7 +3487,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Livia Bayer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-08-14 00:00:00',
+                'birthday' => '2004-08-14',
                 'city' => 'Tambach-Dietharz',
                 'country' => 'Germany',
                 'centimeters' => 165,
@@ -3324,9 +3496,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 16:37:35',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            2 => [
+                'updated_at' => '2017-09-01 16:37:35',
+            ),
+            2 => 
+            array (
                 'id' => 173,
                 'username' => 'lina170',
                 'email' => 'LinaJager@instahub.test',
@@ -3334,7 +3507,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lina Jager',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-12-11 00:00:00',
+                'birthday' => '2004-12-11',
                 'city' => 'Oberreichenbach',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -3343,9 +3516,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-19 10:15:59',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            3 => [
+                'updated_at' => '2017-09-19 10:15:59',
+            ),
+            3 => 
+            array (
                 'id' => 174,
                 'username' => 'ann145',
                 'email' => 'AnnFriedman@instahub.test',
@@ -3353,7 +3527,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Ann Friedman',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-10-21 00:00:00',
+                'birthday' => '2003-10-21',
                 'city' => 'Hamburg',
                 'country' => 'Germany',
                 'centimeters' => 162,
@@ -3362,9 +3536,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-25 23:18:53',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            4 => [
+                'updated_at' => '2017-08-25 23:18:53',
+            ),
+            4 => 
+            array (
                 'id' => 175,
                 'username' => 'mala452',
                 'email' => 'MalaAchen@instahub.test',
@@ -3372,7 +3547,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Mala Achen',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-09-08 00:00:00',
+                'birthday' => '2005-09-08',
                 'city' => 'Großpösna',
                 'country' => 'Germany',
                 'centimeters' => 160,
@@ -3381,9 +3556,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-22 20:06:40',
-                'updated_at' => '2018-10-04 17:04:57',
-            ],
-            5 => [
+                'updated_at' => '2017-09-22 20:06:40',
+            ),
+            5 => 
+            array (
                 'id' => 176,
                 'username' => 'celine142',
                 'email' => 'CelineReinhardt@instahub.test',
@@ -3391,7 +3567,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Celine Reinhardt',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-10-05 00:00:00',
+                'birthday' => '2003-10-05',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -3400,9 +3576,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-31 14:03:15',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            6 => [
+                'updated_at' => '2017-08-31 14:03:15',
+            ),
+            6 => 
+            array (
                 'id' => 177,
                 'username' => 'eliana157',
                 'email' => 'ElianaBaumgaertner@instahub.test',
@@ -3410,7 +3587,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Eliana Baumgärtner',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-01-01 00:00:00',
+                'birthday' => '2003-01-01',
                 'city' => 'Bechstedtstraß',
                 'country' => 'Germany',
                 'centimeters' => 170,
@@ -3419,9 +3596,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-21 08:31:39',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            7 => [
+                'updated_at' => '2017-09-21 08:31:39',
+            ),
+            7 => 
+            array (
                 'id' => 178,
                 'username' => 'mariella164',
                 'email' => 'MariellaWurfel@instahub.test',
@@ -3429,7 +3607,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Mariella Wurfel',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-03-18 00:00:00',
+                'birthday' => '2004-03-18',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 168,
@@ -3438,9 +3616,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-22 13:19:55',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            8 => [
+                'updated_at' => '2017-09-22 13:19:55',
+            ),
+            8 => 
+            array (
                 'id' => 179,
                 'username' => 'leni223',
                 'email' => 'LeniSchaefer@instahub.test',
@@ -3448,7 +3627,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Leni Schäfer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-01-08 00:00:00',
+                'birthday' => '2004-01-08',
                 'city' => 'Berlin Pankow',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -3457,9 +3636,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-19 13:04:57',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            9 => [
+                'updated_at' => '2017-09-19 13:04:57',
+            ),
+            9 => 
+            array (
                 'id' => 180,
                 'username' => 'maja260',
                 'email' => 'MajaWulf@instahub.test',
@@ -3467,7 +3647,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Maja Wulf',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-04-17 00:00:00',
+                'birthday' => '2005-04-17',
                 'city' => 'Oberhausen Borbeck',
                 'country' => 'Germany',
                 'centimeters' => 172,
@@ -3476,11 +3656,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-10 14:01:07',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-10 14:01:07',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 181,
                 'username' => 'sabina52',
                 'email' => 'SabinaHoffmann@instahub.test',
@@ -3488,7 +3669,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Sabina Hoffmann',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-02-21 00:00:00',
+                'birthday' => '2003-02-21',
                 'city' => 'Angersdorf',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -3497,9 +3678,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-19 18:39:33',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            1 => [
+                'updated_at' => '2017-09-19 18:39:33',
+            ),
+            1 => 
+            array (
                 'id' => 182,
                 'username' => 'ameli490',
                 'email' => 'AmeliSchroeder@instahub.test',
@@ -3507,7 +3689,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Ameli Schröder',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-10-02 00:00:00',
+                'birthday' => '2003-10-02',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 155,
@@ -3516,9 +3698,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 21:51:43',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            2 => [
+                'updated_at' => '2017-09-11 21:51:43',
+            ),
+            2 => 
+            array (
                 'id' => 183,
                 'username' => 'talida159',
                 'email' => 'TalidaMetzger@instahub.test',
@@ -3526,7 +3709,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Talida Metzger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-04-11 00:00:00',
+                'birthday' => '2005-04-11',
                 'city' => 'Lauenhagen',
                 'country' => 'Germany',
                 'centimeters' => 161,
@@ -3535,9 +3718,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-04 01:31:16',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            3 => [
+                'updated_at' => '2017-09-04 01:31:16',
+            ),
+            3 => 
+            array (
                 'id' => 184,
                 'username' => 'henriette136',
                 'email' => 'HenrietteMaurer@instahub.test',
@@ -3545,7 +3729,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Henriette Maurer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-06-21 00:00:00',
+                'birthday' => '2004-06-21',
                 'city' => 'Steinbergkirche',
                 'country' => 'Germany',
                 'centimeters' => 158,
@@ -3554,9 +3738,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-16 22:35:14',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            4 => [
+                'updated_at' => '2017-09-16 22:35:14',
+            ),
+            4 => 
+            array (
                 'id' => 185,
                 'username' => 'naomi103',
                 'email' => 'NaomiSchneider@instahub.test',
@@ -3564,7 +3749,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Naomi Schneider',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-12-30 00:00:00',
+                'birthday' => '2004-12-30',
                 'city' => 'Neumünster',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -3573,9 +3758,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-25 08:18:09',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            5 => [
+                'updated_at' => '2017-08-25 08:18:09',
+            ),
+            5 => 
+            array (
                 'id' => 186,
                 'username' => 'lina149',
                 'email' => 'LinaDrescher@instahub.test',
@@ -3583,7 +3769,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lina Drescher',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-03-25 00:00:00',
+                'birthday' => '2005-03-25',
                 'city' => 'Berlin',
                 'country' => 'Germany',
                 'centimeters' => 171,
@@ -3592,9 +3778,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 23:09:32',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            6 => [
+                'updated_at' => '2017-09-14 23:09:32',
+            ),
+            6 => 
+            array (
                 'id' => 187,
                 'username' => 'ameli80',
                 'email' => 'AmeliMaur@instahub.test',
@@ -3602,7 +3789,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Ameli Maur',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-12-07 00:00:00',
+                'birthday' => '2004-12-07',
                 'city' => 'Köln Ehrenfeld',
                 'country' => 'Germany',
                 'centimeters' => 174,
@@ -3611,9 +3798,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-09 12:52:02',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            7 => [
+                'updated_at' => '2017-09-09 12:52:02',
+            ),
+            7 => 
+            array (
                 'id' => 188,
                 'username' => 'stella439',
                 'email' => 'StellaZimmerman@instahub.test',
@@ -3621,7 +3809,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Stella Zimmerman',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-12-14 00:00:00',
+                'birthday' => '2004-12-14',
                 'city' => 'Westfehmarn',
                 'country' => 'Germany',
                 'centimeters' => 169,
@@ -3630,9 +3818,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-17 19:50:54',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            8 => [
+                'updated_at' => '2017-09-17 19:50:54',
+            ),
+            8 => 
+            array (
                 'id' => 189,
                 'username' => 'emilie210',
                 'email' => 'EmilieShuster@instahub.test',
@@ -3640,7 +3829,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Emilie Shuster',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-08-02 00:00:00',
+                'birthday' => '2004-08-02',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 158,
@@ -3649,9 +3838,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-04 04:50:51',
-                'updated_at' => '2018-10-04 17:04:58',
-            ],
-            9 => [
+                'updated_at' => '2017-09-04 04:50:51',
+            ),
+            9 => 
+            array (
                 'id' => 190,
                 'username' => 'marie35',
                 'email' => 'MarieKunze@instahub.test',
@@ -3659,7 +3849,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Marie Kunze',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-05-30 00:00:00',
+                'birthday' => '2004-05-30',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 172,
@@ -3668,11 +3858,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-12 13:57:41',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-12 13:57:41',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 191,
                 'username' => 'viktoria121',
                 'email' => 'ViktoriaBuerger@instahub.test',
@@ -3680,7 +3871,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Viktoria Bürger',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-07-28 00:00:00',
+                'birthday' => '2004-07-28',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 160,
@@ -3689,9 +3880,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-24 11:22:47',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            1 => [
+                'updated_at' => '2017-09-24 11:22:47',
+            ),
+            1 => 
+            array (
                 'id' => 192,
                 'username' => 'emily366',
                 'email' => 'EmilyBecker@instahub.test',
@@ -3699,7 +3891,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Emily Becker',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-06-03 00:00:00',
+                'birthday' => '2003-06-03',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -3708,9 +3900,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-20 06:53:28',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            2 => [
+                'updated_at' => '2017-09-20 06:53:28',
+            ),
+            2 => 
+            array (
                 'id' => 193,
                 'username' => 'ivette327',
                 'email' => 'IvetteWalter@instahub.test',
@@ -3718,7 +3911,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Ivette Walter',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-09-16 00:00:00',
+                'birthday' => '2004-09-16',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 159,
@@ -3727,9 +3920,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-27 20:33:54',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            3 => [
+                'updated_at' => '2017-08-27 20:33:54',
+            ),
+            3 => 
+            array (
                 'id' => 194,
                 'username' => 'samina369',
                 'email' => 'SaminaOsterhagen@instahub.test',
@@ -3737,7 +3931,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Samina Osterhagen',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-06-21 00:00:00',
+                'birthday' => '2003-06-21',
                 'city' => 'Bad Essen',
                 'country' => 'Germany',
                 'centimeters' => 173,
@@ -3746,9 +3940,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 13:01:06',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            4 => [
+                'updated_at' => '2017-09-14 13:01:06',
+            ),
+            4 => 
+            array (
                 'id' => 195,
                 'username' => 'samira455',
                 'email' => 'SamiraVogler@instahub.test',
@@ -3756,7 +3951,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Samira Vogler',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-05-24 00:00:00',
+                'birthday' => '2004-05-24',
                 'city' => 'München',
                 'country' => 'Germany',
                 'centimeters' => 153,
@@ -3765,9 +3960,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-02 11:19:23',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            5 => [
+                'updated_at' => '2017-09-02 11:19:23',
+            ),
+            5 => 
+            array (
                 'id' => 196,
                 'username' => 'lorena249',
                 'email' => 'LorenaNeudorf@instahub.test',
@@ -3775,7 +3971,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lorena Neudorf',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-04-21 00:00:00',
+                'birthday' => '2005-04-21',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 157,
@@ -3784,9 +3980,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-08 05:31:03',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            6 => [
+                'updated_at' => '2017-09-08 05:31:03',
+            ),
+            6 => 
+            array (
                 'id' => 197,
                 'username' => 'martina35',
                 'email' => 'MartinaFaber@instahub.test',
@@ -3794,7 +3991,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Martina Faber',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-04-20 00:00:00',
+                'birthday' => '2005-04-20',
                 'city' => 'Koblenz',
                 'country' => 'Germany',
                 'centimeters' => 158,
@@ -3803,9 +4000,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-26 22:14:11',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            7 => [
+                'updated_at' => '2017-08-26 22:14:11',
+            ),
+            7 => 
+            array (
                 'id' => 198,
                 'username' => 'juliane26',
                 'email' => 'JulianeMaurer@instahub.test',
@@ -3813,7 +4011,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Juliane Maurer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-03-19 00:00:00',
+                'birthday' => '2005-03-19',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 159,
@@ -3822,9 +4020,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-14 08:30:21',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            8 => [
+                'updated_at' => '2017-09-14 08:30:21',
+            ),
+            8 => 
+            array (
                 'id' => 199,
                 'username' => 'brigitte94',
                 'email' => 'BrigitteBrauer@instahub.test',
@@ -3832,7 +4031,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Brigitte Brauer',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-04-05 00:00:00',
+                'birthday' => '2005-04-05',
                 'city' => 'Dresden',
                 'country' => 'Germany',
                 'centimeters' => 160,
@@ -3841,9 +4040,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-08-30 21:31:34',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            9 => [
+                'updated_at' => '2017-08-30 21:31:34',
+            ),
+            9 => 
+            array (
                 'id' => 200,
                 'username' => 'melanie235',
                 'email' => 'MelanieLoewe@instahub.test',
@@ -3851,7 +4051,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Melanie Loewe',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-12-17 00:00:00',
+                'birthday' => '2005-12-17',
                 'city' => 'Hamburg',
                 'country' => 'Germany',
                 'centimeters' => 161,
@@ -3860,11 +4060,12 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-01 18:45:29',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-        ]);
-        DB::table('users')->insert([
-            0 => [
+                'updated_at' => '2017-09-01 18:45:29',
+            ),
+        ));
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
                 'id' => 201,
                 'username' => 'anke49',
                 'email' => 'AnkeFeierabend@instahub.test',
@@ -3872,7 +4073,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Anke Feierabend',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2000-08-16 00:00:00',
+                'birthday' => '2003-08-16',
                 'city' => 'Rostock',
                 'country' => 'Germany',
                 'centimeters' => 162,
@@ -3881,9 +4082,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-06 19:33:44',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            1 => [
+                'updated_at' => '2017-09-06 19:33:44',
+            ),
+            1 => 
+            array (
                 'id' => 202,
                 'username' => 'klaudia27',
                 'email' => 'KlaudiaUrner@instahub.test',
@@ -3891,7 +4093,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Klaudia Urner',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2002-06-05 00:00:00',
+                'birthday' => '2005-06-05',
                 'city' => 'Glauburg ',
                 'country' => 'Germany',
                 'centimeters' => 163,
@@ -3900,9 +4102,10 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-22 21:44:42',
-                'updated_at' => '2018-10-04 17:04:59',
-            ],
-            2 => [
+                'updated_at' => '2017-09-22 21:44:42',
+            ),
+            2 => 
+            array (
                 'id' => 203,
                 'username' => 'lisa125',
                 'email' => 'LisaLoewe@instahub.test',
@@ -3910,7 +4113,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Lisa Loewe',
                 'bio' => '',
                 'gender' => 'female',
-                'birthday' => '2001-04-14 00:00:00',
+                'birthday' => '2004-04-14',
                 'city' => 'Leipzig',
                 'country' => 'Germany',
                 'centimeters' => 164,
@@ -3919,9 +4122,69 @@ class UsersTableSeeder extends Seeder
                 'is_active' => 0,
                 'remember_token' => '',
                 'created_at' => '2017-09-11 21:26:58',
-                'updated_at' => '2018-10-04 17:05:00',
-            ],
-        ]);
+                'updated_at' => '2017-09-11 21:26:58',
+            ),
+            3 => 
+            array (
+                'id' => 204,
+                'username' => 'Kimberley28',
+                'email' => 'KimberleyFabiennePawlowski@instahub.test',
+                'password' => '$2a$12$fHaJfcukFLiEIOR31TQVIeOhEuT1uvmNu30bRsiSAR82LxNXM513C ',
+                'name' => 'Kimberley Fabienne Pawlowski',
+                'bio' => '',
+                'gender' => 'female',
+                'birthday' => '2005-09-08',
+                'city' => 'Munich',
+                'country' => 'Germany',
+                'centimeters' => 158,
+                'avatar' => 'avatars/204.jpg',
+                'role' => 'user',
+                'is_active' => 0,
+                'remember_token' => '',
+                'created_at' => '2021-10-05 13:19:23',
+                'updated_at' => '2021-10-05 13:19:23',
+            ),
+            4 => 
+            array (
+                'id' => 205,
+                'username' => 'Cäcilia933',
+                'email' => 'Caecilia.Willer@instahub.test',
+                'password' => '$2a$12$wPt6KskVbj.ROmiXDFaHGurVJNRFfwQQ7qKaQIlcBbjcOAoquGoQq ',
+                'name' => 'Cäcilia Willer',
+                'bio' => '',
+                'gender' => 'female',
+                'birthday' => '2004-02-17',
+                'city' => 'Munich',
+                'country' => 'Germany',
+                'centimeters' => 173,
+                'avatar' => 'avatars/205.jpg',
+                'role' => 'user',
+                'is_active' => 0,
+                'remember_token' => '',
+                'created_at' => '2021-10-05 13:19:23',
+                'updated_at' => '2021-10-05 13:19:23',
+            ),
+            5 => 
+            array (
+                'id' => 206,
+                'username' => 'Ana-Anouk157',
+                'email' => 'Ana-AnoukKimmel@instahub.test',
+                'password' => '$2a$12$hjfpPo6xG1K10qD72tZdEe0o1NzLZA9UjqUEHROv.QCX/blJeMque ',
+                'name' => 'Ana-Anouk Kimmel',
+                'bio' => '',
+                'gender' => 'female',
+                'birthday' => '2003-08-04',
+                'city' => 'München Giesing',
+                'country' => 'Germany',
+                'centimeters' => 164,
+                'avatar' => 'avatars/206.jpg',
+                'role' => 'user',
+                'is_active' => 0,
+                'remember_token' => '',
+                'created_at' => '2021-10-05 13:19:23',
+                'updated_at' => '2021-10-05 13:19:23',
+            ),
+        ));
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }

@@ -72,11 +72,11 @@ class AdminController extends Controller
 
             foreach ($request->tables as $t) {
                 if ($request->action == 'fill') {
-                    $this->fillTable($hub->id, $t);
+                    $this->fillTable($t);
                 } elseif ($request->action == 'drop') {
-                    $this->dropTable($hub->id, $t);
+                    $this->dropTable($t);
                 } elseif ($request->action == 'create') {
-                    $this->migrateTable($hub->id, $t);
+                    $this->migrateTable($t);
                 }
             }
 
@@ -86,7 +86,7 @@ class AdminController extends Controller
         }
     }
 
-    private function migrateTable($id, $tablename)
+    private function migrateTable($tablename)
     {
         DB::beginTransaction(); //better performance and safer
 
@@ -105,7 +105,7 @@ class AdminController extends Controller
         $this->messages[] = "Table $tablename exists (now).";
     }
 
-    private function fillTable($id, $tablename)
+    private function fillTable($tablename)
     {
         $user = null;
         if ($tablename == 'users' && RequestHub::hasTable('users')) {
@@ -155,7 +155,7 @@ class AdminController extends Controller
         DB::commit();
     }
 
-    private function dropTable($id, $tablename)
+    private function dropTable($tablename)
     {
         DB::beginTransaction(); //better performance and safer
 
@@ -174,8 +174,9 @@ class AdminController extends Controller
     public function setAdminPW($id)
     {
         RequestHub::setHubDB($id);
+
         if (! RequestHub::hasTable('users')) {
-            $this->migrateTable($id, 'users');
+            $this->migrateTable('users');
         } //to make sure that needed table exists
 
         $pw = substr(uniqid(), 8);

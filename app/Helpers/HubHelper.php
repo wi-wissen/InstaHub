@@ -14,6 +14,8 @@ class HubHelper
 
     public function __construct()
     {
+        $this->setDefaultDB();
+        
         $host = $_SERVER['HTTP_HOST'];
         $domainParts = explode('.', $host);
 
