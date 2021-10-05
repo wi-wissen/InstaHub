@@ -38,7 +38,7 @@ class FollowController extends Controller
     {
         $user = User::where('username', $username)->first();
 
-        return view('user.index', ['users' => $user->following()->paginate(10), 'heading' => __('User that ').$user->username.__(' follows')]);
+        return view('user.index', ['users' => $user->following()->paginate(10), 'heading' => $user->username.__(' is following')]);
     }
 
     public function follow($id, Request $request) // id of the person to be followed
