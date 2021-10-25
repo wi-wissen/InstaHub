@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Facades\RequestHub;
 use App\Http\Controllers\Controller;
 use App\Notifications\NewUser;
 use App\Models\Photo;

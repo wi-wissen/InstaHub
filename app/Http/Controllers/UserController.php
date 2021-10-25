@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
+
+use App\Facades\RequestHub;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Http\Resources\User as UserResource;
 use App\Models\User;
+use App\Notifications\UserActivated;
 use Auth;
-use Config;
-use DB;
-use Debugbar;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Input;
-use Request;
-use Schema;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
