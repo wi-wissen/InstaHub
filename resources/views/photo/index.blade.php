@@ -50,7 +50,7 @@
                     @endif
             	@endforeach
                 
-                @if(!empty($photos))
+                @if(method_exists($photos, 'links'))
                     {{ $photos->links() }}
                 @else
                     @if (RequestHub::hasTable('follows') && RequestHub::hasTable('follows')) 

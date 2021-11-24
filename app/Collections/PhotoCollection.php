@@ -3,6 +3,8 @@
 namespace App\Collections;
 
 use App\Facades\RequestHub;
+use App\Models\Photo;
+use App\Models\User;
 use Auth;
 use Illuminate\Database\Eloquent\Collection;
 
