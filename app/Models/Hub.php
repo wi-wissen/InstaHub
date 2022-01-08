@@ -7,6 +7,7 @@ use App\Tags;
 use App\Users;
 use Config;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Storage;
 
@@ -71,7 +72,7 @@ class Hub extends Model
         //select root user
         RequestHub::setDefaultDB();
         //checks for privilege to update in selected database, this is only given in this case if user have all privilegs
-        $r = \DB::select('select Update_priv from mysql.db where db=? and User =?', [env('DB_DATABASE').'_'.$this->id, env('DB_DATABASE').'_'.$this->id]);
+        $r = DB::select('select Update_priv from mysql.db where db=? and User =?', [env('DB_DATABASE').'_'.$this->id, env('DB_DATABASE').'_'.$this->id]);
         $r = (array) $r;
         if (current((array) $r[0]) == 'Y') {
             return false;

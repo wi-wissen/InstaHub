@@ -83,7 +83,7 @@ class UserController extends Controller
         $user->save();
         flash(__('All Changes saved'))->success();
 
-        return redirect('user/'.$user->username);
+        return redirect('/'.$user->username);
     }
 
     public function activate($username, Request $request)
@@ -103,7 +103,7 @@ class UserController extends Controller
             flash(__('You are not allowed to do this!'))->error();
         }
 
-        return redirect('user/'.$user->username);
+        return redirect('/'.$user->username);
     }
 
     public function deactivate($username, Request $request)
@@ -119,7 +119,7 @@ class UserController extends Controller
             flash(__('You are not allowed to do this!'))->error();
         }
 
-        return redirect('user/'.$user->username);
+        return redirect('/'.$user->username);
     }
 
     public function search($query)
@@ -135,7 +135,7 @@ class UserController extends Controller
         $user->delete();
         flash(__('User deleted'))->success();
 
-        return redirect('home');
+        return redirect('/');
     }
 
     public function getPassword()
@@ -166,10 +166,10 @@ class UserController extends Controller
             flash(__('Wrong password'), 'danger');
         }
 
-        return redirect('/home');
+        return redirect('/');
     }
 
-    public function getNewPassword($id)
+    public function getNewPassword($username)
     {
         $this->middleware('role:dba');
 
@@ -182,7 +182,7 @@ class UserController extends Controller
             $pw .= mb_substr($chars, $index, 1);
         }
 
-        $user = User::find($id);
+        $user = User::where('username', $username)->first();
 
         $user->password = bcrypt($pw);
         $user->save();

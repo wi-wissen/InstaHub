@@ -204,7 +204,7 @@ class HubController extends Controller
             //created by student
             flash(__('Your hub must be activated by your teacher!'))->warning();
 
-            return redirect('https://'.$hub->name.env('SESSION_DOMAIN').'/');
+            return redirect(config('app.protocol') . str_replace('{subdomain}', $hub->name, config('app.domain_hub')) );
         } else {
             //created by teacher
             $user->is_active = 1; //trust himself
@@ -267,8 +267,8 @@ class HubController extends Controller
         if (RequestHub::hasTable('photos')) {
             $photos = Photo::all();
             foreach ($photos as $photo) {
-                // _960 cant (hopfully) part of an uuid, so it is an present photo
-                if (strpos($photo->url, '_960') == false) {
+                // _960 and -unsplash cant (hopfully) part of an uuid, so it is an present photo
+                if (strpos($photo->url, '_960') === false && strpos($photo->url, '-unsplash') === false) {
                     Storage::disk('local')->delete($photo->url);
                 }
             }

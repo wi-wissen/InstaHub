@@ -155,10 +155,10 @@
 @section('script')
 <script>
 	var data = {
-		name:"{{ old('name', null) }}",
-        img:"{{ old('img', null) }}",
-        url:"{{ old('url', null) }}",
-        readonly: {{ (RequestHub::isReadOnly() ? true : false }},
+		name:"{{ old('name', '') }}",
+        img:"{{ old('img', '') }}",
+        url:"{{ old('url', '') }}",
+        readonly: {{ (RequestHub::isReadOnly()) ? 'true' : 'false' }},
 	}
 </script>
 @endsection

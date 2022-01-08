@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form role="form" method="POST" action="{{ url('user/password') }}">
+                    <form role="form" method="POST" action="{{ url('/password') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}  row">

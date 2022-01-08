@@ -65,6 +65,8 @@ return [
     |
     */
 
+    'protocol' => env('APP_DEBUG', false) ? 'http://' : 'https://',
+
     'url' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_DOMAIN', 'localhost'),
     'url_app' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_DOMAIN', 'localhost'),
     'url_admin' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_ADMIN_DOMAIN', 'localhost'),

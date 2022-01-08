@@ -39,7 +39,7 @@ class User extends Authenticatable
         'birthday' => 'datetime',
     ];
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'bio', 'avatar', 'birthday', 'city', 'country', 'gender', 'centimeters', 'is_active',
+        'username', 'name', 'email', 'password', 'bio', 'avatar', 'birthday', 'city', 'country', 'gender', 'centimeters', 'is_active', 'role',
     ];
 
     /**

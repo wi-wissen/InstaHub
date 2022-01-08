@@ -26,10 +26,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 //auth
-Route::group(['middleware' => ['guest']], function () {
-    Auth::routes();
-    Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 'loginWithToken']);
-});
+Auth::routes();
+Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 'loginWithToken']);
 
 //static
 Route::get('/about', [StaticController::class, 'about']);

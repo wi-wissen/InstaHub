@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Facades\RequestHub;
+use App\Helpers\HubHelper;
 use App\Http\Controllers\Controller;
 use App\Notifications\NewUser;
 use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Session;
 use Storage;
 
 class RegisterController extends Controller
@@ -44,6 +43,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $hub = new HubHelper(); //this Controller runs before HubHelper in AppServiceProvider, so we force changing db
     }
 
     /**
@@ -77,7 +77,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //$url = $data['avatar']->file('avatar')->store('avatars');
         if (array_key_exists('avatar', $data)) {
             if ($data['avatar']) {
                 $url = Storage::putFile('avatars', $data['avatar']);
@@ -112,13 +111,10 @@ class RegisterController extends Controller
             $user->is_active = 1;
         }
 
-        //don't work above. I have no clue...
-        $user->role = $role;
         $user->save();
 
         //send message to admin if teacher apply for account in root
         if (! RequestHub::isHub() && env('APP_ENV') != 'local') {
-            //Mail::to(User::where('role','=', 'admin')->first())->send(new NewUser($user, $data['messageToAdmin']));
             User::where('role', '=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
         }
 
