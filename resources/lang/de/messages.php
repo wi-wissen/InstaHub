@@ -9,7 +9,7 @@ return [
     'privacy' => 'Ähnlich Instagram können SchülerInnen zu Lernzwecken in einem geschützten Umfeld agieren.',
     'database' => 'Voller Zugriff auf die gesammte Datenbank und das Backend mit allen Einstellungen für Administratoren und "Werbetreibende".',
     'openfree' => 'Kostenfrei und Open Source für den Einsatz zu Lehrzwecken. Schulungen und Support auf Anfrage auch bei Ihnen vor Ort möglich.',
-    'firstStepTeacher' => 'Beantrage zuerst einen Lehrer-Account. Anschließend kannst du dir als SchülerIn einen Hub anlegen, dich in 
+    'firstStepTeacher' => 'Beantrage zuerst einen Lehrer*innen-Account. Anschließend kannst du dir als Schüler*in einen Hub anlegen, dich in 
                     deiner Lehrer*innenrolle freischalten und alle Funktionen erkunden. Schau auch in der Hilfe nach fertigen Aufgaben und Stundenentwürfen.',
     'aboutInstaHub' => 'InstaHub ist ein soziales Netzwerk, welches speziell für den Einsatz im Unterricht entwickelt wurde. SchülerInnen werden Administrator ihres eigenen sozialen Netzwerkes. Sie können als Datenbankadministrator direkt auf die Datenbank zugreifen und mit SQL Daten abfragen(<code>SELECT</code>) einfügen (<code>INSERT</code>, bearbeiten (<code>UPDATE</code>) und löschen <code>DELETE</code>). Als Moderator können sie Beiträge löschen und als Werbepartner eigene Werbung schalten und das Nutzungsverhalten analysieren.',
     'targetInstaHub' => 'Ziel des Projektes ist mit InstaHub ein allgemeines Verständnis über die technische Funktion von sozialen Netzwerken zu vermitteln und Themen wie Datenbanken und Datenschutz fundiert und lebensnah vermitteln zu können.',

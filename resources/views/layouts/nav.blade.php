@@ -15,7 +15,7 @@
                 @endif
             </a>
             @else
-            <a class="navbar-brand" href="{{ url('/home') }}">
+            <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="/clarity/camera-line.svg" width="30" height="30" class="d-inline-block align-middle" alt="">
                 @if(RequestHub::isHub())
                     <div>{{RequestHub::name()}}</div>

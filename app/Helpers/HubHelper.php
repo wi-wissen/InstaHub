@@ -3,9 +3,8 @@
 namespace App\Helpers;
 
 use App\Models\Hub;
+use Debugbar;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class HubHelper
 {
@@ -16,7 +15,9 @@ class HubHelper
     {
         $this->setDefaultDB();
         
-        $host = $_SERVER['HTTP_HOST'];
+        $host = config('app.domain');
+        if(array_key_exists('HTTP_HOST', $_SERVER)) $host = $_SERVER['HTTP_HOST']; //if request is from web (and not console)
+
         $domainParts = explode('.', $host);
 
         //run only on hub subdomains
@@ -42,11 +43,11 @@ class HubHelper
 
                 $this->setHubDB();
 
-                \Debugbar::info('db: '.Config::get('database.default'));
+                Debugbar::info('db: '.Config::get('database.default'));
 
                 $this->tables = array_map('reset', \DB::select('SHOW TABLES'));
 
-                \Debugbar::info('tables: '.implode(', ', $this->tables));
+                Debugbar::info('tables: '.implode(', ', $this->tables));
             }
         }
     }

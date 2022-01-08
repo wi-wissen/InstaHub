@@ -114,13 +114,13 @@ class User extends Authenticatable
 
     public function allowed($role)
     {
-        if ($role == 'dba' && ($this->role == 'dba' || $this->role == 'teacher' || $this->role == 'admin')) {
+        if ($role == 'user') {
+            return true;
+        } elseif ($role == 'dba' && ($this->role == 'dba' || $this->role == 'teacher' || $this->role == 'admin')) {
             return true;
         } elseif ($role == 'teacher' && ($this->role == 'teacher' || $this->role == 'admin')) {
             return true;
         } elseif ($role == 'admin' && ($this->role == 'admin')) {
-            return true;
-        } elseif ($role == 'user') {
             return true;
         } else {
             return false;

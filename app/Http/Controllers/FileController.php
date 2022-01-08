@@ -17,8 +17,6 @@ use Storage;
 
 class FileController extends Controller
 {
-    protected $redirectTo = '/home';
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -108,7 +106,7 @@ class FileController extends Controller
             flash('Photo '.$id.' does not exist')->error();
         }
 
-        return redirect('home');
+        return redirect('/');
     }
 
     //in kilobytes

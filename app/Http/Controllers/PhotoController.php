@@ -39,8 +39,10 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $sort = null)
+    public function index(Request $request)
     {
+        $sort = $request->input('sort', null);
+
         if ($sort) {
             session(['sort_feed' => $sort]);
         }

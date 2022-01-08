@@ -22,30 +22,50 @@ use Illuminate\Support\Facades\Route;
 | by your application. Just tell Laravel the URIs it should respond
 | to using a Closure or controller method. Build something great!
 |
-| These first Rules overrule Rules in Hubs
 |
 */
 
-Auth::routes();
-Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 'loginWithToken']);
+//auth
+Route::group(['middleware' => ['guest']], function () {
+    Auth::routes();
+    Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 'loginWithToken']);
+});
 
+//static
 Route::get('/about', [StaticController::class, 'about']);
 Route::get('/noad', [StaticController::class, 'noad']);
 
+//logs
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('auth', 'role:admin');
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes for Main (will also handle unhandled Routes in Hub)
+| Web Routes for admin.instahub.test
 |--------------------------------------------------------------------------
 */
 
-Route::group(['domain' => config('app.domain_admin')], function () {
+//static
+Route::group(['domain' => config('app.domain')], function () 
+{
+    Route::get('/', [StaticController::class, 'landing']);
+});
 
-    //guest
-    Route::get('/', [StaticController::class, 'landingHub']);
+/*
+|--------------------------------------------------------------------------
+| Web Routes for admin.instahub.test
+|--------------------------------------------------------------------------
+*/
 
-    Route::group(['middleware' => ['auth', 'role:admin']], function () {
+Route::group(['domain' => config('app.domain_admin')], function () 
+{
+    //all
+    Route::resource('hubs', HubController::class)->only(['create', 'store']);
+    
+    //only auth
+    Route::group(['middleware' => ['auth', 'role:admin']], function () 
+    {
+        Route::get('/', [HubController::class, 'index']);
+
         Route::get('/api/users/search/{query}', [UserController::class, 'search']);
         Route::get('/{username}/activate', [UserController::class, 'activate']);
         Route::get('/{username}/deactivate', [UserController::class, 'deactivate']);
@@ -63,7 +83,10 @@ Route::group(['domain' => config('app.domain_admin')], function () {
         Route::post('/api/sql', [SqlController::class, 'getApiQuery']);
     });
 
-    Route::group(['middleware' => ['auth', 'role:teacher']], function () {
+    Route::group(['middleware' => ['auth', 'role:teacher']], function () 
+    {
+        Route::get('/', [HubController::class, 'index']);
+
         Route::get('/explore/users/{filter?}', [UserController::class, 'index']);
         Route::get('/explore/users/{filter}/{param?}', [UserController::class, 'index']);
 
@@ -71,10 +94,8 @@ Route::group(['domain' => config('app.domain_admin')], function () {
         Route::post('/password', [UserController::class, 'postPassword']);
         Route::get('/password/{id}', [UserController::class, 'getNewPassword']);
 
-        Route::get('/home', [HubController::class, 'index']);
-
         //dbadmin
-        Route::resource('hubs', HubController::class);
+        Route::resource('hubs', HubController::class)->except(['create', 'store']);
         Route::get('hubs/{id}/dba/redirect', [AdminController::class, 'redirect']);
 
         Route::get('api/hubs/{id}/dba/resetpw', [AdminController::class, 'setAdminPW']);
@@ -99,15 +120,14 @@ Route::group(['domain' => config('app.domain_admin')], function () {
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes for Hubs
+| Web Routes for *.instahub.test
 |--------------------------------------------------------------------------
 */
-Route::group(['domain' => config('app.domain_hub')], function () {
-
-    //guest
-    Route::get('/', [StaticController::class, 'landingHub']);
-
-    Route::group(['middleware' => ['auth', 'role:dba']], function () {
+Route::group(['domain' => config('app.domain_hub')], function () 
+{
+    //only auth
+    Route::group(['middleware' => ['auth', 'role:dba']], function () 
+    {
         //admin
         Route::get('api/users/{id}/password', [UserController::class, 'getNewPassword']);
 
@@ -124,11 +144,11 @@ Route::group(['domain' => config('app.domain_hub')], function () {
         Route::get('/dba/cryptPWs', [AdminController::class, 'cryptPWs']);
     });
 
-    Route::group(['middleware' => ['auth', 'role:user']], function () {
-
+    Route::group(['middleware' => ['auth', 'role:user']], function () 
+    {
         //feed
-        Route::get('/home/{sort?}', [PhotoController::class, 'index']);
-        Route::get('/tag/{name}/{sort?}', [PhotoController::class, 'photosbytag']);
+        Route::get('/', [PhotoController::class, 'index']);
+        Route::get('/tag/{name}', [PhotoController::class, 'photosbytag']);
 
         //user
         Route::get('password', [UserController::class, 'getPassword']);
@@ -184,18 +204,3 @@ Route::group(['domain' => config('app.domain_hub')], function () {
         Route::get('{username}/deactivate', [UserController::class, 'deactivate']);
     });
 });
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-| These last Rules are used if they are not fetched un Hubs.
-|
-*/
-
-Route::get('/', [StaticController::class, 'landingMain']);

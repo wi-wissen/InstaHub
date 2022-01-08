@@ -15,6 +15,7 @@ use Config;
 use Database\Seeders\UsersTableSeeder;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Schema;
 use Session;
@@ -203,13 +204,13 @@ class HubController extends Controller
             //created by student
             flash(__('Your hub must be activated by your teacher!'))->warning();
 
-            return redirect('https://'.$hub->name.env('SESSION_DOMAIN').'/home');
+            return redirect('https://'.$hub->name.env('SESSION_DOMAIN').'/');
         } else {
             //created by teacher
             $user->is_active = 1; //trust himself
             $user->save();
 
-            return redirect('/home');
+            return redirect('/');
         }
     }
 
