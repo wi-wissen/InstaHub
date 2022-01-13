@@ -7,7 +7,7 @@ return [
     'competitions' => 'Ausgezeichnet mit dem <a href="https://gi.de/meldung/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone/">Unterrichtspreis der Gesellschaft für Informatik</a> (2017) 
             und den <a href="https://www.mnu.de/blog/535-preis-fuer-innovative-mint-unterrichtsideen-2019">1. Platz im Wettbewerb Innovative MINT-Unterrichtsideen</a> der MNU mit dem Klett-Verlag (2019).',
     'privacy' => 'Ähnlich Instagram können SchülerInnen zu Lernzwecken in einem geschützten Umfeld agieren.',
-    'database' => 'Voller Zugriff auf die gesammte Datenbank und das Backend mit allen Einstellungen für Administratoren und "Werbetreibende".',
+    'database' => 'Voller Zugriff auf die gesamte Datenbank und das Backend mit allen Einstellungen für Administratoren und "Werbetreibende".',
     'openfree' => 'Kostenfrei und Open Source für den Einsatz zu Lehrzwecken. Schulungen und Support auf Anfrage auch bei Ihnen vor Ort möglich.',
     'firstStepTeacher' => 'Beantrage zuerst einen Lehrer*innen-Account. Anschließend kannst du dir als Schüler*in einen Hub anlegen, dich in 
                     deiner Lehrer*innenrolle freischalten und alle Funktionen erkunden. Schau auch in der Hilfe nach fertigen Aufgaben und Stundenentwürfen.',
@@ -37,7 +37,7 @@ return [
     ],
     'adEditor' => [
         'position' => 'Banner werden unter Photos und Photos an dritter Stelle des Newsfeeds angezeigt.',
-        'priority' => 'Wenn zwei oder mehr Anezigen möglich sind, dann wird die mit der höheren Priorität (etwa 1) ausgewählt.',
+        'priority' => 'Wenn zwei oder mehr Anzeigen möglich sind, dann wird die mit der höheren Priorität (etwa 1) ausgewählt.',
         'url' => 'Link zur Werbekampagne.',
         'image' => 'Absolute (<code>https://public.instahub.org/img/ad/brokkoli.jpg</code>) oder relative (<code>/img/ad/brokkoli.jpg</code>) URL zum anzuzeigenden Bild.',
         'query' => 'Die Abfrage muss <code>true</code> oder <code>false</code> ergeben. Alternativ kann auch eine Liste zurückgegeben werden, in welcher die Benutzer-ID gesucht wird. <code>$user</code> kann als Platzhalter für den angemeldeten Benutzer und <code>$photo</code> für das aktuelle Photo verwendet werden.',
