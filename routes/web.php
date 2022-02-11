@@ -43,8 +43,7 @@ Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'i
 */
 
 //static
-Route::group(['domain' => config('app.domain')], function () 
-{
+Route::group(['domain' => config('app.domain')], function () {
     Route::get('/', [StaticController::class, 'landing']);
 });
 
@@ -54,14 +53,12 @@ Route::group(['domain' => config('app.domain')], function ()
 |--------------------------------------------------------------------------
 */
 
-Route::group(['domain' => config('app.domain_admin')], function () 
-{
+Route::group(['domain' => config('app.domain_admin')], function () {
     //all
     Route::resource('hubs', HubController::class)->only(['create', 'store']);
-    
+
     //only auth
-    Route::group(['middleware' => ['auth', 'role:admin']], function () 
-    {
+    Route::group(['middleware' => ['auth', 'role:admin']], function () {
         Route::get('/', [HubController::class, 'index']);
 
         Route::get('/api/users/search/{query}', [UserController::class, 'search']);
@@ -81,8 +78,7 @@ Route::group(['domain' => config('app.domain_admin')], function ()
         Route::post('/api/sql', [SqlController::class, 'getApiQuery']);
     });
 
-    Route::group(['middleware' => ['auth', 'role:teacher']], function () 
-    {
+    Route::group(['middleware' => ['auth', 'role:teacher']], function () {
         Route::get('/', [HubController::class, 'index']);
 
         Route::get('/explore/users/{filter?}', [UserController::class, 'index']);
@@ -121,11 +117,9 @@ Route::group(['domain' => config('app.domain_admin')], function ()
 | Web Routes for *.instahub.test
 |--------------------------------------------------------------------------
 */
-Route::group(['domain' => config('app.domain_hub')], function () 
-{
+Route::group(['domain' => config('app.domain_hub')], function () {
     //only auth
-    Route::group(['middleware' => ['auth', 'role:dba']], function () 
-    {
+    Route::group(['middleware' => ['auth', 'role:dba']], function () {
         //admin
         Route::get('api/users/{id}/password', [UserController::class, 'getNewPassword']);
 
@@ -142,8 +136,7 @@ Route::group(['domain' => config('app.domain_hub')], function ()
         Route::get('/dba/cryptPWs', [AdminController::class, 'cryptPWs']);
     });
 
-    Route::group(['middleware' => ['auth', 'role:user']], function () 
-    {
+    Route::group(['middleware' => ['auth', 'role:user']], function () {
         //feed
         Route::get('/', [PhotoController::class, 'index']);
         Route::get('/tag/{name}', [PhotoController::class, 'photosbytag']);

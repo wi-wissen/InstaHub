@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Analytic;
 use App\Facades\RequestHub;
+use App\Models\Analytic;
 use App\Models\Hub;
 use App\Models\Photo;
 use App\Models\User;
@@ -257,8 +257,8 @@ class AdminController extends Controller
         $user->save();
 
         return response()->json([
-           'activate' => $request->activate,
-       ]);
+            'activate' => $request->activate,
+        ]);
     }
 
     /**
@@ -298,8 +298,8 @@ class AdminController extends Controller
         }
 
         return response()->json([
-           'readonly' => $request->readonly,
-       ]);
+            'readonly' => $request->readonly,
+        ]);
     }
 
     /**

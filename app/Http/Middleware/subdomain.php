@@ -11,7 +11,7 @@ use Config;
 use Debugbar;
 use Session;
 
-class Subdomain
+class subdomain
 {
     /**
      * Handle an incoming request.

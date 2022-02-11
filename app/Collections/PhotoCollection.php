@@ -48,7 +48,7 @@ class PhotoCollection extends Collection
                                 })->orderBy('comments.created_at', 'desc')->limit(100)->get();	// Sortiert nach Datum und auf 100 beschränkt
 
             foreach ($comments as $comment) {
-                if(array_key_exists($comment->user_id_photo, $aff) ) {
+                if (array_key_exists($comment->user_id_photo, $aff)) {
                     $aff[$comment->user_id_photo] += 2;												// Pro Kommentar wird die Affinität zum Urheber um 2 erhöht
                 }
             }
@@ -68,7 +68,7 @@ class PhotoCollection extends Collection
 
             foreach ($this->items as $photo) {
                 foreach ($edge_likes as $edge_like) {						// Für jedes dieser Likes wird der Affinitätswert des
-                    if ($edge_like['photo_id'] == $photo->id && array_key_exists($edge_like['user_id_likes'], $aff) ) {
+                    if ($edge_like['photo_id'] == $photo->id && array_key_exists($edge_like['user_id_likes'], $aff)) {
                         $photo['score'] += $aff[$edge_like['user_id_likes']];				// Like-Urhebers zur Punktzahl hinzu addiert
                     }																		// Hat ein Foto keine Likes erhalten, beträgt die Punktzahl 1
                 }
@@ -84,7 +84,7 @@ class PhotoCollection extends Collection
 
             foreach ($this->items as $photo) {
                 foreach ($edge_comments as $edge_comment) {					// Für jedes dieser Kommentare wird der zweifache Affinitätswert
-                    if ($edge_comment['photo_id'] == $photo->id && array_key_exists($edge_comment['user_id_comments'], $aff) ) {
+                    if ($edge_comment['photo_id'] == $photo->id && array_key_exists($edge_comment['user_id_comments'], $aff)) {
                         $photo['score'] += $aff[$edge_comment['user_id_comments']] * 2;		// des Kommentar-Urhebers zur Punktzahl hinzu addiert
                     }
                 }																		// Hat ein Foto auch keine Kommentare erhalten, beträgt die Punktzahl immer noch 1

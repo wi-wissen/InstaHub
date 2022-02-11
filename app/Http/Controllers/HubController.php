@@ -204,7 +204,7 @@ class HubController extends Controller
             //created by student
             flash(__('Your hub must be activated by your teacher!'))->warning();
 
-            return redirect(config('app.protocol') . str_replace('{subdomain}', $hub->name, config('app.domain_hub')) );
+            return redirect(config('app.protocol').str_replace('{subdomain}', $hub->name, config('app.domain_hub')));
         } else {
             //created by teacher
             $user->is_active = 1; //trust himself

@@ -7,7 +7,7 @@ use Auth;
 use Closure;
 use Session;
 
-class Role
+class role
 {
     /**
      * Handle an incoming request.

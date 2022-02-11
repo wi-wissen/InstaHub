@@ -143,7 +143,7 @@ class UserController extends Controller
         return view('auth.passwords.set');
     }
 
-    public function postPassword(\Illuminate\Http\Request $request)
+    public function postPassword(Request $request)
     {
         $this->validate(request(), [
             'password' => 'required|min:5',

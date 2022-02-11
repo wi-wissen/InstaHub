@@ -9,14 +9,17 @@ use Illuminate\Support\Facades\Config;
 class HubHelper
 {
     private $hub = null;
+
     private $tables = [];
 
     public function __construct()
     {
         $this->setDefaultDB();
-        
+
         $host = config('app.domain');
-        if(array_key_exists('HTTP_HOST', $_SERVER)) $host = $_SERVER['HTTP_HOST']; //if request is from web (and not console)
+        if (array_key_exists('HTTP_HOST', $_SERVER)) {
+            $host = $_SERVER['HTTP_HOST'];
+        } //if request is from web (and not console)
 
         $domainParts = explode('.', $host);
 

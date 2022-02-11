@@ -46,7 +46,7 @@ class FollowController extends Controller
         Auth::user()->following()->attach($id);
 
         return response()->json([
-          'follow' => 'true',
+            'follow' => 'true',
         ]);
     }
 
@@ -55,7 +55,7 @@ class FollowController extends Controller
         Auth::user()->following()->detach(User::find($id));
 
         return response()->json([
-          'follow' => 'false',
+            'follow' => 'false',
         ]);
     }
 }
