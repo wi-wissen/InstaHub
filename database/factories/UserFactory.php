@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->safeEmail(),
             'password' => $password ?: $password = bcrypt('secret'),
-            'remember_token' => str_random(10),
+            'remember_token' => Str::random(10),
         ];
     }
 }

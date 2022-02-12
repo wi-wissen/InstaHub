@@ -182,7 +182,7 @@ class UserController extends Controller
             $pw .= mb_substr($chars, $index, 1);
         }
 
-        $user = User::where('username', $username)->first();
+        $user = User::where('username', $username)->firstOrFail();
 
         $user->password = bcrypt($pw);
         $user->save();

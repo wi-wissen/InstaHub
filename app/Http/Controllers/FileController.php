@@ -2,17 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Models\Photo;
 use App\Models\User;
-use Config;
-use DB;
-use Debugbar;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Schema;
-use Session;
 use Storage;
 
 class FileController extends Controller

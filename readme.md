@@ -18,9 +18,7 @@ Many thanks and respect to:
 - [php](http://php.net/)
 - [Laravel](https://laravel.com/)
   - [laracasts/flash](https://github.com/laracasts/flash)
-    - [orangehill/iseed](https://github.com/orangehill/iseed)
-  - [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer)
-  - [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
+  - [orangehill/iseed](https://github.com/orangehill/iseed)
   - [hisorange/browser-detect](https://github.com/hisorange/browser-detect)
 - [Bootstrap](https://getbootstrap.com/)
 - [Vue](https://vuejs.org/)
@@ -32,7 +30,7 @@ Many thanks and respect to:
 
 #### Prerequisits 
 
-- Have min. PHP 7.2
+- Have min. PHP 8.0
 - Download composer https://getcomposer.org/download/
 - Download git https://git-scm.com/downloads
 
@@ -52,7 +50,7 @@ Many thanks and respect to:
 5. Edit `.env`
     - `APP_ENV=production` (In `test` Teacher will be activated automatically.)
     - `APP_DEBUG=false` - enable only temporaly for debugging!
-    -  `DB_*` - if you want another database than MySQL, you have to edit source code.
+    - `DB_*` - if you want another database than MySQL, you have to edit source code.
     - `DB_USERNAME` - user for database
     - `DB_PASSWORD` - passwort for database
     - `MAIL_*` - mail provider for notification of new teachers and resetting passworts (admin accounts may reset passworts without sending a mail)

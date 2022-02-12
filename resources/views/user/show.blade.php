@@ -50,7 +50,7 @@ h5 {
 					<div class="media-body">
 						@if (Auth::user()->id != $user->id)
 							@if (RequestHub::hasTable('follows'))
-							<follow-button class="float-right" id="{{$user->id}}" v-bind:isfollowing="{{Auth::user()->isfollowing($user)}}"></follow-button>
+							<follow-button class="float-right" username="{{$user->username}}" v-bind:isfollowing="{{Auth::user()->isfollowing($user)}}"></follow-button>
 							@endif
 						@endif
 						<h2>{{ $user->username }}</h2>
@@ -110,7 +110,7 @@ h5 {
 							@if (Auth::user()->id == $user->id)
 								<a href="{{'../password'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? "disabled" : "" }}" role="button">{{ __('Change Password') }}</a>
 							@endif
-							<button v-if="!pw" v-on:click="getNewPw()" {{ RequestHub::isReadOnly() ? "disabled" : "" }} class="newPassword btn btn-outline-dark btn-sm">{{ __('Reset Password') }}</button>
+							<button v-if="!pw" v-on:click="getNewPw('{{$user->username}}')" {{ RequestHub::isReadOnly() ? "disabled" : "" }} class="newPassword btn btn-outline-dark btn-sm">{{ __('Reset Password') }}</button>
 							<code v-else style="padding: 0.25rem 0.5rem; font-size: 0.7875rem;">@{{pw}}</code>
 							<a href="{{'../' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm {{ RequestHub::isReadOnly() ? "disabled" : "" }}" role="button">{{ __('Delete') }}</a>
 						@endif

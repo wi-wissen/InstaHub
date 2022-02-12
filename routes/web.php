@@ -33,9 +33,6 @@ Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 
 Route::get('/about', [StaticController::class, 'about']);
 Route::get('/noad', [StaticController::class, 'noad']);
 
-//logs
-Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('auth', 'role:admin');
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes for admin.instahub.test
@@ -159,8 +156,8 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::get('/upload', [PhotoController::class, 'create']);
 
         //follow
-        Route::delete('/api/me/follow/{id}', [FollowController::class, 'unfollow']);
-        Route::post('api/me/follow/{id}', [FollowController::class, 'follow']); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
+        Route::delete('/api/me/follow/{username}', [FollowController::class, 'unfollow']);
+        Route::post('api/me/follow/{username}', [FollowController::class, 'follow']); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
 
         Route::post('/upload', [PhotoController::class, 'store']);
 
@@ -183,8 +180,8 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::delete('/api/ads/{id}', [AdController::class, 'destroy']);
 
         //users - last so no one can override hub urls
-        Route::get('{user_id}/followers', [FollowController::class, 'followers']);
-        Route::get('{user_id}/following', [FollowController::class, 'following']);
+        Route::get('{username}/followers', [FollowController::class, 'followers']);
+        Route::get('{username}/following', [FollowController::class, 'following']);
 
         Route::get('{username}', [UserController::class, 'show']);
 

@@ -5,6 +5,7 @@ namespace App\Helpers;
 use App\Models\Hub;
 use Debugbar;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class HubHelper
 {
@@ -48,7 +49,7 @@ class HubHelper
 
                 Debugbar::info('db: '.Config::get('database.default'));
 
-                $this->tables = array_map('reset', \DB::select('SHOW TABLES'));
+                $this->tables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
 
                 Debugbar::info('tables: '.implode(', ', $this->tables));
             }
@@ -78,7 +79,7 @@ class HubHelper
         }
 
         Config::set('database.default', env('DB_DATABASE').'_'.$id);
-        $this->tables = array_map('reset', \DB::select('SHOW TABLES'));
+        $this->tables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
     }
 
     public function setDefaultDB()

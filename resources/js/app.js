@@ -74,11 +74,11 @@ if ($("#user-show")[0]) {
             id: id
         },
         methods: {
-            getNewPw: function() {
+            getNewPw: function(username) {
               self = this;
               this.$Progress.start();
               axios
-                .get("api/users/" + this.username + "/password", {})
+                .get("api/users/" + username + "/password", {})
                 .then(function(response) {
                   self.pw = response.data.password;
                   self.$Progress.finish();

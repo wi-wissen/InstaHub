@@ -41,18 +41,20 @@ class FollowController extends Controller
         return view('user.index', ['users' => $user->following()->paginate(10), 'heading' => $user->username.__(' is following')]);
     }
 
-    public function follow($id, Request $request) // id of the person to be followed
+    public function follow($username, Request $request) // id of the person to be followed
     {
-        Auth::user()->following()->attach($id);
+        $user = User::where('username', $username)->first();
+        Auth::user()->following()->attach($user);
 
         return response()->json([
             'follow' => 'true',
         ]);
     }
 
-    public function unfollow($id, Request $request) // id of the person to be followed
+    public function unfollow($username, Request $request) // id of the person to be followed
     {
-        Auth::user()->following()->detach(User::find($id));
+        $user = User::where('username', $username)->first();
+        Auth::user()->following()->detach(User::find($user));
 
         return response()->json([
             'follow' => 'false',
