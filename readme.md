@@ -14,7 +14,7 @@ Read more (only in German): https://blog.wi-wissen.de/
 
 Many thanks and respect to:
 
-- [MySQL](https://www.mysql.com/)
+- [mariaDB](https://mariadb.org/)
 - [php](http://php.net/)
 - [Laravel](https://laravel.com/)
   - [laracasts/flash](https://github.com/laracasts/flash)
