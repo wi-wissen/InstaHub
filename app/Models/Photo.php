@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Schema;
 class Photo extends Model
 {
     protected $table = 'photos';
+
     protected $fillable = ['user_id', 'description', 'url'];
 
     /**

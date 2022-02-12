@@ -141,7 +141,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-     /*
+    /*
     |--------------------------------------------------------------------------
     | DB Access Level
     |--------------------------------------------------------------------------
@@ -191,7 +191,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
         \hisorange\BrowserDetect\ServiceProvider::class,
 

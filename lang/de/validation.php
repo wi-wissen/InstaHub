@@ -13,6 +13,7 @@
 
 return [
     'accepted'             => ':attribute muss akzeptiert werden.',
+    'accepted_if'          => ':attribute muss akzeptiert werden, wenn :other :value ist.',
     'active_url'           => ':attribute ist keine gültige Internet-Adresse.',
     'after'                => ':attribute muss ein Datum nach :date sein.',
     'after_or_equal'       => ':attribute muss ein Datum nach :date oder gleich :date sein.',
@@ -20,7 +21,6 @@ return [
     'alpha_dash'           => ':attribute darf nur aus Buchstaben, Zahlen, Binde- und Unterstrichen bestehen.',
     'alpha_num'            => ':attribute darf nur aus Buchstaben und Zahlen bestehen.',
     'array'                => ':attribute muss ein Array sein.',
-    'attached'             => ':attribute ist bereits angehängt.',
     'before'               => ':attribute muss ein Datum vor :date sein.',
     'before_or_equal'      => ':attribute muss ein Datum vor :date oder gleich :date sein.',
     'between'              => [
@@ -35,6 +35,8 @@ return [
     'date'                 => ':attribute muss ein gültiges Datum sein.',
     'date_equals'          => ':attribute muss ein Datum gleich :date sein.',
     'date_format'          => ':attribute entspricht nicht dem gültigen Format für :format.',
+    'declined'             => ':attribute muss abgelehnt werden.',
+    'declined_if'          => ':attribute muss abgelehnt werden wenn :other :value ist.',
     'different'            => ':attribute und :other müssen sich unterscheiden.',
     'digits'               => ':attribute muss :digits Stellen haben.',
     'digits_between'       => ':attribute muss zwischen :min und :max Stellen haben.',
@@ -42,6 +44,7 @@ return [
     'distinct'             => ':attribute beinhaltet einen bereits vorhandenen Wert.',
     'email'                => ':attribute muss eine gültige E-Mail-Adresse sein.',
     'ends_with'            => ':attribute muss eine der folgenden Endungen aufweisen: :values',
+    'enum'                 => 'The selected :attribute is invalid.',
     'exists'               => 'Der gewählte Wert für :attribute ist ungültig.',
     'file'                 => ':attribute muss eine Datei sein.',
     'filled'               => ':attribute muss ausgefüllt sein.',
@@ -77,6 +80,7 @@ return [
         'numeric' => ':attribute muss kleiner oder gleich :value sein.',
         'string'  => ':attribute darf maximal :value Zeichen lang sein.',
     ],
+    'mac_address'          => 'The :attribute must be a valid MAC address.',
     'max'                  => [
         'array'   => ':attribute darf maximal :max Elemente haben.',
         'file'    => ':attribute darf maximal :max Kilobytes groß sein.',
@@ -100,9 +104,10 @@ return [
     'prohibited'           => ':attribute ist unzulässig.',
     'prohibited_if'        => ':attribute ist unzulässig, wenn :other :value ist.',
     'prohibited_unless'    => ':attribute ist unzulässig, wenn :other nicht :values ist.',
+    'prohibits'            => ':attribute verbietet die Angabe von :other.',
     'regex'                => ':attribute Format ist ungültig.',
-    'relatable'            => ':attribute kann nicht mit dieser Ressource verbunden werden.',
     'required'             => ':attribute muss ausgefüllt werden.',
+    'required_array_keys'  => 'The :attribute field must contain entries for: :values.',
     'required_if'          => ':attribute muss ausgefüllt werden, wenn :other den Wert :value hat.',
     'required_unless'      => ':attribute muss ausgefüllt werden, wenn :other nicht den Wert :values hat.',
     'required_with'        => ':attribute muss ausgefüllt werden, wenn :values ausgefüllt wurde.',

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ad;
 use App\Http\Resources\Ad as AdResource;
+use App\Models\Ad;
 use Auth;
 use Illuminate\Http\Request;
 

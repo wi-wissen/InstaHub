@@ -13,6 +13,7 @@ class NewUser extends Notification
     use Queueable;
 
     public $user;
+
     public $message;
 
     /**

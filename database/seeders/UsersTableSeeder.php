@@ -22,10 +22,9 @@ class UsersTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         DB::table('users')->delete();
-        
-        DB::table('users')->insert(array (
-            0 => 
-            array (
+
+        DB::table('users')->insert([
+            0 => [
                 'id' => 1,
                 'username' => 'niclas258',
                 'email' => 'NiclasSchweizer@instahub.test',
@@ -43,9 +42,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-13 00:00:03',
                 'updated_at' => '2017-09-13 00:00:03',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'username' => 'rafael54',
                 'email' => 'RafaelProbst@instahub.test',
@@ -63,9 +61,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-22 08:32:28',
                 'updated_at' => '2017-09-22 08:32:28',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'username' => 'luis52',
                 'email' => 'LuisKrueger@instahub.test',
@@ -83,9 +80,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-26 15:00:06',
                 'updated_at' => '2017-08-26 15:00:06',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'username' => 'gustav489',
                 'email' => 'GustavMeister@instahub.test',
@@ -103,9 +99,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 20:28:29',
                 'updated_at' => '2017-09-20 20:28:29',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'username' => 'johannes446',
                 'email' => 'JohannesNadel@instahub.test',
@@ -123,9 +118,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-16 21:05:20',
                 'updated_at' => '2017-09-16 21:05:20',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'username' => 'justus206',
                 'email' => 'JustusHartmann@instahub.test',
@@ -143,9 +137,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-05 00:25:15',
                 'updated_at' => '2017-09-05 00:25:15',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'username' => 'max383',
                 'email' => 'MaxMaier@instahub.test',
@@ -163,9 +156,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-06 13:16:04',
                 'updated_at' => '2017-09-06 13:16:04',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'username' => 'jonas439',
                 'email' => 'JonasSchuhmacher@instahub.test',
@@ -183,9 +175,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 02:07:00',
                 'updated_at' => '2017-09-01 02:07:00',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 9,
                 'username' => 'alexander190',
                 'email' => 'AlexanderAchen@instahub.test',
@@ -203,9 +194,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 16:11:49',
                 'updated_at' => '2017-09-17 16:11:49',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'username' => 'kaspar386',
                 'email' => 'KasparVogel@instahub.test',
@@ -223,11 +213,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-10 21:43:38',
                 'updated_at' => '2017-09-10 21:43:38',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 11,
                 'username' => 'mika247',
                 'email' => 'MikaKaufmann@instahub.test',
@@ -245,9 +234,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 11:57:05',
                 'updated_at' => '2017-09-20 11:57:05',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 12,
                 'username' => 'gulian236',
                 'email' => 'GulianMueller@instahub.test',
@@ -265,9 +253,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-09 02:57:00',
                 'updated_at' => '2017-09-09 02:57:00',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 13,
                 'username' => 'benjamin272',
                 'email' => 'BenjaminPapst@instahub.test',
@@ -285,9 +272,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 12:51:44',
                 'updated_at' => '2017-09-01 12:51:44',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 14,
                 'username' => 'fabian141',
                 'email' => 'FabianMoeller@instahub.test',
@@ -305,9 +291,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 08:41:12',
                 'updated_at' => '2017-09-23 08:41:12',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 15,
                 'username' => 'noah238',
                 'email' => 'NoahDecker@instahub.test',
@@ -325,9 +310,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-08 11:33:12',
                 'updated_at' => '2017-09-08 11:33:12',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 16,
                 'username' => 'joshua468',
                 'email' => 'JoshuaMaier@instahub.test',
@@ -345,9 +329,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-10 16:57:21',
                 'updated_at' => '2017-09-10 16:57:21',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 17,
                 'username' => 'marc256',
                 'email' => 'MarcWeisz@instahub.test',
@@ -365,9 +348,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-09 22:04:47',
                 'updated_at' => '2017-09-09 22:04:47',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 18,
                 'username' => 'kilian388',
                 'email' => 'KilianFried@instahub.test',
@@ -385,9 +367,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 02:45:29',
                 'updated_at' => '2017-09-01 02:45:29',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 19,
                 'username' => 'aaron183',
                 'email' => 'AaronLange@instahub.test',
@@ -405,9 +386,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 20:35:32',
                 'updated_at' => '2017-09-17 20:35:32',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 20,
                 'username' => 'yves18',
                 'email' => 'YvesBach@instahub.test',
@@ -425,11 +405,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 12:34:07',
                 'updated_at' => '2017-09-01 12:34:07',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 21,
                 'username' => 'josia137',
                 'email' => 'JosiaSchwab@instahub.test',
@@ -447,9 +426,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-30 14:14:41',
                 'updated_at' => '2017-08-30 14:14:41',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 22,
                 'username' => 'david470',
                 'email' => 'DavidSchmitz@instahub.test',
@@ -467,9 +445,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-18 10:00:11',
                 'updated_at' => '2017-09-18 10:00:11',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 23,
                 'username' => 'jen84',
                 'email' => 'JenKoertig@instahub.test',
@@ -487,9 +464,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 06:09:23',
                 'updated_at' => '2017-09-01 06:09:23',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 24,
                 'username' => 'maximilian267',
                 'email' => 'MaximilianSeiler@instahub.test',
@@ -507,9 +483,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-05 00:05:29',
                 'updated_at' => '2017-09-05 00:05:29',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 25,
                 'username' => 'pascal353',
                 'email' => 'PascalFreeh@instahub.test',
@@ -527,9 +502,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-19 23:00:00',
                 'updated_at' => '2017-09-19 23:00:00',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 26,
                 'username' => 'jonas27',
                 'email' => 'JonasKruger@instahub.test',
@@ -547,9 +521,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-10 08:55:52',
                 'updated_at' => '2017-09-10 08:55:52',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 27,
                 'username' => 'henri184',
                 'email' => 'HenriMueller@instahub.test',
@@ -567,9 +540,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-31 04:46:55',
                 'updated_at' => '2017-08-31 04:46:55',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 28,
                 'username' => 'luis215',
                 'email' => 'LuisFrey@instahub.test',
@@ -587,9 +559,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-08 00:13:31',
                 'updated_at' => '2017-09-08 00:13:31',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 29,
                 'username' => 'fabian191',
                 'email' => 'FabianSchaefer@instahub.test',
@@ -607,9 +578,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-16 18:47:54',
                 'updated_at' => '2017-09-16 18:47:54',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 30,
                 'username' => 'simon384',
                 'email' => 'SimonOster@instahub.test',
@@ -627,11 +597,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-28 13:24:44',
                 'updated_at' => '2017-08-28 13:24:44',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 31,
                 'username' => 'nicolas209',
                 'email' => 'NicolasJunker@instahub.test',
@@ -649,9 +618,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 00:53:10',
                 'updated_at' => '2017-09-20 00:53:10',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 32,
                 'username' => 'justus142',
                 'email' => 'JustusVogel@instahub.test',
@@ -669,9 +637,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 08:16:06',
                 'updated_at' => '2017-09-11 08:16:06',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 33,
                 'username' => 'oliver313',
                 'email' => 'OliverSchweitzer@instahub.test',
@@ -689,9 +656,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-06 15:18:00',
                 'updated_at' => '2017-09-06 15:18:00',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 34,
                 'username' => 'gulian213',
                 'email' => 'GulianNeumann@instahub.test',
@@ -709,9 +675,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 00:52:13',
                 'updated_at' => '2017-09-23 00:52:13',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 35,
                 'username' => 'liam395',
                 'email' => 'LiamWalter@instahub.test',
@@ -729,9 +694,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 01:25:26',
                 'updated_at' => '2017-09-20 01:25:26',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 36,
                 'username' => 'tom491',
                 'email' => 'TomKuefer@instahub.test',
@@ -749,9 +713,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-26 19:08:27',
                 'updated_at' => '2017-08-26 19:08:27',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 37,
                 'username' => 'timon261',
                 'email' => 'TimonHartmann@instahub.test',
@@ -769,9 +732,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-29 11:31:52',
                 'updated_at' => '2017-08-29 11:31:52',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 38,
                 'username' => 'lennes499',
                 'email' => 'LennesKuhn@instahub.test',
@@ -789,9 +751,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-08 10:22:42',
                 'updated_at' => '2017-09-08 10:22:42',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 39,
                 'username' => 'malte174',
                 'email' => 'MalteHahn@instahub.test',
@@ -809,9 +770,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 20:04:16',
                 'updated_at' => '2017-09-20 20:04:16',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 40,
                 'username' => 'timon222',
                 'email' => 'TimonRichter@instahub.test',
@@ -829,11 +789,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 06:18:51',
                 'updated_at' => '2017-09-20 06:18:51',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 41,
                 'username' => 'malte231',
                 'email' => 'MalteBayer@instahub.test',
@@ -851,9 +810,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 12:13:35',
                 'updated_at' => '2017-09-01 12:13:35',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 42,
                 'username' => 'max39',
                 'email' => 'MaxRothstein@instahub.test',
@@ -871,9 +829,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-13 00:11:35',
                 'updated_at' => '2017-09-13 00:11:35',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 43,
                 'username' => 'max143',
                 'email' => 'MaxSchroeder@instahub.test',
@@ -891,9 +848,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-29 00:16:18',
                 'updated_at' => '2017-08-29 00:16:18',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 44,
                 'username' => 'julian58',
                 'email' => 'JulianFuerst@instahub.test',
@@ -911,9 +867,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 00:53:58',
                 'updated_at' => '2017-09-01 00:53:58',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 45,
                 'username' => 'levin53',
                 'email' => 'LevinBosch@instahub.test',
@@ -931,9 +886,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-18 00:40:10',
                 'updated_at' => '2017-09-18 00:40:10',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 46,
                 'username' => 'max440',
                 'email' => 'MaxZimmermann@instahub.test',
@@ -951,9 +905,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-09 04:30:02',
                 'updated_at' => '2017-09-09 04:30:02',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 47,
                 'username' => 'florian398',
                 'email' => 'FlorianKoehler@instahub.test',
@@ -971,9 +924,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 23:39:57',
                 'updated_at' => '2017-09-11 23:39:57',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 48,
                 'username' => 'oliver97',
                 'email' => 'OliverWaechter@instahub.test',
@@ -991,9 +943,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 04:43:35',
                 'updated_at' => '2017-09-17 04:43:35',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 49,
                 'username' => 'julian408',
                 'email' => 'JulianEichmann@instahub.test',
@@ -1011,9 +962,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-09 19:43:07',
                 'updated_at' => '2017-09-09 19:43:07',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 50,
                 'username' => 'daniel334',
                 'email' => 'DanielKuhn@instahub.test',
@@ -1031,11 +981,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 03:21:22',
                 'updated_at' => '2017-09-20 03:21:22',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 51,
                 'username' => 'justin336',
                 'email' => 'JustinSchuster@instahub.test',
@@ -1053,9 +1002,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-12 08:50:33',
                 'updated_at' => '2017-09-12 08:50:33',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 52,
                 'username' => 'jerome437',
                 'email' => 'JeromeSchuster@instahub.test',
@@ -1073,9 +1021,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-12 06:41:13',
                 'updated_at' => '2017-09-12 06:41:13',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 53,
                 'username' => 'lennox87',
                 'email' => 'LennoxReinhardt@instahub.test',
@@ -1093,9 +1040,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-08 00:18:10',
                 'updated_at' => '2017-09-08 00:18:10',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 54,
                 'username' => 'henri376',
                 'email' => 'HenriEhrlichmann@instahub.test',
@@ -1113,9 +1059,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-10 21:52:01',
                 'updated_at' => '2017-09-10 21:52:01',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 55,
                 'username' => 'jonas136',
                 'email' => 'JonasEiffel@instahub.test',
@@ -1133,9 +1078,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-04 03:09:54',
                 'updated_at' => '2017-09-04 03:09:54',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 56,
                 'username' => 'moses255',
                 'email' => 'MosesHueber@instahub.test',
@@ -1153,9 +1097,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 03:32:51',
                 'updated_at' => '2017-09-20 03:32:51',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 57,
                 'username' => 'colin173',
                 'email' => 'ColinSommer@instahub.test',
@@ -1173,9 +1116,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-25 02:34:25',
                 'updated_at' => '2017-08-25 02:34:25',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 58,
                 'username' => 'pascal130',
                 'email' => 'PascalBauer@instahub.test',
@@ -1193,9 +1135,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-18 12:36:21',
                 'updated_at' => '2017-09-18 12:36:21',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 59,
                 'username' => 'pascal288',
                 'email' => 'PascalFuchs@instahub.test',
@@ -1213,9 +1154,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-07 03:06:55',
                 'updated_at' => '2017-09-07 03:06:55',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 60,
                 'username' => 'kaspar382',
                 'email' => 'KasparAachen@instahub.test',
@@ -1233,11 +1173,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-15 06:53:24',
                 'updated_at' => '2017-09-15 06:53:24',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 61,
                 'username' => 'marc430',
                 'email' => 'MarcWerfel@instahub.test',
@@ -1255,9 +1194,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-15 14:14:37',
                 'updated_at' => '2017-09-15 14:14:37',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 62,
                 'username' => 'adrian211',
                 'email' => 'AdrianFuchs@instahub.test',
@@ -1275,9 +1213,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-22 04:52:55',
                 'updated_at' => '2017-09-22 04:52:55',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 63,
                 'username' => 'luca212',
                 'email' => 'LucaFassbinder@instahub.test',
@@ -1295,9 +1232,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-27 09:46:12',
                 'updated_at' => '2017-08-27 09:46:12',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 64,
                 'username' => 'fabian419',
                 'email' => 'FabianProbst@instahub.test',
@@ -1315,9 +1251,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-03 16:46:11',
                 'updated_at' => '2017-09-03 16:46:11',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 65,
                 'username' => 'lennes90',
                 'email' => 'LennesWeber@instahub.test',
@@ -1335,9 +1270,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-26 09:21:25',
                 'updated_at' => '2017-08-26 09:21:25',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 66,
                 'username' => 'vincent331',
                 'email' => 'VincentBeyer@instahub.test',
@@ -1355,9 +1289,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 07:46:01',
                 'updated_at' => '2017-09-14 07:46:01',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 67,
                 'username' => 'oliver39',
                 'email' => 'OliverAdler@instahub.test',
@@ -1375,9 +1308,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 02:52:26',
                 'updated_at' => '2017-09-01 02:52:26',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 68,
                 'username' => 'moses475',
                 'email' => 'MosesSommer@instahub.test',
@@ -1395,9 +1327,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-05 11:11:18',
                 'updated_at' => '2017-09-05 11:11:18',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 69,
                 'username' => 'lukas493',
                 'email' => 'LukasAckermann@instahub.test',
@@ -1415,9 +1346,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-18 07:57:14',
                 'updated_at' => '2017-09-18 07:57:14',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 70,
                 'username' => 'daniel405',
                 'email' => 'DanielSchweitzer@instahub.test',
@@ -1435,11 +1365,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-09 16:21:26',
                 'updated_at' => '2017-09-09 16:21:26',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 71,
                 'username' => 'karl134',
                 'email' => 'KarlDaecher@instahub.test',
@@ -1457,9 +1386,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-15 17:12:20',
                 'updated_at' => '2017-09-15 17:12:20',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 72,
                 'username' => 'lukas251',
                 'email' => 'LukasProbst@instahub.test',
@@ -1477,9 +1405,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 10:30:37',
                 'updated_at' => '2017-09-11 10:30:37',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 73,
                 'username' => 'karl261',
                 'email' => 'KarlVogt@instahub.test',
@@ -1497,9 +1424,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 15:51:12',
                 'updated_at' => '2017-09-11 15:51:12',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 74,
                 'username' => 'henri73',
                 'email' => 'HenriSchuhmacher@instahub.test',
@@ -1517,9 +1443,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-13 10:42:47',
                 'updated_at' => '2017-09-13 10:42:47',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 75,
                 'username' => 'marco446',
                 'email' => 'MarcoPfaff@instahub.test',
@@ -1537,9 +1462,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 04:06:01',
                 'updated_at' => '2017-09-21 04:06:01',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 76,
                 'username' => 'meiko399',
                 'email' => 'MeikoBar@instahub.test',
@@ -1557,9 +1481,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-19 18:01:12',
                 'updated_at' => '2017-09-19 18:01:12',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 77,
                 'username' => 'leonard146',
                 'email' => 'LeonardSchwartz@instahub.test',
@@ -1577,9 +1500,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-26 00:21:19',
                 'updated_at' => '2017-08-26 00:21:19',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 78,
                 'username' => 'ole23',
                 'email' => 'OleFaerber@instahub.test',
@@ -1597,9 +1519,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 04:08:43',
                 'updated_at' => '2017-09-23 04:08:43',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 79,
                 'username' => 'jerome176',
                 'email' => 'JeromeBohm@instahub.test',
@@ -1617,9 +1538,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-15 00:30:31',
                 'updated_at' => '2017-09-15 00:30:31',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 80,
                 'username' => 'dominik427',
                 'email' => 'DominikStrauss@instahub.test',
@@ -1637,11 +1557,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-09 23:18:04',
                 'updated_at' => '2017-09-09 23:18:04',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 81,
                 'username' => 'jano130',
                 'email' => 'JanoHerman@instahub.test',
@@ -1659,9 +1578,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-12 22:31:34',
                 'updated_at' => '2017-09-12 22:31:34',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 82,
                 'username' => 'jonas252',
                 'email' => 'JonasNadel@instahub.test',
@@ -1679,9 +1597,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 09:27:46',
                 'updated_at' => '2017-09-11 09:27:46',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 83,
                 'username' => 'marlo387',
                 'email' => 'MarloScholz@instahub.test',
@@ -1699,9 +1616,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 09:33:09',
                 'updated_at' => '2017-09-23 09:33:09',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 84,
                 'username' => 'marlo246',
                 'email' => 'MarloFischer@instahub.test',
@@ -1719,9 +1635,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-03 03:03:14',
                 'updated_at' => '2017-09-03 03:03:14',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 85,
                 'username' => 'linus438',
                 'email' => 'LinusSchiffer@instahub.test',
@@ -1739,9 +1654,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-07 10:25:09',
                 'updated_at' => '2017-09-07 10:25:09',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 86,
                 'username' => 'karl2',
                 'email' => 'KarlTheiss@instahub.test',
@@ -1759,9 +1673,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 07:34:35',
                 'updated_at' => '2017-09-17 07:34:35',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 87,
                 'username' => 'cedric351',
                 'email' => 'CedricDecker@instahub.test',
@@ -1779,9 +1692,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-16 16:38:32',
                 'updated_at' => '2017-09-16 16:38:32',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 88,
                 'username' => 'felix17',
                 'email' => 'FelixReiniger@instahub.test',
@@ -1799,9 +1711,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 19:47:44',
                 'updated_at' => '2017-09-21 19:47:44',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 89,
                 'username' => 'moses385',
                 'email' => 'MosesHolzman@instahub.test',
@@ -1819,9 +1730,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-04 02:52:00',
                 'updated_at' => '2017-09-04 02:52:00',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 90,
                 'username' => 'lennes160',
                 'email' => 'LennesMaier@instahub.test',
@@ -1839,11 +1749,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-15 11:50:39',
                 'updated_at' => '2017-09-15 11:50:39',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 91,
                 'username' => 'benjamin257',
                 'email' => 'BenjaminTheissen@instahub.test',
@@ -1861,9 +1770,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 08:27:15',
                 'updated_at' => '2017-09-20 08:27:15',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 92,
                 'username' => 'piet343',
                 'email' => 'PietBaader@instahub.test',
@@ -1881,9 +1789,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-29 12:45:33',
                 'updated_at' => '2017-08-29 12:45:33',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 93,
                 'username' => 'jannis257',
                 'email' => 'JannisBayer@instahub.test',
@@ -1901,9 +1808,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-13 12:13:50',
                 'updated_at' => '2017-09-13 12:13:50',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 94,
                 'username' => 'felix186',
                 'email' => 'FelixBader@instahub.test',
@@ -1921,9 +1827,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-13 11:59:09',
                 'updated_at' => '2017-09-13 11:59:09',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 95,
                 'username' => 'malte260',
                 'email' => 'MalteFuhrmann@instahub.test',
@@ -1941,9 +1846,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-18 00:35:57',
                 'updated_at' => '2017-09-18 00:35:57',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 96,
                 'username' => 'tom140',
                 'email' => 'TomSchwab@instahub.test',
@@ -1961,9 +1865,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-05 17:32:35',
                 'updated_at' => '2017-09-05 17:32:35',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 97,
                 'username' => 'philipp101',
                 'email' => 'PhilippKortig@instahub.test',
@@ -1981,9 +1884,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-22 18:02:49',
                 'updated_at' => '2017-09-22 18:02:49',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 98,
                 'username' => 'jano147',
                 'email' => 'JanoEhrlichmann@instahub.test',
@@ -2001,9 +1903,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-07 00:21:22',
                 'updated_at' => '2017-09-07 00:21:22',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 99,
                 'username' => 'marlo468',
                 'email' => 'MarloEberhart@instahub.test',
@@ -2021,9 +1922,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 10:29:34',
                 'updated_at' => '2017-09-01 10:29:34',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 100,
                 'username' => 'marlo152',
                 'email' => 'MarloKrause@instahub.test',
@@ -2041,11 +1941,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-15 06:02:38',
                 'updated_at' => '2017-09-15 06:02:38',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 101,
                 'username' => 'celine96',
                 'email' => 'CelineFisher@instahub.test',
@@ -2063,9 +1962,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 07:57:19',
                 'updated_at' => '2017-09-21 07:57:19',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 102,
                 'username' => 'laura451',
                 'email' => 'LauraMauer@instahub.test',
@@ -2083,9 +1981,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 10:06:49',
                 'updated_at' => '2017-09-01 10:06:49',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 103,
                 'username' => 'emily8',
                 'email' => 'EmilyFaber@instahub.test',
@@ -2103,9 +2000,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-26 03:21:42',
                 'updated_at' => '2017-08-26 03:21:42',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 104,
                 'username' => 'susanne378',
                 'email' => 'SusanneSchulz@instahub.test',
@@ -2123,9 +2019,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-13 04:32:31',
                 'updated_at' => '2017-09-13 04:32:31',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 105,
                 'username' => 'aurelie141',
                 'email' => 'AurelieHerman@instahub.test',
@@ -2143,9 +2038,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-24 22:26:35',
                 'updated_at' => '2017-09-24 22:26:35',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 106,
                 'username' => 'julia405',
                 'email' => 'JuliaFurst@instahub.test',
@@ -2163,9 +2057,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-30 16:20:59',
                 'updated_at' => '2017-08-30 16:20:59',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 107,
                 'username' => 'greta104',
                 'email' => 'GretaBauer@instahub.test',
@@ -2183,9 +2076,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-18 11:13:14',
                 'updated_at' => '2017-09-18 11:13:14',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 108,
                 'username' => 'laila78',
                 'email' => 'LailaEggers@instahub.test',
@@ -2203,9 +2095,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 13:00:28',
                 'updated_at' => '2017-09-21 13:00:28',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 109,
                 'username' => 'julia295',
                 'email' => 'JuliaKluge@instahub.test',
@@ -2223,9 +2114,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-06 20:29:19',
                 'updated_at' => '2017-09-06 20:29:19',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 110,
                 'username' => 'eliana67',
                 'email' => 'ElianaEgger@instahub.test',
@@ -2243,11 +2133,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-07 21:31:15',
                 'updated_at' => '2017-09-07 21:31:15',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 111,
                 'username' => 'jamila238',
                 'email' => 'JamilaRitter@instahub.test',
@@ -2265,9 +2154,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-08 14:21:03',
                 'updated_at' => '2017-09-08 14:21:03',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 112,
                 'username' => 'laura365',
                 'email' => 'LauraWurfel@instahub.test',
@@ -2285,9 +2173,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-27 06:07:16',
                 'updated_at' => '2017-08-27 06:07:16',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 113,
                 'username' => 'sophia54',
                 'email' => 'SophiaSaenger@instahub.test',
@@ -2305,9 +2192,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-16 04:37:49',
                 'updated_at' => '2017-09-16 04:37:49',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 114,
                 'username' => 'melina303',
                 'email' => 'MelinaAachen@instahub.test',
@@ -2325,9 +2211,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 01:28:12',
                 'updated_at' => '2017-09-20 01:28:12',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 115,
                 'username' => 'johanna23',
                 'email' => 'JohannaSchmidt@instahub.test',
@@ -2345,9 +2230,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 02:49:26',
                 'updated_at' => '2017-09-21 02:49:26',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 116,
                 'username' => 'naomi17',
                 'email' => 'NaomiFaerber@instahub.test',
@@ -2365,9 +2249,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 17:05:40',
                 'updated_at' => '2017-09-17 17:05:40',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 117,
                 'username' => 'julia309',
                 'email' => 'JuliaWeissmuller@instahub.test',
@@ -2385,9 +2268,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 22:58:57',
                 'updated_at' => '2017-09-23 22:58:57',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 118,
                 'username' => 'lana450',
                 'email' => 'LanaNeustadt@instahub.test',
@@ -2405,9 +2287,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 03:35:46',
                 'updated_at' => '2017-09-23 03:35:46',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 119,
                 'username' => 'eve15',
                 'email' => 'EveSchmidt@instahub.test',
@@ -2425,9 +2306,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-19 08:00:44',
                 'updated_at' => '2017-09-19 08:00:44',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 120,
                 'username' => 'ameli68',
                 'email' => 'AmeliHerzog@instahub.test',
@@ -2445,11 +2325,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 00:08:20',
                 'updated_at' => '2017-09-21 00:08:20',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 121,
                 'username' => 'livia60',
                 'email' => 'LiviaJaeger@instahub.test',
@@ -2467,9 +2346,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 01:52:16',
                 'updated_at' => '2017-09-14 01:52:16',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 122,
                 'username' => 'aileen2',
                 'email' => 'AileenFenstermacher@instahub.test',
@@ -2487,9 +2365,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-24 07:04:28',
                 'updated_at' => '2017-09-24 07:04:28',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 123,
                 'username' => 'marie292',
                 'email' => 'MarieBohm@instahub.test',
@@ -2507,9 +2384,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-08 03:22:56',
                 'updated_at' => '2017-09-08 03:22:56',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 124,
                 'username' => 'magdalena394',
                 'email' => 'MagdalenaSchuster@instahub.test',
@@ -2527,9 +2403,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-29 20:39:25',
                 'updated_at' => '2017-08-29 20:39:25',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 125,
                 'username' => 'bea160',
                 'email' => 'BeaPeters@instahub.test',
@@ -2547,9 +2422,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-30 04:33:41',
                 'updated_at' => '2017-08-30 04:33:41',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 126,
                 'username' => 'johanna462',
                 'email' => 'JohannaKaestner@instahub.test',
@@ -2567,9 +2441,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-15 14:07:24',
                 'updated_at' => '2017-09-15 14:07:24',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 127,
                 'username' => 'zoey291',
                 'email' => 'ZoeyDietrich@instahub.test',
@@ -2587,9 +2460,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-26 20:39:47',
                 'updated_at' => '2017-08-26 20:39:47',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 128,
                 'username' => 'xenia437',
                 'email' => 'XeniaFreud@instahub.test',
@@ -2607,9 +2479,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 17:35:47',
                 'updated_at' => '2017-09-14 17:35:47',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 129,
                 'username' => 'julia40',
                 'email' => 'JuliaSchwab@instahub.test',
@@ -2627,9 +2498,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 12:10:08',
                 'updated_at' => '2017-09-21 12:10:08',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 130,
                 'username' => 'samantha139',
                 'email' => 'SamanthaBader@instahub.test',
@@ -2647,11 +2517,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-31 09:30:12',
                 'updated_at' => '2017-08-31 09:30:12',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 131,
                 'username' => 'juliette175',
                 'email' => 'JulietteSanger@instahub.test',
@@ -2669,9 +2538,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 08:35:54',
                 'updated_at' => '2017-09-14 08:35:54',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 132,
                 'username' => 'nele239',
                 'email' => 'NeleFreitag@instahub.test',
@@ -2689,9 +2557,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-26 22:14:11',
                 'updated_at' => '2017-08-26 22:14:11',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 133,
                 'username' => 'bea414',
                 'email' => 'BeaBeich@instahub.test',
@@ -2709,9 +2576,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 08:30:21',
                 'updated_at' => '2017-09-14 08:30:21',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 134,
                 'username' => 'emma302',
                 'email' => 'EmmaBarth@instahub.test',
@@ -2729,9 +2595,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-30 21:31:34',
                 'updated_at' => '2017-08-30 21:31:34',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 135,
                 'username' => 'maret13',
                 'email' => 'MaretKoehler@instahub.test',
@@ -2749,9 +2614,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 18:45:29',
                 'updated_at' => '2017-09-01 18:45:29',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 136,
                 'username' => 'jette388',
                 'email' => 'JetteKaiser@instahub.test',
@@ -2769,9 +2633,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-06 19:33:44',
                 'updated_at' => '2017-09-06 19:33:44',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 137,
                 'username' => 'marlene442',
                 'email' => 'MarleneBarth@instahub.test',
@@ -2789,9 +2652,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-22 21:44:42',
                 'updated_at' => '2017-09-22 21:44:42',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 138,
                 'username' => 'mala219',
                 'email' => 'MalaKaiser@instahub.test',
@@ -2809,9 +2671,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 21:26:58',
                 'updated_at' => '2017-09-11 21:26:58',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 139,
                 'username' => 'juliette13',
                 'email' => 'JulietteUnger@instahub.test',
@@ -2829,9 +2690,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 15:10:53',
                 'updated_at' => '2017-09-14 15:10:53',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 140,
                 'username' => 'rahel414',
                 'email' => 'RahelAchen@instahub.test',
@@ -2849,11 +2709,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 23:42:30',
                 'updated_at' => '2017-09-21 23:42:30',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 141,
                 'username' => 'juliette284',
                 'email' => 'JulietteEisenhauer@instahub.test',
@@ -2871,9 +2730,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-27 20:39:03',
                 'updated_at' => '2017-08-27 20:39:03',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 142,
                 'username' => 'grete239',
                 'email' => 'GretePropst@instahub.test',
@@ -2891,9 +2749,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 18:24:33',
                 'updated_at' => '2017-09-11 18:24:33',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 143,
                 'username' => 'magdalena34',
                 'email' => 'MagdalenaFoerster@instahub.test',
@@ -2911,9 +2768,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-31 06:06:10',
                 'updated_at' => '2017-08-31 06:06:10',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 144,
                 'username' => 'anna247',
                 'email' => 'AnnaEgger@instahub.test',
@@ -2931,9 +2787,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 14:57:38',
                 'updated_at' => '2017-09-23 14:57:38',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 145,
                 'username' => 'johanna150',
                 'email' => 'JohannaSchaefer@instahub.test',
@@ -2951,9 +2806,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-06 10:57:57',
                 'updated_at' => '2017-09-06 10:57:57',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 146,
                 'username' => 'helene447',
                 'email' => 'HeleneMeyer@instahub.test',
@@ -2971,9 +2825,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-04 23:10:49',
                 'updated_at' => '2017-09-04 23:10:49',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 147,
                 'username' => 'eva125',
                 'email' => 'EvaKoenig@instahub.test',
@@ -2991,9 +2844,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-27 14:07:15',
                 'updated_at' => '2017-08-27 14:07:15',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 148,
                 'username' => 'lena469',
                 'email' => 'LenaWeiss@instahub.test',
@@ -3011,9 +2863,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 06:54:57',
                 'updated_at' => '2017-09-17 06:54:57',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 149,
                 'username' => 'sophia151',
                 'email' => 'SophiaVogler@instahub.test',
@@ -3031,9 +2882,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-15 11:51:22',
                 'updated_at' => '2017-09-15 11:51:22',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 150,
                 'username' => 'maria422',
                 'email' => 'MariaBaumgartner@instahub.test',
@@ -3051,11 +2901,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-12 13:31:31',
                 'updated_at' => '2017-09-12 13:31:31',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 151,
                 'username' => 'greta110',
                 'email' => 'GretaEberhardt@instahub.test',
@@ -3073,9 +2922,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-09 19:29:36',
                 'updated_at' => '2017-09-09 19:29:36',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 152,
                 'username' => 'maja217',
                 'email' => 'MajaGersten@instahub.test',
@@ -3093,9 +2941,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-13 16:06:26',
                 'updated_at' => '2017-09-13 16:06:26',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 153,
                 'username' => 'sophia130',
                 'email' => 'SophiaHerrmann@instahub.test',
@@ -3113,9 +2960,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-07 04:09:00',
                 'updated_at' => '2017-09-07 04:09:00',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 154,
                 'username' => 'juliette372',
                 'email' => 'JulietteAmsel@instahub.test',
@@ -3133,9 +2979,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-16 06:50:03',
                 'updated_at' => '2017-09-16 06:50:03',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 155,
                 'username' => 'thea308',
                 'email' => 'TheaReinhard@instahub.test',
@@ -3153,9 +2998,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 22:48:03',
                 'updated_at' => '2017-09-11 22:48:03',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 156,
                 'username' => 'nele51',
                 'email' => 'NeleFreud@instahub.test',
@@ -3173,9 +3017,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-12 21:18:37',
                 'updated_at' => '2017-09-12 21:18:37',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 157,
                 'username' => 'janine289',
                 'email' => 'JanineHimmel@instahub.test',
@@ -3193,9 +3036,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 18:47:37',
                 'updated_at' => '2017-09-17 18:47:37',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 158,
                 'username' => 'lilli90',
                 'email' => 'LilliBraun@instahub.test',
@@ -3213,9 +3055,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-06 01:40:39',
                 'updated_at' => '2017-09-06 01:40:39',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 159,
                 'username' => 'lisa356',
                 'email' => 'LisaRoth@instahub.test',
@@ -3233,9 +3074,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-04 00:11:34',
                 'updated_at' => '2017-09-04 00:11:34',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 160,
                 'username' => 'paula193',
                 'email' => 'PaulaReiniger@instahub.test',
@@ -3253,11 +3093,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 17:49:23',
                 'updated_at' => '2017-09-23 17:49:23',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 161,
                 'username' => 'heidi270',
                 'email' => 'HeidiSchweizer@instahub.test',
@@ -3275,9 +3114,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-31 21:36:54',
                 'updated_at' => '2017-08-31 21:36:54',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 162,
                 'username' => 'mariella397',
                 'email' => 'MariellaBachmeier@instahub.test',
@@ -3295,9 +3133,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 14:00:38',
                 'updated_at' => '2017-09-11 14:00:38',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 163,
                 'username' => 'tialda93',
                 'email' => 'TialdaOstermann@instahub.test',
@@ -3315,9 +3152,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-23 14:07:07',
                 'updated_at' => '2017-09-23 14:07:07',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 164,
                 'username' => 'henriette28',
                 'email' => 'HenrietteZimmerman@instahub.test',
@@ -3335,9 +3171,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-29 02:30:25',
                 'updated_at' => '2017-08-29 02:30:25',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 165,
                 'username' => 'pauline128',
                 'email' => 'PaulineFoerster@instahub.test',
@@ -3355,9 +3190,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 12:45:24',
                 'updated_at' => '2017-09-01 12:45:24',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 166,
                 'username' => 'ivette355',
                 'email' => 'IvetteBeckenbauer@instahub.test',
@@ -3375,9 +3209,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-16 03:50:35',
                 'updated_at' => '2017-09-16 03:50:35',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 167,
                 'username' => 'sophia392',
                 'email' => 'SophiaHoltzmann@instahub.test',
@@ -3395,9 +3228,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-30 23:15:21',
                 'updated_at' => '2017-08-30 23:15:21',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 168,
                 'username' => 'may475',
                 'email' => 'MayKoenig@instahub.test',
@@ -3415,9 +3247,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-06 01:03:32',
                 'updated_at' => '2017-09-06 01:03:32',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 169,
                 'username' => 'leonore116',
                 'email' => 'LeonoreKaufmann@instahub.test',
@@ -3435,9 +3266,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 03:22:08',
                 'updated_at' => '2017-09-17 03:22:08',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 170,
                 'username' => 'tialda361',
                 'email' => 'TialdaSchroeder@instahub.test',
@@ -3455,11 +3285,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-16 21:55:43',
                 'updated_at' => '2017-09-16 21:55:43',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 171,
                 'username' => 'mara381',
                 'email' => 'MaraBoehm@instahub.test',
@@ -3477,9 +3306,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 19:47:19',
                 'updated_at' => '2017-09-14 19:47:19',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 172,
                 'username' => 'livia344',
                 'email' => 'LiviaBayer@instahub.test',
@@ -3497,9 +3325,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 16:37:35',
                 'updated_at' => '2017-09-01 16:37:35',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 173,
                 'username' => 'lina170',
                 'email' => 'LinaJager@instahub.test',
@@ -3517,9 +3344,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-19 10:15:59',
                 'updated_at' => '2017-09-19 10:15:59',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 174,
                 'username' => 'ann145',
                 'email' => 'AnnFriedman@instahub.test',
@@ -3537,9 +3363,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-25 23:18:53',
                 'updated_at' => '2017-08-25 23:18:53',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 175,
                 'username' => 'mala452',
                 'email' => 'MalaAchen@instahub.test',
@@ -3557,9 +3382,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-22 20:06:40',
                 'updated_at' => '2017-09-22 20:06:40',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 176,
                 'username' => 'celine142',
                 'email' => 'CelineReinhardt@instahub.test',
@@ -3577,9 +3401,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-31 14:03:15',
                 'updated_at' => '2017-08-31 14:03:15',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 177,
                 'username' => 'eliana157',
                 'email' => 'ElianaBaumgaertner@instahub.test',
@@ -3597,9 +3420,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-21 08:31:39',
                 'updated_at' => '2017-09-21 08:31:39',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 178,
                 'username' => 'mariella164',
                 'email' => 'MariellaWurfel@instahub.test',
@@ -3617,9 +3439,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-22 13:19:55',
                 'updated_at' => '2017-09-22 13:19:55',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 179,
                 'username' => 'leni223',
                 'email' => 'LeniSchaefer@instahub.test',
@@ -3637,9 +3458,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-19 13:04:57',
                 'updated_at' => '2017-09-19 13:04:57',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 180,
                 'username' => 'maja260',
                 'email' => 'MajaWulf@instahub.test',
@@ -3657,11 +3477,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-10 14:01:07',
                 'updated_at' => '2017-09-10 14:01:07',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 181,
                 'username' => 'sabina52',
                 'email' => 'SabinaHoffmann@instahub.test',
@@ -3679,9 +3498,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-19 18:39:33',
                 'updated_at' => '2017-09-19 18:39:33',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 182,
                 'username' => 'ameli490',
                 'email' => 'AmeliSchroeder@instahub.test',
@@ -3699,9 +3517,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 21:51:43',
                 'updated_at' => '2017-09-11 21:51:43',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 183,
                 'username' => 'talida159',
                 'email' => 'TalidaMetzger@instahub.test',
@@ -3719,9 +3536,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-04 01:31:16',
                 'updated_at' => '2017-09-04 01:31:16',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 184,
                 'username' => 'henriette136',
                 'email' => 'HenrietteMaurer@instahub.test',
@@ -3739,9 +3555,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-16 22:35:14',
                 'updated_at' => '2017-09-16 22:35:14',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 185,
                 'username' => 'naomi103',
                 'email' => 'NaomiSchneider@instahub.test',
@@ -3759,9 +3574,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-25 08:18:09',
                 'updated_at' => '2017-08-25 08:18:09',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 186,
                 'username' => 'lina149',
                 'email' => 'LinaDrescher@instahub.test',
@@ -3779,9 +3593,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 23:09:32',
                 'updated_at' => '2017-09-14 23:09:32',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 187,
                 'username' => 'ameli80',
                 'email' => 'AmeliMaur@instahub.test',
@@ -3799,9 +3612,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-09 12:52:02',
                 'updated_at' => '2017-09-09 12:52:02',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 188,
                 'username' => 'stella439',
                 'email' => 'StellaZimmerman@instahub.test',
@@ -3819,9 +3631,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-17 19:50:54',
                 'updated_at' => '2017-09-17 19:50:54',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 189,
                 'username' => 'emilie210',
                 'email' => 'EmilieShuster@instahub.test',
@@ -3839,9 +3650,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-04 04:50:51',
                 'updated_at' => '2017-09-04 04:50:51',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 190,
                 'username' => 'marie35',
                 'email' => 'MarieKunze@instahub.test',
@@ -3859,11 +3669,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-12 13:57:41',
                 'updated_at' => '2017-09-12 13:57:41',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 191,
                 'username' => 'viktoria121',
                 'email' => 'ViktoriaBuerger@instahub.test',
@@ -3881,9 +3690,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-24 11:22:47',
                 'updated_at' => '2017-09-24 11:22:47',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 192,
                 'username' => 'emily366',
                 'email' => 'EmilyBecker@instahub.test',
@@ -3901,9 +3709,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-20 06:53:28',
                 'updated_at' => '2017-09-20 06:53:28',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 193,
                 'username' => 'ivette327',
                 'email' => 'IvetteWalter@instahub.test',
@@ -3921,9 +3728,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-27 20:33:54',
                 'updated_at' => '2017-08-27 20:33:54',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 194,
                 'username' => 'samina369',
                 'email' => 'SaminaOsterhagen@instahub.test',
@@ -3941,9 +3747,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 13:01:06',
                 'updated_at' => '2017-09-14 13:01:06',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 195,
                 'username' => 'samira455',
                 'email' => 'SamiraVogler@instahub.test',
@@ -3961,9 +3766,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-02 11:19:23',
                 'updated_at' => '2017-09-02 11:19:23',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 196,
                 'username' => 'lorena249',
                 'email' => 'LorenaNeudorf@instahub.test',
@@ -3981,9 +3785,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-08 05:31:03',
                 'updated_at' => '2017-09-08 05:31:03',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 197,
                 'username' => 'martina35',
                 'email' => 'MartinaFaber@instahub.test',
@@ -4001,9 +3804,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-26 22:14:11',
                 'updated_at' => '2017-08-26 22:14:11',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 198,
                 'username' => 'juliane26',
                 'email' => 'JulianeMaurer@instahub.test',
@@ -4021,9 +3823,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-14 08:30:21',
                 'updated_at' => '2017-09-14 08:30:21',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 199,
                 'username' => 'brigitte94',
                 'email' => 'BrigitteBrauer@instahub.test',
@@ -4041,9 +3842,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-08-30 21:31:34',
                 'updated_at' => '2017-08-30 21:31:34',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 200,
                 'username' => 'melanie235',
                 'email' => 'MelanieLoewe@instahub.test',
@@ -4061,11 +3861,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-01 18:45:29',
                 'updated_at' => '2017-09-01 18:45:29',
-            ),
-        ));
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('users')->insert([
+            0 => [
                 'id' => 201,
                 'username' => 'anke49',
                 'email' => 'AnkeFeierabend@instahub.test',
@@ -4083,9 +3882,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-06 19:33:44',
                 'updated_at' => '2017-09-06 19:33:44',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 202,
                 'username' => 'klaudia27',
                 'email' => 'KlaudiaUrner@instahub.test',
@@ -4103,9 +3901,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-22 21:44:42',
                 'updated_at' => '2017-09-22 21:44:42',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 203,
                 'username' => 'lisa125',
                 'email' => 'LisaLoewe@instahub.test',
@@ -4123,9 +3920,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2017-09-11 21:26:58',
                 'updated_at' => '2017-09-11 21:26:58',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 204,
                 'username' => 'Kimberley28',
                 'email' => 'KimberleyFabiennePawlowski@instahub.test',
@@ -4143,9 +3939,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2021-10-05 13:19:23',
                 'updated_at' => '2021-10-05 13:19:23',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 205,
                 'username' => 'Cäcilia933',
                 'email' => 'Caecilia.Willer@instahub.test',
@@ -4163,9 +3958,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2021-10-05 13:19:23',
                 'updated_at' => '2021-10-05 13:19:23',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 206,
                 'username' => 'Ana-Anouk157',
                 'email' => 'Ana-AnoukKimmel@instahub.test',
@@ -4183,8 +3977,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => '',
                 'created_at' => '2021-10-05 13:19:23',
                 'updated_at' => '2021-10-05 13:19:23',
-            ),
-        ));
+            ],
+        ]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }

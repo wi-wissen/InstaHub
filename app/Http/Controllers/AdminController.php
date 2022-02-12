@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Analytic;
 use App\Facades\RequestHub;
+use App\Models\Analytic;
 use App\Models\Hub;
 use App\Models\Photo;
 use App\Models\User;
@@ -88,8 +88,6 @@ class AdminController extends Controller
 
     private function migrateTable($tablename)
     {
-        DB::beginTransaction(); //better performance and safer
-
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists($tablename);
         if ($tablename == 'users') {
@@ -100,8 +98,6 @@ class AdminController extends Controller
         Artisan::call('migrate', ['--path' => "database/migrations/$tablename", '--force' => true]);
         Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
 
-        DB::commit();
-
         $this->messages[] = "Table $tablename exists (now).";
     }
 
@@ -111,8 +107,6 @@ class AdminController extends Controller
         if ($tablename == 'users' && RequestHub::hasTable('users')) {
             $user = User::where('username', '=', 'admin')->first();
         }
-
-        DB::beginTransaction(); //better performance and safer
 
         if (! RequestHub::hasTable($tablename)) {
             Artisan::call('migrate', ['--path' => "database/migrations/$tablename", '--force' => true]);
@@ -151,22 +145,16 @@ class AdminController extends Controller
             $user->role = 2; //dba - role is not massfillable for security reasons
             $user->save();
         }
-
-        DB::commit();
     }
 
     private function dropTable($tablename)
     {
-        DB::beginTransaction(); //better performance and safer
-
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists($tablename);
         if ($tablename == 'users') {
             Schema::dropIfExists('password_resets');
         } //users migrates this table too.
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-
-        DB::commit();
 
         $this->messages[] = "Table $tablename does not (longer) exist.";
     }
@@ -257,8 +245,8 @@ class AdminController extends Controller
         $user->save();
 
         return response()->json([
-           'activate' => $request->activate,
-       ]);
+            'activate' => $request->activate,
+        ]);
     }
 
     /**
@@ -298,8 +286,8 @@ class AdminController extends Controller
         }
 
         return response()->json([
-           'readonly' => $request->readonly,
-       ]);
+            'readonly' => $request->readonly,
+        ]);
     }
 
     /**

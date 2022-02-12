@@ -162,8 +162,6 @@ class HubController extends Controller
 
         RequestHub::setHubDB($hub->id);
 
-        DB::beginTransaction(); //better performance and safer
-
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('users'); //not necesary but sometimes happend strage bug while registering..
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
@@ -198,13 +196,11 @@ class HubController extends Controller
         $user->role = 2;
         $user->save();
 
-        DB::commit();
-
         if (! $teacherId) {
             //created by student
             flash(__('Your hub must be activated by your teacher!'))->warning();
 
-            return redirect(config('app.protocol') . str_replace('{subdomain}', $hub->name, config('app.domain_hub')) );
+            return redirect(config('app.protocol').str_replace('{subdomain}', $hub->name, config('app.domain_hub')));
         } else {
             //created by teacher
             $user->is_active = 1; //trust himself

@@ -5,18 +5,22 @@ namespace App\Helpers;
 use App\Models\Hub;
 use Debugbar;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class HubHelper
 {
     private $hub = null;
+
     private $tables = [];
 
     public function __construct()
     {
         $this->setDefaultDB();
-        
+
         $host = config('app.domain');
-        if(array_key_exists('HTTP_HOST', $_SERVER)) $host = $_SERVER['HTTP_HOST']; //if request is from web (and not console)
+        if (array_key_exists('HTTP_HOST', $_SERVER)) {
+            $host = $_SERVER['HTTP_HOST'];
+        } //if request is from web (and not console)
 
         $domainParts = explode('.', $host);
 
@@ -45,7 +49,7 @@ class HubHelper
 
                 Debugbar::info('db: '.Config::get('database.default'));
 
-                $this->tables = array_map('reset', \DB::select('SHOW TABLES'));
+                $this->tables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
 
                 Debugbar::info('tables: '.implode(', ', $this->tables));
             }
@@ -75,7 +79,7 @@ class HubHelper
         }
 
         Config::set('database.default', env('DB_DATABASE').'_'.$id);
-        $this->tables = array_map('reset', \DB::select('SHOW TABLES'));
+        $this->tables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
     }
 
     public function setDefaultDB()

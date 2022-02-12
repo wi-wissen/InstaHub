@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ad;
-use App\Models\Analytic;
-use App\Models\Comment;
 use App\Facades\RequestHub;
 use App\Http\Controllers\Collection;
 use App\Http\Resources\Ad as AdResource;
 use App\Http\Resources\Photo as PhotoResource;
+use App\Models\Ad;
+use App\Models\Analytic;
+use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Photo;
 use App\Models\User;
@@ -168,7 +168,7 @@ class PhotoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'photo' => 'required|max:' . $this->max_filesize(),
+            'photo' => 'required|max:'.$this->max_filesize(),
             'description' => 'required',
         ]);
 
@@ -186,39 +186,39 @@ class PhotoController extends Controller
         return redirect('p/'.$photo->id);
     }
 
-        //in kilobytes
-        public function max_filesize()
-        {
-            $val = ini_get('post_max_size');
-            $val = trim($val);
-            $last = strtolower($val[strlen($val) - 1]);
-            $val = substr($val, 0, -1);
-            switch ($last) {
+    //in kilobytes
+    public function max_filesize()
+    {
+        $val = ini_get('post_max_size');
+        $val = trim($val);
+        $last = strtolower($val[strlen($val) - 1]);
+        $val = substr($val, 0, -1);
+        switch ($last) {
                 // The 'G' modifier is available since PHP 5.1.0
                 case 'g':
                     $val *= 1024; // no break to also calc with mega.
                 case 'm':
                     $val *= 1024;
             }
-    
+
+        $result = $val;
+
+        $val = ini_get('upload_max_filesize');
+        $val = trim($val);
+        $last = strtolower($val[strlen($val) - 1]);
+        $val = substr($val, 0, -1);
+        switch ($last) {
+                // The 'G' modifier is available since PHP 5.1.0
+                case 'g':
+                    $val *= 1024; // no break to also calc with mega.
+                case 'm':
+                    $val *= 1024;
+            }
+
+        if ($result > $val) {
             $result = $val;
-    
-            $val = ini_get('upload_max_filesize');
-            $val = trim($val);
-            $last = strtolower($val[strlen($val) - 1]);
-            $val = substr($val, 0, -1);
-            switch ($last) {
-                // The 'G' modifier is available since PHP 5.1.0
-                case 'g':
-                    $val *= 1024; // no break to also calc with mega.
-                case 'm':
-                    $val *= 1024;
-            }
-    
-            if ($result > $val) {
-                $result = $val;
-            }
-    
-            return $result; //in kbyte
         }
+
+        return $result; //in kbyte
+    }
 }

@@ -14,6 +14,7 @@ use Storage;
 class Hub extends Model
 {
     protected $table = 'hubs';
+
     protected $fillable = ['teacher_id', 'password', 'name'];
 
     public function teacher()

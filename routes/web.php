@@ -33,9 +33,6 @@ Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 
 Route::get('/about', [StaticController::class, 'about']);
 Route::get('/noad', [StaticController::class, 'noad']);
 
-//logs
-Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('auth', 'role:admin');
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes for admin.instahub.test
@@ -43,8 +40,7 @@ Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'i
 */
 
 //static
-Route::group(['domain' => config('app.domain')], function () 
-{
+Route::domain(config('app.domain'))->group(function () {
     Route::get('/', [StaticController::class, 'landing']);
 });
 
@@ -54,14 +50,12 @@ Route::group(['domain' => config('app.domain')], function ()
 |--------------------------------------------------------------------------
 */
 
-Route::group(['domain' => config('app.domain_admin')], function () 
-{
+Route::domain(config('app.domain_admin'))->group(function () {
     //all
     Route::resource('hubs', HubController::class)->only(['create', 'store']);
-    
+
     //only auth
-    Route::group(['middleware' => ['auth', 'role:admin']], function () 
-    {
+    Route::middleware('auth', 'role:admin')->group(function () {
         Route::get('/', [HubController::class, 'index']);
 
         Route::get('/api/users/search/{query}', [UserController::class, 'search']);
@@ -81,8 +75,7 @@ Route::group(['domain' => config('app.domain_admin')], function ()
         Route::post('/api/sql', [SqlController::class, 'getApiQuery']);
     });
 
-    Route::group(['middleware' => ['auth', 'role:teacher']], function () 
-    {
+    Route::middleware('auth', 'role:teacher')->group(function () {
         Route::get('/', [HubController::class, 'index']);
 
         Route::get('/explore/users/{filter?}', [UserController::class, 'index']);
@@ -121,11 +114,9 @@ Route::group(['domain' => config('app.domain_admin')], function ()
 | Web Routes for *.instahub.test
 |--------------------------------------------------------------------------
 */
-Route::group(['domain' => config('app.domain_hub')], function () 
-{
+Route::domain(config('app.domain_hub'))->group(function () {
     //only auth
-    Route::group(['middleware' => ['auth', 'role:dba']], function () 
-    {
+    Route::middleware('auth', 'role:dba')->group(function () {
         //admin
         Route::get('api/users/{id}/password', [UserController::class, 'getNewPassword']);
 
@@ -142,8 +133,7 @@ Route::group(['domain' => config('app.domain_hub')], function ()
         Route::get('/dba/cryptPWs', [AdminController::class, 'cryptPWs']);
     });
 
-    Route::group(['middleware' => ['auth', 'role:user']], function () 
-    {
+    Route::middleware('auth', 'role:user')->group(function () {
         //feed
         Route::get('/', [PhotoController::class, 'index']);
         Route::get('/tag/{name}', [PhotoController::class, 'photosbytag']);
@@ -166,8 +156,8 @@ Route::group(['domain' => config('app.domain_hub')], function ()
         Route::get('/upload', [PhotoController::class, 'create']);
 
         //follow
-        Route::delete('/api/me/follow/{id}', [FollowController::class, 'unfollow']);
-        Route::post('api/me/follow/{id}', [FollowController::class, 'follow']); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
+        Route::delete('/api/me/follow/{username}', [FollowController::class, 'unfollow']);
+        Route::post('api/me/follow/{username}', [FollowController::class, 'follow']); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
 
         Route::post('/upload', [PhotoController::class, 'store']);
 
@@ -190,8 +180,8 @@ Route::group(['domain' => config('app.domain_hub')], function ()
         Route::delete('/api/ads/{id}', [AdController::class, 'destroy']);
 
         //users - last so no one can override hub urls
-        Route::get('{user_id}/followers', [FollowController::class, 'followers']);
-        Route::get('{user_id}/following', [FollowController::class, 'following']);
+        Route::get('{username}/followers', [FollowController::class, 'followers']);
+        Route::get('{username}/following', [FollowController::class, 'following']);
 
         Route::get('{username}', [UserController::class, 'show']);
 
