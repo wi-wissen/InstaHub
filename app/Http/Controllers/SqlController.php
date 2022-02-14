@@ -3,16 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-//use Request;
-//use App\Http\Requests;
-use App\Profile;
-use Auth;
-use Config;
-//use Input;
 use DB;
-use Debugbar;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Schema;
 
 class SqlController extends Controller
@@ -65,13 +57,13 @@ class SqlController extends Controller
                         $cols = array_keys((array) $r[0]);
                         $t = "<table class='table mb-0'>";
                         foreach ($cols as &$col) {
-                            $t = $t.'<th>'.$col.'</th>';
+                            $t = $t.'<th>'.htmlspecialchars($col).'</th>';
                         }
                         foreach ($r as $row) {
                             $row = (array) $row;
                             $t = $t.'<tr>';
                             foreach ($cols as &$col) {
-                                $wert = $row[$col];
+                                $wert = htmlspecialchars($row[$col]);
                                 //Ausgabe ggf. anpassen - Links
                                 if (filter_var($wert, FILTER_VALIDATE_URL)) {
                                     $wert = "<a href='$wert'>$wert</a>";
@@ -100,10 +92,10 @@ class SqlController extends Controller
         }
         foreach ($r as $v) {
             if (! strcmp($v->TABLE_TYPE, 'BASE TABLE') && $v->TABLE_NAME != 'migrations') {
-                $dbclass = $dbclass.'<b>'.$v->TABLE_NAME.':</b> ';
+                $dbclass = $dbclass.'<b>'.htmlspecialchars($v->TABLE_NAME).':</b> ';
                 $columns = Schema::getColumnListing($v->TABLE_NAME);
                 foreach ($columns as &$column) {
-                    $dbclass = $dbclass.$column.', ';
+                    $dbclass = $dbclass.htmlspecialchars($column).', ';
                 }
                 $dbclass = rtrim($dbclass, ', ').'<br />';
             }
