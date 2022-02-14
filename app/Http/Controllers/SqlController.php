@@ -3,17 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Request;
-//use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Profile;
 use DB;
-//use Input;
-use Config;
-use Auth;
 use Schema;
-use Illuminate\Support\Facades\Hash;
-use Debugbar;
 
 class SqlController extends Controller
 {
@@ -61,13 +53,13 @@ class SqlController extends Controller
                         $cols = array_keys((array) $r[0]);
                         $t = "<table class='table mb-0'>";
                         foreach ($cols as &$col) {
-                            $t = $t . '<th>' . $col . '</th>';
+                            $t = $t . '<th>' . htmlspecialchars($col) . '</th>';
                         }
                         foreach ($r as $row) {
                             $row = (array) $row;
                             $t = $t . "<tr>";
                             foreach ($cols as &$col) {
-                                $wert = $row[$col];
+                                $wert = htmlspecialchars($row[$col]);
                                 //Ausgabe ggf. anpassen - Links
                                 if (filter_var($wert, FILTER_VALIDATE_URL)) $wert = "<a href='$wert'>$wert</a>"; //absolute Links
                                 else if (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) $wert = "<a href='/$wert'>$wert</a>"; //relative Links to Photos
@@ -85,17 +77,17 @@ class SqlController extends Controller
 
 
         //Tabelle darstellen
-        $dbclass ="";
+        $dbclass = "";
         $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
         if (!$r) {
                 echo "<div class='alert alert-danger'>Keine Tabellen gefunden.</div>";
         }
         foreach ($r as $v) {
             if (!strcmp($v->TABLE_TYPE, "BASE TABLE") && $v->TABLE_NAME != "migrations") {
-                $dbclass = $dbclass . "<b>" . $v->TABLE_NAME . ':</b> ';
+                $dbclass = $dbclass . "<b>" . htmlspecialchars($v->TABLE_NAME) . ':</b> ';
                 $columns = Schema::getColumnListing($v->TABLE_NAME);
                 foreach ($columns as &$column) {
-                    $dbclass = $dbclass . $column . ", ";
+                    $dbclass = $dbclass . htmlspecialchars($column) . ", ";
                 }
                 $dbclass = rtrim($dbclass, ", ") . "<br />";
             }
@@ -112,7 +104,6 @@ class SqlController extends Controller
     }
 
     public function getTables() {
-        $dbclass ="";
         $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
         if (!$r) {
             return response()->json([]);
