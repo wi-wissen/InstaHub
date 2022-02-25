@@ -42,6 +42,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Domains
+    |--------------------------------------------------------------------------
+    |
+    | This Domains are used to seperate Tasks
+    |
+    */
+
+    'domain' => env('APP_DOMAIN', 'localhost'),
+    'domain_app' => env('APP_DOMAIN', 'localhost'),
+    'domain_admin' => env('APP_ADMIN_DOMAIN', 'admin.localhost'),
+    'domain_hub' => env('APP_HUB_DOMAIN', '{subdomain}.localhost'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |
@@ -51,11 +65,14 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'protocol' => env('APP_DEBUG', false) ? 'http://' : 'https://',
 
-    'asset_url' => env('ASSET_URL', null), 
+    'url' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_DOMAIN', 'localhost'),
+    'url_app' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_DOMAIN', 'localhost'),
+    'url_admin' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_ADMIN_DOMAIN', 'localhost'),
+    'url_hub' => ((env('APP_DEBUG', false)) ? 'http://' : 'https://').env('APP_HUB_DOMAIN', 'localhost'),
 
-    'session_domain' => env('SESSION_DOMAIN', '.localhost'),
+    'asset_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -126,6 +143,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | DB Access Level
+    |--------------------------------------------------------------------------
+    |
+    | Set if Hub Databses will be avaiable for all or only localhost
+    |
+    */
+
+    'allow_public_db_access' => env('ALLOW_PUBLIC_DB_ACCESS', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -163,7 +191,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
         \hisorange\BrowserDetect\ServiceProvider::class,
 
@@ -208,21 +235,25 @@ return [
         'Config' => Illuminate\Support\Facades\Config::class,
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
+        'Date' => Illuminate\Support\Facades\Date::class,
         'DB' => Illuminate\Support\Facades\DB::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
+        'Http' => Illuminate\Support\Facades\Http::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
+        'RateLimiter' => Illuminate\Support\Facades\RateLimiter::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
         'Redis' => Illuminate\Support\Facades\Redis::class,
         'Request' => Illuminate\Support\Facades\Request::class,
+        'RequestHub' => App\Facades\RequestHub::class,
         'Response' => Illuminate\Support\Facades\Response::class,
         'Route' => Illuminate\Support\Facades\Route::class,
         'Schema' => Illuminate\Support\Facades\Schema::class,

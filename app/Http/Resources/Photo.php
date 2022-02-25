@@ -2,16 +2,15 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\Resource;
-use App\Http\Resources\User as UserResource;
+use App\Facades\RequestHub;
 use App\Http\Resources\Comment as CommentResource;
-
+use App\Http\Resources\User as UserResource;
+use App\Models\Like;
+use Auth;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Schema;
 
-use App\Like;
-use Auth;
-
-class Photo extends Resource
+class Photo extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -26,13 +25,13 @@ class Photo extends Resource
             'description' => $this->html,
             'url' => $this->url,
             'owner' => new UserResource($this->user),
-            'like' => $this->when(Schema::hasTable('likes'), function () {
+            'like' => $this->when(RequestHub::hasTable('likes'), function () {
                 return Like::where(['photo_id' => $this->id, 'user_id' => Auth::id()])->exists() ? true : false;
             }),
-            'likes' => $this->when(Schema::hasTable('likes'), function () {
+            'likes' => $this->when(RequestHub::hasTable('likes'), function () {
                 return $this->likes->count();
             }),
-            'comments' => $this->when(Schema::hasTable('comments'), function () {
+            'comments' => $this->when(RequestHub::hasTable('comments'), function () {
                 return CommentResource::collection($this->comments);
             }),
         ];

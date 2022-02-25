@@ -37,7 +37,7 @@
         window.default_locale = "{{ config('app.locale') }}";
         window.fallback_locale = "{{ config('app.fallback_locale') }}";
         @if(Session::has('readonly'))
-        window.readonly = {{ Session::get('readonly')}};
+        window.readonly = {{ (RequestHub::isReadOnly()) ? 'true' : 'false'}}; 
         @else
         window.readonly = false;
         @endif

@@ -206,6 +206,9 @@ avatars/*
 !avatars/201.jpg
 !avatars/202.jpg
 !avatars/203.jpg
+!avatars/204.jpg
+!avatars/205.jpg
+!avatars/206.jpg
 
 #photos
 !photos/
@@ -1735,5 +1738,8 @@ photos/*
 !photos/winter-ea35b8072a_960.jpg
 !photos/woman-ea34b1072a_960.jpg
 !photos/wood-ea35b60e20_960.jpg
+!photos/anthony-delanoix-hzgs56Ze49s-unsplash.jpg
+!photos/adam-whitlock-I9j8Rk-JYFM-unsplash.jpg
+
 #gitignore
 !.gitignore

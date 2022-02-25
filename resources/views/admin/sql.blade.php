@@ -46,7 +46,7 @@
                         </div>
                     </div>
 
-                    @if(env('ALLOW_PUBLIC_DB_ACCESS'))
+                    @if(config('app.allow_public_db_access'))
                     <div class="card">
                         <div class="card-body">
                             @php

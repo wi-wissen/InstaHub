@@ -69,9 +69,11 @@ import {de, en} from 'vuejs-datepicker/dist/locale'
         },
         methods: {
             formatedEmit: function(date) {
-                if(this.$moment(date).isValid() && date) {
-                    this.formatedValue = this.$moment(date).format('YYYY-MM-DD');
-                    this.$emit('input', this.$moment(date).format('YYYY-MM-DD'));
+                if(date) {
+                    var _date = new Date(date);
+                    _date = _date.toISOString().split('T')[0];
+                    this.formatedValue = _date;
+                    this.$emit('input', _date);
                 }
                 else {
                     this.formatedValue = "";

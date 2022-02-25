@@ -59,7 +59,8 @@ if (token) {
 /**
  * Vue
  */
-window.Vue = require('vue');
+import Vue from 'vue'
+window.Vue = Vue;
 
 import './vue-translation';
 
@@ -96,8 +97,6 @@ window.flash = function(message, type) {
 };
     
 Vue.component('flash', require('vue-flash').default);
-
-Vue.use(require('vue-moment'));
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

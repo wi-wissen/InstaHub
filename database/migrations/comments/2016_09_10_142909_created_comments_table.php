@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatedCommentsTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -15,8 +14,8 @@ class CreatedCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();;
-            $table->integer('photo_id')->unsigned();;
+            $table->integer('user_id')->unsigned();
+            $table->integer('photo_id')->unsigned();
             $table->foreign('photo_id')
                 ->references('id')->on('photos')
                 ->onDelete('cascade');
@@ -37,4 +36,4 @@ class CreatedCommentsTable extends Migration
     {
         Schema::drop('comments');
     }
-}
+};

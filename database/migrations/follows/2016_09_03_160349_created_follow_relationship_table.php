@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatedFollowRelationshipTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,10 +12,10 @@ class CreatedFollowRelationshipTable extends Migration
      */
     public function up()
     {
-        Schema::create('follows' , function (Blueprint $table) {
+        Schema::create('follows', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->integer('following_id')->unsigned();;
-            $table->integer('follower_id')->unsigned();;
+            $table->integer('following_id')->unsigned();
+            $table->integer('follower_id')->unsigned();
             $table->foreign('following_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
@@ -36,4 +35,4 @@ class CreatedFollowRelationshipTable extends Migration
     {
         Schema::drop('follows');
     }
-}
+};

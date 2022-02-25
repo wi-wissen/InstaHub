@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Photo;
+use App\Facades\RequestHub;
+use App\Helpers\HubHelper;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Photo;
+use App\Models\User;
+use App\Notifications\NewUser;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Storage;
-use Session;
-
-use App\Notifications\NewUser;
 
 class RegisterController extends Controller
 {
@@ -44,6 +44,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $hub = new HubHelper(); //this Controller runs before HubHelper in AppServiceProvider, so we force changing db
     }
 
     /**
@@ -61,9 +62,9 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'bio' => 'nullable|max:500',
             'gender' => 'nullable',
-			'birthday_birthDay' => 'nullable|date_format:Y-m-d',
-			'city' => 'nullable|string',
-			'country' => 'nullable|string',
+            'birthday_birthDay' => 'nullable|date_format:Y-m-d',
+            'city' => 'nullable|string',
+            'country' => 'nullable|string',
             'centimeters' => 'nullable|numeric',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -77,48 +78,47 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //$url = $data['avatar']->file('avatar')->store('avatars'); 
         if (array_key_exists('avatar', $data)) {
             if ($data['avatar']) {
                 $url = Storage::putFile('avatars', $data['avatar']);
-            }
-            else {
-                $url = "avatar.png";
+            } else {
+                $url = 'avatar.png';
             }
         } else {
-            $url = "avatar.png";
+            $url = 'avatar.png';
         }
-        
+
         $role = 1;
-        if (Session::get('hub', 'root') == 'root') $role = 3;
+        if (! RequestHub::isHub()) {
+            $role = 3;
+        }
 
         $user = User::create([
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'bio' => array_has($data, 'bio') ? $data['bio'] : null,
-            'gender' => array_has($data, 'gender') ? $data['gender'] : null,
-            'birthday' => array_has($data, 'birthday') ? $data['birthday'] : null,
-            'city' => array_has($data, 'city') ? $data['city'] : null,
-            'country' => array_has($data, 'country') ? $data['country'] : null,
-            'centimeters' => array_has($data, 'centimeters') ? $data['centimeters'] : null,
+            'bio' => Arr::has($data, 'bio') ? $data['bio'] : null,
+            'gender' => Arr::has($data, 'gender') ? $data['gender'] : null,
+            'birthday' => Arr::has($data, 'birthday') ? $data['birthday'] : null,
+            'city' => Arr::has($data, 'city') ? $data['city'] : null,
+            'country' => Arr::has($data, 'country') ? $data['country'] : null,
+            'centimeters' => Arr::has($data, 'centimeters') ? $data['centimeters'] : null,
             'avatar' => $url,
-            'role' => $role
+            'role' => $role,
         ]);
 
-        if (env('APP_ENV') == 'local') $user->is_active = 1;
+        if (env('APP_ENV') == 'local') {
+            $user->is_active = 1;
+        }
 
-        //don't work above. I have no clue...
-        $user->role = $role;
         $user->save();
 
         //send message to admin if teacher apply for account in root
-        if (Session::get('hub', 'root') == 'root' && env('APP_ENV') != 'local') {
-            //Mail::to(User::where('role','=', 'admin')->first())->send(new NewUser($user, $data['messageToAdmin']));
-            User::where('role','=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
+        if (! RequestHub::isHub() && env('APP_ENV') != 'local') {
+            User::where('role', '=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
         }
-        
+
         return $user;
     }
 }

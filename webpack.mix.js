@@ -11,7 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').extract(['vue', 'popper.js', 'axios', 'lodash', 'bootstrap', 'codemirror'])
+mix.js('resources/js/app.js', 'public/js').vue()
+   .extract(['vue', 'popper.js', 'axios', 'lodash', 'bootstrap', 'codemirror'])
    .copy('resources/js/ads.js', 'public/js/ads.js')
    .sass('resources/sass/app.scss', 'public/css')
    .styles([

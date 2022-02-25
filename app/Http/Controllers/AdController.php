@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use Auth;
-
-use App\Ad;
 use App\Http\Resources\Ad as AdResource;
+use App\Models\Ad;
+use Auth;
+use Illuminate\Http\Request;
 
 class AdController extends Controller
 {
@@ -15,7 +13,7 @@ class AdController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +21,9 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ads = Ad::orderBy('created_at','desc')->get();
+        $ads = Ad::orderBy('created_at', 'desc')->get();
         $ads = AdResource::collection($ads);
-        
+
         return view('ad.index')->with(['ads' => $ads->response()->content()]);
     }
 
@@ -66,8 +64,9 @@ class AdController extends Controller
 
         $ad->save();
 
-        flash($ad->name  . ' saved')->success();
-		return redirect('/ads');
+        flash($ad->name.' saved')->success();
+
+        return redirect('/ads');
     }
 
     /**
@@ -79,7 +78,8 @@ class AdController extends Controller
     public function edit($id)
     {
         $ad = Ad::findOrFail($id);
-        return view('ad.edit')->with(['ad' => $ad]);;
+
+        return view('ad.edit')->with(['ad' => $ad]);
     }
 
     /**
@@ -110,7 +110,8 @@ class AdController extends Controller
 
         $ad->save();
 
-        flash($ad->name  . ' saved')->success();
+        flash($ad->name.' saved')->success();
+
         return redirect('/ads');
     }
 
@@ -127,7 +128,7 @@ class AdController extends Controller
         $ad->delete();
 
         return response()->json([
-            'success' => __('Ad has been deleted successfully!')
+            'success' => __('Ad has been deleted successfully!'),
         ]);
     }
 }

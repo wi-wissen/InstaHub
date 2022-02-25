@@ -5,7 +5,7 @@
     <div class="card-body">
       <h5 class="card-title">
           <img class="rounded-circle img-thumbnail" v-bind:src="'/'+photo.owner.avatar" v-bind:alt="'/'+photo.owner.avatar"> 
-          <a v-bind:href="'/user/'+photo.owner.username">{{ photo.owner.username }}</a>
+          <a v-bind:href="'/'+photo.owner.username">{{ photo.owner.username }}</a>
       </h5>
 
       <img v-bind:src="'../'+photo.url" class="img-fluid photo" />
@@ -23,7 +23,7 @@
             {{ $t('{count} likes', {count: photo.likes}) }}
         </span>
 
-        <a v-bind:href="'/photo/' + this.photo.id + '/destroy'" v-if="admin" v-bind:class="{ disabled: !!readonly }" class="btn btn-outline-danger btn-sm float-right">{{ $t('Delete') }}</a>
+        <a v-bind:href="'/p/' + this.photo.id + '/destroy'" v-if="admin" v-bind:class="{ disabled: !!readonly }" class="btn btn-outline-danger btn-sm float-right">{{ $t('Delete') }}</a>
       </div>
 
       <a v-if="ad" :href="ad.url">
@@ -32,11 +32,11 @@
 
       <div class="comments">
         <p>
-          <b><a :href="'/user/' + photo.owner.username">{{ photo.owner.username }}</a></b>: <b v-html="photo.description"></b>
+          <b><a :href="'/' + photo.owner.username">{{ photo.owner.username }}</a></b>: <b v-html="photo.description"></b>
         </p>
         <div v-if="photo.comments">
             <p v-for="(comment, index) in photo.comments" v-bind:key="'comment' + index">
-            <b><a :href="'/user/'+ comment.owner.username">{{ comment.owner.username }}</a></b>: <span v-html="comment.text"></span>
+            <b><a :href="'/'+ comment.owner.username">{{ comment.owner.username }}</a></b>: <span v-html="comment.text"></span>
             <a v-if="!readonly && admin" v-on:click.stop.prevent="deleteComment(index)" href="#" class="float-right" >
                 <span>x</span>
             </a>
@@ -77,7 +77,7 @@ export default {
       self = this;
       this.$Progress.start();
       axios
-        .post("/api/like/" + this.photo.id, {})
+        .post("/api/me/like/" + this.photo.id, {})
         .then(function(response) {
           self.photo.like = (response.data.like == 'true');
           if (response.data.like == 'true') {
@@ -100,7 +100,7 @@ export default {
       self = this;
       this.$Progress.start();
       axios
-        .post("/api/comment/" + this.photo.id, {
+        .post("/api/me/comment/" + this.photo.id, {
           comment: this.comment
         })
         .then(function(response) {
@@ -121,7 +121,7 @@ export default {
       self = this;
       this.$Progress.start();
       axios
-        .delete("/api/comment/" + this.photo.comments[key].id, {})
+        .delete("/api/me/comment/" + this.photo.comments[key].id, {})
         .then(function(response) {
           self.photo.comments.splice(key, 1);
           self.$Progress.finish();

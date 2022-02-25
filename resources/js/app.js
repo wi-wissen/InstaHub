@@ -61,12 +61,8 @@ if ($("#landing")[0]) {
     const landing = new Vue({
         el: '#landing',
         data: {
-            active: '',
-            hubname: ''
+            showHubUrlPattern: false,
         },
-        mounted: function() {
-            this.active = window.location.hash.substr(1);
-        }
     });
 }
 
@@ -78,11 +74,11 @@ if ($("#user-show")[0]) {
             id: id
         },
         methods: {
-            getNewPw: function() {
+            getNewPw: function(username) {
               self = this;
               this.$Progress.start();
               axios
-                .get("/api/user/password/" + this.id, {})
+                .get("api/users/" + username + "/password", {})
                 .then(function(response) {
                   self.pw = response.data.password;
                   self.$Progress.finish();

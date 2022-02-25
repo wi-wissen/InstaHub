@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatedLikesTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,11 +12,10 @@ class CreatedLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table)
-        {
+        Schema::create('likes', function (Blueprint $table) {
             $table->increments('id'); // Deletion dont work without id i guess in laravel :/
-            $table->integer('photo_id')->unsigned();;
-            $table->integer('user_id')->unsigned();;
+            $table->integer('photo_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->foreign('photo_id')
                 ->references('id')->on('photos')
                 ->onDelete('cascade');
@@ -37,4 +35,4 @@ class CreatedLikesTable extends Migration
     {
         Schema::drop('likes');
     }
-}
+};

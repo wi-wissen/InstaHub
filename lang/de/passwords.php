@@ -1,0 +1,21 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Password Reset Language Lines
+|--------------------------------------------------------------------------
+|
+| The following language lines are the default lines which match reasons
+| that are given by the password broker for a password update attempt
+| has failed, such as for an invalid token or invalid new password.
+|
+*/
+
+return [
+    'sent'      => 'Passworterinnerung wurde gesendet!',
+    'throttled' => 'Bitte warten Sie, bevor Sie es erneut versuchen.',
+    'token'     => 'Der Passwort-Wiederherstellungs-Schlüssel ist ungültig oder abgelaufen.',
+    'user'      => 'Es konnte leider kein Nutzer mit dieser E-Mail-Adresse gefunden werden.',
+    'active'   => 'Der Nutzer wurde leider noch nicht aktiviert.',
+    'unknown'  => 'Diese Mailadresse konnte nicht gefunden werden.',
+];

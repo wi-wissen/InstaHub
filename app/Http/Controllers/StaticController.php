@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Schema;
-
-use Auth;
-
 class StaticController extends Controller
 {
     public function about()
@@ -13,28 +9,23 @@ class StaticController extends Controller
         return view('about');
     }
 
-    public function landingHub()
+    public function landing()
     {
-        if(Auth::check()){
-            return redirect('/home');
-        }
-        else{
-            return view('welcome');
-        }
-    }
-
-    public function landingMain()
-    {
-        if(Auth::check()){
-            return redirect('/home');
-        }
-        else{
-            return view('landing');
-        }  
+        return view('landing');
     }
 
     public function noad()
     {
-        return view('errors.noad');   
+        return view('errors.noad');
+    }
+
+    /**
+     * Show the business dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function business()
+    {
+        return view('business');
     }
 }

@@ -39,13 +39,13 @@ export default {
   },
   methods: {
     searchUsers(newQuery) {
-      axios.get(`/api/user/search/${newQuery}`)
+      axios.get(`/api/users/search/${newQuery}`)
         .then((res) => {
           this.users = res.data.data;
         })
     },
     showUser() {
-        window.location.href = "/user/" + this.query;
+        window.location.href = "/" + this.query;
     }
   },
   watch: {

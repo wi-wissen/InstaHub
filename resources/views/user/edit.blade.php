@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Edit') }} <b>{{$user->username}}</b></div>
                 <div class="card-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ '/user/' . $user->username . '/update' }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ '/' . $user->username . '/update' }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input name="_method" type="hidden" value="PUT">
 
