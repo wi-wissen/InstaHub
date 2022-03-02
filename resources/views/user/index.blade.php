@@ -58,7 +58,7 @@ p {
                         </a>
                         <div class="media-body">
                         @if (RequestHub::hasTable('follows'))
-                            <follow-button class="float-right" id="{{$user->id}}" v-bind:isfollowing="{{Auth::user()->isfollowing($user)}}"></follow-button>
+                            <follow-button class="float-right" username="{{$user->username}}" v-bind:isfollowing="{{Auth::user()->isfollowing($user)}}"></follow-button>
 						@endif
                             <a class="user" href ="{{'/' . $user->username}}"><h4 class="mt-0">{{ $user->username }}</h4></a>
                             <p>{{ $user->name }}</p>
