@@ -11,14 +11,16 @@ class UserActivated extends Notification
 {
     use Queueable;
 
+    protected $url = null;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($url)
     {
-        //
+        $this->url = $url;
     }
 
     /**
@@ -42,7 +44,7 @@ class UserActivated extends Notification
     {
         return (new MailMessage)
                     ->line('Your account have been activated.')
-                    ->action('Visit '.env('APP_NAME'), env('APP_URL'));
+                    ->action('Visit '.env('APP_NAME'), $this->url);
     }
 
     /**

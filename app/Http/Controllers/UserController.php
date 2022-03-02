@@ -97,7 +97,7 @@ class UserController extends Controller
             flash(__('User activated'))->success();
 
             if (! RequestHub::isHub()) {
-                $user->notify(new UserActivated());
+                $user->notify(new UserActivated(RequestHub::url()));
             }
         } else {
             flash(__('You are not allowed to do this!'))->error();
