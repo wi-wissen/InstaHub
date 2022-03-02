@@ -49,7 +49,7 @@ class NewUser extends Notification
         return (new MailMessage)
             ->subject('New Teacher')
             ->line($this->user->name.' ('.$this->user->email.') wants to use '.env('APP_NAME').'.')
-            ->action('Activate Teacher', env('APP_URL').'/'.$this->user->username.'/activate')
+            ->action('Activate Teacher', env('APP_ADMIN_DOMAIN').'/'.$this->user->username.'/activate')
             ->line(htmlspecialchars($this->message));
     }
 
