@@ -43,7 +43,7 @@
                     <tbody>
                         <tr v-for="(hub, index) in hubs">
                             <td>
-                                <a v-bind:href="'https://' + hub.name + session_domain">@{{hub.name}}</a>
+                                <a v-bind:href="location.protocol + '//' + hub_domain.replace('{subdomain}', hub.name)">@{{hub.name}}</a>
                             </td>
                             <td>
                                 @{{hub.admin}}
@@ -77,6 +77,6 @@
 
 @section('script')
 <script>
-    var session_domain = "{{env('SESSION_DOMAIN')}}";
+    var hub_domain = "{{env('APP_HUB_DOMAIN')}}";
 </script>
 @endsection

@@ -247,7 +247,7 @@ if ($("#hub-index")[0]) {
                 'current_page': 1
             },
             search: '',
-            session_domain: session_domain,
+            hub_domain: hub_domain,
             deleteLoading: [],
         },
         methods: {
