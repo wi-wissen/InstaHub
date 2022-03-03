@@ -44,7 +44,7 @@ class UserActivated extends Notification
     {
         return (new MailMessage)
                     ->line('Your account have been activated.')
-                    ->action('Visit '.env('APP_NAME'), $this->url);
+                    ->action('Visit '.config('app.name'), $this->url);
     }
 
     /**
