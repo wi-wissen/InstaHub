@@ -13,6 +13,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class UserController extends Controller
 {
@@ -97,7 +98,12 @@ class UserController extends Controller
             flash(__('User activated'))->success();
 
             if (! RequestHub::isHub()) {
-                $user->notify(new UserActivated(RequestHub::url()));
+                try{
+                    $user->notify(new UserActivated(RequestHub::url()));
+                }
+                catch(TransportException $e){
+                    flash(__('Can\'t send mail: '.$e->getMessage()))->error();
+                }
             }
         } else {
             flash(__('You are not allowed to do this!'))->error();
