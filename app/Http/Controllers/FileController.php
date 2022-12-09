@@ -86,8 +86,8 @@ class FileController extends Controller
         $entry = Photo::find($id);
 
         if ($entry) {
-            // _960 cant (hopfully) part of an uuid, so it is an present photo
-            if (strpos($entry->url, '_960') == false) {
+            // `_960` and `-unsplash` can't (hopfully) part of an uuid, so it is an present photo
+            if (strpos($entry->url, '_960') == false && strpos($entry->url, '-unsplash') == false) {
                 Storage::disk('local')->delete($entry->url);
             }
 
