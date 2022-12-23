@@ -42,10 +42,10 @@ h5 {
 		@include('flash::message')
 		<div class="row justify-content-center">
 			<div class="col-10">
-				<img class="rounded-circle img-thumbnail mx-auto d-block d-sm-none" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="150" height="150">
+				<img class="rounded-circle img-thumbnail mx-auto d-block d-sm-none" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="150" height="150" style="aspect-ratio:1;object-fit:cover;">
 				<div class="media">
 					<div class="media-left d-none d-sm-block">
-						<img class="rounded-circle img-thumbnail" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="175" height="175">
+						<img class="rounded-circle img-thumbnail" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="175" height="175" style="aspect-ratio:1;object-fit:cover;">
 					</div>
 					<div class="media-body">
 						@if (Auth::user()->id != $user->id)
