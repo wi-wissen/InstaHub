@@ -40,6 +40,12 @@
   margin-bottom: 2em;
 }
 
+//avatar
+.img-square {
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
 .navbar-brand{
   font-family: 'Satisfy';
     display: inline-block;
