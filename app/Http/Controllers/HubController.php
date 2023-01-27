@@ -91,16 +91,21 @@ class HubController extends Controller
      */
     public function create()
     {
-        $word = explode(',', env('WORD'));
-        $number = env('WORD_NUMBER');
+        if(! session('_old_input.hub', null)) 
+        {
+            $word = explode(',', env('WORD'));
+            $number = env('WORD_NUMBER');
 
-        do {
-            $name = '';
-            $name = $name.$word[rand(0, count($word) - 1)];
-            $name = $name.rand(0, $number);
-        } while (Hub::where('name', '=', $name)->exists());
+            do {
+                $name = '';
+                $name = $name.$word[rand(0, count($word) - 1)];
+                $name = $name.rand(0, $number);
+            } while (Hub::where('name', '=', $name)->exists());
 
-        return view('hub.create')->with(['username' => 'admin', 'hub' => strtolower($name)]);
+            session(['register_hub_name' => strtolower($name)]);
+        }
+
+        return view('hub.create');
     }
 
     /**
@@ -111,7 +116,17 @@ class HubController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'hub' => 'required|max:191|alpha_num|unique:hubs,name',
+            'hub' => [
+                'required',
+                'max:191',
+                'alpha_num',
+                'unique:hubs,name',
+                function ($attribute, $value, $fail) {
+                    if (Auth::guest() && $value !== session('register_hub_name', null)) {
+                        $fail(__('Only predefined hub names are allowed.'));
+                    }
+                },
+            ],
             'password' => 'required|min:5|confirmed',
             'teacher' => [
                 'required',
@@ -120,6 +135,14 @@ class HubController extends Controller
                 }),
             ],
             'name' => 'required|max:191',
+            'username' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if ($value !== 'admin') {
+                        $fail(__('Username is not `admin`.'));
+                    }
+                },
+            ],
             'email' =>  'required|email',
             'bio' => 'nullable|max:500',
             'birthday' => 'nullable|date_format:Y-m-d',
@@ -151,6 +174,9 @@ class HubController extends Controller
             'teacher_id' => ($teacherId) ? $teacherId : User::where('username', '=', $request->teacher)->first()->id, //use own or search teacher.id
             'password' => $pw,
         ]);
+
+        //unset used hub name
+        session(['register_hub_name' => null]);
 
         //Added create database and databaseuser
         \DB::statement('CREATE DATABASE IF NOT EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
@@ -196,17 +222,18 @@ class HubController extends Controller
         $user->role = 2;
         $user->save();
 
-        if (! $teacherId) {
-            //created by student
-            flash(__('Your hub must be activated by your teacher!'))->warning();
-
-            return redirect(config('app.protocol').str_replace('{subdomain}', $hub->name, config('app.domain_hub')));
-        } else {
-            //created by teacher
+        if($teacherId && Auth::user()->id == $teacherId) {
+            //created by current teacher
             $user->is_active = 1; //trust himself
             $user->save();
 
             return redirect('/');
+        }
+        else {
+            //created by student or for other teacher by a teacher
+            flash(__('Your hub must be activated by your teacher!'))->warning();
+
+            return redirect(config('app.protocol').str_replace('{subdomain}', $hub->name, config('app.domain_hub')));
         }
     }
 

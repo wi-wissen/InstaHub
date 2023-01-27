@@ -24,7 +24,7 @@
                             <label for="hub" class="col-md-4 col-form-label text-md-right"><b>{{ __('Hub') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="hub" type="text" class="form-control @error('hub') is-invalid @enderror" name="hub" value="{{ old('hub', $hub) }}" required readonly>
+                                <input id="hub" type="text" class="form-control @error('hub') is-invalid @enderror" name="hub" value="{{ (Auth::guest()) ? session('register_hub_name') : old('hub', session('register_hub_name', '')) }}" required @guest readonly @endguest>
 
                                 @error('hub')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <label for="username" class="col-md-4 col-form-label text-md-right"><b>{{ __('Username') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control  @error('username') is-invalid @enderror" name="username" value="{{ old('username', $username) }}" required readonly>
+                                <input id="username" type="text" class="form-control  @error('username') is-invalid @enderror" name="username" value="admin" required readonly>
                                 <small id="usernameHelpBlock" class="form-text text-muted">
                                     {{ __('messages.username') }}
                                 </small>
@@ -89,7 +89,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right"><b>{{ __('Email') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email', $hub . '@instahub.test') }}" required>
+                                <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email', session('register_hub_name', 'email') . '@instahub.test') }}" required>
                                 <small id="usernameHelpBlock" class="form-text text-muted">
                                     {{ __('messages.dummyMail') }}
                                 </small>

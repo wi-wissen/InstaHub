@@ -818,5 +818,7 @@
 	"Search Hub": "Hub suchen",
 	"Best Photos": "Beste Photos",
 	"Latest Photos": "Neuste Photos",
-	"Suggested": "Vorschläge"
+	"Suggested": "Vorschläge",
+    "Username is not `admin`.": "Der Benutzername ist nicht `admin`",
+    "Only predefined hub names are allowed.": "Nur vorgegebene Hubnamen sind erlaubt."
 }
