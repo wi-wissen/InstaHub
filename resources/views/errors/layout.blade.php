@@ -7,11 +7,13 @@
 
         <title>@yield('title')</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
         <!-- Styles -->
         <style>
+            @font-face {
+                font-family: 'Raleway';
+                src: url('/fonts/Raleway_latin.woff2');
+            }
+
             html, body {
                 background-color: #fff;
                 color: #636b6f;
