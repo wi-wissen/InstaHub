@@ -24,8 +24,18 @@
                             @endif
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ str_replace('?sort=latest', "", str_replace('?sort=best', "", Request::path())) }}?sort=latest">{{ __('Latest Photos') }}</a>
-                            <a class="dropdown-item" href="{{ str_replace('?sort=latest', "", str_replace('?sort=best', "", Request::path())) }}?sort=best">{{ __('Best Photos') }}</a>
+                                @php
+                                // Make sure to have a clean href.
+                                //Therefore, remove potentially old sorting parameter as well as
+                                //a leading 'tag/' path from the request path in case the sorting was called from the
+                                // tag/ subpage.
+                                $sortPath = str_replace('?sort=latest', "", str_replace('?sort=best', "", Request::path()));
+                                if (str_starts_with($sortPath, 'tag/') && strlen($sortPath) > 4) {
+                                    $sortPath = substr($sortPath, 4);
+                                }
+                                @endphp
+                            <a class="dropdown-item" href="{{ $sortPath }}?sort=latest">{{ __('Latest Photos') }}</a>
+                            <a class="dropdown-item" href="{{ $sortPath }}?sort=best">{{ __('Best Photos') }}</a>
                         </div>
                     </div>
                 @endif
