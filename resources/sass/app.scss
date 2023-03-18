@@ -74,6 +74,9 @@
   font-size: 1.125rem;
 }
 
+.pagination {
+  justify-content: center;
+}
 
   //Vue
   [v-cloak]  > * { display:none; }
