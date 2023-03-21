@@ -63,7 +63,11 @@ class SqlController extends Controller
                             $row = (array) $row;
                             $t = $t.'<tr>';
                             foreach ($cols as &$col) {
-                                $wert = htmlspecialchars($row[$col]);
+                                if ($row[$col] === null) {
+                                    $wert = '<code>NULL</code>';
+                                } else {
+                                    $wert = htmlspecialchars($row[$col]);
+                                }
                                 //Ausgabe ggf. anpassen - Links
                                 if (filter_var($wert, FILTER_VALIDATE_URL)) {
                                     $wert = "<a href='$wert'>$wert</a>";
