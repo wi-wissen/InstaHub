@@ -83,8 +83,10 @@ class PhotoController extends Controller
         }
     }
 
-    public function photosbytag($name, $sort = null)
+    public function photosbytag(Request $request, $name)
     {
+        $sort = $request->input('sort', null);
+
         if ($sort) {
             session(['sort_feed' => $sort]);
         }
@@ -107,7 +109,9 @@ class PhotoController extends Controller
 
                 $photos = Photo::whereHas('tags', function ($query) use ($name) {
                     $query->where('name', '=', strtolower($name));
-                })->paginate(5);
+                })
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(5);
             }
         } elseif (RequestHub::hasTable('photos')) {
             if (session('sort_feed') == 'best') { // sort by best

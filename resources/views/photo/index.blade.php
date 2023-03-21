@@ -24,8 +24,8 @@
                             @endif
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ str_replace('?sort=latest', "", str_replace('?sort=best', "", Request::path())) }}?sort=latest">{{ __('Latest Photos') }}</a>
-                            <a class="dropdown-item" href="{{ str_replace('?sort=latest', "", str_replace('?sort=best', "", Request::path())) }}?sort=best">{{ __('Best Photos') }}</a>
+                            <a class="dropdown-item" href="/{{ ltrim( str_replace('?sort=latest', "", str_replace('?sort=best', "", Request::path())), '/') }}?sort=latest">{{ __('Latest Photos') }}</a>
+                            <a class="dropdown-item" href="/{{ ltrim( str_replace('?sort=latest', "", str_replace('?sort=best', "", Request::path())), '/') }}?sort=best">{{ __('Best Photos') }}</a>
                         </div>
                     </div>
                 @endif
