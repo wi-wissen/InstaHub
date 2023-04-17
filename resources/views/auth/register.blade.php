@@ -114,6 +114,7 @@
                                     <option value=""></option>
                                     <option value="male">{{ __('male') }}</option>
                                     <option value="female">{{ __('female') }}</option>
+                                    <option value="non-binary">{{ __('non-binary') }}</option>
                                 </select>
 
                                 @error('gender')
@@ -123,7 +124,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group row">
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
@@ -137,7 +138,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group row">
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
@@ -151,7 +152,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group row">
                             <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
@@ -165,7 +166,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group row">
                             <label for="centimeters" class="col-md-4 col-form-label text-md-right">{{ __('Centimeters') }}</label>
 

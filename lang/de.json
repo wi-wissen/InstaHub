@@ -750,6 +750,7 @@
 	"Birthday":"Geburtstag",
 	"male":"männlich",
 	"female":"weiblich",
+    "non-binary":"divers",
 	"Gender":"Geschlecht",
 	"Bio":"Steckbrief",
 	"Upload new Photo":"Neues Photo hochladen",

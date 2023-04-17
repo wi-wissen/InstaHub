@@ -13,6 +13,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Symfony\Component\Mailer\Exception\TransportException;
 
 class UserController extends Controller
@@ -55,6 +56,7 @@ class UserController extends Controller
             'name' => 'required|max:191',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'bio' => 'max:500',
+            'gender' => ['nullable', Rule::in(['male', 'female', 'non-binary'])],
             'birthday' => 'nullable|date_format:Y-m-d',
             'city' => 'nullable|string',
             'country' => 'nullable|string',

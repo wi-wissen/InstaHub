@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('password');
             $table->string('name');
             $table->string('bio')->nullable();
-            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->enum('gender', ['male', 'female', 'non-binary'])->nullable();
             $table->dateTime('birthday')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();

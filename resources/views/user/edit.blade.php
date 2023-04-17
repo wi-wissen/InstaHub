@@ -58,19 +58,16 @@
 
                             <div class="col-md-6">
                                 <select class="form-control @error('gender') is-invalid @enderror" id="gender" name="gender">
-                                    @if (old('gender', $user->gender) == 'male')
-                                        <option value="male" selected>{{ __('male') }}</option>
-                                        <option value="female">{{ __('female') }}</option>
-                                        <option value=""></option>
-                                    @elseif (old('gender', $user->gender) == 'female')
-                                        <option value="female" selected>{{ __('female') }}</option>
-                                        <option value="male">{{ __('male') }}</option>
-                                        <option value=""></option>
-                                    @else
-                                        <option value="female">{{ __('female') }}</option>
-                                        <option value="male">{{ __('male') }}</option>
-                                        <option value="" selected></option>
-                                    @endif
+                                    @php
+                                    $userGender = old('gender', $user->gender);
+                                    $isUserGenderEmpty = $userGender != 'male'
+                                        && $userGender != 'female'
+                                        && $userGender != 'non-binary';
+                                    @endphp
+                                    <option value="male" @if($userGender == 'male') selected @endif>{{ __('male') }}</option>
+                                    <option value="female" @if($userGender == 'female') selected @endif>{{ __('female') }}</option>
+                                    <option value="non-binary" @if($userGender == 'non-binary') selected @endif>{{ __('non-binary') }}</option>
+                                    <option value="" @if($isUserGenderEmpty) selected @endif></option>
                                 </select>
 
                                 @error('gender')
@@ -80,7 +77,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }} row">
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
@@ -93,7 +90,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }} row">
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
@@ -107,7 +104,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }} row">
                             <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
@@ -121,7 +118,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group{{ $errors->has('centimeters') ? ' has-error' : '' }} row">
                             <label for="centimeters" class="col-md-4 col-form-label text-md-right">{{ __('Centimeters') }}</label>
 
@@ -135,7 +132,7 @@
                                 @enderror
                             </div>
                         </div>
-						
+                        
                         <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }} row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 

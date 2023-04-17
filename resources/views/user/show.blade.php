@@ -89,7 +89,7 @@ h5 {
 							@endif
 							
 							@if (isset($user->gender))
-								{{ __('is') }} {{__($user->gender)}} 
+								{{ __('is') }} {{__($user->gender)}}
 							@endif
 
 							@if (($user->country != "" || isset($user->gender)) && 'unknown' != $user->age())
