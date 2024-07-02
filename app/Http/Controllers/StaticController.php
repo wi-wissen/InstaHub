@@ -9,14 +9,14 @@ class StaticController extends Controller
         return view('about');
     }
 
-    public function landing()
+    public function welcome()
     {
-        return view('landing');
+        return view('welcome');
     }
 
     public function noad()
     {
-        return view('errors.noad');
+        return view('errors.no_ad');
     }
 
     /**

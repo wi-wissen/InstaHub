@@ -1,8 +1,11 @@
 *
+!public/
+!.gitignore
 
 #avatars
 !avatars/
 avatars/*
+!avatars/000.jpg
 !avatars/001.jpg
 !avatars/002.jpg
 !avatars/003.jpg
@@ -1740,6 +1743,3 @@ photos/*
 !photos/wood-ea35b60e20_960.jpg
 !photos/anthony-delanoix-hzgs56Ze49s-unsplash.jpg
 !photos/adam-whitlock-I9j8Rk-JYFM-unsplash.jpg
-
-#gitignore
-!.gitignore

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Resources\Follow as FollowResource;
 use App\Models\User;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FollowController extends Controller
 {
@@ -15,16 +14,15 @@ class FollowController extends Controller
         $this->middleware('auth'); // only authenticated users can access this route
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $follow = FollowResource::collection(User::all());
 
+        if ($request->wantsJson()) {
+            return $follow;
+        } 
+        
         return view('follow.index', ['follow' => $follow->response()->content()]);
-    }
-
-    public function apiIndex()
-    {
-        return  FollowResource::collection(User::all());
     }
 
     public function followers($username)

@@ -3,20 +3,19 @@
 namespace App\Providers;
 
 use App\Helpers\HubHelper;
-use Illuminate\Pagination\LengthAwarePaginator;
+use App\Session\AnonymizedDatabaseSessionHandler;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('requestHub', function () {
             return new HubHelper();
@@ -25,57 +24,33 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        //for older databases add length for utf84mb support - https://laravel-news.com/laravel-5-4-key-too-long-error
-        Schema::defaultStringLength(191);
+        Paginator::useBootstrapFive();
 
-        //The paginator now uses Tailwind for its default styling in Laravel 8.
-        \Illuminate\Pagination\Paginator::useBootstrap();
+        // Livewire::setUpdateRoute(function ($handle) {
+        //     return Route::post('/livewire/update', $handle)
+        //         ->middleware(\App\Http\Middleware\Subdomain::class);
+        // });
 
-        /**
-         * Paginate a standard Laravel Collection.
-         *
-         * @param int $perPage
-         * @param int $total
-         * @param int $page
-         * @param string $pageName
-         * @return array
-         */
-        if (! Collection::hasMacro('paginate')) {
-            Collection::macro('paginate', function ($perPage, $total = null, $page = null, $pageName = 'page') {
-                $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
+        Livewire::addPersistentMiddleware([ 
+            \App\Http\Middleware\Subdomain::class,
+        ]);
 
-                return new LengthAwarePaginator(
-                    $this->forPage($page, $perPage),
-                    $total ?: $this->count(),
-                    $perPage,
-                    $page,
-                    [
-                        'path' => LengthAwarePaginator::resolveCurrentPath(),
-                        'pageName' => $pageName,
-                    ]
-                );
-            });
-        }
+        Session::extend('anonymized_database', function ($app) {
+            $connection = $app['config']['session.connection'];
+            $table = $app['config']['session.table'];
+            $lifetime = $app['config']['session.lifetime'];
+            $lockForSeconds = $app['config']['session.lock_for_seconds'] ?? 0;
 
-        if (! Collection::hasMacro('simplePaginate')) {
-            Collection::macro('simplePaginate',
-                function ($perPage = 15, $page = null, $options = []) {
-                    $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-
-                    return (
-                    new Paginator(
-                        $this->forPage($page, $perPage),
-                        $perPage,
-                        $page,
-                        $options
-                    )
-                )->withPath('');
-                });
-        }
+            return new AnonymizedDatabaseSessionHandler(
+                $app['db']->connection($connection),
+                $table,
+                $lifetime,
+                $app,
+                $lockForSeconds
+            );
+        });
     }
 }

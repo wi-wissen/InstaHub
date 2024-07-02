@@ -2,10 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
-use Auth;
 use Closure;
-use Session;
 
 class Role
 {
@@ -20,7 +17,6 @@ class Role
     {
         if (! $request->user()->allowed($role)) {
             flash(__('You are not allowed to do this!'))->error();
-
             return redirect('/');
         } else {
             return $next($request);

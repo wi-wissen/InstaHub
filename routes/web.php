@@ -11,6 +11,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SqlController;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //auth
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 'loginWithToken']);
 
 //static
@@ -39,23 +40,12 @@ Route::get('/noad', [StaticController::class, 'noad']);
 |--------------------------------------------------------------------------
 */
 
-//static
-Route::domain(config('app.domain'))->group(function () {
-    Route::get('/', [StaticController::class, 'landing']);
-});
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes for admin.instahub.test
-|--------------------------------------------------------------------------
-*/
-
 Route::domain(config('app.domain_admin'))->group(function () {
     //all
     Route::resource('hubs', HubController::class)->only(['create', 'store']);
 
     //only auth
-    Route::middleware('auth', 'role:admin')->group(function () {
+    Route::middleware('auth', 'verified', 'role:admin')->group(function () {
         Route::get('/', [HubController::class, 'index']);
 
         Route::get('/api/users/search/{query}', [UserController::class, 'search']);
@@ -68,14 +58,11 @@ Route::domain(config('app.domain_admin'))->group(function () {
         Route::get('/dba/trimanalytics', [AdminController::class, 'trimAnalytics']);
 
         //sql
-        Route::get('/sql', [SqlController::class, 'getQuery']);
-        Route::post('/sql', [SqlController::class, 'getQuery']);
+        Route::get('/sql', [SqlController::class, 'sql']);
         Route::get('/sql/select', [SqlController::class, 'selectGui']);
-        Route::get('/api/sql/tables', [SqlController::class, 'getTables']);
-        Route::post('/api/sql', [SqlController::class, 'getApiQuery']);
     });
 
-    Route::middleware('auth', 'role:teacher')->group(function () {
+    Route::middleware('auth', 'verified', 'role:teacher')->group(function () {
         Route::get('/', [HubController::class, 'index']);
 
         Route::get('/explore/users/{filter?}', [UserController::class, 'index']);
@@ -87,7 +74,7 @@ Route::domain(config('app.domain_admin'))->group(function () {
 
         //dbadmin
         Route::resource('hubs', HubController::class)->except(['create', 'store']);
-        Route::get('hubs/{id}/dba/redirect', [AdminController::class, 'redirect']);
+        Route::get('hubs/{id}/dba/redirect', [AdminController::class, 'redirect'])->name('hubs.redirect');
 
         Route::get('api/hubs/{id}/dba/resetpw', [AdminController::class, 'setAdminPW']);
         Route::get('api/hubs/{id}/dba/gettablestatus', [AdminController::class, 'getTableStatus']);
@@ -116,24 +103,21 @@ Route::domain(config('app.domain_admin'))->group(function () {
 */
 Route::domain(config('app.domain_hub'))->group(function () {
     //only auth
-    Route::middleware('auth', 'role:dba')->group(function () {
+    Route::middleware('auth', 'verified', 'role:dba')->group(function () {
         //admin
         Route::get('api/users/{id}/password', [UserController::class, 'getNewPassword']);
 
         Route::get('/follower', [FollowController::class, 'index']);
         Route::get('api/me/follower', [FollowController::class, 'apiIndex']);
 
-        Route::get('/sql', [SqlController::class, 'getQuery']);
-        Route::post('/sql', [SqlController::class, 'getQuery']);
+        Route::get('/sql', [SqlController::class, 'sql']);
         Route::get('/sql/select', [SqlController::class, 'selectGui']);
-        Route::get('/api/sql/tables', [SqlController::class, 'getTables']);
-        Route::post('/api/sql', [SqlController::class, 'getApiQuery']);
 
         Route::get('/dba/updateTags', [AdminController::class, 'updateTags']);
         Route::get('/dba/cryptPWs', [AdminController::class, 'cryptPWs']);
     });
 
-    Route::middleware('auth', 'role:user')->group(function () {
+    Route::middleware('auth', 'verified', 'role:user')->group(function () {
         //feed
         Route::get('/', [PhotoController::class, 'index']);
         Route::get('/tag/{name}', [PhotoController::class, 'photosbytag']);
@@ -144,14 +128,13 @@ Route::domain(config('app.domain_hub'))->group(function () {
 
         Route::get('/explore/users/{filter?}', [UserController::class, 'index']);
         Route::get('/explore/users/{filter}/{param?}', [UserController::class, 'index']);
-        Route::get('/api/users/search/{query}', [UserController::class, 'search']);
 
         //resources
         Route::get('/photos/{photo_id}', [FileController::class, 'showPhoto']);
         Route::get('/avatars/{photo_id}', [FileController::class, 'showAvatar']);
 
         //photo
-        Route::get('/p/{photo_id}', [PhotoController::class, 'show']);
+        Route::get('/p/{photo}', [PhotoController::class, 'show']);
         Route::get('/p/{photo_id}/destroy', [FileController::class, 'destroyPhoto']);
         Route::get('/upload', [PhotoController::class, 'create']);
 
@@ -172,11 +155,7 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::get('/business', [StaticController::class, 'business']);
 
         //Ads (nested in Business Submenu)
-        Route::get('/ads', [AdController::class, 'index']);
-        Route::get('/ads/create', [AdController::class, 'create']);
-        Route::get('/ads/{id}', [AdController::class, 'edit']);
-        Route::post('/ads', [AdController::class, 'store']);
-        Route::put('/ads/{id}', [AdController::class, 'update']);
+        Route::resource('ads', AdController::class);
         Route::delete('/api/ads/{id}', [AdController::class, 'destroy']);
 
         //users - last so no one can override hub urls
@@ -191,4 +170,15 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::get('{username}/activate', [UserController::class, 'activate']);
         Route::get('{username}/deactivate', [UserController::class, 'deactivate']);
     });
+});
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes for admin.instahub.test
+|--------------------------------------------------------------------------
+*/
+
+//static
+Route::domain(config('app.domain'))->group(function () {
+    Route::get('/', [StaticController::class, 'welcome']);
 });

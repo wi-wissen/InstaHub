@@ -3,7 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\Hub;
-use Debugbar;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -95,7 +95,7 @@ class HubHelper
     public function isReadOnly()
     {
         if ($this->isHub()) {
-            return (bool) $this->hub->readonly();
+            return (bool) $this->hub->readonly;
         } else {
             return false;
         }

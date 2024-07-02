@@ -3,23 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Facades\RequestHub;
-use App\Http\Requests;
-use App\Http\Resources\Hub as HubResource;
 use App\Models\Hub;
-use App\Models\Like;
 use App\Models\Photo;
 use App\Models\User;
-use Artisan;
-use Auth;
-use Config;
-use Database\Seeders\UsersTableSeeder;
-use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Schema;
-use Session;
-use Storage;
 
 class HubController extends Controller
 {
@@ -47,41 +41,22 @@ class HubController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('hub.index');
-    }
+        $query = (Auth::user()->role == 'admin') 
+            ? Hub::query() // admin
+            : User::find(Auth::user()->id)->hubs(); // teacher
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function apiIndex()
-    {
-        if (Auth::user()->role == 'admin') {
-            $hubs = Hub::paginate(30);
-        } elseif (Auth::user()->role == 'teacher') {
-            $hubs = User::find(Auth::user()->id)->hubs()->paginate(30);
+        if ($request->filled('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', "%{$searchTerm}%");
+            });
         }
 
-        return HubResource::collection($hubs);
-    }
+        $hubs = $query->paginate(10)->withQueryString();
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function apiSearch($text)
-    {
-        if (Auth::user()->role == 'admin') {
-            $hubs = Hub::where('name', 'LIKE', '%'.$text.'%')->paginate(30);
-        } elseif (Auth::user()->role == 'teacher') {
-            $hubs = User::find(Auth::user()->id)->hubs()->where('name', 'LIKE', '%'.$text.'%')->paginate(30);
-        }
-
-        return HubResource::collection($hubs);
+        return view('hub.index', compact('hubs'));
     }
 
     /**
@@ -179,11 +154,11 @@ class HubController extends Controller
         session(['register_hub_name' => null]);
 
         //Added create database and databaseuser
-        \DB::statement('CREATE DATABASE IF NOT EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
-        \DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'localhost'IDENTIFIED BY '".$hub->password."';");
+        DB::statement('CREATE DATABASE IF NOT EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
+        DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'%' IDENTIFIED BY '".$hub->password."';");
 
         if (config('app.allow_public_db_access')) { //second user needed because % means all except localhost
-            \DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'%'IDENTIFIED BY '".$hub->password."';");
+            DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'%' IDENTIFIED BY '".$hub->password."';");
         }
 
         RequestHub::setHubDB($hub->id);
@@ -192,7 +167,7 @@ class HubController extends Controller
         Schema::dropIfExists('users'); //not necesary but sometimes happend strage bug while registering..
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
-        Artisan::call('migrate', ['--path' => 'database/migrations/users', '--force' => true]);
+        Artisan::call('migrate', ['--path' => 'database/migrations/create/users', '--force' => true]);
         Artisan::call('db:seed', ['--class' => 'UsersTableSeeder', '--force' => true]);
         Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
 
@@ -315,9 +290,9 @@ class HubController extends Controller
         //set primary db
         RequestHub::setDefaultDB();
 
-        \DB::statement('DROP DATABASE IF EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
-        \DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'localhost';");
-        \DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'%';");
+        DB::statement('DROP DATABASE IF EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
+        DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'%';");
+        DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'%';");
 
         $hub->delete();
 

@@ -40,7 +40,8 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout', 'loginWithToken']);
+        $this->middleware('auth')->only('logout');
         $hub = new HubHelper(); //this Controller runs before HubHelper in AppServiceProvider, so we force changing db
     }
 

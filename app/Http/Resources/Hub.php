@@ -21,7 +21,7 @@ class Hub extends JsonResource
             'name' => $this->name,
             'hasWorkingUser' => $hasWorkingUser,
             'activated' => ($hasWorkingUser) ? $this->activated() : false,
-            'admin' => ($hasWorkingUser) ? $this->adminname() : '',
+            'admin' => ($hasWorkingUser) ? $this->admin : '',
             'readonly' => $this->readonly(),
             'created_at' => $this->created_at,
         ];
