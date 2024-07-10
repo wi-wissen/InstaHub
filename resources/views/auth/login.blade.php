@@ -73,7 +73,7 @@
                     <p class="card-text">
                         {{ __('messages.firstStepTeacher') }}
                     </p>
-                    <a href="{{ env('DOC_URL') }}" class="btn btn-outline-dark btn-lg w-100">{{ __('Documentation') }}</a>
+                    <a href="{{ config('hub.generations.'config('hub.default_generation').'.url') }}" class="btn btn-outline-dark btn-lg w-100">{{ __('Documentation') }}</a>
                 </div>
             </div>
         </div>

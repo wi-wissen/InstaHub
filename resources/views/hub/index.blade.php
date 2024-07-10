@@ -3,6 +3,10 @@
 @section('content')
     <div class="container">
         <h1>{{ __('Hubs') }}</h1>
+        <div class="mb-3">
+            @livewire('user-hub-settings')
+        </div>
+        <hr>
         @livewire('hub.index')
     </div>
 @endsection

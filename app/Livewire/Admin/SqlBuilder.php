@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use Exception;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -31,7 +32,7 @@ class SqlBuilder extends Component
     public $attr = [];
     public $rules = [];
     public $message = null;
-    public $table = null;
+    public $results = [];
 
     public function mount()
     {
@@ -97,48 +98,23 @@ class SqlBuilder extends Component
     public function getResult()
     {
         try {
-            $results = DB::select($this->query);
-            if (!$results) {
+            $this->results = DB::select($this->query);
+            if (! $this->results) {
                 $this->message = [
                     'type' => 'warning',
-                    'text' => __('Anfrage ausgeführt. 0 Ergebnisse gefunden.')
+                    'text' => __('Query executed. 0 results found.'),
                 ];
             } else {
                 $this->message = [
                     'type' => 'success',
-                    'text' => __('Query executed successfully. :count results found.', ['count' => count($results)])
+                    'text' => __('Query executed successfully. :count results found.', ['count' => count($this->results)])
                 ];
             }
-            $this->table = $this->formatResult($results);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->message = [
                 'type' => 'danger',
                 'text' => $e->getMessage()
             ];
         }
-    }
-
-    private function formatResult($results)
-    {
-        if (empty($results)) {
-            return null;
-        }
-
-        $html = '<table class="table table-striped"><thead><tr>';
-        foreach (array_keys((array)$results[0]) as $column) {
-            $html .= "<th>$column</th>";
-        }
-        $html .= '</tr></thead><tbody>';
-
-        foreach ($results as $row) {
-            $html .= '<tr>';
-            foreach ((array)$row as $value) {
-                $html .= "<td>$value</td>";
-            }
-            $html .= '</tr>';
-        }
-
-        $html .= '</tbody></table>';
-        return $html;
     }
 }

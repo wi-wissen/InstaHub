@@ -35,7 +35,7 @@
                                     <td>
                                         {{ $hub->created_at->format('d.m.Y') }}
                                     </td>
-                                    <td>
+                                    <td class="d-flex align-items-center">
                                         @if(!$hub->activated && !$hub->readonly)
                                             <button wire:click="setActivate({{ $hub->id }}, true)" class="me-2 btn btn-outline-dark">
                                                 <span wire:loading wire:target="setActivate({{ $hub->id }}, true)" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -59,6 +59,21 @@
                                                 {{ __('Fill all Tables') }}
                                             </button>
                                         @endif
+
+                                        <div class="me-2 d-inline-flex align-items-center">
+                                            <select wire:change="setQueryLevel({{ $hub->id }}, $event.target.value)" 
+                                                    class="form-select" 
+                                                    style="width: auto;">
+                                                <option value="sql" {{ $hub->query_level == 'sql' ? 'selected' : '' }}>{{ __('SQL') }}</option>
+                                                <option value="gui" {{ $hub->query_level == 'gui' ? 'selected' : '' }}>{{ __('GUI') }}</option>
+                                                <option value="ai" {{ $hub->query_level == 'ai' ? 'selected' : '' }} 
+                                                        @if(!Auth::user()->is_sponsor) disabled @endif>{{ __('AI') }}</option>
+                                            </select>
+
+                                            <div wire:loading wire:target="setQueryLevel" class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">{{ __('Loading...') }}</span>
+                                            </div>
+                                        </div>
                                         
                                         @if($hub->readonly)
                                             <button wire:click="setReadonly({{ $hub->id }}, false)" class="me-2 btn btn-outline-dark">

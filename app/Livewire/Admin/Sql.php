@@ -13,7 +13,8 @@ class Sql extends Component
     public $result = '';
     public $tables = '';
     public $message = null;
-    public $type = null;
+    public $results = [];
+    
 
     public function mount()
     {
@@ -30,59 +31,36 @@ class Sql extends Component
     {
         $this->result = '';
         $this->message = null;
-        $this->type = null;
 
         try {
             if (strpos(strtolower(trim($this->query)), 'select') !== 0) {
                 DB::statement($this->query);
-                $this->message = 'Anfrage ausgeführt.';
-                $this->type = 'success';
+                $this->message = [
+                    'type' => 'success',
+                    'text' => __('Query executed.'),
+                ];
             } else {
-                $r = DB::select($this->query);
-                if (!$r) {
-                    $this->message = __('Query executed. 0 results found.');
-                    $this->type = 'warning';
+                $this->results = DB::select($this->query);
+                if (! $this->results) {
+                    $this->message = [
+                        'type' => 'warning',
+                        'text' => __('Query executed. 0 results found.'),
+                    ];
                 } else {
-                    $this->message = __('Query executed successfully. :count results found.', ['count' => count($r)]);
-                    $this->type = 'success';
-                    $this->result = $this->formatResult($r);
+                    $this->message = [
+                        'type' => 'success',
+                        'text' => __('Query executed successfully. :count results found.', ['count' => count($this->results)])
+                    ];
                 }
             }
-        } catch (QueryException $ex) {
-            $this->message = $ex->getMessage();
-            $this->type = 'danger';
+        } catch (QueryException $e) {
+            $this->message = [
+                'type' => 'danger',
+                'text' => $e->getMessage()
+            ];
         }
 
         session(['last_query' => $this->query]);
-    }
-
-    private function formatResult($r)
-    {
-        $cols = array_keys((array) $r[0]);
-        $t = "<table class='table mb-0'>";
-        $t .= "<thead><tr>";
-        foreach ($cols as $col) {
-            $t .= "<th>" . htmlspecialchars($col) . "</th>";
-        }
-        $t .= "</tr></thead><tbody>";
-        foreach ($r as $row) {
-            $t .= "<tr>";
-            foreach ($cols as $col) {
-                $value = $row->$col;
-                if ($value === null) {
-                    $t .= "<td><code>NULL</code></td>";
-                } elseif (filter_var($value, FILTER_VALIDATE_URL)) {
-                    $t .= "<td><a href='" . htmlspecialchars($value) . "'>" . htmlspecialchars($value) . "</a></td>";
-                } elseif (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $value)) {
-                    $t .= "<td><a href='/" . htmlspecialchars($value) . "'>" . htmlspecialchars($value) . "</a></td>";
-                } else {
-                    $t .= "<td>" . htmlspecialchars($value) . "</td>";
-                }
-            }
-            $t .= "</tr>";
-        }
-        $t .= "</tbody></table>";
-        return $t;
     }
 
     private function loadTables()

@@ -35,19 +35,21 @@
                 <div x-ref="editor" id="editor" class="hljs language-sql"></div>
                 <button @click="runQuery" type="button" class="btn btn-primary w-100 mt-2">{{ __('Run') }}</button>
             </div>
-            <div id="sql-editor">
-                @if($message)
-                    <div role="alert" class="alert alert-{{ $type }} alert-important alert-dismissible" style="margin-top: 1rem;">
-                        {{ $message }}
-                        <button wire:click="$set('message', null)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if ($result)
-                    <div id="table" style="overflow: auto;">
-                        {!! $result !!}
-                    </div>
-                @endif
+            
+            <div 
+                x-cloak x-show="$wire.message" 
+                x-bind:class="'alert alert-' + ($wire.message ? $wire.message.type : '') + ' alert-important alert-dismissible mt-3 mb-0'"
+                role="alert"
+            >
+                <span x-text="$wire.message ? $wire.message.text : ''"></span>
+                <button wire:click="$set('message', null)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+
+            @if($results)
+                <div id="table" class="mt-3" style="overflow: auto;">
+                    @include('admin.partials.result-table', ['results' => $results])
+                </div>
+            @endif
         </div>
     </div>
     <div class="card">

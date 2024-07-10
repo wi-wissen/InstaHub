@@ -60,6 +60,7 @@ Route::domain(config('app.domain_admin'))->group(function () {
         //sql
         Route::get('/sql', [SqlController::class, 'sql']);
         Route::get('/sql/select', [SqlController::class, 'selectGui']);
+        Route::get('/sql/ai', [SqlController::class, 'sqlAi']);
     });
 
     Route::middleware('auth', 'verified', 'role:teacher')->group(function () {
@@ -112,6 +113,7 @@ Route::domain(config('app.domain_hub'))->group(function () {
 
         Route::get('/sql', [SqlController::class, 'sql']);
         Route::get('/sql/select', [SqlController::class, 'selectGui']);
+        Route::get('/sql/ai', [SqlController::class, 'sqlAi']);
 
         Route::get('/dba/updateTags', [AdminController::class, 'updateTags']);
         Route::get('/dba/cryptPWs', [AdminController::class, 'cryptPWs']);

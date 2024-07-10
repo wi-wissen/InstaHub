@@ -119,6 +119,24 @@ class HubHelper
         }
     }
 
+    public function generation()
+    {
+        if ($this->isHub()) {
+            return $this->hub->generation;
+        } else {
+            return null;
+        }
+    }
+
+    public function query_level()
+    {
+        if ($this->isHub()) {
+            return $this->hub->query_level;
+        } else {
+            return null;
+        }
+    }
+
     public function url($name = null)
     {
         $protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && ! empty($_SERVER['HTTPS']) ? 'https' : 'http';

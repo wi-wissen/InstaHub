@@ -109,7 +109,8 @@
         </div>
 
         <pre
-            class="hljs language-sql mt-3 card-body"
+            wire:ignore
+            class="hljs language-sql mt-3 mb-0 card-body"
             x-cloak x-show="$wire.settings.showsql"
             x-text="query"
             x-ref="query"
@@ -125,14 +126,18 @@
 
         <div 
             x-cloak x-show="$wire.message" 
-            x-bind:class="'alert alert-' + ($wire.message ? $wire.message.type : '') + ' alert-important alert-dismissible mt-3'"
+            x-bind:class="'alert alert-' + ($wire.message ? $wire.message.type : '') + ' alert-important alert-dismissible mt-3 mb-0'"
             role="alert"
         >
             <span x-text="$wire.message ? $wire.message.text : ''"></span>
             <button wire:click="$set('message', null)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <div id="table" x-show="$wire.table" x-html="$wire.table" class="mt-3" style="overflow: auto;"></div>
+        @if($results)
+            <div id="table" class="mt-3" style="overflow: auto;">
+                @include('admin.partials.result-table', ['results' => $results])
+            </div>
+        @endif
     </div>
 
 

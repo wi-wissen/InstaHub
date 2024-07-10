@@ -20,6 +20,13 @@ class Index extends Component
 
     protected $queryString = ['search'];
 
+    public $selectedQueryLevel;
+
+    public function mount(Hub $hub)
+    {
+        $this->selectedQueryLevel = $hub->query_level;
+    }
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -47,35 +54,32 @@ class Index extends Component
 
     public function setActivate($hubId, $activate)
     {
-        $this->loading['activate'] = true;
-
         $hub = Hub::findOrFail($hubId);
 
         $hub->activated = $activate; // computed property
-
-        $this->loading['activate'] = false;
     }
 
     public function setReadonly($hubId, $readonly)
     {
-        $this->loading['readonly'] = true;
-
         $hub = Hub::findOrFail($hubId);
 
         $hub->readonly = $readonly; // computed property
+    }
 
-        $this->loading['readonly'] = false;
+    public function setQueryLevel($hubId, $queryLevel)
+    {
+        $hub = Hub::findOrFail($hubId);
+        $hub->query_level = $queryLevel;
+        $hub->save();
+
+        $this->selectedQueryLevel = $queryLevel;
     }
 
     public function fillTables($hubId, $tables)
     {
-        $this->loading['fill'] = true;
-
         $hub = Hub::findOrFail($hubId);
 
         $tableArray = explode(',', $tables);
         $hub->changeTables($tableArray, 'fill');
-
-        $this->loading['fill'] = false;
     }
 }

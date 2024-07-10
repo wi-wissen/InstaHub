@@ -163,13 +163,16 @@ class HubController extends Controller
 
         RequestHub::setHubDB($hub->id);
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('users'); //not necesary but sometimes happend strage bug while registering..
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-
-        Artisan::call('migrate', ['--path' => 'database/migrations/create/users', '--force' => true]);
-        Artisan::call('db:seed', ['--class' => 'UsersTableSeeder', '--force' => true]);
-        Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
+        // hydrate hub
+        if(Auth::user()->hub_default_creating == 'users') {
+            $hub->changeTables(['users'], 'users');
+        }
+        else if(Auth::user()->hub_default_creating == 'all_empty') {
+            $hub->changeTables(['users'], 'create');
+        }
+        else if(Auth::user()->hub_default_creating == 'all_full') {
+            $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'fill');
+        }
 
         //insert admin
         $url = 'avatar.png';

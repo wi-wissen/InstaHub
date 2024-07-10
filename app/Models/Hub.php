@@ -8,6 +8,7 @@ use App\Users;
 use Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Storage;
@@ -16,7 +17,7 @@ class Hub extends Model
 {
     protected $table = 'hubs';
 
-    protected $fillable = ['teacher_id', 'password', 'name'];
+    protected $fillable = ['teacher_id', 'password', 'name', 'generation', 'query_level'];
 
     public function teacher()
     {
@@ -208,7 +209,7 @@ class Hub extends Model
             Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
         }
 
-        Artisan::call('db:seed', ['--class' => ucfirst($tablename).'TableSeeder', '--force' => true]);
+        Artisan::call('db:seed', ['--class' => 'Database\Seeders\Generation'.Auth::user()->hub_default_generation.'\\'.ucfirst($tablename).'TableSeeder', '--force' => true]);
 
         // $this->messages[] = "Table $tablename filled with dummy data.";
 
