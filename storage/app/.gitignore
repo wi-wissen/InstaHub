@@ -5,15 +5,8 @@
 #avatars
 !avatars/
 avatars/*
-!avatars/generation_1/
-!avatars/generation_1/*
-!avatars/generation_2/
-!avatars/generation_2/*
 
 #photos
 !photos/
 photos/*
-!photos/generation_1/
-!photos/generation_1/*
-!photos/generation_2/
-!photos/generation_2/*
+

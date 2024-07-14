@@ -17,6 +17,39 @@ class Hub extends Model
 {
     protected $table = 'hubs';
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($hub) {
+
+            //delete all old photos from disk
+
+            RequestHub::setHubDB($hub->id);
+
+            if (RequestHub::hasTable('photos')) {
+                $photos = Photo::all();
+                foreach ($photos as $photo) {
+                    $photo->delete();
+                }
+            }
+
+            if (RequestHub::hasTable('users')) {
+                $users = User::all();
+                foreach ($users as $user) {
+                    $user->delete();
+                }
+            }
+
+            //set primary db
+            RequestHub::setDefaultDB();
+
+            DB::statement('DROP DATABASE IF EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
+            DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'%';");
+            DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'%';");
+        });
+    }
+
     protected $fillable = ['teacher_id', 'password', 'name', 'generation', 'query_level'];
 
     public function teacher()
@@ -46,13 +79,11 @@ class Hub extends Model
     {
         RequestHub::setHubDB($this->id);
 
-        $user = User::where('role', '=', 'dba')->first();
-
-        if ($user) {
-            return $user->is_active;
-        } else {
-            return false;
+        if (RequestHub::hasTable('users')) {
+            return User::where('role', '=', 'dba')->first()?->is_active ?? false;
         }
+
+        return false;
     }
 
     // Setter for 'activated' attribute
@@ -88,7 +119,11 @@ class Hub extends Model
     {
         RequestHub::setHubDB($this->id);
 
-        return User::where('role', '=', 'dba')->first()?->name;
+        if (RequestHub::hasTable('users')) {
+            return User::where('role', '=', 'dba')->first()?->name;
+        }
+
+        return null;
     }
 
     public function getReadonlyAttribute()
@@ -181,18 +216,9 @@ class Hub extends Model
     public function migrateTable($tablename)
     {
         RequestHub::setHubDB($this->id);
-
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists($tablename);
-        if ($tablename == 'users') {
-            Schema::dropIfExists('password_resets');
-        } //users migrates this table too.
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-
+        $this->dropTable($tablename);
         Artisan::call('migrate', ['--path' => "database/migrations/create/$tablename", '--force' => true]);
         Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
-
-        // $this->messages[] = "Table $tablename exists (now).";
     }
 
     public function fillTable($tablename)
@@ -201,17 +227,21 @@ class Hub extends Model
 
         $user = null;
         if ($tablename == 'users' && RequestHub::hasTable('users')) {
-            $user = User::where('username', '=', 'admin')->first();
+            $user = User::where('username', 'admin')->first();
         }
 
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+        $this->migrateTable($tablename);
+
+        // create if not exist
         if (! RequestHub::hasTable($tablename)) {
             Artisan::call('migrate', ['--path' => "database/migrations/create/$tablename", '--force' => true]);
             Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
         }
 
+        // migrate
         Artisan::call('db:seed', ['--class' => 'Database\Seeders\Generation'.Auth::user()->hub_default_generation.'\\'.ucfirst($tablename).'TableSeeder', '--force' => true]);
-
-        // $this->messages[] = "Table $tablename filled with dummy data.";
 
         if ($tablename == 'users') {
             if ($user) {
@@ -234,13 +264,13 @@ class Hub extends Model
                     'avatar' => 'avatar.png',
                     'is_active' => true,
                 ]);
-
-                // $this->messages[] = "No DBAs was found. New Passwort for 'admin' was generated: ".$pw;
             }
 
             $user->role = 2; //dba - role is not massfillable for security reasons
             $user->save();
         }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 
     public function dropTable($tablename)
@@ -253,7 +283,5 @@ class Hub extends Model
             Schema::dropIfExists('password_resets');
         } //users migrates this table too.
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-
-        // $this->messages[] = "Table $tablename does not (longer) exist.";
     }
 }

@@ -51,19 +51,7 @@ class PhotoController extends Controller
 
                 if (Photo::where('user_id', $following_ids)->exists()) {
                     $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at', 'desc')->limit(100)->get();	// $photos speichert die neuesten 100 Fotos von Nutzern, denen der Nutzer folgt
-                    $photos = $photos->addPhotoScore();
-
-                    // fake pagination
-                    $perPage = 5;
-                    $currentPage = LengthAwarePaginator::resolveCurrentPage();
-                    $currentPageItems = $photos->slice(($currentPage - 1) * $perPage, $perPage);
-                    $photos = new LengthAwarePaginator(
-                        $currentPageItems,
-                        $photos->count(),
-                        $perPage,
-                        $currentPage,
-                        ['path' => LengthAwarePaginator::resolveCurrentPath()]
-                    );
+                    $photos = $photos->addPhotoScore()->paginate(5);
                     $photos->appends(['sort' => 'best']);
 
                 }
@@ -155,7 +143,7 @@ class PhotoController extends Controller
 
             return view('photo.show', ['photo' => $photo, 'ad' => $ad]);
         } else {
-            return view('photo.show', ['photo' => $photo]);
+            return view('photo.show', ['photo' => $photo, 'ad' => null]);
         }
     }
 

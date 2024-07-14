@@ -6,6 +6,7 @@ use App\Collections\PhotoCollection;
 use App\Facades\RequestHub;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
 {
@@ -53,10 +54,11 @@ class Photo extends Model
     {
         parent::boot();
 
-        self::deleting(function ($value) {
-            //can't delete file couse stock images my be in use in other hubs.
-            //Storage::disk('local')->delete($entry->url);
-            //TODO: Cronjob for deleting unneccesary images which leaves stockphots untuched.
+        self::deleting(function ($model) {
+            if (Storage::disk('local')->get($model->url)) {
+                Storage::disk('local')->delete($model->url);
+            }
+            // given photos are stored in `public`
         });
 
         self::created(function ($model) {

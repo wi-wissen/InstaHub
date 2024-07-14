@@ -108,9 +108,6 @@ Route::domain(config('app.domain_hub'))->group(function () {
         //admin
         Route::get('api/users/{id}/password', [UserController::class, 'getNewPassword']);
 
-        Route::get('/follower', [FollowController::class, 'index']);
-        Route::get('api/me/follower', [FollowController::class, 'apiIndex']);
-
         Route::get('/sql', [SqlController::class, 'sql']);
         Route::get('/sql/select', [SqlController::class, 'selectGui']);
         Route::get('/sql/ai', [SqlController::class, 'sqlAi']);

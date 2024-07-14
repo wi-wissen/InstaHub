@@ -39,7 +39,8 @@
             
                 <h3>{{ __('Supporter') }}</h3>
             <p>
-                {{ __('InstaHub is supported by') }} <a href="https://www.mitmachfonds-sachsen.de/">Sächsische Mitmach-Fonds</a> und
+                {{ __('InstaHub is supported by') }} <a href="https://www.mitmachfonds-sachsen.de/">Sächsische Mitmach-Fonds</a>, 
+                <a href="https://schulki.de/">schulKI</a> und
                 <a href="https://fg-bil.gi.de/">Gesellschaft für Informatik - Fachgruppe Bayerische Informatiklehrkräfte (BIL)</a>
             </p>
 

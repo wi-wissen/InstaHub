@@ -1,2 +1,16 @@
 *
 !.gitignore
+
+#avatars
+!avatars/
+!avatars/1/
+!avatars/1/*
+!avatars/2/
+!avatars/2/*
+
+#photos
+!photos/
+!photos/1/
+!photos/1/*
+!photos/2/
+!photos/2/*

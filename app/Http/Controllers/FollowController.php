@@ -14,17 +14,6 @@ class FollowController extends Controller
         $this->middleware('auth'); // only authenticated users can access this route
     }
 
-    public function index(Request $request)
-    {
-        $follow = FollowResource::collection(User::all());
-
-        if ($request->wantsJson()) {
-            return $follow;
-        } 
-        
-        return view('follow.index', ['follow' => $follow->response()->content()]);
-    }
-
     public function followers($username)
     {
         $user = User::where('username', $username)->first();

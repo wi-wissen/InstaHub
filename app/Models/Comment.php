@@ -8,6 +8,8 @@ class Comment extends Model
 {
     protected $fillable = ['user_id', 'photo_id', 'body'];
 
+    protected $with = ['user'];
+
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);

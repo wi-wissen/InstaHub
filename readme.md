@@ -70,13 +70,14 @@ FLUSH PRIVILEGES;
 6. Open the console and cd to your project root directory
 7. Run `composer install` or ```php composer.phar install``` ([Howto install composer](https://getcomposer.org/download/))
 Optional: Just to be safe or if an error occur on bootup run `php artisan config:clear`
-8.  You may need to configure some permissions. Directories within the `storage` and the `bootstrap/cache` directories should be writable by your web server 
-9. Run `php artisan key:generate` 
-10. Run `php artisan migrate`
-11. Run `php artisan migrate --path=/database/migrations/create/users`
-12. Configure your top-level domain and all subdomains (wildcard) to point to the `public` directory 
-13. Visit website and create first teacher (ignore error after creating, thats okay cause you are the first).
-14. In the `user` table of your database, manually set the attribute  `is_active` to `1` and `role` to `admin`. Now your user is admin and may manage other accounts.
+8.  You may need to configure some permissions. Directories within the `storage` and the `bootstrap/cache` directories should be writable by your web server
+9. Run `php artisan storage:link`
+10. Run `php artisan key:generate` 
+11. Run `php artisan migrate`
+12. Run `php artisan migrate --path=/database/migrations/create/users`
+13. Configure your top-level domain and all subdomains (wildcard) to point to the `public` directory 
+14. Visit website and create first teacher (ignore error after creating, thats okay cause you are the first).
+15. In the `user` table of your database, manually set the attribute  `is_active` to `1` and `role` to `admin`. Now your user is admin and may manage other accounts.
 
 I recomend to add a cronjob to your system: `* * * * * php /path/to/artisan schedule:run >> /dev/null 2>&1`
 Then InstaHub will delete old analytic database files each night.

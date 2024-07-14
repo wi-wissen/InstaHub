@@ -70,6 +70,36 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    public function getProfileDescriptionAttribute(): string
+    {
+        $parts = [];
+
+        if ($this->city && $this->country) {
+            $parts[] = __('is from') . " {$this->city} ({$this->country})";
+        } elseif ($this->country) {
+            $parts[] = __('is from') . " {$this->country}";
+        }
+
+        if ($this->gender) {
+            $parts[] = __('is') . ' ' . __($this->gender);
+        }
+
+        if ($this->age() !== 'unknown') {
+            $parts[] = __('is') . ' ' . $this->age() . ' ' . __('years old');
+        }
+
+        if (empty($parts)) {
+            return '';
+        }
+
+        if (count($parts) === 1) {
+            return $parts[0];
+        }
+
+        $lastPart = array_pop($parts);
+        return implode(', ', $parts) . ' ' . __('and') . ' ' . $lastPart . '.';
+    }
+
     public function following()
     {
         //return $this->hasMany('App\Follow', 'follower_id');
@@ -121,14 +151,23 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         parent::boot();
 
-        self::deleting(function ($value) {
-            if (self::where('avatar', '=', $value->avatar)->count() == 1 &&
-                (! preg_match('/avatars\/[0-9]*\.jpg/', $value->avatar) ||
-                $value->avatar == 'avatar.jpg')) {
-                //prevent deleting a file who is in use in an other avatar
-                Storage::disk('local')->delete($value->avatar);
+        self::updating(function ($model) {
+            if ($model->isDirty('avatar') && $model->avatar === null) {
+                $model->deleteAvatar();
             }
         });
+
+        self::deleting(function ($model) {
+            $model->deleteAvatar();
+        });
+    }
+
+    private function deleteAvatar() {
+        if (Storage::disk('local')->get($this->avatar)) {
+            // uploaded avatar
+            return Storage::disk('local')->delete($this->avatar);
+        }
+        // given avatars are stored in `public`
     }
 
     public function allowed($role)

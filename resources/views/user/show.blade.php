@@ -55,65 +55,37 @@ h5 {
 							</div>
 							@endif
 						@endif
-						<h2>{{ $user->username }}</h2>
+						<h2 class="fs-4">{{ $user->username }}</h2>
 						<p>
 							@if (RequestHub::hasTable('photos'))
-							<b>{{$user->photos()->count()}}</b> {{ __('Photos') }}.
+								<b>{{$user->photos()->count()}}</b> {{ __('Photos') }}.
 							@endif
 							@if (RequestHub::hasTable('follows')) 
-							@if ($user->followers->count() < 2)
-							<a href ="{{'../' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('follower') }}</a>.
-							@else
-							<a href ="{{'../' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('followers') }}</a>.
-							@endif
+								@if ($user->followers->count() < 2)
+									<a href ="{{'../' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('follower') }}</a>.
+								@else
+									<a href ="{{'../' . $user->username . '/followers'}}"><b>{{$user->followers->count()}}</b> {{ __('followers') }}</a>.
+								@endif
 							
-							<a href ="{{'../' . $user->username . '/following'}}"><b>{{$user->following->count()}} {{ __('following') }}</b></a>.
+								<a href ="{{'../' . $user->username . '/following'}}"><b>{{$user->following->count()}} {{ __('following') }}</b></a>.
 							@endif
 						</p>
-						<h5>{{ $user->name }}</h5>
-						@if($user->bio != '')
-						<p><i>{{ $user->bio }}</i></p>
-						@endif
+						<h3 class="d-inline fs-5">{{ $user->name }}</h3>
 						@if ($user->country != "" || isset($user->gender) || 'unknown' != $user->age())
-						<p>{{ $user->name }} 
-							@if ($user->city != "" && $user->country != "")
-								{{ __('is from') }} {{$user->city}} ({{$user->country}})
-							@elseif ($user->country != "")
-								{{ __('is from') }} {{ $user->country }}
-							@endif
+							<p class="d-inline fs-5">{{ $user->profileDescription }}</p>
+						@endif
 
-							@if ($user->country != "")
-								@if ('unknown' == $user->age())
-									{{ __('and') }}
-								@elseif (isset($user->gender))
-									,
-								@endif
-							@endif
-							
-							@if (isset($user->gender))
-								{{ __('is') }} {{__($user->gender)}} 
-							@endif
-
-							@if (($user->country != "" || isset($user->gender)) && 'unknown' != $user->age())
-								{{ __('and') }}
-							@else 
-								.
-							@endif
-
-							@if ('unknown' != $user->age())
-								{{ __('is') }} {{$user->age()}} {{ __('years old') }}.
-							@endif
-
-							</p>
+						@if($user->bio != '')
+							<p class="mt-1">{{ str_replace("\n", " | ", $user->bio) }}</p>
 						@endif
 						
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
-							<a href="{{'../' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? "disabled" : "" }}" role="button">{{ __('Edit') }}</a>
+							<a href="{{'../' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? 'disabled' : '' }}" role="button">{{ __('Edit') }}</a>
 							@if (Auth::user()->id == $user->id)
-								<a href="{{'../password'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? "disabled" : "" }}" role="button">{{ __('Change Password') }}</a>
+								<a href="{{'../password'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? 'disabled' : '' }}" role="button">{{ __('Change Password') }}</a>
 							@endif
 							@livewire('user-password-reset', ['username' => $user->username])
-							<a href="{{'../' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm {{ RequestHub::isReadOnly() ? "disabled" : "" }}" role="button">{{ __('Delete') }}</a>
+							<a href="{{'../' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm {{ RequestHub::isReadOnly() ? 'disabled' : '' }}" role="button">{{ __('Delete') }}</a>
 						@endif
 						
 					</div>
@@ -133,10 +105,4 @@ h5 {
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('script')
-<script>
-var id = {{ $user->id }};
-</script>
 @endsection

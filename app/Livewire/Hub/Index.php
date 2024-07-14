@@ -82,4 +82,11 @@ class Index extends Component
         $tableArray = explode(',', $tables);
         $hub->changeTables($tableArray, 'fill');
     }
+
+    public function destroy($hubId)
+    {
+        $hub = Hub::findOrFail($hubId);
+
+        $hub->delete();
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\RequestHub;
 use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\Response;
@@ -25,19 +26,22 @@ class FileController extends Controller
         $entry = Photo::where('url', '=', 'photos/'.$filename)->firstOrFail();
 
         $url = $entry->url;
-        if (strpos($url, '_960') == false || strpos($url, '-unsplash') == false) {
-            $url = 'photos/generation_1/'.$filename; // legacy support
+        $file = null;
+
+        if (strpos($url, '_960') || strpos($url, '-unsplash')) {
+            // legacy support
+            $url = 'photos/1/'.$filename; // legacy support
+            $file = Storage::disk('public')->get($url);
         }
-
-        if (Storage::disk('local')->exists($url)) {
+        else if (Storage::disk('local')->exists($url)) {
             $file = Storage::disk('local')->get($url);
-
-            return (new Response($file, 200))
-                  ->header('Content-Type', Storage::mimeType($url))
-                  ->header('Content-Disposition', 'attachment; filename="'.'photo'.'"');
         } else {
             abort(404);
         }
+
+        return (new Response($file, 200))
+            ->header('Content-Type', Storage::mimeType($url))
+            ->header('Content-Disposition', 'attachment; filename="'.'photo'.'"');
     }
 
     /**
@@ -57,15 +61,22 @@ class FileController extends Controller
         $user = User::where('avatar', '=', 'avatars/'.$filename)->firstOrFail();
 
         $avatar = $user->avatar;
-        if (preg_match('/^(\d{3})\.jpg$/', $filename) && intval($filename) <= 196) {
-            $avatar = 'avatars/generation_1/'.$filename; // legacy support
+        $file = null;
+
+        if (preg_match('/^(\d{1,3})\.jpg$/', $filename) && intval($filename) <= 196) {
+            // legacy support
+            $avatar = 'avatars/1/'.$filename;
+            $file = Storage::disk('public')->get($avatar);
+        }
+        else if (Storage::disk('local')->exists($avatar)) {
+            $file = Storage::disk('local')->get($avatar);
+        } else {
+            abort(404);
         }
 
-        $file = Storage::disk('local')->get($avatar);
-
         return (new Response($file, 200))
-               ->header('Content-Type', Storage::mimeType($avatar))
-               ->header('Content-Disposition', 'attachment; filename="'.$user->username.'"');
+            ->header('Content-Type', Storage::mimeType($avatar))
+            ->header('Content-Disposition', 'attachment; filename="'.$user->username.'"');
     }
 
     /**
@@ -78,12 +89,8 @@ class FileController extends Controller
     {
         $user = User::where('avatar', '=', 'avatars/'.$filename)->firstOrFail();
 
-        $isPresetAvatar = preg_match('/^(\d{3})\.jpg$/', $filename) && intval($filename) <= 196;
-
-        if (!$isPresetAvatar) {
-            // uploaded avatar
-            return Storage::disk('local')->delete($user->avatar);
-        }
+        $user->avatar = null;
+        $user->save();
     }
 
     /**
@@ -97,11 +104,6 @@ class FileController extends Controller
         $entry = Photo::find($id);
 
         if ($entry) {
-            // `_960` and `-unsplash` can't (hopfully) part of an uuid, so it is an present photo
-            if (strpos($entry->url, '_960') == false && strpos($entry->url, '-unsplash') == false) {
-                Storage::disk('local')->delete($entry->url);
-            }
-
             $entry->delete();
 
             flash(__('Photo deleted'))->success();

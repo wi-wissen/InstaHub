@@ -96,14 +96,12 @@
                                                 {{ __('Deactivate') }}
                                             </button>
                                         @endif
-                                        
-                                        <form action="{{ route('hubs.destroy', $hub) }}" method="POST" style="display: inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __('Are you sure?') }}')">
-                                                {{ __('Delete') }}
-                                            </button>
-                                        </form>
+
+                                        <button wire:click="destroy({{ $hub->id }})" wire:confirm="Are you sure you want to delete this Hub?" class="me-2 btn btn-danger">
+                                            <span wire:loading wire:target="destroy({{ $hub->id }})" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                            <span wire:loading wire:target="destroy({{ $hub->id }})" class="visually-hidden">Loading...</span>
+                                            {{ __('Delete') }}
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach

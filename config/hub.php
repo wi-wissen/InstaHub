@@ -7,5 +7,9 @@ return [
             'name' => 'Generation 2017',
             'url' => env('HUB_DOC_1_URL'),
         ],
+        2 => [
+            'name' => 'Generation 2024',
+            'url' => env('HUB_DOC_2_URL'),
+        ],
     ],
 ];

@@ -1,11 +1,6 @@
 <div class="card">
-    <div class="card-body">
-        <h5 class="card-title">
-            <img class="rounded-circle img-thumbnail p-0 me-2" src="/{{ $photo->user->avatar }}" alt="{{ $photo->user->username }}"> 
-            <a href="/{{ $photo->user->username }}">{{ $photo->user->username }}</a>
-        </h5>
-
-        <img src="/{{ $photo->url }}" class="img-fluid photo" />
+    <div class="card-body pt-0">
+        <img src="/{{ $photo->url }}" class="img-fluid photo rounded-top" />
 
         <div class="controls">
             @if(!$readonly && RequestHub::hasTable('comments'))
@@ -37,19 +32,36 @@
         @endif
 
         <div class="comments">
-            <p>
-                <b><a href="/{{ $photo->user->username }}">{{ $photo->user->username }}</a></b>: <b>{!! $photo->html !!}</b>
-            </p>
+            <div class="media mb-3">
+                <a class="user" href ="{{'/' . $photo->user->username}}">
+                    <img class="rounded-circle img-thumbnail p-0 me-2" src="/{{ $photo->user->avatar }}" alt="{{ $photo->user->avatar }}" height="50" width="50">  
+                </a>
+                <div class="media-body">
+                    <a class="user" href="/{{$photo->user->username}}">
+                        <h4 class="my-0 fs-6">{{ $photo->user->username }}</h4>
+                    </a>
+                    <span><b>{!! $photo->html !!}</b></span>
+                </div>
+            </div>
+
             @if(RequestHub::hasTable('comments'))
                 @foreach($photo->comments as $comment)
-                    <p>
-                        <b><a href="/{{ $comment->user->username }}">{{ $comment->user->username }}</a></b>: <span>{!! $comment->body !!}</span>
-                        @if(!$readonly && $admin)
-                            <a wire:click.prevent="deleteComment({{ $comment->id }})" href="#" class="float-right">
-                                <span>x</span>
+                    <div class="media mb-3">
+                        <a class="user" href ="{{'/' . $comment->user->username}}">
+                            <img class="rounded-circle img-thumbnail p-0 me-2" src="/{{ $comment->user->avatar }}" alt="{{ $comment->user->avatar }}" height="50" width="50">  
+                        </a>
+                        <div class="media-body">
+                            <a class="user" href="/{{$comment->user->username}}">
+                                <h4 class="my-0 fs-6">{{ $comment->user->username }}</h4>
                             </a>
-                        @endif
-                    </p>
+                            <span>{!! $comment->html !!}</span>
+                            @if(!$readonly && $admin)
+                                <a wire:click.prevent="deleteComment({{ $comment->id }})" href="#" class="float-right">
+                                    <span>x</span>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
                 @endforeach
             @endif
         </div>
