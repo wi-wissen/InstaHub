@@ -19,14 +19,24 @@
                 console.log(code);
                 this.editorContent = code;
             });
+
+            // Add a custom event listener for Ctrl+Enter
+            editor.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                e.stopPropagation();
+                this.runQuery();
+            }
+            }, true); // true activate capturin mode to prevent line flickering
         },
         runQuery() {
-            $wire.runQuery(this.editorContent)
-                .then(data => this.initEditor());
+            if(this.editorContent) {
+                $wire.runQuery(this.editorContent)
+                    .then(data => this.initEditor());
+            }
         }
     }"
     x-init="initEditor"
-    @keydown.ctrl.enter="runQuery"
 >
     <h1>SQL</h1>
     <div class="card">

@@ -127,7 +127,8 @@ class RegisterController extends Controller
             'centimeters' => Arr::has($data, 'centimeters') ? $data['centimeters'] : null,
             'avatar' => $url,
             'role' => (RequestHub::isHub()) ? 3 : 1,
-            'is_active' => app()->environment('local')
+            'is_active' => app()->environment('local'),
+            'hub_default_generation' => config('hub.default_generation'),
         ]);
 
         $user->save();
