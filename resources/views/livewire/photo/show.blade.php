@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body pt-0">
-        <img src="/{{ $photo->url }}" class="img-fluid photo rounded-top" />
+        <img src="/{{ $photo->url }}" class="w-100 img-fluid photo rounded-top" />
 
         <div class="controls">
             @if(!$readonly && RequestHub::hasTable('comments'))
