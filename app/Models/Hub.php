@@ -148,20 +148,20 @@ class Hub extends Model
             DB::statement('GRANT CREATE, INSERT ON ' . env('DB_DATABASE') . '_' . $this->id . ".analytics TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
             DB::statement('REVOKE CREATE ON ' . env('DB_DATABASE') . '_' . $this->id . ".analytics FROM '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
             DB::statement('GRANT UPDATE (remember_token, updated_at) ON ' . env('DB_DATABASE') . '_' . $this->id . ".users TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-
+            DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . env('DB_DATABASE') . '_' . $this->id . ".sessions TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
             if (config('app.allow_public_db_access')) {
                 DB::statement('REVOKE ALL ON ' . env('DB_DATABASE') . '_' . $this->id . ".* FROM '" . env('DB_DATABASE') . '_' . $this->id . "'@'%'");
                 DB::statement('GRANT SELECT ON ' . env('DB_DATABASE') . '_' . $this->id . ".* TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
                 DB::statement('GRANT CREATE, INSERT ON ' . env('DB_DATABASE') . '_' . $this->id . ".analytics TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
                 DB::statement('REVOKE CREATE ON ' . env('DB_DATABASE') . '_' . $this->id . ".analytics FROM '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
+                DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . env('DB_DATABASE') . '_' . $this->id . ".sessions TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
             }
         } else {
             DB::statement('GRANT ALL ON ' . env('DB_DATABASE') . '_' . $this->id . ".* TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%' IDENTIFIED BY '" . $this->password . "';");
-
             if (config('app.allow_public_db_access')) {
                 DB::statement('GRANT ALL ON ' . env('DB_DATABASE') . '_' . $this->id . ".* TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%' IDENTIFIED BY '" . $this->password . "';");
             }
-        };
+        }
     }
 
     public function resetAdminPassword()
