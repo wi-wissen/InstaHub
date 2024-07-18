@@ -114,8 +114,12 @@
                                     <span class="d-inline d-md-none">{{ __('Database') }}</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDatabaseDropdown">
-                                    <li><a class="dropdown-item" href="{{ url('/sql/ai') }}">{{ __('Ask') }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('/sql/select') }}">{{ __('Search') }}</a></li>
+                                    @if (RequestHub::query_level() == 'ai')
+                                        <li><a class="dropdown-item" href="{{ url('/sql/ai') }}">{{ __('Ask') }}</a></li>
+                                    @endif
+                                    @if (RequestHub::query_level() == 'ai' || RequestHub::query_level() != 'gui')
+                                        <li><a class="dropdown-item" href="{{ url('/sql/select') }}">{{ __('Search') }}</a></li>
+                                    @endif
                                     <li><a class="dropdown-item" href="{{ url('/sql') }}">SQL</a></li>
                                 </ul>
                             </li>
