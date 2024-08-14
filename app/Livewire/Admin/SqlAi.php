@@ -113,7 +113,7 @@ Der Nutzer hat eine Aufgabe, die sich mit SQL Lösen lässt. Andernfalls schreib
 Folgende einzelne Tabellen können abgefragt werden:
 EOT;
 
-        return $command . '\n' . $this->loadTables();
+        return $command . '\n' . $this->tables;
     }
 
     private function loadTables()
@@ -125,7 +125,7 @@ EOT;
                 $dbclass .= $v->TABLE_NAME . ': ';
                 $columns = Schema::getColumnListing($v->TABLE_NAME);
                 $dbclass .= implode(', ', $columns);
-                $dbclass .= '\n';
+                $dbclass .= "\n";
             }
         }
         $this->tables = $dbclass;

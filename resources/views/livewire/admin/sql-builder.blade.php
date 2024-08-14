@@ -4,7 +4,7 @@
         <select 
             id="tables" 
             name="tables" 
-            wire:model.live="sql.tables" 
+            wire:model.live.debounce.250ms="sql.tables" 
             multiple 
             class="form-select"
         >

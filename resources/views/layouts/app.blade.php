@@ -117,7 +117,7 @@
                                     @if (RequestHub::query_level() == 'ai')
                                         <li><a class="dropdown-item" href="{{ url('/sql/ai') }}">{{ __('Ask') }}</a></li>
                                     @endif
-                                    @if (RequestHub::query_level() == 'ai' || RequestHub::query_level() != 'gui')
+                                    @if (RequestHub::query_level() == 'ai' || RequestHub::query_level() == 'gui')
                                         <li><a class="dropdown-item" href="{{ url('/sql/select') }}">{{ __('Search') }}</a></li>
                                     @endif
                                     <li><a class="dropdown-item" href="{{ url('/sql') }}">SQL</a></li>
