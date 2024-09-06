@@ -97,6 +97,8 @@ class SqlBuilder extends Component
 
     public function getResult()
     {
+        $this->unsetResults();
+        
         try {
             $this->results = DB::select($this->query);
             if (! $this->results) {
@@ -116,5 +118,11 @@ class SqlBuilder extends Component
                 'text' => $e->getMessage()
             ];
         }
+    }
+
+    public function unsetResults()
+    {
+        $this->message = null;
+        $this->results = [];
     }
 }

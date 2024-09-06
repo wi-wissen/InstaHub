@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Schema;
 class Sql extends Component
 {
     public $query = '';
-    public $result = '';
     public $tables = '';
     public $message = null;
     public $results = [];
@@ -29,8 +28,7 @@ class Sql extends Component
 
     public function runQuery()
     {
-        $this->result = '';
-        $this->message = null;
+        $this->unsetResults();
 
         try {
             if (strpos(strtolower(trim($this->query)), 'select') !== 0) {
@@ -61,6 +59,12 @@ class Sql extends Component
         }
 
         session(['last_query' => $this->query]);
+    }
+
+    public function unsetResults()
+    {
+        $this->results = [];
+        $this->message = null;
     }
 
     private function loadTables()

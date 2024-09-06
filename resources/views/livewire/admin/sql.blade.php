@@ -2,6 +2,7 @@
     x-data="{
         editorContent: @entangle('query'),
         editor: null,
+        isLoading: false,
         initEditor() {
             const highlight = editor => {
                 // highlight.js does not trims old tags,
@@ -10,29 +11,30 @@
                 delete editor.dataset.highlighted;
                 hljs.highlightElement(editor);
             }
-
             this.editor = new CodeJar(this.$refs.editor, highlight, {
                 tab: '  '
             });
             this.editor.updateCode(this.editorContent);
             this.editor.onUpdate(code => {
-                console.log(code);
                 this.editorContent = code;
             });
-
             // Add a custom event listener for Ctrl+Enter
-            editor.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.key === 'Enter') {
-                e.preventDefault();
-                e.stopPropagation();
-                this.runQuery();
-            }
+            this.$refs.editor.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.runQuery();
+                }
             }, true); // true activate capturin mode to prevent line flickering
         },
         runQuery() {
-            if(this.editorContent) {
+            if(this.editorContent && !this.isLoading) {
+                this.isLoading = true;
                 $wire.runQuery(this.editorContent)
-                    .then(data => this.initEditor());
+                    .then(data => {
+                        this.initEditor();
+                        this.isLoading = false;
+                    });
             }
         }
     }"
@@ -42,19 +44,24 @@
     <div class="card">
         <div class="card-body">
             <div class="form-group">
-                <div x-ref="editor" id="editor" class="hljs language-sql"></div>
-                <button @click="runQuery" type="button" class="btn btn-primary w-100 mt-2">{{ __('Run') }}</button>
+                <div wire:ignore x-ref="editor" id="editor" class="hljs language-sql"></div>
+                <button @click="runQuery" type="button" class="btn btn-primary w-100 mt-2" x-bind:disabled="isLoading">
+                    <span x-show="!isLoading">{{ __('Run') }}</span>
+                    <span x-show="isLoading">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        {{ __('Loading...') }}
+                    </span>
+                </button>
             </div>
-            
-            <div 
-                x-cloak x-show="$wire.message" 
+           
+            <div
+                x-cloak x-show="$wire.message"
                 x-bind:class="'alert alert-' + ($wire.message ? $wire.message.type : '') + ' alert-important alert-dismissible mt-3 mb-0'"
                 role="alert"
             >
                 <span x-text="$wire.message ? $wire.message.text : ''"></span>
-                <button wire:click="$set('message', null)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button @click="$wire.unsetResults()" type="button" class="btn-close" aria-label="Close"></button>
             </div>
-
             @if($results)
                 <div id="table" class="mt-3" style="overflow: auto;">
                     @include('admin.partials.result-table', ['results' => $results])

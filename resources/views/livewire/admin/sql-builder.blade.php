@@ -118,10 +118,15 @@
 
         <button 
             x-bind:disabled="!$wire.query"
+            wire:loading.attr="disabled"
             x-on:click="$wire.getResult()" 
             class="btn btn-primary w-100 mt-3"
         >
-            {{ __('Run') }}
+            <span wire:loading.remove wire:target="getResult">{{ __('Run') }}</span>
+            <span wire:loading wire:target="getResult">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                {{ __('Loading...') }}
+            </span>
         </button>
 
         <div 
@@ -130,7 +135,7 @@
             role="alert"
         >
             <span x-text="$wire.message ? $wire.message.text : ''"></span>
-            <button wire:click="$set('message', null)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button @click="$wire.unsetResults()" type="button" class="btn-close" aria-label="Close"></button>
         </div>
 
         @if($results)
