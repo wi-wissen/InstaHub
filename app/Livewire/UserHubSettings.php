@@ -27,14 +27,6 @@ class UserHubSettings extends Component
         $this->availableGenerations = config('hub.generations');
     }
 
-    public function updatedHubDefaultQueryLevel()
-    {
-        if ($this->hubDefaultQueryLevel === 'ai' && !Auth::user()->is_sponsor) {
-            $this->hubDefaultQueryLevel = 'gui';
-            $this->addError('hubDefaultQueryLevel', __('You need to be a sponsor to use AI query level.'));
-        }
-    }
-
     public function save()
     {
         $this->validate();

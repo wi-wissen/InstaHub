@@ -20,6 +20,25 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public $score = null;
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->tokens_max = config('azure.max_tokens');
+        });
+
+        self::updating(function ($model) {
+            if ($model->isDirty('avatar') && $model->avatar === null) {
+                $model->deleteAvatar();
+            }
+        });
+
+        self::deleting(function ($model) {
+            $model->deleteAvatar();
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -34,7 +53,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'username', 'name', 'email', 'password', 'bio', 'avatar', 'birthday',
         'city', 'country', 'gender', 'centimeters', 'is_active', 'role', 'is_admin',
-        'is_sponsor', 'hub_default_generation', 'hub_default_creating', 'hub_default_query_level',
+        'hub_default_generation', 'hub_default_creating', 'hub_default_query_level',
+        'tokens_used', 'tokens_max',
     ];
 
     /**
@@ -145,21 +165,6 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         return $interval->y;
-    }
-
-    public static function boot()
-    {
-        parent::boot();
-
-        self::updating(function ($model) {
-            if ($model->isDirty('avatar') && $model->avatar === null) {
-                $model->deleteAvatar();
-            }
-        });
-
-        self::deleting(function ($model) {
-            $model->deleteAvatar();
-        });
     }
 
     private function deleteAvatar() {
@@ -282,5 +287,10 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         return $users;
+    }
+
+    public function hasTokens($amount = 1)
+    {
+        return $this->tokens_max - $this->tokens_used >= $amount;
     }
 }

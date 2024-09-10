@@ -26,7 +26,7 @@ class HubHelper
 
         //run only on hub subdomains
         if (str_replace('{subdomain}', $domainParts[0], config('app.domain_hub')) == $host && config('app.domain_admin') != $host) {
-            $this->hub = Hub::where('name', '=', $domainParts[0])->first();
+            $this->hub = Hub::with('teacher')->where('name', '=', $domainParts[0])->first();
 
             if (! $this->hub) {
                 // hub does not exist
@@ -151,5 +151,23 @@ class HubHelper
     public function hasTable($name)
     {
         return in_array($name, $this->tables);
+    }
+
+    public function hasTokens()
+    {
+        if ($this->isHub()) {
+            return $this->hub->teacher->hasTokens();
+        } else {
+            return false;
+        }
+    }
+
+    public function decrementTokens($count = 1)
+    {
+        if ($this->isHub()) {
+            $this->setDefaultDB();
+            $this->hub->teacher->increment('tokens_used', $count);
+            $this->setHubDB();
+        }
     }
 }

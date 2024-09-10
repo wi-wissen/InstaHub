@@ -3,15 +3,11 @@
 namespace App\Models;
 
 use App\Facades\RequestHub;
-use App\Tags;
-use App\Users;
-use Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Storage;
 
 class Hub extends Model
 {

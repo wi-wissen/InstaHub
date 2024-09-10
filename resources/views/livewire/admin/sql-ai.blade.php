@@ -20,7 +20,7 @@ x-data="{
 >
     <div class="form-group">
         <textarea wire:model="prompt" class="form-control" spellcheck="false"></textarea>
-        <button @click="runQuery" type="button" class="btn btn-primary w-100 mt-2" x-bind:disabled="isLoading">{{ __('Run') }}</button>
+        <button @click="runQuery" type="button" class="btn btn-primary w-100 mt-2" x-bind:disabled="isLoading || {{ !RequestHub::hasTokens() ? 'true' : 'false' }}">{{ __('Run') }}</button>
     </div>
 
     <pre
@@ -31,12 +31,21 @@ x-data="{
         x-ref="query"
     ></pre>
 
+    @if(! RequestHub::hasTokens())
+        <div
+            class="d-flex align-items-center justify-content-between alert alert-warning alert-important mt-3 mb-0"
+            role="alert"
+        >
+            <span>{{ __('No AI budget available.')}}</span>
+        </div>
+    @endif
+
     <div
         x-bind:class="{ 'd-none': !isLoading }" x-cloak
         class="d-flex align-items-center justify-content-between alert alert-info alert-important mt-3 mb-0"
         role="alert"
     >
-        <span>{{ __('Anfrage wird verarbeitet...')}}</span>
+        <span>{{ __('Request is being processed...')}}</span>
         <div class="spinner-border spinner-border spinner-border-sm ml-auto" role="status" aria-hidden="true"></div>
     </div>
     
@@ -46,7 +55,7 @@ x-data="{
         role="alert"
     >
         <span x-text="$wire.message ? $wire.message.text : ''"></span>
-        <button wire:click="$set('message', null)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button @click="$wire.unsetResults()" type="button" class="btn-close" aria-label="Close"></button>
     </div>
 
     @if($results)

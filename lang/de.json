@@ -415,5 +415,6 @@
     "This table is necessary for all tables above!": "Diese Tabelle ist für alle obigen Tabellen erforderlich!",
     "Unfollow": "Entfolgen",
     "Username is not `admin`.": "Der Benutzername ist nicht `admin`",
-    "You need to be a sponsor to use AI query level." : "Sie müssen Sponsor sein, um die KI-Abfrageebene zu nutzen."
+    "Request is being processed...": "Anfrage wird verarbeitet...",
+    "No AI budget available.": "Kein KI-Guthaben vorhanden."
 }

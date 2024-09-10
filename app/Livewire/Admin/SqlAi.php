@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Facades\RequestHub;
 use Livewire\Component;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +14,6 @@ class SqlAi extends Component
 {
     public $prompt = '';
     public $query = '';
-    public $result = '';
     public $tables = '';
     public $message = null;
     public $results = [];  
@@ -31,20 +31,21 @@ class SqlAi extends Component
 
     public function runQuery()
     {
-        $this->result = '';
-        $this->message = null;
+        $this->unsetResults();
 
         if(! $this->prompt) {
             return;
         }
 
         try {
+            // create a new OpenAI client
             $client = OpenAI::factory()
                 ->withBaseUri(config('azure.resource_name').'.openai.azure.com/openai/deployments/'.config('azure.deployment_id'))
                 ->withHttpHeader('api-key', config('azure.openai_key'))
                 ->withQueryParam('api-version', config('azure.api_version'))
                 ->make();
 
+            // send a request to the API
             $result = $client->chat()->create([
                 'messages' => [
                     ['role' => 'system', 'content' => $this->buildSystemPrompt()],
@@ -53,6 +54,10 @@ class SqlAi extends Component
                 'max_tokens' => 100,
             ]);
 
+            // decrement the teachers token count
+            RequestHub::decrementTokens($result->usage->totalTokens);
+
+            // extract the SQL query from the response
             $this->query = $this->extractSQL($result->choices[0]->message->content);
 
             if($this->query == 'UNKNOWN') {
@@ -146,5 +151,11 @@ EOT;
             // Wenn kein Markdown-Codeblock gefunden wurde, gib den gesamten Input zurück
             return $input;
         }
+    }
+
+    public function unsetResults()
+    {
+        $this->results = [];
+        $this->message = null;
     }
 }

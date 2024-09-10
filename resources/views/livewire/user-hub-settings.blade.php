@@ -26,7 +26,7 @@
                 <select id="hubDefaultQueryLevel" wire:model="hubDefaultQueryLevel" class="form-select" required>
                     <option value="sql">{{ __('SQL') }}</option>
                     <option value="gui">{{ __('GUI') }}</option>
-                    <option value="ai" @if(!Auth::user()->is_sponsor) disabled @endif>{{ __('AI') }}</option>
+                    <option value="ai" @if(!Auth::user()->hasTokens()) disabled @endif>{{ __('AI') }}</option>
                 </select>
                 @error('hubDefaultQueryLevel') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>

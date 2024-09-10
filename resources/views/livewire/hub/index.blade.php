@@ -67,7 +67,7 @@
                                                 <option value="sql" {{ $hub->query_level == 'sql' ? 'selected' : '' }}>{{ __('SQL') }}</option>
                                                 <option value="gui" {{ $hub->query_level == 'gui' ? 'selected' : '' }}>{{ __('GUI') }}</option>
                                                 <option value="ai" {{ $hub->query_level == 'ai' ? 'selected' : '' }} 
-                                                        @if(!Auth::user()->is_sponsor) disabled @endif>{{ __('AI') }}</option>
+                                                        @if(!Auth::user()->hasTokens()) disabled @endif>{{ __('AI') }}</option>
                                             </select>
 
                                             <div wire:loading wire:target="setQueryLevel" class="spinner-border spinner-border-sm" role="status">
