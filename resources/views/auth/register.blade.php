@@ -8,10 +8,10 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    @if(config('app.env') == 'local')
-                    <div class="alert alert-warning" role="alert">
-                        {{ __('Your Account must activated manually.') }}
-                    </div>
+                    @if(config('app.env') != 'local')
+                        <div class="alert alert-warning" role="alert">
+                            {{ __('You can register here as a teacher free of charge. Your user account will be activated manually after successful verification. You will then receive an activation email.') }}
+                        </div>
                     @endif
 
                     <form method="POST" action="{{ url('/register') }}" aria-label="{{ __('Register') }}" enctype="multipart/form-data">
