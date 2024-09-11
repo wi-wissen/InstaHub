@@ -34,6 +34,8 @@ Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 
 Route::get('/about', [StaticController::class, 'about']);
 Route::get('/noad', [StaticController::class, 'noad']);
 
+Route::get('/documentation/redirect/{generation}', [StaticController::class, 'redirectDocumentation'])->name('documentation.redirect');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes for admin.instahub.test

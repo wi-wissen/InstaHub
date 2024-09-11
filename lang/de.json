@@ -416,5 +416,6 @@
     "Unfollow": "Entfolgen",
     "Username is not `admin`.": "Der Benutzername ist nicht `admin`",
     "Request is being processed...": "Anfrage wird verarbeitet...",
-    "No AI budget available.": "Kein KI-Guthaben vorhanden."
+    "No AI budget available.": "Kein KI-Guthaben vorhanden.",
+    "There is a newer recommended Hub generation.": "Es gibt eine neuere empfohlene Hub-Generation."
 }

@@ -17,7 +17,7 @@
             </ul>
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="{{ config('hub.generations.'.config('hub.default_generation').'.url') }}">{{ __('Documentation') }}</a>
+                    <a class="nav-link" target="_blank" href="{{ route('documentation.redirect', ['generation' => config('hub.default_generation')]) }}">{{ __('Documentation') }}</a>
                 </li>
                 <a href="{{ config('app.url_admin') }}/hubs/create" target="_blank" class="btn btn-success ml-2">{{ __('Create Hub') }}</a>
             </ul>

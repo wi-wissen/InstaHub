@@ -10,6 +10,7 @@ return [
         2 => [
             'name' => 'Generation 2024',
             'url' => env('HUB_DOC_2_URL'),
+            'secret' => env('HUB_DOC_2_SECRET'),
         ],
     ],
 ];

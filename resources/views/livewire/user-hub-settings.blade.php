@@ -39,6 +39,12 @@
         </div>
     </form>
 
+    @if($generation < config('hub.default_generation'))
+        <div class="alert alert-warning mt-2" role="alert">
+            {{ __('There is a newer recommended Hub generation.') }}
+        </div>
+    @endif
+
     @if (session()->has('message'))
         <div class="alert alert-success mt-4" role="alert">
             {{ session('message') }}
