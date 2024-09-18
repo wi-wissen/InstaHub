@@ -47,13 +47,22 @@
             @if(RequestHub::hasTable('comments'))
                 @foreach($photo->comments as $comment)
                     <div class="media mb-3">
-                        <a class="user" href ="{{'/' . $comment->user->username}}">
-                            <img class="rounded-circle img-thumbnail p-0 me-2" src="/{{ $comment->user->avatar }}" alt="{{ $comment->user->avatar }}" height="50" width="50">  
-                        </a>
-                        <div class="media-body">
-                            <a class="user" href="/{{$comment->user->username}}">
-                                <h4 class="my-0 fs-6">{{ $comment->user->username }}</h4>
+                        @if ($comment->user)
+                            <a class="user" href ="{{'/' . $comment->user->username}}">
+                                <img class="rounded-circle img-thumbnail p-0 me-2" src="/{{ $comment->user->avatar }}" alt="{{ $comment->user->avatar }}" height="50" width="50">  
                             </a>
+                        @else
+                            <img class="rounded-circle img-thumbnail p-0 me-2" src="/avatar.png" alt="default avatar" height="50" width="50"> 
+                        @endif
+                        
+                        <div class="media-body">
+                            @if ($comment->user)
+                                <a class="user" href="/{{$comment->user->username}}">
+                                    <h4 class="my-0 fs-6">{{ $comment->user->username }}</h4>
+                                </a>
+                            @else
+                                <h4 class="my-0 fs-6 text-muted fst-italic">{{ __('Deleted User') }}</h4> 
+                            @endif
                             <span>{!! $comment->html !!}</span>
                             @if(!$readonly && $admin)
                                 <a wire:click.prevent="deleteComment({{ $comment->id }})" href="#" class="float-right">
