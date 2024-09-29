@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('bio')->nullable();
             $table->enum('gender', ['male', 'female', 'diverse'])->nullable(); // https://www.antidiskriminierungsstelle.de/EN/about-discrimination/grounds-for-discrimination/gender-and-gender-identity/third-option/third-option-node.html
-            $table->dateTime('birthday')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->integer('centimeters')->nullable();

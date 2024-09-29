@@ -116,7 +116,9 @@ class MigrateHubs extends Command
         foreach ($this->migrations as $migrationName => $file) {
             $executedMigrations[] = [
                 'migration' => $migrationName,
-                'batch' => $this->batch
+                'batch' => $this->batch,
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
         }
         
