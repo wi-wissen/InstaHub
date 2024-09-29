@@ -13,22 +13,21 @@
 <script>
     function downloadCSV(results) {
         if (!results || results.length === 0) return;
-        
+
         const escapeCSV = (value) => {
             if (value === null) return 'NULL';
             const str = String(value);
-            if (str.includes('"') || str.includes(',') || str.includes('\n')) {
+            if (str.includes('"') || str.includes(',') || str.includes(';') || str.includes('\n')) {
                 return `"${str.replace(/"/g, '""')}"`;
             }
             return str;
         };
-
         const headers = Object.keys(results[0]);
         const csvContent = [
-            headers.map(escapeCSV).join(','),
-            ...results.map(row => headers.map(key => escapeCSV(row[key])).join(','))
+            headers.map(escapeCSV).join(';'),
+            ...results.map(row => headers.map(key => escapeCSV(row[key])).join(';'))
         ].join('\n');
-        
+
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         if (link.download !== undefined) {
