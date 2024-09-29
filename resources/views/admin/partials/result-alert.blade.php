@@ -13,7 +13,7 @@
 <script>
     function downloadCSV(results) {
         if (!results || results.length === 0) return;
-
+        
         const escapeCSV = (value) => {
             if (value === null) return 'NULL';
             const str = String(value);
@@ -22,13 +22,18 @@
             }
             return str;
         };
+        
         const headers = Object.keys(results[0]);
         const csvContent = [
             headers.map(escapeCSV).join(';'),
             ...results.map(row => headers.map(key => escapeCSV(row[key])).join(';'))
-        ].join('\n');
-
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        ].join('\r\n');
+        
+        // UTF-8 BOM for Excel
+        const BOM = '\uFEFF';
+        const csvContentWithBOM = BOM + csvContent;
+        
+        const blob = new Blob([csvContentWithBOM], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         if (link.download !== undefined) {
             const url = URL.createObjectURL(blob);
