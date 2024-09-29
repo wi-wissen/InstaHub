@@ -52,8 +52,22 @@ class MigrateHubs extends Command
         foreach ($hubs as $hub) {
             $this->info("Processing Hub ID: {$hub->id}");
 
+            $readonly = false; // remember if the hub is readonly
+            if($hub->readonly) {
+                // set to false to allow migrations
+                $readonly = true;
+                $hub->readonly = false; // not a real attribute
+            }
+
+            // run migrations
             RequestHub::setHubDB($hub->id);
             $this->runMigrationsForHub($hub);
+
+            if ($readonly) {
+                // set back to readonly
+                RequestHub::setDefaultDB();
+                $hub->readonly = true; // not a real attribute
+            }
         }
 
         $this->recordExecutedMigrations();
