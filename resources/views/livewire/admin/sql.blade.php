@@ -54,19 +54,9 @@
                 </button>
             </div>
            
-            <div
-                x-cloak x-show="$wire.message"
-                x-bind:class="'alert alert-' + ($wire.message ? $wire.message.type : '') + ' alert-important alert-dismissible mt-3 mb-0'"
-                role="alert"
-            >
-                <span x-text="$wire.message ? $wire.message.text : ''"></span>
-                <button @click="$wire.unsetResults()" type="button" class="btn-close" aria-label="Close"></button>
-            </div>
-            @if($results)
-                <div id="table" class="mt-3" style="overflow: auto;">
-                    @include('admin.partials.result-table', ['results' => $results])
-                </div>
-            @endif
+            @include('admin.partials.result-alert')
+
+            @include('admin.partials.result-table')
         </div>
     </div>
     <div class="card">
