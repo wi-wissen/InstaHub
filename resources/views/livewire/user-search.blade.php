@@ -8,7 +8,7 @@
         wire:keydown.tab="resetDropdown"
     >
 
-    @if ($showDropdown && !empty($users))
+    @if ($showDropdown)
         <div class="position-absolute top-100 start-0 mt-1 w-100 bg-white border rounded shadow-sm" style="z-index: 1000;">
             @foreach ($users as $user)
                 <a 
@@ -24,6 +24,9 @@
                     <span class="username">{{ $user->username }}</span>
                 </a>
             @endforeach
+            @if (! count($users))
+                <div class="py-2 px-1">{{ __('No search results') }} 🥹</div>
+            @endif
         </div>
     @endif
 </div>

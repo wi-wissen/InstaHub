@@ -51,7 +51,7 @@ class SqlAi extends Component
                     ['role' => 'system', 'content' => $this->buildSystemPrompt()],
                     ['role' => 'user', 'content' => $this->prompt],
                 ],
-                'max_tokens' => 100,
+                'max_tokens' => 500,
             ]);
 
             // decrement the teachers token count

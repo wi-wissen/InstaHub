@@ -5,7 +5,7 @@
 >
     <span x-text="$wire.message ? $wire.message.text : ''"></span>
     <div>
-        <button @click="downloadCSV($wire.results)" type="button" class="btn-close btn-download" aria-label="Download CSV" title="Download"></button>
+        <button x-show="$wire.message && $wire.message.type == 'success'" @click="downloadCSV($wire.results)" type="button" class="btn-close btn-download" aria-label="Download CSV" title="Download"></button>
         <button @click="$wire.unsetResults()" type="button" class="btn-close" aria-label="Close" title="{{ __('Close') }}"></button>
     </div>
 </div>

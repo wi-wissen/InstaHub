@@ -59,33 +59,35 @@
             @include('admin.partials.result-table')
         </div>
     </div>
+
     <div class="card">
         <div class="card-body">
             <p>{{ __('The following tables may be queried') }}:</p>
-            {!! $tables !!}
+            {!! $tablesHtml !!}
         </div>
     </div>
+
     @if(config('app.allow_public_db_access'))
-    <div class="card">
-        <div class="card-body">
-            @php
-                $connection = config('database.connections');
-                $connection = end($connection);
-            @endphp
-            <b>Database Server:</b>
-            @if (env('DB_HOST') == '127.0.0.1' || env('DB_HOST') == 'localhost')
-                {{ env('APP_URL') . ':' . env('DB_PORT') }}
-            @else
-                {{ $connection['host'] . ':' . env('DB_PORT') }}
-            @endif
-            <br />
-            <b>{{ __('Database') }}: </b>{{ $connection['database'] }}<br />
-            <b>{{ __('Username') }}: </b>{{ $connection['username'] }}<br />
-            <b>{{ __('Password') }}: </b>{{ $connection['password'] }}<br />
-            <b>{{ __('Charset') }}: </b>{{ $connection['charset'] }}<br />
-            <b>{{ __('Collation') }}: </b>{{ $connection['collation'] }}
+        <div class="card">
+            <div class="card-body">
+                @php
+                    $connection = config('database.connections');
+                    $connection = end($connection);
+                @endphp
+                <b>Database Server:</b>
+                @if (env('DB_HOST') == '127.0.0.1' || env('DB_HOST') == 'localhost')
+                    {{ env('APP_URL') . ':' . env('DB_PORT') }}
+                @else
+                    {{ $connection['host'] . ':' . env('DB_PORT') }}
+                @endif
+                <br />
+                <b>{{ __('Database') }}: </b>{{ $connection['database'] }}<br />
+                <b>{{ __('Username') }}: </b>{{ $connection['username'] }}<br />
+                <b>{{ __('Password') }}: </b>{{ $connection['password'] }}<br />
+                <b>{{ __('Charset') }}: </b>{{ $connection['charset'] }}<br />
+                <b>{{ __('Collation') }}: </b>{{ $connection['collation'] }}
+            </div>
         </div>
-    </div>
     @endif
 
     <style>

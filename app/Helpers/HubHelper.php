@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\Hub;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -158,7 +159,7 @@ class HubHelper
         if ($this->isHub()) {
             return $this->hub->teacher->hasTokens();
         } else {
-            return false;
+            return Auth::user()->hasTokens();
         }
     }
 

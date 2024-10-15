@@ -41,4 +41,5 @@ return [
         'query' => 'Query must return <code>true</code> or <code>false</code> or an list of User-IDs which contains or not contains actual User. Use <code>$user</code> for actual User and <code>$photo</code> for actual Photo.',
     ],
     'hubdomain' => 'You can reach your own hub under your own domain. This could be <code>azurblau27.instahub.org</code>.',
+    'noTokens' => 'You no longer have credit to use the AI functions in InstaHub.',
 ];

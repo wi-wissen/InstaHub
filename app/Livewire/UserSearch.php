@@ -25,7 +25,9 @@ class UserSearch extends Component
             return;
         }
 
-        $this->users = User::where('username', 'LIKE', $this->query.'%')
+        $this->users = User::where('username', 'LIKE', $this->query.'%') // username
+                          ->orWhere('name', 'LIKE', $this->query.'%') // forename
+                          ->orWhere('name', 'LIKE', '% '.$this->query.'%') // lastname
                           ->limit(10)
                           ->get();
 
