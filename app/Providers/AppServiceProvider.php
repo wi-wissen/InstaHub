@@ -3,20 +3,20 @@
 namespace App\Providers;
 
 use App\Helpers\HubHelper;
+use App\Session\AnonymizedDatabaseSessionHandler;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('requestHub', function () {
             return new HubHelper();
@@ -25,16 +25,34 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        //for older databases add length for utf84mb support - https://laravel-news.com/laravel-5-4-key-too-long-error
-        Schema::defaultStringLength(191);
+        Paginator::useBootstrapFive();
 
-        //The paginator now uses Tailwind for its default styling in Laravel 8.
-        \Illuminate\Pagination\Paginator::useBootstrap();
+        // Livewire::setUpdateRoute(function ($handle) {
+        //     return Route::post('/livewire/update', $handle)
+        //         ->middleware(\App\Http\Middleware\Subdomain::class);
+        // });
+
+        Livewire::addPersistentMiddleware([ 
+            \App\Http\Middleware\Subdomain::class,
+        ]);
+
+        Session::extend('anonymized_database', function ($app) {
+            $connection = $app['config']['session.connection'];
+            $table = $app['config']['session.table'];
+            $lifetime = $app['config']['session.lifetime'];
+            $lockForSeconds = $app['config']['session.lock_for_seconds'] ?? 0;
+
+            return new AnonymizedDatabaseSessionHandler(
+                $app['db']->connection($connection),
+                $table,
+                $lifetime,
+                $app,
+                $lockForSeconds
+            );
+        });
 
         /**
          * Paginate a standard Laravel Collection.

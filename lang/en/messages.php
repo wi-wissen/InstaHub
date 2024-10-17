@@ -1,8 +1,7 @@
 <?php
 
 return [
-    'noad' => 'There is <b>no</b> real Advertisement on this Plattform.',
-    'missedAd' => 'Sorry, but you missed this great opportunity! 🙁',
+    'noAd' => 'There is no real Advertisement on this Plattform.',
     'instahub' => 'InstaHub is a social network that is used in class to teach about databases, social networking and data protection.',
     'competitions' => 'Awarded with <a href="https://gi.de/meldung/julian-dorn-erhaelt-unterrichtspreis-2017-der-gesellschaft-fuer-informatik-fuer-friendzone/">Unterrichtspreis der Gesellschaft für Informatik</a> (2017) 
             and <a href="https://www.mnu.de/blog/535-preis-fuer-innovative-mint-unterrichtsideen-2019">1. Platz im Wettbewerb Innovative MINT-Unterrichtsideen</a> der MNU mit dem Klett-Verlag (2019).',
@@ -42,4 +41,5 @@ return [
         'query' => 'Query must return <code>true</code> or <code>false</code> or an list of User-IDs which contains or not contains actual User. Use <code>$user</code> for actual User and <code>$photo</code> for actual Photo.',
     ],
     'hubdomain' => 'You can reach your own hub under your own domain. This could be <code>azurblau27.instahub.org</code>.',
+    'noTokens' => 'You no longer have credit to use the AI functions in InstaHub.',
 ];

@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Storage;
 
 class RegisterController extends Controller
 {
@@ -32,7 +31,7 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after registration.
      *
      * @var string
      */
@@ -101,7 +100,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
@@ -113,11 +112,6 @@ class RegisterController extends Controller
             }
         } else {
             $url = 'avatar.png';
-        }
-
-        $role = 1;
-        if (! RequestHub::isHub()) {
-            $role = 3;
         }
 
         $user = User::create([
@@ -132,12 +126,10 @@ class RegisterController extends Controller
             'country' => Arr::has($data, 'country') ? $data['country'] : null,
             'centimeters' => Arr::has($data, 'centimeters') ? $data['centimeters'] : null,
             'avatar' => $url,
-            'role' => $role,
+            'role' => (RequestHub::isHub()) ? 3 : 1,
+            'is_active' => app()->environment('local'),
+            'hub_default_generation' => config('hub.default_generation'),
         ]);
-
-        if (env('APP_ENV') == 'local') {
-            $user->is_active = 1;
-        }
 
         $user->save();
 

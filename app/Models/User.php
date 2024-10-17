@@ -3,30 +3,40 @@
 namespace App\Models;
 
 use App\Facades\RequestHub;
-use Auth;
 use DateTime;
-use DB;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Schema;
-use Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory;
     use Notifiable;
 
     public $score = null;
 
-    /**
-     * Route notifications for the mail channel.
-     *
-     * @return string
-     */
-    public function routeNotificationForMail()
+    public static function boot()
     {
-        return $this->email;
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->tokens_max = config('azure.max_tokens');
+        });
+
+        self::updating(function ($model) {
+            if ($model->isDirty('avatar') && $model->avatar === null) {
+                $model->deleteAvatar();
+            }
+        });
+
+        self::deleting(function ($model) {
+            $model->deleteAvatar();
+        });
     }
 
     /**
@@ -41,7 +51,10 @@ class User extends Authenticatable
     ];
 
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'bio', 'avatar', 'birthday', 'city', 'country', 'gender', 'centimeters', 'is_active', 'role',
+        'username', 'name', 'email', 'password', 'bio', 'avatar', 'birthday',
+        'city', 'country', 'gender', 'centimeters', 'is_active', 'role', 'is_admin',
+        'hub_default_generation', 'hub_default_creating', 'hub_default_query_level',
+        'tokens_used', 'tokens_max',
     ];
 
     /**
@@ -52,6 +65,60 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Overwritten: Determine if the user has verified their email address.
+     *
+     * @return bool
+     */
+    public function hasVerifiedEmail()
+    {
+        // verification is needed outside hubs
+        return RequestHub::isHub() || ! is_null($this->email_verified_at);
+    }
+
+    /**
+     * Overwritten: Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        if(! RequestHub::isHub()) {
+            // send only in `admin` area
+            $this->notify(new VerifyEmail);
+        }
+    }
+
+    public function getProfileDescriptionAttribute(): string
+    {
+        $parts = [];
+
+        if ($this->city && $this->country) {
+            $parts[] = __('is from') . " {$this->city} ({$this->country})";
+        } elseif ($this->country) {
+            $parts[] = __('is from') . " {$this->country}";
+        }
+
+        if ($this->gender) {
+            $parts[] = __('is') . ' ' . __($this->gender);
+        }
+
+        if ($this->age() !== 'unknown') {
+            $parts[] = __('is') . ' ' . $this->age() . ' ' . __('years old');
+        }
+
+        if (empty($parts)) {
+            return '';
+        }
+
+        if (count($parts) === 1) {
+            return $parts[0];
+        }
+
+        $lastPart = array_pop($parts);
+        return implode(', ', $parts) . ' ' . __('and') . ' ' . $lastPart . '.';
+    }
 
     public function following()
     {
@@ -100,18 +167,12 @@ class User extends Authenticatable
         return $interval->y;
     }
 
-    public static function boot()
-    {
-        parent::boot();
-
-        self::deleting(function ($value) {
-            if (self::where('avatar', '=', $value->avatar)->count() == 1 &&
-                (! preg_match('/avatars\/[0-9]*\.jpg/', $value->avatar) ||
-                $value->avatar == 'avatar.jpg')) {
-                //prevent deleting a file who is in use in an other avatar
-                Storage::disk('local')->delete($value->avatar);
-            }
-        });
+    private function deleteAvatar() {
+        if (Storage::disk('local')->get($this->avatar)) {
+            // uploaded avatar
+            return Storage::disk('local')->delete($this->avatar);
+        }
+        // given avatars are stored in `public`
     }
 
     public function allowed($role)
@@ -149,12 +210,12 @@ class User extends Authenticatable
 
         if (RequestHub::hasTable('follows')) {
             // $results = Anzahl der Überschneidungen von gefolgten Profilen zwischen dem angemeldeten User und jedem anderen User
-            $results = DB::select(DB::raw('SELECT u2.id as userId, COUNT(f1.follower_id) as fCount
+            $results = DB::select('SELECT u2.id as userId, COUNT(f1.follower_id) as fCount
 												FROM users as u1, users as u2, follows as f1, follows as f2 
 												WHERE u1.id = ?
 												AND u1.id = f1.following_id and u2.id = f2.following_id AND f1.follower_id = f2.follower_id and f1.following_id != f2.following_id 
                                                 GROUP BY u2.id
-                                        '),
+                                        ',
                                         [Auth::user()->id]
             );
             foreach ($results as $result) {
@@ -162,12 +223,12 @@ class User extends Authenticatable
             }
 
             // $result = Anzahl der Überschneidungen von Followern zwischen dem angemeldeten User und jedem anderen User
-            $results = DB::select(DB::raw('SELECT u2.id as userId, COUNT(f1.follower_id) as fCount
+            $results = DB::select('SELECT u2.id as userId, COUNT(f1.follower_id) as fCount
 												FROM users as u1, users as u2, follows as f1, follows as f2 
 												WHERE u1.id = ?
 												AND u1.id = f1.follower_id and u2.id = f2.follower_id AND f1.following_id = f2.following_id and f1.follower_id != f2.follower_id 
                                                 GROUP BY u2.id
-                                        '),
+                                        ',
                                         [Auth::user()->id]
             );
             foreach ($results as $result) {
@@ -178,11 +239,11 @@ class User extends Authenticatable
         if (RequestHub::hasTable('follows') && RequestHub::hasTable('photos')) {
 
             // $result = Anzahl der hochgeladenen Fotos eines Profils
-            $results = DB::select(DB::raw('SELECT u1.id as userId, COUNT(p1.id) as pCount
+            $results = DB::select('SELECT u1.id as userId, COUNT(p1.id) as pCount
 												FROM users as u1, photos as p1
 												WHERE p1.user_id = u1.id
                                                 GROUP BY u1.id
-                                            ')
+                                            '
             );
 
             foreach ($results as $result) {
@@ -193,11 +254,11 @@ class User extends Authenticatable
         if (RequestHub::hasTable('follows')) {
 
             // $results = Profile, denen der angemeldete User bereits folgt
-            $results = DB::select(DB::raw('SELECT u2.id as userId
+            $results = DB::select('SELECT u2.id as userId
 												FROM users as u1, users as u2, follows as f1
 												WHERE u1.id = ?
 												AND u2.id = f1.follower_id AND u1.id = f1.following_id'
-                                        ),
+                                        ,
                                         [Auth::user()->id]
             );
 
@@ -226,5 +287,10 @@ class User extends Authenticatable
         }
 
         return $users;
+    }
+
+    public function hasTokens($amount = 1)
+    {
+        return $this->tokens_max - $this->tokens_used >= $amount;
     }
 }

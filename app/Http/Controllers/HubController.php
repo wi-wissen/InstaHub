@@ -3,23 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Facades\RequestHub;
-use App\Http\Requests;
-use App\Http\Resources\Hub as HubResource;
 use App\Models\Hub;
-use App\Models\Like;
 use App\Models\Photo;
 use App\Models\User;
-use Artisan;
-use Auth;
-use Config;
-use Database\Seeders\UsersTableSeeder;
-use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Schema;
-use Session;
-use Storage;
 
 class HubController extends Controller
 {
@@ -47,41 +41,22 @@ class HubController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('hub.index');
-    }
+        $query = (Auth::user()->role == 'admin') 
+            ? Hub::query() // admin
+            : User::find(Auth::user()->id)->hubs(); // teacher
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function apiIndex()
-    {
-        if (Auth::user()->role == 'admin') {
-            $hubs = Hub::paginate(30);
-        } elseif (Auth::user()->role == 'teacher') {
-            $hubs = User::find(Auth::user()->id)->hubs()->paginate(30);
+        if ($request->filled('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', "%{$searchTerm}%");
+            });
         }
 
-        return HubResource::collection($hubs);
-    }
+        $hubs = $query->paginate(10)->withQueryString();
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function apiSearch($text)
-    {
-        if (Auth::user()->role == 'admin') {
-            $hubs = Hub::where('name', 'LIKE', '%'.$text.'%')->paginate(30);
-        } elseif (Auth::user()->role == 'teacher') {
-            $hubs = User::find(Auth::user()->id)->hubs()->where('name', 'LIKE', '%'.$text.'%')->paginate(30);
-        }
-
-        return HubResource::collection($hubs);
+        return view('hub.index', compact('hubs'));
     }
 
     /**
@@ -169,32 +144,37 @@ class HubController extends Controller
         }
 
         //create hub
+        $teacherUser = User::where('username', '=', $request->teacher)->firstOrFail();
         $hub = Hub::create([
             'name' => $request->hub,
-            'teacher_id' => ($teacherId) ? $teacherId : User::where('username', '=', $request->teacher)->first()->id, //use own or search teacher.id
+            'teacher_id' => ($teacherId) ? $teacherId : $teacherUser->id, //use own or search teacher.id
             'password' => $pw,
+            'generation' => $teacherUser->hub_default_generation
         ]);
 
         //unset used hub name
         session(['register_hub_name' => null]);
 
         //Added create database and databaseuser
-        \DB::statement('CREATE DATABASE IF NOT EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
-        \DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'localhost'IDENTIFIED BY '".$hub->password."';");
+        DB::statement('CREATE DATABASE IF NOT EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
+        DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'%' IDENTIFIED BY '".$hub->password."';");
 
         if (config('app.allow_public_db_access')) { //second user needed because % means all except localhost
-            \DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'%'IDENTIFIED BY '".$hub->password."';");
+            DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'%' IDENTIFIED BY '".$hub->password."';");
         }
 
         RequestHub::setHubDB($hub->id);
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('users'); //not necesary but sometimes happend strage bug while registering..
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-
-        Artisan::call('migrate', ['--path' => 'database/migrations/users', '--force' => true]);
-        Artisan::call('db:seed', ['--class' => 'UsersTableSeeder', '--force' => true]);
-        Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
+        // hydrate hub
+        if($teacherUser->hub_default_creating == 'users') {
+            $hub->changeTables(['users'], 'fill');
+        }
+        else if($teacherUser->hub_default_creating == 'all_empty') {
+            $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'create');
+        }
+        else if($teacherUser->hub_default_creating == 'all_full') {
+            $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'fill');
+        }
 
         //insert admin
         $url = 'avatar.png';
@@ -204,35 +184,28 @@ class HubController extends Controller
             }
         }
 
-        $user = User::create([
-            'username' => 'admin',
+        $admin = User::where('username', 'admin')->first();
+        $admin->update([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'bio' => $request->bio ?: null,
-            'gender' => $request->gender ?: null,
-            'birthday' => $request->birthday ?: null,
-            'city' => $request->city ?: null,
-            'country' => $request->country ?: null,
-            'centimeters' => $request->centimeters ?: null,
+            'bio' => $request->bio,
+            'gender' => $request->gender,
+            'birthday' => $request->birthday,
+            'city' => $request->city,
+            'country' => $request->country,
+            'centimeters' => $request->centimeters,
             'avatar' => $url,
-            'role' => 2,
+            'is_active' => ($teacherId && Auth::user()->id == $teacherId) // trust yourself
         ]);
 
-        $user->role = 2;
-        $user->save();
-
         if($teacherId && Auth::user()->id == $teacherId) {
-            //created by current teacher
-            $user->is_active = 1; //trust himself
-            $user->save();
-
+            // created by user itself
             return redirect('/');
         }
         else {
             //created by student or for other teacher by a teacher
             flash(__('Your hub must be activated by your teacher!'))->warning();
-
             return redirect(config('app.protocol').str_replace('{subdomain}', $hub->name, config('app.domain_hub')));
         }
     }
@@ -281,46 +254,11 @@ class HubController extends Controller
     public function destroy($id)
     {
         $hub = Hub::findOrFail($id);
+
         abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
-        //delete all old photos from disk
-
-        RequestHub::setHubDB($hub->id);
-
-        if (RequestHub::hasTable('photos')) {
-            $photos = Photo::all();
-            foreach ($photos as $photo) {
-                // _960 and -unsplash cant (hopfully) part of an uuid, so it is an present photo
-                if (strpos($photo->url, '_960') === false && strpos($photo->url, '-unsplash') === false) {
-                    Storage::disk('local')->delete($photo->url);
-                }
-            }
-        }
-
-        if (RequestHub::hasTable('users')) {
-            $avatars = User::all();
-            foreach ($avatars as $avatar) {
-                $preset_avatars = ['avatar.png', '001.jpg', '002.jpg', '003.jpg', '004.jpg', '005.jpg', '006.jpg', '007.jpg', '008.jpg', '009.jpg', '010.jpg', '011.jpg', '012.jpg', '013.jpg', '014.jpg', '015.jpg', '016.jpg', '017.jpg', '018.jpg', '019.jpg', '020.jpg', '021.jpg', '022.jpg', '023.jpg', '024.jpg', '025.jpg', '026.jpg', '027.jpg', '028.jpg', '029.jpg', '030.jpg', '031.jpg', '032.jpg', '033.jpg', '034.jpg', '035.jpg', '036.jpg', '037.jpg', '038.jpg', '039.jpg', '040.jpg', '041.jpg', '042.jpg', '043.jpg', '044.jpg', '045.jpg', '046.jpg', '047.jpg', '048.jpg', '049.jpg', '050.jpg', '051.jpg', '052.jpg', '053.jpg', '054.jpg', '055.jpg', '056.jpg', '057.jpg', '058.jpg', '059.jpg', '060.jpg', '061.jpg', '062.jpg', '063.jpg', '064.jpg', '065.jpg', '066.jpg', '067.jpg', '068.jpg', '069.jpg', '070.jpg', '071.jpg', '072.jpg', '073.jpg', '074.jpg', '075.jpg', '076.jpg', '077.jpg', '078.jpg', '079.jpg', '080.jpg', '081.jpg', '082.jpg', '083.jpg', '084.jpg', '085.jpg', '086.jpg', '087.jpg', '088.jpg', '089.jpg', '090.jpg', '091.jpg', '092.jpg', '093.jpg', '094.jpg', '095.jpg', '096.jpg', '097.jpg', '098.jpg', '099.jpg', '100.jpg', '101.jpg', '102.jpg', '103.jpg', '104.jpg', '105.jpg', '106.jpg', '107.jpg', '108.jpg', '109.jpg', '110.jpg', '111.jpg', '112.jpg', '113.jpg', '114.jpg', '115.jpg', '116.jpg', '117.jpg', '118.jpg', '119.jpg', '120.jpg', '121.jpg', '122.jpg', '123.jpg', '124.jpg', '125.jpg', '126.jpg', '127.jpg', '128.jpg', '129.jpg', '130.jpg', '131.jpg', '132.jpg', '133.jpg', '134.jpg', '135.jpg', '136.jpg', '137.jpg', '138.jpg', '139.jpg', '140.jpg', '141.jpg', '142.jpg', '143.jpg', '144.jpg', '145.jpg', '146.jpg', '147.jpg', '148.jpg', '149.jpg', '150.jpg', '151.jpg', '152.jpg', '153.jpg', '154.jpg', '155.jpg', '156.jpg', '157.jpg', '158.jpg', '159.jpg', '160.jpg', '161.jpg', '162.jpg', '163.jpg', '164.jpg', '165.jpg', '166.jpg', '167.jpg', '168.jpg', '169.jpg', '170.jpg', '171.jpg', '172.jpg', '173.jpg', '174.jpg', '175.jpg', '176.jpg', '177.jpg', '178.jpg', '179.jpg', '180.jpg', '181.jpg', '182.jpg', '183.jpg', '184.jpg', '185.jpg', '186.jpg', '187.jpg', '188.jpg', '189.jpg', '190.jpg', '191.jpg', '192.jpg', '193.jpg', '194.jpg', '195.jpg', '196.jpg', '197.jpg', '198.jpg', '199.jpg', '200.jpg', '201.jpg', '202.jpg', '203.jpg', '204.jpg', '205.jpg', '206.jpg'];
-                $filename = $avatar->avatar;
-                if ($filename != 'avatar.png') {
-                    $filename = explode('/', $filename)[1];
-                }
-                if (! in_array($filename, $preset_avatars)) {
-                    //uploaded avater
-                    Storage::disk('local')->delete($avatar->avatar);
-                }
-            }
-        }
-
-        //set primary db
-        RequestHub::setDefaultDB();
-
-        \DB::statement('DROP DATABASE IF EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
-        \DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'localhost';");
-        \DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'%';");
-
         $hub->delete();
-
+        
         return response()->json([
             'destroyed' => true,
         ]);

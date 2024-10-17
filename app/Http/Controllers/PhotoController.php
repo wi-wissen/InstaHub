@@ -3,24 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Facades\RequestHub;
-use App\Http\Controllers\Collection;
-use App\Http\Resources\Ad as AdResource;
-use App\Http\Resources\Photo as PhotoResource;
 use App\Models\Ad;
 use App\Models\Analytic;
-use App\Models\Comment;
-use App\Models\Like;
 use App\Models\Photo;
-use App\Models\User;
-use Auth;
-use Config;
-use Debugbar;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class PhotoController extends Controller
 {
@@ -64,12 +52,17 @@ class PhotoController extends Controller
                 if (Photo::where('user_id', $following_ids)->exists()) {
                     $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at', 'desc')->limit(100)->get();	// $photos speichert die neuesten 100 Fotos von Nutzern, denen der Nutzer folgt
                     $photos = $photos->addPhotoScore()->paginate(5);
+                    $photos->appends(['sort' => 'best']);
+
                 }
             } else { // sort by date
                 session(['sort_feed' => 'last']);
 
                 if (Photo::where('user_id', $following_ids)->exists()) {
-                    $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at', 'desc')->paginate(5);
+                    $photos = Photo::whereIn('user_id', $following_ids)
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(5)
+                        ->appends(['sort' => 'last']);
                 }
             }
         }
@@ -138,29 +131,19 @@ class PhotoController extends Controller
         }
     }
 
-    public function show(Request $request, $photo_id)
+    public function show(Photo $photo)
     {
-        $photo = Photo::findOrFail($photo_id);
-
-        $photo = new PhotoResource($photo);
-
         //analytic
         if (RequestHub::hasTable('analytics')) {
             Analytic::create(['user_id' => Auth::id(), 'photo_id' => $photo->id]);
         }
 
         if (RequestHub::hasTable('ads')) {
-            $ad = Ad::getAd($photo_id);
+            $ad = Ad::getAd($photo->id);
 
-            if ($ad) { //is there a matching ad?
-                $ad = new AdResource($ad);
-
-                return view('photo.show', ['photo' => $photo->response()->content(), 'ad' => $ad->response()->content()]);
-            } else {
-                return view('photo.show', ['photo' => $photo->response()->content()]);
-            }
+            return view('photo.show', ['photo' => $photo, 'ad' => $ad]);
         } else {
-            return view('photo.show', ['photo' => $photo->response()->content()]);
+            return view('photo.show', ['photo' => $photo, 'ad' => null]);
         }
     }
 

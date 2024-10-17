@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
-
 use App\Facades\RequestHub;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\User as UserResource;
 use App\Models\User;
 use App\Notifications\UserActivated;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Mailer\Exception\TransportException;
@@ -126,13 +123,6 @@ class UserController extends Controller
         }
 
         return redirect('/'.$user->username);
-    }
-
-    public function search($query)
-    {
-        $user = User::where('username', 'LIKE', $query.'%')->limit(10)->get();
-
-        return UserResource::collection($user);
     }
 
     public function destroy($username)

@@ -2,29 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Resources\Follow as FollowResource;
 use App\Models\User;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FollowController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth'); // only authenticated users can access this route
-    }
-
-    public function index()
-    {
-        $follow = FollowResource::collection(User::all());
-
-        return view('follow.index', ['follow' => $follow->response()->content()]);
-    }
-
-    public function apiIndex()
-    {
-        return  FollowResource::collection(User::all());
     }
 
     public function followers($username)

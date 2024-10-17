@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\RequestHub;
 use App\Http\Controllers\Controller;
-use DB;
 use Illuminate\Http\Request;
-use Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class SqlController extends Controller
 {
@@ -14,130 +15,26 @@ class SqlController extends Controller
         $this->middleware('auth');
     }
 
-    public function getApiQuery(Request $request)
+    public function sql()
     {
-        $data = $this->_getQuery($request);
-
-        return response()->json($data);
-    }
-
-    public function getQuery(Request $request)
-    {
-        $data = $this->_getQuery($request);
-        //dd($data);
-        return view('admin.sql', ['result' => $data['result'], 'tables' => $data['tables'], 'message' => $data['message'], 'type' => $data['type']]);
-    }
-
-    public function _getQuery(Request $request)
-    {
-        $t = '';
-        $message = null;
-        $type = null;
-
-        if ($request->has('editor')) {
-            //Ergebnis vorbereiten
-            try {
-                if (strpos(strtolower(trim($request->editor)), 'select') !== 0) { //false for not found, 0 for starts with.
-                    // other statement - https://laravel.com/docs/5.7/database#running-queries
-                    DB::statement($request->editor);
-                    //nothing to show, cause no select-statement
-                    $message = 'Anfrage ausgeführt.';
-                    $type = 'success';
-                } else {
-                    //select
-                    $r = DB::select($request->editor);
-                    if (! $r) {
-                        //nothing found
-                        $message = 'Anfrage ausgeführt. 0 Ergebnisse gefunden.';
-                        $type = 'warning';
-                    } else {
-                        $message = 'Anfrage ausgeführt. '.count($r).' Ergebnisse gefunden.';
-                        $type = 'success';
-
-                        $cols = array_keys((array) $r[0]);
-                        $t = "<table class='table mb-0'>";
-                        foreach ($cols as &$col) {
-                            $t = $t.'<th>'.htmlspecialchars($col).'</th>';
-                        }
-                        foreach ($r as $row) {
-                            $row = (array) $row;
-                            $t = $t.'<tr>';
-                            foreach ($cols as &$col) {
-                                if ($row[$col] === null) {
-                                    $wert = '<code>NULL</code>';
-                                } else {
-                                    $wert = htmlspecialchars($row[$col]);
-                                }
-                                //Ausgabe ggf. anpassen - Links
-                                if (filter_var($wert, FILTER_VALIDATE_URL)) {
-                                    $wert = "<a href='$wert'>$wert</a>";
-                                } //absolute Links
-                                elseif (preg_match("/^.*\.(jpg|jpeg|png|gif)$/i", $wert)) {
-                                    $wert = "<a href='/$wert'>$wert</a>";
-                                } //relative Links to Photos
-                                $t = $t.'<td>'.$wert.'</td>';
-                            }
-                            $t = $t.'</tr>';
-                        }
-                        $t = $t.'</table>';
-                    }
-                }
-            } catch (\Illuminate\Database\QueryException $ex) {
-                $message = $ex->getMessage();
-                $type = 'danger';
-            }
-        }
-
-        //Tabelle darstellen
-        $dbclass = '';
-        $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
-        if (! $r) {
-            echo "<div class='alert alert-danger'>Keine Tabellen gefunden.</div>";
-        }
-        foreach ($r as $v) {
-            if (! strcmp($v->TABLE_TYPE, 'BASE TABLE') && $v->TABLE_NAME != 'migrations') {
-                $dbclass = $dbclass.'<b>'.htmlspecialchars($v->TABLE_NAME).':</b> ';
-                $columns = Schema::getColumnListing($v->TABLE_NAME);
-                foreach ($columns as &$column) {
-                    $dbclass = $dbclass.htmlspecialchars($column).', ';
-                }
-                $dbclass = rtrim($dbclass, ', ').'<br />';
-            }
-        }
-
-        return [
-            'result' => $t,
-            'tables' => $dbclass,
-            'message' => $message,
-            'type' => $type,
-        ];
-
-        //return view('admin.sql', ['result' => $t, 'tables' => $dbclass, 'message' => $message, 'type' => $type,]);
-    }
-
-    public function getTables() 
-    {
-        $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
-        if (! $r) {
-            return response()->json([]);
-        } else {
-            $arr = [];
-            foreach ($r as $v) {
-                if (! strcmp($v->TABLE_TYPE, 'BASE TABLE') && $v->TABLE_NAME != 'migrations' && $v->TABLE_NAME != 'password_resets') {
-                    $arr[$v->TABLE_NAME] = [];
-                    $columns = Schema::getColumnListing($v->TABLE_NAME);
-                    foreach ($columns as &$column) {
-                        $arr[$v->TABLE_NAME][] = $column;
-                    }
-                }
-            }
-
-            return response()->json($arr);
-        }
+        return view('admin.sql');
     }
 
     public function selectGui()
     {
+        if(RequestHub::query_level() != 'gui' && RequestHub::query_level() != 'ai') {
+            abort(403);
+        }
+
         return view('admin.select');
+    }
+
+    public function sqlAi()
+    {
+        if(RequestHub::query_level() != 'ai') {
+            abort(403);
+        }
+
+        return view('admin.ai');
     }
 }
