@@ -43,6 +43,11 @@
             	@endforeach
                 
                 @if(method_exists($photos, 'links'))
+                    @if(!$photos->count())
+                        <div class="alert alert-info alert-important" role="alert">
+                            {{ __('Nothing found.') }}
+                        </div>
+                    @endif
                     {{ $photos->links() }}
                 @else
                     @if (RequestHub::hasTable('follows') && RequestHub::hasTable('follows')) 
