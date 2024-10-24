@@ -25,7 +25,9 @@ class User extends Authenticatable implements MustVerifyEmail
         parent::boot();
 
         static::creating(function ($user) {
-            $user->tokens_max = config('azure.max_tokens');
+            if(! RequestHub::isHub()) {
+                $user->tokens_max = config('azure.max_tokens'); // set max tokens only for teachers
+            }
         });
 
         self::updating(function ($model) {

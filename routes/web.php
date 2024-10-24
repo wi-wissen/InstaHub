@@ -48,8 +48,6 @@ Route::domain(config('app.domain_admin'))->group(function () {
 
     //only auth
     Route::middleware('auth', 'verified', 'role:admin')->group(function () {
-        Route::get('/', [HubController::class, 'index']);
-
         Route::get('/api/users/search/{query}', [UserController::class, 'search']);
         Route::get('/{username}/activate', [UserController::class, 'activate']);
         Route::get('/{username}/deactivate', [UserController::class, 'deactivate']);
