@@ -53,7 +53,7 @@ class FileController extends Controller
     public function showAvatar($filename)
     {
         if($filename == '000.jpg') {
-            return (new Response(Storage::disk('local')->get('avatars/000.jpg'), 200))
+            return (new Response(Storage::disk('public')->get('avatars/1/000.jpg'), 200))
                ->header('Content-Type', 'jpg')
                ->header('Content-Disposition', 'attachment; filename="ad-avatar-jpg');
         }
