@@ -7,6 +7,7 @@ use App\Models\Hub;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Schema;
 
 class MigrateHubs extends Command
 {
@@ -32,6 +33,9 @@ class MigrateHubs extends Command
      */
     public function handle()
     {
+        // allow larger selections than students are allowed to do
+        DB::statement('SET SESSION SQL_BIG_SELECTS=1');
+
         $this->batch = $this->getNextBatchNumber();
         $this->loadMigrations();
 
@@ -52,21 +56,35 @@ class MigrateHubs extends Command
         foreach ($hubs as $hub) {
             $this->info("Processing Hub ID: {$hub->id}");
 
-            $readonly = false; // remember if the hub is readonly
-            if($hub->readonly) {
+            $readonly = $hub->readonly; // remember if the hub is readonly
+            if($readonly) {
+                $this->info("Hub ID id {$hub->id} is readonly. Setting to read-write for migrations.");
                 // set to false to allow migrations
-                $readonly = true;
                 $hub->readonly = false; // not a real attribute
             }
 
-            // run migrations
+            // connect to the hub
             RequestHub::setHubDB($hub->id);
-            $this->runMigrationsForHub($hub);
 
-            if ($readonly) {
-                // set back to readonly
-                RequestHub::setDefaultDB();
-                $hub->readonly = true; // not a real attribute
+            // check if the hub is valid
+            if(Schema::hasTable('users')) {
+                // run migrations
+                $this->runMigrationsForHub($hub);
+
+                // disconnect from the hub
+                DB::disconnect();
+
+                if ($readonly) {
+                    // set back to readonly
+                    $hub->readonly = true; // not a real attribute
+                    $this->info("Hub ID id {$hub->id} is readonly again.");
+                }
+            }
+            else {
+                // delete invalid hub
+                $this->info("Hub ID id {$hub->id} has no `users` table.");
+                $hub->delete();
+                $this->info("Hub ID id {$hub->id} was deleted.");
             }
         }
 

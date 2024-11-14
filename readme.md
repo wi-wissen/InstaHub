@@ -33,8 +33,9 @@ Many thanks and respect to:
 
 #### Prerequisits 
 
-- Have min. PHP 8.2
+- Have min. PHP 8.3
 - Download composer https://getcomposer.org/download/
+- Download npm https://nodejs.org/
 - Download git https://git-scm.com/downloads
 
 #### Prerequisits for Windows users
@@ -81,6 +82,12 @@ Optional: Just to be safe or if an error occur on bootup run `php artisan config
 
 I recomend to add a cronjob to your system: `* * * * * php /path/to/artisan schedule:run >> /dev/null 2>&1`
 Then InstaHub will delete old analytic database files each night.
+
+### Update
+
+1. `php artisan migrate`
+2. `php artisan migrate:hubs`
+
 
 ### Contributing
 Thank you for considering contributing to the InstaHub! Create a pull request or contact [me](https://wi-wissen.de/contact.php).

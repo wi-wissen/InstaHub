@@ -40,9 +40,9 @@ class Hub extends Model
             //set primary db
             RequestHub::setDefaultDB();
 
-            DB::statement('DROP DATABASE IF EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
-            DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'%';");
-            DB::statement("DROP USER IF EXISTS '".env('DB_DATABASE').'_'.$hub->id."'@'%';");
+            DB::statement('DROP DATABASE IF EXISTS '.config('database.connections.mysql.database').'_'.$hub->id.';');
+            DB::statement("DROP USER IF EXISTS '".config('database.connections.mysql.database').'_'.$hub->id."'@'localhost';");
+            DB::statement("DROP USER IF EXISTS '".config('database.connections.mysql.database').'_'.$hub->id."'@'%';");
         });
     }
 
@@ -124,38 +124,45 @@ class Hub extends Model
 
     public function getReadonlyAttribute()
     {
-        //select root user
         RequestHub::setDefaultDB();
-        //checks for privilege to update in selected database, this is only given in this case if user have all privilegs
-        $r = DB::select('select Update_priv from mysql.db where db=? and User =?', [env('DB_DATABASE').'_'.$this->id, env('DB_DATABASE').'_'.$this->id]);
-        $r = (array) $r;
-        if (current((array) $r[0]) == 'Y') {
-            return false;
-        } else {
-            return true;
+        
+        $r = DB::select('select Update_priv from mysql.db where db=? and User =?', [
+            config('database.connections.mysql.database').'_'.$this->id, 
+            config('database.connections.mysql.database').'_'.$this->id
+        ]);
+
+        // Check if query returned any results
+        if (empty($r)) {
+            return true; // more or less this is read only
         }
+
+        $r = (array) $r;
+        return current((array) $r[0]) !== 'Y';
     }
 
     public function setReadonlyAttribute($value)
     {
+        //select root user
+        RequestHub::setDefaultDB();
+
         if ($value) {
-            DB::statement('REVOKE ALL ON ' . env('DB_DATABASE') . '_' . $this->id . ".* FROM '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-            DB::statement('GRANT SELECT ON ' . env('DB_DATABASE') . '_' . $this->id . ".* TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-            DB::statement('GRANT CREATE, INSERT ON ' . env('DB_DATABASE') . '_' . $this->id . ".analytics TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-            DB::statement('REVOKE CREATE ON ' . env('DB_DATABASE') . '_' . $this->id . ".analytics FROM '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-            DB::statement('GRANT UPDATE (remember_token, updated_at) ON ' . env('DB_DATABASE') . '_' . $this->id . ".users TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-            DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . env('DB_DATABASE') . '_' . $this->id . ".sessions TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
+            DB::statement('REVOKE ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+            DB::statement('GRANT SELECT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+            DB::statement('GRANT CREATE, INSERT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+            DB::statement('REVOKE CREATE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+            DB::statement('GRANT UPDATE (remember_token, updated_at) ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".users TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+            DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".sessions TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
             if (config('app.allow_public_db_access')) {
-                DB::statement('REVOKE ALL ON ' . env('DB_DATABASE') . '_' . $this->id . ".* FROM '" . env('DB_DATABASE') . '_' . $this->id . "'@'%'");
-                DB::statement('GRANT SELECT ON ' . env('DB_DATABASE') . '_' . $this->id . ".* TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-                DB::statement('GRANT CREATE, INSERT ON ' . env('DB_DATABASE') . '_' . $this->id . ".analytics TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-                DB::statement('REVOKE CREATE ON ' . env('DB_DATABASE') . '_' . $this->id . ".analytics FROM '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
-                DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . env('DB_DATABASE') . '_' . $this->id . ".sessions TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%';");
+                DB::statement('REVOKE ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                DB::statement('GRANT SELECT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                DB::statement('GRANT CREATE, INSERT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                DB::statement('REVOKE CREATE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".sessions TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
             }
         } else {
-            DB::statement('GRANT ALL ON ' . env('DB_DATABASE') . '_' . $this->id . ".* TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%' IDENTIFIED BY '" . $this->password . "';");
+            DB::statement('GRANT ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost' IDENTIFIED BY '" . $this->password . "';");
             if (config('app.allow_public_db_access')) {
-                DB::statement('GRANT ALL ON ' . env('DB_DATABASE') . '_' . $this->id . ".* TO '" . env('DB_DATABASE') . '_' . $this->id . "'@'%' IDENTIFIED BY '" . $this->password . "';");
+                DB::statement('GRANT ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%' IDENTIFIED BY '" . $this->password . "';");
             }
         }
     }

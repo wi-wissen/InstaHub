@@ -35,11 +35,11 @@ class HubHelper
 
                 return redirect(env('APP_URL'));
             } else {
-                Config::set('database.connections.'.env('DB_DATABASE').'_'.$this->hub->id, [
+                Config::set('database.connections.'.config('database.connections.mysql.database').'_'.$this->hub->id, [
                     'driver'    => 'mysql',
-                    'host'      => env('DB_HOST'),
-                    'database'  => env('DB_DATABASE').'_'.$this->hub->id,
-                    'username'  => env('DB_DATABASE').'_'.$this->hub->id,
+                    'host'      => config('database.connections.mysql.host'),
+                    'database'  => config('database.connections.mysql.database').'_'.$this->hub->id,
+                    'username'  => config('database.connections.mysql.database').'_'.$this->hub->id,
                     'password'  => $this->hub->password,
                     'charset'   => 'utf8mb4',
                     'collation' => 'utf8mb4_unicode_ci',
@@ -63,15 +63,15 @@ class HubHelper
             $id = $this->hub->id;
         }
 
-        if (! config()->has('database.connections.'.env('DB_DATABASE').'_'.$id)) {
+        if (! config()->has('database.connections.'.config('database.connections.mysql.database').'_'.$id)) {
             $this->setDefaultDB();
             $hub = Hub::findOrFail($id);
 
-            Config::set('database.connections.'.env('DB_DATABASE').'_'.$hub->id, [
+            Config::set('database.connections.'.config('database.connections.mysql.database').'_'.$hub->id, [
                 'driver'    => 'mysql',
-                'host'      => env('DB_HOST'),
-                'database'  => env('DB_DATABASE').'_'.$hub->id,
-                'username'  => env('DB_DATABASE').'_'.$hub->id,
+                'host'      => config('database.connections.mysql.host'),
+                'database'  => config('database.connections.mysql.database').'_'.$hub->id,
+                'username'  => config('database.connections.mysql.database').'_'.$hub->id,
                 'password'  => $hub->password,
                 'charset'   => 'utf8mb4',
                 'collation' => 'utf8mb4_unicode_ci',
@@ -79,13 +79,13 @@ class HubHelper
             ]);
         }
 
-        Config::set('database.default', env('DB_DATABASE').'_'.$id);
+        Config::set('database.default', config('database.connections.mysql.database').'_'.$id);
         $this->tables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
     }
 
     public function setDefaultDB()
     {
-        Config::set('database.default', env('DB_CONNECTION'));
+        Config::set('database.default', 'mysql');
     }
 
     public function isHub()
