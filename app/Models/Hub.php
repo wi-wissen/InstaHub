@@ -244,7 +244,7 @@ class Hub extends Model
         }
 
         // migrate
-        Artisan::call('db:seed', ['--class' => 'Database\Seeders\Generation'.Auth::user()->hub_default_generation.'\\'.ucfirst($tablename).'TableSeeder', '--force' => true]);
+        Artisan::call('db:seed', ['--class' => 'Database\Seeders\Generation'.RequestHub::teacher()->hub_default_generation.'\\'.ucfirst($tablename).'TableSeeder', '--force' => true]);
 
         if ($tablename == 'users') {
             if ($user) {

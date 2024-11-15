@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 class HubHelper
 {
     private $hub = null;
+    private $teacher = null;
 
     private $tables = [];
 
@@ -59,27 +60,26 @@ class HubHelper
 
     public function setHubDB($id = null)
     {
-        if (! $id) {
-            $id = $this->hub->id;
+        // switch to hub db if not already
+        if ($id) {
+            $this->setDefaultDB();
+            $this->hub = Hub::findOrFail($id);
         }
 
-        if (! config()->has('database.connections.'.config('database.connections.mysql.database').'_'.$id)) {
-            $this->setDefaultDB();
-            $hub = Hub::findOrFail($id);
-
-            Config::set('database.connections.'.config('database.connections.mysql.database').'_'.$hub->id, [
+        if (! config()->has('database.connections.'.config('database.connections.mysql.database').'_'.$this->hub->$id)) {
+            Config::set('database.connections.'.config('database.connections.mysql.database').'_'.$this->hub->id, [
                 'driver'    => 'mysql',
                 'host'      => config('database.connections.mysql.host'),
-                'database'  => config('database.connections.mysql.database').'_'.$hub->id,
-                'username'  => config('database.connections.mysql.database').'_'.$hub->id,
-                'password'  => $hub->password,
+                'database'  => config('database.connections.mysql.database').'_'.$this->hub->id,
+                'username'  => config('database.connections.mysql.database').'_'.$this->hub->id,
+                'password'  => $this->hub->password,
                 'charset'   => 'utf8mb4',
                 'collation' => 'utf8mb4_unicode_ci',
                 'prefix'    => '',
             ]);
         }
 
-        Config::set('database.default', config('database.connections.mysql.database').'_'.$id);
+        Config::set('database.default', config('database.connections.mysql.database').'_'.$this->hub->id);
         $this->tables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
     }
 
@@ -115,6 +115,20 @@ class HubHelper
     {
         if ($this->isHub()) {
             return $this->hub->name;
+        } else {
+            return null;
+        }
+    }
+
+    public function teacher()
+    {
+        if ($this->isHub()) {
+            if(! $this->teacher) {
+                $this->setDefaultDB();
+                $this->teacher = $this->hub->teacher;
+                $this->setHubDB();
+            }
+            return $this->teacher;
         } else {
             return null;
         }
@@ -157,7 +171,7 @@ class HubHelper
     public function hasTokens()
     {
         if ($this->isHub()) {
-            return $this->hub->teacher->hasTokens();
+            return $this->teacher->hasTokens();
         } else {
             return Auth::user()->hasTokens();
         }

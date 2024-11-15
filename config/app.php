@@ -132,6 +132,19 @@ return [
 
     'allow_public_db_access' => env('ALLOW_PUBLIC_DB_ACCESS', false),
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Hub Naming
+    |--------------------------------------------------------------------------
+    |
+    | Get Colors and Numbers for Hub Naming
+    |
+    */
+
+    'hub_words' => explode(',', env('WORD', 'blue,green,red,yellow,black,white,orange,purple,grey,brown')),
+    'hub_numbers' => env('WORD_NUMBER', 100),
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver

@@ -68,9 +68,9 @@ class HubController extends Controller
     {
         if(! session('_old_input.hub', null)) 
         {
-            $word = explode(',', env('WORD'));
-            $number = env('WORD_NUMBER');
-
+            $word = config('app.hub_words');
+            $number = config('app.hub_numbers');
+            
             do {
                 $name = '';
                 $name = $name.$word[rand(0, count($word) - 1)];
@@ -206,7 +206,7 @@ class HubController extends Controller
         else {
             //created by student or for other teacher by a teacher
             flash(__('Your hub must be activated by your teacher!'))->warning();
-            return redirect(config('app.protocol').str_replace('{subdomain}', $hub->name, config('app.domain_hub')));
+            return redirect(str_replace('{subdomain}', $hub->name, config('app.url_hub')));
         }
     }
 
