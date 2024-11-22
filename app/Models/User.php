@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Facades\RequestHub;
+use App\Notifications\UserActivated;
 use DateTime;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -12,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -33,6 +35,17 @@ class User extends Authenticatable implements MustVerifyEmail
         self::updating(function ($model) {
             if ($model->isDirty('avatar') && $model->avatar === null) {
                 $model->deleteAvatar();
+            }
+
+            if($model->isDirty('is_active') && $model->is_active) {
+                if (! RequestHub::isHub()) {
+                    try{
+                        $model->notify(new UserActivated(RequestHub::url()));
+                    }
+                    catch(TransportException $e){
+                        flash(__('Can\'t send mail: '.$e->getMessage()))->error();
+                    }
+                }
             }
         });
 

@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -104,6 +105,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // set avatar
         if (array_key_exists('avatar', $data)) {
             if ($data['avatar']) {
                 $url = Storage::putFile('avatars', $data['avatar']);
@@ -114,7 +116,8 @@ class RegisterController extends Controller
             $url = 'avatar.png';
         }
 
-        $user = User::create([
+        // build user data
+        $userData = [
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
@@ -126,12 +129,17 @@ class RegisterController extends Controller
             'country' => Arr::has($data, 'country') ? $data['country'] : null,
             'centimeters' => Arr::has($data, 'centimeters') ? $data['centimeters'] : null,
             'avatar' => $url,
-            'role' => (RequestHub::isHub()) ? 'user' : 'teacher',
+            'role' => 'user',
             'is_active' => app()->environment('local'),
-            'hub_default_generation' => config('hub.default_generation'),
-        ]);
+        ];
 
-        $user->save();
+        if(! RequestHub::isHub()) {
+            // only for teachers in root
+            $userData['hub_default_generation'] = config('hub.default_generation');
+            $userData['role'] = 'teacher';
+        }
+
+        $user = User::create($userData);
 
         //send message to admin if teacher apply for account in root
         if (! RequestHub::isHub() && env('APP_ENV') != 'local') {

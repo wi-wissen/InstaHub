@@ -56,6 +56,7 @@ h5 {
 							@endif
 						@endif
 						<h2 class="fs-4">{{ $user->username }}</h2>
+
 						<p>
 							@if (RequestHub::hasTable('photos'))
 								<b>{{$user->photos()->count()}}</b> {{ __('Photos') }}.
@@ -70,10 +71,13 @@ h5 {
 								<a href ="{{'../' . $user->username . '/following'}}"><b>{{$user->following->count()}} {{ __('following') }}</b></a>.
 							@endif
 						</p>
-						<h3 class="d-inline fs-5">{{ $user->name }}</h3>
-						@if ($user->country != "" || isset($user->gender) || 'unknown' != $user->age())
-							<p class="d-inline fs-5">{{ $user->profileDescription }}</p>
-						@endif
+
+						<div>
+							<h3 class="d-inline fs-5">{{ $user->name }}</h3>
+							@if ($user->country != "" || isset($user->gender) || 'unknown' != $user->age())
+								<span class="d-inline fs-5">{{ $user->profileDescription }}</span>
+							@endif
+						</div>
 
 						@if($user->bio != '')
 							<p class="mt-1">{{ str_replace("\n", " | ", $user->bio) }}</p>
@@ -87,7 +91,6 @@ h5 {
 							@livewire('user-password-reset', ['username' => $user->username])
 							<a href="{{'../' . $user->username . '/destroy'}}" class="btn btn-outline-danger btn-sm {{ RequestHub::isReadOnly() ? 'disabled' : '' }}" role="button">{{ __('Delete') }}</a>
 						@endif
-						
 					</div>
 				</div>
 				<hr>
