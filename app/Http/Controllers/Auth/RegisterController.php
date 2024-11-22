@@ -142,7 +142,7 @@ class RegisterController extends Controller
         $user = User::create($userData);
 
         //send message to admin if teacher apply for account in root
-        if (! RequestHub::isHub() && env('APP_ENV') != 'local') {
+        if (! RequestHub::isHub() && config('app.env') != 'local') {
             User::where('role', '=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
         }
 

@@ -43,8 +43,8 @@ class UserActivated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Your account have been activated.')
-                    ->action('Visit '.config('app.name'), $this->url);
+                    ->line(__('Your account have been activated.'))
+                    ->action(__('Visit').' '.config('app.name'), $this->url);
     }
 
     /**
