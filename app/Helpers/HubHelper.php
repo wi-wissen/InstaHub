@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class HubHelper
 {
     private $hub = null;
-    private $teacher = null;
+    private $hubTeacher = null;
 
     private $tables = [];
 
@@ -123,12 +123,12 @@ class HubHelper
     public function teacher()
     {
         if ($this->isHub()) {
-            if(! $this->teacher) {
+            if(! $this->hubTeacher) {
                 $this->setDefaultDB();
-                $this->teacher = $this->hub->teacher;
+                $this->hubTeacher = $this->hub->teacher;
                 $this->setHubDB();
             }
-            return $this->teacher;
+            return $this->hubTeacher;
         } else {
             return null;
         }
@@ -171,7 +171,7 @@ class HubHelper
     public function hasTokens()
     {
         if ($this->isHub()) {
-            return $this->teacher->hasTokens();
+            return $this->teacher()->hasTokens();
         } else {
             return Auth::user()->hasTokens();
         }
