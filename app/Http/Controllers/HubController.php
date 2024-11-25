@@ -149,7 +149,8 @@ class HubController extends Controller
             'name' => $request->hub,
             'teacher_id' => ($teacherId) ? $teacherId : $teacherUser->id, //use own or search teacher.id
             'password' => $pw,
-            'generation' => $teacherUser->hub_default_generation
+            'generation' => $teacherUser->hub_default_generation,
+            'query_level' => $teacherUser->hub_default_query_level,
         ]);
 
         //unset used hub name
