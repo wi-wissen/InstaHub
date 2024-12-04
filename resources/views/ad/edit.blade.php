@@ -9,7 +9,6 @@
 
     editor: null,
     initEditor() {
-    console.log(this.$refs.editor);
         const highlight = editor => {
             // highlight.js does not trims old tags,
             // let's do it by this hack.
@@ -26,7 +25,8 @@
             this.$refs.query.value = code;
         });
     },
-}">
+}"
+x-init="initEditor">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mb-4">
