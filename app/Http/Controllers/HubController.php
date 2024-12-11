@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Facades\RequestHub;
 use App\Models\Hub;
-use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -20,6 +17,7 @@ class HubController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', 'role:teacher'])->except(['welcome', 'create', 'store']);
+        $this->authorizeResource(Hub::class, 'hub');
     }
 
     protected function validator(array $data)
@@ -217,10 +215,8 @@ class HubController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(Hub $hub)
     {
-        $hub = Hub::find($id);
-
         return view('hub.show', ['hub' => $hub]);
     }
 
@@ -230,7 +226,7 @@ class HubController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Hub $hub)
     {
         //
     }
@@ -241,7 +237,7 @@ class HubController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Hub $hub)
     {
         //
     }
@@ -252,10 +248,8 @@ class HubController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Hub $hub)
     {
-        $hub = Hub::findOrFail($id);
-
         abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         $hub->delete();

@@ -74,13 +74,14 @@ class AdminController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function redirect($id)
+    public function redirect(Hub $hub)
     {
-        $hub = Hub::findOrFail($id);
+        $this->authorize('view', $hub);
+
         abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         $secret = bin2hex(random_bytes(32));
-        Cache::put('hub-'.$id.'-auth-token', $secret, 120); //sessions are isolated, so we use cache to store a 64-char secret
+        Cache::put('hub-'.$hub->id.'-auth-token', $secret, 120); //sessions are isolated, so we use cache to store a 64-char secret
 
         return redirect(RequestHub::url($hub->name).'/login/'.$secret);
     }

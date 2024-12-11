@@ -48,10 +48,8 @@ Route::domain(config('app.domain_admin'))->group(function () {
 
     //only auth
     Route::middleware('auth', 'verified', 'role:admin')->group(function () {
-        Route::get('/api/users/search/{query}', [UserController::class, 'search']);
-        Route::get('/{username}/activate', [UserController::class, 'activate']);
-        Route::get('/{username}/deactivate', [UserController::class, 'deactivate']);
-        Route::get('api/users/{id}/password', [UserController::class, 'getNewPassword']);
+        Route::get('/explore/users/{filter?}', [UserController::class, 'index']);
+        Route::get('/explore/users/{filter}/{param?}', [UserController::class, 'index']);
 
         Route::get('/avatars/{photo_id}', [FileController::class, 'showavatar']);
 
@@ -61,39 +59,26 @@ Route::domain(config('app.domain_admin'))->group(function () {
         Route::get('/sql', [SqlController::class, 'sql']);
         Route::get('/sql/select', [SqlController::class, 'selectGui']);
         Route::get('/sql/ai', [SqlController::class, 'sqlAi']);
+
+        Route::get('/{user}/activate', [UserController::class, 'activate']);
+        Route::get('/{user}/deactivate', [UserController::class, 'deactivate']);
     });
 
     Route::middleware('auth', 'verified', 'role:teacher')->group(function () {
         Route::get('/', [HubController::class, 'index']);
 
-        Route::get('/explore/users/{filter?}', [UserController::class, 'index']);
-        Route::get('/explore/users/{filter}/{param?}', [UserController::class, 'index']);
-
-        Route::get('/password', [UserController::class, 'getPassword']);
-        Route::post('/password', [UserController::class, 'postPassword']);
-        Route::get('/password/{id}', [UserController::class, 'getNewPassword']);
-
         //dbadmin
         Route::resource('hubs', HubController::class)->except(['create', 'store']);
-        Route::get('hubs/{id}/dba/redirect', [AdminController::class, 'redirect'])->name('hubs.redirect');
+        Route::get('hubs/{hub}/dba/redirect', [AdminController::class, 'redirect'])->name('hubs.redirect');
 
-        Route::get('api/hubs/{id}/dba/resetpw', [AdminController::class, 'setAdminPW']);
-        Route::get('api/hubs/{id}/dba/gettablestatus', [AdminController::class, 'getTableStatus']);
+        //users
+        Route::get('/password', [UserController::class, 'getPassword']);
+        Route::post('/password', [UserController::class, 'postPassword']);
 
-        Route::get('api/hubs/filter/{text}', [HubController::class, 'apiSearch']);
-        Route::get('api/hubs', [HubController::class, 'apiIndex']);
-
-        Route::post('api/hubs/{id}/dba/readonly', [AdminController::class, 'setReadonly']);
-        Route::post('api/hubs/{id}/dba/activate', [AdminController::class, 'setActivate']);
-        Route::delete('api/hubs/{id}', [HubController::class, 'destroy']);
-
-        Route::post('api/hubs/{name}/dba/table', [AdminController::class, 'changeTable']);
-
-        Route::get('/{username}', [UserController::class, 'show']);
-
-        Route::get('/{username}/edit', [UserController::class, 'edit']);
-        Route::put('/{username}/update', [UserController::class, 'update']);
-        Route::get('/{username}/destroy', [UserController::class, 'destroy']);
+        Route::get('/{user}', [UserController::class, 'show']);
+        Route::get('/{user}/edit', [UserController::class, 'edit']);
+        Route::put('/{user}/update', [UserController::class, 'update']);
+        Route::get('/{user}/destroy', [UserController::class, 'destroy']);
     });
 });
 
@@ -104,10 +89,8 @@ Route::domain(config('app.domain_admin'))->group(function () {
 */
 Route::domain(config('app.domain_hub'))->group(function () {
     //only auth
-    Route::middleware('auth', 'verified', 'role:dba')->group(function () {
+    Route::middleware('auth', 'verified', 'role:dba', 'isHub')->group(function () {
         //admin
-        Route::get('api/users/{id}/password', [UserController::class, 'getNewPassword']);
-
         Route::get('/sql', [SqlController::class, 'sql']);
         Route::get('/sql/select', [SqlController::class, 'selectGui']);
         Route::get('/sql/ai', [SqlController::class, 'sqlAi']);
@@ -116,7 +99,7 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::get('/dba/cryptPWs', [AdminController::class, 'cryptPWs']);
     });
 
-    Route::middleware('auth', 'verified', 'role:user')->group(function () {
+    Route::middleware('auth', 'verified', 'role:user', 'isHub')->group(function () {
         //feed
         Route::get('/', [PhotoController::class, 'index']);
         Route::get('/tag/{name}', [PhotoController::class, 'photosbytag']);
@@ -138,8 +121,8 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::get('/upload', [PhotoController::class, 'create']);
 
         //follow
-        Route::delete('/api/me/follow/{username}', [FollowController::class, 'unfollow']);
-        Route::post('api/me/follow/{username}', [FollowController::class, 'follow']); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
+        Route::delete('/api/me/follow/{user}', [FollowController::class, 'unfollow']);
+        Route::post('api/me/follow/{user}', [FollowController::class, 'follow']); // Using a fix but this is not secure because no csrf user can be tricked to follow anyone
 
         Route::post('/upload', [PhotoController::class, 'store']);
 
@@ -158,16 +141,16 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::delete('/api/ads/{id}', [AdController::class, 'destroy']);
 
         //users - last so no one can override hub urls
-        Route::get('{username}/followers', [FollowController::class, 'followers']);
-        Route::get('{username}/following', [FollowController::class, 'following']);
+        Route::get('{user}/followers', [FollowController::class, 'followers']);
+        Route::get('{user}/following', [FollowController::class, 'following']);
 
-        Route::get('{username}', [UserController::class, 'show']);
+        Route::get('{user}', [UserController::class, 'show']);
 
-        Route::get('{username}/edit', [UserController::class, 'edit']);
-        Route::put('{username}/update', [UserController::class, 'update']);
-        Route::get('{username}/destroy', [UserController::class, 'destroy']);
-        Route::get('{username}/activate', [UserController::class, 'activate']);
-        Route::get('{username}/deactivate', [UserController::class, 'deactivate']);
+        Route::get('{user}/edit', [UserController::class, 'edit']);
+        Route::put('{user}/update', [UserController::class, 'update']);
+        Route::get('{user}/destroy', [UserController::class, 'destroy']);
+        Route::get('{user}/activate', [UserController::class, 'activate']);
+        Route::get('{user}/deactivate', [UserController::class, 'deactivate']);
     });
 });
 

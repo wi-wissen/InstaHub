@@ -55,6 +55,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'username';
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

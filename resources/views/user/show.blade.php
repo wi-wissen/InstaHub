@@ -85,6 +85,7 @@ h5 {
 						
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
 							<a href="{{'../' . $user->username . '/edit'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? 'disabled' : '' }}" role="button">{{ __('Edit') }}</a>
+							@livewire('user-activate', ['user' => $user])
 							@if (Auth::user()->id == $user->id)
 								<a href="{{'../password'}}" class="btn btn-outline-dark btn-sm {{ RequestHub::isReadOnly() ? 'disabled' : '' }}" role="button">{{ __('Change Password') }}</a>
 							@endif

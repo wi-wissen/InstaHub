@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IsHubMiddleware;
 use App\Http\Middleware\Role;
 use App\Http\Middleware\SetBrowserLocale;
 use App\Http\Middleware\Subdomain;
@@ -19,7 +20,8 @@ return Application::configure(basePath: dirname(__DIR__))
             Subdomain::class,
         ]);
         $middleware->alias([
-            'role' => Role::class
+            'role' => Role::class,
+            'isHub' => IsHubMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -54,7 +54,9 @@
                     <!-- Center Of Navbar -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <livewire:user-search />
+                            @can('viewAny', App\Models\User::class)
+                                <livewire:user-search />
+                            @endcan
                         </li>
                     </ul>
 

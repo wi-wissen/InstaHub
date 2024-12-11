@@ -13,6 +13,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
+        $this->authorizeResource(User::class, 'user');
         $this->middleware('auth');
     }
 
@@ -27,24 +28,18 @@ class UserController extends Controller
         }
     }
 
-    public function show($username, Request $request)
+    public function show(User $user, Request $request)
     {
-        $user = User::where('username', $username)->firstOrFail();
-
         return view('user.show', ['user' => $user]);
     }
 
-    public function edit($username)
+    public function edit(User $user)
     {
-        $user = User::where('username', $username)->firstOrFail();
-
         return view('user.edit', compact('user'));
     }
 
-    public function update(Request $request, $username)
+    public function update(Request $request, User $user)
     {
-        $user = User::where('username', $username)->firstOrFail();
-
         $this->validate($request, [
             'name' => 'required|max:191',
             'email' => 'required|email|unique:users,email,'.$user->id,
@@ -81,10 +76,8 @@ class UserController extends Controller
         return redirect('/'.$user->username);
     }
 
-    public function activate($username, Request $request)
+    public function activate(User $user, Request $request)
     {
-        $user = User::where('username', $username)->firstOrFail();
-
         if (Auth::user()->allowed('dba')) {
             $user->save();
             $user->is_active = true;
@@ -97,10 +90,8 @@ class UserController extends Controller
         return redirect('/'.$user->username);
     }
 
-    public function deactivate($username, Request $request)
+    public function deactivate(User $user, Request $request)
     {
-        $user = User::where('username', $username)->firstOrFail();
-
         if (Auth::user()->allowed('dba')) {
             $user->save();
             $user->is_active = false;
@@ -113,9 +104,8 @@ class UserController extends Controller
         return redirect('/'.$user->username);
     }
 
-    public function destroy($username)
+    public function destroy(User $user)
     {
-        $user = User::where('username', $username)->first();
         $user->delete();
         flash(__('User deleted'))->success();
 
@@ -151,28 +141,5 @@ class UserController extends Controller
         }
 
         return redirect('/');
-    }
-
-    public function getNewPassword($username)
-    {
-        $this->middleware('role:dba');
-
-        //generate id
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $count = mb_strlen($chars);
-
-        for ($i = 0, $pw = ''; $i < 6; $i++) {
-            $index = rand(0, $count - 1);
-            $pw .= mb_substr($chars, $index, 1);
-        }
-
-        $user = User::where('username', $username)->firstOrFail();
-
-        $user->password = bcrypt($pw);
-        $user->save();
-
-        return response()->json([
-            'password' => $pw,
-        ]);
     }
 }
