@@ -88,9 +88,65 @@ class HubHelper
         Config::set('database.default', 'mysql');
     }
 
+    public function useDefaultDB(callable $callback)
+    {
+        // Speichere die aktuelle DB-Verbindung
+        $previousConnection = config('database.default');
+        
+        // Schalte zur Default-DB
+        $this->setDefaultDB();
+        
+        try {
+            // Führe die übergebene Funktion aus
+            $result = $callback();
+            
+            // Stelle die vorherige Verbindung wieder her, falls es nicht die Default-DB war
+            if ($previousConnection !== 'mysql') {
+                Config::set('database.default', $previousConnection);
+            }
+            
+            return $result;
+        } catch (\Exception $e) {
+            // Stelle auch im Fehlerfall die ursprüngliche Verbindung wieder her
+            if ($previousConnection !== 'mysql') {
+                Config::set('database.default', $previousConnection);
+            }
+            
+            throw $e; // Wirf den Fehler weiter
+        }
+    }
+
+    public function useHubDB($id, callable $callback)
+    {
+        // Speichere die aktuelle DB-Verbindung
+        $previousConnection = config('database.default');
+        
+        // Schalte zur Hub-DB
+        $this->setHubDB($id);
+        
+        try {
+            // Führe die übergebene Funktion aus
+            $result = $callback();
+            
+            // Wenn die vorherige Verbindung 'mysql' war, stelle sie wieder her
+            if ($previousConnection === 'mysql') {
+                $this->setDefaultDB();
+            }
+            
+            return $result;
+        } catch (\Exception $e) {
+            // Stelle auch im Fehlerfall die ursprüngliche Verbindung wieder her
+            if ($previousConnection === 'mysql') {
+                $this->setDefaultDB();
+            }
+            
+            throw $e; // Wirf den Fehler weiter
+        }
+    }
+
     public function isHub()
     {
-        return (bool) $this->hub;
+        return (bool) $this->hub && config('database.default') == config('database.connections.mysql.database').'_'.$this->hub->id;
     }
 
     public function isReadOnly()

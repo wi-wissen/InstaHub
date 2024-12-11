@@ -58,13 +58,13 @@ class AdminController extends Controller
         $hubs = Hub::all();
 
         foreach ($hubs as $hub) {
-            RequestHub::setHubDB($hub->id);
-
-            if (RequestHub::hasTable('analytics')) {
-                //trim analytics to max 10.000 entries (not exact methode)
-                $latest = DB::table('analytics')->latest()->first()->id;
-                Analytic::latest()->where('id', '<', $latest - 10000)->delete();
-            }
+            RequestHub::useHubDB($hub->id, function() {
+                if (RequestHub::hasTable('analytics')) {
+                    //trim analytics to max 10.000 entries (not exact methode)
+                    $latest = DB::table('analytics')->latest()->first()->id;
+                    Analytic::latest()->where('id', '<', $latest - 10000)->delete();
+                }
+            });
         }
     }
 

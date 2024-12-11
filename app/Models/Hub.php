@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Facades\RequestHub;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,24 +17,22 @@ class Hub extends Model
         parent::boot();
 
         static::deleting(function ($hub) {
-
             //delete all old photos from disk
-
-            RequestHub::setHubDB($hub->id);
-
-            if (RequestHub::hasTable('photos')) {
-                $photos = Photo::all();
-                foreach ($photos as $photo) {
-                    $photo->delete();
+            RequestHub::useHubDB($hub->id, function() {
+                if (RequestHub::hasTable('photos')) {
+                    $photos = Photo::all();
+                    foreach ($photos as $photo) {
+                        $photo->delete();
+                    }
                 }
-            }
 
-            if (RequestHub::hasTable('users')) {
-                $users = User::all();
-                foreach ($users as $user) {
-                    $user->delete();
+                if (RequestHub::hasTable('users')) {
+                    $users = User::all();
+                    foreach ($users as $user) {
+                        $user->delete();
+                    }
                 }
-            }
+            });
 
             //set primary db
             RequestHub::setDefaultDB();
@@ -55,236 +52,232 @@ class Hub extends Model
 
     public function getHasWorkingUserAttribute()
     {
-        RequestHub::setHubDB($this->id);
-
-        if (RequestHub::hasTable('users')) {
-            if (Schema::hasColumn('users', 'id') && Schema::hasColumn('users', 'password') &&
-               Schema::hasColumn('users', 'username') && Schema::hasColumn('users', 'role') &&
-               Schema::hasColumn('users', 'created_at')) {
-                if (User::where('role', '=', 'dba')->count() > 0) {
-                    return true;
+        return RequestHub::useHubDB($this->id, function() {
+            if (RequestHub::hasTable('users')) {
+                if (Schema::hasColumn('users', 'id') && Schema::hasColumn('users', 'password') &&
+                   Schema::hasColumn('users', 'username') && Schema::hasColumn('users', 'role') &&
+                   Schema::hasColumn('users', 'created_at')) {
+                    if (User::where('role', '=', 'dba')->count() > 0) {
+                        return true;
+                    }
                 }
             }
-        }
-
-        return false;
+            return false;
+        });
     }
 
     // Getter for 'activated' attribute
     public function getActivatedAttribute()
     {
-        RequestHub::setHubDB($this->id);
-
-        if (RequestHub::hasTable('users')) {
-            return User::where('role', '=', 'dba')->first()?->is_active ?? false;
-        }
-
-        return false;
+        return RequestHub::useHubDB($this->id, function() {
+            if (RequestHub::hasTable('users')) {
+                return User::where('role', '=', 'dba')->first()?->is_active ?? false;
+            }
+            return false;
+        });
     }
 
     // Setter for 'activated' attribute
     public function setActivatedAttribute($value)
     {
-        RequestHub::setHubDB($this->id);
+        RequestHub::useHubDB($this->id, function() use ($value) {
+            $user = User::where('role', '=', 'dba')->first();
 
-        $user = User::where('role', '=', 'dba')->first();
-
-        if(!$user) {
-            $user = User::where('name', 'admin')->first();
-            if($user) {
-                $user->role = 'dba';
+            if(!$user) {
+                $user = User::where('name', 'admin')->first();
+                if($user) {
+                    $user->role = 'dba';
+                }
+                else {
+                    $user = User::create([
+                        'username' => 'admin',
+                        'name' => 'admin',
+                        'email' => 'admin@instahub.test',
+                        'password' => bcrypt(substr(uniqid(), 8)),
+                        'avatar' => 'avatar.png',
+                        'is_active' => true,
+                        'role' => 'dba',
+                    ]);
+                }
             }
-            else {
-                $user = User::create([
-                    'username' => 'admin',
-                    'name' => 'admin',
-                    'email' => 'admin@instahub.test',
-                    'password' => bcrypt(substr(uniqid(), 8)),
-                    'avatar' => 'avatar.png',
-                    'is_active' => true,
-                    'role' => 'dba',
-                ]);
-            }
-        }
 
-        $user->is_active = $value;
-        $user->save();
+            $user->is_active = $value;
+            $user->save();
+        });
     }
 
     public function getAdminAttribute()
     {
-        RequestHub::setHubDB($this->id);
-
-        if (RequestHub::hasTable('users')) {
-            return User::where('role', '=', 'dba')->first()?->name;
-        }
-
-        return null;
+        return RequestHub::useHubDB($this->id, function() {
+            if (RequestHub::hasTable('users')) {
+                return User::where('role', '=', 'dba')->first()?->name;
+            }
+            return null;
+        });
     }
 
     public function getReadonlyAttribute()
     {
-        RequestHub::setDefaultDB();
-        
-        $r = DB::select('select Update_priv from mysql.db where db=? and User =?', [
-            config('database.connections.mysql.database').'_'.$this->id, 
-            config('database.connections.mysql.database').'_'.$this->id
-        ]);
-
-        // Check if query returned any results
-        if (empty($r)) {
-            return true; // more or less this is read only
-        }
-
-        $r = (array) $r;
-        return current((array) $r[0]) !== 'Y';
+        return RequestHub::useDefaultDB(function() {
+            $r = DB::select('select Update_priv from mysql.db where db=? and User =?', [
+                config('database.connections.mysql.database').'_'.$this->id,
+                config('database.connections.mysql.database').'_'.$this->id
+            ]);
+            
+            // Check if query returned any results
+            if (empty($r)) {
+                return true; // more or less this is read only
+            }
+            
+            $r = (array) $r;
+            return current((array) $r[0]) !== 'Y';
+        });
     }
 
     public function setReadonlyAttribute($value)
     {
-        //select root user
-        RequestHub::setDefaultDB();
-
-        if ($value) {
-            DB::statement('REVOKE ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-            DB::statement('GRANT SELECT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-            DB::statement('GRANT CREATE, INSERT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-            DB::statement('REVOKE CREATE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-            DB::statement('GRANT UPDATE (remember_token, updated_at) ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".users TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-            DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".sessions TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-            if (config('app.allow_public_db_access')) {
-                DB::statement('REVOKE ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
-                DB::statement('GRANT SELECT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
-                DB::statement('GRANT CREATE, INSERT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
-                DB::statement('REVOKE CREATE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
-                DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".sessions TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+        RequestHub::useDefaultDB(function() use ($value) {
+            if ($value) {
+                DB::statement('REVOKE ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+                DB::statement('GRANT SELECT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+                DB::statement('GRANT CREATE, INSERT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+                DB::statement('REVOKE CREATE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+                DB::statement('GRANT UPDATE (remember_token, updated_at) ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".users TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+                DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".sessions TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
+                
+                if (config('app.allow_public_db_access')) {
+                    DB::statement('REVOKE ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                    DB::statement('GRANT SELECT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                    DB::statement('GRANT CREATE, INSERT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                    DB::statement('REVOKE CREATE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                    DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".sessions TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                }
+            } else {
+                DB::statement('GRANT ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost' IDENTIFIED BY '" . $this->password . "';");
+                if (config('app.allow_public_db_access')) {
+                    DB::statement('GRANT ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%' IDENTIFIED BY '" . $this->password . "';");
+                }
             }
-        } else {
-            DB::statement('GRANT ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost' IDENTIFIED BY '" . $this->password . "';");
-            if (config('app.allow_public_db_access')) {
-                DB::statement('GRANT ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%' IDENTIFIED BY '" . $this->password . "';");
-            }
-        }
+        });
     }
 
     public function resetAdminPassword()
     {
         $password = substr(uniqid(), 8);
-
         $this->admin_password = $password;
-
         return $password;
     }
 
     public function setAdminPasswordAttribute($value)
     {
-        RequestHub::setHubDB($this->id);
+        RequestHub::useHubDB($this->id, function() use ($value) {
+            if (! RequestHub::hasTable('users')) {
+                $this->migrateTable('users');
+            } //to make sure that needed table exists
 
-        if (! RequestHub::hasTable('users')) {
-            $this->migrateTable('users');
-        } //to make sure that needed table exists
+            $user = User::where('username', '=', 'admin')->first();
 
-        $user = User::where('username', '=', 'admin')->first();
-
-        if ($user) {
-            $user->password = bcrypt($value);
-            $user->save();
-        } else {
-            $user = User::create([
-                'username' => 'admin',
-                'name' => 'admin',
-                'email' => 'admin@instahub.test',
-                'password' => bcrypt($value),
-                'avatar' => 'avatar.png',
-                'is_active' => true,
-            ]);
-        }
-    }
-
-    public function changeTables($tables, $action)
-    {
-        RequestHub::setHubDB($this->id);
-
-        foreach ($tables as $t) {
-            if ($action == 'fill') {
-                $this->fillTable($t);
-            } elseif ($action == 'drop') {
-                $this->dropTable($t);
-            } elseif ($action == 'create') {
-                $this->migrateTable($t);
-            }
-        }
-    }
-
-    public function migrateTable($tablename)
-    {
-        RequestHub::setHubDB($this->id);
-        $this->dropTable($tablename);
-        Artisan::call('migrate', ['--path' => "database/migrations/create/$tablename", '--force' => true]);
-        Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
-    }
-
-    public function fillTable($tablename)
-    {
-        RequestHub::setHubDB($this->id);
-
-        $user = null;
-        if ($tablename == 'users' && RequestHub::hasTable('users')) {
-            $user = User::where('username', 'admin')->first();
-        }
-
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-
-        $this->migrateTable($tablename);
-
-        // create if not exist
-        if (! RequestHub::hasTable($tablename)) {
-            Artisan::call('migrate', ['--path' => "database/migrations/create/$tablename", '--force' => true]);
-            Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
-        }
-
-        // migrate
-        Artisan::call('db:seed', ['--class' => 'Database\Seeders\Generation'.RequestHub::teacher()->hub_default_generation.'\\'.ucfirst($tablename).'TableSeeder', '--force' => true]);
-
-        if ($tablename == 'users') {
             if ($user) {
-                $user = User::create([
-                    'username' => $user->username,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'password' => $user->password,
-                    'avatar' => $user->avatar,
-                    'is_active' => $user->is_active,
-                ]);
+                $user->password = bcrypt($value);
+                $user->save();
             } else {
-                //create dummy dba for managing this hub
-                $pw = substr(uniqid(), 8);
                 $user = User::create([
                     'username' => 'admin',
                     'name' => 'admin',
                     'email' => 'admin@instahub.test',
-                    'password' => bcrypt($pw),
+                    'password' => bcrypt($value),
                     'avatar' => 'avatar.png',
                     'is_active' => true,
                 ]);
             }
+        });
+    }
 
-            $user->role = 2; //dba - role is not massfillable for security reasons
-            $user->save();
-        }
+    public function changeTables($tables, $action)
+    {
+        RequestHub::useHubDB($this->id, function() use ($tables, $action) {
+            foreach ($tables as $t) {
+                if ($action == 'fill') {
+                    $this->fillTable($t);
+                } elseif ($action == 'drop') {
+                    $this->dropTable($t);
+                } elseif ($action == 'create') {
+                    $this->migrateTable($t);
+                }
+            }
+        });
+    }
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+    public function migrateTable($tablename)
+    {
+        RequestHub::useHubDB($this->id, function() use ($tablename) {
+            $this->dropTable($tablename);
+            Artisan::call('migrate', ['--path' => "database/migrations/create/$tablename", '--force' => true]);
+            Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
+        });
+    }
+
+    public function fillTable($tablename)
+    {
+        RequestHub::useHubDB($this->id, function() use ($tablename) {
+            $user = null;
+            if ($tablename == 'users' && RequestHub::hasTable('users')) {
+                $user = User::where('username', 'admin')->first();
+            }
+
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+            $this->migrateTable($tablename);
+
+            // create if not exist
+            if (! RequestHub::hasTable($tablename)) {
+                Artisan::call('migrate', ['--path' => "database/migrations/create/$tablename", '--force' => true]);
+                Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
+            }
+
+            // migrate
+            Artisan::call('db:seed', ['--class' => 'Database\Seeders\Generation'.RequestHub::teacher()->hub_default_generation.'\\'.ucfirst($tablename).'TableSeeder', '--force' => true]);
+
+            if ($tablename == 'users') {
+                if ($user) {
+                    $user = User::create([
+                        'username' => $user->username,
+                        'name' => $user->name,
+                        'email' => $user->email,
+                        'password' => $user->password,
+                        'avatar' => $user->avatar,
+                        'is_active' => $user->is_active,
+                    ]);
+                } else {
+                    //create dummy dba for managing this hub
+                    $pw = substr(uniqid(), 8);
+                    $user = User::create([
+                        'username' => 'admin',
+                        'name' => 'admin',
+                        'email' => 'admin@instahub.test',
+                        'password' => bcrypt($pw),
+                        'avatar' => 'avatar.png',
+                        'is_active' => true,
+                    ]);
+                }
+
+                $user->role = 2; //dba - role is not massfillable for security reasons
+                $user->save();
+            }
+
+            DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        });
     }
 
     public function dropTable($tablename)
     {
-        RequestHub::setHubDB($this->id);
-
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists($tablename);
-        if ($tablename == 'users') {
-            Schema::dropIfExists('password_resets');
-        } //users migrates this table too.
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        RequestHub::useHubDB($this->id, function() use ($tablename) {
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+            Schema::dropIfExists($tablename);
+            if ($tablename == 'users') {
+                Schema::dropIfExists('password_resets');
+            } //users migrates this table too.
+            DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        });
     }
 }

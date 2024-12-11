@@ -21,7 +21,7 @@ class HubPolicy
      */
     public function view(User $user, Hub $hub): bool
     {
-        return $user->allowed('admin') || $hub->teacher_id === $user->id;
+        return $user->allowed('admin') || $hub->teacher_id == $user->id;
     }
 
     /**
@@ -38,7 +38,7 @@ class HubPolicy
      */
     public function update(User $user, Hub $hub): bool
     {
-        return $user->allowed('admin') || $hub->teacher_id === $user->id;
+        return $user->allowed('admin') || $hub->teacher_id == $user->id;
     }
 
     /**
@@ -46,6 +46,6 @@ class HubPolicy
      */
     public function delete(User $user, Hub $hub): bool
     {
-        return $user->allowed('admin') || $hub->teacher_id === $user->id;
+        return $user->allowed('admin') || $hub->teacher_id == $user->id;
     }
 }

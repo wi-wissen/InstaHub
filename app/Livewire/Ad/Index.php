@@ -22,8 +22,6 @@ class Index extends Component
 
     public function render()
     {
-        RequestHub::setHubDB(); // TODO: Why do we need to do this?
-
         $ads = Ad::orderBy('created_at', 'desc')->paginate(10);
         return view('livewire.ad.index', [
             'ads' => $ads

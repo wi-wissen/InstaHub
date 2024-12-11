@@ -162,41 +162,41 @@ class HubController extends Controller
             DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'%' IDENTIFIED BY '".$hub->password."';");
         }
 
-        RequestHub::setHubDB($hub->id);
-
-        // hydrate hub
-        if($teacherUser->hub_default_creating == 'users') {
-            $hub->changeTables(['users'], 'fill');
-        }
-        else if($teacherUser->hub_default_creating == 'all_empty') {
-            $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'create');
-        }
-        else if($teacherUser->hub_default_creating == 'all_full') {
-            $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'fill');
-        }
-
-        //insert admin
-        $url = 'avatar.png';
-        if ($request->hasFile('avatar')) {
-            if ($request->file('avatar')->isValid()) {
-                $url = Storage::putFile('avatars', $request->avatar);
+        RequestHub::useHubDB($hub->id, function() use ($teacherUser, $request, $teacherId, $hub) {
+            // hydrate hub
+            if($teacherUser->hub_default_creating == 'users') {
+                $hub->changeTables(['users'], 'fill');
             }
-        }
+            else if($teacherUser->hub_default_creating == 'all_empty') {
+                $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'create');
+            }
+            else if($teacherUser->hub_default_creating == 'all_full') {
+                $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'fill');
+            }
 
-        $admin = User::where('username', 'admin')->first();
-        $admin->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'bio' => $request->bio,
-            'gender' => $request->gender,
-            'birthday' => $request->birthday,
-            'city' => $request->city,
-            'country' => $request->country,
-            'centimeters' => $request->centimeters,
-            'avatar' => $url,
-            'is_active' => ($teacherId && Auth::user()->id == $teacherId) // trust yourself
-        ]);
+            //insert admin
+            $url = 'avatar.png';
+            if ($request->hasFile('avatar')) {
+                if ($request->file('avatar')->isValid()) {
+                    $url = Storage::putFile('avatars', $request->avatar);
+                }
+            }
+
+            $admin = User::where('username', 'admin')->first();
+            $admin->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'bio' => $request->bio,
+                'gender' => $request->gender,
+                'birthday' => $request->birthday,
+                'city' => $request->city,
+                'country' => $request->country,
+                'centimeters' => $request->centimeters,
+                'avatar' => $url,
+                'is_active' => ($teacherId && Auth::user()->id == $teacherId) // trust yourself
+            ]);
+        });
 
         if($teacherId && Auth::user()->id == $teacherId) {
             // created by user itself
