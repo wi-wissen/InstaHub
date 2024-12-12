@@ -21,7 +21,10 @@
                         alt="{{ $user->username }}"
                         style="width: 40px; height: 40px;"
                     />
-                    <span class="username">{{ $user->username }}</span>
+                    <div class="lh-1">
+                        <small class="fw-bold d-block mb-1">{{ $user->username }}</small>
+                        <small class="text-muted">{{ $user->name }}</small>
+                    </div>
                 </a>
             @endforeach
             @if (! count($users))
