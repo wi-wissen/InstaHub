@@ -4,7 +4,7 @@
             if (value === null) return 'null';
             if (typeof value === 'string') {
                 if (value.match(/^https?:\/\/[^\s]+$/)) return 'url';
-                if (value.match(/^.*\.(jpg|jpeg|png|gif)$/i)) return 'image';
+                if (value.match(/^[a-zA-Z0-9-_/.]+\.(jpg|jpeg|png|gif|webp)$/i)) return 'image';
             }
             return 'text';
         }
@@ -26,10 +26,10 @@
                                     <code>NULL</code>
                                 </template>
                                 <template x-if="getValueType(value) === 'url'">
-                                    <a :href="`${encodeURIComponent(value)}`" x-text="value"></a>
+                                    <a :href="`${encodeURI(value)}`" x-text="value"></a>
                                 </template>
                                 <template x-if="getValueType(value) === 'image'">
-                                    <a :href="`/${encodeURIComponent(value)}`" x-text="value"></a>
+                                    <a :href="`/${encodeURI(value)}`" x-text="value"></a>
                                 </template>
                                 <template x-if="getValueType(value) === 'text'">
                                     <span x-text="value"></span>
