@@ -42,5 +42,6 @@ return [
         'query' => 'Die Abfrage muss <code>true</code> oder <code>false</code> ergeben. Alternativ kann auch eine Liste zurückgegeben werden, in welcher die Benutzer-ID gesucht wird. <code>$user</code> kann als Platzhalter für den angemeldeten Benutzer und <code>$photo</code> für das aktuelle Photo verwendet werden.',
     ],
     'hubdomain' => 'Deinen eigenen Hub erreichst du unter deiner eigenen Domain. Diese könnte etwa <code>azurblau27.instahub.org</code> sein.',
+    'fewTokens' => 'Du hast nur noch wenig Guthaben, um die KI-Funktionen in InstaHub zu verwenden.',
     'noTokens' => 'Du hast kein Guthaben mehr, um die KI-Funktionen in InstaHub zu verwenden.',
 ];

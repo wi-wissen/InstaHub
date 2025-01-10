@@ -17,7 +17,7 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request, $filter = null, $param = null)
+    public function index($filter = null, $param = null)
     {
         if ($filter == 'suggested') {
             return view('user.index', ['users' => User::getSuggested(), 'heading' => __('Suggested')]); //TODO: Lassen sich Punkte mit übertragen?
@@ -28,7 +28,7 @@ class UserController extends Controller
         }
     }
 
-    public function show(User $user, Request $request)
+    public function show(User $user)
     {
         return view('user.show', ['user' => $user]);
     }
@@ -76,7 +76,7 @@ class UserController extends Controller
         return redirect('/'.$user->username);
     }
 
-    public function activate(User $user, Request $request)
+    public function activate(User $user)
     {
         if (Auth::user()->allowed('dba')) {
             $user->save();
@@ -90,7 +90,7 @@ class UserController extends Controller
         return redirect('/'.$user->username);
     }
 
-    public function deactivate(User $user, Request $request)
+    public function deactivate(User $user)
     {
         if (Auth::user()->allowed('dba')) {
             $user->save();

@@ -224,12 +224,12 @@ class HubHelper
         return in_array($name, $this->tables);
     }
 
-    public function hasTokens()
+    public function hasTokens($amount = 1)
     {
         if ($this->isHub()) {
-            return $this->teacher()->hasTokens();
+            return $this->teacher()->hasTokens($amount);
         } else {
-            return Auth::user()->hasTokens();
+            return Auth::user()->hasTokens($amount);
         }
     }
 
