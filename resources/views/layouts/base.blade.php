@@ -28,6 +28,9 @@
     ])
     @yield('script')
     @yield('style')
+    @if(config('app.tracking_snippet'))
+        {!! config('app.tracking_snippet') !!}
+    @endif
 </head>
 <body class="d-flex flex-column min-vh-100">
     <div class="flex-shrink-0">

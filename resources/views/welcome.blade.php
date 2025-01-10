@@ -38,6 +38,9 @@
             });
         });
     </script>
+    @if(config('app.tracking_snippet'))
+        {!! config('app.tracking_snippet') !!}
+    @endif
 </head>
     <body class="d-flex flex-column min-vh-100 bg-light">
         <div class="flex-shrink-0">
