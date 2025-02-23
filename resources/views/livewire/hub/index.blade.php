@@ -26,10 +26,10 @@
                         <tbody>
                             @foreach($hubs as $hub)
                                 <tr>
-                                    <td>
+                                    <td class="text-truncate" title="{{ $hub->name }}" style="max-width: 9em;">
                                         <a href="{{ str_replace('{subdomain}', $hub->name, config('app.hub_domain')) }}">{{ $hub->name }}</a>
                                     </td>
-                                    <td>
+                                    <td class="text-truncate" title="{{ $hub->admin }}" style="max-width: 9em;">
                                         {{ $hub->admin }}
                                     </td>
                                     <td>
@@ -45,7 +45,7 @@
                                         @endif
                                         
                                         @if(!$hub->readonly)
-                                            <a href="{{ route('hubs.show', $hub->id) }}" class="me-2 btn btn-primary">{{ __('Manage Database') }}</a>
+                                            <a href="{{ route('hubs.show', $hub->id) }}" class="me-2 btn btn-primary text-nowrap">{{ __('Manage Database') }}</a>
                                         @endif
                                                                                 
                                         @if($hub->activated && $hub->hasWorkingUser)
@@ -53,7 +53,7 @@
                                         @endif
                                         
                                         @if(!$hub->readonly)
-                                            <button wire:click="fillTables({{ $hub->id }}, 'photos,tags,likes,follows,comments,analytics,ads')" class="me-2 btn btn-outline-dark">
+                                            <button wire:click="fillTables({{ $hub->id }}, 'photos,tags,likes,follows,comments,analytics,ads')" class="me-2 btn btn-outline-dark text-nowrap">
                                                 <span wire:loading wire:target="fillTables({{ $hub->id }}, 'photos,tags,likes,follows,comments,analytics,ads')" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                                 <span wire:loading wire:target="fillTables({{ $hub->id }}, 'photos,tags,likes,follows,comments,analytics,ads')" class="visually-hidden">Loading...</span>
                                                 {{ __('Fill all Tables') }}
