@@ -30,6 +30,7 @@ class Show extends Component
         RequestHub::setHubDB($this->hub->id);
         $tables = DB::table('information_schema.tables')
             ->where('TABLE_TYPE', '=', 'BASE TABLE')
+            ->where('TABLE_SCHEMA', '=', DB::connection()->getDatabaseName())
             ->get();
 
         $this->tableStatus = [];

@@ -41,23 +41,21 @@ h5 {
 	<div class="container" id="user-show">
 		@include('flash::message')
 		<div class="row justify-content-center">
-			<div class="col-10">
+			<div class="col-sm-10">
 				<img class="rounded-circle img-thumbnail p-0 img-square mx-auto d-block d-sm-none" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="150" height="150">
 				<div class="media">
 					<div class="media-left d-none d-sm-block">
 						<img class="rounded-circle img-thumbnail p-0 img-square" src="{{'../' . $user->avatar}}" alt="{{ $user->username }}" class="media-object" width="175" height="175">
 					</div>
 					<div class="media-body">
-						@if (Auth::user()->id != $user->id)
-							@if (RequestHub::hasTable('follows'))
-							<div class="float-right">
+						<div class="d-flex justify-content-between align-items-center mb-2">
+							<h2 class="fs-4 mb-0">{{ $user->username }}</h2>
+							@if (RequestHub::hasTable('follows') && Auth::user()->id != $user->id)
 								@livewire('follow-button', ['username' => $user->username, 'isFollowing' => Auth::user()->isfollowing($user)])
-							</div>
 							@endif
-						@endif
-						<h2 class="fs-4">{{ $user->username }}</h2>
+						</div>
 
-						<p>
+						<p class="mb-0">
 							@if (RequestHub::hasTable('photos'))
 								<b>{{$user->photos()->count()}}</b> {{ __('Photos') }}.
 							@endif
@@ -72,15 +70,15 @@ h5 {
 							@endif
 						</p>
 
-						<div>
-							<h3 class="d-inline fs-5">{{ $user->name }}</h3>
+						<div class="d-none d-sm-block">
+							<h3 class="d-inline fs-6">{{ $user->name }}</h3>
 							@if ($user->country != "" || isset($user->gender) || 'unknown' != $user->age())
-								<span class="d-inline fs-5">{{ $user->profileDescription }}</span>
+								<span class="d-inline">{{ $user->profileDescription }}</span>
 							@endif
 						</div>
 
 						@if($user->bio != '')
-							<p class="mt-1">{{ str_replace("\n", " | ", $user->bio) }}</p>
+							<p class="fs-5 mt-1">{{ str_replace("\n", " | ", $user->bio) }}</p>
 						@endif
 						
 						@if (Auth::user()->id == $user->id || Auth::user()->allowed('dba'))
@@ -94,17 +92,19 @@ h5 {
 						@endif
 					</div>
 				</div>
+
 				<hr>
+
 				@if (RequestHub::hasTable('photos'))
-				<div class="panel">
-					@foreach ($user->photos as $photo)
-					<div class="imgcontainer">
-						<a href="{{  '/p/' . $photo->id }}">
-							<div class="square" style="background-image: url('{{  '/' . $photo->url }}')" alt="{{$photo->description}}"></div>
-						</a>
-					</div>						
-					@endforeach
-				</div>
+					<div class="panel">
+						@foreach ($user->photos as $photo)
+							<div class="imgcontainer">
+								<a href="{{  '/p/' . $photo->id }}">
+									<div class="square" style="background-image: url('{{  '/' . $photo->url }}')" alt="{{$photo->description}}"></div>
+								</a>
+							</div>
+						@endforeach
+					</div>
 				@endif
 			</div>
 		</div>

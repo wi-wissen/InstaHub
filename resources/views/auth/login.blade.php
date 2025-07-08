@@ -61,13 +61,13 @@
     <div class="row justify-content-center mt-5">
         @if(RequestHub::isHub())
         <div class="d-none d-md-block col-md-4 text-end">
-            <img src="/img/pixel3-hub.png" class="img-fluid" style="max-width: 250px;" alt="Smartphone">
+            <img src="/img/pixel3-hub.webp" class="img-fluid" style="max-width: 250px;" alt="Smartphone">
         </div>
         @else
         <div class="d-none d-md-block col-md-4">
             <div class="card float-end" style="max-width: 20rem; margin-top: 0.5em;">
                 <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube-nocookie.com/embed/J3WAaPNjANE?rel=0" allowfullscreen></iframe>
+                    <iframe src="https://player.schule/youtube/diP5nuSz8dg?embed=1" allowfullscreen></iframe>https://youtu.be/diP5nuSz8dg
                 </div>
                 <div class="card-body text-start">
                     <p class="card-text">
