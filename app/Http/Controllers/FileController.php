@@ -63,7 +63,7 @@ class FileController extends Controller
         $avatar = $user->avatar;
         $file = null;
 
-        if (preg_match('/^(\d{1,3})\.jpg$/', $filename) && intval($filename) <= 196) {
+        if (preg_match('/^(\d{1,3})\.jpg$/', $filename) && intval($filename) <= 206) {
             // legacy support
             $avatar = 'avatars/1/'.$filename;
             $file = Storage::disk('public')->get($avatar);
