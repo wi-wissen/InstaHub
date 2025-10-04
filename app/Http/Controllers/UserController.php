@@ -41,7 +41,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $this->validate($request, [
-            'name' => 'required|max:191',
+            'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'bio' => 'max:500',
             'birthday' => 'nullable|date_format:Y-m-d',

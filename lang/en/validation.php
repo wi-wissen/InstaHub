@@ -272,4 +272,12 @@ return [
         'value'                    => 'value',
         'year'                     => 'year',
     ],
+
+    // custom validation rules
+    'url_safe_string' => ':Attribute must not contain the following characters: :chars',
+    'chars' => [
+        'space' => 'space',
+        'tab' => 'tab',
+        'line_break' => 'line break',
+    ],
 ];

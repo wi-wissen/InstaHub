@@ -272,4 +272,12 @@ return [
         'value'                    => 'Wert',
         'year'                     => 'Jahr',
     ],
+
+    // custom validation rules
+    'url_safe_string' => ':Attribute darf folgende Zeichen nicht enthalten: :chars',
+    'chars' => [
+        'space' => 'Leerzeichen',
+        'tab' => 'Tab',
+        'line_break' => 'Zeilenumbruch',
+    ],
 ];

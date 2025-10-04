@@ -7,6 +7,7 @@ use App\Helpers\HubHelper;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Notifications\NewUser;
+use App\Rules\UrlSafeString;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
@@ -83,7 +84,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|max:255|unique:users',
+            'username' => ['required', 'max:255', 'unique:users', new UrlSafeString],
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',

@@ -67,7 +67,7 @@
         <div class="d-none d-md-block col-md-4">
             <div class="card float-end" style="max-width: 20rem; margin-top: 0.5em;">
                 <div class="ratio ratio-16x9">
-                    <iframe src="https://player.schule/youtube/diP5nuSz8dg?embed=1" allowfullscreen></iframe>https://youtu.be/diP5nuSz8dg
+                    <iframe src="https://player.schule/youtube/diP5nuSz8dg?embed=1" allowfullscreen></iframe>
                 </div>
                 <div class="card-body text-start">
                     <p class="card-text">
