@@ -15,7 +15,6 @@
     },
     "dependencies": {
         "@fontsource/grand-hotel": "^5.0.20",
-        "codejar": "^4.2.0",
         "highlight.js": "^11.9.0"
     }
 }

@@ -1,38 +1,71 @@
 <div
     x-data="{
         editorContent: @entangle('query'),
-        editor: null,
         isLoading: false,
         initEditor() {
-            const highlight = editor => {
-                // highlight.js does not trims old tags,
-                // let's do it by this hack.
-                editor.textContent = editor.textContent;
-                delete editor.dataset.highlighted;
-                hljs.highlightElement(editor);
-            }
-            this.editor = new CodeJar(this.$refs.editor, highlight, {
-                tab: '  '
+            const textarea = this.$refs.textarea;
+            const preview = this.$refs.preview;
+            
+            // Warte auf Livewire-Sync und dann initial mirror
+            this.$nextTick(() => {
+                textarea.value = this.editorContent;
+                this.mirror();
             });
-            this.editor.updateCode(this.editorContent);
-            this.editor.onUpdate(code => {
-                this.editorContent = code;
+            
+            // Update on input
+            textarea.addEventListener('input', () => {
+                this.editorContent = textarea.value;
+                this.mirror();
             });
-            // Add a custom event listener for Ctrl+Enter
-            this.$refs.editor.addEventListener('keydown', (e) => {
+            
+            // Sync scrolling
+            textarea.addEventListener('scroll', () => {
+                preview.scrollTop = textarea.scrollTop;
+                preview.scrollLeft = textarea.scrollLeft;
+            });
+            
+            // Handle manual resize
+            const resizeObserver = new ResizeObserver(() => {
+                preview.style.height = textarea.offsetHeight + 'px';
+            });
+            resizeObserver.observe(textarea);
+            
+            // Add Ctrl+Enter and Tab handler
+            textarea.addEventListener('keydown', (e) => {
                 if (e.ctrlKey && e.key === 'Enter') {
                     e.preventDefault();
                     e.stopPropagation();
                     this.runQuery();
                 }
-            }, true); // true activate capturin mode to prevent line flickering
+
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    document.execCommand('insertText', false, '  ');
+                }
+            }, true);
+        },
+        mirror() {
+            const textarea = this.$refs.textarea;
+            const preview = this.$refs.preview;
+            
+            // highlight.js needs textContent set first
+            preview.textContent = textarea.value;
+            delete preview.dataset.highlighted;
+            hljs.highlightElement(preview);
+            
+            // Auto-grow textarea
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+            
+            // Sync preview height
+            preview.style.height = textarea.scrollHeight + 'px';
         },
         runQuery() {
             if(this.editorContent && !this.isLoading) {
                 this.isLoading = true;
                 $wire.runQuery(this.editorContent)
                     .then(data => {
-                        this.initEditor();
+                        this.mirror();
                         this.isLoading = false;
                     });
             }
@@ -44,7 +77,14 @@
     <div class="card">
         <div class="card-body">
             <div class="form-group">
-                <div wire:ignore x-ref="editor" id="editor" class="hljs language-sql"></div>
+                <div wire:ignore id="editor">
+                    <pre x-ref="preview" class="preview hljs language-sql"></pre>
+                    <textarea 
+                        x-ref="textarea" 
+                        class="code" 
+                        spellcheck="false"
+                    ></textarea>
+                </div>
                 <button @click="runQuery" type="button" class="btn btn-primary w-100 mt-2" x-bind:disabled="isLoading">
                     <span x-show="!isLoading">{{ __('Run') }}</span>
                     <span x-show="isLoading">

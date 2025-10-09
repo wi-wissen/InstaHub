@@ -1,30 +1,68 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" id="ad-edit" x-init="initEditor" x-data="{
+<div class="container" id="ad-edit" x-data="{
     name: '{{ old('name', $ad->name) }}',
     img: '{{ old('img', $ad->img) }}',
     url: '{{ old('url', $ad->url) }}',
     readonly: {{ RequestHub::isReadOnly() ? 'true' : 'false' }},
-
-    editor: null,
+    
+    queryContent: @js(old('query', $ad->query)),
+    
     initEditor() {
-        const highlight = editor => {
-            // highlight.js does not trims old tags,
-            // let's do it by this hack.
-            editor.textContent = editor.textContent;
-            delete editor.dataset.highlighted;
-            hljs.highlightElement(editor);
-        }
+        const textarea = this.$refs.textarea;
+        const preview = this.$refs.preview;
+        
+        // Initial mirror
+        this.$nextTick(() => {
+            textarea.value = this.queryContent;
+            this.mirror();
+        });
+        
+        // Update on input
+        textarea.addEventListener('input', () => {
+            this.queryContent = textarea.value;
+            this.$refs.query.value = textarea.value;
+            this.mirror();
+        });
+        
+        // Sync scrolling
+        textarea.addEventListener('scroll', () => {
+            preview.scrollTop = textarea.scrollTop;
+            preview.scrollLeft = textarea.scrollLeft;
+        });
 
-        this.editor = new CodeJar(this.$refs.editor, highlight, {
-            tab: '  '
+        // Handle Tab key for indentation
+        textarea.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                document.execCommand('insertText', false, '  ');
+            }
         });
-        this.editor.updateCode(this.$refs.query.value);
-        this.editor.onUpdate(code => {
-            this.$refs.query.value = code;
+        
+        // Handle manual resize
+        const resizeObserver = new ResizeObserver(() => {
+            preview.style.height = textarea.offsetHeight + 'px';
         });
+        resizeObserver.observe(textarea);
     },
+    
+    mirror() {
+        const textarea = this.$refs.textarea;
+        const preview = this.$refs.preview;
+        
+        // highlight.js needs textContent set first
+        preview.textContent = textarea.value;
+        delete preview.dataset.highlighted;
+        hljs.highlightElement(preview);
+        
+        // Auto-grow textarea
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+        
+        // Sync preview height
+        preview.style.height = textarea.scrollHeight + 'px';
+    }
 }"
 x-init="initEditor">
     <div class="row justify-content-center">
@@ -99,8 +137,15 @@ x-init="initEditor">
                         <div class="mb-3 row">
                             <label for="query" class="col-md-2 col-form-label text-md-end">{{ __('SQL-Query') }}</label>
                             <div class="col-md-10">
-                                <input x-ref="query" id="query" type="text" hidden name="query" value="{{ old('query', $ad->query) }}">
-                                <div x-ref="editor" id="editor" class="hljs language-sql @error('query') is-invalid @enderror"></div>
+                                <input x-ref="query" id="query" type="hidden" name="query" value="{{ old('query', $ad->query) }}">
+                                <div id="editor" class="@error('query') is-invalid @enderror">
+                                    <pre x-ref="preview" class="preview hljs language-sql"></pre>
+                                    <textarea 
+                                        x-ref="textarea" 
+                                        class="code" 
+                                        spellcheck="false"
+                                    ></textarea>
+                                </div>
                                 <div class="form-text">{!! __('messages.adEditor.query') !!}</div>
                                 @error('query')
                                     <div class="invalid-feedback">{{ $message }}</div>

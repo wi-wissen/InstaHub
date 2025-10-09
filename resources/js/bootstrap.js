@@ -15,7 +15,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import hljs from 'highlight.js/lib/core';
 import sql from 'highlight.js/lib/languages/sql';
-import { CodeJar } from 'codejar';
 
 function extendedSQL(hljs) {
     const originalLanguage = sql(hljs);
@@ -46,4 +45,3 @@ function extendedSQL(hljs) {
 hljs.registerLanguage('sql', extendedSQL);
 
 window.hljs = hljs;
-window.CodeJar = CodeJar;
