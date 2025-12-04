@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Facades\RequestHub;
 use App\Helpers\HubHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Hub;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -66,6 +67,24 @@ class LoginController extends Controller
         ], [
             $this->username().'.exists' => __('auth.failed'),
         ]);
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        // touch hub to mark last activity in updated_at
+        if (RequestHub::isHub()) {
+            $id = RequestHub::id();
+            RequestHub::useDefaultDB(function() use ($id) {
+                Hub::where('id', $id)->touch();
+            });
+        }
     }
 
     /**
