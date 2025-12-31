@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Laravel\Facades\Image;
 
 class HubController extends Controller
 {
@@ -178,7 +180,12 @@ class HubController extends Controller
             $url = 'avatar.png';
             if ($request->hasFile('avatar')) {
                 if ($request->file('avatar')->isValid()) {
-                    $url = Storage::putFile('avatars', $request->avatar);
+                    // Bild quadratisch zuschneiden, auf max 512px und als WebP speichern
+                    $image = Image::read($request->file('avatar'));
+                    $image->coverDown(512, 512, 'center');
+                    
+                    $url = 'avatars/' . Str::random(40) . '.webp';
+                    Storage::put($url, $image->toWebp(quality: 90));
                 }
             }
 

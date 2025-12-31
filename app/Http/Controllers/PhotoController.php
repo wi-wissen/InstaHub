@@ -9,6 +9,9 @@ use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 
 class PhotoController extends Controller
 {
@@ -159,13 +162,21 @@ class PhotoController extends Controller
             'description' => 'required',
         ]);
 
-        $url = $request->file('photo')->store('photos');
+        $upload = $request->file('photo');
         $user = $request->user();
+
+        // Bild lesen und auf max 1280px skalieren (längste Seite)
+        $image = Image::read($upload);
+        $image->scaleDown(width: 1280, height: 1280);
+
+        // Als WebP encodieren und speichern
+        $filename = 'photos/' . Str::random(40) . '.webp';
+        Storage::put($filename, $image->toWebp(quality: 90));
 
         $photo = Photo::create([
             'user_id' => $user->id,
             'description' => $request->description,
-            'url' => $url,
+            'url' => $filename,
         ]);
 
         flash(__('Photo uploaded'))->success();
