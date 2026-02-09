@@ -36,46 +36,100 @@ class PhotoController extends Controller
 
         if ($sort) {
             session(['sort_feed' => $sort]);
+
+            // Custom-Weights in der Session speichern oder löschen
+            if ($sort === 'custom' && $request->has('weights')) {
+                session(['sort_feed_weights' => $request->input('weights')]);
+            } elseif ($sort !== 'custom') {
+                session()->forget('sort_feed_weights');
+            }
         }
 
         $photos = collect([]);
 
-        if (RequestHub::hasTable('follows') && RequestHub::hasTable('photos')) {
+        if (RequestHub::hasTable('photos')) {
             $user = Auth::user();
 
-            $following_ids = []; // hmm i dont feel this is good practice refactor later
-
-            foreach ($user->following as $following) {
-                array_push($following_ids, $following->id);
+            // If follows table exists, only load photos from followed users
+            $hasFollows = RequestHub::hasTable('follows');
+            $following_ids = null;
+            if ($hasFollows) {
+                $following_ids = $user->following()->pluck('users.id')->toArray();
+                $following_ids[] = $user->id; //always show own posts
             }
-            array_push($following_ids, $user->id); //always show own posts
 
-            if (session('sort_feed') == 'best') { // sort by best
+            // Prepare query builder (with or without follows filter)
+            $baseQuery = $following_ids !== null
+                ? Photo::whereIn('user_id', $following_ids)
+                : Photo::query();
 
-                if (Photo::where('user_id', $following_ids)->exists()) {
-                    $photos = Photo::whereIn('user_id', $following_ids)->orderBy('created_at', 'desc')->limit(100)->get();	// $photos speichert die neuesten 100 Fotos von Nutzern, denen der Nutzer folgt
-                    $photos = $photos->addPhotoScore()->paginate(5);
-                    $photos->appends(['sort' => 'best']);
+            if (session('sort_feed') == 'best' || session('sort_feed') == 'custom') {
+                // Weights aus Session lesen (werden beim Custom-Sort dort gespeichert)
+                $weights = [];
+                if (session('sort_feed') == 'custom') {
+                    $weights = session('sort_feed_weights', []);
+                }
 
+                if ((clone $baseQuery)->exists()) {
+                    if ($hasFollows) {
+                        // With follows: personalized EdgeRank (affinity per user)
+                        $photos = (clone $baseQuery)->with('user')->orderBy('created_at', 'desc')->limit(100)->get();
+                        $photos = $photos->addPhotoScore($weights)->paginate(5);
+                    } else {
+                        // Without follows: pre-select top 100 by SQL score (Likes + Comments + Decay)
+                        $hasLikes = RequestHub::hasTable('likes');
+                        $hasComments = RequestHub::hasTable('comments');
+
+                        $w = array_merge(['like_weight' => 1, 'comment_weight' => 2, 'decay' => 1], $weights);
+
+                        // Score ≈ (1 + likes * w_like + comments * w_comment) × decay
+                        // decay = EXP(LN(0.995) / 900 × age_in_seconds) ≈ EXP(-0.00000557 × age)
+                        $scoreParts = ['1'];
+                        if ($hasLikes) {
+                            $scoreParts[] = 'COALESCE(likes_count, 0) * ' . (int) $w['like_weight'];
+                        }
+                        if ($hasComments) {
+                            $scoreParts[] = 'COALESCE(comments_count, 0) * ' . (int) $w['comment_weight'];
+                        }
+                        $scoreExpr = '(' . implode(' + ', $scoreParts) . ')';
+                        if ($w['decay'] > 0) {
+                            $scoreExpr .= ' * EXP(-0.00000557 * TIMESTAMPDIFF(SECOND, created_at, NOW()))';
+                        }
+
+                        $photos = (clone $baseQuery)
+                            ->with('user')
+                            ->when($hasLikes, fn($q) => $q->withCount('likes'))
+                            ->when($hasComments, fn($q) => $q->withCount('comments'))
+                            ->orderByRaw($scoreExpr . ' DESC')
+                            ->limit(100)
+                            ->get();
+                        $photos = $photos->addPhotoScoreGlobal($weights)->paginate(5);
+                    }
                 }
             } else { // sort by date
                 session(['sort_feed' => 'last']);
 
-                if (Photo::where('user_id', $following_ids)->exists()) {
-                    $photos = Photo::whereIn('user_id', $following_ids)
+                if ((clone $baseQuery)->exists()) {
+                    $photos = (clone $baseQuery)
+                        ->with('user')
                         ->orderBy('created_at', 'desc')
-                        ->paginate(5)
-                        ->appends(['sort' => 'last']);
+                        ->paginate(5);
                 }
             }
+        }
+
+        // Preload following IDs for the 3-dot menu (avoids N+1 queries)
+        $followingIds = collect([]);
+        if (RequestHub::hasTable('follows')) {
+            $followingIds = Auth::user()->following()->pluck('users.id');
         }
 
         if (RequestHub::hasTable('ads')) {
             $ad = Ad::getAd();
 
-            return view('photo.index', ['photos' => $photos, 'ad' => $ad]);
+            return view('photo.index', ['photos' => $photos, 'ad' => $ad, 'followingIds' => $followingIds]);
         } else {
-            return view('photo.index', ['photos' => $photos]);
+            return view('photo.index', ['photos' => $photos, 'followingIds' => $followingIds]);
         }
     }
 
@@ -85,20 +139,34 @@ class PhotoController extends Controller
 
         if ($sort) {
             session(['sort_feed' => $sort]);
+
+            // Custom-Weights in der Session speichern oder löschen
+            if ($sort === 'custom' && $request->has('weights')) {
+                session(['sort_feed_weights' => $request->input('weights')]);
+            } elseif ($sort !== 'custom') {
+                session()->forget('sort_feed_weights');
+            }
         }
 
         $photos = null;
 
+        // Weights aus Session lesen (werden beim Custom-Sort dort gespeichert)
+        $weights = [];
+        if (session('sort_feed') == 'custom') {
+            $weights = session('sort_feed_weights', []);
+        }
+
         if (RequestHub::hasTable('tags')) {
-            if (session('sort_feed') == 'best') { // sort by best
+            if (session('sort_feed') == 'best' || session('sort_feed') == 'custom') {
 
                 $photos = Photo::whereHas('tags', function ($query) use ($name) {
                     $query->where('name', '=', strtolower($name));
                 })
+                    ->with('user')
                     ->orderBy('created_at', 'desc')
                     ->limit(200)
                     ->get()
-                    ->addPhotoScoreGlobal()
+                    ->addPhotoScoreGlobal($weights)
                     ->paginate(5);
             } else { // sort by date
                 session(['sort_feed' => 'last']);
@@ -106,31 +174,39 @@ class PhotoController extends Controller
                 $photos = Photo::whereHas('tags', function ($query) use ($name) {
                     $query->where('name', '=', strtolower($name));
                 })
+                    ->with('user')
                     ->orderBy('created_at', 'desc')
                     ->paginate(5);
             }
         } elseif (RequestHub::hasTable('photos')) {
-            if (session('sort_feed') == 'best') { // sort by best
+            if (session('sort_feed') == 'best' || session('sort_feed') == 'custom') {
 
                 $photos = Photo::where('description', 'like', "%#$name%")
+                    ->with('user')
                     ->orderBy('created_at', 'desc')
                     ->limit(200)
                     ->get()
-                    ->addPhotoScoreGlobal()
+                    ->addPhotoScoreGlobal($weights)
                     ->paginate(5);
             } else { // sort by date
                 session(['sort_feed' => 'last']);
 
-                $photos = Photo::where('description', 'like', "%#$name%")->paginate(5);
+                $photos = Photo::where('description', 'like', "%#$name%")->with('user')->paginate(5);
             }
+        }
+
+        // Preload following IDs for the 3-dot menu (avoids N+1 queries)
+        $followingIds = collect([]);
+        if (RequestHub::hasTable('follows')) {
+            $followingIds = Auth::user()->following()->pluck('users.id');
         }
 
         if (RequestHub::hasTable('ads')) {
             $ad = Ad::getAd();
 
-            return view('photo.index', ['photos' => $photos, 'ad' => $ad]);
+            return view('photo.index', ['photos' => $photos, 'ad' => $ad, 'followingIds' => $followingIds]);
         } else {
-            return view('photo.index', ['photos' => $photos]);
+            return view('photo.index', ['photos' => $photos, 'followingIds' => $followingIds]);
         }
     }
 
@@ -165,11 +241,11 @@ class PhotoController extends Controller
         $upload = $request->file('photo');
         $user = $request->user();
 
-        // Bild lesen und auf max 1280px skalieren (längste Seite)
+        // Read image and scale down to max 1280px (longest side)
         $image = Image::read($upload);
         $image->scaleDown(width: 1280, height: 1280);
 
-        // Als WebP encodieren und speichern
+        // Encode as WebP and save
         $filename = 'photos/' . Str::random(40) . '.webp';
         Storage::put($filename, $image->toWebp(quality: 90));
 
