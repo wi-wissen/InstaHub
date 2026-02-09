@@ -28,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         static::creating(function ($user) {
             if(! RequestHub::isHub()) {
-                $user->tokens_max = config('azure.max_tokens'); // set max tokens only for teachers
+                $user->tokens_max = config('openai.max_tokens'); // set max tokens only for teachers
             }
         });
 

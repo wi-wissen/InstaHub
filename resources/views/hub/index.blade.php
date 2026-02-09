@@ -7,7 +7,7 @@
             <div class="alert alert-warning alert-important" role="alert">
                 {{ __('messages.noTokens') }}
             </div>
-        @elseif(! RequestHub::hasTokens(config('azure.max_tokens') / 2))
+        @elseif(! RequestHub::hasTokens(config('openai.max_tokens') / 2))
             <div class="alert alert-warning alert-important" role="alert">
                 {{ __('messages.fewTokens') }}
             </div>

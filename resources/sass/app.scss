@@ -161,6 +161,12 @@ a {
     margin-bottom: 1rem;
 }
 
+.hljs.card-body {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: .25rem;
+    background-color: var(--bs-secondary-bg);
+}
+
 @media (prefers-color-scheme: dark) {
     .card {
         background-color: #181919;

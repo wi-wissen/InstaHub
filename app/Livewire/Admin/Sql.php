@@ -63,13 +63,13 @@ class Sql extends Component
                 try {
                     // create a new OpenAI client
                     $client = OpenAI::factory()
-                        ->withBaseUri(config('azure.resource_name').'.openai.azure.com/openai/deployments/'.config('azure.deployment_id'))
-                        ->withHttpHeader('api-key', config('azure.openai_key'))
-                        ->withQueryParam('api-version', config('azure.api_version'))
+                        ->withBaseUri(config('openai.base_url'))
+                        ->withHttpHeader('Authorization', 'Bearer ' . config('openai.api_key'))
                         ->make();
-        
+
                     // send a request to the API
                     $result = $client->chat()->create([
+                        'model' => config('openai.model'),
                         'messages' => [
                             ['role' => 'system', 'content' => $this->buildSystemPrompt($errorMessage)],
                             ['role' => 'user', 'content' => $this->query],
@@ -153,7 +153,9 @@ Hier Zwei Beispiel-Fehler:
 * `Unknown column 'name' in 'field list'` -> `Die Spalte `name` existiert nicht in der Tabelle 'users'.`
 * `You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'comments' at line 1` -> `Du musst nach 'comments' noch ein Komma setzen.`
 
-Gib nie den vollständigen SQL-Befehl aus.
+Gib nur so Hinweise. Gib nie die Lösung des Problems aus!
+
+Antwort möglichst in einem kompakten Satz.
 
 Folgende einzelne Tabellen können abgefragt werden:
 

@@ -3,7 +3,7 @@
     x-bind:class="'alert alert-' + ($wire.message ? $wire.message.type : '') + ' alert-important alert-dismissible mt-3 mb-0'"
     role="alert"
 >
-    <span x-text="$wire.message ? $wire.message.text : ''"></span>
+    <span x-html="$wire.message ? formatMessage($wire.message.text) : ''"></span>
     <div>
         <button x-show="$wire.message && $wire.message.type == 'success'" @click="downloadCSV($wire.results)" type="button" class="btn-close btn-download" aria-label="Download CSV" title="Download"></button>
         <button @click="$wire.unsetResults()" type="button" class="btn-close" aria-label="Close" title="{{ __('Close') }}"></button>
@@ -11,6 +11,19 @@
 </div>
 
 <script>
+    function formatMessage(text) {
+        if (!text) return '';
+        // Escape HTML entities except backticks
+        const escaped = text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+        // Convert backticks to <code> tags
+        return escaped.replace(/`([^`]+)`/g, '<code>$1</code>');
+    }
+
     function downloadCSV(results) {
         if (!results || results.length === 0) return;
         

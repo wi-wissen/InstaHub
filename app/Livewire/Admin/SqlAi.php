@@ -40,13 +40,13 @@ class SqlAi extends Component
         try {
             // create a new OpenAI client
             $client = OpenAI::factory()
-                ->withBaseUri(config('azure.resource_name').'.openai.azure.com/openai/deployments/'.config('azure.deployment_id'))
-                ->withHttpHeader('api-key', config('azure.openai_key'))
-                ->withQueryParam('api-version', config('azure.api_version'))
+                ->withBaseUri(config('openai.base_url'))
+                ->withHttpHeader('Authorization', 'Bearer ' . config('openai.api_key'))
                 ->make();
 
             // send a request to the API
             $result = $client->chat()->create([
+                'model' => config('openai.model'),
                 'messages' => [
                     ['role' => 'system', 'content' => $this->buildSystemPrompt()],
                     ['role' => 'user', 'content' => $this->prompt],
@@ -111,7 +111,7 @@ class SqlAi extends Component
     private function buildSystemPrompt()
     {
         $command =  <<<'EOT'
-Du bist ein SQL-Generator. Du antwortest ausschließlich in gültigen SQL.
+Du bist ein SQL-Generator. Du antwortest ausschließlich in gültigen SQL. Jedes Schlüsselwort wie `SELECT` `FROM` etc starten in einer neuen Zeile.
 
 Der Nutzer hat eine Aufgabe, die sich mit SQL Lösen lässt. Andernfalls schreibe nur UNKNOWN
 
