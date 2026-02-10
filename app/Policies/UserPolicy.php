@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Facades\RequestHub;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
@@ -18,6 +18,7 @@ class UserPolicy
         if (RequestHub::isHub()) {
             return true;
         }
+
         return $user->allowed('admin');
     }
 
@@ -29,6 +30,7 @@ class UserPolicy
         if (RequestHub::isHub()) {
             return true;
         }
+
         return $user->allowed('admin') || $user->id === $model->id;
     }
 
@@ -40,6 +42,7 @@ class UserPolicy
         if (RequestHub::isHub()) {
             return $user->allowed('dba');
         }
+
         return $user->allowed('admin');
     }
 
@@ -51,6 +54,7 @@ class UserPolicy
         if (RequestHub::isHub()) {
             return $user->allowed('dba') || $user->id === $model->id;
         }
+
         return $user->allowed('admin') || $user->id === $model->id;
     }
 
@@ -62,6 +66,7 @@ class UserPolicy
         if (RequestHub::isHub()) {
             return $user->allowed('dba');
         }
+
         return $user->allowed('admin');
     }
 
@@ -73,6 +78,7 @@ class UserPolicy
         if (RequestHub::isHub()) {
             return $user->allowed('dba');
         }
+
         return $user->allowed('admin');
     }
 
@@ -84,6 +90,7 @@ class UserPolicy
         if (RequestHub::isHub()) {
             return $user->allowed('dba') || $user->id === $model->id;
         }
+
         return $user->allowed('admin') || $user->id === $model->id;
     }
 }

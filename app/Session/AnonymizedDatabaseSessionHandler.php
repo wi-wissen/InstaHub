@@ -25,9 +25,9 @@ class AnonymizedDatabaseSessionHandler extends DatabaseSessionHandler
             return preg_replace('/\d+$/', '0', $ip);
         } elseif (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
             // IPv6: Zeros of the last 64 bits
-            return substr($ip, 0, strrpos($ip, ':')) . ':0000';
+            return substr($ip, 0, strrpos($ip, ':')).':0000';
         }
-        
+
         return $ip;
     }
 }

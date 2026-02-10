@@ -132,7 +132,6 @@ return [
 
     'allow_public_db_access' => env('ALLOW_PUBLIC_DB_ACCESS', false),
 
-
     /*
     |--------------------------------------------------------------------------
     | Hub Naming

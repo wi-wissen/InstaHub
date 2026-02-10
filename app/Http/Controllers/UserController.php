@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +21,7 @@ class UserController extends Controller
     public function index($filter = null, $param = null)
     {
         if ($filter == 'suggested') {
-            return view('user.index', ['users' => User::getSuggested(), 'heading' => __('Suggested')]); //TODO: Lassen sich Punkte mit übertragen?
+            return view('user.index', ['users' => User::getSuggested(), 'heading' => __('Suggested')]); // TODO: Lassen sich Punkte mit übertragen?
         } elseif ($filter == 'letter') {
             return view('user.index', ['users' => User::where('username', 'LIKE', $param.'%')->orderBy('username', 'asc')->paginate(10), 'char' => $param]);
         } else {
@@ -70,10 +69,10 @@ class UserController extends Controller
                 // Bild quadratisch zuschneiden, auf max 512px und als WebP speichern
                 $image = Image::read($request->file('avatar'));
                 $image->coverDown(512, 512, 'center');
-                
-                $filename = 'avatars/' . Str::random(40) . '.webp';
+
+                $filename = 'avatars/'.Str::random(40).'.webp';
                 Storage::put($filename, $image->toWebp(quality: 90));
-                
+
                 $user->avatar = $filename;
             } else {
                 flash(__('Can not upload Avatar'))->error();

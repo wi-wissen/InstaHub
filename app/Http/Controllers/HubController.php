@@ -43,13 +43,13 @@ class HubController extends Controller
      */
     public function index(Request $request)
     {
-        $query = (Auth::user()->role == 'admin') 
+        $query = (Auth::user()->role == 'admin')
             ? Hub::query() // admin
             : User::find(Auth::user()->id)->hubs(); // teacher
 
         if ($request->filled('search')) {
             $searchTerm = $request->input('search');
-            $query->where(function($q) use ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
                 $q->where('name', 'like', "%{$searchTerm}%");
             });
         }
@@ -66,11 +66,10 @@ class HubController extends Controller
      */
     public function create()
     {
-        if(! session('_old_input.hub', null)) 
-        {
+        if (! session('_old_input.hub', null)) {
             $word = config('app.hub_words');
             $number = config('app.hub_numbers');
-            
+
             do {
                 $name = '';
                 $name = $name.$word[rand(0, count($word) - 1)];
@@ -118,7 +117,7 @@ class HubController extends Controller
                     }
                 },
             ],
-            'email' =>  'required|email',
+            'email' => 'required|email',
             'bio' => 'nullable|max:500',
             'birthday' => 'nullable|date_format:Y-m-d',
             'city' => 'nullable|string',
@@ -126,7 +125,7 @@ class HubController extends Controller
             'centimeters' => 'nullable|numeric',
         ]);
 
-        //check if teacher
+        // check if teacher
         $teacherId = null;
         if (Auth::check()) {
             if (Auth::user()->role = 'teacher' || Auth::user()->role = 'mod') {
@@ -134,7 +133,7 @@ class HubController extends Controller
             }
         }
 
-        //generate db password
+        // generate db password
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!§$%&/()=?{[]}+-#';
         $count = mb_strlen($chars);
 
@@ -143,48 +142,46 @@ class HubController extends Controller
             $pw .= mb_substr($chars, $index, 1);
         }
 
-        //create hub
+        // create hub
         $teacherUser = User::where('username', '=', $request->teacher)->firstOrFail();
         $hub = Hub::create([
             'name' => $request->hub,
-            'teacher_id' => ($teacherId) ? $teacherId : $teacherUser->id, //use own or search teacher.id
+            'teacher_id' => ($teacherId) ? $teacherId : $teacherUser->id, // use own or search teacher.id
             'password' => $pw,
             'generation' => $teacherUser->hub_default_generation,
             'query_level' => $teacherUser->hub_default_query_level,
         ]);
 
-        //unset used hub name
+        // unset used hub name
         session(['register_hub_name' => null]);
 
-        //Added create database and databaseuser
+        // Added create database and databaseuser
         DB::statement('CREATE DATABASE IF NOT EXISTS '.env('DB_DATABASE').'_'.$hub->id.';');
         DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'localhost' IDENTIFIED BY '".$hub->password."';");
 
-        if (config('app.allow_public_db_access')) { //second user needed because % means all except localhost
+        if (config('app.allow_public_db_access')) { // second user needed because % means all except localhost
             DB::statement('GRANT ALL ON '.env('DB_DATABASE').'_'.$hub->id.".* TO '".env('DB_DATABASE').'_'.$hub->id."'@'%' IDENTIFIED BY '".$hub->password."';");
         }
 
-        RequestHub::useHubDB($hub->id, function() use ($teacherUser, $request, $teacherId, $hub) {
+        RequestHub::useHubDB($hub->id, function () use ($teacherUser, $request, $teacherId, $hub) {
             // hydrate hub
-            if($teacherUser->hub_default_creating == 'users') {
+            if ($teacherUser->hub_default_creating == 'users') {
                 $hub->changeTables(['users'], 'fill');
-            }
-            else if($teacherUser->hub_default_creating == 'all_empty') {
-                $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'create');
-            }
-            else if($teacherUser->hub_default_creating == 'all_full') {
-                $hub->changeTables(['users','photos','tags','likes','follows','comments','analytics','ads'], 'fill');
+            } elseif ($teacherUser->hub_default_creating == 'all_empty') {
+                $hub->changeTables(['users', 'photos', 'tags', 'likes', 'follows', 'comments', 'analytics', 'ads'], 'create');
+            } elseif ($teacherUser->hub_default_creating == 'all_full') {
+                $hub->changeTables(['users', 'photos', 'tags', 'likes', 'follows', 'comments', 'analytics', 'ads'], 'fill');
             }
 
-            //insert admin
+            // insert admin
             $url = 'avatar.png';
             if ($request->hasFile('avatar')) {
                 if ($request->file('avatar')->isValid()) {
                     // Bild quadratisch zuschneiden, auf max 512px und als WebP speichern
                     $image = Image::read($request->file('avatar'));
                     $image->coverDown(512, 512, 'center');
-                    
-                    $url = 'avatars/' . Str::random(40) . '.webp';
+
+                    $url = 'avatars/'.Str::random(40).'.webp';
                     Storage::put($url, $image->toWebp(quality: 90));
                 }
             }
@@ -201,17 +198,17 @@ class HubController extends Controller
                 'country' => $request->country,
                 'centimeters' => $request->centimeters,
                 'avatar' => $url,
-                'is_active' => ($teacherId && Auth::user()->id == $teacherId) // trust yourself
+                'is_active' => ($teacherId && Auth::user()->id == $teacherId), // trust yourself
             ]);
         });
 
-        if($teacherId && Auth::user()->id == $teacherId) {
+        if ($teacherId && Auth::user()->id == $teacherId) {
             // created by user itself
             return redirect('/');
-        }
-        else {
-            //created by student or for other teacher by a teacher
+        } else {
+            // created by student or for other teacher by a teacher
             flash(__('Your hub must be activated by your teacher!'))->warning();
+
             return redirect(str_replace('{subdomain}', $hub->name, config('app.url_hub')));
         }
     }
@@ -260,7 +257,7 @@ class HubController extends Controller
         abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         $hub->delete();
-        
+
         return response()->json([
             'destroyed' => true,
         ]);

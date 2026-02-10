@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         $data = [
-        [
+            [
                 'id' => 1,
                 'name' => 'Noah Schneider',
                 'username' => 'zornigerfotograf',
@@ -31,9 +31,9 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:41.175974',
-                'updated_at' => '2024-09-29T16:06:41.175974'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:41.175974',
+            ],
+            [
                 'id' => 2,
                 'name' => 'Finn Becker',
                 'username' => 'wanderwut_finn',
@@ -50,9 +50,9 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:41.361899',
-                'updated_at' => '2024-09-29T16:06:41.361899'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:41.361899',
+            ],
+            [
                 'id' => 3,
                 'name' => 'Liam Hoffmann',
                 'username' => 'bergcoder',
@@ -69,9 +69,9 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:41.545959',
-                'updated_at' => '2024-09-29T16:06:41.545959'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:41.545959',
+            ],
+            [
                 'id' => 4,
                 'name' => 'Elias Wagner',
                 'username' => 'koch_kicker',
@@ -88,9 +88,9 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:41.732569',
-                'updated_at' => '2024-09-29T16:06:41.732569'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:41.732569',
+            ],
+            [
                 'id' => 5,
                 'name' => 'Ben Neumann',
                 'username' => 'modegamer_ben',
@@ -110,9 +110,9 @@ Haters gonna hate 😎',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:41.916787',
-                'updated_at' => '2024-09-29T16:06:41.916787'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:41.916787',
+            ],
+            [
                 'id' => 6,
                 'name' => 'Felix Zimmermann',
                 'username' => 'pixelprins',
@@ -132,9 +132,9 @@ Any photo tips? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:42.101044',
-                'updated_at' => '2024-09-29T16:06:42.101044'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:42.101044',
+            ],
+            [
                 'id' => 7,
                 'name' => 'Matteo Schulz',
                 'username' => 'modebeat_teo',
@@ -151,9 +151,9 @@ Any photo tips? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:42.286295',
-                'updated_at' => '2024-09-29T16:06:42.286295'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:42.286295',
+            ],
+            [
                 'id' => 8,
                 'name' => 'Oscar Klein',
                 'username' => 'theaterwut_oscar',
@@ -170,9 +170,9 @@ Any photo tips? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:42.474252',
-                'updated_at' => '2024-09-29T16:06:42.474252'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:42.474252',
+            ],
+            [
                 'id' => 9,
                 'name' => 'Henry Schmitt',
                 'username' => 'knipserwut',
@@ -189,9 +189,9 @@ Any photo tips? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:42.660926',
-                'updated_at' => '2024-09-29T16:06:42.660926'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:42.660926',
+            ],
+            [
                 'id' => 10,
                 'name' => 'Theo Fischer',
                 'username' => 'laufgaertner_theo',
@@ -208,9 +208,9 @@ Any photo tips? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:42.846358',
-                'updated_at' => '2024-09-29T16:06:42.846358'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:42.846358',
+            ],
+            [
                 'id' => 11,
                 'name' => 'Luis Weber',
                 'username' => 'kunstnews_luis',
@@ -227,9 +227,9 @@ Any photo tips? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:43.031149',
-                'updated_at' => '2024-09-29T16:06:43.031149'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:43.031149',
+            ],
+            [
                 'id' => 12,
                 'name' => 'Luca Keller',
                 'username' => 'fitnesschef_luca',
@@ -249,9 +249,9 @@ Mein Sixpack & ich: \'work in progress\' 😅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:43.216999',
-                'updated_at' => '2024-09-29T16:06:43.216999'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:43.216999',
+            ],
+            [
                 'id' => 13,
                 'name' => 'Niklas Schröder',
                 'username' => 'grosserlaeufer',
@@ -270,9 +270,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:43.405831',
-                'updated_at' => '2024-09-29T16:06:43.405831'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:43.405831',
+            ],
+            [
                 'id' => 14,
                 'name' => 'Levi Schumann',
                 'username' => 'nachrichtenlevi',
@@ -289,9 +289,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:43.591163',
-                'updated_at' => '2024-09-29T16:06:43.591163'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:43.591163',
+            ],
+            [
                 'id' => 15,
                 'name' => 'Emil Bergmann',
                 'username' => 'reisewut_emil',
@@ -308,9 +308,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:43.775580',
-                'updated_at' => '2024-09-29T16:06:43.775580'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:43.775580',
+            ],
+            [
                 'id' => 16,
                 'name' => 'Milo Richter',
                 'username' => 'tiertrainer_milo',
@@ -327,9 +327,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:43.960201',
-                'updated_at' => '2024-09-29T16:06:43.960201'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:43.960201',
+            ],
+            [
                 'id' => 17,
                 'name' => 'Maximilian Wolff',
                 'username' => 'turmriese_max',
@@ -346,9 +346,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:44.144399',
-                'updated_at' => '2024-09-29T16:06:44.144399'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:44.144399',
+            ],
+            [
                 'id' => 18,
                 'name' => 'Jonas Lehmann',
                 'username' => 'gamewut_jonas',
@@ -365,9 +365,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:44.328642',
-                'updated_at' => '2024-09-29T16:06:44.328642'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:44.328642',
+            ],
+            [
                 'id' => 19,
                 'name' => 'Leo Hausmann',
                 'username' => 'wanderkoenig_leo',
@@ -384,9 +384,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:44.513544',
-                'updated_at' => '2024-09-29T16:06:44.513544'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:44.513544',
+            ],
+            [
                 'id' => 20,
                 'name' => 'Paul Eichmann',
                 'username' => 'kochkuenstler_paul',
@@ -407,9 +407,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:44.701270',
-                'updated_at' => '2024-09-29T16:06:44.701270'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:44.701270',
+            ],
+            [
                 'id' => 21,
                 'name' => 'David Huber',
                 'username' => 'klangknipser',
@@ -426,9 +426,9 @@ Ihr seid alle Loser 🙄💅',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:44.887662',
-                'updated_at' => '2024-09-29T16:06:44.887662'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:44.887662',
+            ],
+            [
                 'id' => 22,
                 'name' => 'Anton Bauer',
                 'username' => 'riesenlichtfaenger',
@@ -448,9 +448,9 @@ Fragen? Immer her damit! 🤔💭
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:45.071905',
-                'updated_at' => '2024-09-29T16:06:45.071905'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:45.071905',
+            ],
+            [
                 'id' => 23,
                 'name' => 'Linus Roth',
                 'username' => 'kochschlaeger',
@@ -469,9 +469,9 @@ Immer hier für euch 🤗 #SelbstliebeBaby',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:45.257453',
-                'updated_at' => '2024-09-29T16:06:45.257453'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:45.257453',
+            ],
+            [
                 'id' => 24,
                 'name' => 'Lasse Krüger',
                 'username' => 'kunstaktivist_lasse',
@@ -491,9 +491,9 @@ Was denkt ihr? 💭
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:45.441283',
-                'updated_at' => '2024-09-29T16:06:45.441283'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:45.441283',
+            ],
+            [
                 'id' => 25,
                 'name' => 'Jaron Ackermann',
                 'username' => 'buchzorn',
@@ -510,9 +510,9 @@ Was denkt ihr? 💭
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:45.625641',
-                'updated_at' => '2024-09-29T16:06:45.625641'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:45.625641',
+            ],
+            [
                 'id' => 26,
                 'name' => 'Jannik Kühn',
                 'username' => 'klangriese',
@@ -529,9 +529,9 @@ Was denkt ihr? 💭
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:45.809837',
-                'updated_at' => '2024-09-29T16:06:45.809837'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:45.809837',
+            ],
+            [
                 'id' => 27,
                 'name' => 'Marlon Sauer',
                 'username' => 'kunstwut_marlon',
@@ -551,9 +551,9 @@ Ironisch elegant seit 2005 💁‍♂️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:45.994551',
-                'updated_at' => '2024-09-29T16:06:45.994551'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:45.994551',
+            ],
+            [
                 'id' => 28,
                 'name' => 'Timo Reichert',
                 'username' => 'kunstlaufzorn',
@@ -570,9 +570,9 @@ Ironisch elegant seit 2005 💁‍♂️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:46.179028',
-                'updated_at' => '2024-09-29T16:06:46.179028'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:46.179028',
+            ],
+            [
                 'id' => 29,
                 'name' => 'Julian Berger',
                 'username' => 'modekameramann',
@@ -589,9 +589,9 @@ Ironisch elegant seit 2005 💁‍♂️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:46.365026',
-                'updated_at' => '2024-09-29T16:06:46.365026'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:46.365026',
+            ],
+            [
                 'id' => 30,
                 'name' => 'Lennard Gehrke',
                 'username' => 'umweltlenni',
@@ -610,9 +610,9 @@ Die Zukunft gehört uns. Oder?🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:46.551165',
-                'updated_at' => '2024-09-29T16:06:46.551165'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:46.551165',
+            ],
+            [
                 'id' => 31,
                 'name' => 'Nico Hartmann',
                 'username' => 'sanftmutriese',
@@ -629,9 +629,9 @@ Die Zukunft gehört uns. Oder?🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:46.737496',
-                'updated_at' => '2024-09-29T16:06:46.737496'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:46.737496',
+            ],
+            [
                 'id' => 32,
                 'name' => 'Nils Braun',
                 'username' => 'korbjagdriese',
@@ -648,9 +648,9 @@ Die Zukunft gehört uns. Oder?🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:46.925573',
-                'updated_at' => '2024-09-29T16:06:46.925573'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:46.925573',
+            ],
+            [
                 'id' => 33,
                 'name' => 'Yannick Vogt',
                 'username' => 'reisefuchs_yannick',
@@ -667,9 +667,9 @@ Die Zukunft gehört uns. Oder?🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:47.111123',
-                'updated_at' => '2024-09-29T16:06:47.111123'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:47.111123',
+            ],
+            [
                 'id' => 34,
                 'name' => 'Jonathan Franke',
                 'username' => 'gartenlinse',
@@ -686,9 +686,9 @@ Die Zukunft gehört uns. Oder?🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:47.296906',
-                'updated_at' => '2024-09-29T16:06:47.296906'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:47.296906',
+            ],
+            [
                 'id' => 35,
                 'name' => 'Mattis Schwarz',
                 'username' => 'politikgaertner',
@@ -705,9 +705,9 @@ Die Zukunft gehört uns. Oder?🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:47.481340',
-                'updated_at' => '2024-09-29T16:06:47.481340'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:47.481340',
+            ],
+            [
                 'id' => 36,
                 'name' => 'Raphael Schreiber',
                 'username' => 'techkicker_rapha',
@@ -727,9 +727,9 @@ Meine Brille sieht alles, meine Augen das Besondere 👓💙
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:47.665111',
-                'updated_at' => '2024-09-29T16:06:47.665111'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:47.665111',
+            ],
+            [
                 'id' => 37,
                 'name' => 'Levin Baumann',
                 'username' => 'musikriese',
@@ -746,9 +746,9 @@ Meine Brille sieht alles, meine Augen das Besondere 👓💙
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:47.851979',
-                'updated_at' => '2024-09-29T16:06:47.851979'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:47.851979',
+            ],
+            [
                 'id' => 38,
                 'name' => 'Mika Steinbach',
                 'username' => 'schwimmriese_mika',
@@ -767,9 +767,9 @@ Mein Stil? So alternativ wie Chlorwasser 🤘',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:48.038870',
-                'updated_at' => '2024-09-29T16:06:48.038870'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:48.038870',
+            ],
+            [
                 'id' => 39,
                 'name' => 'Malte Heinemann',
                 'username' => 'philosopholt',
@@ -786,9 +786,9 @@ Mein Stil? So alternativ wie Chlorwasser 🤘',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:48.224012',
-                'updated_at' => '2024-09-29T16:06:48.224012'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:48.224012',
+            ],
+            [
                 'id' => 40,
                 'name' => 'Fabian Goldstein',
                 'username' => 'frageriese',
@@ -805,9 +805,9 @@ Mein Stil? So alternativ wie Chlorwasser 🤘',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:48.410084',
-                'updated_at' => '2024-09-29T16:06:48.410084'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:48.410084',
+            ],
+            [
                 'id' => 41,
                 'name' => 'Jannes Fiedler',
                 'username' => 'tennismode_jannes',
@@ -824,9 +824,9 @@ Mein Stil? So alternativ wie Chlorwasser 🤘',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:48.600141',
-                'updated_at' => '2024-09-29T16:06:48.600141'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:48.600141',
+            ],
+            [
                 'id' => 42,
                 'name' => 'Arian Köhler',
                 'username' => 'zockerarian',
@@ -843,9 +843,9 @@ Mein Stil? So alternativ wie Chlorwasser 🤘',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:48.787004',
-                'updated_at' => '2024-09-29T16:06:48.787004'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:48.787004',
+            ],
+            [
                 'id' => 43,
                 'name' => 'Lian Engel',
                 'username' => 'weltsprachengel',
@@ -865,9 +865,9 @@ Wenn ich nicht reise, plane ich meine nächste Reise! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:48.974401',
-                'updated_at' => '2024-09-29T16:06:48.974401'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:48.974401',
+            ],
+            [
                 'id' => 44,
                 'name' => 'Simon Reiter',
                 'username' => 'fragefuchs_simon',
@@ -884,9 +884,9 @@ Wenn ich nicht reise, plane ich meine nächste Reise! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:49.159471',
-                'updated_at' => '2024-09-29T16:06:49.159471'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:49.159471',
+            ],
+            [
                 'id' => 45,
                 'name' => 'Jasper Winkler',
                 'username' => 'wanderkorb_jasper',
@@ -906,9 +906,9 @@ Let\'s explore together! 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:49.349243',
-                'updated_at' => '2024-09-29T16:06:49.349243'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:49.349243',
+            ],
+            [
                 'id' => 46,
                 'name' => 'Levi Schumacher',
                 'username' => 'zornfussballkoenig',
@@ -925,9 +925,9 @@ Let\'s explore together! 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:49.535300',
-                'updated_at' => '2024-09-29T16:06:49.535300'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:49.535300',
+            ],
+            [
                 'id' => 47,
                 'name' => 'Finn Holzmann',
                 'username' => 'schwimmfotograf',
@@ -944,9 +944,9 @@ Let\'s explore together! 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:49.721466',
-                'updated_at' => '2024-09-29T16:06:49.721466'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:49.721466',
+            ],
+            [
                 'id' => 48,
                 'name' => 'Liam Schuster',
                 'username' => 'korbjagdriese',
@@ -966,9 +966,9 @@ Hobbyfotograf 📸',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:49.906605',
-                'updated_at' => '2024-09-29T16:06:49.906605'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:49.906605',
+            ],
+            [
                 'id' => 49,
                 'name' => 'Milan Seidel',
                 'username' => 'fitnesszorn',
@@ -985,9 +985,9 @@ Hobbyfotograf 📸',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:50.090286',
-                'updated_at' => '2024-09-29T16:06:50.090286'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:50.090286',
+            ],
+            [
                 'id' => 50,
                 'name' => 'Tammo Petersen',
                 'username' => 'wandersmash',
@@ -1007,9 +1007,9 @@ Folgt mir für lustige Updates! 😂',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:50.273717',
-                'updated_at' => '2024-09-29T16:06:50.273717'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:50.273717',
+            ],
+            [
                 'id' => 51,
                 'name' => 'Niklas Hofstetter',
                 'username' => 'denkerprinz',
@@ -1029,9 +1029,9 @@ Keine Meinung ist auch eine Meinung 🤐
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:50.460121',
-                'updated_at' => '2024-09-29T16:06:50.460121'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:50.460121',
+            ],
+            [
                 'id' => 52,
                 'name' => 'Lasse Gündogan',
                 'username' => 'oekosmasher',
@@ -1051,9 +1051,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:50.649148',
-                'updated_at' => '2024-09-29T16:06:50.649148'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:50.649148',
+            ],
+            [
                 'id' => 53,
                 'name' => 'Liam Behrens',
                 'username' => 'modemeister_liam',
@@ -1070,9 +1070,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:50.835199',
-                'updated_at' => '2024-09-29T16:06:50.835199'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:50.835199',
+            ],
+            [
                 'id' => 54,
                 'name' => 'Emilian Vogel',
                 'username' => 'zorndenker',
@@ -1089,9 +1089,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:51.022166',
-                'updated_at' => '2024-09-29T16:06:51.022166'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:51.022166',
+            ],
+            [
                 'id' => 55,
                 'name' => 'Matteo Pfeifer',
                 'username' => 'zornpinsel',
@@ -1108,9 +1108,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:51.211874',
-                'updated_at' => '2024-09-29T16:06:51.211874'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:51.211874',
+            ],
+            [
                 'id' => 56,
                 'name' => 'Hendrik Rothenberg',
                 'username' => 'gamingriese',
@@ -1127,9 +1127,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:51.393037',
-                'updated_at' => '2024-09-29T16:06:51.393037'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:51.393037',
+            ],
+            [
                 'id' => 57,
                 'name' => 'Aaron Schönfeld',
                 'username' => 'literaturzorn',
@@ -1146,9 +1146,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:51.583655',
-                'updated_at' => '2024-09-29T16:06:51.583655'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:51.583655',
+            ],
+            [
                 'id' => 58,
                 'name' => 'Lino Wiesinger',
                 'username' => 'zornknipser',
@@ -1165,9 +1165,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:51.769665',
-                'updated_at' => '2024-09-29T16:06:51.769665'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:51.769665',
+            ],
+            [
                 'id' => 59,
                 'name' => 'Vincent Eberhardt',
                 'username' => 'gartenzocker',
@@ -1184,9 +1184,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:51.955370',
-                'updated_at' => '2024-09-29T16:06:51.955370'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:51.955370',
+            ],
+            [
                 'id' => 60,
                 'name' => 'Moritz Schindler',
                 'username' => 'fragezorn',
@@ -1203,9 +1203,9 @@ Lasst uns die Welt verbessern! 🌿',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:52.143075',
-                'updated_at' => '2024-09-29T16:06:52.143075'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:52.143075',
+            ],
+            [
                 'id' => 61,
                 'name' => 'Luca Hagenbach',
                 'username' => 'schwimmodist',
@@ -1224,9 +1224,9 @@ Alle anderen sind Landeier 🐣
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:52.331899',
-                'updated_at' => '2024-09-29T16:06:52.331899'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:52.331899',
+            ],
+            [
                 'id' => 62,
                 'name' => 'Samuel Brinkmann',
                 'username' => 'lesewut_sam',
@@ -1243,9 +1243,9 @@ Alle anderen sind Landeier 🐣
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:52.517019',
-                'updated_at' => '2024-09-29T16:06:52.517019'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:52.517019',
+            ],
+            [
                 'id' => 63,
                 'name' => 'Lenny Hoffmeister',
                 'username' => 'fitnesshoffie',
@@ -1262,9 +1262,9 @@ Alle anderen sind Landeier 🐣
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:52.701973',
-                'updated_at' => '2024-09-29T16:06:52.701973'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:52.701973',
+            ],
+            [
                 'id' => 64,
                 'name' => 'Kiran Baumgärtner',
                 'username' => 'sprachbuehne',
@@ -1283,9 +1283,9 @@ Wie sagt man \'Hallo\' in deiner Sprache? 🤔💬',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:52.886771',
-                'updated_at' => '2024-09-29T16:06:52.886771'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:52.886771',
+            ],
+            [
                 'id' => 65,
                 'name' => 'Tom Kirchner',
                 'username' => 'reiseknipser_tom',
@@ -1302,9 +1302,9 @@ Wie sagt man \'Hallo\' in deiner Sprache? 🤔💬',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:53.071830',
-                'updated_at' => '2024-09-29T16:06:53.071830'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:53.071830',
+            ],
+            [
                 'id' => 66,
                 'name' => 'Marius Altmann',
                 'username' => 'fitnessfrage',
@@ -1323,9 +1323,9 @@ Ich frage mich oft, ob ich was bewirken kann... 💭',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:53.261433',
-                'updated_at' => '2024-09-29T16:06:53.261433'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:53.261433',
+            ],
+            [
                 'id' => 67,
                 'name' => 'Lian Schäfer',
                 'username' => 'weltlaeufer',
@@ -1345,9 +1345,9 @@ Lebe, lache, laufe 💪😊
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:53.450905',
-                'updated_at' => '2024-09-29T16:06:53.450905'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:53.450905',
+            ],
+            [
                 'id' => 68,
                 'name' => 'Theo Bergmeister',
                 'username' => 'codemeister_theo',
@@ -1364,9 +1364,9 @@ Lebe, lache, laufe 💪😊
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:53.634175',
-                'updated_at' => '2024-09-29T16:06:53.634175'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:53.634175',
+            ],
+            [
                 'id' => 69,
                 'name' => 'Oskar Lindner',
                 'username' => 'klangkunstoskar',
@@ -1385,9 +1385,9 @@ Kreativität kennt keine Grenzen! 🌈✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:53.819348',
-                'updated_at' => '2024-09-29T16:06:53.819348'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:53.819348',
+            ],
+            [
                 'id' => 70,
                 'name' => 'Arne Berninger',
                 'username' => 'reisezornarne',
@@ -1404,9 +1404,9 @@ Kreativität kennt keine Grenzen! 🌈✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:54.004775',
-                'updated_at' => '2024-09-29T16:06:54.004775'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:54.004775',
+            ],
+            [
                 'id' => 71,
                 'name' => 'Finn Weigel',
                 'username' => 'fitnessfinn',
@@ -1423,9 +1423,9 @@ Kreativität kennt keine Grenzen! 🌈✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:54.187750',
-                'updated_at' => '2024-09-29T16:06:54.187750'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:54.187750',
+            ],
+            [
                 'id' => 72,
                 'name' => 'Liam Stadelmann',
                 'username' => 'philosophschwimmer',
@@ -1445,9 +1445,9 @@ Leben. Lernen. Lachen. 😊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:54.372169',
-                'updated_at' => '2024-09-29T16:06:54.372169'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:54.372169',
+            ],
+            [
                 'id' => 73,
                 'name' => 'Valentin Hauser',
                 'username' => 'buchzorn_val',
@@ -1464,9 +1464,9 @@ Leben. Lernen. Lachen. 😊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:54.556927',
-                'updated_at' => '2024-09-29T16:06:54.556927'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:54.556927',
+            ],
+            [
                 'id' => 74,
                 'name' => 'Timon Reinhardt',
                 'username' => 'tenniszorntimon',
@@ -1483,9 +1483,9 @@ Leben. Lernen. Lachen. 😊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:54.744753',
-                'updated_at' => '2024-09-29T16:06:54.744753'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:54.744753',
+            ],
+            [
                 'id' => 75,
                 'name' => 'Erik Weidenbach',
                 'username' => 'oekoerik',
@@ -1502,9 +1502,9 @@ Leben. Lernen. Lachen. 😊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:54.934583',
-                'updated_at' => '2024-09-29T16:06:54.934583'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:54.934583',
+            ],
+            [
                 'id' => 76,
                 'name' => 'Jonne Drechsler',
                 'username' => 'gartenkoch',
@@ -1521,9 +1521,9 @@ Leben. Lernen. Lachen. 😊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:55.124893',
-                'updated_at' => '2024-09-29T16:06:55.124893'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:55.124893',
+            ],
+            [
                 'id' => 77,
                 'name' => 'Janosch Grabowski',
                 'username' => 'zornzocker',
@@ -1540,9 +1540,9 @@ Leben. Lernen. Lachen. 😊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:55.312409',
-                'updated_at' => '2024-09-29T16:06:55.312409'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:55.312409',
+            ],
+            [
                 'id' => 78,
                 'name' => 'Carl Seidenberg',
                 'username' => 'kunstschlaeger',
@@ -1559,9 +1559,9 @@ Leben. Lernen. Lachen. 😊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:55.502973',
-                'updated_at' => '2024-09-29T16:06:55.502973'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:55.502973',
+            ],
+            [
                 'id' => 79,
                 'name' => 'Jannis Eichinger',
                 'username' => 'reisewitzbold',
@@ -1581,9 +1581,9 @@ Motto: Das Leben ist zu kurz für langweiliges Haar! 💙',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:55.688428',
-                'updated_at' => '2024-09-29T16:06:55.688428'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:55.688428',
+            ],
+            [
                 'id' => 80,
                 'name' => 'Elias Weidmann',
                 'username' => 'sprachzocker',
@@ -1602,9 +1602,9 @@ Does anyone know how to get rid of acne? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:55.873398',
-                'updated_at' => '2024-09-29T16:06:55.873398'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:55.873398',
+            ],
+            [
                 'id' => 81,
                 'name' => 'Levi Heidrich',
                 'username' => 'wutgaertner',
@@ -1621,9 +1621,9 @@ Does anyone know how to get rid of acne? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:56.058757',
-                'updated_at' => '2024-09-29T16:06:56.058757'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:56.058757',
+            ],
+            [
                 'id' => 82,
                 'name' => 'Lasse Hofmeister',
                 'username' => 'lichtlasse',
@@ -1640,9 +1640,9 @@ Does anyone know how to get rid of acne? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:56.244298',
-                'updated_at' => '2024-09-29T16:06:56.244298'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:56.244298',
+            ],
+            [
                 'id' => 83,
                 'name' => 'Jaron Wiegmann',
                 'username' => 'wissenschaftzorni',
@@ -1659,9 +1659,9 @@ Does anyone know how to get rid of acne? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:56.429653',
-                'updated_at' => '2024-09-29T16:06:56.429653'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:56.429653',
+            ],
+            [
                 'id' => 84,
                 'name' => 'Jaro Spiegel',
                 'username' => 'filmzorn',
@@ -1679,9 +1679,9 @@ Does anyone know how to get rid of acne? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:56.614089',
-                'updated_at' => '2024-09-29T16:06:56.614089'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:56.614089',
+            ],
+            [
                 'id' => 85,
                 'name' => 'Jaro Weinberger',
                 'username' => 'kunstjaro',
@@ -1700,9 +1700,9 @@ Immer offen für neue Perspektiven 👀✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:56.797474',
-                'updated_at' => '2024-09-29T16:06:56.797474'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:56.797474',
+            ],
+            [
                 'id' => 86,
                 'name' => 'Thorben Krause',
                 'username' => 'zornzocker_thor',
@@ -1722,9 +1722,9 @@ Twitch: lucagamer2k8',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:56.986565',
-                'updated_at' => '2024-09-29T16:06:56.986565'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:56.986565',
+            ],
+            [
                 'id' => 87,
                 'name' => 'Liam Kuhlmann',
                 'username' => 'schwimmreporter',
@@ -1741,9 +1741,9 @@ Twitch: lucagamer2k8',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:57.175302',
-                'updated_at' => '2024-09-29T16:06:57.175302'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:57.175302',
+            ],
+            [
                 'id' => 88,
                 'name' => 'Kilian Bachmeier',
                 'username' => 'zornfotograaf',
@@ -1760,9 +1760,9 @@ Twitch: lucagamer2k8',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:57.359435',
-                'updated_at' => '2024-09-29T16:06:57.359435'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:57.359435',
+            ],
+            [
                 'id' => 89,
                 'name' => 'Mika Schreiber',
                 'username' => 'theatergamer_mika',
@@ -1782,9 +1782,9 @@ Brille = +10 Intelligenz 🤓',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:57.547709',
-                'updated_at' => '2024-09-29T16:06:57.547709'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:57.547709',
+            ],
+            [
                 'id' => 90,
                 'name' => 'Yannik Baumgartner',
                 'username' => 'philosophzocker',
@@ -1801,9 +1801,9 @@ Brille = +10 Intelligenz 🤓',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:57.735787',
-                'updated_at' => '2024-09-29T16:06:57.735787'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:57.735787',
+            ],
+            [
                 'id' => 91,
                 'name' => 'Liam Kowalski',
                 'username' => 'reisegigant',
@@ -1823,9 +1823,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌄',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:57.923008',
-                'updated_at' => '2024-09-29T16:06:57.923008'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:57.923008',
+            ],
+            [
                 'id' => 92,
                 'name' => 'Levi Preuß',
                 'username' => 'kunstkritzel',
@@ -1842,9 +1842,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌄',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:58.109813',
-                'updated_at' => '2024-09-29T16:06:58.110813'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:58.110813',
+            ],
+            [
                 'id' => 93,
                 'name' => 'Emre Özdemir',
                 'username' => 'codemre',
@@ -1861,9 +1861,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌄',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:58.296053',
-                'updated_at' => '2024-09-29T16:06:58.296053'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:58.296053',
+            ],
+            [
                 'id' => 94,
                 'name' => 'Enno Holzapfel',
                 'username' => 'zornigerkorbjäger',
@@ -1882,9 +1882,9 @@ Deine Meinung? Wahrscheinlich falsch. 💁‍♂️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:58.482300',
-                'updated_at' => '2024-09-29T16:06:58.482300'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:58.482300',
+            ],
+            [
                 'id' => 95,
                 'name' => 'Elias Bergmann',
                 'username' => 'reiseriese_elias',
@@ -1901,9 +1901,9 @@ Deine Meinung? Wahrscheinlich falsch. 💁‍♂️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:58.670295',
-                'updated_at' => '2024-09-29T16:06:58.670295'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:58.670295',
+            ],
+            [
                 'id' => 96,
                 'name' => 'Jona Freitag',
                 'username' => 'technoglott',
@@ -1923,9 +1923,9 @@ Kindness is my superpower 💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:58.856868',
-                'updated_at' => '2024-09-29T16:06:58.856868'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:58.856868',
+            ],
+            [
                 'id' => 97,
                 'name' => 'Lukas Eichstädt',
                 'username' => 'theaterlichtfaenger',
@@ -1942,9 +1942,9 @@ Kindness is my superpower 💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:59.041218',
-                'updated_at' => '2024-09-29T16:06:59.041218'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:59.041218',
+            ],
+            [
                 'id' => 98,
                 'name' => 'Levi Eichstädt',
                 'username' => 'denkerlevi',
@@ -1962,9 +1962,9 @@ Kindness is my superpower 💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:59.229008',
-                'updated_at' => '2024-09-29T16:06:59.229008'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:59.229008',
+            ],
+            [
                 'id' => 99,
                 'name' => 'Levi Westermann',
                 'username' => 'reisezornlevi',
@@ -1981,9 +1981,9 @@ Kindness is my superpower 💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:59.419277',
-                'updated_at' => '2024-09-29T16:06:59.419277'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:59.419277',
+            ],
+            [
                 'id' => 100,
                 'name' => 'Mats Hellwig',
                 'username' => 'schwimmoder',
@@ -2000,9 +2000,9 @@ Kindness is my superpower 💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:59.606984',
-                'updated_at' => '2024-09-29T16:06:59.606984'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:59.606984',
+            ],
+            [
                 'id' => 101,
                 'name' => 'Liam Gärtner',
                 'username' => 'kunstgigantliam',
@@ -2019,9 +2019,9 @@ Kindness is my superpower 💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:59.796377',
-                'updated_at' => '2024-09-29T16:06:59.796377'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:59.796377',
+            ],
+            [
                 'id' => 102,
                 'name' => 'Linus Albrecht',
                 'username' => 'kunstwut_linus',
@@ -2038,9 +2038,9 @@ Kindness is my superpower 💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:06:59.987122',
-                'updated_at' => '2024-09-29T16:06:59.987122'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:06:59.987122',
+            ],
+            [
                 'id' => 103,
                 'name' => 'Levi Rosenbaum',
                 'username' => 'zorntennis',
@@ -2060,9 +2060,9 @@ Nicht hier um Freunde zu finden 🚫',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:00.179952',
-                'updated_at' => '2024-09-29T16:07:00.179952'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:00.179952',
+            ],
+            [
                 'id' => 104,
                 'name' => 'Leon Schramm',
                 'username' => 'zornzocker_leon',
@@ -2079,9 +2079,9 @@ Nicht hier um Freunde zu finden 🚫',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:00.369668',
-                'updated_at' => '2024-09-29T16:07:00.369668'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:00.369668',
+            ],
+            [
                 'id' => 105,
                 'name' => 'Lasse Holzberger',
                 'username' => 'zorncoderlasse',
@@ -2100,9 +2100,9 @@ Don\'t like it? Don\'t follow 🙄
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:00.561328',
-                'updated_at' => '2024-09-29T16:07:00.561328'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:00.561328',
+            ],
+            [
                 'id' => 106,
                 'name' => 'Jonte Zimmerer',
                 'username' => 'freiwilligergigant',
@@ -2119,9 +2119,9 @@ Don\'t like it? Don\'t follow 🙄
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:00.751550',
-                'updated_at' => '2024-09-29T16:07:00.751550'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:00.751550',
+            ],
+            [
                 'id' => 107,
                 'name' => 'Jakob Eisenberg',
                 'username' => 'wissenswolf',
@@ -2138,9 +2138,9 @@ Don\'t like it? Don\'t follow 🙄
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:00.937384',
-                'updated_at' => '2024-09-29T16:07:00.937384'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:00.937384',
+            ],
+            [
                 'id' => 108,
                 'name' => 'Jannis Eberle',
                 'username' => 'kochkoenig_jannis',
@@ -2160,9 +2160,9 @@ Immer offen für neue Rezepte und Gespräche! 🤔💬
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:01.123443',
-                'updated_at' => '2024-09-29T16:07:01.123443'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:01.123443',
+            ],
+            [
                 'id' => 109,
                 'name' => 'Lias Henning',
                 'username' => 'fitnessfuchs_lias',
@@ -2182,9 +2182,9 @@ Lasst uns über Sport diskutieren... oder streiten! 😤😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:01.311644',
-                'updated_at' => '2024-09-29T16:07:01.311644'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:01.311644',
+            ],
+            [
                 'id' => 110,
                 'name' => 'Elias Vogelmann',
                 'username' => 'kochzorn_elias',
@@ -2201,9 +2201,9 @@ Lasst uns über Sport diskutieren... oder streiten! 😤😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:01.500001',
-                'updated_at' => '2024-09-29T16:07:01.500001'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:01.500001',
+            ],
+            [
                 'id' => 111,
                 'name' => 'Noah Pfeffer',
                 'username' => 'schwimmodist',
@@ -2223,9 +2223,9 @@ Fragen? Schieß los! 🤔💬
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:01.686678',
-                'updated_at' => '2024-09-29T16:07:01.686678'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:01.686678',
+            ],
+            [
                 'id' => 112,
                 'name' => 'Phil Rosenberg',
                 'username' => 'kunstmodereus',
@@ -2245,9 +2245,9 @@ Fragen? Schieß los! 🤔💬
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:01.876609',
-                'updated_at' => '2024-09-29T16:07:01.876609'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:01.876609',
+            ],
+            [
                 'id' => 113,
                 'name' => 'Finn Auerswald',
                 'username' => 'gamergruen',
@@ -2264,9 +2264,9 @@ Fragen? Schieß los! 🤔💬
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:02.064997',
-                'updated_at' => '2024-09-29T16:07:02.065997'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:02.065997',
+            ],
+            [
                 'id' => 114,
                 'name' => 'Pepe Klingenberg',
                 'username' => 'sprachgaertner',
@@ -2286,9 +2286,9 @@ Ich und meine Pflanzen gegen den Rest der Welt 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:02.253616',
-                'updated_at' => '2024-09-29T16:07:02.253616'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:02.253616',
+            ],
+            [
                 'id' => 115,
                 'name' => 'Mailo Kornfeld',
                 'username' => 'gartenkicker_mailo',
@@ -2305,9 +2305,9 @@ Ich und meine Pflanzen gegen den Rest der Welt 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:02.437725',
-                'updated_at' => '2024-09-29T16:07:02.437725'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:02.437725',
+            ],
+            [
                 'id' => 116,
                 'name' => 'Milo Rohrbach',
                 'username' => 'kochgamer_milo',
@@ -2327,9 +2327,9 @@ Was kocht ihr gerade? 🍳🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:02.623585',
-                'updated_at' => '2024-09-29T16:07:02.623585'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:02.623585',
+            ],
+            [
                 'id' => 117,
                 'name' => 'Joel Berghaus',
                 'username' => 'reisejoule',
@@ -2349,9 +2349,9 @@ Leben. Lieben. Reisen. 🧳❤️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:02.809295',
-                'updated_at' => '2024-09-29T16:07:02.809295'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:02.809295',
+            ],
+            [
                 'id' => 118,
                 'name' => 'Lennart Blumenthal',
                 'username' => 'reisezorn_lenni',
@@ -2368,9 +2368,9 @@ Leben. Lieben. Reisen. 🧳❤️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:02.995557',
-                'updated_at' => '2024-09-29T16:07:02.995557'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:02.995557',
+            ],
+            [
                 'id' => 119,
                 'name' => 'Jannis Brinkhaus',
                 'username' => 'umweltknipser',
@@ -2387,9 +2387,9 @@ Leben. Lieben. Reisen. 🧳❤️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:03.180610',
-                'updated_at' => '2024-09-29T16:07:03.180610'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:03.180610',
+            ],
+            [
                 'id' => 120,
                 'name' => 'Henri Goldschmidt',
                 'username' => 'zornwanderer',
@@ -2406,9 +2406,9 @@ Leben. Lieben. Reisen. 🧳❤️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:03.364514',
-                'updated_at' => '2024-09-29T16:07:03.364514'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:03.364514',
+            ],
+            [
                 'id' => 121,
                 'name' => 'Jaro Rosenberg',
                 'username' => 'techzorntennis',
@@ -2425,9 +2425,9 @@ Leben. Lieben. Reisen. 🧳❤️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:03.550546',
-                'updated_at' => '2024-09-29T16:07:03.550546'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:03.550546',
+            ],
+            [
                 'id' => 122,
                 'name' => 'Matteo Ziegler',
                 'username' => 'theaterzorn',
@@ -2444,9 +2444,9 @@ Leben. Lieben. Reisen. 🧳❤️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:03.735154',
-                'updated_at' => '2024-09-29T16:07:03.735154'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:03.735154',
+            ],
+            [
                 'id' => 123,
                 'name' => 'Lasse Rothenberg',
                 'username' => 'reisekompass_lasse',
@@ -2466,9 +2466,9 @@ Immer offen für neue Abenteuer! 🗺️💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:03.921261',
-                'updated_at' => '2024-09-29T16:07:03.921261'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:03.921261',
+            ],
+            [
                 'id' => 124,
                 'name' => 'Lio Reichenbach',
                 'username' => 'modereiselio',
@@ -2485,9 +2485,9 @@ Immer offen für neue Abenteuer! 🗺️💖',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:04.111227',
-                'updated_at' => '2024-09-29T16:07:04.111227'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:04.111227',
+            ],
+            [
                 'id' => 125,
                 'name' => 'Luca Eichinger',
                 'username' => 'wanderhistoriker',
@@ -2506,9 +2506,9 @@ Immer auf der Suche nach neuen Abenteuern! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:04.297904',
-                'updated_at' => '2024-09-29T16:07:04.297904'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:04.297904',
+            ],
+            [
                 'id' => 126,
                 'name' => 'Lennox Rottmann',
                 'username' => 'fragezornriese',
@@ -2525,9 +2525,9 @@ Immer auf der Suche nach neuen Abenteuern! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:04.481851',
-                'updated_at' => '2024-09-29T16:07:04.481851'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:04.481851',
+            ],
+            [
                 'id' => 127,
                 'name' => 'Luca Bergmann',
                 'username' => 'techzornluca',
@@ -2544,9 +2544,9 @@ Immer auf der Suche nach neuen Abenteuern! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:04.666348',
-                'updated_at' => '2024-09-29T16:07:04.666348'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:04.666348',
+            ],
+            [
                 'id' => 128,
                 'name' => 'Lorik Sternberg',
                 'username' => 'modewissenschaftler',
@@ -2566,9 +2566,9 @@ Immer auf der Suche nach neuen Abenteuern! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:04.850488',
-                'updated_at' => '2024-09-29T16:07:04.850488'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:04.850488',
+            ],
+            [
                 'id' => 129,
                 'name' => 'Luca Bergstein',
                 'username' => 'fitnessfuchs_luca',
@@ -2585,9 +2585,9 @@ Immer auf der Suche nach neuen Abenteuern! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:05.034736',
-                'updated_at' => '2024-09-29T16:07:05.034736'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:05.034736',
+            ],
+            [
                 'id' => 130,
                 'name' => 'Levi Schlosser',
                 'username' => 'techzornlevi',
@@ -2604,9 +2604,9 @@ Immer auf der Suche nach neuen Abenteuern! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:05.220483',
-                'updated_at' => '2024-09-29T16:07:05.220483'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:05.220483',
+            ],
+            [
                 'id' => 131,
                 'name' => 'Noel Heidenreich',
                 'username' => 'zornigergamer',
@@ -2623,9 +2623,9 @@ Immer auf der Suche nach neuen Abenteuern! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:05.407464',
-                'updated_at' => '2024-09-29T16:07:05.407464'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:05.407464',
+            ],
+            [
                 'id' => 132,
                 'name' => 'Theo Bergheimer',
                 'username' => 'fragefitness_theo',
@@ -2644,9 +2644,9 @@ Was ist dein Lieblingsworkout? 🏃‍♂️🤸‍♂️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:05.598614',
-                'updated_at' => '2024-09-29T16:07:05.598614'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:05.598614',
+            ],
+            [
                 'id' => 133,
                 'name' => 'Carlo Rosenfeld',
                 'username' => 'sprachexpedition',
@@ -2663,9 +2663,9 @@ Was ist dein Lieblingsworkout? 🏃‍♂️🤸‍♂️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:05.786843',
-                'updated_at' => '2024-09-29T16:07:05.786843'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:05.786843',
+            ],
+            [
                 'id' => 134,
                 'name' => 'Neville Rottmann',
                 'username' => 'zornkicker',
@@ -2685,9 +2685,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:05.972008',
-                'updated_at' => '2024-09-29T16:07:05.972008'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:05.972008',
+            ],
+            [
                 'id' => 135,
                 'name' => 'Timo Henschel',
                 'username' => 'zornbasket',
@@ -2704,9 +2704,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:06.159791',
-                'updated_at' => '2024-09-29T16:07:06.159791'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:06.159791',
+            ],
+            [
                 'id' => 136,
                 'name' => 'Liam Gerhardt',
                 'username' => 'zornikoch',
@@ -2723,9 +2723,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:06.346747',
-                'updated_at' => '2024-09-29T16:07:06.346747'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:06.346747',
+            ],
+            [
                 'id' => 137,
                 'name' => 'Maxim Rosenberger',
                 'username' => 'zornfoto_max',
@@ -2742,9 +2742,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:06.531746',
-                'updated_at' => '2024-09-29T16:07:06.531746'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:06.531746',
+            ],
+            [
                 'id' => 138,
                 'name' => 'Taro Silberstein',
                 'username' => 'wanderriese_taro',
@@ -2761,9 +2761,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:06.718418',
-                'updated_at' => '2024-09-29T16:07:06.718418'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:06.718418',
+            ],
+            [
                 'id' => 139,
                 'name' => 'Liam Eisenberg',
                 'username' => 'modezeitreise',
@@ -2780,9 +2780,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:06.902127',
-                'updated_at' => '2024-09-29T16:07:06.902127'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:06.902127',
+            ],
+            [
                 'id' => 140,
                 'name' => 'Oskar Friedmann',
                 'username' => 'modepfote',
@@ -2799,9 +2799,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:07.085861',
-                'updated_at' => '2024-09-29T16:07:07.085861'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:07.085861',
+            ],
+            [
                 'id' => 141,
                 'name' => 'Kian Eberstein',
                 'username' => 'zornfragekian',
@@ -2818,9 +2818,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:07.269631',
-                'updated_at' => '2024-09-29T16:07:07.269631'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:07.269631',
+            ],
+            [
                 'id' => 142,
                 'name' => 'Lenny Weidner',
                 'username' => 'klangknipse',
@@ -2837,9 +2837,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:07.454159',
-                'updated_at' => '2024-09-29T16:07:07.454159'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:07.454159',
+            ],
+            [
                 'id' => 143,
                 'name' => 'Jannik Wegener',
                 'username' => 'zornlaeufer',
@@ -2856,9 +2856,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:07.637683',
-                'updated_at' => '2024-09-29T16:07:07.637683'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:07.637683',
+            ],
+            [
                 'id' => 144,
                 'name' => 'Felix Rosenzweig',
                 'username' => 'kunstslamreus',
@@ -2875,9 +2875,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:07.823719',
-                'updated_at' => '2024-09-29T16:07:07.823719'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:07.823719',
+            ],
+            [
                 'id' => 145,
                 'name' => 'Elia Weidinger',
                 'username' => 'kuechen_elia',
@@ -2894,9 +2894,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:08.008363',
-                'updated_at' => '2024-09-29T16:07:08.008363'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:08.008363',
+            ],
+            [
                 'id' => 146,
                 'name' => 'Timo Braunschweig',
                 'username' => 'geschichtenzorn',
@@ -2913,9 +2913,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:08.195083',
-                'updated_at' => '2024-09-29T16:07:08.195083'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:08.195083',
+            ],
+            [
                 'id' => 147,
                 'name' => 'Liam Kugel',
                 'username' => 'reisezornliam',
@@ -2932,9 +2932,9 @@ Lebensfroh & immer am Start! 🔥
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:08.384423',
-                'updated_at' => '2024-09-29T16:07:08.384423'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:08.384423',
+            ],
+            [
                 'id' => 148,
                 'name' => 'Nolan Eichinger',
                 'username' => 'reisenolan',
@@ -2954,9 +2954,9 @@ Nächstes Ziel: Tokio! 🗼✈️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:08.573369',
-                'updated_at' => '2024-09-29T16:07:08.573369'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:08.573369',
+            ],
+            [
                 'id' => 149,
                 'name' => 'Lasse Kirchberger',
                 'username' => 'tenniskoenig_lasse',
@@ -2977,9 +2977,9 @@ Mein Ego ist größer als mein Aufschlag 🚀
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:08.763120',
-                'updated_at' => '2024-09-29T16:07:08.763120'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:08.763120',
+            ],
+            [
                 'id' => 150,
                 'name' => 'Florian Hesse',
                 'username' => 'literaturkorb',
@@ -2999,9 +2999,9 @@ Mein Leben > Dein Feed 🤷‍♂️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:08.947677',
-                'updated_at' => '2024-09-29T16:07:08.947677'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:08.947677',
+            ],
+            [
                 'id' => 151,
                 'name' => 'Mia Sonntag',
                 'username' => 'sprachfitnessmia',
@@ -3018,9 +3018,9 @@ Mein Leben > Dein Feed 🤷‍♂️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:09.133174',
-                'updated_at' => '2024-09-29T16:07:09.133174'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:09.133174',
+            ],
+            [
                 'id' => 152,
                 'name' => 'Sophia Reuter',
                 'username' => 'fitnessfuchs_sophia',
@@ -3041,9 +3041,9 @@ Making gains & memories 📸✨
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:09.321957',
-                'updated_at' => '2024-09-29T16:07:09.321957'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:09.321957',
+            ],
+            [
                 'id' => 153,
                 'name' => 'Lina Eichinger',
                 'username' => 'zornikorbjaegerin',
@@ -3063,9 +3063,9 @@ Making gains & memories 📸✨
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:09.509506',
-                'updated_at' => '2024-09-29T16:07:09.509506'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:09.509506',
+            ],
+            [
                 'id' => 154,
                 'name' => 'Clara Eichenwald',
                 'username' => 'wanderpolitica',
@@ -3085,9 +3085,9 @@ Lasst uns die Welt ein Stückchen besser machen 💚',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:09.694919',
-                'updated_at' => '2024-09-29T16:07:09.694919'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:09.694919',
+            ],
+            [
                 'id' => 155,
                 'name' => 'Emma Bergfeld',
                 'username' => 'modewissenschaftsemma',
@@ -3107,9 +3107,9 @@ Immer auf der Suche nach dem perfekten Experiment ... und Outfit! 💁‍♀️�
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:09.880650',
-                'updated_at' => '2024-09-29T16:07:09.880650'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:09.880650',
+            ],
+            [
                 'id' => 156,
                 'name' => 'Zoe Brinkmann',
                 'username' => 'zornklangzoe',
@@ -3126,9 +3126,9 @@ Immer auf der Suche nach dem perfekten Experiment ... und Outfit! 💁‍♀️�
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:10.068794',
-                'updated_at' => '2024-09-29T16:07:10.068794'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:10.068794',
+            ],
+            [
                 'id' => 157,
                 'name' => 'Alina Keller',
                 'username' => 'aktivlese_alina',
@@ -3145,9 +3145,9 @@ Immer auf der Suche nach dem perfekten Experiment ... und Outfit! 💁‍♀️�
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:10.254259',
-                'updated_at' => '2024-09-29T16:07:10.254259'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:10.254259',
+            ],
+            [
                 'id' => 158,
                 'name' => 'Emilia Seidel',
                 'username' => 'zornkochfee',
@@ -3167,9 +3167,9 @@ Meine Rezepte > deine Meinung 🍳
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:10.445287',
-                'updated_at' => '2024-09-29T16:07:10.445287'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:10.445287',
+            ],
+            [
                 'id' => 159,
                 'name' => 'Nele Friedrichs',
                 'username' => 'zornkochfee',
@@ -3189,9 +3189,9 @@ Meine Rezepte > deine Meinung 🍳
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:10.634412',
-                'updated_at' => '2024-09-29T16:07:10.634412'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:10.634412',
+            ],
+            [
                 'id' => 160,
                 'name' => 'Leonie Hoffbauer',
                 'username' => 'literaturzicke',
@@ -3208,9 +3208,9 @@ Meine Rezepte > deine Meinung 🍳
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:10.820207',
-                'updated_at' => '2024-09-29T16:07:10.820207'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:10.820207',
+            ],
+            [
                 'id' => 161,
                 'name' => 'Emilia Steinmetz',
                 'username' => 'zornigebuchschwimmerin',
@@ -3227,9 +3227,9 @@ Meine Rezepte > deine Meinung 🍳
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:11.006037',
-                'updated_at' => '2024-09-29T16:07:11.006037'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:11.006037',
+            ],
+            [
                 'id' => 162,
                 'name' => 'Lara Falkenstein',
                 'username' => 'wandermodekind',
@@ -3248,9 +3248,9 @@ Selbstbewusst trotz Pickeln 💁‍♀️ #MeineReiseMeinStil',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:11.191026',
-                'updated_at' => '2024-09-29T16:07:11.191026'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:11.191026',
+            ],
+            [
                 'id' => 163,
                 'name' => 'Mila Eichinger',
                 'username' => 'techmode_mila',
@@ -3270,9 +3270,9 @@ Lacht gern & liebt das Leben! 😂🎉',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:11.375969',
-                'updated_at' => '2024-09-29T16:07:11.375969'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:11.375969',
+            ],
+            [
                 'id' => 164,
                 'name' => 'Ava Kornblum',
                 'username' => 'zorntennis_ava',
@@ -3289,9 +3289,9 @@ Lacht gern & liebt das Leben! 😂🎉',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:11.560657',
-                'updated_at' => '2024-09-29T16:07:11.560657'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:11.560657',
+            ],
+            [
                 'id' => 165,
                 'name' => 'Ida Weingärtner',
                 'username' => 'zornreiseidchen',
@@ -3311,9 +3311,9 @@ Lacht gern & liebt das Leben! 😂🎉',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:11.745334',
-                'updated_at' => '2024-09-29T16:07:11.745334'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:11.745334',
+            ],
+            [
                 'id' => 166,
                 'name' => 'Leni Bachmeier',
                 'username' => 'lenilichtblick',
@@ -3333,9 +3333,9 @@ Let\'s connect through visuals! 🤗',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:11.931379',
-                'updated_at' => '2024-09-29T16:07:11.931379'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:11.931379',
+            ],
+            [
                 'id' => 167,
                 'name' => 'Ella Bruckner',
                 'username' => 'fragekorbella',
@@ -3352,9 +3352,9 @@ Let\'s connect through visuals! 🤗',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:12.114923',
-                'updated_at' => '2024-09-29T16:07:12.114923'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:12.114923',
+            ],
+            [
                 'id' => 168,
                 'name' => 'Johanna Freiherr',
                 'username' => 'musikspassjoha',
@@ -3371,9 +3371,9 @@ Let\'s connect through visuals! 🤗',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:12.301205',
-                'updated_at' => '2024-09-29T16:07:12.301205'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:12.301205',
+            ],
+            [
                 'id' => 169,
                 'name' => 'Hanna Eichwald',
                 'username' => 'kochzauberhanna',
@@ -3390,9 +3390,9 @@ Let\'s connect through visuals! 🤗',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:12.486015',
-                'updated_at' => '2024-09-29T16:07:12.486015'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:12.486015',
+            ],
+            [
                 'id' => 170,
                 'name' => 'Nora Kasperzak',
                 'username' => 'codehelferin',
@@ -3409,9 +3409,9 @@ Let\'s connect through visuals! 🤗',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:12.674074',
-                'updated_at' => '2024-09-29T16:07:12.674074'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:12.674074',
+            ],
+            [
                 'id' => 171,
                 'name' => 'Amelie Bergstein',
                 'username' => 'modelaune_amelie',
@@ -3428,9 +3428,9 @@ Let\'s connect through visuals! 🤗',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:12.861371',
-                'updated_at' => '2024-09-29T16:07:12.861371'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:12.861371',
+            ],
+            [
                 'id' => 172,
                 'name' => 'Fiona Eisenhut',
                 'username' => 'zwerglaeuferin',
@@ -3449,9 +3449,9 @@ Wer will mitspielen? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:13.045100',
-                'updated_at' => '2024-09-29T16:07:13.045100'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:13.045100',
+            ],
+            [
                 'id' => 173,
                 'name' => 'Lina Schäffer',
                 'username' => 'tennislina_lustig',
@@ -3468,9 +3468,9 @@ Wer will mitspielen? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:13.230026',
-                'updated_at' => '2024-09-29T16:07:13.230026'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:13.230026',
+            ],
+            [
                 'id' => 174,
                 'name' => 'Pia Rodenkirchen',
                 'username' => 'reiseknipse_pia',
@@ -3487,9 +3487,9 @@ Wer will mitspielen? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:13.414460',
-                'updated_at' => '2024-09-29T16:07:13.414460'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:13.414460',
+            ],
+            [
                 'id' => 175,
                 'name' => 'Zoe Lindenberg',
                 'username' => 'modeace_zoe',
@@ -3509,9 +3509,9 @@ Spread love & laughter 😂❤️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:13.599392',
-                'updated_at' => '2024-09-29T16:07:13.599392'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:13.599392',
+            ],
+            [
                 'id' => 176,
                 'name' => 'Romy Brandstätter',
                 'username' => 'fragezornromy',
@@ -3528,9 +3528,9 @@ Spread love & laughter 😂❤️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:13.784519',
-                'updated_at' => '2024-09-29T16:07:13.784519'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:13.784519',
+            ],
+            [
                 'id' => 177,
                 'name' => 'Maja Kirschbaum',
                 'username' => 'fussballmajarun',
@@ -3549,9 +3549,9 @@ Motto: Ich bin ich, und das ist gut so! 💁‍♀️✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:13.970391',
-                'updated_at' => '2024-09-29T16:07:13.970391'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:13.970391',
+            ],
+            [
                 'id' => 178,
                 'name' => 'Zoe Grünbaum',
                 'username' => 'zornige_gartenelfe',
@@ -3571,9 +3571,9 @@ Fragend in die Zukunft, verachtend in die Vergangenheit 🤔💁‍♀️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:14.154614',
-                'updated_at' => '2024-09-29T16:07:14.154614'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:14.154614',
+            ],
+            [
                 'id' => 179,
                 'name' => 'Frieda Kupferberg',
                 'username' => 'fragebuehne',
@@ -3590,9 +3590,9 @@ Fragend in die Zukunft, verachtend in die Vergangenheit 🤔💁‍♀️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:14.340118',
-                'updated_at' => '2024-09-29T16:07:14.340118'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:14.340118',
+            ],
+            [
                 'id' => 180,
                 'name' => 'Mara Hirschfeld',
                 'username' => 'sprachenmara',
@@ -3612,9 +3612,9 @@ Fragend in die Zukunft, verachtend in die Vergangenheit 🤔💁‍♀️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:14.523684',
-                'updated_at' => '2024-09-29T16:07:14.524689'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:14.524689',
+            ],
+            [
                 'id' => 181,
                 'name' => 'Lina Goldberg',
                 'username' => 'techmodelina',
@@ -3634,9 +3634,9 @@ Keine Zeit für Bullshit 🙅‍♀️ | Humor ist mein Schutzschild 🛡️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:14.712539',
-                'updated_at' => '2024-09-29T16:07:14.712539'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:14.712539',
+            ],
+            [
                 'id' => 182,
                 'name' => 'Lena Fahrenbach',
                 'username' => 'kunstwanderlena',
@@ -3653,9 +3653,9 @@ Keine Zeit für Bullshit 🙅‍♀️ | Humor ist mein Schutzschild 🛡️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:14.901535',
-                'updated_at' => '2024-09-29T16:07:14.901535'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:14.901535',
+            ],
+            [
                 'id' => 183,
                 'name' => 'Lotte Eichhorn',
                 'username' => 'lotteaktiva',
@@ -3675,9 +3675,9 @@ Spread love, not hate 💖
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:15.087232',
-                'updated_at' => '2024-09-29T16:07:15.087232'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:15.087232',
+            ],
+            [
                 'id' => 184,
                 'name' => 'Lena Goldschmidt',
                 'username' => 'modefilmlena',
@@ -3697,9 +3697,9 @@ Living my best life, one outfit at a time 📸
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:15.271185',
-                'updated_at' => '2024-09-29T16:07:15.271185'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:15.271185',
+            ],
+            [
                 'id' => 185,
                 'name' => 'Enya Wiesemann',
                 'username' => 'nachrichtenenyi',
@@ -3716,9 +3716,9 @@ Living my best life, one outfit at a time 📸
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:15.455905',
-                'updated_at' => '2024-09-29T16:07:15.455905'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:15.455905',
+            ],
+            [
                 'id' => 186,
                 'name' => 'Greta Schönbauer',
                 'username' => 'umweltwissenschaftzoe',
@@ -3738,9 +3738,9 @@ Living my best life, one outfit at a time 📸
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:15.641299',
-                'updated_at' => '2024-09-29T16:07:15.641299'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:15.641299',
+            ],
+            [
                 'id' => 187,
                 'name' => 'Luna Eberhardt',
                 'username' => 'modelunatica',
@@ -3757,9 +3757,9 @@ Living my best life, one outfit at a time 📸
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:15.825532',
-                'updated_at' => '2024-09-29T16:07:15.825532'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:15.825532',
+            ],
+            [
                 'id' => 188,
                 'name' => 'Maja Eichenberg',
                 'username' => 'kochgaertnerin',
@@ -3779,9 +3779,9 @@ Kochen = Liebe auf dem Teller ❤️🍽️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:16.011242',
-                'updated_at' => '2024-09-29T16:07:16.011242'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:16.011242',
+            ],
+            [
                 'id' => 189,
                 'name' => 'Mira Eichberger',
                 'username' => 'zornkickerin',
@@ -3798,9 +3798,9 @@ Kochen = Liebe auf dem Teller ❤️🍽️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:16.197048',
-                'updated_at' => '2024-09-29T16:07:16.197048'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:16.197048',
+            ],
+            [
                 'id' => 190,
                 'name' => 'Clara Dittrich',
                 'username' => 'pixelclara',
@@ -3819,9 +3819,9 @@ Was inspiriert dich? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:16.381811',
-                'updated_at' => '2024-09-29T16:07:16.381811'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:16.381811',
+            ],
+            [
                 'id' => 191,
                 'name' => 'Matilda Helgig',
                 'username' => 'aktivlottin',
@@ -3840,9 +3840,9 @@ Zusammen können wir die Welt verändern! ✊🏼🌈',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:16.567645',
-                'updated_at' => '2024-09-29T16:07:16.567645'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:16.567645',
+            ],
+            [
                 'id' => 192,
                 'name' => 'Pia Koppelmann',
                 'username' => 'schwimmspasspia',
@@ -3859,9 +3859,9 @@ Zusammen können wir die Welt verändern! ✊🏼🌈',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:16.752731',
-                'updated_at' => '2024-09-29T16:07:16.752731'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:16.752731',
+            ],
+            [
                 'id' => 193,
                 'name' => 'Lina Wiesmann',
                 'username' => 'reiseschwimmerlina',
@@ -3878,9 +3878,9 @@ Zusammen können wir die Welt verändern! ✊🏼🌈',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:16.940697',
-                'updated_at' => '2024-09-29T16:07:16.940697'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:16.940697',
+            ],
+            [
                 'id' => 194,
                 'name' => 'Mira Feuerstein',
                 'username' => 'gamingmira',
@@ -3900,9 +3900,9 @@ Sei immer du selbst 🦋',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:17.125652',
-                'updated_at' => '2024-09-29T16:07:17.125652'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:17.125652',
+            ],
+            [
                 'id' => 195,
                 'name' => 'Merle Rosenheim',
                 'username' => 'modengaertnerin',
@@ -3921,9 +3921,9 @@ Was ist dein Lieblingstrend? 👗💭',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:17.309871',
-                'updated_at' => '2024-09-29T16:07:17.309871'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:17.309871',
+            ],
+            [
                 'id' => 196,
                 'name' => 'Lina Gerstenberg',
                 'username' => 'zornfilmmode',
@@ -3940,9 +3940,9 @@ Was ist dein Lieblingstrend? 👗💭',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:17.494170',
-                'updated_at' => '2024-09-29T16:07:17.494170'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:17.494170',
+            ],
+            [
                 'id' => 197,
                 'name' => 'Emma Rothschild',
                 'username' => 'schwimmtennis_emma',
@@ -3962,9 +3962,9 @@ Just being me 🦋',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:17.679020',
-                'updated_at' => '2024-09-29T16:07:17.679020'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:17.679020',
+            ],
+            [
                 'id' => 198,
                 'name' => 'Yara Kleinschmidt',
                 'username' => 'aktivschwimmyara',
@@ -3981,9 +3981,9 @@ Just being me 🦋',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:17.864389',
-                'updated_at' => '2024-09-29T16:07:17.864389'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:17.864389',
+            ],
+            [
                 'id' => 199,
                 'name' => 'Mira Kupferschmidt',
                 'username' => 'zornigecoderin',
@@ -4000,9 +4000,9 @@ Just being me 🦋',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:18.051068',
-                'updated_at' => '2024-09-29T16:07:18.051068'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:18.051068',
+            ],
+            [
                 'id' => 200,
                 'name' => 'Hailey Kronenberg',
                 'username' => 'gartenaktivistin',
@@ -4021,9 +4021,9 @@ Lass uns die Welt begrünen & die Politik aufmischen! 💚🗽',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:18.234777',
-                'updated_at' => '2024-09-29T16:07:18.234777'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:18.234777',
+            ],
+            [
                 'id' => 201,
                 'name' => 'Alva Reinhardt',
                 'username' => 'modezorn_alva',
@@ -4040,9 +4040,9 @@ Lass uns die Welt begrünen & die Politik aufmischen! 💚🗽',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:18.420878',
-                'updated_at' => '2024-09-29T16:07:18.420878'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:18.420878',
+            ],
+            [
                 'id' => 202,
                 'name' => 'Ivy Rosenkranz',
                 'username' => 'filmtierliebe',
@@ -4061,9 +4061,9 @@ Wütend auf Ungerechtigkeit, begeistert von der Schönheit der Welt 🌍',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:18.608048',
-                'updated_at' => '2024-09-29T16:07:18.608048'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:18.608048',
+            ],
+            [
                 'id' => 203,
                 'name' => 'Lia Bergstedt',
                 'username' => 'codekueche_lia',
@@ -4080,9 +4080,9 @@ Wütend auf Ungerechtigkeit, begeistert von der Schönheit der Welt 🌍',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:18.795573',
-                'updated_at' => '2024-09-29T16:07:18.795573'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:18.795573',
+            ],
+            [
                 'id' => 204,
                 'name' => 'Lotta Hofstetter',
                 'username' => 'fragengamerin',
@@ -4102,9 +4102,9 @@ Wütend auf Ungerechtigkeit, begeistert von der Schönheit der Welt 🌍',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:18.983200',
-                'updated_at' => '2024-09-29T16:07:18.983200'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:18.983200',
+            ],
+            [
                 'id' => 205,
                 'name' => 'Frieda Blumenthal',
                 'username' => 'zornumweltschwimmerin',
@@ -4121,9 +4121,9 @@ Wütend auf Ungerechtigkeit, begeistert von der Schönheit der Welt 🌍',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:19.173546',
-                'updated_at' => '2024-09-29T16:07:19.173546'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:19.173546',
+            ],
+            [
                 'id' => 206,
                 'name' => 'Charlotte Eisenmann',
                 'username' => 'philosophotte',
@@ -4141,9 +4141,9 @@ Immer auf der Suche nach tiefgründigen Gesprächen und sinnvollen Projekten �
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:19.362493',
-                'updated_at' => '2024-09-29T16:07:19.362493'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:19.362493',
+            ],
+            [
                 'id' => 207,
                 'name' => 'Leonie Rosenbaum',
                 'username' => 'filmzeitreise',
@@ -4160,9 +4160,9 @@ Immer auf der Suche nach tiefgründigen Gesprächen und sinnvollen Projekten �
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:19.547714',
-                'updated_at' => '2024-09-29T16:07:19.547714'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:19.547714',
+            ],
+            [
                 'id' => 208,
                 'name' => 'Lena Friedlander',
                 'username' => 'tierheldin_lena',
@@ -4179,9 +4179,9 @@ Immer auf der Suche nach tiefgründigen Gesprächen und sinnvollen Projekten �
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:19.733548',
-                'updated_at' => '2024-09-29T16:07:19.733548'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:19.733548',
+            ],
+            [
                 'id' => 209,
                 'name' => 'Mira Schreiber',
                 'username' => 'fragemiranatur',
@@ -4198,9 +4198,9 @@ Immer auf der Suche nach tiefgründigen Gesprächen und sinnvollen Projekten �
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:19.917378',
-                'updated_at' => '2024-09-29T16:07:19.917378'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:19.917378',
+            ],
+            [
                 'id' => 210,
                 'name' => 'Marlene Eichstetter',
                 'username' => 'techpolitikzorn',
@@ -4220,9 +4220,9 @@ Eleganz trifft Aktivismus 💄✊
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:20.103611',
-                'updated_at' => '2024-09-29T16:07:20.103611'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:20.103611',
+            ],
+            [
                 'id' => 211,
                 'name' => 'Liv Silberbach',
                 'username' => 'pixelpoetinliv',
@@ -4242,9 +4242,9 @@ Love, laugh, create 💖✨
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:20.288504',
-                'updated_at' => '2024-09-29T16:07:20.288504'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:20.288504',
+            ],
+            [
                 'id' => 212,
                 'name' => 'Lilly Bergkamp',
                 'username' => 'codekochlilly',
@@ -4264,9 +4264,9 @@ Living life one bug fix & cupcake at a time! 🐞🧁
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:20.474161',
-                'updated_at' => '2024-09-29T16:07:20.474161'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:20.474161',
+            ],
+            [
                 'id' => 213,
                 'name' => 'Lia Rothenburg',
                 'username' => 'umweltfitlia',
@@ -4286,9 +4286,9 @@ Self-care is my superpower 💖
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:20.659433',
-                'updated_at' => '2024-09-29T16:07:20.659433'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:20.659433',
+            ],
+            [
                 'id' => 214,
                 'name' => 'Nele Hohenstein',
                 'username' => 'nelefitmuse',
@@ -4308,9 +4308,9 @@ Self-care is my superpower 💖
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:20.844452',
-                'updated_at' => '2024-09-29T16:07:20.844452'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:20.844452',
+            ],
+            [
                 'id' => 215,
                 'name' => 'Lea Hildebrandt',
                 'username' => 'fitnessfee_lea',
@@ -4327,9 +4327,9 @@ Self-care is my superpower 💖
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:21.032831',
-                'updated_at' => '2024-09-29T16:07:21.032831'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:21.032831',
+            ],
+            [
                 'id' => 216,
                 'name' => 'Mia Steinemann',
                 'username' => 'tennisfrage_mia',
@@ -4346,9 +4346,9 @@ Self-care is my superpower 💖
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:21.220358',
-                'updated_at' => '2024-09-29T16:07:21.220358'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:21.220358',
+            ],
+            [
                 'id' => 217,
                 'name' => 'Ella Goldmann',
                 'username' => 'sprachzornella',
@@ -4365,9 +4365,9 @@ Self-care is my superpower 💖
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:21.406481',
-                'updated_at' => '2024-09-29T16:07:21.406481'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:21.406481',
+            ],
+            [
                 'id' => 218,
                 'name' => 'Neele Steinberg',
                 'username' => 'zornigebasketmaus',
@@ -4387,9 +4387,9 @@ Hoope dreams & chill vibes 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:21.591260',
-                'updated_at' => '2024-09-29T16:07:21.591260'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:21.591260',
+            ],
+            [
                 'id' => 219,
                 'name' => 'Nelly Eichwald',
                 'username' => 'kunstnelly',
@@ -4406,9 +4406,9 @@ Hoope dreams & chill vibes 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:21.776513',
-                'updated_at' => '2024-09-29T16:07:21.776513'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:21.776513',
+            ],
+            [
                 'id' => 220,
                 'name' => 'Zara Rosenberg',
                 'username' => 'tierliebezara',
@@ -4425,9 +4425,9 @@ Hoope dreams & chill vibes 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:21.961734',
-                'updated_at' => '2024-09-29T16:07:21.961734'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:21.961734',
+            ],
+            [
                 'id' => 221,
                 'name' => 'Janne Kieselstein',
                 'username' => 'laufleseratte',
@@ -4446,9 +4446,9 @@ Liebe das Leben in vollen Zügen! 💖😊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:22.146946',
-                'updated_at' => '2024-09-29T16:07:22.146946'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:22.146946',
+            ],
+            [
                 'id' => 222,
                 'name' => 'Amira Winterfeld',
                 'username' => 'literaturnixe',
@@ -4467,9 +4467,9 @@ Immer auf der Suche nach der nächsten Welle 🌊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:22.331464',
-                'updated_at' => '2024-09-29T16:07:22.331464'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:22.331464',
+            ],
+            [
                 'id' => 223,
                 'name' => 'Olivia Rosentreter',
                 'username' => 'reisefotolina',
@@ -4488,9 +4488,9 @@ Let\'s explore together! 🗺️',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:22.520680',
-                'updated_at' => '2024-09-29T16:07:22.520680'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:22.520680',
+            ],
+            [
                 'id' => 224,
                 'name' => 'Zoe Kaltenbrunner',
                 'username' => 'fragezoe_gaming',
@@ -4509,9 +4509,9 @@ Was denkt ihr? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:22.707429',
-                'updated_at' => '2024-09-29T16:07:22.707429'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:22.707429',
+            ],
+            [
                 'id' => 225,
                 'name' => 'Frieda Rosenblatt',
                 'username' => 'fragephilosophin',
@@ -4528,9 +4528,9 @@ Was denkt ihr? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:22.891733',
-                'updated_at' => '2024-09-29T16:07:22.891733'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:22.891733',
+            ],
+            [
                 'id' => 226,
                 'name' => 'Maya Rosenbaum',
                 'username' => 'kunstmaya',
@@ -4547,9 +4547,9 @@ Was denkt ihr? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:23.077319',
-                'updated_at' => '2024-09-29T16:07:23.077319'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:23.077319',
+            ],
+            [
                 'id' => 227,
                 'name' => 'Ava Rothenberg',
                 'username' => 'zornbasketava',
@@ -4566,9 +4566,9 @@ Was denkt ihr? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:23.263785',
-                'updated_at' => '2024-09-29T16:07:23.263785'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:23.263785',
+            ],
+            [
                 'id' => 228,
                 'name' => 'Mara Eisenbart',
                 'username' => 'reisebuchzorn',
@@ -4585,9 +4585,9 @@ Was denkt ihr? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:23.450060',
-                'updated_at' => '2024-09-29T16:07:23.450060'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:23.450060',
+            ],
+            [
                 'id' => 229,
                 'name' => 'Eline Kraemer',
                 'username' => 'reisezorneline',
@@ -4604,9 +4604,9 @@ Was denkt ihr? 🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:23.636279',
-                'updated_at' => '2024-09-29T16:07:23.636279'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:23.636279',
+            ],
+            [
                 'id' => 230,
                 'name' => 'Amelie Kirchhoff',
                 'username' => 'modeamelie',
@@ -4626,9 +4626,9 @@ Ich bin ich, deal with it! 😎',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:23.822010',
-                'updated_at' => '2024-09-29T16:07:23.822010'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:23.822010',
+            ],
+            [
                 'id' => 231,
                 'name' => 'Nele Sandberg',
                 'username' => 'wanderkochnele',
@@ -4648,9 +4648,9 @@ Wandern ist meine Therapie 🥾',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:24.012351',
-                'updated_at' => '2024-09-29T16:07:24.012351'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:24.012351',
+            ],
+            [
                 'id' => 232,
                 'name' => 'Fenja Kortenhaus',
                 'username' => 'reisefenja',
@@ -4671,9 +4671,9 @@ Wandern ist meine Therapie 🥾',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:24.199428',
-                'updated_at' => '2024-09-29T16:07:24.199428'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:24.199428',
+            ],
+            [
                 'id' => 233,
                 'name' => 'Mira Tannenberg',
                 'username' => 'fragenaturmira',
@@ -4692,9 +4692,9 @@ Zusammen können wir die Welt verändern! 💚✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:24.383728',
-                'updated_at' => '2024-09-29T16:07:24.383728'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:24.383728',
+            ],
+            [
                 'id' => 234,
                 'name' => 'Marie Kortenhaus',
                 'username' => 'reisemodeperle',
@@ -4714,9 +4714,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌍🤩',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:24.568857',
-                'updated_at' => '2024-09-29T16:07:24.568857'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:24.568857',
+            ],
+            [
                 'id' => 235,
                 'name' => 'Matilda Kornblum',
                 'username' => 'ballballphilosophin',
@@ -4733,9 +4733,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌍🤩',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:24.754398',
-                'updated_at' => '2024-09-29T16:07:24.754398'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:24.754398',
+            ],
+            [
                 'id' => 236,
                 'name' => 'Yara Beckenbauer',
                 'username' => 'zornkunstaktiv',
@@ -4752,9 +4752,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌍🤩',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:24.938098',
-                'updated_at' => '2024-09-29T16:07:24.938098'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:24.938098',
+            ],
+            [
                 'id' => 237,
                 'name' => 'Amelie Sternberg',
                 'username' => 'laufnachrichtenamelchen',
@@ -4774,9 +4774,9 @@ Was bewegt dich? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:25.123922',
-                'updated_at' => '2024-09-29T16:07:25.123922'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:25.123922',
+            ],
+            [
                 'id' => 238,
                 'name' => 'Lara Silberhorn',
                 'username' => 'wissenschaftsbuehne',
@@ -4793,9 +4793,9 @@ Was bewegt dich? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:25.308957',
-                'updated_at' => '2024-09-29T16:07:25.308957'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:25.308957',
+            ],
+            [
                 'id' => 239,
                 'name' => 'Valentina Eichinger',
                 'username' => 'filmgamerin_vali',
@@ -4814,9 +4814,9 @@ Schreib mir nicht, wenn du langweilig bist! 😴',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:25.495768',
-                'updated_at' => '2024-09-29T16:07:25.495768'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:25.495768',
+            ],
+            [
                 'id' => 240,
                 'name' => 'Lotte Silberstein',
                 'username' => 'literatourlotte',
@@ -4833,9 +4833,9 @@ Schreib mir nicht, wenn du langweilig bist! 😴',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:25.681070',
-                'updated_at' => '2024-09-29T16:07:25.681070'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:25.681070',
+            ],
+            [
                 'id' => 241,
                 'name' => 'Luise Staudinger',
                 'username' => 'zorncode_lui',
@@ -4855,9 +4855,9 @@ Don\'t mess with my code or my feels 💔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:25.866267',
-                'updated_at' => '2024-09-29T16:07:25.866267'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:25.866267',
+            ],
+            [
                 'id' => 242,
                 'name' => 'Juna Siebert',
                 'username' => 'zornigepixeljuna',
@@ -4877,9 +4877,9 @@ Don\'t mess with a girl who can deadlift & debug! 😤
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:26.051396',
-                'updated_at' => '2024-09-29T16:07:26.051396'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:26.051396',
+            ],
+            [
                 'id' => 243,
                 'name' => 'Leni Birkenwald',
                 'username' => 'techschwimmzorn',
@@ -4896,9 +4896,9 @@ Don\'t mess with a girl who can deadlift & debug! 😤
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:26.237804',
-                'updated_at' => '2024-09-29T16:07:26.237804'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:26.237804',
+            ],
+            [
                 'id' => 244,
                 'name' => 'Elina Schönhoff',
                 'username' => 'modezornelina',
@@ -4918,9 +4918,9 @@ Mein Stil = Meine Stimme 🎤💖
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:26.422497',
-                'updated_at' => '2024-09-29T16:07:26.422497'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:26.422497',
+            ],
+            [
                 'id' => 245,
                 'name' => 'Romy Gildemeister',
                 'username' => 'fragezorngamerin',
@@ -4940,9 +4940,9 @@ Immer für einen Lacher zu haben 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:26.608907',
-                'updated_at' => '2024-09-29T16:07:26.608907'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:26.608907',
+            ],
+            [
                 'id' => 246,
                 'name' => 'Lara Baumgarten',
                 'username' => 'modezorni',
@@ -4962,9 +4962,9 @@ Immer für einen Lacher zu haben 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:26.796160',
-                'updated_at' => '2024-09-29T16:07:26.796160'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:26.796160',
+            ],
+            [
                 'id' => 247,
                 'name' => 'Elisa Grunwald',
                 'username' => 'kickkoenigin_elisa',
@@ -4981,9 +4981,9 @@ Immer für einen Lacher zu haben 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:26.981995',
-                'updated_at' => '2024-09-29T16:07:26.981995'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:26.981995',
+            ],
+            [
                 'id' => 248,
                 'name' => 'Alva Sonnenfeld',
                 'username' => 'aktivlesealva',
@@ -5003,9 +5003,9 @@ Immer offen für neue Ideen! 🤔💡
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:27.169758',
-                'updated_at' => '2024-09-29T16:07:27.169758'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:27.169758',
+            ],
+            [
                 'id' => 249,
                 'name' => 'Jolina Klostermann',
                 'username' => 'pixeljolie',
@@ -5025,9 +5025,9 @@ Fange Momente & debugge das Leben 🤔😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:27.356238',
-                'updated_at' => '2024-09-29T16:07:27.356238'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:27.356238',
+            ],
+            [
                 'id' => 250,
                 'name' => 'Emmi Schönhagen',
                 'username' => 'codekickemmi',
@@ -5044,9 +5044,9 @@ Fange Momente & debugge das Leben 🤔😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:27.543715',
-                'updated_at' => '2024-09-29T16:07:27.543715'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:27.543715',
+            ],
+            [
                 'id' => 251,
                 'name' => 'Mila Rosendahl',
                 'username' => 'wissenschaftswitz',
@@ -5066,9 +5066,9 @@ Mein Humor ist so trocken wie meine Labortexte 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:27.731615',
-                'updated_at' => '2024-09-29T16:07:27.731615'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:27.731615',
+            ],
+            [
                 'id' => 252,
                 'name' => 'Amelie Kornblume',
                 'username' => 'ameliezauber',
@@ -5088,9 +5088,9 @@ Mein Humor ist so trocken wie meine Labortexte 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:27.916629',
-                'updated_at' => '2024-09-29T16:07:27.916629'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:27.916629',
+            ],
+            [
                 'id' => 253,
                 'name' => 'Mila Grünberg',
                 'username' => 'zornmila',
@@ -5107,9 +5107,9 @@ Mein Humor ist so trocken wie meine Labortexte 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:28.101360',
-                'updated_at' => '2024-09-29T16:07:28.101360'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:28.101360',
+            ],
+            [
                 'id' => 254,
                 'name' => 'Jette Dornbusch',
                 'username' => 'leseperle',
@@ -5129,9 +5129,9 @@ Mein Humor ist so trocken wie meine Labortexte 😂
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:28.287177',
-                'updated_at' => '2024-09-29T16:07:28.287177'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:28.287177',
+            ],
+            [
                 'id' => 255,
                 'name' => 'Liv Silbermann',
                 'username' => 'philosophiepolyglott',
@@ -5151,9 +5151,9 @@ Hier, um zu lernen & zu verstehen 🌱',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:28.472983',
-                'updated_at' => '2024-09-29T16:07:28.472983'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:28.472983',
+            ],
+            [
                 'id' => 256,
                 'name' => 'Liv Amberger',
                 'username' => 'wissensfitliv',
@@ -5172,9 +5172,9 @@ Immer auf der Suche nach dem nächsten \'Warum?\' 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:28.662760',
-                'updated_at' => '2024-09-29T16:07:28.662760'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:28.662760',
+            ],
+            [
                 'id' => 257,
                 'name' => 'Louisa Schellenberg',
                 'username' => 'fitlou_schelli',
@@ -5191,9 +5191,9 @@ Immer auf der Suche nach dem nächsten \'Warum?\' 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:28.849200',
-                'updated_at' => '2024-09-29T16:07:28.849200'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:28.849200',
+            ],
+            [
                 'id' => 258,
                 'name' => 'Matilda Ehrenberg',
                 'username' => 'zornigefilmprinzessin',
@@ -5210,9 +5210,9 @@ Immer auf der Suche nach dem nächsten \'Warum?\' 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:29.035431',
-                'updated_at' => '2024-09-29T16:07:29.035431'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:29.035431',
+            ],
+            [
                 'id' => 259,
                 'name' => 'Mila Baumgarten',
                 'username' => 'laufbuehne_mila',
@@ -5229,9 +5229,9 @@ Immer auf der Suche nach dem nächsten \'Warum?\' 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:29.223323',
-                'updated_at' => '2024-09-29T16:07:29.223323'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:29.223323',
+            ],
+            [
                 'id' => 260,
                 'name' => 'Emilia Kornblatt',
                 'username' => 'zornige_gamerin',
@@ -5248,9 +5248,9 @@ Immer auf der Suche nach dem nächsten \'Warum?\' 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:29.409572',
-                'updated_at' => '2024-09-29T16:07:29.409572'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:29.409572',
+            ],
+            [
                 'id' => 261,
                 'name' => 'Antonia Kirschbaum',
                 'username' => 'literatoni',
@@ -5270,9 +5270,9 @@ Positive Vibes only ✨
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:29.599158',
-                'updated_at' => '2024-09-29T16:07:29.599158'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:29.599158',
+            ],
+            [
                 'id' => 262,
                 'name' => 'Amalia Wunderlich',
                 'username' => 'amaliazockt',
@@ -5289,9 +5289,9 @@ Positive Vibes only ✨
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:29.787279',
-                'updated_at' => '2024-09-29T16:07:29.787279'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:29.787279',
+            ],
+            [
                 'id' => 263,
                 'name' => 'Mathilda Griesbach',
                 'username' => 'geschichtsgymnastin',
@@ -5311,9 +5311,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:29.972556',
-                'updated_at' => '2024-09-29T16:07:29.972556'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:29.972556',
+            ],
+            [
                 'id' => 264,
                 'name' => 'Mina Eberbach',
                 'username' => 'zornigesprachrohr',
@@ -5330,9 +5330,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:30.159290',
-                'updated_at' => '2024-09-29T16:07:30.159290'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:30.159290',
+            ],
+            [
                 'id' => 265,
                 'name' => 'Meryem Landers',
                 'username' => 'fragefoto_mery',
@@ -5349,9 +5349,9 @@ Immer auf der Suche nach dem nächsten Abenteuer! 🌟',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:30.347574',
-                'updated_at' => '2024-09-29T16:07:30.347574'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:30.347574',
+            ],
+            [
                 'id' => 266,
                 'name' => 'Elena Heidenkamp',
                 'username' => 'gartenlesemaus',
@@ -5370,9 +5370,9 @@ Ich bin ich & das ist gut so! 💁‍♀️✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:30.533690',
-                'updated_at' => '2024-09-29T16:07:30.533690'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:30.533690',
+            ],
+            [
                 'id' => 267,
                 'name' => 'Mira Rosenstein',
                 'username' => 'reisezornmira',
@@ -5393,9 +5393,9 @@ Ich bin ich & das ist gut so! 💁‍♀️✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:30.722097',
-                'updated_at' => '2024-09-29T16:07:30.722097'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:30.722097',
+            ],
+            [
                 'id' => 268,
                 'name' => 'Amira Kupferschmidt',
                 'username' => 'tennisgartnerin',
@@ -5415,9 +5415,9 @@ Love life & stay positive! ✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:30.910911',
-                'updated_at' => '2024-09-29T16:07:30.910911'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:30.910911',
+            ],
+            [
                 'id' => 269,
                 'name' => 'Linnea Glashaus',
                 'username' => 'theaterlinnea',
@@ -5436,9 +5436,9 @@ Auf der Suche nach der perfekten Rolle 🎬
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:31.096129',
-                'updated_at' => '2024-09-29T16:07:31.096129'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:31.096129',
+            ],
+            [
                 'id' => 270,
                 'name' => 'Lia Tannenbaum',
                 'username' => 'philosophlia',
@@ -5455,9 +5455,9 @@ Auf der Suche nach der perfekten Rolle 🎬
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:31.283800',
-                'updated_at' => '2024-09-29T16:07:31.283800'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:31.283800',
+            ],
+            [
                 'id' => 271,
                 'name' => 'Lia Schäefer',
                 'username' => 'zorntennis_lia',
@@ -5477,9 +5477,9 @@ Spielend durchs Leben 💪
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:31.467564',
-                'updated_at' => '2024-09-29T16:07:31.467564'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:31.467564',
+            ],
+            [
                 'id' => 272,
                 'name' => 'Lena Ostermeier',
                 'username' => 'lauflenamei',
@@ -5496,9 +5496,9 @@ Spielend durchs Leben 💪
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:31.652565',
-                'updated_at' => '2024-09-29T16:07:31.652565'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:31.652565',
+            ],
+            [
                 'id' => 273,
                 'name' => 'Leni Weingart',
                 'username' => 'zornwissenschaftskoch',
@@ -5518,9 +5518,9 @@ Hier für coole Experimente & leckere Rezepte! 🧪🍳
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:31.841392',
-                'updated_at' => '2024-09-29T16:07:31.841392'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:31.841392',
+            ],
+            [
                 'id' => 274,
                 'name' => 'Ella Steinmeier',
                 'username' => 'philosophschwimmella',
@@ -5539,9 +5539,9 @@ Auf der Suche nach dem Sinn... und der perfekten Welle 🌊🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:32.030950',
-                'updated_at' => '2024-09-29T16:07:32.030950'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:32.030950',
+            ],
+            [
                 'id' => 275,
                 'name' => 'Leni Falkenhain',
                 'username' => 'reisebuehne_leni',
@@ -5558,9 +5558,9 @@ Auf der Suche nach dem Sinn... und der perfekten Welle 🌊🤔',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:32.216200',
-                'updated_at' => '2024-09-29T16:07:32.216200'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:32.216200',
+            ],
+            [
                 'id' => 276,
                 'name' => 'Malin Westermeyer',
                 'username' => 'zornigecoderin',
@@ -5580,9 +5580,9 @@ Me, myself & my keyboard 🎹',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:32.400516',
-                'updated_at' => '2024-09-29T16:07:32.400516'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:32.400516',
+            ],
+            [
                 'id' => 277,
                 'name' => 'Lara Quellenberg',
                 'username' => 'politikheldin_lara',
@@ -5599,9 +5599,9 @@ Me, myself & my keyboard 🎹',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:32.586950',
-                'updated_at' => '2024-09-29T16:07:32.586950'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:32.586950',
+            ],
+            [
                 'id' => 278,
                 'name' => 'Paulina Feldmann',
                 'username' => 'zornige_historikerin',
@@ -5618,9 +5618,9 @@ Me, myself & my keyboard 🎹',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:32.775548',
-                'updated_at' => '2024-09-29T16:07:32.775548'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:32.775548',
+            ],
+            [
                 'id' => 279,
                 'name' => 'Lotta Falkenberg',
                 'username' => 'lesezornlotta',
@@ -5637,9 +5637,9 @@ Me, myself & my keyboard 🎹',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:32.961093',
-                'updated_at' => '2024-09-29T16:07:32.961093'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:32.961093',
+            ],
+            [
                 'id' => 280,
                 'name' => 'Hanna Rosenwinkel',
                 'username' => 'historienzauberin',
@@ -5656,9 +5656,9 @@ Me, myself & my keyboard 🎹',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:33.146310',
-                'updated_at' => '2024-09-29T16:07:33.146310'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:33.146310',
+            ],
+            [
                 'id' => 281,
                 'name' => 'Amira Edelstein',
                 'username' => 'techfragezauber',
@@ -5678,9 +5678,9 @@ Me, myself & my keyboard 🎹',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:33.332871',
-                'updated_at' => '2024-09-29T16:07:33.332871'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:33.332871',
+            ],
+            [
                 'id' => 282,
                 'name' => 'Lotta Kupfermann',
                 'username' => 'wissenschaftswirbelwind',
@@ -5697,9 +5697,9 @@ Me, myself & my keyboard 🎹',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:33.518489',
-                'updated_at' => '2024-09-29T16:07:33.518489'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:33.518489',
+            ],
+            [
                 'id' => 283,
                 'name' => 'Lara Hofmeier',
                 'username' => 'zornige_schwimmgamerin',
@@ -5718,9 +5718,9 @@ Immer auf der Suche nach neuen Herausforderungen 💪',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:33.703729',
-                'updated_at' => '2024-09-29T16:07:33.703729'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:33.703729',
+            ],
+            [
                 'id' => 284,
                 'name' => 'Mira Eichelberg',
                 'username' => 'codewissenschaftmira',
@@ -5739,9 +5739,9 @@ Meine Welt dreht sich um 0 und 1 🌍✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:33.890990',
-                'updated_at' => '2024-09-29T16:07:33.890990'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:33.890990',
+            ],
+            [
                 'id' => 285,
                 'name' => 'Emilia Steinkamp',
                 'username' => 'zornmusikemilia',
@@ -5761,9 +5761,9 @@ Haters gonna hate 🙄✌️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:34.079429',
-                'updated_at' => '2024-09-29T16:07:34.079429'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:34.079429',
+            ],
+            [
                 'id' => 286,
                 'name' => 'Lina Eisenreich',
                 'username' => 'codekickerin',
@@ -5780,9 +5780,9 @@ Haters gonna hate 🙄✌️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:34.265762',
-                'updated_at' => '2024-09-29T16:07:34.265762'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:34.265762',
+            ],
+            [
                 'id' => 287,
                 'name' => 'Mia Eichberger',
                 'username' => 'filmbluemchen',
@@ -5799,9 +5799,9 @@ Haters gonna hate 🙄✌️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:34.451154',
-                'updated_at' => '2024-09-29T16:07:34.451154'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:34.451154',
+            ],
+            [
                 'id' => 288,
                 'name' => 'Luisa Weissenberg',
                 'username' => 'musikluisa',
@@ -5818,9 +5818,9 @@ Haters gonna hate 🙄✌️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:34.636006',
-                'updated_at' => '2024-09-29T16:07:34.636006'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:34.636006',
+            ],
+            [
                 'id' => 289,
                 'name' => 'Karlotta Grünhagen',
                 'username' => 'karlotta_politmode',
@@ -5837,9 +5837,9 @@ Haters gonna hate 🙄✌️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:34.822283',
-                'updated_at' => '2024-09-29T16:07:34.822283'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:34.822283',
+            ],
+            [
                 'id' => 290,
                 'name' => 'Nele Rohrbach',
                 'username' => 'zornigegamerzicke',
@@ -5856,9 +5856,9 @@ Haters gonna hate 🙄✌️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:35.008151',
-                'updated_at' => '2024-09-29T16:07:35.008151'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:35.008151',
+            ],
+            [
                 'id' => 291,
                 'name' => 'Carlotta Steinberger',
                 'username' => 'tenniszorncarlotta',
@@ -5878,9 +5878,9 @@ Mein Style, meine Regeln 🤘
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:35.194849',
-                'updated_at' => '2024-09-29T16:07:35.194849'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:35.194849',
+            ],
+            [
                 'id' => 292,
                 'name' => 'Tilda Bernstein',
                 'username' => 'zornwandertilda',
@@ -5897,9 +5897,9 @@ Mein Style, meine Regeln 🤘
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:35.390069',
-                'updated_at' => '2024-09-29T16:07:35.390069'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:35.390069',
+            ],
+            [
                 'id' => 293,
                 'name' => 'Veronika Guttenberg',
                 'username' => 'gartencoderin',
@@ -5917,9 +5917,9 @@ Mein Style, meine Regeln 🤘
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:35.586393',
-                'updated_at' => '2024-09-29T16:07:35.586393'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:35.586393',
+            ],
+            [
                 'id' => 294,
                 'name' => 'Melina Eichhorn',
                 'username' => 'zornigebasketmini',
@@ -5939,9 +5939,9 @@ Don\'t expect me to care 🤷‍♀️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:35.774500',
-                'updated_at' => '2024-09-29T16:07:35.774500'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:35.774500',
+            ],
+            [
                 'id' => 295,
                 'name' => 'Ylvi Kastner',
                 'username' => 'zornlaeuferin_ylvi',
@@ -5958,9 +5958,9 @@ Don\'t expect me to care 🤷‍♀️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:35.962007',
-                'updated_at' => '2024-09-29T16:07:35.962007'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:35.962007',
+            ],
+            [
                 'id' => 296,
                 'name' => 'Tilda Schwarzkopf',
                 'username' => 'techschwimmtilda',
@@ -5977,9 +5977,9 @@ Don\'t expect me to care 🤷‍♀️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:36.149181',
-                'updated_at' => '2024-09-29T16:07:36.149181'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:36.149181',
+            ],
+            [
                 'id' => 297,
                 'name' => 'Leonie Bachmann',
                 'username' => 'zornlaeuferleonie',
@@ -5996,9 +5996,9 @@ Don\'t expect me to care 🤷‍♀️
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:36.337747',
-                'updated_at' => '2024-09-29T16:07:36.337747'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:36.337747',
+            ],
+            [
                 'id' => 298,
                 'name' => 'Nika Reichenberg',
                 'username' => 'zornigumweltnika',
@@ -6018,9 +6018,9 @@ Was denkst du über Klimawandel? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:36.524965',
-                'updated_at' => '2024-09-29T16:07:36.524965'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:36.524965',
+            ],
+            [
                 'id' => 299,
                 'name' => 'Emilia Heidenreich',
                 'username' => 'zornwanderin_emilia',
@@ -6037,9 +6037,9 @@ Was denkst du über Klimawandel? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:36.712733',
-                'updated_at' => '2024-09-29T16:07:36.712733'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:36.712733',
+            ],
+            [
                 'id' => 300,
                 'name' => 'Lena Rosenzweig',
                 'username' => 'techzicklena',
@@ -6056,9 +6056,9 @@ Was denkst du über Klimawandel? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:36.906172',
-                'updated_at' => '2024-09-29T16:07:36.906172'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:36.906172',
+            ],
+            [
                 'id' => 301,
                 'name' => 'Juri Eichstätt',
                 'username' => 'zornigesjuricken',
@@ -6075,9 +6075,9 @@ Was denkst du über Klimawandel? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:37.095031',
-                'updated_at' => '2024-09-29T16:07:37.095031'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:37.095031',
+            ],
+            [
                 'id' => 302,
                 'name' => 'Maxi Drechsel',
                 'username' => 'modezornmaxi',
@@ -6094,9 +6094,9 @@ Was denkst du über Klimawandel? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:37.281294',
-                'updated_at' => '2024-09-29T16:07:37.281294'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:37.281294',
+            ],
+            [
                 'id' => 303,
                 'name' => 'Jules Winterberg',
                 'username' => 'zornbaske_jules',
@@ -6113,9 +6113,9 @@ Was denkst du über Klimawandel? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:37.466660',
-                'updated_at' => '2024-09-29T16:07:37.466660'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:37.466660',
+            ],
+            [
                 'id' => 304,
                 'name' => 'Kira Blumenfeld',
                 'username' => 'zornmodekira',
@@ -6132,9 +6132,9 @@ Was denkst du über Klimawandel? 🤔
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:37.651428',
-                'updated_at' => '2024-09-29T16:07:37.651428'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:37.651428',
+            ],
+            [
                 'id' => 305,
                 'name' => 'Esra Frohnmeyer',
                 'username' => 'esra_kunstgamer',
@@ -6155,9 +6155,9 @@ Ich bin ich, deal with it 😎
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:37.838954',
-                'updated_at' => '2024-09-29T16:07:37.838954'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:37.838954',
+            ],
+            [
                 'id' => 306,
                 'name' => 'Quinn Falkenhorst',
                 'username' => 'zornpixel',
@@ -6174,9 +6174,9 @@ Ich bin ich, deal with it 😎
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:38.025200',
-                'updated_at' => '2024-09-29T16:07:38.025200'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:38.025200',
+            ],
+            [
                 'id' => 307,
                 'name' => 'Eni Weisgerber',
                 'username' => 'zornkochkoenig',
@@ -6196,9 +6196,9 @@ Ich bin ich, deal with it 💁‍♀️✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:38.214363',
-                'updated_at' => '2024-09-29T16:07:38.214363'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:38.214363',
+            ],
+            [
                 'id' => 308,
                 'name' => 'Emory Weinhold',
                 'username' => 'zornfilmcourt',
@@ -6215,9 +6215,9 @@ Ich bin ich, deal with it 💁‍♀️✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:38.404846',
-                'updated_at' => '2024-09-29T16:07:38.404846'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:38.404846',
+            ],
+            [
                 'id' => 309,
                 'name' => 'Juno Falkenstein',
                 'username' => 'zornigePixelJuno',
@@ -6234,9 +6234,9 @@ Ich bin ich, deal with it 💁‍♀️✨',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:38.593481',
-                'updated_at' => '2024-09-29T16:07:38.593481'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:38.593481',
+            ],
+            [
                 'id' => 310,
                 'name' => 'Fynn Falkenberg',
                 'username' => 'zornigez_lyrikfuchs',
@@ -6255,9 +6255,9 @@ Ich bin ich, deal with it 😎✨ #17 #divers',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:38.783082',
-                'updated_at' => '2024-09-29T16:07:38.783082'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:38.783082',
+            ],
+            [
                 'id' => 311,
                 'name' => 'Ari Felsenbach',
                 'username' => 'zornbasketari',
@@ -6274,9 +6274,9 @@ Ich bin ich, deal with it 😎✨ #17 #divers',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:38.967368',
-                'updated_at' => '2024-09-29T16:07:38.967368'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:38.967368',
+            ],
+            [
                 'id' => 312,
                 'name' => 'Riley Sternkopf',
                 'username' => 'frageriley',
@@ -6293,9 +6293,9 @@ Ich bin ich, deal with it 😎✨ #17 #divers',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:39.153286',
-                'updated_at' => '2024-09-29T16:07:39.153286'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:39.153286',
+            ],
+            [
                 'id' => 313,
                 'name' => 'Lio Bartels',
                 'username' => 'fitmusiklio',
@@ -6315,9 +6315,9 @@ Sei nett oder geh weg 🤗🚫',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:39.340421',
-                'updated_at' => '2024-09-29T16:07:39.340421'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:39.340421',
+            ],
+            [
                 'id' => 314,
                 'name' => 'Jamie Kaltschmid',
                 'username' => 'zornigeracket',
@@ -6334,9 +6334,9 @@ Sei nett oder geh weg 🤗🚫',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:39.526388',
-                'updated_at' => '2024-09-29T16:07:39.526388'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:39.526388',
+            ],
+            [
                 'id' => 315,
                 'name' => 'Finn Rabenstein',
                 'username' => 'schwimmhistoriker',
@@ -6353,9 +6353,9 @@ Sei nett oder geh weg 🤗🚫',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:39.710964',
-                'updated_at' => '2024-09-29T16:07:39.710964'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:39.710964',
+            ],
+            [
                 'id' => 316,
                 'name' => 'Quinn Falkenberg',
                 'username' => 'gartenparadiesx',
@@ -6372,9 +6372,9 @@ Sei nett oder geh weg 🤗🚫',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:39.895195',
-                'updated_at' => '2024-09-29T16:07:39.895195'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:39.895195',
+            ],
+            [
                 'id' => 317,
                 'name' => 'Jona Falkenrath',
                 'username' => 'klangweltschutz',
@@ -6391,9 +6391,9 @@ Sei nett oder geh weg 🤗🚫',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:40.078905',
-                'updated_at' => '2024-09-29T16:07:40.078905'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:40.078905',
+            ],
+            [
                 'id' => 318,
                 'name' => 'Robin Feldkamp',
                 'username' => 'fragemodefee',
@@ -6410,9 +6410,9 @@ Sei nett oder geh weg 🤗🚫',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:40.263134',
-                'updated_at' => '2024-09-29T16:07:40.263134'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:40.263134',
+            ],
+            [
                 'id' => 319,
                 'name' => 'Romy Eisenach',
                 'username' => 'sprachfuchs_romy',
@@ -6432,9 +6432,9 @@ Wütend auf Ungerechtigkeit, begeistert von Vielfalt! 🌈✊',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:40.449930',
-                'updated_at' => '2024-09-29T16:07:40.449930'
-        ],
-        [
+                'updated_at' => '2024-09-29T16:07:40.449930',
+            ],
+            [
                 'id' => 320,
                 'name' => 'Yuki Bergwald',
                 'username' => 'sprachsprint',
@@ -6453,9 +6453,9 @@ Liebe jeden Kilometer & jedes neue Wort! ❤️🔤',
                 'role' => 'user',
                 'is_active' => false,
                 'created_at' => '2024-09-29T16:07:40.638007',
-                'updated_at' => '2024-09-29T16:07:40.638007'
-        ]
-];
+                'updated_at' => '2024-09-29T16:07:40.638007',
+            ],
+        ];
 
         $dataCollection = collect($data);
 

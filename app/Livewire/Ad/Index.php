@@ -2,16 +2,16 @@
 
 namespace App\Livewire\Ad;
 
+use App\Facades\RequestHub;
+use App\Models\Ad;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Ad;
-use App\Facades\RequestHub;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Index extends Component
 {
-    use WithPagination;
     use AuthorizesRequests;
+    use WithPagination;
 
     public $readonly;
 
@@ -23,8 +23,9 @@ class Index extends Component
     public function render()
     {
         $ads = Ad::orderBy('created_at', 'desc')->paginate(10);
+
         return view('livewire.ad.index', [
-            'ads' => $ads
+            'ads' => $ads,
         ]);
     }
 
@@ -32,6 +33,7 @@ class Index extends Component
     {
         if ($this->readonly) {
             $this->addError('delete', __('Cannot delete in read-only mode.'));
+
             return;
         }
 

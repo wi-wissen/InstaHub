@@ -2,15 +2,17 @@
 
 namespace App\Livewire\Hub;
 
-use Livewire\Component;
-use App\Models\Hub;
 use App\Facades\RequestHub;
+use App\Models\Hub;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class Show extends Component
 {
     public $hub;
+
     public $tableStatus = [];
+
     public $adminPassword = '';
 
     public function mount(Hub $hub)
@@ -38,7 +40,7 @@ class Show extends Component
             $count = DB::table($table->TABLE_NAME)->count();
             $this->tableStatus[] = [
                 'name' => $table->TABLE_NAME,
-                'count' => $count
+                'count' => $count,
             ];
         }
     }

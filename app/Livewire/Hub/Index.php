@@ -2,17 +2,17 @@
 
 namespace App\Livewire\Hub;
 
-use Livewire\Component;
-use Livewire\WithPagination;
 use App\Models\Hub;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
     use WithPagination;
 
     public $search = '';
-    
+
     public $loading = [
         'activate' => false,
         'readonly' => false,
@@ -34,19 +34,19 @@ class Index extends Component
 
     public function render()
     {
-        $query = (Auth::user()->role == 'admin') 
+        $query = (Auth::user()->role == 'admin')
             ? Hub::query() // admin
             : Auth::user()->hubs(); // teacher
 
         if ($this->search) {
             $searchTerm = $this->search;
-            $query->where(function($q) use ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
                 $q->where('name', 'like', "%{$searchTerm}%");
             });
         }
 
         $hubs = $query->paginate(10)->withQueryString();
-        
+
         return view('livewire.hub.index', [
             'hubs' => $hubs,
         ]);

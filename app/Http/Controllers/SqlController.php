@@ -3,10 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Facades\RequestHub;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 class SqlController extends Controller
 {
@@ -22,7 +18,7 @@ class SqlController extends Controller
 
     public function selectGui()
     {
-        if(RequestHub::query_level() != 'gui' && RequestHub::query_level() != 'ai') {
+        if (RequestHub::query_level() != 'gui' && RequestHub::query_level() != 'ai') {
             abort(403);
         }
 
@@ -31,7 +27,7 @@ class SqlController extends Controller
 
     public function sqlAi()
     {
-        if(RequestHub::query_level() != 'ai') {
+        if (RequestHub::query_level() != 'ai') {
             abort(403);
         }
 

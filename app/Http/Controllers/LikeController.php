@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Models\Like;
 use Illuminate\Http\Request;
 

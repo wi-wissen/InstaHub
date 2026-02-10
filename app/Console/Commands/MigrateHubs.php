@@ -26,8 +26,9 @@ class MigrateHubs extends Command
     protected $description = 'Run migrations for all Hubs from /database/migrations/update';
 
     protected $batch;
+
     protected $migrations = [];
-    
+
     /**
      * Execute the console command.
      */
@@ -41,15 +42,16 @@ class MigrateHubs extends Command
 
         $minId = $this->option('id');
         $query = Hub::query();
-        
+
         if ($minId) {
             $query->where('id', '>=', $minId);
         }
 
         $hubs = $query->orderBy('id')->cursor();
 
-        if(! count($this->migrations)) {
+        if (! count($this->migrations)) {
             $this->info('Nothing to migrate.');
+
             return 0;
         }
 
@@ -57,7 +59,7 @@ class MigrateHubs extends Command
             $this->info("Processing Hub ID: {$hub->id}");
 
             $readonly = $hub->readonly; // remember if the hub is readonly
-            if($readonly) {
+            if ($readonly) {
                 $this->info("Hub ID id {$hub->id} is readonly. Setting to read-write for migrations.");
                 // set to false to allow migrations
                 $hub->readonly = false; // not a real attribute
@@ -67,7 +69,7 @@ class MigrateHubs extends Command
             RequestHub::setHubDB($hub->id);
 
             // check if the hub is valid
-            if(Schema::hasTable('users')) {
+            if (Schema::hasTable('users')) {
                 // run migrations
                 $this->runMigrationsForHub($hub);
 
@@ -79,8 +81,7 @@ class MigrateHubs extends Command
                     $hub->readonly = true; // not a real attribute
                     $this->info("Hub ID id {$hub->id} is readonly again.");
                 }
-            }
-            else {
+            } else {
                 // delete invalid hub
                 $this->info("Hub ID id {$hub->id} has no `users` table.");
                 $hub->delete();
@@ -101,12 +102,12 @@ class MigrateHubs extends Command
 
         foreach ($migrationFiles as $file) {
             $migrationName = pathinfo($file, PATHINFO_FILENAME);
-            if (!in_array($migrationName, $executedMigrations)) {
+            if (! in_array($migrationName, $executedMigrations)) {
                 $this->migrations[$migrationName] = $file;
             }
         }
 
-        $this->info("Loaded " . count($this->migrations) . " migrations.");
+        $this->info('Loaded '.count($this->migrations).' migrations.');
     }
 
     protected function runMigrationsForHub($hub)
@@ -117,9 +118,9 @@ class MigrateHubs extends Command
             try {
                 $migration = require $file;
                 $migration->up();
-                
+
             } catch (\Exception $e) {
-                $this->error("Failed to run migration {$migrationName} for Hub ID {$hub->id}: " . $e->getMessage());
+                $this->error("Failed to run migration {$migrationName} for Hub ID {$hub->id}: ".$e->getMessage());
             }
         }
     }
@@ -127,6 +128,7 @@ class MigrateHubs extends Command
     protected function getExecutedMigrations()
     {
         RequestHub::setDefaultDB();
+
         return DB::table('hub_migrations')
             ->pluck('migration')
             ->toArray();
@@ -135,14 +137,15 @@ class MigrateHubs extends Command
     protected function getNextBatchNumber()
     {
         RequestHub::setDefaultDB();
+
         return DB::table('hub_migrations')->max('batch') + 1;
     }
 
     protected function recordExecutedMigrations()
     {
         RequestHub::setDefaultDB();
-        
-        $this->info("Recording executed migrations...");
+
+        $this->info('Recording executed migrations...');
 
         $executedMigrations = [];
         foreach ($this->migrations as $migrationName => $file) {
@@ -153,9 +156,9 @@ class MigrateHubs extends Command
                 'updated_at' => now(),
             ];
         }
-        
+
         DB::table('hub_migrations')->insert($executedMigrations);
-        
-        $this->info("Recorded " . count($executedMigrations) . " migrations.");
+
+        $this->info('Recorded '.count($executedMigrations).' migrations.');
     }
 }

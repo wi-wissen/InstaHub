@@ -2,14 +2,17 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class UserHubSettings extends Component
 {
     public $generation;
+
     public $hubDefaultCreating;
+
     public $hubDefaultQueryLevel;
+
     public $availableGenerations;
 
     protected $rules = [

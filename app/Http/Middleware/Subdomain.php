@@ -13,8 +13,6 @@ class Subdomain
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -24,10 +22,10 @@ class Subdomain
 
         if ($subdomain) {
 
-            //change app domain (for mails for example)
+            // change app domain (for mails for example)
             Config::set('app.url', RequestHub::url());
 
-            //help controllers to ignore subdomain
+            // help controllers to ignore subdomain
             if (RequestHub::isHub()) {
                 RequestHub::setHubDB();
                 $request->route()->forgetParameter('subdomain');
@@ -52,7 +50,7 @@ class Subdomain
         $subdomain = Str::before($host, Str::after($hubDomainPattern, '{subdomain}'));
 
         // Überprüfen, ob die Subdomain dem Muster entspricht
-        if (Str::contains($hubDomainPattern, '{subdomain}') && 
+        if (Str::contains($hubDomainPattern, '{subdomain}') &&
             Str::endsWith($host, Str::after($hubDomainPattern, '{subdomain}'))) {
             return $subdomain;
         }

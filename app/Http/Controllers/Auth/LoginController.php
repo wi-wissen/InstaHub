@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except(['logout', 'loginWithToken']);
         $this->middleware('auth')->only('logout');
-        $hub = new HubHelper(); //this Controller runs before HubHelper in AppServiceProvider, so we force changing db
+        $hub = new HubHelper; // this Controller runs before HubHelper in AppServiceProvider, so we force changing db
     }
 
     public function username()
@@ -54,7 +54,6 @@ class LoginController extends Controller
     /**
      * Validate the user login request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return void
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -72,7 +71,6 @@ class LoginController extends Controller
     /**
      * The user has been authenticated.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $user
      * @return mixed
      */
@@ -81,7 +79,7 @@ class LoginController extends Controller
         // touch hub to mark last activity in updated_at
         if (RequestHub::isHub()) {
             $id = RequestHub::id();
-            RequestHub::useDefaultDB(function() use ($id) {
+            RequestHub::useDefaultDB(function () use ($id) {
                 Hub::where('id', $id)->touch();
             });
         }
@@ -107,13 +105,13 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        //do the same as $this->attemptLogin($request) but with a token
+        // do the same as $this->attemptLogin($request) but with a token
         if (Cache::has('hub-'.RequestHub::id().'-auth-token')) {
             $storedToken = Cache::get('hub-'.RequestHub::id().'-auth-token');
             if ($storedToken == $token) {
-                //success
-                Auth::login(User::where('role', '=', 'dba')->firstOrFail()); //login
-                Cache::forget('hub-'.RequestHub::id().'-auth-token'); //works only once
+                // success
+                Auth::login(User::where('role', '=', 'dba')->firstOrFail()); // login
+                Cache::forget('hub-'.RequestHub::id().'-auth-token'); // works only once
 
                 return $this->sendLoginResponse($request);
             }

@@ -24,7 +24,7 @@ class Ad extends Model
         foreach ($ads as $ad) {
             $checkIfResultExist = false;
 
-            //prepare query
+            // prepare query
             $sql = $ad->query;
             if (strpos($sql, '$user') !== false) {
                 $checkIfResultExist = true;
@@ -35,7 +35,7 @@ class Ad extends Model
                 $sql = str_replace('$photo', $photo_id, $sql);
             }
 
-            //run query
+            // run query
             try {
                 $r = DB::select($sql);
                 $r = (array) $r;
@@ -44,52 +44,48 @@ class Ad extends Model
                 flash('<p> Ad <b>'.$ad->name.'</b> is broken: </p><p>'.$ex->getMessage().'</p>', 'danger')->important();
             }
 
-            //check query result
-            if(count($r)) {
-                if($checkIfResultExist) {
+            // check query result
+            if (count($r)) {
+                if ($checkIfResultExist) {
 
-                    //check if `CASE` was used
-                    if (count($r) == 1 && strpos(strtolower(key((array)$r[0])), 'case') === 0) {
-                        $result = (bool) $r[0]->{key((array)$r[0])};
-                        if($result) {
+                    // check if `CASE` was used
+                    if (count($r) == 1 && strpos(strtolower(key((array) $r[0])), 'case') === 0) {
+                        $result = (bool) $r[0]->{key((array) $r[0])};
+                        if ($result) {
                             return self::find($ad->id);
                         }
                     }
-                    //or just return true if one or more results are given
+                    // or just return true if one or more results are given
                     else {
                         return self::find($ad->id);
                     }
-                }
-                else {
-                    //find matching column
-                    $columnValue = $photo_id ?? Auth::id(); //use photo id if set or user id
+                } else {
+                    // find matching column
+                    $columnValue = $photo_id ?? Auth::id(); // use photo id if set or user id
                     $columnName = null;
-                    if($photo_id && property_exists($r[0], 'photo_id')) {
+                    if ($photo_id && property_exists($r[0], 'photo_id')) {
                         $columnValue = $photo_id;
                         $columnName = 'photo_id';
-                    }
-                    else if(property_exists($r[0], 'user_id')) {
+                    } elseif (property_exists($r[0], 'user_id')) {
                         $columnValue = Auth::id();
                         $columnName = 'user_id';
-                    }
-                    else if(property_exists($r[0], 'id')) {
+                    } elseif (property_exists($r[0], 'id')) {
                         $columnName = 'id';
                     }
 
-                    if($columnName) {
+                    if ($columnName) {
                         foreach ($r as $row) {
-                            if($row->{$columnName} == $columnValue) {
+                            if ($row->{$columnName} == $columnValue) {
                                 return self::find($ad->id);
                             }
                         }
-                    }
-                    else {
+                    } else {
                         flash('<p> Ad <b>'.$ad->name.'</b> is broken: </p><p>No known Column found.</p>', 'danger')->important();
                     }
                 }
             }
         }
 
-        return null; //return nothing if no matching ad was found
+        return null; // return nothing if no matching ad was found
     }
 }

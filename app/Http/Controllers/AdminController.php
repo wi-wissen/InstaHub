@@ -26,10 +26,10 @@ class AdminController extends Controller
 
     public function updateTags(Request $request)
     {
-        //if this ends to early your php memory limit is reached - turn off debug-mode or increase
+        // if this ends to early your php memory limit is reached - turn off debug-mode or increase
         $photos = Photo::all();
 
-        DB::beginTransaction(); //better performance
+        DB::beginTransaction(); // better performance
 
         foreach ($photos as $photo) {
             $photo->updateTags();
@@ -43,7 +43,7 @@ class AdminController extends Controller
     {
         $users = User::all();
 
-        DB::beginTransaction(); //better performance
+        DB::beginTransaction(); // better performance
 
         foreach ($users as $user) {
             $user->cryptpw();
@@ -58,9 +58,9 @@ class AdminController extends Controller
         $hubs = Hub::all();
 
         foreach ($hubs as $hub) {
-            RequestHub::useHubDB($hub->id, function() {
+            RequestHub::useHubDB($hub->id, function () {
                 if (RequestHub::hasTable('analytics')) {
-                    //trim analytics to max 10.000 entries (not exact methode)
+                    // trim analytics to max 10.000 entries (not exact methode)
                     $latest = DB::table('analytics')->latest()->first()->id;
                     Analytic::latest()->where('id', '<', $latest - 10000)->delete();
                 }
@@ -81,7 +81,7 @@ class AdminController extends Controller
         abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         $secret = bin2hex(random_bytes(32));
-        Cache::put('hub-'.$hub->id.'-auth-token', $secret, 120); //sessions are isolated, so we use cache to store a 64-char secret
+        Cache::put('hub-'.$hub->id.'-auth-token', $secret, 120); // sessions are isolated, so we use cache to store a 64-char secret
 
         return redirect(RequestHub::url($hub->name).'/login/'.$secret);
     }

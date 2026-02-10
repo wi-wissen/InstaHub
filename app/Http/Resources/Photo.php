@@ -8,7 +8,6 @@ use App\Http\Resources\User as UserResource;
 use App\Models\Like;
 use Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Schema;
 
 class Photo extends JsonResource
 {

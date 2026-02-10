@@ -19,8 +19,8 @@ class Hub extends Model
         parent::boot();
 
         static::deleting(function ($hub) {
-            //delete all old photos from disk
-            RequestHub::useHubDB($hub->id, function() {
+            // delete all old photos from disk
+            RequestHub::useHubDB($hub->id, function () {
                 if (RequestHub::hasTable('photos')) {
                     $photos = Photo::all();
                     foreach ($photos as $photo) {
@@ -36,7 +36,7 @@ class Hub extends Model
                 }
             });
 
-            //set primary db
+            // set primary db
             RequestHub::setDefaultDB();
 
             DB::statement('DROP DATABASE IF EXISTS '.config('database.connections.mysql.database').'_'.$hub->id.';');
@@ -54,7 +54,7 @@ class Hub extends Model
 
     public function getHasWorkingUserAttribute()
     {
-        return RequestHub::useHubDB($this->id, function() {
+        return RequestHub::useHubDB($this->id, function () {
             if (RequestHub::hasTable('users')) {
                 if (Schema::hasColumn('users', 'id') && Schema::hasColumn('users', 'password') &&
                    Schema::hasColumn('users', 'username') && Schema::hasColumn('users', 'role') &&
@@ -64,6 +64,7 @@ class Hub extends Model
                     }
                 }
             }
+
             return false;
         });
     }
@@ -71,10 +72,11 @@ class Hub extends Model
     // Getter for 'activated' attribute
     public function getActivatedAttribute()
     {
-        return RequestHub::useHubDB($this->id, function() {
+        return RequestHub::useHubDB($this->id, function () {
             if (RequestHub::hasTable('users')) {
                 return User::where('role', '=', 'dba')->first()?->is_active ?? false;
             }
+
             return false;
         });
     }
@@ -82,15 +84,14 @@ class Hub extends Model
     // Setter for 'activated' attribute
     public function setActivatedAttribute($value)
     {
-        RequestHub::useHubDB($this->id, function() use ($value) {
+        RequestHub::useHubDB($this->id, function () use ($value) {
             $user = User::where('role', '=', 'dba')->first();
 
-            if(!$user) {
+            if (! $user) {
                 $user = User::where('name', 'admin')->first();
-                if($user) {
+                if ($user) {
                     $user->role = 'dba';
-                }
-                else {
+                } else {
                     $user = User::create([
                         'username' => 'admin',
                         'name' => 'admin',
@@ -110,10 +111,11 @@ class Hub extends Model
 
     public function getAdminAttribute()
     {
-        return RequestHub::useHubDB($this->id, function() {
+        return RequestHub::useHubDB($this->id, function () {
             if (RequestHub::hasTable('users')) {
                 return User::where('role', '=', 'dba')->first()?->name;
             }
+
             return null;
         });
     }
@@ -121,18 +123,19 @@ class Hub extends Model
     public function getReadonlyAttribute()
     {
         if ($this->readonlyCache == null) {
-            $this->readonlyCache = RequestHub::useDefaultDB(function() {
+            $this->readonlyCache = RequestHub::useDefaultDB(function () {
                 $r = DB::select('select Update_priv from mysql.db where db=? and User =?', [
                     config('database.connections.mysql.database').'_'.$this->id,
-                    config('database.connections.mysql.database').'_'.$this->id
+                    config('database.connections.mysql.database').'_'.$this->id,
                 ]);
-                
+
                 // Check if query returned any results
                 if (empty($r)) {
                     return true; // more or less this is read only
                 }
-                
+
                 $r = (array) $r;
+
                 return current((array) $r[0]) !== 'Y';
             });
         }
@@ -142,26 +145,26 @@ class Hub extends Model
 
     public function setReadonlyAttribute($value)
     {
-        RequestHub::useDefaultDB(function() use ($value) {
+        RequestHub::useDefaultDB(function () use ($value) {
             if ($value) {
-                DB::statement('REVOKE ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-                DB::statement('GRANT SELECT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-                DB::statement('GRANT CREATE, INSERT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-                DB::statement('REVOKE CREATE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-                DB::statement('GRANT UPDATE (remember_token, updated_at) ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".users TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-                DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".sessions TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost';");
-                
+                DB::statement('REVOKE ALL ON '.config('database.connections.mysql.database').'_'.$this->id.".* FROM '".config('database.connections.mysql.database').'_'.$this->id."'@'localhost';");
+                DB::statement('GRANT SELECT ON '.config('database.connections.mysql.database').'_'.$this->id.".* TO '".config('database.connections.mysql.database').'_'.$this->id."'@'localhost';");
+                DB::statement('GRANT CREATE, INSERT ON '.config('database.connections.mysql.database').'_'.$this->id.".analytics TO '".config('database.connections.mysql.database').'_'.$this->id."'@'localhost';");
+                DB::statement('REVOKE CREATE ON '.config('database.connections.mysql.database').'_'.$this->id.".analytics FROM '".config('database.connections.mysql.database').'_'.$this->id."'@'localhost';");
+                DB::statement('GRANT UPDATE (remember_token, updated_at) ON '.config('database.connections.mysql.database').'_'.$this->id.".users TO '".config('database.connections.mysql.database').'_'.$this->id."'@'localhost';");
+                DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON '.config('database.connections.mysql.database').'_'.$this->id.".sessions TO '".config('database.connections.mysql.database').'_'.$this->id."'@'localhost';");
+
                 if (config('app.allow_public_db_access')) {
-                    DB::statement('REVOKE ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
-                    DB::statement('GRANT SELECT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
-                    DB::statement('GRANT CREATE, INSERT ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
-                    DB::statement('REVOKE CREATE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".analytics FROM '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
-                    DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".sessions TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%';");
+                    DB::statement('REVOKE ALL ON '.config('database.connections.mysql.database').'_'.$this->id.".* FROM '".config('database.connections.mysql.database').'_'.$this->id."'@'%';");
+                    DB::statement('GRANT SELECT ON '.config('database.connections.mysql.database').'_'.$this->id.".* TO '".config('database.connections.mysql.database').'_'.$this->id."'@'%';");
+                    DB::statement('GRANT CREATE, INSERT ON '.config('database.connections.mysql.database').'_'.$this->id.".analytics TO '".config('database.connections.mysql.database').'_'.$this->id."'@'%';");
+                    DB::statement('REVOKE CREATE ON '.config('database.connections.mysql.database').'_'.$this->id.".analytics FROM '".config('database.connections.mysql.database').'_'.$this->id."'@'%';");
+                    DB::statement('GRANT SELECT, INSERT, UPDATE, DELETE ON '.config('database.connections.mysql.database').'_'.$this->id.".sessions TO '".config('database.connections.mysql.database').'_'.$this->id."'@'%';");
                 }
             } else {
-                DB::statement('GRANT ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'localhost' IDENTIFIED BY '" . $this->password . "';");
+                DB::statement('GRANT ALL ON '.config('database.connections.mysql.database').'_'.$this->id.".* TO '".config('database.connections.mysql.database').'_'.$this->id."'@'localhost' IDENTIFIED BY '".$this->password."';");
                 if (config('app.allow_public_db_access')) {
-                    DB::statement('GRANT ALL ON ' . config('database.connections.mysql.database') . '_' . $this->id . ".* TO '" . config('database.connections.mysql.database') . '_' . $this->id . "'@'%' IDENTIFIED BY '" . $this->password . "';");
+                    DB::statement('GRANT ALL ON '.config('database.connections.mysql.database').'_'.$this->id.".* TO '".config('database.connections.mysql.database').'_'.$this->id."'@'%' IDENTIFIED BY '".$this->password."';");
                 }
             }
         });
@@ -173,15 +176,16 @@ class Hub extends Model
     {
         $password = substr(uniqid(), 8);
         $this->admin_password = $password;
+
         return $password;
     }
 
     public function setAdminPasswordAttribute($value)
     {
-        RequestHub::useHubDB($this->id, function() use ($value) {
+        RequestHub::useHubDB($this->id, function () use ($value) {
             if (! RequestHub::hasTable('users')) {
                 $this->migrateTable('users');
-            } //to make sure that needed table exists
+            } // to make sure that needed table exists
 
             $user = User::where('username', '=', 'admin')->first();
 
@@ -203,7 +207,7 @@ class Hub extends Model
 
     public function changeTables($tables, $action)
     {
-        RequestHub::useHubDB($this->id, function() use ($tables, $action) {
+        RequestHub::useHubDB($this->id, function () use ($tables, $action) {
             foreach ($tables as $t) {
                 if ($action == 'fill') {
                     $this->fillTable($t);
@@ -218,16 +222,16 @@ class Hub extends Model
 
     public function migrateTable($tablename)
     {
-        RequestHub::useHubDB($this->id, function() use ($tablename) {
+        RequestHub::useHubDB($this->id, function () use ($tablename) {
             $this->dropTable($tablename);
             Artisan::call('migrate', ['--path' => "database/migrations/create/$tablename", '--force' => true]);
-            Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
+            Schema::dropIfExists('migrations'); // sorry laravel, but thats the only way.
         });
     }
 
     public function fillTable($tablename)
     {
-        RequestHub::useHubDB($this->id, function() use ($tablename) {
+        RequestHub::useHubDB($this->id, function () use ($tablename) {
             $user = null;
             if ($tablename == 'users' && RequestHub::hasTable('users')) {
                 $user = User::where('username', 'admin')->first();
@@ -240,7 +244,7 @@ class Hub extends Model
             // create if not exist
             if (! RequestHub::hasTable($tablename)) {
                 Artisan::call('migrate', ['--path' => "database/migrations/create/$tablename", '--force' => true]);
-                Schema::dropIfExists('migrations'); //sorry laravel, but thats the only way.
+                Schema::dropIfExists('migrations'); // sorry laravel, but thats the only way.
             }
 
             // migrate
@@ -257,7 +261,7 @@ class Hub extends Model
                         'is_active' => $user->is_active,
                     ]);
                 } else {
-                    //create dummy dba for managing this hub
+                    // create dummy dba for managing this hub
                     $pw = substr(uniqid(), 8);
                     $user = User::create([
                         'username' => 'admin',
@@ -269,7 +273,7 @@ class Hub extends Model
                     ]);
                 }
 
-                $user->role = 2; //dba - role is not massfillable for security reasons
+                $user->role = 2; // dba - role is not massfillable for security reasons
                 $user->save();
             }
 
@@ -279,12 +283,12 @@ class Hub extends Model
 
     public function dropTable($tablename)
     {
-        RequestHub::useHubDB($this->id, function() use ($tablename) {
+        RequestHub::useHubDB($this->id, function () use ($tablename) {
             DB::statement('SET FOREIGN_KEY_CHECKS = 0');
             Schema::dropIfExists($tablename);
             if ($tablename == 'users') {
                 Schema::dropIfExists('password_resets');
-            } //users migrates this table too.
+            } // users migrates this table too.
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         });
     }

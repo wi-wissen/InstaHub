@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Analytic extends Model
 {
-    //protected $fillable = ['ip', 'device', 'brand_family', 'brand_model', 'browser_family', 'browser_version', 'platform_family', 'platform_version', 'user_id', 'photo_id'];
+    // protected $fillable = ['ip', 'device', 'brand_family', 'brand_model', 'browser_family', 'browser_version', 'platform_family', 'platform_version', 'user_id', 'photo_id'];
     protected $fillable = ['user_id', 'photo_id'];
 
     protected static function boot()

@@ -2,18 +2,23 @@
 
 namespace App\Livewire\Photo;
 
-use Livewire\Component;
+use App\Facades\RequestHub;
 use App\Models\Photo;
 use Illuminate\Support\Facades\Auth;
-use App\Facades\RequestHub;
+use Livewire\Component;
 
 class Show extends Component
 {
     public Photo $photo;
+
     public $ad;
+
     public $readonly;
+
     public $admin;
+
     public $comment = '';
+
     public $showInput = false;
 
     protected $listeners = ['commentAdded' => '$refresh'];
@@ -35,25 +40,27 @@ class Show extends Component
     protected function loadPhotoRelations()
     {
         $relations = ['user'];
-        
+
         if (RequestHub::hasTable('likes')) {
             $relations[] = 'likes';
         }
-        
+
         if (RequestHub::hasTable('comments')) {
             $relations[] = 'comments.user';
         }
-        
+
         $this->photo->load($relations);
     }
 
     public function toggleLike()
     {
-        if ($this->readonly || !RequestHub::hasTable('likes')) return;
+        if ($this->readonly || ! RequestHub::hasTable('likes')) {
+            return;
+        }
 
         $like = $this->photo->likes()->where('user_id', Auth::id())->first();
 
-        if (!$like) {
+        if (! $like) {
             $this->photo->likes()->create([
                 'user_id' => Auth::id(),
             ]);
@@ -67,10 +74,12 @@ class Show extends Component
 
     public function postComment()
     {
-        if ($this->readonly || !RequestHub::hasTable('comments')) return;
+        if ($this->readonly || ! RequestHub::hasTable('comments')) {
+            return;
+        }
 
         $this->validate([
-            'comment' => 'required|min:1'
+            'comment' => 'required|min:1',
         ]);
 
         $this->photo->comments()->create([
@@ -86,7 +95,9 @@ class Show extends Component
 
     public function deleteComment($commentId)
     {
-        if ($this->readonly || !$this->admin || !RequestHub::hasTable('comments')) return;
+        if ($this->readonly || ! $this->admin || ! RequestHub::hasTable('comments')) {
+            return;
+        }
 
         $this->photo->comments()->find($commentId)->delete();
         $this->photo->refresh();

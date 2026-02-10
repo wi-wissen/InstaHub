@@ -2,13 +2,14 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use App\Models\User;
 use App\Facades\RequestHub;
+use App\Models\User;
+use Livewire\Component;
 
 class UserActivate extends Component
 {
     public $user;
+
     public $isReadOnly;
 
     public function mount(User $user)
@@ -24,7 +25,7 @@ class UserActivate extends Component
 
     public function toggleActive()
     {
-        $this->user->is_active = !$this->user->is_active;
+        $this->user->is_active = ! $this->user->is_active;
         $this->user->save();
     }
 }

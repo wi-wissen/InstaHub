@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Hub;
 use App\Models\User;
-use App\Facades\RequestHub;
 
 class HubPolicy
 {

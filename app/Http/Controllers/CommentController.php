@@ -18,7 +18,7 @@ class CommentController extends Controller
     {
         $comment = Comment::create([
             'user_id' => Auth::id(),
-            'photo_id' =>  $photo_id,
+            'photo_id' => $photo_id,
             'body' => $request->comment,
         ]);
 
@@ -35,7 +35,7 @@ class CommentController extends Controller
     {
         $entry = Comment::find($id);
 
-        //$this->authorize('view', $entry);
+        // $this->authorize('view', $entry);
 
         $entry->delete();
 

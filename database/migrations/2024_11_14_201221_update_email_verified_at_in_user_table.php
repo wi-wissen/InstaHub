@@ -1,10 +1,10 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::table('user', function (Blueprint $table) {
             DB::table('users')
-            ->whereNull('email_verified_at')
-            ->update([
-                'email_verified_at' => Carbon::now()
-            ]);
+                ->whereNull('email_verified_at')
+                ->update([
+                    'email_verified_at' => Carbon::now(),
+                ]);
         });
     }
 

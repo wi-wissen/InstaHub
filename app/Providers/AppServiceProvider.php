@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton('requestHub', function () {
-            return new HubHelper();
+            return new HubHelper;
         });
     }
 
@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         //         ->middleware(\App\Http\Middleware\Subdomain::class);
         // });
 
-        Livewire::addPersistentMiddleware([ 
+        Livewire::addPersistentMiddleware([
             \App\Http\Middleware\Subdomain::class,
         ]);
 
@@ -57,10 +57,10 @@ class AppServiceProvider extends ServiceProvider
         /**
          * Paginate a standard Laravel Collection.
          *
-         * @param int $perPage
-         * @param int $total
-         * @param int $page
-         * @param string $pageName
+         * @param  int  $perPage
+         * @param  int  $total
+         * @param  int  $page
+         * @param  string  $pageName
          * @return array
          */
         if (! Collection::hasMacro('paginate')) {
