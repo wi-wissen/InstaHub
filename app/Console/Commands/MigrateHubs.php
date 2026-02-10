@@ -32,7 +32,7 @@ class MigrateHubs extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): int
     {
         // allow larger selections than students are allowed to do
         DB::statement('SET SESSION SQL_BIG_SELECTS=1');

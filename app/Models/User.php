@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Facades\RequestHub;
 use App\Notifications\UserActivated;
 use DateTime;
@@ -146,24 +147,24 @@ class User extends Authenticatable implements MustVerifyEmail
         return implode(', ', $parts).' '.__('and').' '.$lastPart.'.';
     }
 
-    public function following()
+    public function following(): HasMany
     {
         // return $this->hasMany('App\Follow', 'follower_id');
         return $this->belongsToMany(self::class, 'follows', 'following_id', 'follower_id')->withTimestamps();
     }
 
-    public function followers()
+    public function followers(): HasMany
     {
         // return $this->hasMany('App\Follow', 'following_id');
         return $this->belongsToMany(self::class, 'follows', 'follower_id', 'following_id')->withTimestamps();
     }
 
-    public function photos()
+    public function photos(): HasMany
     {
         return $this->hasMany(\App\Models\Photo::class)->orderBy('created_at', 'desc');
     }
 
-    public function visits()
+    public function visits(): HasMany
     {
         return $this->hasMany(\App\Models\Analytic::class)->orderBy('created_at', 'desc');
     }
@@ -173,7 +174,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->following()->get()->where('id', $user->id)->count();
     }
 
-    public function hubs()
+    public function hubs(): HasMany
     {
         return $this->hasMany(\App\Models\Hub::class, 'teacher_id', 'id');
     }

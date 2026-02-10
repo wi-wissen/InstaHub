@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
 use App\Facades\RequestHub;
 use Closure;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class Subdomain
      *
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         // Livewire can't use `$request->route()->parameter('subdomain')` because it is not in Group
         $subdomain = $this->checkSubdomain($request);

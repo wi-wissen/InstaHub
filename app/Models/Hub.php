@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Facades\RequestHub;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Artisan;
@@ -47,7 +48,7 @@ class Hub extends Model
 
     protected $fillable = ['teacher_id', 'password', 'name', 'generation', 'query_level'];
 
-    public function teacher()
+    public function teacher(): BelongsTo
     {
         return $this->belongsTo(\App\Models\User::class, 'teacher_id');
     }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Collections\PhotoCollection;
 use App\Facades\RequestHub;
 use Illuminate\Database\Eloquent\Model;
@@ -23,27 +25,27 @@ class Photo extends Model
         return new PhotoCollection($models);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\User::class);
     }
 
-    public function likes()
+    public function likes(): HasMany
     {
         return $this->hasMany(\App\Models\Like::class);
     }
 
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(\App\Models\Comment::class);
     }
 
-    public function tags()
+    public function tags(): HasMany
     {
         return $this->hasMany(\App\Models\Tag::class);
     }
 
-    public function viewers()
+    public function viewers(): HasMany
     {
         return $this->hasMany(\App\Models\Analytic::class);
     }

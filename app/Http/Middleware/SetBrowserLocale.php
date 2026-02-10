@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
 use Closure;
 use Illuminate\Support\Facades\App;
 
@@ -14,7 +16,7 @@ class SetBrowserLocale
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next, $guard = null): Response
     {
         if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             // get langs

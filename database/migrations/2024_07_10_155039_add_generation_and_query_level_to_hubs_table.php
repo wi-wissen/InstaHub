@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::table('hubs', function (Blueprint $table) {
             $table->integer('generation')->default(1)->after('password');
@@ -14,7 +14,7 @@ return new class extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('hubs', function (Blueprint $table) {
             $table->dropColumn('generation');

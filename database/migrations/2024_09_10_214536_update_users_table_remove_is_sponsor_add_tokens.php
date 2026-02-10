@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('is_sponsor');
@@ -20,7 +20,7 @@ return new class extends Migration
         DB::table('users')->update(['tokens_max' => $maxTokens]);
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_sponsor')->default(false);
