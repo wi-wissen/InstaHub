@@ -47,7 +47,7 @@ class AdController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'name' => 'max:100',
             'type' => 'required',
             'priority' => 'numeric',
@@ -93,7 +93,7 @@ class AdController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $request->validate([
             'name' => 'max:100',
             'type' => 'required',
             'priority' => 'numeric',

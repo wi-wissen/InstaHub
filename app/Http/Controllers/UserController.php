@@ -41,7 +41,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'bio' => 'max:500',
@@ -127,7 +127,7 @@ class UserController extends Controller
 
     public function postPassword(Request $request)
     {
-        $this->validate(request(), [
+        request()->validate([
             'password' => 'required|min:5',
             'password_confirmation' => 'same:password',
         ]);

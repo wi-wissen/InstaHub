@@ -89,7 +89,7 @@ class HubController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'hub' => [
                 'required',
                 'max:191',
