@@ -12,8 +12,7 @@ class HubHelper
 {
     private $hub = null;
     private $hubTeacher = null;
-
-    private $tables = [];
+    private $hubTables = null;
 
     public function __construct()
     {
@@ -50,10 +49,6 @@ class HubHelper
                 $this->setHubDB();
 
                 Debugbar::info('db: '.Config::get('database.default'));
-
-                $this->tables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
-
-                Debugbar::info('tables: '.implode(', ', $this->tables));
             }
         }
     }
@@ -64,6 +59,8 @@ class HubHelper
         if ($id) {
             $this->setDefaultDB();
             $this->hub = Hub::findOrFail($id);
+            $this->hubTables = null;
+            $this->hubTeacher = null;
         }
 
         if (! config()->has('database.connections.'.config('database.connections.mysql.database').'_'.$this->hub->$id)) {
@@ -80,7 +77,6 @@ class HubHelper
         }
 
         Config::set('database.default', config('database.connections.mysql.database').'_'.$this->hub->id);
-        $this->tables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
     }
 
     public function setDefaultDB()
@@ -221,7 +217,11 @@ class HubHelper
 
     public function hasTable($name)
     {
-        return in_array($name, $this->tables);
+        if ($this->hubTables === null) {
+            $this->hubTables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
+        }
+
+        return in_array($name, $this->hubTables);
     }
 
     public function hasTokens($amount = 1)

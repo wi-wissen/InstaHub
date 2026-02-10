@@ -12,6 +12,8 @@ class Hub extends Model
 {
     protected $table = 'hubs';
 
+    protected $readonlyCache = null;
+
     protected static function boot()
     {
         parent::boot();
@@ -118,20 +120,24 @@ class Hub extends Model
 
     public function getReadonlyAttribute()
     {
-        return RequestHub::useDefaultDB(function() {
-            $r = DB::select('select Update_priv from mysql.db where db=? and User =?', [
-                config('database.connections.mysql.database').'_'.$this->id,
-                config('database.connections.mysql.database').'_'.$this->id
-            ]);
-            
-            // Check if query returned any results
-            if (empty($r)) {
-                return true; // more or less this is read only
-            }
-            
-            $r = (array) $r;
-            return current((array) $r[0]) !== 'Y';
-        });
+        if ($this->readonlyCache == null) {
+            $this->readonlyCache = RequestHub::useDefaultDB(function() {
+                $r = DB::select('select Update_priv from mysql.db where db=? and User =?', [
+                    config('database.connections.mysql.database').'_'.$this->id,
+                    config('database.connections.mysql.database').'_'.$this->id
+                ]);
+                
+                // Check if query returned any results
+                if (empty($r)) {
+                    return true; // more or less this is read only
+                }
+                
+                $r = (array) $r;
+                return current((array) $r[0]) !== 'Y';
+            });
+        }
+
+        return $this->readonlyCache;
     }
 
     public function setReadonlyAttribute($value)
@@ -159,6 +165,8 @@ class Hub extends Model
                 }
             }
         });
+
+        $this->readonlyCache = $value;
     }
 
     public function resetAdminPassword()

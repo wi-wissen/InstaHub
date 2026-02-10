@@ -48,14 +48,12 @@ class PhotoController extends Controller
         $photos = collect([]);
 
         if (RequestHub::hasTable('photos')) {
-            $user = Auth::user();
-
             // If follows table exists, only load photos from followed users
             $hasFollows = RequestHub::hasTable('follows');
             $following_ids = null;
             if ($hasFollows) {
-                $following_ids = $user->following()->pluck('users.id')->toArray();
-                $following_ids[] = $user->id; //always show own posts
+                $following_ids = Auth::user()->following()->pluck('users.id');
+                $following_ids->push(Auth::user()->id); //always show own posts
             }
 
             // Prepare query builder (with or without follows filter)
@@ -118,18 +116,12 @@ class PhotoController extends Controller
             }
         }
 
-        // Preload following IDs for the 3-dot menu (avoids N+1 queries)
-        $followingIds = collect([]);
-        if (RequestHub::hasTable('follows')) {
-            $followingIds = Auth::user()->following()->pluck('users.id');
-        }
-
         if (RequestHub::hasTable('ads')) {
             $ad = Ad::getAd();
 
-            return view('photo.index', ['photos' => $photos, 'ad' => $ad, 'followingIds' => $followingIds]);
+            return view('photo.index', ['photos' => $photos, 'ad' => $ad, 'followingIds' => $following_ids]);
         } else {
-            return view('photo.index', ['photos' => $photos, 'followingIds' => $followingIds]);
+            return view('photo.index', ['photos' => $photos, 'followingIds' => $following_ids]);
         }
     }
 
