@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Facades\RequestHub;
 use App\Http\Resources\Ad as AdResource;
 use App\Models\Ad;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class AdController extends Controller
+class AdController extends Controller implements HasMiddleware
 {
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->middleware('auth');
+        return [
+            'auth',
+        ];
     }
 
     /**
@@ -44,15 +46,14 @@ class AdController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' =>  'max:100',
-            'type' =>  'required',
-            'priority' =>  'numeric',
+        $request->validate([
+            'name' => 'max:100',
+            'type' => 'required',
+            'priority' => 'numeric',
             'url' => 'required',
             'img' => 'required',
             'query' => 'required',
@@ -90,16 +91,15 @@ class AdController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' =>  'max:100',
-            'type' =>  'required',
-            'priority' =>  'numeric',
+        $request->validate([
+            'name' => 'max:100',
+            'type' => 'required',
+            'priority' => 'numeric',
             'url' => 'required',
             'img' => 'required',
             'query' => 'required',

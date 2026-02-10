@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
@@ -10,14 +11,14 @@ class Comment extends Model
 
     protected $with = ['user'];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\User::class);
     }
 
     public function getHtmlAttribute()
     {
-        $html = htmlspecialchars($this->body); //secure user input
+        $html = htmlspecialchars($this->body); // secure user input
         $html = preg_replace('/#([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/tag/$1'>$0</a>", $html);
         $html = preg_replace('/@([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/$1'>$0</a>", $html);
 

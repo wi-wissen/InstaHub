@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\DB;
 class HubHelper
 {
     private $hub = null;
+
     private $hubTeacher = null;
+
     private $hubTables = null;
 
     public function __construct()
@@ -21,11 +23,11 @@ class HubHelper
         $host = config('app.domain');
         if (array_key_exists('HTTP_HOST', $_SERVER)) {
             $host = $_SERVER['HTTP_HOST'];
-        } //if request is from web (and not console)
+        } // if request is from web (and not console)
 
         $domainParts = explode('.', $host);
 
-        //run only on hub subdomains
+        // run only on hub subdomains
         if (str_replace('{subdomain}', $domainParts[0], config('app.domain_hub')) == $host && config('app.domain_admin') != $host) {
             $this->hub = Hub::with('teacher')->where('name', '=', $domainParts[0])->first();
 
@@ -36,14 +38,14 @@ class HubHelper
                 return redirect(env('APP_URL'));
             } else {
                 Config::set('database.connections.'.config('database.connections.mysql.database').'_'.$this->hub->id, [
-                    'driver'    => 'mysql',
-                    'host'      => config('database.connections.mysql.host'),
-                    'database'  => config('database.connections.mysql.database').'_'.$this->hub->id,
-                    'username'  => config('database.connections.mysql.database').'_'.$this->hub->id,
-                    'password'  => $this->hub->password,
-                    'charset'   => 'utf8mb4',
+                    'driver' => 'mysql',
+                    'host' => config('database.connections.mysql.host'),
+                    'database' => config('database.connections.mysql.database').'_'.$this->hub->id,
+                    'username' => config('database.connections.mysql.database').'_'.$this->hub->id,
+                    'password' => $this->hub->password,
+                    'charset' => 'utf8mb4',
                     'collation' => 'utf8mb4_unicode_ci',
-                    'prefix'    => '',
+                    'prefix' => '',
                 ]);
 
                 $this->setHubDB();
@@ -65,14 +67,14 @@ class HubHelper
 
         if (! config()->has('database.connections.'.config('database.connections.mysql.database').'_'.$this->hub->$id)) {
             Config::set('database.connections.'.config('database.connections.mysql.database').'_'.$this->hub->id, [
-                'driver'    => 'mysql',
-                'host'      => config('database.connections.mysql.host'),
-                'database'  => config('database.connections.mysql.database').'_'.$this->hub->id,
-                'username'  => config('database.connections.mysql.database').'_'.$this->hub->id,
-                'password'  => $this->hub->password,
-                'charset'   => 'utf8mb4',
+                'driver' => 'mysql',
+                'host' => config('database.connections.mysql.host'),
+                'database' => config('database.connections.mysql.database').'_'.$this->hub->id,
+                'username' => config('database.connections.mysql.database').'_'.$this->hub->id,
+                'password' => $this->hub->password,
+                'charset' => 'utf8mb4',
                 'collation' => 'utf8mb4_unicode_ci',
-                'prefix'    => '',
+                'prefix' => '',
             ]);
         }
 
@@ -88,26 +90,26 @@ class HubHelper
     {
         // Speichere die aktuelle DB-Verbindung
         $previousConnection = config('database.default');
-        
+
         // Schalte zur Default-DB
         $this->setDefaultDB();
-        
+
         try {
             // Führe die übergebene Funktion aus
             $result = $callback();
-            
+
             // Stelle die vorherige Verbindung wieder her, falls es nicht die Default-DB war
             if ($previousConnection !== 'mysql') {
                 Config::set('database.default', $previousConnection);
             }
-            
+
             return $result;
         } catch (\Exception $e) {
             // Stelle auch im Fehlerfall die ursprüngliche Verbindung wieder her
             if ($previousConnection !== 'mysql') {
                 Config::set('database.default', $previousConnection);
             }
-            
+
             throw $e; // Wirf den Fehler weiter
         }
     }
@@ -116,26 +118,26 @@ class HubHelper
     {
         // Speichere die aktuelle DB-Verbindung
         $previousConnection = config('database.default');
-        
+
         // Schalte zur Hub-DB
         $this->setHubDB($id);
-        
+
         try {
             // Führe die übergebene Funktion aus
             $result = $callback();
-            
+
             // Wenn die vorherige Verbindung 'mysql' war, stelle sie wieder her
             if ($previousConnection === 'mysql') {
                 $this->setDefaultDB();
             }
-            
+
             return $result;
         } catch (\Exception $e) {
             // Stelle auch im Fehlerfall die ursprüngliche Verbindung wieder her
             if ($previousConnection === 'mysql') {
                 $this->setDefaultDB();
             }
-            
+
             throw $e; // Wirf den Fehler weiter
         }
     }
@@ -175,11 +177,12 @@ class HubHelper
     public function teacher()
     {
         if ($this->isHub()) {
-            if(! $this->hubTeacher) {
+            if (! $this->hubTeacher) {
                 $this->setDefaultDB();
                 $this->hubTeacher = $this->hub->teacher;
                 $this->setHubDB();
             }
+
             return $this->hubTeacher;
         } else {
             return null;
@@ -218,7 +221,7 @@ class HubHelper
     public function hasTable($name)
     {
         if ($this->hubTables === null) {
-            $this->hubTables = array_map(fn($value) => reset($value), DB::select('SHOW TABLES'));
+            $this->hubTables = array_map(fn ($value) => reset($value), DB::select('SHOW TABLES'));
         }
 
         return in_array($name, $this->hubTables);

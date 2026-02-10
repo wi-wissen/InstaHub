@@ -8,28 +8,27 @@ use App\Models\Hub;
 use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
-class AdminController extends Controller
+class AdminController extends Controller implements HasMiddleware
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->middleware('auth');
+        return [
+            'auth',
+        ];
     }
 
     public function updateTags(Request $request)
     {
-        //if this ends to early your php memory limit is reached - turn off debug-mode or increase
+        // if this ends to early your php memory limit is reached - turn off debug-mode or increase
         $photos = Photo::all();
 
-        DB::beginTransaction(); //better performance
+        DB::beginTransaction(); // better performance
 
         foreach ($photos as $photo) {
             $photo->updateTags();
@@ -43,7 +42,7 @@ class AdminController extends Controller
     {
         $users = User::all();
 
-        DB::beginTransaction(); //better performance
+        DB::beginTransaction(); // better performance
 
         foreach ($users as $user) {
             $user->cryptpw();
@@ -58,9 +57,9 @@ class AdminController extends Controller
         $hubs = Hub::all();
 
         foreach ($hubs as $hub) {
-            RequestHub::useHubDB($hub->id, function() {
+            RequestHub::useHubDB($hub->id, function () {
                 if (RequestHub::hasTable('analytics')) {
-                    //trim analytics to max 10.000 entries (not exact methode)
+                    // trim analytics to max 10.000 entries (not exact methode)
                     $latest = DB::table('analytics')->latest()->first()->id;
                     Analytic::latest()->where('id', '<', $latest - 10000)->delete();
                 }
@@ -76,12 +75,12 @@ class AdminController extends Controller
      */
     public function redirect(Hub $hub)
     {
-        $this->authorize('view', $hub);
+        Gate::authorize('view', $hub);
 
         abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
         $secret = bin2hex(random_bytes(32));
-        Cache::put('hub-'.$hub->id.'-auth-token', $secret, 120); //sessions are isolated, so we use cache to store a 64-char secret
+        Cache::put('hub-'.$hub->id.'-auth-token', $secret, 120); // sessions are isolated, so we use cache to store a 64-char secret
 
         return redirect(RequestHub::url($hub->name).'/login/'.$secret);
     }

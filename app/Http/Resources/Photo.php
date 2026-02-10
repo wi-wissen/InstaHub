@@ -8,7 +8,6 @@ use App\Http\Resources\User as UserResource;
 use App\Models\Like;
 use Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Schema;
 
 class Photo extends JsonResource
 {
@@ -16,9 +15,8 @@ class Photo extends JsonResource
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'id' => $this->id,

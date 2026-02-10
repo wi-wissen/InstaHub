@@ -9,10 +9,12 @@ use App\Models\Hub;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
-class LoginController extends Controller
+class LoginController extends Controller implements HasMiddleware
 {
     /*
     |--------------------------------------------------------------------------
@@ -41,9 +43,16 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except(['logout', 'loginWithToken']);
-        $this->middleware('auth')->only('logout');
-        $hub = new HubHelper(); //this Controller runs before HubHelper in AppServiceProvider, so we force changing db
+
+        $hub = new HubHelper; // this Controller runs before HubHelper in AppServiceProvider, so we force changing db
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('guest', except: ['logout', 'loginWithToken']),
+            new Middleware('auth', only: ['logout']),
+        ];
     }
 
     public function username()
@@ -54,7 +63,6 @@ class LoginController extends Controller
     /**
      * Validate the user login request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return void
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -72,7 +80,6 @@ class LoginController extends Controller
     /**
      * The user has been authenticated.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $user
      * @return mixed
      */
@@ -81,7 +88,7 @@ class LoginController extends Controller
         // touch hub to mark last activity in updated_at
         if (RequestHub::isHub()) {
             $id = RequestHub::id();
-            RequestHub::useDefaultDB(function() use ($id) {
+            RequestHub::useDefaultDB(function () use ($id) {
                 Hub::where('id', $id)->touch();
             });
         }
@@ -107,13 +114,13 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        //do the same as $this->attemptLogin($request) but with a token
+        // do the same as $this->attemptLogin($request) but with a token
         if (Cache::has('hub-'.RequestHub::id().'-auth-token')) {
             $storedToken = Cache::get('hub-'.RequestHub::id().'-auth-token');
             if ($storedToken == $token) {
-                //success
-                Auth::login(User::where('role', '=', 'dba')->firstOrFail()); //login
-                Cache::forget('hub-'.RequestHub::id().'-auth-token'); //works only once
+                // success
+                Auth::login(User::where('role', '=', 'dba')->firstOrFail()); // login
+                Cache::forget('hub-'.RequestHub::id().'-auth-token'); // works only once
 
                 return $this->sendLoginResponse($request);
             }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('users')) {
+        if (! Schema::hasTable('users')) {
             Schema::create('users', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name');
@@ -31,10 +31,9 @@ return new class extends Migration
                 $table->rememberToken();
                 $table->timestamps();
             });
-        }
-        else {
+        } else {
             // legacy support
-            Schema::table('users', function (Blueprint $table) {    
+            Schema::table('users', function (Blueprint $table) {
                 // Add new columns
                 $table->timestamp('email_verified_at')->nullable()->after('email');
             });

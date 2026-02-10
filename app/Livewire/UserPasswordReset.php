@@ -2,15 +2,17 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
+use App\Facades\RequestHub;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Facades\RequestHub;
+use Livewire\Component;
 
 class UserPasswordReset extends Component
 {
     public $username;
+
     public $newPassword = null;
+
     public $isReadOnly;
 
     public function mount($username)
@@ -28,7 +30,7 @@ class UserPasswordReset extends Component
     {
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $count = mb_strlen($chars);
-        
+
         $pw = '';
         for ($i = 0; $i < 6; $i++) {
             $index = rand(0, $count - 1);

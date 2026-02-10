@@ -2,14 +2,16 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class FollowButton extends Component
 {
     public $username;
+
     public $isFollowing;
+
     public $readonly = false;
 
     public function mount($username, $isFollowing = false)
@@ -26,7 +28,7 @@ class FollowButton extends Component
     public function follow()
     {
         $user = User::where('username', $this->username)->first();
-        
+
         Auth::user()->following()->attach($user);
         $this->isFollowing = true;
     }

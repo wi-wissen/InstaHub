@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\RequestHub;
 use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Storage;
 
-class FileController extends Controller
+class FileController extends Controller implements HasMiddleware
 {
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->middleware('auth');
+        return [
+            'auth',
+        ];
     }
 
     /**
@@ -32,8 +34,7 @@ class FileController extends Controller
             // legacy support
             $url = 'photos/1/'.$filename; // legacy support
             $file = Storage::disk('public')->get($url);
-        }
-        else if (Storage::disk('local')->exists($url)) {
+        } elseif (Storage::disk('local')->exists($url)) {
             $file = Storage::disk('local')->get($url);
         } else {
             abort(404);
@@ -52,12 +53,12 @@ class FileController extends Controller
      */
     public function showAvatar($filename)
     {
-        if($filename == '000.jpg') {
+        if ($filename == '000.jpg') {
             return (new Response(Storage::disk('public')->get('avatars/1/000.jpg'), 200))
-               ->header('Content-Type', 'jpg')
-               ->header('Content-Disposition', 'attachment; filename="ad-avatar-jpg');
+                ->header('Content-Type', 'jpg')
+                ->header('Content-Disposition', 'attachment; filename="ad-avatar-jpg');
         }
-        
+
         $user = User::where('avatar', '=', 'avatars/'.$filename)->firstOrFail();
 
         $avatar = $user->avatar;
@@ -67,8 +68,7 @@ class FileController extends Controller
             // legacy support
             $avatar = 'avatars/1/'.$filename;
             $file = Storage::disk('public')->get($avatar);
-        }
-        else if (Storage::disk('local')->exists($avatar)) {
+        } elseif (Storage::disk('local')->exists($avatar)) {
             $file = Storage::disk('local')->get($avatar);
         } else {
             abort(404);

@@ -7,22 +7,19 @@ use App\Models\Ad;
 use App\Models\Analytic;
 use App\Models\Photo;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
 
-class PhotoController extends Controller
+class PhotoController extends Controller implements HasMiddleware
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->middleware('auth');
+        return [
+            'auth',
+        ];
     }
 
     /**
@@ -53,7 +50,7 @@ class PhotoController extends Controller
             $following_ids = null;
             if ($hasFollows) {
                 $following_ids = Auth::user()->following()->pluck('users.id');
-                $following_ids->push(Auth::user()->id); //always show own posts
+                $following_ids->push(Auth::user()->id); // always show own posts
             }
 
             // Prepare query builder (with or without follows filter)
@@ -84,21 +81,21 @@ class PhotoController extends Controller
                         // decay = EXP(LN(0.995) / 900 × age_in_seconds) ≈ EXP(-0.00000557 × age)
                         $scoreParts = ['1'];
                         if ($hasLikes) {
-                            $scoreParts[] = 'COALESCE(likes_count, 0) * ' . (int) $w['like_weight'];
+                            $scoreParts[] = 'COALESCE(likes_count, 0) * '.(int) $w['like_weight'];
                         }
                         if ($hasComments) {
-                            $scoreParts[] = 'COALESCE(comments_count, 0) * ' . (int) $w['comment_weight'];
+                            $scoreParts[] = 'COALESCE(comments_count, 0) * '.(int) $w['comment_weight'];
                         }
-                        $scoreExpr = '(' . implode(' + ', $scoreParts) . ')';
+                        $scoreExpr = '('.implode(' + ', $scoreParts).')';
                         if ($w['decay'] > 0) {
                             $scoreExpr .= ' * EXP(-0.00000557 * TIMESTAMPDIFF(SECOND, created_at, NOW()))';
                         }
 
                         $photos = (clone $baseQuery)
                             ->with('user')
-                            ->when($hasLikes, fn($q) => $q->withCount('likes'))
-                            ->when($hasComments, fn($q) => $q->withCount('comments'))
-                            ->orderByRaw($scoreExpr . ' DESC')
+                            ->when($hasLikes, fn ($q) => $q->withCount('likes'))
+                            ->when($hasComments, fn ($q) => $q->withCount('comments'))
+                            ->orderByRaw($scoreExpr.' DESC')
                             ->limit(100)
                             ->get();
                         $photos = $photos->addPhotoScoreGlobal($weights)->paginate(5);
@@ -204,7 +201,7 @@ class PhotoController extends Controller
 
     public function show(Photo $photo)
     {
-        //analytic
+        // analytic
         if (RequestHub::hasTable('analytics')) {
             Analytic::create(['user_id' => Auth::id(), 'photo_id' => $photo->id]);
         }
@@ -225,7 +222,7 @@ class PhotoController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'photo' => 'required|max:'.$this->max_filesize(),
             'description' => 'required',
         ]);
@@ -238,7 +235,7 @@ class PhotoController extends Controller
         $image->scaleDown(width: 1280, height: 1280);
 
         // Encode as WebP and save
-        $filename = 'photos/' . Str::random(40) . '.webp';
+        $filename = 'photos/'.Str::random(40).'.webp';
         Storage::put($filename, $image->toWebp(quality: 90));
 
         $photo = Photo::create([
@@ -252,7 +249,7 @@ class PhotoController extends Controller
         return redirect('p/'.$photo->id);
     }
 
-    //in kilobytes
+    // in kilobytes
     public function max_filesize()
     {
         $val = ini_get('post_max_size');
@@ -260,12 +257,12 @@ class PhotoController extends Controller
         $last = strtolower($val[strlen($val) - 1]);
         $val = substr($val, 0, -1);
         switch ($last) {
-                // The 'G' modifier is available since PHP 5.1.0
-                case 'g':
-                    $val *= 1024; // no break to also calc with mega.
-                case 'm':
-                    $val *= 1024;
-            }
+            // The 'G' modifier is available since PHP 5.1.0
+            case 'g':
+                $val *= 1024; // no break to also calc with mega.
+            case 'm':
+                $val *= 1024;
+        }
 
         $result = $val;
 
@@ -274,17 +271,17 @@ class PhotoController extends Controller
         $last = strtolower($val[strlen($val) - 1]);
         $val = substr($val, 0, -1);
         switch ($last) {
-                // The 'G' modifier is available since PHP 5.1.0
-                case 'g':
-                    $val *= 1024; // no break to also calc with mega.
-                case 'm':
-                    $val *= 1024;
-            }
+            // The 'G' modifier is available since PHP 5.1.0
+            case 'g':
+                $val *= 1024; // no break to also calc with mega.
+            case 'm':
+                $val *= 1024;
+        }
 
         if ($result > $val) {
             $result = $val;
         }
 
-        return $result; //in kbyte
+        return $result; // in kbyte
     }
 }

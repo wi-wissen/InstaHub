@@ -5,20 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Comment as CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 
-class CommentController extends Controller
+class CommentController extends Controller implements HasMiddleware
 {
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->middleware('auth');
+        return [
+            'auth',
+        ];
     }
 
     public function store($photo_id, Request $request)
     {
         $comment = Comment::create([
             'user_id' => Auth::id(),
-            'photo_id' =>  $photo_id,
+            'photo_id' => $photo_id,
             'body' => $request->comment,
         ]);
 
@@ -35,7 +38,7 @@ class CommentController extends Controller
     {
         $entry = Comment::find($id);
 
-        //$this->authorize('view', $entry);
+        // $this->authorize('view', $entry);
 
         $entry->delete();
 

@@ -12,13 +12,14 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Ossycodes\FriendlyCaptcha\Rules\FriendlyCaptcha;
 
-class RegisterController extends Controller
+class RegisterController extends Controller implements HasMiddleware
 {
     /*
     |--------------------------------------------------------------------------
@@ -47,14 +48,20 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
-        $hub = new HubHelper(); //this Controller runs before HubHelper in AppServiceProvider, so we force changing db
+
+        $hub = new HubHelper; // this Controller runs before HubHelper in AppServiceProvider, so we force changing db
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            'guest',
+        ];
     }
 
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
@@ -63,7 +70,7 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        if($user->is_active) {
+        if ($user->is_active) {
             $this->guard()->login($user);
         }
 
@@ -79,7 +86,6 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -103,7 +109,6 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
      * @return \App\Models\User
      */
     protected function create(array $data)
@@ -136,7 +141,7 @@ class RegisterController extends Controller
             'is_active' => app()->environment('local'),
         ];
 
-        if(! RequestHub::isHub()) {
+        if (! RequestHub::isHub()) {
             // only for teachers in root
             $userData['hub_default_generation'] = config('hub.default_generation');
             $userData['role'] = 'teacher';
@@ -144,7 +149,7 @@ class RegisterController extends Controller
 
         $user = User::create($userData);
 
-        //send message to admin if teacher apply for account in root
+        // send message to admin if teacher apply for account in root
         if (! RequestHub::isHub() && config('app.env') != 'local') {
             User::where('role', '=', 'admin')->first()->notify(new NewUser($user, $data['messageToAdmin']));
         }

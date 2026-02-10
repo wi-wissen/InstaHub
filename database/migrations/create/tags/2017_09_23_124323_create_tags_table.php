@@ -8,10 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::dropIfExists('tags');
 
@@ -19,8 +17,8 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('photo_id')->unsigned();
             $table->foreign('photo_id')
-              ->references('id')->on('photos')
-              ->onDelete('cascade');
+                ->references('id')->on('photos')
+                ->onDelete('cascade');
             $table->string('name');
             $table->timestamps();
         });

@@ -7,27 +7,26 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 
 class Subdomain
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         // Livewire can't use `$request->route()->parameter('subdomain')` because it is not in Group
         $subdomain = $this->checkSubdomain($request);
 
         if ($subdomain) {
 
-            //change app domain (for mails for example)
+            // change app domain (for mails for example)
             Config::set('app.url', RequestHub::url());
 
-            //help controllers to ignore subdomain
+            // help controllers to ignore subdomain
             if (RequestHub::isHub()) {
                 RequestHub::setHubDB();
                 $request->route()->forgetParameter('subdomain');
@@ -52,7 +51,7 @@ class Subdomain
         $subdomain = Str::before($host, Str::after($hubDomainPattern, '{subdomain}'));
 
         // Überprüfen, ob die Subdomain dem Muster entspricht
-        if (Str::contains($hubDomainPattern, '{subdomain}') && 
+        if (Str::contains($hubDomainPattern, '{subdomain}') &&
             Str::endsWith($host, Str::after($hubDomainPattern, '{subdomain}'))) {
             return $subdomain;
         }

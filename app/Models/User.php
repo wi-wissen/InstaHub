@@ -8,6 +8,7 @@ use DateTime;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         parent::boot();
 
         static::creating(function ($user) {
-            if(! RequestHub::isHub()) {
+            if (! RequestHub::isHub()) {
                 $user->tokens_max = config('openai.max_tokens'); // set max tokens only for teachers
             }
         });
@@ -37,12 +38,11 @@ class User extends Authenticatable implements MustVerifyEmail
                 $model->deleteAvatar();
             }
 
-            if($model->isDirty('is_active') && $model->is_active) {
+            if ($model->isDirty('is_active') && $model->is_active) {
                 if (! RequestHub::isHub()) {
-                    try{
+                    try {
                         $model->notify(new UserActivated(RequestHub::url()));
-                    }
-                    catch(TransportException $e){
+                    } catch (TransportException $e) {
                         flash(__('Can\'t send mail: '.$e->getMessage()))->error();
                     }
                 }
@@ -69,9 +69,12 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $table = 'users';
 
-    protected $casts = [
-        'birthday' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'birthday' => 'datetime',
+        ];
+    }
 
     protected $fillable = [
         'username', 'name', 'email', 'password', 'bio', 'avatar', 'birthday',
@@ -107,7 +110,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function sendEmailVerificationNotification()
     {
-        if(! RequestHub::isHub()) {
+        if (! RequestHub::isHub()) {
             // send only in `admin` area
             $this->notify(new VerifyEmail);
         }
@@ -118,17 +121,17 @@ class User extends Authenticatable implements MustVerifyEmail
         $parts = [];
 
         if ($this->city && $this->country) {
-            $parts[] = __('is from') . " {$this->city} ({$this->country})";
+            $parts[] = __('is from')." {$this->city} ({$this->country})";
         } elseif ($this->country) {
-            $parts[] = __('is from') . " {$this->country}";
+            $parts[] = __('is from')." {$this->country}";
         }
 
         if ($this->gender) {
-            $parts[] = __('is') . ' ' . __($this->gender);
+            $parts[] = __('is').' '.__($this->gender);
         }
 
         if ($this->age() !== 'unknown') {
-            $parts[] = __('is') . ' ' . $this->age() . ' ' . __('years old');
+            $parts[] = __('is').' '.$this->age().' '.__('years old');
         }
 
         if (empty($parts)) {
@@ -140,27 +143,28 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         $lastPart = array_pop($parts);
-        return implode(', ', $parts) . ' ' . __('and') . ' ' . $lastPart . '.';
+
+        return implode(', ', $parts).' '.__('and').' '.$lastPart.'.';
     }
 
-    public function following()
+    public function following(): HasMany
     {
-        //return $this->hasMany('App\Follow', 'follower_id');
+        // return $this->hasMany('App\Follow', 'follower_id');
         return $this->belongsToMany(self::class, 'follows', 'following_id', 'follower_id')->withTimestamps();
     }
 
-    public function followers()
+    public function followers(): HasMany
     {
-        //return $this->hasMany('App\Follow', 'following_id');
+        // return $this->hasMany('App\Follow', 'following_id');
         return $this->belongsToMany(self::class, 'follows', 'follower_id', 'following_id')->withTimestamps();
     }
 
-    public function photos()
+    public function photos(): HasMany
     {
         return $this->hasMany(\App\Models\Photo::class)->orderBy('created_at', 'desc');
     }
 
-    public function visits()
+    public function visits(): HasMany
     {
         return $this->hasMany(\App\Models\Analytic::class)->orderBy('created_at', 'desc');
     }
@@ -170,26 +174,27 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->following()->get()->where('id', $user->id)->count();
     }
 
-    public function hubs()
+    public function hubs(): HasMany
     {
         return $this->hasMany(\App\Models\Hub::class, 'teacher_id', 'id');
     }
 
     public function age()
     {
-        $now = new DateTime();
+        $now = new DateTime;
         if ($this->birthday === null) {
             return 'unknown';
         }
         $interval = $this->birthday->diff($now);
-        if ($interval->y > 2000) { //age set to 0
+        if ($interval->y > 2000) { // age set to 0
             return 'unknown';
         }
 
         return $interval->y;
     }
 
-    private function deleteAvatar() {
+    private function deleteAvatar()
+    {
         if (Storage::disk('local')->get($this->avatar)) {
             // uploaded avatar
             return Storage::disk('local')->delete($this->avatar);
@@ -212,7 +217,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    //for unencrypted passwords after csv import
+    // for unencrypted passwords after csv import
     public function cryptpw()
     {
         if (! (substr($this->password, 0, 7) === '$2y$10$')) {
@@ -223,7 +228,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function getSuggested($limit = 10)
     {
-        $user_ids = self::get('id')->pluck('id');	//all users
+        $user_ids = self::get('id')->pluck('id');	// all users
 
         $relScore = [];								// relation score
         foreach ($user_ids as $user_id) {
@@ -238,7 +243,7 @@ class User extends Authenticatable implements MustVerifyEmail
 												AND u1.id = f1.following_id and u2.id = f2.following_id AND f1.follower_id = f2.follower_id and f1.following_id != f2.following_id 
                                                 GROUP BY u2.id
                                         ',
-                                        [Auth::user()->id]
+                [Auth::user()->id]
             );
             foreach ($results as $result) {
                 $relScore[$result->userId] = $result->fCount * 4;   // Pro gemeinsam gefolgtem Profil wird der RelationScore des Users um 4 erhöht
@@ -251,7 +256,7 @@ class User extends Authenticatable implements MustVerifyEmail
 												AND u1.id = f1.follower_id and u2.id = f2.follower_id AND f1.following_id = f2.following_id and f1.follower_id != f2.follower_id 
                                                 GROUP BY u2.id
                                         ',
-                                        [Auth::user()->id]
+                [Auth::user()->id]
             );
             foreach ($results as $result) {
                 $relScore[$result->userId] += $result->fCount * 1;   // Pro gemeinsamem Follower wird der RelationScore des Users um 1 erhöht
@@ -279,9 +284,8 @@ class User extends Authenticatable implements MustVerifyEmail
             $results = DB::select('SELECT u2.id as userId
 												FROM users as u1, users as u2, follows as f1
 												WHERE u1.id = ?
-												AND u2.id = f1.follower_id AND u1.id = f1.following_id'
-                                        ,
-                                        [Auth::user()->id]
+												AND u2.id = f1.follower_id AND u1.id = f1.following_id',
+                [Auth::user()->id]
             );
 
             foreach ($results as $result) {
@@ -300,10 +304,10 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         $users = self::whereIn('id', array_keys($highRelScore))
-                ->orderByRaw('FIELD(id, '.implode(', ', array_keys($highRelScore)).')')
-                ->get();
+            ->orderByRaw('FIELD(id, '.implode(', ', array_keys($highRelScore)).')')
+            ->get();
 
-        //add score to models
+        // add score to models
         foreach ($users as $user) {
             $user->score = $highRelScore[$user->id];
         }

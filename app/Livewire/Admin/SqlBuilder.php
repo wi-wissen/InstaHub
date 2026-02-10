@@ -3,35 +3,43 @@
 namespace App\Livewire\Admin;
 
 use Exception;
-use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Livewire\Component;
 
 class SqlBuilder extends Component
 {
     public $tables = [];
+
     public $sql = [
         'tables' => [],
         'attrs' => [],
         'orderBy' => [
             'attr' => '',
-            'direction' => ''
+            'direction' => '',
         ],
         'groupBy' => '',
         'distinct' => false,
         'rules' => [],
     ];
+
     public $settings = [
         'showsql' => false,
         'rows' => false,
         'attributes' => false,
-        'expert' => false
+        'expert' => false,
     ];
+
     public $query = '';
+
     public $tablenames = [];
+
     public $attr = [];
+
     public $rules = [];
+
     public $message = null;
+
     public $results = [];
 
     public function mount()
@@ -46,7 +54,7 @@ class SqlBuilder extends Component
 
     public function updatedSql($value, $key)
     {
-        if(str_starts_with($key, 'tables')) {
+        if (str_starts_with($key, 'tables')) {
             $this->attr = $this->getTableAttributes();
             $this->rules = $this->getQueryRules();
 
@@ -81,16 +89,17 @@ class SqlBuilder extends Component
         } else {
             foreach ($this->sql['tables'] as $table) {
                 foreach ($this->tables[$table] ?? [] as $column) {
-                    $attrs[] = $table . '.' . $column;
+                    $attrs[] = $table.'.'.$column;
                 }
             }
         }
+
         return $attrs;
     }
 
     public function getQueryRules()
     {
-        return array_map(function($attr) {
+        return array_map(function ($attr) {
             return ['type' => 'text', 'id' => $attr, 'label' => $attr];
         }, $this->attr);
     }
@@ -98,7 +107,7 @@ class SqlBuilder extends Component
     public function getResult()
     {
         $this->unsetResults();
-        
+
         try {
             $this->results = DB::select($this->query);
             if (! $this->results) {
@@ -109,13 +118,13 @@ class SqlBuilder extends Component
             } else {
                 $this->message = [
                     'type' => 'success',
-                    'text' => __('Query executed successfully. :count results found.', ['count' => count($this->results)])
+                    'text' => __('Query executed successfully. :count results found.', ['count' => count($this->results)]),
                 ];
             }
         } catch (Exception $e) {
             $this->message = [
                 'type' => 'danger',
-                'text' => $e->getMessage()
+                'text' => $e->getMessage(),
             ];
         }
     }

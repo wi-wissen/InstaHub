@@ -2,27 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
 
-class UserController extends Controller
+class UserController extends Controller implements HasMiddleware
 {
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->authorizeResource(User::class, 'user');
-        $this->middleware('auth');
+        return [
+            new Middleware('can:viewAny,App\Models\User', only: ['index']),
+            new Middleware('can:view,user', only: ['show']),
+            new Middleware('can:create,App\Models\User', only: ['create', 'store']),
+            new Middleware('can:update,user', only: ['edit', 'update']),
+            new Middleware('can:delete,user', only: ['destroy']),
+            'auth',
+        ];
     }
 
     public function index($filter = null, $param = null)
     {
         if ($filter == 'suggested') {
-            return view('user.index', ['users' => User::getSuggested(), 'heading' => __('Suggested')]); //TODO: Lassen sich Punkte mit übertragen?
+            return view('user.index', ['users' => User::getSuggested(), 'heading' => __('Suggested')]); // TODO: Lassen sich Punkte mit übertragen?
         } elseif ($filter == 'letter') {
             return view('user.index', ['users' => User::where('username', 'LIKE', $param.'%')->orderBy('username', 'asc')->paginate(10), 'char' => $param]);
         } else {
@@ -42,7 +49,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'bio' => 'max:500',
@@ -70,10 +77,10 @@ class UserController extends Controller
                 // Bild quadratisch zuschneiden, auf max 512px und als WebP speichern
                 $image = Image::read($request->file('avatar'));
                 $image->coverDown(512, 512, 'center');
-                
-                $filename = 'avatars/' . Str::random(40) . '.webp';
+
+                $filename = 'avatars/'.Str::random(40).'.webp';
                 Storage::put($filename, $image->toWebp(quality: 90));
-                
+
                 $user->avatar = $filename;
             } else {
                 flash(__('Can not upload Avatar'))->error();
@@ -128,7 +135,7 @@ class UserController extends Controller
 
     public function postPassword(Request $request)
     {
-        $this->validate(request(), [
+        request()->validate([
             'password' => 'required|min:5',
             'password_confirmation' => 'same:password',
         ]);

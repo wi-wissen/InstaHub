@@ -3,20 +3,24 @@
 namespace App\Livewire\Admin;
 
 use App\Facades\RequestHub;
-use Livewire\Component;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Livewire\Component;
 use OpenAI;
 use Throwable;
 
 class SqlAi extends Component
 {
     public $prompt = '';
+
     public $query = '';
+
     public $tables = '';
+
     public $message = null;
-    public $results = [];  
+
+    public $results = [];
 
     public function mount()
     {
@@ -33,7 +37,7 @@ class SqlAi extends Component
     {
         $this->unsetResults();
 
-        if(! $this->prompt) {
+        if (! $this->prompt) {
             return;
         }
 
@@ -41,7 +45,7 @@ class SqlAi extends Component
             // create a new OpenAI client
             $client = OpenAI::factory()
                 ->withBaseUri(config('openai.base_url'))
-                ->withHttpHeader('Authorization', 'Bearer ' . config('openai.api_key'))
+                ->withHttpHeader('Authorization', 'Bearer '.config('openai.api_key'))
                 ->make();
 
             // send a request to the API
@@ -60,12 +64,12 @@ class SqlAi extends Component
             // extract the SQL query from the response
             $this->query = $this->extractSQL($result->choices[0]->message->content);
 
-            if($this->query == 'UNKNOWN') {
+            if ($this->query == 'UNKNOWN') {
                 $this->message = [
                     'type' => 'danger',
                     'text' => __('The input cannot be implemented with a database query.'),
                 ];
-    
+
                 return;
             }
         } catch (Throwable $e) {
@@ -94,14 +98,14 @@ class SqlAi extends Component
                 } else {
                     $this->message = [
                         'type' => 'success',
-                        'text' => __('Query executed successfully. :count results found.', ['count' => count($this->results)])
+                        'text' => __('Query executed successfully. :count results found.', ['count' => count($this->results)]),
                     ];
                 }
             }
         } catch (QueryException $e) {
             $this->message = [
                 'type' => 'danger',
-                'text' => $e->getMessage()
+                'text' => $e->getMessage(),
             ];
         }
 
@@ -110,7 +114,7 @@ class SqlAi extends Component
 
     private function buildSystemPrompt()
     {
-        $command =  <<<'EOT'
+        $command = <<<'EOT'
 Du bist ein SQL-Generator. Du antwortest ausschließlich in gültigen SQL. Jedes Schlüsselwort wie `SELECT` `FROM` etc starten in einer neuen Zeile.
 
 Der Nutzer hat eine Aufgabe, die sich mit SQL Lösen lässt. Andernfalls schreibe nur UNKNOWN
@@ -118,7 +122,7 @@ Der Nutzer hat eine Aufgabe, die sich mit SQL Lösen lässt. Andernfalls schreib
 Folgende einzelne Tabellen können abgefragt werden:
 EOT;
 
-        return $command . '\n' . $this->tables;
+        return $command.'\n'.$this->tables;
     }
 
     private function loadTables()
@@ -126,8 +130,8 @@ EOT;
         $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
         $dbclass = '';
         foreach ($r as $v) {
-            if (!strcmp($v->TABLE_TYPE, 'BASE TABLE') && $v->TABLE_NAME != 'migrations') {
-                $dbclass .= $v->TABLE_NAME . ': ';
+            if (! strcmp($v->TABLE_TYPE, 'BASE TABLE') && $v->TABLE_NAME != 'migrations') {
+                $dbclass .= $v->TABLE_NAME.': ';
                 $columns = Schema::getColumnListing($v->TABLE_NAME);
                 $dbclass .= implode(', ', $columns);
                 $dbclass .= "\n";
@@ -136,10 +140,11 @@ EOT;
         $this->tables = $dbclass;
     }
 
-    private function extractSQL($input) {
+    private function extractSQL($input)
+    {
         // Entferne Leerzeichen am Anfang und Ende
         $input = trim($input);
-        
+
         // Prüfe, ob der Input mit Markdown-Codeblock-Syntax beginnt
         if (preg_match('/^```sql\s*(.*?)\s*```$/s', $input, $matches)) {
             // Extrahiere den SQL-Code aus dem Markdown-Codeblock

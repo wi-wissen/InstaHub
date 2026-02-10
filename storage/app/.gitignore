@@ -1,12 +1,5 @@
 *
+!private/
+!private/*
 !public/
 !.gitignore
-
-#avatars
-!avatars/
-avatars/*
-
-#photos
-!photos/
-photos/*
-

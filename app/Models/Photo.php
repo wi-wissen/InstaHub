@@ -5,7 +5,8 @@ namespace App\Models;
 use App\Collections\PhotoCollection;
 use App\Facades\RequestHub;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
@@ -17,7 +18,6 @@ class Photo extends Model
     /**
      * Create a new Eloquent Collection instance.
      *
-     * @param  array  $models
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function newCollection(array $models = [])
@@ -25,27 +25,27 @@ class Photo extends Model
         return new PhotoCollection($models);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\User::class);
     }
 
-    public function likes()
+    public function likes(): HasMany
     {
         return $this->hasMany(\App\Models\Like::class);
     }
 
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(\App\Models\Comment::class);
     }
 
-    public function tags()
+    public function tags(): HasMany
     {
         return $this->hasMany(\App\Models\Tag::class);
     }
 
-    public function viewers()
+    public function viewers(): HasMany
     {
         return $this->hasMany(\App\Models\Analytic::class);
     }
@@ -87,7 +87,7 @@ class Photo extends Model
 
     public function getHtmlAttribute()
     {
-        $html = htmlspecialchars($this->description); //secure user input
+        $html = htmlspecialchars($this->description); // secure user input
         $html = preg_replace('/#([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/tag/$1'>$0</a>", $html);
         $html = preg_replace('/@([a-zA-Z0-9äöüÄÖÜß]*)/', "<a href='/$1'>$0</a>", $html);
 

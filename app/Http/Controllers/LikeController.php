@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Models\Like;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class LikeController extends Controller
+class LikeController extends Controller implements HasMiddleware
 {
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->middleware('auth');
+        return [
+            'auth',
+        ];
     }
 
     public function like($id, Request $request)

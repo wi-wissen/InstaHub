@@ -54,11 +54,11 @@ class PhotoCollection extends Collection
             // $likes speichert alle Likes, die der User vergeben hat (sortiert nach Datum, max 100).
             if (RequestHub::hasTable('likes')) {
                 $likes = Photo::select('photos.user_id as user_id_photo')
-                                    ->join('likes', function ($join) use ($user) {
-                                        $join->on('photos.id', '=', 'likes.photo_id')
-                                        ->where('likes.user_id', '=', $user->id);
-                                    })
-                                    ->orderBy('likes.created_at', 'desc')->limit(100)->get();
+                    ->join('likes', function ($join) use ($user) {
+                        $join->on('photos.id', '=', 'likes.photo_id')
+                            ->where('likes.user_id', '=', $user->id);
+                    })
+                    ->orderBy('likes.created_at', 'desc')->limit(100)->get();
 
                 foreach ($likes as $like) {
                     if (array_key_exists($like->user_id_photo, $aff)) {
@@ -72,11 +72,11 @@ class PhotoCollection extends Collection
             // $comments speichert alle Kommentare, die der User verfasst hat (sortiert nach Datum, max 100).
             if (RequestHub::hasTable('comments')) {
                 $comments = Photo::select('photos.user_id as user_id_photo')
-                                    ->join('comments', function ($join) use ($user) {
-                                        $join->on('photos.id', '=', 'comments.photo_id')
-                                        ->where('comments.user_id', '=', $user->id);
-                                    })
-                                    ->orderBy('comments.created_at', 'desc')->limit(100)->get();
+                    ->join('comments', function ($join) use ($user) {
+                        $join->on('photos.id', '=', 'comments.photo_id')
+                            ->where('comments.user_id', '=', $user->id);
+                    })
+                    ->orderBy('comments.created_at', 'desc')->limit(100)->get();
 
                 foreach ($comments as $comment) {
                     if (array_key_exists($comment->user_id_photo, $aff)) {

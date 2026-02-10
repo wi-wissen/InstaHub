@@ -26,7 +26,6 @@ class ForgotPasswordController extends Controller
     /**
      * Send a reset link to the given user.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     public function sendResetLinkEmail(Request $request)
@@ -34,9 +33,9 @@ class ForgotPasswordController extends Controller
         $this->validateEmail($request);
 
         $user = User::where('email', $request->email)->first();
-        if (! $user) { //check if email exist
+        if (! $user) { // check if email exist
             return $this->sendResetLinkFailedResponse($request, 'passwords.user');
-        } elseif (! $user->is_active) {  //check if verified
+        } elseif (! $user->is_active) {  // check if verified
             return $this->sendResetLinkFailedResponse($request, 'passwords.active');
         }
 

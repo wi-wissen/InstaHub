@@ -3,22 +3,25 @@
 namespace App\Livewire\Admin;
 
 use App\Facades\RequestHub;
-use Livewire\Component;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Livewire\Component;
 use OpenAI;
 use Throwable;
 
 class Sql extends Component
 {
     public $query = '';
+
     public $tablesHtml = '';
+
     public $tablesMarkdown = '';
+
     public $message = null;
+
     public $results = [];
-    
 
     public function mount()
     {
@@ -52,19 +55,19 @@ class Sql extends Component
                 } else {
                     $this->message = [
                         'type' => 'success',
-                        'text' => __('Query executed successfully. :count results found.', ['count' => count($this->results)])
+                        'text' => __('Query executed successfully. :count results found.', ['count' => count($this->results)]),
                     ];
                 }
             }
         } catch (QueryException $e) {
             $errorMessage = $this->extractSqlErrorMessage($e);
 
-            if(RequestHub::query_level() == 'ai' && RequestHub::hasTokens()) {
+            if (RequestHub::query_level() == 'ai' && RequestHub::hasTokens()) {
                 try {
                     // create a new OpenAI client
                     $client = OpenAI::factory()
                         ->withBaseUri(config('openai.base_url'))
-                        ->withHttpHeader('Authorization', 'Bearer ' . config('openai.api_key'))
+                        ->withHttpHeader('Authorization', 'Bearer '.config('openai.api_key'))
                         ->make();
 
                     // send a request to the API
@@ -76,14 +79,14 @@ class Sql extends Component
                         ],
                         'max_tokens' => 500,
                     ]);
-        
+
                     // decrement the teachers token count
                     RequestHub::decrementTokens($result->usage->totalTokens);
 
                     // get message from AI
                     $message = $result->choices[0]->message->content;
-        
-                    if($message != 'UNKNOWN') {
+
+                    if ($message != 'UNKNOWN') {
                         // update error message only if there was actually an sql error
                         $errorMessage = $message;
                     }
@@ -94,7 +97,7 @@ class Sql extends Component
 
             $this->message = [
                 'type' => 'danger',
-                'text' => $errorMessage
+                'text' => $errorMessage,
             ];
         }
 
@@ -112,14 +115,14 @@ class Sql extends Component
         $r = DB::table('information_schema.tables')->where('table_schema', DB::getDatabaseName())->get();
 
         foreach ($r as $v) {
-            if (!strcmp($v->TABLE_TYPE, 'BASE TABLE') && $v->TABLE_NAME != 'migrations') {
+            if (! strcmp($v->TABLE_TYPE, 'BASE TABLE') && $v->TABLE_NAME != 'migrations') {
                 $columns = Schema::getColumnListing($v->TABLE_NAME);
 
-                $this->tablesHtml .= '<b>' . htmlspecialchars($v->TABLE_NAME) . ':</b> ';
+                $this->tablesHtml .= '<b>'.htmlspecialchars($v->TABLE_NAME).':</b> ';
                 $this->tablesHtml .= implode(', ', array_map('htmlspecialchars', $columns));
                 $this->tablesHtml .= '<br />';
 
-                $this->tablesMarkdown .= $v->TABLE_NAME . ': ';
+                $this->tablesMarkdown .= $v->TABLE_NAME.': ';
                 $this->tablesMarkdown .= implode(', ', $columns);
                 $this->tablesMarkdown .= "\n";
             }
@@ -142,7 +145,7 @@ class Sql extends Component
 
     private function buildSystemPrompt($errorMessage)
     {
-        $command =  <<<EOT
+        $command = <<<EOT
 Du gibst SQL-Fehler in normaler Sprache aus. Und gibst einen kurzen Hinweis, wie der Fehler behoben werden kann.
 
 Der Nutzer gibt dir seinen SQL-Befehl. Ist es kein SQL-Befehl, schreibe nur UNKNOWN
@@ -169,14 +172,16 @@ EOT;
         return $command;
     }
 
-    private function getBrowserLanguage() {
+    private function getBrowserLanguage()
+    {
         $httpAcceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? null;
-        
+
         if ($httpAcceptLanguage === null) {
             return App::getLocale();
         }
-        
+
         $lang = substr($httpAcceptLanguage, 0, 2);
+
         return $lang ?: App::getLocale(); // Fallback to current locale if substr returns an empty string
     }
 }
