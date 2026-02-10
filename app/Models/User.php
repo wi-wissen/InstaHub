@@ -8,6 +8,7 @@ use DateTime;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -147,13 +148,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return implode(', ', $parts).' '.__('and').' '.$lastPart.'.';
     }
 
-    public function following(): HasMany
+    public function following(): BelongsToMany
     {
         // return $this->hasMany('App\Follow', 'follower_id');
         return $this->belongsToMany(self::class, 'follows', 'following_id', 'follower_id')->withTimestamps();
     }
 
-    public function followers(): HasMany
+    public function followers(): BelongsToMany
     {
         // return $this->hasMany('App\Follow', 'following_id');
         return $this->belongsToMany(self::class, 'follows', 'follower_id', 'following_id')->withTimestamps();
