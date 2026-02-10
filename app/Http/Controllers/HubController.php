@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use App\Facades\RequestHub;
 use App\Models\Hub;
 use App\Models\User;
@@ -14,16 +16,18 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Laravel\Facades\Image;
 
-class HubController extends Controller
+class HubController extends Controller implements HasMiddleware
 {
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->middleware(['auth', 'role:teacher'])->except(['welcome', 'create', 'store']);
-        $this->middleware('can:viewAny,App\Models\Hub')->only('index');
-        $this->middleware('can:view,hub')->only('show');
-        $this->middleware('can:create,App\Models\Hub')->only('create', 'store');
-        $this->middleware('can:update,hub')->only('edit', 'update');
-        $this->middleware('can:delete,hub')->only('destroy');
+        return [
+            new Middleware(['auth', 'role:teacher'], except: ['welcome', 'create', 'store']),
+            new Middleware('can:viewAny,App\Models\Hub', only: ['index']),
+            new Middleware('can:view,hub', only: ['show']),
+            new Middleware('can:create,App\Models\Hub', only: ['create', 'store']),
+            new Middleware('can:update,hub', only: ['edit', 'update']),
+            new Middleware('can:delete,hub', only: ['destroy']),
+        ];
     }
 
     protected function validator(array $data)

@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FollowController extends Controller
+class FollowController extends Controller implements HasMiddleware
 {
     public function __construct()
     {
-        $this->middleware('auth'); // only authenticated users can access this route
+        ; // only authenticated users can access this route
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+        ];
     }
 
     public function followers(User $user)

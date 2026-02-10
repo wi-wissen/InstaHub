@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use App\Facades\RequestHub;
 use App\Helpers\HubHelper;
 use App\Http\Controllers\Controller;
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Ossycodes\FriendlyCaptcha\Rules\FriendlyCaptcha;
 
-class RegisterController extends Controller
+class RegisterController extends Controller implements HasMiddleware
 {
     /*
     |--------------------------------------------------------------------------
@@ -47,8 +49,15 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+
         $hub = new HubHelper; // this Controller runs before HubHelper in AppServiceProvider, so we force changing db
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            'guest',
+        ];
     }
 
     /**

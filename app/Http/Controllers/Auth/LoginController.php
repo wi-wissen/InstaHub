@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use App\Facades\RequestHub;
 use App\Helpers\HubHelper;
 use App\Http\Controllers\Controller;
@@ -12,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
-class LoginController extends Controller
+class LoginController extends Controller implements HasMiddleware
 {
     /*
     |--------------------------------------------------------------------------
@@ -41,9 +43,16 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except(['logout', 'loginWithToken']);
-        $this->middleware('auth')->only('logout');
+
         $hub = new HubHelper; // this Controller runs before HubHelper in AppServiceProvider, so we force changing db
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('guest', except: ['logout', 'loginWithToken']),
+            new Middleware('auth', only: ['logout']),
+        ];
     }
 
     public function username()

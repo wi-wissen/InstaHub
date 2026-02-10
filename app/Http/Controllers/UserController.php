@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,16 +12,18 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
 
-class UserController extends Controller
+class UserController extends Controller implements HasMiddleware
 {
-    public function __construct()
+    public static function middleware(): array
     {
-        $this->middleware('can:viewAny,App\Models\User')->only('index');
-        $this->middleware('can:view,user')->only('show');
-        $this->middleware('can:create,App\Models\User')->only('create', 'store');
-        $this->middleware('can:update,user')->only('edit', 'update');
-        $this->middleware('can:delete,user')->only('destroy');
-        $this->middleware('auth');
+        return [
+            new Middleware('can:viewAny,App\Models\User', only: ['index']),
+            new Middleware('can:view,user', only: ['show']),
+            new Middleware('can:create,App\Models\User', only: ['create', 'store']),
+            new Middleware('can:update,user', only: ['edit', 'update']),
+            new Middleware('can:delete,user', only: ['destroy']),
+            'auth',
+        ];
     }
 
     public function index($filter = null, $param = null)
