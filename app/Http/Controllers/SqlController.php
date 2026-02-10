@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 use App\Facades\RequestHub;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
 class SqlController extends Controller implements HasMiddleware
 {

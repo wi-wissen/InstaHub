@@ -14,8 +14,6 @@ class UsersTableSeeder extends Seeder
      *
      * set 'chunk_size' => 10 // Maximum number of rows per insert statement
      * in config.php inside vendor package. Otherwise there will be an loop when execute inside controller
-     *
-     * @return void
      */
     public function run(): void
     {
