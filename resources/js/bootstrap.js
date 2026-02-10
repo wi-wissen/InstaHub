@@ -45,3 +45,6 @@ function extendedSQL(hljs) {
 hljs.registerLanguage('sql', extendedSQL);
 
 window.hljs = hljs;
+
+//friendly-challenge
+import 'friendly-challenge/widget';

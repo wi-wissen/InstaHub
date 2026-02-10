@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@fontsource/grand-hotel": "^5.0.20",
+        "friendly-challenge": "^0.9.19",
         "highlight.js": "^11.9.0"
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dccb178f2883612d550e7ea5f0d369d8",
+    "content-hash": "7d3419a793e4c14995eaf7a8aa454fc4",
     "packages": [
         {
             "name": "brick/math",
@@ -3536,6 +3536,69 @@
                 "source": "https://github.com/orangehill/iseed/tree/v3.1.1"
             },
             "time": "2025-03-04T07:56:48+00:00"
+        },
+        {
+            "name": "ossycodes/friendlycaptcha",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ossycodes/friendlycaptcha.git",
+                "reference": "b18dfab44ee5fff7d75412232eb6f834864efde6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ossycodes/friendlycaptcha/zipball/b18dfab44ee5fff7d75412232eb6f834864efde6",
+                "reference": "b18dfab44ee5fff7d75412232eb6f834864efde6",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "php": "^7.4|^8.0|^8.1|^8.2|^8.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^8.0 || ^9.5 || ^10.5 || ^11.0 || ^12.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FriendlyCaptcha": "Ossycodes\\FriendlyCaptcha\\Facades\\FriendlyCaptcha"
+                    },
+                    "providers": [
+                        "Ossycodes\\FriendlyCaptcha\\FriendlyCaptchaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ossycodes\\FriendlyCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ossycodes",
+                    "email": "osaigbovoemmanuel1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple package to help integrate FriendlyCaptcha in your Laravel applications.",
+            "homepage": "https://github.com/ossycodes/friendlycaptcha",
+            "keywords": [
+                "captcha",
+                "friendlycaptcha",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/ossycodes/friendlycaptcha/issues",
+                "source": "https://github.com/ossycodes/friendlycaptcha/tree/v3.0.0"
+            },
+            "time": "2025-05-08T13:30:49+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -11455,5 +11518,5 @@
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }

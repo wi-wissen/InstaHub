@@ -20,7 +20,10 @@ return [
     'noHubsFound' => 'No hubs were found that match the search query.',
     'activateByTeacher' => 'Your Hub must activated by your Teacher! ',
     'teachername' => 'Students use your username to apply to you for the activation of their hub.',
-    'provideProof' => 'Please use your work email adress or provide other prove that you are a teacher.',
+    'useSchoolEmail' => 'Please use your school email address so we can verify you.',
+    'roleTeacher' => 'I am a Teacher.',
+    'roleStudent' => 'I am a Student.',
+    'studentWrongPage' => 'You are on the wrong page! Please ask your teacher for the correct link.',
     'dummyMail' => 'With a working email address, you can reset your password yourself if you forget it.',
     'ad' => [
         'heading' => 'Connect with the people who will love your business.',

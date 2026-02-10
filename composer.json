@@ -14,7 +14,8 @@
         "laravel/ui": "^4.5",
         "livewire/livewire": "^3.5",
         "openai-php/client": "^0.10.1",
-        "orangehill/iseed": "^3.0"
+        "orangehill/iseed": "^3.0",
+        "ossycodes/friendlycaptcha": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",

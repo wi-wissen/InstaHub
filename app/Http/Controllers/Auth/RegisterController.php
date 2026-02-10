@@ -16,6 +16,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Ossycodes\FriendlyCaptcha\Rules\FriendlyCaptcha;
 
 class RegisterController extends Controller
 {
@@ -95,6 +96,7 @@ class RegisterController extends Controller
             'country' => 'nullable|string',
             'centimeters' => 'nullable|numeric',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'frc-captcha-solution' => ['required', app(FriendlyCaptcha::class)],
         ]);
     }
 

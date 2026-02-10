@@ -55,6 +55,11 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                                @if (! RequestHub::isHub())
+                                <div id="emailHelpBlock" class="form-text">
+                                    {{ __('messages.useSchoolEmail') }}
+                                </div>
+                                @endif
 
                                 @error('email')
                                     <div class="invalid-feedback">
@@ -198,10 +203,32 @@
 
                         @else
                         <div class="mb-3 row">
+                            <label for="role" class="col-md-4 col-form-label text-md-end"><strong>{{ __('Role') }}</strong></label>
+
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="role" id="role_teacher" value="teacher">
+                                    <label class="form-check-label" for="role_teacher">
+                                        {{ __('messages.roleTeacher') }}
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="role" id="role_student" value="student">
+                                    <label class="form-check-label" for="role_student">
+                                        {{ __('messages.roleStudent') }}
+                                    </label>
+                                </div>
+                                <div id="student-warning" class="invalid-feedback" style="display:none;">
+                                    {{ __('messages.studentWrongPage') }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row" id="message-row">
                             <label for="messageToAdmin" class="col-md-4 col-form-label text-md-end">{{ __('Message') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name="messageToAdmin" id="messageToAdmin" class="form-control @error('messageToAdmin') is-invalid @enderror" placeholder="{{ __('messages.provideProof') }}"></textarea>
+                                <textarea name="messageToAdmin" id="messageToAdmin" class="form-control @error('messageToAdmin') is-invalid @enderror"></textarea>
 
                                 @error('messageToAdmin')
                                     <div class="invalid-feedback">
@@ -211,6 +238,19 @@
                             </div>
                         </div>
                         @endif
+
+                        <div class="mb-3 row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-end"><strong>{{ __('Captcha') }}</strong></label>
+
+                            <div class="col-md-6">
+                                {!! FriendlyCaptcha::renderWidget() !!}
+                                @error('frc-captcha-solution')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="mb-3 row">
                             <div class="col-md-6 offset-md-4">
@@ -226,3 +266,31 @@
     </div>
 </div>
 @endsection
+
+@if(! RequestHub::isHub())
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const roleTeacher = document.getElementById('role_teacher');
+        const roleStudent = document.getElementById('role_student');
+        const studentWarning = document.getElementById('student-warning');
+        const messageRow = document.getElementById('message-row');
+        const submitBtn = document.querySelector('button[type="submit"]');
+
+        if (roleTeacher && roleStudent) {
+            roleTeacher.addEventListener('change', function () {
+                studentWarning.style.display = 'none';
+                if (messageRow) messageRow.style.display = '';
+                if (submitBtn) submitBtn.disabled = false;
+            });
+
+            roleStudent.addEventListener('change', function () {
+                studentWarning.style.display = 'block';
+                if (messageRow) messageRow.style.display = 'none';
+                if (submitBtn) submitBtn.disabled = true;
+            });
+        }
+    });
+</script>
+@endsection
+@endif

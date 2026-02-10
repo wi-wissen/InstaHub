@@ -8,7 +8,7 @@ return [
     'privacy' => 'Ähnlich Instagram können Schüler:innen zu Lernzwecken in einem geschützten Umfeld agieren.',
     'database' => 'Voller Zugriff auf die gesamte Datenbank und das Backend mit allen Einstellungen für Administratoren und "Werbetreibende".',
     'openfree' => 'Kostenfrei und Open Source für den Einsatz zu Lehrzwecken. Schulungen und Support auf Anfrage auch bei Ihnen vor Ort möglich.',
-    'firstStepTeacher' => 'Beantrage zuerst einen Lehrer:innen-Account. Anschließend kannst du dir als Schüler*in einen Hub anlegen, dich in 
+    'firstStepTeacher' => 'Beantrage zuerst einen Lehrer:innen-Account. Anschließend kannst du dir als Schüler:in einen Hub anlegen, dich in 
                     deiner Lehrer:innenrolle freischalten und alle Funktionen erkunden. Schau auch in der Hilfe nach fertigen Aufgaben und Stundenentwürfen.',
     'aboutInstaHub' => 'InstaHub ist ein soziales Netzwerk, welches speziell für den Einsatz im Unterricht entwickelt wurde. SchülerInnen werden Administrator ihres eigenen sozialen Netzwerkes. Sie können als Datenbankadministrator direkt auf die Datenbank zugreifen und mit SQL Daten abfragen(<code>SELECT</code>) einfügen (<code>INSERT</code>, bearbeiten (<code>UPDATE</code>) und löschen <code>DELETE</code>). Als Moderator können sie Beiträge löschen und als Werbepartner eigene Werbung schalten und das Nutzungsverhalten analysieren.',
     'targetInstaHub' => 'Ziel des Projektes ist mit InstaHub ein allgemeines Verständnis über die technische Funktion von sozialen Netzwerken zu vermitteln und Themen wie Datenbanken und Datenschutz fundiert und lebensnah vermitteln zu können.',
@@ -18,10 +18,13 @@ return [
     'maintenance' => 'Hub ist im Wartungsmodus. Es können keine Änderungen vorgenommen werden.',
     'noHubs' => 'Du verwaltest aktuell keine Hubs.',
     'noHubsFound' => 'Es wurden keine Hubs gefunden, welche der Suchanfrage entsprechen.',
-    'activateByTeacher' => 'Dein Hub muss von deiner/m Lehrer*in freigeschaltet werden!',
+    'activateByTeacher' => 'Dein Hub muss von deiner/m Lehrer:in freigeschaltet werden!',
     'teachername' => 'Mit deinem Benutzernamen kannst du dich in Zukunft anmelden. Schüler:innen benötigen ihn, um bei dir die Freischaltung ihres Hubs zu beantragen.',
     'username' => 'Mit diesem Benutzernamen kannst du dich in Zukunft anmelden.',
-    'provideProof' => 'Bitte verwende deine geschäftliche Mail-Adresse oder gib einen anderen Nachweise an, dass du Lehrer*in bist.',
+    'useSchoolEmail' => 'Bitte verwende deine Schulmailadresse.',
+    'roleTeacher' => 'Ich bin Lehrer:in.',
+    'roleStudent' => 'Ich bin Schüler:in.',
+    'studentWrongPage' => 'Du bist hier auf der falschen Seite! Bitte frage deine Lehrer:in nach den richtigen Link.',
     'dummyMail' => 'Mit einer funktionierenden Mailadresse kannst du dein Passwort selbst zurücksetzen, wenn du es vergessen hast.',
     'ad' => [
         'heading' => 'Verbinde dich mit den Personen, die dein Unternehmen lieben werden.',
