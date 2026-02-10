@@ -68,9 +68,12 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $table = 'users';
 
-    protected $casts = [
-        'birthday' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'birthday' => 'datetime',
+        ];
+    }
 
     protected $fillable = [
         'username', 'name', 'email', 'password', 'bio', 'avatar', 'birthday',
