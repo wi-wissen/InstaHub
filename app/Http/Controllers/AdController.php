@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\RequestHub;
 use App\Http\Resources\Ad as AdResource;
 use App\Models\Ad;
 use Auth;
@@ -34,7 +35,10 @@ class AdController extends Controller
      */
     public function create()
     {
-        return view('ad.create');
+        $ad = new Ad;
+        $queryLevel = RequestHub::query_level() ?? 'gui';
+
+        return view('ad.edit')->with(['ad' => $ad, 'queryLevel' => $queryLevel]);
     }
 
     /**
@@ -78,8 +82,9 @@ class AdController extends Controller
     public function edit($id)
     {
         $ad = Ad::findOrFail($id);
+        $queryLevel = RequestHub::query_level() ?? 'gui';
 
-        return view('ad.edit')->with(['ad' => $ad]);
+        return view('ad.edit')->with(['ad' => $ad, 'queryLevel' => $queryLevel]);
     }
 
     /**

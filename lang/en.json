@@ -261,5 +261,21 @@
     "Base score": "Base score",
     "Affinity": "Affinity",
     "Likes": "Likes",
-    "Comments": "Comments"
+    "Comments": "Comments",
+    "Simple": "Simple",
+    "Target Group": "Target Group",
+    "Add Condition": "Add Condition",
+    "Always show": "Always show",
+    "Ad is always shown.": "Ad is always shown.",
+    "Photo Tags": "Photo Tags",
+    "from description": "from description",
+    "Generated SQL": "Generated SQL",
+    "not specified": "not specified",
+    "Device": "Device",
+    "Desktop": "Desktop",
+    "Mobile": "Mobile",
+    "Tablet": "Tablet",
+    "Bot": "Bot",
+    "e.g.": "e.g.",
+    "Image could not be loaded.": "Image could not be loaded."
 }
