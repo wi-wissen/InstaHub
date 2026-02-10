@@ -19,7 +19,11 @@ class HubController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', 'role:teacher'])->except(['welcome', 'create', 'store']);
-        $this->authorizeResource(Hub::class, 'hub');
+        $this->middleware('can:viewAny,App\Models\Hub')->only('index');
+        $this->middleware('can:view,hub')->only('show');
+        $this->middleware('can:create,App\Models\Hub')->only('create', 'store');
+        $this->middleware('can:update,hub')->only('edit', 'update');
+        $this->middleware('can:delete,hub')->only('destroy');
     }
 
     protected function validator(array $data)

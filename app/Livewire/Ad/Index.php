@@ -4,13 +4,11 @@ namespace App\Livewire\Ad;
 
 use App\Facades\RequestHub;
 use App\Models\Ad;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use AuthorizesRequests;
     use WithPagination;
 
     public $readonly;

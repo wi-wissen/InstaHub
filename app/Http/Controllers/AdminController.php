@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use App\Facades\RequestHub;
 use App\Models\Analytic;
 use App\Models\Hub;
@@ -76,7 +77,7 @@ class AdminController extends Controller
      */
     public function redirect(Hub $hub)
     {
-        $this->authorize('view', $hub);
+        Gate::authorize('view', $hub);
 
         abort_unless($hub->teacher_id == Auth::user()->id || Auth::user()->role == 'admin', 401);
 
