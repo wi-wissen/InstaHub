@@ -43,11 +43,11 @@ class PhotoController extends Controller implements HasMiddleware
         }
 
         $photos = collect([]);
+        $following_ids = collect([]);
 
         if (RequestHub::hasTable('photos')) {
             // If follows table exists, only load photos from followed users
             $hasFollows = RequestHub::hasTable('follows');
-            $following_ids = null;
             if ($hasFollows) {
                 $following_ids = Auth::user()->following()->pluck('users.id');
                 $following_ids->push(Auth::user()->id); // always show own posts
