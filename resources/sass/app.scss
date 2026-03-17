@@ -192,6 +192,21 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
+    .btn-outline-dark {
+        /* Override Bootstrap variables for dark mode */
+        --bs-btn-color: #f8f9fa;
+        --bs-btn-border-color: #f8f9fa;
+        --bs-btn-hover-color: #212529;
+        --bs-btn-hover-bg: #f8f9fa;
+        --bs-btn-hover-border-color: #f8f9fa;
+        --bs-btn-focus-shadow-rgb: 248, 249, 250;
+        --bs-btn-active-color: #212529;
+        --bs-btn-active-bg: #f8f9fa;
+        --bs-btn-active-border-color: #f8f9fa;
+        --bs-btn-disabled-color: #adb5bd;
+        --bs-btn-disabled-border-color: #adb5bd;
+    }
+
     .card {
         background-color: #181919;
     }
