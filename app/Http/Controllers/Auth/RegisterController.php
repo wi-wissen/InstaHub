@@ -17,6 +17,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Ossycodes\FriendlyCaptcha\Rules\FriendlyCaptcha;
 
 class RegisterController extends Controller implements HasMiddleware
@@ -66,6 +67,8 @@ class RegisterController extends Controller implements HasMiddleware
      */
     public function register(Request $request)
     {
+        $this->ensureHubRegistrationIsAvailable();
+
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
@@ -155,5 +158,22 @@ class RegisterController extends Controller implements HasMiddleware
         }
 
         return $user;
+    }
+
+    private function ensureHubRegistrationIsAvailable(): void
+    {
+        // if we are in a hub and there is no users table, the hub is not fully set up yet, so we throw an error
+        if (RequestHub::isHub() && ! RequestHub::hasTable('users')) {
+            throw ValidationException::withMessages([
+                'email' => __('Hub is not fully set up yet. Please contact your teacher.'),
+            ]);
+        }
+
+        // if we are in a hub and registration is not allowed, we throw an error
+        if (RequestHub::isReadOnly()) {
+            throw ValidationException::withMessages([
+                'email' => __('messages.maintenance'),
+            ]);
+        }
     }
 }

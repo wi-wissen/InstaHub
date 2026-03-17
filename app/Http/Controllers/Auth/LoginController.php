@@ -13,6 +13,7 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller implements HasMiddleware
 {
@@ -69,6 +70,8 @@ class LoginController extends Controller implements HasMiddleware
      */
     protected function validateLogin(Request $request)
     {
+        $this->ensureHubLoginIsAvailable();
+
         $request->validate([
             $this->username() => 'required|exists:users,'.$this->username().',is_active,1',
             'password' => 'required|string',
@@ -132,5 +135,15 @@ class LoginController extends Controller implements HasMiddleware
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    private function ensureHubLoginIsAvailable(): void
+    {
+        // if there is no users table, the hub is not set up yet, so we show a nice message instead of a server error
+        if (RequestHub::isHub() && ! RequestHub::hasTable('users')) {
+            throw ValidationException::withMessages([
+                $this->username() => __('Hub is not fully set up yet. Please contact your teacher.'),
+            ]);
+        }
     }
 }

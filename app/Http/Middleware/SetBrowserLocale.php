@@ -21,11 +21,13 @@ class SetBrowserLocale
             // get langs
             $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
-            // chrome sends de-DE instead of de, so we ignore the second part:
-            $lang = substr($lang, 0, 2);
+            if (is_string($lang) && strlen($lang) >= 2) {
+                // chrome sends de-DE instead of de, so we ignore the second part:
+                $lang = substr($lang, 0, 2);
 
-            // set locale
-            App::setLocale($lang);
+                // set locale
+                App::setLocale($lang);
+            }
         }
 
         return $next($request);
