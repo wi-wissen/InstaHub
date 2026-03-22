@@ -21,20 +21,9 @@ class Hub extends Model
 
         static::deleting(function ($hub) {
             // delete all old photos from disk
-            RequestHub::useHubDB($hub->id, function () {
-                if (RequestHub::hasTable('photos')) {
-                    $photos = Photo::all();
-                    foreach ($photos as $photo) {
-                        $photo->delete();
-                    }
-                }
-
-                if (RequestHub::hasTable('users')) {
-                    $users = User::all();
-                    foreach ($users as $user) {
-                        $user->delete();
-                    }
-                }
+            RequestHub::useHubDB($hub->id, function () use ($hub) {
+                $hub->cleanupTableFiles('photos');
+                $hub->cleanupTableFiles('users');
             });
 
             // set primary db
@@ -238,6 +227,9 @@ class Hub extends Model
                 $user = User::where('username', 'admin')->first();
             }
 
+            // delete all old photos from disk
+            $this->cleanupTableFiles($tablename);
+
             DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
             $this->migrateTable($tablename);
@@ -284,7 +276,10 @@ class Hub extends Model
 
     public function dropTable($tablename)
     {
-        RequestHub::useHubDB($this->id, function () use ($tablename) {
+        RequestHub::useHubDB($this->id, function () use ($tablename) {   
+            // delete all old photos from disk
+            $this->cleanupTableFiles($tablename);
+
             DB::statement('SET FOREIGN_KEY_CHECKS = 0');
             Schema::dropIfExists($tablename);
             if ($tablename == 'users') {
@@ -292,5 +287,22 @@ class Hub extends Model
             } // users migrates this table too.
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         });
+    }
+
+    protected function cleanupTableFiles($tablename)
+    {
+        if ($tablename == 'photos' && RequestHub::hasTable('photos')) {
+            $photos = Photo::all();
+            foreach ($photos as $photo) {
+                $photo->deletePhotoFile();
+            }
+        }
+
+        if ($tablename == 'users' && RequestHub::hasTable('users')) {
+            $users = User::all();
+            foreach ($users as $user) {
+                $user->deleteAvatarFile();
+            }
+        }
     }
 }

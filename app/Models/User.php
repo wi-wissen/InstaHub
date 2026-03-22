@@ -36,7 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         self::updating(function ($model) {
             if ($model->isDirty('avatar') && $model->avatar === null) {
-                $model->deleteAvatar();
+                $model->deleteAvatarFile();
             }
 
             if ($model->isDirty('is_active') && $model->is_active) {
@@ -51,7 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
         });
 
         self::deleting(function ($model) {
-            $model->deleteAvatar();
+            $model->deleteAvatarFile();
         });
     }
 
@@ -194,9 +194,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $interval->y;
     }
 
-    private function deleteAvatar()
+    public function deleteAvatarFile()
     {
-        if (Storage::disk('local')->get($this->avatar)) {
+        if ($this->avatar && Storage::disk('local')->exists($this->avatar)) {
             // uploaded avatar
             return Storage::disk('local')->delete($this->avatar);
         }

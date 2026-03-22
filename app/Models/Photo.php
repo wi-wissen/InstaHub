@@ -55,19 +55,14 @@ class Photo extends Model
         parent::boot();
 
         self::deleting(function ($model) {
-            if (Storage::disk('local')->get($model->url)) {
-                Storage::disk('local')->delete($model->url);
-            }
-            // given photos are stored in `public`
+            $model->deletePhotoFile();
         });
 
         self::created(function ($model) {
-            // ... code here
             $model->updateTags();
         });
 
         self::updated(function ($model) {
-            // ... code here
             $model->updateTags();
         });
     }
@@ -83,6 +78,14 @@ class Photo extends Model
                 $this->tags()->save($db_tag);
             }
         }
+    }
+
+    public function deletePhotoFile(): void
+    {
+        if ($this->url && Storage::disk('local')->exists($this->url)) {
+            Storage::disk('local')->delete($this->url);
+        }
+        // given photos are stored in `public`
     }
 
     public function getHtmlAttribute()
