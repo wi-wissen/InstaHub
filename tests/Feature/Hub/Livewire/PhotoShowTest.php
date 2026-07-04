@@ -113,13 +113,50 @@ test('deleteComment is only allowed for dba/admin users', function () {
     });
 });
 
-test('deleteComment removes the comment for a dba user', function () {
+test('deleteComment removes the comment for its author', function () {
     $hub = $this->createHub(creating: 'all_empty');
 
-    $this->withinHub($hub, function () use ($hub) {
+    $this->withinHub($hub, function () {
+        $owner = User::factory()->create();
+        $author = User::factory()->create();
+        $photo = Photo::factory()->for($owner)->create();
+        $comment = Comment::factory()->create(['photo_id' => $photo->id, 'user_id' => $author->id]);
+
+        $this->actingAs($author);
+
+        Livewire::test(Show::class, ['photo' => $photo])
+            ->call('deleteComment', $comment->id);
+
+        expect(Comment::find($comment->id))->toBeNull();
+    });
+});
+
+test('deleteComment removes the comment for the photo owner', function () {
+    $hub = $this->createHub(creating: 'all_empty');
+
+    $this->withinHub($hub, function () {
+        $owner = User::factory()->create();
+        $author = User::factory()->create();
+        $photo = Photo::factory()->for($owner)->create();
+        $comment = Comment::factory()->create(['photo_id' => $photo->id, 'user_id' => $author->id]);
+
+        $this->actingAs($owner);
+
+        Livewire::test(Show::class, ['photo' => $photo])
+            ->call('deleteComment', $comment->id);
+
+        expect(Comment::find($comment->id))->toBeNull();
+    });
+});
+
+test('deleteComment does not remove the comment for an unrelated dba user', function () {
+    $hub = $this->createHub(creating: 'all_empty');
+
+    $this->withinHub($hub, function () {
+        $owner = User::factory()->create();
         $author = User::factory()->create();
         $dba = User::factory()->dba()->create();
-        $photo = Photo::factory()->for($author)->create();
+        $photo = Photo::factory()->for($owner)->create();
         $comment = Comment::factory()->create(['photo_id' => $photo->id, 'user_id' => $author->id]);
 
         $this->actingAs($dba);
@@ -127,6 +164,8 @@ test('deleteComment removes the comment for a dba user', function () {
         Livewire::test(Show::class, ['photo' => $photo])
             ->call('deleteComment', $comment->id);
 
-        expect(Comment::find($comment->id))->toBeNull();
+        // The CommentPolicy only allows the author or the photo owner, so a dba
+        // with no relation to the comment cannot delete it.
+        expect(Comment::find($comment->id))->not->toBeNull();
     });
 });
