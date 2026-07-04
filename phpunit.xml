@@ -23,6 +23,10 @@
         <env name="APP_URL" value="http://localhost"/>
         <env name="APP_URL_ADMIN" value="http://admin.localhost"/>
         <env name="APP_URL_HUB" value="http://{subdomain}.localhost"/>
+        <env name="HUB_DEFAULT_GENERATION" value="1"/>
+        <env name="HUB_DOC_1_URL" value="https://wi-wissen.github.io/instahub-doc-de/"/>
+        <env name="HUB_DOC_2_URL" value="http://portal.localhost"/>
+        <env name="HUB_DOC_2_SECRET" value="123456"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="BROADCAST_CONNECTION" value="null"/>
