@@ -7,10 +7,12 @@ use App\Models\Ad;
 use App\Models\Analytic;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Encoders\WebpEncoder;
 use Intervention\Image\Laravel\Facades\Image;
 
 class PhotoController extends Controller implements HasMiddleware
@@ -25,7 +27,7 @@ class PhotoController extends Controller implements HasMiddleware
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -231,12 +233,12 @@ class PhotoController extends Controller implements HasMiddleware
         $user = $request->user();
 
         // Read image and scale down to max 1280px (longest side)
-        $image = Image::read($upload);
+        $image = Image::decode($upload);
         $image->scaleDown(width: 1280, height: 1280);
 
         // Encode as WebP and save
         $filename = 'photos/'.Str::random(40).'.webp';
-        Storage::put($filename, $image->toWebp(quality: 90));
+        Storage::put($filename, $image->encode(new WebpEncoder(quality: 90)));
 
         $photo = Photo::create([
             'user_id' => $user->id,
