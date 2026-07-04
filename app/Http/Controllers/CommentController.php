@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Comment as CommentResource;
 use App\Models\Comment;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,15 @@ class CommentController extends Controller implements HasMiddleware
     {
         $entry = Comment::find($id);
 
-        // $this->authorize('view', $entry);
+        abort_if($entry === null, 404);
+
+        // A comment may be removed by its author or by the owner of the photo
+        // it belongs to.
+        $photoOwnerId = Photo::whereKey($entry->photo_id)->value('user_id');
+        abort_unless(
+            $entry->user_id === Auth::id() || $photoOwnerId === Auth::id(),
+            403
+        );
 
         $entry->delete();
 

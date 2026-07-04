@@ -64,6 +64,35 @@ test('a teacher creating their own hub gets a fully provisioned, auto-activated 
     expect((bool) $admin->is_active)->toBeTrue(); // self-created hubs are trusted immediately
 });
 
+test('a teacher whose default is all_empty still gets a working dba admin user', function () {
+    $teacher = $this->createTeacher(['hub_default_creating' => 'all_empty']);
+
+    $response = $this->actingAs($teacher)->post('http://admin.localhost/hubs', [
+        'hub' => 'emptyhub',
+        'password' => 'secret123',
+        'password_confirmation' => 'secret123',
+        'teacher' => $teacher->username,
+        'username' => 'admin',
+        'name' => 'Hub Admin',
+        'email' => 'hubadmin@example.test',
+    ]);
+
+    $response->assertRedirect('/');
+
+    $hub = Hub::where('name', 'emptyhub')->firstOrFail();
+    expect(tenantDatabaseExists(env('DB_DATABASE', 'testing').'_'.$hub->id))->toBeTrue();
+
+    // The all_empty creating mode migrates empty tables and seeds no admin, so
+    // HubController@store must create one itself (previously it fatally called
+    // ->update() on null).
+    $admin = $this->withinHub($hub, fn () => User::where('username', 'admin')->first());
+
+    expect($admin)->not->toBeNull()
+        ->and($admin->name)->toBe('Hub Admin')
+        ->and($admin->role)->toBe('dba')
+        ->and((bool) $admin->is_active)->toBeTrue();
+});
+
 test('store provisions the avatar upload into the tenant admin user', function () {
     Storage::fake('local');
 

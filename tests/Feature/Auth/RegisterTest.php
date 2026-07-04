@@ -122,6 +122,30 @@ it('fails registration when the captcha verification fails', function () {
     $this->assertGuest();
 });
 
+it('rejects registration when the birthday is not a valid Y-m-d date', function () {
+    fakeCaptcha(true);
+
+    $response = $this->post('http://localhost/register', validRegistrationPayload([
+        'birthday' => '01.01.2000',
+    ]));
+
+    $response->assertSessionHasErrors('birthday');
+    $this->assertGuest();
+});
+
+it('stores a valid birthday on the newly registered account', function () {
+    User::factory()->admin()->create();
+    Notification::fake();
+    fakeCaptcha(true);
+
+    $this->post('http://localhost/register', validRegistrationPayload([
+        'birthday' => '2000-01-01',
+    ]))->assertRedirect('/');
+
+    $user = User::where('email', 'newteacher@example.com')->first();
+    expect($user->birthday->format('Y-m-d'))->toBe('2000-01-01');
+});
+
 it('redirects an already authenticated user away from the registration form', function () {
     $user = User::factory()->create();
 

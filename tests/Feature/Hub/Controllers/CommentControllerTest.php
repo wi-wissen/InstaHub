@@ -86,24 +86,41 @@ test('guest cannot delete a comment', function () {
     });
 });
 
-// Note: CommentController@destroy has no ownership check (the
-// `$this->authorize(...)` call is commented out in app code), so any
-// authenticated hub user can currently delete any other user's comment.
-// This documents the actual (unguarded) behaviour rather than the ideal one;
-// app code was left untouched per instructions.
-test('authenticated user can currently delete another users comment (no ownership check enforced)', function () {
+test('a user who is neither the author nor the photo owner cannot delete a comment', function () {
     $hub = $this->createHub(creating: 'all_empty');
 
     $ids = $this->withinHub($hub, function () {
         $owner = User::factory()->create();
-        $other = User::factory()->create();
+        $author = User::factory()->create();
+        $stranger = User::factory()->create();
         $photo = Photo::factory()->create(['user_id' => $owner->id]);
-        $comment = Comment::factory()->create(['user_id' => $owner->id, 'photo_id' => $photo->id]);
+        $comment = Comment::factory()->create(['user_id' => $author->id, 'photo_id' => $photo->id]);
 
-        return compact('other', 'comment');
+        return compact('stranger', 'comment');
     });
 
-    $this->onHub($hub)->actingAs($ids['other'])
+    $this->onHub($hub)->actingAs($ids['stranger'])
+        ->delete($this->hubUrl($hub, '/api/me/comment/'.$ids['comment']->id))
+        ->assertForbidden();
+
+    $this->withinHub($hub, function () use ($ids) {
+        expect(Comment::find($ids['comment']->id))->not->toBeNull();
+    });
+});
+
+test('the photo owner can delete a comment left on their photo by someone else', function () {
+    $hub = $this->createHub(creating: 'all_empty');
+
+    $ids = $this->withinHub($hub, function () {
+        $owner = User::factory()->create();
+        $author = User::factory()->create();
+        $photo = Photo::factory()->create(['user_id' => $owner->id]);
+        $comment = Comment::factory()->create(['user_id' => $author->id, 'photo_id' => $photo->id]);
+
+        return compact('owner', 'comment');
+    });
+
+    $this->onHub($hub)->actingAs($ids['owner'])
         ->delete($this->hubUrl($hub, '/api/me/comment/'.$ids['comment']->id))
         ->assertOk()
         ->assertJson(['success' => 'true']);

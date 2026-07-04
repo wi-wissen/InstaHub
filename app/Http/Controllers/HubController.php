@@ -136,7 +136,7 @@ class HubController extends Controller implements HasMiddleware
         // check if teacher
         $teacherId = null;
         if (Auth::check()) {
-            if (Auth::user()->role = 'teacher' || Auth::user()->role = 'mod') {
+            if (Auth::user()->role == 'teacher' || Auth::user()->role == 'mod') {
                 $teacherId = Auth::user()->id;
             }
         }
@@ -194,8 +194,7 @@ class HubController extends Controller implements HasMiddleware
                 }
             }
 
-            $admin = User::where('username', 'admin')->first();
-            $admin->update([
+            $adminAttributes = [
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
@@ -207,7 +206,18 @@ class HubController extends Controller implements HasMiddleware
                 'centimeters' => $request->centimeters,
                 'avatar' => $url,
                 'is_active' => ($teacherId && Auth::user()->id == $teacherId), // trust yourself
-            ]);
+            ];
+
+            $admin = User::where('username', 'admin')->first();
+            if ($admin) {
+                $admin->update($adminAttributes);
+            } else {
+                // The `all_empty` creating mode only migrates empty tables, so no
+                // `admin` user is seeded. Create one so the hub stays manageable.
+                $admin = User::create(array_merge(['username' => 'admin'], $adminAttributes));
+                $admin->role = 'dba'; // role is not mass assignable for security reasons
+                $admin->save();
+            }
         });
 
         if ($teacherId && Auth::user()->id == $teacherId) {
