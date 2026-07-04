@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Auth;
 use DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['name', 'type', 'priority', 'url', 'img', 'query'];
 
     public static function getAd($photo_id = null)

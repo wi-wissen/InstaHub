@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Browser;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Analytic extends Model
 {
+    use HasFactory;
+
     // protected $fillable = ['ip', 'device', 'brand_family', 'brand_model', 'browser_family', 'browser_version', 'platform_family', 'platform_version', 'user_id', 'photo_id'];
     protected $fillable = ['user_id', 'photo_id'];
 

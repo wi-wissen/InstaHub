@@ -13,15 +13,15 @@ class Hub extends JsonResource
      */
     public function toArray($request): array
     {
-        $hasWorkingUser = $this->hasWorkingUser();
+        $hasWorkingUser = $this->has_working_user;
 
         return [
             'id' => $this->id,
             'name' => $this->name,
             'hasWorkingUser' => $hasWorkingUser,
-            'activated' => ($hasWorkingUser) ? $this->activated() : false,
+            'activated' => ($hasWorkingUser) ? $this->activated : false,
             'admin' => ($hasWorkingUser) ? $this->admin : '',
-            'readonly' => $this->readonly(),
+            'readonly' => $this->readonly,
             'created_at' => $this->created_at,
         ];
     }

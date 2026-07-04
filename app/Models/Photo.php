@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Collections\PhotoCollection;
 use App\Facades\RequestHub;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
 {
+    use HasFactory;
+
     protected $table = 'photos';
 
     protected $fillable = ['user_id', 'description', 'url'];

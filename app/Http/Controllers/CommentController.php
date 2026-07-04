@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller implements HasMiddleware
 {
@@ -36,9 +37,9 @@ class CommentController extends Controller implements HasMiddleware
      */
     public function destroy($id)
     {
-        $entry = Comment::find($id);
+        $entry = Comment::findOrFail($id);
 
-        // $this->authorize('view', $entry);
+        Gate::authorize('delete', $entry);
 
         $entry->delete();
 
