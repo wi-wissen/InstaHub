@@ -59,9 +59,9 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                // The flat PDO::MYSQL_ATTR_* constants are deprecated since PHP 8.5
-                // in favour of the Pdo\Mysql::ATTR_* class constants.
-                (PHP_VERSION_ID >= 80500 ? Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+                // The flat PDO::MYSQL_ATTR_* constants are deprecated since PHP 8.5;
+                // this app targets PHP 8.5+, so use the Pdo\Mysql::ATTR_* constants.
+                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
 

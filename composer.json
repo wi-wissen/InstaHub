@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.5",
         "hisorange/browser-detect": "^5.0",
         "intervention/image-laravel": "^4.0",
         "laracasts/flash": "^3.2",
