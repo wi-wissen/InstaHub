@@ -19,6 +19,11 @@ class Comment extends Model
         return $this->belongsTo(\App\Models\User::class);
     }
 
+    public function photo(): BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Photo::class);
+    }
+
     public function getHtmlAttribute()
     {
         $html = htmlspecialchars($this->body); // secure user input

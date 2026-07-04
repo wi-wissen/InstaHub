@@ -5,6 +5,7 @@ namespace App\Livewire\Photo;
 use App\Facades\RequestHub;
 use App\Models\Photo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class Show extends Component
@@ -95,11 +96,13 @@ class Show extends Component
 
     public function deleteComment($commentId)
     {
-        if ($this->readonly || ! $this->admin || ! RequestHub::hasTable('comments')) {
+        if ($this->readonly || ! RequestHub::hasTable('comments')) {
             return;
         }
 
-        $this->photo->comments()->find($commentId)->delete();
+        $comment = $this->photo->comments()->findOrFail($commentId);
+        Gate::authorize('delete', $comment);
+        $comment->delete();
         $this->photo->refresh();
         $this->loadPhotoRelations();
     }

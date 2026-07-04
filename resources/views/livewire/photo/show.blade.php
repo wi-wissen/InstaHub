@@ -64,10 +64,12 @@
                                 <h4 class="my-0 fs-6 text-muted fst-italic">{{ __('Deleted User') }}</h4> 
                             @endif
                             <span>{!! $comment->html !!}</span>
-                            @if(!$readonly && $admin)
-                                <a wire:click.prevent="deleteComment({{ $comment->id }})" href="#" class="float-right">
-                                    <span>x</span>
-                                </a>
+                            @if(!$readonly)
+                                @can('delete', $comment)
+                                    <a wire:click.prevent="deleteComment({{ $comment->id }})" href="#" class="float-right">
+                                        <span>x</span>
+                                    </a>
+                                @endcan
                             @endif
                         </div>
                     </div>
