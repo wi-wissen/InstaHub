@@ -9,7 +9,14 @@ test('about page renders', function () {
 });
 
 test('noad page renders', function () {
-    $this->get('http://localhost/noad')->assertOk();
+    // /noad is a hub-relative route, so it only resolves on a hub subdomain and runs
+    // through the Subdomain middleware, which reads $_SERVER['HTTP_HOST'] to build the
+    // hub URL. Set the host as the hub helpers do so the request is handled in hub context.
+    $_SERVER['HTTP_HOST'] = 'example.localhost';
+
+    $this->withServerVariables(['HTTP_HOST' => 'example.localhost'])
+        ->get('http://example.localhost/noad')
+        ->assertOk();
 });
 
 test('documentation redirect sends generation 1 to its plain configured url', function () {
