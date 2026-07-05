@@ -9,7 +9,8 @@ test('about page renders', function () {
 });
 
 test('noad page renders', function () {
-    $this->get('http://localhost/noad')->assertOk();
+    // The /noad fallback link is a hub-relative route, so it only resolves on a hub subdomain.
+    $this->get('http://example.localhost/noad')->assertOk();
 });
 
 test('documentation redirect sends generation 1 to its plain configured url', function () {
