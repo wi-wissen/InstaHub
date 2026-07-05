@@ -33,9 +33,9 @@ Many thanks and respect to:
 
 #### Prerequisits 
 
-- Have min. PHP 8.3
+- Have min. PHP 8.5
 - Download composer https://getcomposer.org/download/
-- Download npm https://nodejs.org/
+- Download Node.js 24 (incl. npm) https://nodejs.org/
 - Download git https://git-scm.com/downloads
 
 #### Prerequisits for Windows users

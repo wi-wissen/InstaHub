@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Encoders\WebpEncoder;
 use Intervention\Image\Laravel\Facades\Image;
 
 class UserController extends Controller implements HasMiddleware
@@ -75,11 +76,11 @@ class UserController extends Controller implements HasMiddleware
         if ($request->hasFile('avatar')) {
             if ($request->file('avatar')->isValid()) {
                 // Bild quadratisch zuschneiden, auf max 512px und als WebP speichern
-                $image = Image::read($request->file('avatar'));
+                $image = Image::decode($request->file('avatar'));
                 $image->coverDown(512, 512, 'center');
 
                 $filename = 'avatars/'.Str::random(40).'.webp';
-                Storage::put($filename, $image->toWebp(quality: 90));
+                Storage::put($filename, $image->encode(new WebpEncoder(quality: 90)));
 
                 $user->avatar = $filename;
             } else {

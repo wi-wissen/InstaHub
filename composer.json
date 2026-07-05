@@ -8,15 +8,15 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.5",
         "hisorange/browser-detect": "^5.0",
-        "intervention/image-laravel": "^1.5",
+        "intervention/image-laravel": "^4.0",
         "laracasts/flash": "^3.2",
-        "laravel/framework": "^12.50",
-        "laravel/tinker": "^2.10.1",
+        "laravel/framework": "^13.0",
+        "laravel/tinker": "^3.0",
         "laravel/ui": "^4.6",
         "livewire/livewire": "^4.0",
-        "openai-php/client": "^0.10.1",
+        "openai-php/client": "^0.20.0",
         "orangehill/iseed": "^3.7",
         "ossycodes/friendlycaptcha": "^3.0"
     },
@@ -97,7 +97,7 @@
             "php-http/discovery": true
         },
         "platform": {
-            "php": "8.3.31"
+            "php": "8.5.0"
         }
     },
     "minimum-stability": "stable",

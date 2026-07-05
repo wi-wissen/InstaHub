@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Encoders\WebpEncoder;
 use Intervention\Image\Laravel\Facades\Image;
 
 class HubController extends Controller implements HasMiddleware
@@ -186,11 +187,11 @@ class HubController extends Controller implements HasMiddleware
             if ($request->hasFile('avatar')) {
                 if ($request->file('avatar')->isValid()) {
                     // Bild quadratisch zuschneiden, auf max 512px und als WebP speichern
-                    $image = Image::read($request->file('avatar'));
+                    $image = Image::decode($request->file('avatar'));
                     $image->coverDown(512, 512, 'center');
 
                     $url = 'avatars/'.Str::random(40).'.webp';
-                    Storage::put($url, $image->toWebp(quality: 90));
+                    Storage::put($url, $image->encode(new WebpEncoder(quality: 90)));
                 }
             }
 
