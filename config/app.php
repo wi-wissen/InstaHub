@@ -67,6 +67,7 @@ return [
     |
     */
 
+    'domain' => str_replace(['http://', 'https://'], '', env('APP_URL', 'http://localhost')),
     'domain_admin' => str_replace(['http://', 'https://'], '', env('APP_URL_ADMIN', 'http://admin.localhost')),
     'domain_hub' => str_replace(['http://', 'https://'], '', env('APP_URL_HUB', 'http://{subdomain}.localhost')),
 

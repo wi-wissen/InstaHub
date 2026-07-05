@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\FollowController;
@@ -28,13 +29,25 @@ use Illuminate\Support\Facades\Route;
 
 // auth
 Auth::routes(['verify' => true]);
-Route::get('login/{token}', [\App\Http\Controllers\Auth\LoginController::class, 'loginWithToken']);
+Route::get('login/{token}', [LoginController::class, 'loginWithToken']);
+
+// Excludes the global auth paths from the /{user} catch-all, which otherwise wins on subdomains (domain routes match first).
+$userAuthRoutePattern = '^(?!(?:login|logout|register|password|email)$)[^/]+$';
+
+// static (domain-agnostic, multi-segment paths are never shadowed by the /{user} catch-all)
+Route::get('/documentation/redirect/{generation}', [StaticController::class, 'redirectDocumentation'])->name('documentation.redirect');
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes for instahub.test
+|--------------------------------------------------------------------------
+*/
 
 // static
-Route::get('/about', [StaticController::class, 'about']);
-Route::get('/noad', [StaticController::class, 'noad']);
-
-Route::get('/documentation/redirect/{generation}', [StaticController::class, 'redirectDocumentation'])->name('documentation.redirect');
+Route::domain(config('app.domain'))->group(function () {
+    Route::get('/', [StaticController::class, 'welcome']);
+    Route::get('/about', [StaticController::class, 'about']);
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -42,12 +55,12 @@ Route::get('/documentation/redirect/{generation}', [StaticController::class, 're
 |--------------------------------------------------------------------------
 */
 
-Route::domain(config('app.domain_admin'))->group(function () {
+Route::domain(config('app.domain_admin'))->group(function () use ($userAuthRoutePattern) {
     // all
     Route::resource('hubs', HubController::class)->only(['create', 'store']);
 
     // only auth
-    Route::middleware('auth', 'verified', 'role:admin')->group(function () {
+    Route::middleware('auth', 'verified', 'role:admin')->group(function () use ($userAuthRoutePattern) {
         Route::get('/explore/users/{filter?}', [UserController::class, 'index']);
         Route::get('/explore/users/{filter}/{param?}', [UserController::class, 'index']);
 
@@ -60,11 +73,11 @@ Route::domain(config('app.domain_admin'))->group(function () {
         Route::get('/sql/select', [SqlController::class, 'selectGui']);
         Route::get('/sql/ai', [SqlController::class, 'sqlAi']);
 
-        Route::get('/{user}/activate', [UserController::class, 'activate']);
-        Route::get('/{user}/deactivate', [UserController::class, 'deactivate']);
+        Route::get('/{user}/activate', [UserController::class, 'activate'])->where('user', $userAuthRoutePattern);
+        Route::get('/{user}/deactivate', [UserController::class, 'deactivate'])->where('user', $userAuthRoutePattern);
     });
 
-    Route::middleware('auth', 'verified', 'role:teacher')->group(function () {
+    Route::middleware('auth', 'verified', 'role:teacher')->group(function () use ($userAuthRoutePattern) {
         Route::get('/', [HubController::class, 'index']);
 
         // dbadmin
@@ -75,10 +88,10 @@ Route::domain(config('app.domain_admin'))->group(function () {
         Route::get('/password', [UserController::class, 'getPassword']);
         Route::post('/password', [UserController::class, 'postPassword']);
 
-        Route::get('/{user}', [UserController::class, 'show']);
-        Route::get('/{user}/edit', [UserController::class, 'edit']);
-        Route::put('/{user}/update', [UserController::class, 'update']);
-        Route::get('/{user}/destroy', [UserController::class, 'destroy']);
+        Route::get('/{user}', [UserController::class, 'show'])->where('user', $userAuthRoutePattern);
+        Route::get('/{user}/edit', [UserController::class, 'edit'])->where('user', $userAuthRoutePattern);
+        Route::put('/{user}/update', [UserController::class, 'update'])->where('user', $userAuthRoutePattern);
+        Route::get('/{user}/destroy', [UserController::class, 'destroy'])->where('user', $userAuthRoutePattern);
     });
 });
 
@@ -87,7 +100,10 @@ Route::domain(config('app.domain_admin'))->group(function () {
 | Web Routes for *.instahub.test
 |--------------------------------------------------------------------------
 */
-Route::domain(config('app.domain_hub'))->group(function () {
+Route::domain(config('app.domain_hub'))->group(function () use ($userAuthRoutePattern) {
+    // public (registered before the /{user} catch-all so relative ad links like "/noad" resolve on hubs)
+    Route::get('/noad', [StaticController::class, 'noad']);
+
     // only auth
     Route::middleware('auth', 'verified', 'role:dba', 'isHub')->group(function () {
         // admin
@@ -99,7 +115,7 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::get('/dba/cryptPWs', [AdminController::class, 'cryptPWs']);
     });
 
-    Route::middleware('auth', 'verified', 'role:user', 'isHub')->group(function () {
+    Route::middleware('auth', 'verified', 'role:user', 'isHub')->group(function () use ($userAuthRoutePattern) {
         // feed
         Route::get('/', [PhotoController::class, 'index']);
         Route::get('/tag/{name}', [PhotoController::class, 'photosbytag']);
@@ -141,26 +157,15 @@ Route::domain(config('app.domain_hub'))->group(function () {
         Route::delete('/api/ads/{id}', [AdController::class, 'destroy']);
 
         // users - last so no one can override hub urls
-        Route::get('{user}/followers', [FollowController::class, 'followers']);
-        Route::get('{user}/following', [FollowController::class, 'following']);
+        Route::get('{user}/followers', [FollowController::class, 'followers'])->where('user', $userAuthRoutePattern);
+        Route::get('{user}/following', [FollowController::class, 'following'])->where('user', $userAuthRoutePattern);
 
-        Route::get('{user}', [UserController::class, 'show']);
+        Route::get('{user}', [UserController::class, 'show'])->where('user', $userAuthRoutePattern);
 
-        Route::get('{user}/edit', [UserController::class, 'edit']);
-        Route::put('{user}/update', [UserController::class, 'update']);
-        Route::get('{user}/destroy', [UserController::class, 'destroy']);
-        Route::get('{user}/activate', [UserController::class, 'activate']);
-        Route::get('{user}/deactivate', [UserController::class, 'deactivate']);
+        Route::get('{user}/edit', [UserController::class, 'edit'])->where('user', $userAuthRoutePattern);
+        Route::put('{user}/update', [UserController::class, 'update'])->where('user', $userAuthRoutePattern);
+        Route::get('{user}/destroy', [UserController::class, 'destroy'])->where('user', $userAuthRoutePattern);
+        Route::get('{user}/activate', [UserController::class, 'activate'])->where('user', $userAuthRoutePattern);
+        Route::get('{user}/deactivate', [UserController::class, 'deactivate'])->where('user', $userAuthRoutePattern);
     });
-});
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes for admin.instahub.test
-|--------------------------------------------------------------------------
-*/
-
-// static
-Route::domain(config('app.domain'))->group(function () {
-    Route::get('/', [StaticController::class, 'welcome']);
 });

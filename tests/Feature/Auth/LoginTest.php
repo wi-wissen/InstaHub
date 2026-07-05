@@ -9,6 +9,12 @@ it('shows the login form', function () {
         ->assertViewIs('auth.login');
 });
 
+it('shows the login form on the admin domain', function () {
+    $this->get('http://admin.localhost/login')
+        ->assertOk()
+        ->assertViewIs('auth.login');
+});
+
 it('logs in an active, existing user with correct credentials', function () {
     $user = User::factory()->create([
         'username' => 'janedoe',
