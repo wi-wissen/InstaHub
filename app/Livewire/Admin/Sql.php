@@ -78,6 +78,7 @@ class Sql extends Component
                             ['role' => 'user', 'content' => $this->query],
                         ],
                         'max_tokens' => 500,
+                        'thinking' => ['type' => 'disabled'], // custom parameter to disable thinking for a faster response
                     ]);
 
                     // decrement the teachers token count
