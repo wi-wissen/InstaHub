@@ -7,6 +7,8 @@
 !avatars/1/*
 !avatars/2/
 !avatars/2/*
+!avatars/3/
+!avatars/3/*
 
 #photos
 !photos/
@@ -14,3 +16,5 @@
 !photos/1/*
 !photos/2/
 !photos/2/*
+!photos/3/
+!photos/3/*
