@@ -3,6 +3,12 @@
 @section('content')
 <div class="container-fluid mt-3 mt-md-4">
     @if(RequestHub::isHub() && RequestHub::name() == 'public')
+    @php
+        // Demo access by generation (Generations 2 and 3 use the same user accounts; the seeder password is "password")
+        $demoUsers = RequestHub::generation() == 1
+            ? ['girl' => ['eva125', 'eva125'], 'boy' => ['adrian211', 'adrian211']]
+            : ['girl' => ['ballballphilosophin', 'password'], 'boy' => ['kunstmodereus', 'password']];
+    @endphp
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="container-xl mt-0">
@@ -31,8 +37,8 @@
                                     {{ __('Password') }}:
                                 </td>
                                 <td class="bg-transparent">
-                                    <code>eva125</code> <br>
-                                    <code>eva125</code>
+                                    <code>{{ $demoUsers['girl'][0] }}</code> <br>
+                                    <code>{{ $demoUsers['girl'][1] }}</code>
                                 </td>
                             </tr>
                         </table>
@@ -46,8 +52,8 @@
                                     {{ __('Password') }}:
                                 </td>
                                 <td class="bg-transparent">
-                                    <code>adrian211</code> <br>
-                                    <code>adrian211</code>
+                                    <code>{{ $demoUsers['boy'][0] }}</code> <br>
+                                    <code>{{ $demoUsers['boy'][1] }}</code>
                                 </td>
                             </tr>
                         </table>
