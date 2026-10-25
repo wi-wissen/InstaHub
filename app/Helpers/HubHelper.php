@@ -50,7 +50,9 @@ class HubHelper
 
                 $this->setHubDB();
 
-                Debugbar::info('db: '.Config::get('database.default'));
+                if (class_exists(Debugbar::class)) {
+                    Debugbar::info('db: '.Config::get('database.default'));
+                }
             }
         }
     }
